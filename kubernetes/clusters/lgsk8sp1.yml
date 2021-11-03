@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: lgsk8sp1
+  namespace: argocd
+spec:
+  destination:
+    namespace: argocd
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: kubernetes/clusters/lgsk8sp1
+    repoURL: 'https://github.com/diegoluisi/ops'
+    targetRevision: HEAD
+    directory:
+      recurse: true
+  project: ops
+  syncPolicy:
+    automated:
+      automated:
+        prune: false
+        selfHeal: false
+
