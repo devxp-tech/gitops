@@ -1,0 +1,21 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: argocd
+  namespace: argocd
+spec:
+  hosts:
+  - "argocd.lgsk8sp1.diegoluisi.eti.br"
+  gateways:
+  - argocd
+  http:
+  - match:
+    - uri:
+        prefix: /
+    - uri:
+        prefix: /delay
+    route:
+    - destination:
+        port:
+          number: 80
+        host: argocd

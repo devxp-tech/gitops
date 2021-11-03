@@ -1,0 +1,15 @@
+piVersion: networking.istio.io/v1beta1
+kind: Gateway
+metadata:
+  name: argocd
+  namespace: argocd
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - port:
+      name: http
+      number: 80
+      protocol: HTTP
+    hosts:
+    - 'argocd.lgsk8sp1.diegoluisi.eti.br'
