@@ -8,8 +8,8 @@ spec:
     istio: ingressgateway
   servers:
   - port:
-      name: http
-      number: 80
-      protocol: HTTP
+      name: https
+      number: 443
+      protocol: HTTPS
     hosts:
     - 'argocd.lgsk8sp1.diegoluisi.eti.br'
