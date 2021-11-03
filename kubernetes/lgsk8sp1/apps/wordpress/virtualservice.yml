@@ -1,0 +1,21 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: wordpress
+  namespace: wordpress
+spec:
+  hosts:
+  - "www.diegoluisi.eti.br"
+  gateways:
+  - wordpress
+  http:
+  - match:
+    - uri:
+        prefix: /
+    - uri:
+        prefix: /delay
+    route:
+    - destination:
+        port:
+          number: 80
+        host: wordpress

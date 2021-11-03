@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysql-persistent-storage
+  namespace: wordpress
+  labels:
+    app: wordpress
+spec:
+  accessModes:
+    - ReadWriteOnce
+    #- ReadWriteMany
+  storageClassName: gp2
+  resources:
+    requests:
+      storage: 10Gi
