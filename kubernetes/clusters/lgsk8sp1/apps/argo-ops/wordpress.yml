@@ -1,7 +1,7 @@
 project: default
 source:
   repoURL: 'https://github.com/diegoluisi/ops.git'
-  path: kubernetes/lgsk8sp1/apps/wordpress
+  path: kubernetes/clusters/lgsk8sp1/apps/wordpress
   targetRevision: HEAD
   directory:
     recurse: true
