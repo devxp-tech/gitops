@@ -9,7 +9,7 @@ spec:
   servers:
   - port:
       name: http
-      number: 443
+      number: 80
       protocol: HTTP
     hosts:
     - 'argocd.lgsk8sp1.diegoluisi.eti.br'
