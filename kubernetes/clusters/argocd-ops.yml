@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: lgsk8sp1
+  name: argocd-ops
   namespace: argocd
 spec:
   destination:
@@ -16,7 +16,6 @@ spec:
   project: ops
   syncPolicy:
     automated:
-      automated:
-        prune: false
-        selfHeal: false
+      prune: false
+      selfHeal: false
 
