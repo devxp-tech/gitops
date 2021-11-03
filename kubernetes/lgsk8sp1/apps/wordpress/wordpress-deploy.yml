@@ -23,7 +23,7 @@ metadata:
   namespace: wordpress
   labels:
     app: wordpress
-    version: 1.0.0
+    version: 1.0.1
 spec:
   selector:
     matchLabels:
@@ -36,7 +36,7 @@ spec:
       labels:
         app: wordpress
         tier: frontend
-        version: '1.0.0'
+        version: 1.0.1
     spec:
       containers:
       - image: wordpress:4.8-apache
