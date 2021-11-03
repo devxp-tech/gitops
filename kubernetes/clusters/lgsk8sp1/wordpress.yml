@@ -1,0 +1,17 @@
+project: default
+source:
+  repoURL: 'https://github.com/diegoluisi/ops.git'
+  path: kubernetes/lgsk8sp1/apps/wordpress
+  targetRevision: HEAD
+  directory:
+    recurse: true
+    jsonnet: {}
+destination:
+  namespace: wordpress
+  name: in-cluster
+syncPolicy:
+  automated:
+    prune: true
+    selfHeal: true
+  syncOptions:
+    - CreateNamespace=true
