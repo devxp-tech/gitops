@@ -1,8 +1,8 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: argocd-ops
-  namespace: argocd
+  name: wordpress
+  namespace: wordpress
 spec:
   destination:
     namespace: wordpress
