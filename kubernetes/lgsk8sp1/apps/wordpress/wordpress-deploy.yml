@@ -39,7 +39,7 @@ spec:
         version: 1.0.1
     spec:
       containers:
-      - image: wordpress:4.8-apache
+      - image: wordpress:5.8.1-apache
         name: wordpress
         env:
         - name: WORDPRESS_DB_HOST
