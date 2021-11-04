@@ -1,0 +1,46 @@
+---
+# create a service for hello-world
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-world
+  namespace: hello-world
+  labels:
+    app: hello-world
+spec:
+  ports:
+    - port: 8080
+  selector:
+    app: hello-world
+    tier: frontend
+  type: ClusterIP
+---
+# create deployment for hello-world
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: hello-world
+  namespace: hello-world
+  labels:
+    app: hello-world
+    version: 1.0.1
+spec:
+  selector:
+    matchLabels:
+      app: hello-world
+      tier: frontend
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: hello-world
+        tier: frontend
+        version: 1.0.1
+    spec:
+      containers:
+      - image: ollyw123/helloworld
+        name: hello-world
+        ports:
+        - containerPort: 8080
+          name: hello-world
