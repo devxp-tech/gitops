@@ -12,7 +12,7 @@ spec:
   source:
     repoURL: 'https://github.com/diegoluisi/argocd'
     targetRevision: HEAD
-    path: clusters/lgsk8sp1/apps
+    path: clusters/lgsk8sp1/tools
     directory:
       recurse: true
   destination:
@@ -25,7 +25,7 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-    name: "lgsk8sp1"
+    name: "apps-ops"
     namespace: argocd
     annotations:
       # https://argoproj.github.io/argo-cd/operator-manual/high_availability/#webhook-and-manifest-paths-annotation
