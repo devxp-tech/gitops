@@ -8,8 +8,8 @@ spec:
     namespace: argocd
     server: 'https://kubernetes.default.svc'
   source:
-    path: kubernetes/clusters/lgsk8sp1/apps
-    repoURL: 'https://github.com/diegoluisi/ops'
+    path: clusters/lgsk8sp1
+    repoURL: 'https://github.com/diegoluisi/argocd'
     targetRevision: HEAD
     directory:
       recurse: true
