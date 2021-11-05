@@ -33,6 +33,7 @@ spec:
       labels:
         app: wordpress
         tier: mysql
+        version: 1.0.0
     spec:
       containers:
       - image: mysql:5.6
