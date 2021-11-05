@@ -37,8 +37,6 @@ spec:
     repoURL: 'https://github.com/diegoluisi/argocd'
     targetRevision: HEAD
     path: clusters/lgsk8sp1/deploy
-    directory:
-      recurse: true
   destination:
     server: https://kubernetes.default.svc # this has to sync to local cluste to bootstrapp all apps
     namespace: argocd
