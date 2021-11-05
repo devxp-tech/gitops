@@ -11,7 +11,7 @@ spec:
   source:
     repoURL: 'https://github.com/diegoluisi/argocd'
     targetRevision: HEAD
-    path: cluster/lgsk8sp1/apps/wordpress/
+    path: clusters/lgsk8sp1/apps/wordpress/
   destination:
     server: https://kubernetes.default.svc
     namespace: wordpress
