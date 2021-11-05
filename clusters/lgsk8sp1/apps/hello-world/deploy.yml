@@ -39,7 +39,7 @@ spec:
         version: 1.0.1
     spec:
       containers:
-      - image: ollyw123/helloworld
+      - image: signalsciences/example-helloworld:latest
         name: hello-world
         ports:
         - containerPort: 8080
