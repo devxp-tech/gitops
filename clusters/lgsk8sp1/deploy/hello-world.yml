@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
     name: "hello-world"
-    namespace: argocd
+    namespace: hello-world
     annotations:
       # https://argoproj.github.io/argo-cd/operator-manual/high_availability/#webhook-and-manifest-paths-annotation
       argocd.argoproj.io/manifest-generate-paths: .
