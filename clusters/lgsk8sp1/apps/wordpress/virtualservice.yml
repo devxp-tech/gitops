@@ -12,10 +12,8 @@ spec:
   - match:
     - uri:
         prefix: /
-    - uri:
-        prefix: /delay
     route:
     - destination:
         port:
-          number: 80
+          number: 8080
         host: wordpress
