@@ -13,3 +13,5 @@ spec:
       protocol: HTTP
     hosts:
     - 'argocd.lgsk8sp1.diegoluisi.eti.br'
+    tls:
+      httpsRedirect: false

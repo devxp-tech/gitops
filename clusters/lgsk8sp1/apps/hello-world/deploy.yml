@@ -39,7 +39,7 @@ spec:
         version: 1.0.1
     spec:
       containers:
-      - image: signalsciences/example-helloworld:latest
+      - image: arungupta/helloworld-spring-boot:latest
         name: hello-world
         ports:
         - containerPort: 8080
