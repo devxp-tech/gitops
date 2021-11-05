@@ -37,7 +37,7 @@ spec:
   source:
     repoURL: 'https://github.com/diegoluisi/argocd'
     targetRevision: HEAD
-    path: clusters/lgsk8sp1/apps
+    path: clusters/lgsk8sp1/deploy
     directory:
       recurse: true
   destination:
