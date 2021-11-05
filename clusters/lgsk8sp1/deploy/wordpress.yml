@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+    name: "wordpress"
+    namespace: argocd
+    annotations:
+      # https://argoproj.github.io/argo-cd/operator-manual/high_availability/#webhook-and-manifest-paths-annotation
+      argocd.argoproj.io/manifest-generate-paths: .
+spec:
+  project: "ops"
+  source:
+    repoURL: 'https://github.com/diegoluisi/argocd'
+    targetRevision: HEAD
+    path: wordpress/
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: wordpress
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: true
+
+
+
+
+
