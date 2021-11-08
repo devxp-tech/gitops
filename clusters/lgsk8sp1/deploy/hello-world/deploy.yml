@@ -7,6 +7,8 @@ metadata:
   namespace: hello-world
   labels:
     app: hello-world
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: hello-world.diegoluisi.eti.br
 spec:
   ports:
     - port: 8080
