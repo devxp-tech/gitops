@@ -129,11 +129,6 @@ spec:
     spec:
       containers:
       - args:
-        - --cert-dir=/tmp
-        - --secure-port=443
-        - --kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname
-        - --kubelet-use-node-status-port
-        - --metric-resolution=15s
         - --kubelet-insecure-tls
         - --kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname
         - --metric-resolution=30
