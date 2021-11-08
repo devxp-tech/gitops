@@ -40,8 +40,15 @@ spec:
         version: 1.0.1
     spec:
       containers:
-      - image: wordpress:5.8.1-apache
-        name: wordpress
+      - name: wordpress
+        image: wordpress:5.8.1-apache
+        resources:
+          limits:
+            memory: 200Mi
+            cpu: 300m
+          requests:
+            memory: 100Mi
+            cpu: 100m
         env:
         - name: WORDPRESS_DB_HOST
           value: wordpress-mysql
@@ -60,3 +67,4 @@ spec:
       - name: wordpress-persistent-storage
         persistentVolumeClaim:
           claimName: wordpress-persistent-storage
+ 
