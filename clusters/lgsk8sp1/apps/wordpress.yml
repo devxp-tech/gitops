@@ -2,10 +2,12 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
     name: "wordpress"
-    namespace: wordpress
+    #namespace: wordpress
     annotations:
+    finalizers:
+      - resources-finalizer.argocd.argoproj.io
       # https://argoproj.github.io/argo-cd/operator-manual/high_availability/#webhook-and-manifest-paths-annotation
-      argocd.argoproj.io/manifest-generate-paths: .
+      # argocd.argoproj.io/manifest-generate-paths: .
 spec:
   project: "ops"
   source:
@@ -14,7 +16,7 @@ spec:
     path: clusters/lgsk8sp1/deploy/wordpress
   destination:
     server: https://kubernetes.default.svc
-    namespace: wordpress
+    # namespace: wordpress
   syncPolicy:
     automated:
       prune: false
