@@ -2,17 +2,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-    name: "argocd-ops"
+    name: "argocd-app"
     namespace: argocd
-    annotations:
+    #annotations:
       # https://argoproj.github.io/argo-cd/operator-manual/high_availability/#webhook-and-manifest-paths-annotation
-      argocd.argoproj.io/manifest-generate-paths: .
+      # argocd.argoproj.io/manifest-generate-paths: .
 spec:
   project: "default"
   source:
     repoURL: 'https://github.com/diegoluisi/argocd'
     targetRevision: HEAD
-    path: clusters/lgsk8sp1/tools
+    path: clusters/lgsk8sp1/apps
     directory:
       recurse: true
   destination:
@@ -21,25 +21,3 @@ spec:
   syncPolicy:
     automated:
       selfHeal: true
-
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-    name: "apps-ops"
-    namespace: argocd
-    annotations:
-      # https://argoproj.github.io/argo-cd/operator-manual/high_availability/#webhook-and-manifest-paths-annotation
-      argocd.argoproj.io/manifest-generate-paths: .
-spec:
-  project: "default"
-  source:
-    repoURL: 'https://github.com/diegoluisi/argocd'
-    targetRevision: HEAD
-    path: clusters/lgsk8sp1/deploy
-  destination:
-    server: https://kubernetes.default.svc # this has to sync to local cluste to bootstrapp all apps
-    namespace: argocd
-  syncPolicy:
-    automated:
-      selfHeal: true      
