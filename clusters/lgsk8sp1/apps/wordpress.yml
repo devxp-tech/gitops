@@ -2,7 +2,6 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
     name: "wordpress"
-    #namespace: wordpress
     annotations:
     finalizers:
       - resources-finalizer.argocd.argoproj.io
@@ -16,7 +15,7 @@ spec:
     path: clusters/lgsk8sp1/deploy/wordpress
   destination:
     server: https://kubernetes.default.svc
-    # namespace: wordpress
+    namespace: wordpress
   syncPolicy:
     automated:
       prune: false
