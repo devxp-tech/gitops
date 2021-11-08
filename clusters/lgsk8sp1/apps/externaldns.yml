@@ -12,8 +12,10 @@ spec:
     path: clusters/lgsk8sp1/tools/externaldns
     targetRevision: HEAD
   destination:
-    namespace: default
+    namespace: externaldns
     server: https://kubernetes.default.svc
   syncPolicy:
     automated:
       selfHeal: true
+  syncOptions:
+    - CreateNamespace=true
