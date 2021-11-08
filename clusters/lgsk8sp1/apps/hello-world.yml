@@ -10,7 +10,7 @@ spec:
   project: default
   source:
     repoURL: 'https://github.com/diegoluisi/argocd'
-    path: clusters/lgsk8sp1/apps/hello-world
+    path: clusters/lgsk8sp1/deploy/hello-world
     targetRevision: HEAD
   destination:
     server: https://kubernetes.default.svc
