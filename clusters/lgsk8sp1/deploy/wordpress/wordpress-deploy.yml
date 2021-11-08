@@ -9,7 +9,7 @@ metadata:
     app: wordpress
 spec:
   ports:
-    - port: 8080
+    - port: 80
       name: http-frontend
   selector:
     app: wordpress
@@ -51,7 +51,7 @@ spec:
               name: mysql-pass          # generated before in secret.yml
               key: password
         ports:
-        - containerPort: 8080
+        - containerPort: 80
           name: wordpress
         volumeMounts:
         - name: wordpress-persistent-storage
