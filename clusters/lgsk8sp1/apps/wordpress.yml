@@ -8,7 +8,7 @@ metadata:
       # https://argoproj.github.io/argo-cd/operator-manual/high_availability/#webhook-and-manifest-paths-annotation
       # argocd.argoproj.io/manifest-generate-paths: .
 spec:
-  project: "ops"
+  project: dev
   source:
     repoURL: 'https://github.com/diegoluisi/argocd'
     targetRevision: HEAD
