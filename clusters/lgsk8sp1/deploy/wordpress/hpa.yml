@@ -1,14 +1,21 @@
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
-  annotations:
   name: wordpress
+  labels:
+    app: wordpress
   namespace: wordpress
 spec:
-  maxReplicas: 3
-  minReplicas: 1
   scaleTargetRef:
-    apiVersion: extensions/v1
+    apiVersion: apps/v1
     kind: Deployment
     name: wordpress
-  targetCPUUtilizationPercentage: 50
+  minReplicas: 1
+  maxReplicas: 3
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 50
