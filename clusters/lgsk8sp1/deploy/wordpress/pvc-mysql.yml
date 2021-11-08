@@ -8,7 +8,6 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
-    #- ReadWriteMany
   storageClassName: gp2
   resources:
     requests:
