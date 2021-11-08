@@ -8,6 +8,7 @@ metadata:
 spec:
   ports:
     - port: 3306
+      name: mysql-server
   selector:
     app: wordpress
     tier: mysql
