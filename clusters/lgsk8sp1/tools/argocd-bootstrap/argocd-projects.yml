@@ -24,7 +24,7 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: default
+  name: ops
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io 
