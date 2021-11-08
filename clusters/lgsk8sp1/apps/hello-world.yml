@@ -7,7 +7,7 @@ metadata:
       # https://argoproj.github.io/argo-cd/operator-manual/high_availability/#webhook-and-manifest-paths-annotation
       argocd.argoproj.io/manifest-generate-paths: .
 spec:
-  project: default
+  project: ops
   source:
     repoURL: 'https://github.com/diegoluisi/argocd'
     path: clusters/lgsk8sp1/deploy/hello-world
