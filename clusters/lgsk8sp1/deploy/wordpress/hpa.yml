@@ -1,10 +1,7 @@
-apiVersion: autoscaling/v1
+apiVersion: autoscaling/v2beta2
 kind: HorizontalPodAutoscaler
 metadata:
   name: wordpress
-  labels:
-    app: wordpress
-  namespace: wordpress
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
@@ -13,9 +10,9 @@ spec:
   minReplicas: 1
   maxReplicas: 3
   metrics:
-    - type: Resource
-      resource:
-        name: cpu
-        target:
-          type: Utilization
-          averageUtilization: 50
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 50
