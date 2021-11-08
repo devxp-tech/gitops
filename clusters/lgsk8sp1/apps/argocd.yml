@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+    name: "argocd"
+    annotations:
+      # https://argoproj.github.io/argo-cd/operator-manual/high_availability/#webhook-and-manifest-paths-annotation
+      argocd.argoproj.io/manifest-generate-paths: .
+spec:
+  project: ops
+  source:
+    repoURL: 'https://github.com/diegoluisi/argocd'
+    path: clusters/lgsk8sp1/tools/argocd
+    targetRevision: HEAD
+  destination:
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    automated:
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
