@@ -131,7 +131,7 @@ spec:
       - args:
         - --kubelet-insecure-tls
         - --kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname
-        - --metric-resolution=30
+        - --metric-resolution=30s
         image: k8s.gcr.io/metrics-server/metrics-server:v0.5.1
         imagePullPolicy: IfNotPresent
         livenessProbe:
