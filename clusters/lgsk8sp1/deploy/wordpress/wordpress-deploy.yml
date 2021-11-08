@@ -10,7 +10,7 @@ metadata:
 spec:
   ports:
     - port: 8080
-      name: 'frotend-http'
+      name: http-frontend
   selector:
     app: wordpress
     tier: frontend
