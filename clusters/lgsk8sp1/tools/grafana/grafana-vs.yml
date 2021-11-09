@@ -17,7 +17,7 @@ spec:
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: grafana-vs
+  name: grafana
   namespace: monitoring
 spec:
   hosts:
@@ -27,9 +27,8 @@ spec:
   http:
   - route:
     - destination:
-        host: grafana.monitoring.svc.cluster.local
-        port:
-          number: 3000
+        host: grafana
+    timeout: 30s
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
