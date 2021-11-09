@@ -8,7 +8,7 @@ metadata:
       prometheus.io/port:   '3000'
 spec:
   selector: 
-    app: tcp-grafana
+    app: grafana
   type: ClusterIP
   ports:
     - port: 3000
