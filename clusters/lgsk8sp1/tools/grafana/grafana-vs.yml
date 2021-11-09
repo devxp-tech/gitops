@@ -29,15 +29,15 @@ spec:
     - destination:
         host: grafana
     timeout: 30s
----
-apiVersion: networking.istio.io/v1alpha3
-kind: DestinationRule
-metadata:
-  name: grafana
-  namespace: monitoring
-spec:
-  host: grafana.monitoring.svc.cluster.local
-  trafficPolicy:
-    tls:
-      mode: DISABLE
-
+#---
+#apiVersion: networking.istio.io/v1alpha3
+#kind: DestinationRule
+#metadata:
+#  name: grafana
+#  namespace: monitoring
+#spec:
+#  host: grafana.monitoring.svc.cluster.local
+#  trafficPolicy:
+#    tls:
+#      mode: DISABLE
+#
