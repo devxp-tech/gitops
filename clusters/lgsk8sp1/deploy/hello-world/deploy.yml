@@ -12,7 +12,7 @@ metadata:
 spec:
   ports:
     - port: 8080
-      name: node-tcp
+      name: tcp-node
   selector:
     app: hello-world
     tier: frontend
