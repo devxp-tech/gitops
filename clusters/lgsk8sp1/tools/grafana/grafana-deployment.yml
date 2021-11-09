@@ -18,7 +18,7 @@ spec:
       - name: grafana
         image: grafana/grafana:latest
         ports:
-        - name: tcp-grafana
+        - name: grafana
           containerPort: 3000
         resources:
           limits:
