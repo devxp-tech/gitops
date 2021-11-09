@@ -27,7 +27,7 @@ spec:
   http:
   - route:
     - destination:
-        host: prometheus-operator-grafana.monitoring.svc.cluster.local
+        host: grafana.monitoring.svc.cluster.local
         port:
           number: 3000
 ---
@@ -37,7 +37,7 @@ metadata:
   name: grafana
   namespace: monitoring
 spec:
-  host: prometheus-operator-grafana.monitoring.svc.cluster.local
+  host: grafana.monitoring.svc.cluster.local
   trafficPolicy:
     tls:
       mode: DISABLE
