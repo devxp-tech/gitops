@@ -27,7 +27,9 @@ spec:
   http:
   - route:
     - destination:
-        host: grafana
+        host: grafana.monitoring.svc.cluster.local
+        port: 
+          number: 3000
     timeout: 30s
 #---
 #apiVersion: networking.istio.io/v1alpha3
