@@ -32,4 +32,4 @@ spec:
     - destination:
         port:
           number: 80
-        host: argocd
+        host: argocd-server
