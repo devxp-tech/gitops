@@ -9,7 +9,7 @@ spec:
   project: ops
   source:
     repoURL: 'https://github.com/diegoluisi/argocd'
-    path: clusters/lgsk8sp1/tools/argocd-events
+    path: clusters/lgsk8sp1/tools/argo-events
     targetRevision: HEAD
   destination:
     namespace: "argo-events"
