@@ -23,7 +23,7 @@ spec:
   hosts:
   - "grafana.diegoluisi.eti.br"
   gateways:
-  - grafana
+  - grafana-gateway
   http:
   - match:
     - uri:
