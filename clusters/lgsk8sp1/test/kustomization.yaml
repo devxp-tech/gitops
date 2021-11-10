@@ -1,9 +1,0 @@
-apiVersion: kustomize.config.k8s.io/v1beta1
-kind: Kustomization
-namespace: argocd
-resources:
-  - argocd_install.yaml
-  - VirtualService.yaml
-  - Gateway.yaml
-patchesStrategicMerge:
-  - istio_patches.yaml
