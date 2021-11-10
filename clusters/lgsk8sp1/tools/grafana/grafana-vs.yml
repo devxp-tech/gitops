@@ -23,14 +23,16 @@ spec:
   hosts:
   - "grafana.diegoluisi.eti.br"
   gateways:
-  - grafana-gateway
+  - grafana
   http:
-  - route:
+  - match:
+    - uri:
+        prefix: /
+    route:
     - destination:
-        host: grafana.monitoring.svc.cluster.local
-        port: 
+        port:
           number: 3000
-    timeout: 30s
+        host: grafana
 #---
 #apiVersion: networking.istio.io/v1alpha3
 #kind: DestinationRule
