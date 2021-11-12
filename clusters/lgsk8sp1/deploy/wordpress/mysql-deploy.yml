@@ -1,14 +1,14 @@
+---
 apiVersion: v1
 kind: Service
 metadata:
-  name: wordpress-mysql   # will be used as a value in
+  name: wordpress-mysql
   namespace: wordpress
-  labels:                 # WORDPRESS_DB_HOST in wordpress-deploy.yml
+  labels:
     app: wordpress
 spec:
   ports:
     - port: 3306
-      name: tcp-mysql
   selector:
     app: wordpress
     tier: mysql
