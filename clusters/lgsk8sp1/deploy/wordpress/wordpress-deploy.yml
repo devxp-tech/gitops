@@ -41,7 +41,7 @@ spec:
     spec:
       containers:
       - name: wordpress
-        image: wordpress:5.8.1-apache
+        image: wordpress:5.8.3-apache
         resources:
           requests:
             cpu: 100m
