@@ -53,12 +53,10 @@ spec:
         - name: WORDPRESS_DB_USER
           value: wp-user
         - name: WORDPRESS_DB_PASSWORD
-          value: admin
-#        - name: WORDPRESS_DB_PASSWORD
-#          valueFrom:
-#            secretKeyRef:
-#              name: mysql-pass          # generated before in secret.yml
-#              key: password
+          valueFrom:
+            secretKeyRef:
+              name: mysql-pass          # generated before in secret.yml
+              key: password
         ports:
         - containerPort: 80
           name: wordpress
