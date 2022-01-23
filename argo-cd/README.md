@@ -52,6 +52,14 @@ tree -L 4
 └── README.md
 ````
 
+## Deploy Argo CD
+````bash
+kubectl create namespace argo-cd
+
+kubectl apply -n argo-cd
+-f argo-cd/clusters/lgsk8sp1/tools/argo-cd/install.yml
+````
+
 ## Login
 ### Get Secret
 ````bash
@@ -60,7 +68,16 @@ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.pas
 
 ### Forward the service
 ````bash
-kubectl port-forward svc/argocd-server -n argocd 8080:443
+kubectl port-forward svc/argocd-server -n argo-cd 8080:443
+````
+
+### Install Argo CD Cli
+````bash
+wget https://github.com/argoproj/argo-cd/releases/download/v2.1.2/argocd-linux-amd64 -O /tmp/argocd-linux-amd64
+
+sudo mv /tmp/argocd-linux-amd64 /usr/bin/argocd
+
+sudo chmod +x /usr/bin/argocd
 ````
 
 ![Argo CD](.images/argocd-login.png)

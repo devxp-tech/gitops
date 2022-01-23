@@ -9,10 +9,10 @@ spec:
   project: ops
   source:
     repoURL: 'https://github.com/diegoluisi/argo'
-    path: argo-cd/clusters/lgsk8sp1/tools/argo-cd-workflow
+    path: argo-cd/clusters/lgsk8sp1/tools/argo-workflows
     targetRevision: HEAD
   destination:
-    namespace: "argo"
+    namespace: "argo-workflows"
     server: https://kubernetes.default.svc
   syncPolicy:
     automated:
