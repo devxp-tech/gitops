@@ -1,0 +1,49 @@
+---
+# create a service for hello-gitops
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-gitops
+  namespace: hello-gitops
+  labels:
+    app: hello-gitops
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: hello-gitops.diegoluisi.eti.br
+spec:
+  ports:
+    - port: 8080
+      name: tcp-node
+  selector:
+    app: hello-gitops
+    tier: frontend
+  type: ClusterIP
+---
+# create deployment for hello-gitops
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: hello-gitops
+  namespace: hello-gitops
+  labels:
+    app: hello-gitops
+    version: latest
+spec:
+  selector:
+    matchLabels:
+      app: hello-gitops
+      tier: frontend
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: hello-gitops
+        tier: frontend
+        version: 1.0.1
+    spec:
+      containers:
+      - image: arungupta/helloworld-spring-boot:latest
+        name: hello-gitops
+        ports:
+        - containerPort: 8080
+          name: hello-gitops
