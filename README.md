@@ -19,3 +19,25 @@ Read more [here](./argo-rollouts/README.md)
 Read more [here](./argo-workflows/README.md)
 
 
+### Structure
+````bash
+tree -L 4
+.
+├── argo-cd
+│   ├── clusters
+│   │   └── lgsk8sp1
+│   │       ├── apps
+│   │       ├── deploy
+│   │       └── tools
+│   └── README.md
+├── argo-events
+│   └── README.md
+├── argo-rollouts
+│   └── README.md
+├── argo-workflows
+│   ├── README.md
+│   └── workflow
+│       └── clusters
+│           └── lgsk8sp1
+└── README.md
+````

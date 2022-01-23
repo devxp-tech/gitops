@@ -10,9 +10,9 @@ metadata:
 spec:
   project: dev
   source:
-    repoURL: 'https://github.com/diegoluisi/argocd'
+    repoURL: 'https://github.com/diegoluisi/argo'
     targetRevision: HEAD
-    path: clusters/lgsk8sp1/deploy/wordpress
+    path: argo-cd/clusters/lgsk8sp1/deploy/wordpress
   destination:
     server: https://kubernetes.default.svc
     namespace: wordpress

@@ -8,8 +8,8 @@ metadata:
 spec:
   project: ops
   source:
-    repoURL: 'https://github.com/diegoluisi/argocd'
-    path: clusters/lgsk8sp1/tools/argocd-workflow
+    repoURL: 'https://github.com/diegoluisi/argo'
+    path: argo-cd/clusters/lgsk8sp1/tools/argocd-workflow
     targetRevision: HEAD
   destination:
     namespace: "argo"

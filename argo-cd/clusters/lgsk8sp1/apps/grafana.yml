@@ -8,8 +8,8 @@ metadata:
 spec:
   project: ops
   source:
-    repoURL: 'https://github.com/diegoluisi/argocd'
-    path: clusters/lgsk8sp1/tools/grafana
+    repoURL: 'https://github.com/diegoluisi/argo'
+    path: argo-cd/clusters/lgsk8sp1/tools/grafana
     targetRevision: HEAD
   destination:
     namespace: monitoring

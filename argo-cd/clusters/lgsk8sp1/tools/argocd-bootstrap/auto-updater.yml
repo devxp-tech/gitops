@@ -10,9 +10,9 @@ metadata:
 spec:
   project: "ops"
   source:
-    repoURL: 'https://github.com/diegoluisi/argocd'
+    repoURL: 'https://github.com/diegoluisi/argo'
     targetRevision: HEAD
-    path: clusters/lgsk8sp1/apps
+    path: argo-cd/clusters/lgsk8sp1/apps
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
