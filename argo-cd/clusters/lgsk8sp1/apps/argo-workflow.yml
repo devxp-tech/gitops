@@ -9,7 +9,7 @@ spec:
   project: ops
   source:
     repoURL: 'https://github.com/diegoluisi/argo'
-    path: argo-cd/clusters/lgsk8sp1/tools/argocd-workflow
+    path: argo-cd/clusters/lgsk8sp1/tools/argo-cd-workflow
     targetRevision: HEAD
   destination:
     namespace: "argo"
