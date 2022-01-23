@@ -39,3 +39,16 @@ tree -L 4
 │           └── lgsk8sp1
 └── README.md
 ````
+
+## Login
+### Get Secret
+````bash
+kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
+````
+
+### Forward the service
+````bash
+kubectl port-forward svc/argocd-server -n argocd 8080:443
+````
+
+![Argo CD](.images/argocd-login.png)
