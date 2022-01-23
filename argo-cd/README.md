@@ -20,23 +20,35 @@ git@github.com:diegoluisi/argocd.git
 cd argocd
 ````
 
-### Organization
+### Structure
 ````bash
 tree -L 4
 .
-├── argo-cd
-│   └── clusters
-│       └── lgsk8sp1
-│           ├── apps
-│           ├── deploy
-│           └── tools
-├── argo-events
-│   └── README.MD
-├── argo-workflow
-│   ├── README.MD
-│   └── workflow
-│       └── clusters
-│           └── lgsk8sp1
+├── clusters
+│   └── lgsk8sp1
+│       ├── apps
+│       │   ├── argo-cd-bootstrap.yml
+│       │   ├── argo-cd.yml
+│       │   ├── argo-events.yml
+│       │   ├── argo-workflow.yml
+│       │   ├── externaldns.yml
+│       │   ├── grafana.yml
+│       │   ├── hello-world.yml
+│       │   ├── metrics-server.yml
+│       │   ├── prometheus.yml
+│       │   └── wordpress.yml
+│       ├── deploy
+│       │   ├── hello-world
+│       │   └── wordpress
+│       └── tools
+│           ├── argo-cd
+│           ├── argocd-bootstrap
+│           ├── argo-events
+│           ├── argo-workflow
+│           ├── externaldns
+│           ├── grafana
+│           ├── metrics-server
+│           └── prometheus
 └── README.md
 ````
 
