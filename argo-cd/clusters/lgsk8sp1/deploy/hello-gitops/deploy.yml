@@ -42,7 +42,7 @@ spec:
         version: 1.0.1
     spec:
       containers:
-      - image: arungupta/helloworld-spring-boot:latest
+      - image: diegoluisi/hello-gitops:latest
         name: hello-gitops
         ports:
         - containerPort: 8080
