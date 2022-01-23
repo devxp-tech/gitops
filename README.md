@@ -4,9 +4,18 @@ The core idea of GitOps is to have a git repository that contains declarative de
 Now that we know the central idea, let's go back a little bit to the acronym GitOps and let's understand the role of git, the role of ops and how they meet.
 
 ### Argo CD
+Read more [here](./argo-cd/README.md)
+
 
 ### Argo Events
+Read more [here](./argo-events/README.md)
+
+
+## Argo Rollouts
+Read more [here](./argo-rollouts/README.md)
+
 
 ### Argo Workflow
+Read more [here](./argo-workflows/README.md)
 
-## Argo CD
+
