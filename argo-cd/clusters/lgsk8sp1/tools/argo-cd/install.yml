@@ -3306,6 +3306,9 @@ metadata:
     app.kubernetes.io/component: server
     app.kubernetes.io/name: argocd-server
     app.kubernetes.io/part-of: argocd
+    app: argocd-server
+    tier: frontend
+    version: 1.0.1
   name: argocd-server
 spec:
   selector:
