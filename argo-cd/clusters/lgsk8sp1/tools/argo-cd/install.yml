@@ -3318,6 +3318,9 @@ spec:
     metadata:
       labels:
         app.kubernetes.io/name: argocd-server
+        app: argocd-server
+        tier: frontend
+        version: 2.1.5
     spec:
       affinity:
         podAntiAffinity:
