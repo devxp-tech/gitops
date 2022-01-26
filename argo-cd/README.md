@@ -57,7 +57,7 @@ tree -L 4
 kubectl create namespace argo-cd
 
 kubectl apply -n argo-cd
--f argo-cd/clusters/lgsk8sp1/tools/argo-cd/install.yml
+-f argo-cd/clusters/lgsk8sp1/tooling/argo-cd/install.yml
 ````
 
 ## Login

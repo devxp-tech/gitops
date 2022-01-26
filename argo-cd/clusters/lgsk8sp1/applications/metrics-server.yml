@@ -9,7 +9,7 @@ spec:
   project: ops
   source:
     repoURL: 'https://github.com/diegoluisi/argo'
-    path: argo-cd/clusters/lgsk8sp1/tools/metrics-server
+    path: argo-cd/clusters/lgsk8sp1/tooling/metrics-server
     targetRevision: HEAD
   destination:
     namespace: kube-system
