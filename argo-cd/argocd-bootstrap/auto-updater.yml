@@ -12,7 +12,7 @@ spec:
   source:
     repoURL: 'https://github.com/diegoluisi/argo'
     targetRevision: HEAD
-    path: argo-cd/clusters/lgsk8sp1/apps
+    path: argo-cd/clusters/lgsk8sp1/applications
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
