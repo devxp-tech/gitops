@@ -1,0 +1,15 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: argocd
+spec:
+  gateways:
+    - public-gateway
+  hosts:
+    - argo-events.diegoluisi.eti.br
+  http:
+    - route:
+      - destination:
+          host: argocd-server
+          port:
+            number: 80
