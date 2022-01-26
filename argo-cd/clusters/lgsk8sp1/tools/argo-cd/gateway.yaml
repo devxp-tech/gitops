@@ -14,7 +14,7 @@ spec:
         protocol: HTTPS
       tls:
         mode: SIMPLE
-        # argo-cert is a tls secret in istio-system namespace, containing a valid TLS cert for the domain name argo.example.com
+        # argo-cert is a tls secret in istio-system namespace, containing a valid TLS cert for the domain name argocd.diegoluisi.eti.br
         credentialName: argo-cert
     - hosts:
         - argocd.diegoluisi.eti.br
