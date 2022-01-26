@@ -1,8 +1,8 @@
 apiVersion: networking.istio.io/v1beta1
 kind: Gateway
 metadata:
-  name: wordpress
-  namespace: wordpress
+  name: argocd-gateway
+  namespace: argocd
 spec:
   selector:
     istio: ingressgateway
