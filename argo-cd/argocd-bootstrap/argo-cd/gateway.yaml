@@ -1,26 +1,15 @@
 apiVersion: networking.istio.io/v1beta1
 kind: Gateway
 metadata:
-  name: argocd-gateway
+  name: wordpress
+  namespace: wordpress
 spec:
   selector:
     istio: ingressgateway
   servers:
-    - hosts:
-        - argocd.diegoluisi.eti.br
-      port:
-        name: https
-        number: 443
-        protocol: HTTPS
-      tls:
-        mode: SIMPLE
-        # argo-cert is a tls secret in istio-system namespace, containing a valid TLS cert for the domain name argocd.diegoluisi.eti.br
-        credentialName: argo-cert
-    - hosts:
-        - argocd.diegoluisi.eti.br
-      port:
-        name: http
-        number: 80
-        protocol: HTTP
-      tls:
-        httpsRedirect: true
+  - port:
+      name: http
+      number: 80
+      protocol: HTTP
+    hosts:
+    - 'argocd.diegoluisi.eti.br'
