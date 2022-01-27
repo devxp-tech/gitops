@@ -875,9 +875,12 @@ spec:
         - server
         - --namespaced
         - --auth-mode
+        - server
+        - --auth-mode
         - --secure=false
         - --insecure-skip-tls-verify
         - --insecure-skip-verify
+        - client
         image: quay.io/argoproj/argocli:latest
         name: argo-server
         ports:
