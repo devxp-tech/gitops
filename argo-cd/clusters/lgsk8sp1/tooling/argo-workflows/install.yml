@@ -875,9 +875,6 @@ spec:
         - server
         - --namespaced
         - --auth-mode
-        - server
-        - --auth-mode
-        - client
         - --secure=false
         - --insecure-skip-tls-verify
         - --insecure-skip-verify
