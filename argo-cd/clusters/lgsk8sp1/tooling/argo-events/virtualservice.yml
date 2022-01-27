@@ -10,6 +10,6 @@ spec:
   http:
     - route:
       - destination:
-          host: eventbus-default-stan-svc
+          host: webhook-eventsource-svc
           port:
-            number: 8222
+            number: 12000
