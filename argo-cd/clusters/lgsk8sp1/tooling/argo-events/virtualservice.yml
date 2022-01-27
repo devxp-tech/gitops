@@ -12,4 +12,4 @@ spec:
       - destination:
           host: eventbus-default-stan-svc
           port:
-            number: 4222
+            number: 8222
