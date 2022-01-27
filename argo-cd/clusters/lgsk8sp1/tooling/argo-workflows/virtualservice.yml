@@ -1,7 +1,7 @@
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
-  name: argo-workflow
+  name: argo-workflows
 spec:
   gateways:
     - argo-workflow
