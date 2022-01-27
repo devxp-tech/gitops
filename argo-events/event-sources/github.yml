@@ -9,12 +9,11 @@ spec:
       - port: 12000
         targetPort: 12000
   github:
-    example:
+    argo:
       repositories:
-        - owner: argoproj
+        - owner: diegoluisi
           names:
-            - argo-events
-            - argo-workflows
+            - argo
       # Github will send events to following port and endpoint
       webhook:
         # endpoint to listen to events on
@@ -27,7 +26,7 @@ spec:
         # This url must be reachable from outside the cluster.
         # The name for the service is in `<event-source-name>-eventsource-svc` format.
         # You will need to create an Ingress or Openshift Route for the event-source service so that it can be reached from GitHub.
-        url: http://url-that-is-reachable-from-GitHub
+        url: http://argo-events.diegoluisi.eti.br
       # type of events to listen to.
       # following listens to everything, hence *
       # You can find more info on https://developer.github.com/v3/activity/events/types/
@@ -60,7 +59,7 @@ spec:
       contentType: json
       
     example-without-api-credentials:
-      owner: "argoproj"
+      owner: "diegoluisi"
       repository: "argo"
       webhook:
         endpoint: "/push"

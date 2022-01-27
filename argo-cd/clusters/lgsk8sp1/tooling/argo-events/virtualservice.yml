@@ -10,6 +10,6 @@ spec:
   http:
     - route:
       - destination:
-          host: webhook-eventsource-svc
+          host: github-eventsource-svc
           port:
             number: 12000
