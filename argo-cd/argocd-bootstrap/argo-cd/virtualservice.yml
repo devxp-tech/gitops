@@ -4,7 +4,7 @@ metadata:
   name: argocd
 spec:
   gateways:
-    - argocd-gateway
+    - istio-system/istio-gateway
   hosts:
     - argocd.diegoluisi.eti.br
   http:
