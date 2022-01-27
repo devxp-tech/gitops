@@ -2,7 +2,7 @@ apiVersion: networking.istio.io/v1beta1
 kind: Gateway
 metadata:
   name: argo-events
-  namespace: argo-events
+  namespace: argo
 spec:
   selector:
     istio: ingressgateway
@@ -18,7 +18,7 @@ apiVersion: networking.istio.io/v1beta1
 kind: Gateway
 metadata:
   name: argo-workflows
-  namespace: argo-workflows
+  namespace: argo
 spec:
   selector:
     istio: ingressgateway
