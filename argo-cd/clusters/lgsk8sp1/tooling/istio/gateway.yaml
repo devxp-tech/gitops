@@ -1,18 +1,26 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
-  name: gateway
+  name: istio-gateway
   namespace: istio-system
 spec:
   selector:
     istio: ingressgateway
   servers:
+  - hosts:
+    - '*.diegoluisi.eti.br'
+    port:
+      name: http
+      number: 80
+      protocol: HTTP
+    tls:
+      httpsRedirect: true
   - port:
-      number: 443
       name: https
+      number: 443
       protocol: HTTPS
     tls:
       mode: SIMPLE
       credentialName: istio-certs # This should match the Certificate secretName
     hosts:
-    - diegoluisi.eti.br # This should match a DNS name in the Certificate
+    - '*.diegoluisi.eti.br' # This should match a DNS name in the Certificate

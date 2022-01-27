@@ -20,7 +20,7 @@ metadata:
   name: argo-workflows
 spec:
   gateways:
-    - gateway
+    - istio-gateway
   hosts:
     - argo-workflows.diegoluisi.eti.br
   http:
