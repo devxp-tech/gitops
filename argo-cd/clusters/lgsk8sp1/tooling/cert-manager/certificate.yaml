@@ -1,0 +1,19 @@
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: Certificate
+metadata:
+  name: wildcard-certificate
+  namespace: istio-system
+spec:
+  acme:
+    config:
+    - dns01:
+        provider: diegoluisi.eti.br
+      domains:
+      - '*.diegoluisi.eti.br'
+  commonName: '*.diegoluisi.eti.br'
+  dnsNames:
+  - '*.diegoluisi.eti.br'
+  issuerRef:
+    kind: ClusterIssuer
+    name: diegoluisi.eti.br
+  secretName: istio-certs
