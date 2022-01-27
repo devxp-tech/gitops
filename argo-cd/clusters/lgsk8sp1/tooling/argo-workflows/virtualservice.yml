@@ -4,9 +4,9 @@ metadata:
   name: argo-workflows
 spec:
   gateways:
-    - argo-workflow
+    - argo-workflows
   hosts:
-    - argo-workflow.diegoluisi.eti.br
+    - argo-workflows.diegoluisi.eti.br
   http:
     - route:
       - destination:
