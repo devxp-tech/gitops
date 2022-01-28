@@ -1,14 +1,40 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Sensor
 metadata:
-  name: github
+  name: hello-gitops
 spec:
   template:
     serviceAccountName: operate-workflow-sa
   dependencies:
     - name: test-dep
-      eventSourceName: argo
-      eventName: argo
+      eventSourceName: hello-gitops
+      eventName: hello-gitops
+      filters:
+        data:
+          # Name of the event that triggered the delivery: [pull_request, push, yadayadayada]
+          # https://docs.github.com/en/developers/webhooks-and-events/webhook-events-and-payloads
+          - path: body.X-GitHub-Event
+            type: string
+            value:
+              - pull_request
+          - path: body.action
+            type: string
+            value:
+              - opened
+              - edited
+              - reopened
+              - synchronize
+          - path: body.pull_request.state
+            type: string
+            value:
+              - open
+          - path: body.pull_request.base.ref
+            type: string
+            value:
+              - main
+    - name: test-dep
+      eventSourceName: hello-gitops
+      eventName: hello-gitops
       filters:
         data:
           # Name of the event that triggered the delivery: [pull_request, push, yadayadayada]
