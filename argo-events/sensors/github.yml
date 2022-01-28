@@ -6,9 +6,9 @@ spec:
   template:
     serviceAccountName: operate-workflow-sa
   dependencies:
-    - name: test-dep
+    - name: dependecie
       eventSourceName: github
-      eventName: example
+      eventName: hello-gitops
       filters:
         data:
           # Name of the event that triggered the delivery: [pull_request, push, yadayadayada]
@@ -31,10 +31,10 @@ spec:
           - path: body.pull_request.base.ref
             type: string
             value:
-              - master
+              - main
   triggers:
     - template:
-        name: github-workflow-trigger
+        name: hello-world
         k8s:
           operation: create
           source:
@@ -51,7 +51,7 @@ spec:
                     - name: pr-number
                     - name: short-sha
                 templates:
-                  - name: whalesay
+                  - name: hello-world
                     inputs:
                       parameters:
                         - name: pr-title
@@ -63,20 +63,20 @@ spec:
                       args: ["{{inputs.parameters.pr-title}}"]
           parameters:
             - src:
-                dependencyName: test-dep
+                dependencyName: dependecie
                 dataKey: body.pull_request.title
               dest: spec.arguments.parameters.0.value
             - src:
-                dependencyName: test-dep
+                dependencyName: dependecie
                 dataKey: body.pull_request.number
               dest: spec.arguments.parameters.1.value
             - src:
-                dependencyName: test-dep
+                dependencyName: dependecie
                 dataTemplate: "{{ .Input.body.pull_request.head.sha | substr 0 7 }}"
               dest: spec.arguments.parameters.2.value
             # Append pull request number and short sha to dynamically assign workflow name <github-21500-2c065a>
             - src:
-                dependencyName: test-dep
+                dependencyName: dependecie
                 dataTemplate: "{{ .Input.body.pull_request.number }}-{{ .Input.body.pull_request.head.sha | substr 0 7 }}"
               dest: metadata.name
               operation: append
