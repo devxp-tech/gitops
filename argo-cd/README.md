@@ -31,7 +31,7 @@ tree -L 4
 │       │   ├── argo-cd.yml
 │       │   ├── argo-events.yml
 │       │   ├── argo-workflow.yml
-│       │   ├── externaldns.yml
+│       │   ├── external-dns.yml
 │       │   ├── grafana.yml
 │       │   ├── hello-world.yml
 │       │   ├── metrics-server.yml
@@ -45,7 +45,7 @@ tree -L 4
 │           ├── argocd-bootstrap
 │           ├── argo-events
 │           ├── argo-workflow
-│           ├── externaldns
+│           ├── external-dns
 │           ├── grafana
 │           ├── metrics-server
 │           └── prometheus
