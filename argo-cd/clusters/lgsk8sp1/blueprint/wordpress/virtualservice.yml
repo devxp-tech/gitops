@@ -7,7 +7,7 @@ spec:
   hosts:
   - "www.diegoluisi.eti.br"
   gateways:
-  - wordpress
+  - istio-system/istio-gateway
   http:
   - match:
     - uri:
