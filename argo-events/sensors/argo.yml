@@ -7,7 +7,7 @@ spec:
     serviceAccountName: operate-workflow-sa
   dependencies:
     - name: test-dep
-      eventSourceName: argo
+      eventSourceName: github
       eventName: argo
       filters:
         data:
