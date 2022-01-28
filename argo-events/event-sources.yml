@@ -31,7 +31,7 @@ spec:
       # following listens to everything, hence *
       # You can find more info on https://developer.github.com/v3/activity/events/types/
       events:
-        - "*"
+        - "*"  
     hello-gitops:
       repositories:
         - owner: diegoluisi
@@ -54,4 +54,4 @@ spec:
       # following listens to everything, hence *
       # You can find more info on https://developer.github.com/v3/activity/events/types/
       events:
-        - "*"        
+        - "*"
