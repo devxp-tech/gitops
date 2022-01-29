@@ -12,7 +12,7 @@ spec:
     path: argo-cd/clusters/lgsk8sp1/tooling/argo
     targetRevision: HEAD
   destination:
-    namespace: "argo-events"
+    namespace: "argo"
     server: https://kubernetes.default.svc
   syncPolicy:
     automated:
