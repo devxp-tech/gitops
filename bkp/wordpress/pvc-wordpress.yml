@@ -5,6 +5,7 @@ metadata:
   namespace: wordpress
   labels:
     app: wordpress
+    tier: frontend
 spec:
   accessModes:
     - ReadWriteOnce

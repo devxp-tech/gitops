@@ -12,7 +12,7 @@ spec:
   capacity:
     storage: 10Gi
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
   awsElasticBlockStore: 
     fsType: ext4
@@ -34,7 +34,7 @@ spec:
   capacity:
     storage: 10Gi
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
   awsElasticBlockStore: 
     fsType: ext4

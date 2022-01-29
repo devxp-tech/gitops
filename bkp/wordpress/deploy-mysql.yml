@@ -37,6 +37,15 @@ spec:
         tier: mysql
         version: 1.0.0
     spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: topology.kubernetes.io/zone
+                operator: In
+                values:
+                - us-east-1a
       containers:
       - image: mysql:5.6
         name: mysql
