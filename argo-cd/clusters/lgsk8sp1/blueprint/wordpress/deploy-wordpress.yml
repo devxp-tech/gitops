@@ -66,5 +66,5 @@ spec:
       volumes:
       - name: wordpress-persistent-storage
         persistentVolumeClaim:
-          claimName: wordpress/wordpress-persistent-storage
+          claimName: wordpress-persistent-storage
  

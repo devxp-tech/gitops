@@ -1,16 +1,18 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: wordpress-persistent-storage
+  name: mysql-persistent-storage
   namespace: wordpress
   labels:
     app: wordpress
-    tier: frontend
+    tier: mysql
 spec:
   accessModes:
     - ReadWriteOnce
   storageClassName: gp2
-  #volumeName: pv0001
   resources:
     requests:
-      storage: 6Gi
+      storage: 10Gi
+  selector: 
+    matchLabels: 
+      tier: mysql
