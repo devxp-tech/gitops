@@ -64,4 +64,4 @@ spec:
       volumes:
       - name: mysql-persistent-storage    # PVC
         persistentVolumeClaim:
-          claimName: mysql-persistent-storage
+          claimName: wordpress/mysql-persistent-storage
