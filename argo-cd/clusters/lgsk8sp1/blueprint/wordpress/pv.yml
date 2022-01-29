@@ -13,6 +13,7 @@ spec:
     storage: 10Gi
   accessModes:
     - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
   awsElasticBlockStore: 
     fsType: ext4
     volumeID: 'vol-0f1077b5c8cf41a92'
@@ -34,6 +35,7 @@ spec:
     storage: 10Gi
   accessModes:
     - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
   awsElasticBlockStore: 
     fsType: ext4
     volumeID: 'vol-0bb6bbace889ad481'
