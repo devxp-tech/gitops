@@ -61,6 +61,26 @@ spec:
                       image: docker/whalesay:latest
                       command: [cowsay]
                       args: ["{{inputs.parameters.pr-title}}"]
+                  - name: build
+                    dag:
+                      tasks:
+                      - name: build
+                        templateRef:
+                          name: container-image
+                          template: build-kaniko-git
+                          clusterScope: true
+                        arguments:
+                          parameters:
+                          - name: repo_url
+                            value: ""
+                          - name: repo_ref
+                            value: ""
+                          - name: repo_commit_id
+                            value: ""
+                          - name: container_image
+                            value: CHANGE_ME_IMAGE_OWNER/
+                          - name: container_tag
+                            value: ""
           parameters:
             - src:
                 dependencyName: test-dep
