@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ClusterWorkflowTemplate
+metadata:
+  name: cluster-workflow-build
+spec:
+  templates:
+  - name: buildkit
+    inputs:
+      parameters:
+      - name: repo
+      - name: branch
+      - name: path
+      - name: image
+    container:
+      image: docker/whalesay
+      command: [cowsay]
+      args: ["{{inputs.parameters.message}}"]
