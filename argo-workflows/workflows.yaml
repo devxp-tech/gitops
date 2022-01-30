@@ -1,19 +1,22 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Workflow
 metadata:
-  #generateName: hello-world-
-  name: hello-world
-  labels:
-    workflows.argoproj.io/archive-strategy: "false"
-  annotations:
-    workflows.argoproj.io/description: |
-      This is a simple hello world example.
-      You can also run it in Python: https://couler-proj.github.io/couler/examples/#hello-world
+  generateName: steps-
 spec:
-  entrypoint: whalesay
+  entrypoint: buildkit           # We reference our first "template" here
+
   templates:
-  - name: whalesay
-    container:
-      image: docker/whalesay:latest
-      command: [cowsay]
-      args: ["hello world"]
+  - name: buildkit               # The first "template" in this Workflow, it is referenced by "entrypoint"
+    steps:                    # The type of this "template" is "steps"
+    - - name: buildkit
+        template: buildkit    # We reference our second "template" here
+        arguments:
+          parameters:
+          - name: repo
+            value: https://github.com/diegoluisi/hello-gitops
+          - name: branch
+            value: main
+          - name: path
+            value: hello-gitops
+          - name: image
+            value: diegoluisi/hello-gitops:latest
