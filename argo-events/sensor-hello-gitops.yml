@@ -42,43 +42,36 @@ spec:
               apiVersion: argoproj.io/v1alpha1
               kind: Workflow
               metadata:
-                name: github-
+                generateName: dag-diamond-
               spec:
-                entrypoint: whalesay
-                arguments:
-                  parameters:
-                    - name: pr-title
-                    - name: pr-number
-                    - name: short-sha
+                entrypoint: diamond
                 templates:
-                  - name: whalesay
-                    inputs:
-                      parameters:
-                        - name: pr-title
-                        - name: pr-number
-                        - name: short-sha
-                    container:
-                      image: docker/whalesay:latest
-                      command: [cowsay]
-                      args: ["{{inputs.parameters.pr-title}}"]
-          parameters:
-            - src:
-                dependencyName: test-dep
-                dataKey: body.pull_request.title
-              dest: spec.arguments.parameters.0.value
-            - src:
-                dependencyName: test-dep
-                dataKey: body.pull_request.number
-              dest: spec.arguments.parameters.1.value
-            - src:
-                dependencyName: test-dep
-                dataTemplate: "{{ .Input.body.pull_request.head.sha | substr 0 7 }}"
-              dest: spec.arguments.parameters.2.value
-            # Append pull request number and short sha to dynamically assign workflow name <github-21500-2c065a>
-            - src:
-                dependencyName: test-dep
-                dataTemplate: "{{ .Input.body.pull_request.number }}-{{ .Input.body.pull_request.head.sha | substr 0 7 }}"
-              dest: metadata.name
-              operation: append
-      retryStrategy:
-        steps: 3
+                - name: echo
+                  inputs:
+                    parameters:
+                    - name: message
+                  container:
+                    image: alpine:3.7
+                    command: [echo, "{{inputs.parameters.message}}"]
+                - name: diamond
+                  dag:
+                    tasks:
+                    - name: A
+                      template: echo
+                      arguments:
+                        parameters: [{name: message, value: A}]
+                    - name: B
+                      dependencies: [A]
+                      template: echo
+                      arguments:
+                        parameters: [{name: message, value: B}]
+                    - name: C
+                      dependencies: [A]
+                      template: echo
+                      arguments:
+                        parameters: [{name: message, value: C}]
+                    - name: D
+                      dependencies: [B, C]
+                      template: echo
+                      arguments:
+                        parameters: [{name: message, value: D}]
