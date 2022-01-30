@@ -4,7 +4,7 @@ metadata:
   name: hello-gitops
 spec:
   template:
-    serviceAccountName: operate-workflow-sa
+    serviceAccountName: workflow
   dependencies:
     - name: test-dep
       eventSourceName: github
@@ -44,6 +44,7 @@ spec:
               metadata:
                 generateName: dag-diamond-
               spec:
+                serviceAccountName: workflow
                 entrypoint: diamond
                 templates:
                   - name: echo
@@ -60,19 +61,22 @@ spec:
                           template: echo
                           arguments:
                             parameters: [{name: message, value: A}]
-                        - name: B
+                        - name: build
                           dependencies: [A]
-                          template: echo
+                          templateRef:
+                            name: container-image
+                            template: build-kaniko-git
+                            clusterScope: true
                           arguments:
-                            parameters: [{name: message, value: B}]
-                        - name: C
-                          dependencies: [A]
-                          template: echo
-                          arguments:
-                            parameters: [{name: message, value: C}]
-                        - name: D
-                          dependencies: [B, C]
-                          template: echo
-                          arguments:
-                            parameters: [{name: message, value: D}]
+                            parameters:
+                            - name: repo_url
+                              value: ""
+                            - name: repo_ref
+                              value: ""
+                            - name: repo_commit_id
+                              value: ""
+                            - name: container_image
+                              value: CHANGE_ME_IMAGE_OWNER/
+                            - name: container_tag
+                              value: ""
 
