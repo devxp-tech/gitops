@@ -421,6 +421,7 @@ rules:
   - workflowtemplates
   - cronworkflows
   - cronworkflows/finalizers
+  - pipelines
   verbs:
   - create
   - get
