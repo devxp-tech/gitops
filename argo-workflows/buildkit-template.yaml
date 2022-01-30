@@ -33,13 +33,13 @@ spec:
   arguments:
     parameters:
       - name: repo
-        value: https://github.com/argoproj/argo-workflows
+        value: https://github.com/diegoluisi/hello-gitops
       - name: branch
-        value: master
+        value: main
       - name: path
-        value: test/e2e/images/argosay/v2
+        value: .
       - name: image
-        value: alexcollinsintuit/argosay:v2
+        value: diegoluisi/hello-gitops:latest
   entrypoint: main
   # We use a volume claim template so that we can have a shared workspace.
   volumeClaimTemplates:
