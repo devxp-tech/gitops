@@ -125,6 +125,145 @@ metadata:
   namespace: argo
 ---
 apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    rbac.authorization.k8s.io/aggregate-to-admin: "true"
+  name: argo-events-aggregate-to-admin
+rules:
+  - apiGroups:
+      - argoproj.io
+    resources:
+      - sensors
+      - sensors/finalizers
+      - sensors/status
+      - eventsources
+      - eventsources/finalizers
+      - eventsources/status
+      - eventbus
+      - eventbus/finalizers
+      - eventbus/status
+    verbs:
+      - create
+      - delete
+      - deletecollection
+      - get
+      - list
+      - patch
+      - update
+      - watch
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    rbac.authorization.k8s.io/aggregate-to-edit: "true"
+  name: argo-events-aggregate-to-edit
+rules:
+  - apiGroups:
+      - argoproj.io
+    resources:
+      - sensors
+      - sensors/finalizers
+      - sensors/status
+      - eventsources
+      - eventsources/finalizers
+      - eventsources/status
+      - eventbus
+      - eventbus/finalizers
+      - eventbus/status
+    verbs:
+      - create
+      - delete
+      - deletecollection
+      - get
+      - list
+      - patch
+      - update
+      - watch
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    rbac.authorization.k8s.io/aggregate-to-view: "true"
+  name: argo-events-aggregate-to-view
+rules:
+  - apiGroups:
+      - argoproj.io
+    resources:
+      - sensors
+      - sensors/finalizers
+      - sensors/status
+      - eventsources
+      - eventsources/finalizers
+      - eventsources/status
+      - eventbus
+      - eventbus/finalizers
+      - eventbus/status
+    verbs:
+      - get
+      - list
+      - watch
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: argo-events-role
+rules:
+  - apiGroups:
+      - argoproj.io
+    resources:
+      - sensors
+      - sensors/finalizers
+      - sensors/status
+      - eventsources
+      - eventsources/finalizers
+      - eventsources/status
+      - eventbus
+      - eventbus/finalizers
+      - eventbus/status
+    verbs:
+      - create
+      - delete
+      - deletecollection
+      - get
+      - list
+      - patch
+      - update
+      - watch
+  - apiGroups:
+      - ""
+    resources:
+      - pods
+      - pods/exec
+      - configmaps
+      - secrets
+      - services
+      - persistentvolumeclaims
+    verbs:
+      - create
+      - get
+      - list
+      - watch
+      - update
+      - patch
+      - delete
+  - apiGroups:
+      - apps
+    resources:
+      - deployments
+      - statefulsets
+    verbs:
+      - create
+      - get
+      - list
+      - watch
+      - update
+      - patch
+      - delete
+---
+apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   name: argo-events-role
@@ -181,6 +320,19 @@ rules:
   - update
   - patch
   - delete
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: argo-events-binding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: argo-events-role
+subjects:
+  - kind: ServiceAccount
+    name: argo-events-sa
+    namespace: argo
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
@@ -334,3 +486,119 @@ spec:
         runAsNonRoot: true
         runAsUser: 9731
       serviceAccountName: argo-events-sa
+
+#install-validating-webhook.yaml
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: argo-events-webhook-sa
+  namespace: argo
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: argo-events-webhook
+rules:
+  - apiGroups:
+      - ""
+    resources:
+      - secrets
+    verbs:
+      - get
+      - list
+      - create
+      - update
+      - delete
+      - patch
+      - watch
+  - apiGroups:
+      - ""
+    resources:
+      - configmaps
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - apps
+    resources:
+      - deployments
+    verbs:
+      - get
+      - list
+  - apiGroups:
+      - admissionregistration.k8s.io
+    resources:
+      - validatingwebhookconfigurations
+    verbs:
+      - get
+      - list
+      - create
+      - update
+      - delete
+      - patch
+      - watch
+  - apiGroups:
+      - argoproj.io
+    resources:
+      - eventbus
+      - eventsources
+      - sensors
+    verbs:
+      - get
+      - list
+      - watch
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: argo-events-webhook-binding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: argo-events-webhook
+subjects:
+  - kind: ServiceAccount
+    name: argo-events-webhook-sa
+    namespace: argo
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: events-webhook
+  namespace: argo
+spec:
+  ports:
+    - port: 443
+      targetPort: 443
+  selector:
+    app: events-webhook
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: events-webhook
+  namespace: argo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: events-webhook
+  template:
+    metadata:
+      labels:
+        app: events-webhook
+    spec:
+      containers:
+        - args:
+            - webhook-service
+          env:
+            - name: NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+          image: quay.io/argoproj/argo-events:v1.5.5
+          imagePullPolicy: Always
+          name: webhook
+      serviceAccountName: argo-events-webhook-sa
