@@ -13,7 +13,7 @@ spec:
     targetRevision: HEAD
   destination:
     server: https://kubernetes.default.svc
-    namespace: hello-world
+    namespace: hello-gitops
   syncPolicy:
     automated:
       selfHeal: true
