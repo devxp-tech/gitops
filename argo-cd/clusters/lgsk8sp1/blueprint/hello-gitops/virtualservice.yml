@@ -7,7 +7,7 @@ spec:
   hosts:
   - "hello-gitops.diegoluisi.eti.br"
   gateways:
-  - hello-gitops
+  - istio-system/istio-gateway
   http:
   - match:
     - uri:

@@ -11,7 +11,7 @@ metadata:
     external-dns.alpha.kubernetes.io/hostname: hello-gitops.diegoluisi.eti.br
 spec:
   ports:
-    - port: 8080
+    - port: 8000
       name: tcp-node
   selector:
     app: hello-gitops
@@ -45,5 +45,5 @@ spec:
       - image: diegoluisi/hello-gitops:latest
         name: hello-gitops
         ports:
-        - containerPort: 8080
+        - containerPort: 8000
           name: hello-gitops
