@@ -47,3 +47,8 @@ spec:
         ports:
         - containerPort: 8000
           name: hello-gitops
+        resources:
+          requests:
+            cpu: 50m
+          limits:
+            cpu: 100m
