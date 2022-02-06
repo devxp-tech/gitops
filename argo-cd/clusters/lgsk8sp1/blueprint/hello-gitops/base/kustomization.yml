@@ -4,4 +4,4 @@ namespace: argocd
 resources:
   - virtualservice.yml
   - deploy.yml
-#  - hpa.yml
+  - hpa.yml
