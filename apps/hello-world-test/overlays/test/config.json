@@ -1,0 +1,1 @@
+{"appName":"hello-world-test","userGivenName":"hello-world-test","destNamespace":"default","destServer":"https://kubernetes.default.svc","srcPath":"apps/hello-world-test/overlays/test","srcRepoURL":"https://github.com/diegoluisi/argo.git","srcTargetRevision":"","labels":null}
