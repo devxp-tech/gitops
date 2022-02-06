@@ -1,0 +1,14 @@
+apiVersion: autoscaling/v2beta2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: hello-gitops
+spec:
+  minReplicas: 2
+  maxReplicas: 3
+  metrics:
+  - type: Resource
+  resource:
+    name: cpu
+    target:
+      type: Utilization
+      averageUtilization: 90

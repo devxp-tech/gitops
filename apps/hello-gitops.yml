@@ -9,7 +9,7 @@ spec:
   project: dev
   source:
     repoURL: 'https://github.com/diegoluisi/argo'
-    path: argo-cd/clusters/lgsk8sp1/blueprint/hello-gitops
+    path: argo-cd/clusters/lgsk8sp1/blueprint/hello-gitops/overlays/production
     targetRevision: HEAD
   destination:
     server: https://kubernetes.default.svc
