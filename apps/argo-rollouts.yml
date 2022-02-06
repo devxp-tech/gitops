@@ -9,7 +9,7 @@ spec:
   project: ops
   source:
     repoURL: 'https://github.com/diegoluisi/argo'
-    path: argo-rollouts/
+    path: apps/argo-rollouts
     targetRevision: HEAD
   destination:
     namespace: "argo-rollouts"

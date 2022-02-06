@@ -9,7 +9,7 @@ spec:
   project: ops
   source:
     repoURL: 'https://github.com/diegoluisi/argo'
-    path: argo-cd/clusters/lgsk8sp1/tooling/cert-manager
+    path: apps/cert-manager
     targetRevision: HEAD
   destination:
     namespace: "cert-manager"
