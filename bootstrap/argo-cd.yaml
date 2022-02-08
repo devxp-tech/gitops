@@ -10,7 +10,7 @@ metadata:
 spec:
   destination:
     namespace: argocd
-    server: https://kubernetes.default.svcgrep 
+    server: https://kubernetes.default.svc
   ignoreDifferences:
   - group: argoproj.io
     jsonPointers:
