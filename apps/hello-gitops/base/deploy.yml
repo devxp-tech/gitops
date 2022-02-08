@@ -4,7 +4,7 @@ kind: Rollout
 metadata:
   name: hello-gitops
 spec:
-  replicas: 5
+  replicas: 3
   workloadRef:                                 # Reference an existing Deployment using workloadRef field
     apiVersion: apps/v1
     kind: Deployment
