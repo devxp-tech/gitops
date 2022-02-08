@@ -2,13 +2,13 @@
 apiVersion: argoproj.io/v1alpha1               # Create a rollout resource
 kind: Rollout
 metadata:
-  name: rollout-ref-deployment
+  name: hello-gitops
 spec:
   replicas: 5
   workloadRef:                                 # Reference an existing Deployment using workloadRef field
     apiVersion: apps/v1
     kind: Deployment
-    name: rollout-ref-deployment
+    name: hello-gitops
   strategy:
     canary:
       steps:
