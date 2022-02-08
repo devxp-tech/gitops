@@ -18,7 +18,7 @@ spec:
     kind: Application
   project: default
   source:
-    path: bootstrap/argo-cd
+    path: bootstrap/argo-cd/overlays/production
     repoURL: https://github.com/diegoluisi/argo.git
   syncPolicy:
     automated:
