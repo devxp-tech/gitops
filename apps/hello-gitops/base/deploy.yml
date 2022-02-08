@@ -42,13 +42,13 @@ spec:
         version: 1.0.1
     spec:
       containers:
-      - image: diegoluisi/hello-gitops:latest
-        name: hello-gitops
-        ports:
-        - containerPort: 8000
+        - image: diegoluisi/hello-gitops:latest
           name: hello-gitops
-        resources:
-          requests:
-            cpu: 50m
-          limits:
-            cpu: 100m
+          ports:
+            - containerPort: 8000
+              name: hello-gitops
+          resources:
+            requests:
+              cpu: 50m
+            limits:
+              cpu: 100m
