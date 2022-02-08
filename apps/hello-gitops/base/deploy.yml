@@ -45,6 +45,7 @@ metadata:
     app: hello-gitops
     version: latest
 spec:
+  replicas: 0 
   selector:
     matchLabels:
       app: hello-gitops
@@ -56,7 +57,7 @@ spec:
       labels:
         app: hello-gitops
         tier: frontend
-        version: 1.0.1
+        version: 1.0.2
     spec:
       containers:
         - image: diegoluisi/hello-gitops:latest
