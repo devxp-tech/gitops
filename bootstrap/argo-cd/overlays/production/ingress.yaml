@@ -18,4 +18,4 @@ spec:
            name: argocd-server
            port:
              number: 80
-    host: acme.com
+    host: argocd.diegoluisi.eti.br
