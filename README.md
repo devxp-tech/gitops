@@ -50,21 +50,135 @@ Read more [here](./argo-workflows/README.md)
 ````bash
 tree -L 4
 .
-├── argo-cd
-│   ├── clusters
-│   │   └── lgsk8sp1
-│   │       ├── apps
-│   │       ├── deploy
-│   │       └── tools
-│   └── README.md
-├── argo-events
-│   └── README.md
-├── argo-rollouts
-│   └── README.md
-├── argo-workflows
+├── apps
+│   ├── argo
+│   │   ├── argo-events.yml
+│   │   ├── argo-workflows.yml
+│   │   └── virtualservice.yml
+│   ├── argo-rollouts
+│   │   ├── dashboard-install.yaml
+│   │   ├── install.yaml
+│   │   └── install.yaml_old
+│   ├── argo-rollouts.yml
+│   ├── argo.yml
+│   ├── cert-manager
+│   │   ├── cert-manager.yaml
+│   │   └── clusterissuer.yaml
+│   ├── cert-manager.yml
+│   ├── external-dns
+│   │   └── external-dns.yaml
+│   ├── grafana
+│   │   ├── grafana-dashboardDatasources.yaml
+│   │   ├── grafana-dashboardDefinitions.yaml
+│   │   ├── grafana-dashboardSources.yaml
+│   │   ├── grafana-datasource-config.yml
+│   │   ├── grafana-deployment.yml
+│   │   ├── grafana-serviceAccount.yaml
+│   │   ├── grafana-service.yml
+│   │   └── grafana-vs.yml
+│   ├── grafana.yml
+│   ├── hello-gitops
+│   │   ├── base
+│   │   │   ├── deploy.yml
+│   │   │   ├── hpa.yml
+│   │   │   ├── kustomization.yml
+│   │   │   └── virtualservice.yml
+│   │   └── overlays
+│   │       └── production
+│   ├── hello-gitops.yml
+│   ├── hello-world
+│   │   ├── deploy.yml
+│   │   ├── gateway.yaml
+│   │   ├── kustomization.yaml
+│   │   └── virtualservice.yml
+│   ├── istio
+│   │   ├── certificate.yaml
+│   │   └── gateway.yaml
+│   ├── istio.yml
+│   ├── metrics-server
+│   │   └── install.yml
+│   ├── metrics-server.yml
+│   ├── prometheus
+│   │   ├── prometheus-cm.yml
+│   │   ├── prometheus-deployment.yml
+│   │   ├── prometheus-role.yml
+│   │   └── prometheus-service.yml
+│   ├── prometheus.yml
 │   ├── README.md
-│   └── workflow
-│       └── clusters
-│           └── lgsk8sp1
-└── README.md
+│   ├── sealed-secrets
+│   │   ├── controller.yaml
+│   │   └── README.md
+│   ├── sealed-secrets.yml
+│   ├── wordpress
+│   │   ├── base
+│   │   │   ├── deploy-mysql.yml
+│   │   │   ├── deploy-wordpress.yml
+│   │   │   ├── hpa.yml
+│   │   │   ├── kustomization.yml
+│   │   │   ├── pvc-mysql.yml
+│   │   │   ├── pvc-wordpress.yml
+│   │   │   ├── pv.yml
+│   │   │   ├── storage-class.yml
+│   │   │   └── virtualservice.yml
+│   │   ├── overlays
+│   │   │   └── production
+│   │   └── sealed-secret.yaml
+│   └── wordpress.yml
+├── bootstrap
+│   ├── argo-cd
+│   │   ├── base
+│   │   │   ├── kustomization.yaml
+│   │   │   └── namespace.yaml
+│   │   ├── kustomization.yaml
+│   │   └── overlays
+│   │       └── production
+│   ├── argo-cd.yaml
+│   ├── cluster-resources
+│   │   ├── in-cluster
+│   │   │   ├── argocd-ns.yaml
+│   │   │   └── README.md
+│   │   └── in-cluster.json
+│   ├── cluster-resources.yaml
+│   └── root.yaml
+├── fix-folders
+│   ├── argo-cd
+│   │   ├── base
+│   │   │   ├── install.yml
+│   │   │   └── virtualservice.yml
+│   │   └── README.md
+│   ├── argo-events
+│   │   ├── event-bus.yml
+│   │   ├── event-sources.yml
+│   │   ├── rbac.yaml
+│   │   ├── README.md
+│   │   ├── sensor-argo.yml
+│   │   ├── sensor-hello-gitops.yml
+│   │   ├── sensor-rbac.yaml
+│   │   └── sensors.yaml
+│   ├── argo-rollouts
+│   │   ├── install.yaml
+│   │   └── README.md
+│   └── argo-workflows
+│       ├── buildkit-template.yaml
+│       ├── cluster-workflow-build.yaml
+│       ├── clusterworkflowtemplates.yaml
+│       ├── hello-world.yml
+│       ├── rbac-workflows-sa.yaml
+│       ├── README.md
+│       ├── slack.yml
+│       ├── templates.yaml
+│       ├── virtualservice.yml
+│       ├── workflow-rbac.yaml
+│       ├── workflows-templates
+│       │   └── hello-world.yml
+│       └── workflows.yaml
+├── projects
+│   ├── argocd-projects.yml
+│   ├── dev.yaml
+│   ├── ops.yaml
+│   ├── README.md
+│   └── test.yaml
+├── README.md
+└── sensor-hello-gitops.yml
 ````
+
