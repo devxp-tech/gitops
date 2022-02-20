@@ -15,7 +15,7 @@ Now that we know the central idea, let's go back a little bit to the acronym Git
 |  argo-workflows  |         |    ✅    |
 |  argo-rollouts   |         |    ✅    |
 |    kustomize     |         |    ✅    |
-|  sealed-secrets  | v0.17.3 |    ✅    |
+|  sealed-secrets  |  0.17.3 |    ✅    |
 |      istio       | 1.11.4  |    ✅    |
 |    wordpress     |    x    |    ✅    |
 |   cert-manager   |    x    |    ✅    |
