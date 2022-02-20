@@ -1,4 +1,4 @@
-## GitOps
+## ⚙️ GitOps
 
 The core idea of GitOps is to have a git repository that contains declarative descriptions of the desired infrastructure in the production environment and has an automated process to make the production environment match the state described in that repository.
 
