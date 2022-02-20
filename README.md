@@ -99,3 +99,7 @@ Argo Workflows is an open source container-native workflow engine for orchestrat
 │       └── workflows-templates
 └── projects
 ````
+
+### Security
+
+See [SECURITY.md](SECURITY.md).
