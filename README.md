@@ -27,23 +27,27 @@ Now that we know the central idea, let's go back a little bit to the acronym Git
 
 Read more
 
-### - Argo CD
+### - [Argo CD](./argo-cd/README.md)
+Argo CD automates the deployment of the desired application states in the specified target environments. Application deployments can track updates to branches, tags, or pinned to a specific version of manifests at a Git commit. See tracking strategies for additional details about the different tracking strategies available.
 
-Read more [here](./argo-cd/README.md)
+### - [Argo Events](./argo-events/README.md)
+Argo Events is an event-driven workflow automation framework for Kubernetes which helps you trigger K8s objects, Argo Workflows, Serverless workloads, etc. on events from a variety of sources like webhooks, S3, schedules, messaging queues, gcp pubsub, sns, sqs, etc.
 
-### - Argo Events
+### - [Argo Rollouts](./argo-rollouts/README.md)
+Argo Rollouts is a Kubernetes controller and set of CRDs which provide advanced deployment capabilities such as blue-green, canary, canary analysis, experimentation, and progressive delivery features to Kubernetes.
 
-Read more [here](./argo-events/README.md)
+Argo Rollouts (optionally) integrates with ingress controllers and service meshes, leveraging their traffic shaping abilities to gradually shift traffic to the new version during an update. Additionally, Rollouts can query and interpret metrics from various providers to verify key KPIs and drive automated promotion or rollback during an update.
 
-### - Argo Rollouts
+### - [Argo Workflow](./argo-workflows/README.md)
+Argo Workflows is an open source container-native workflow engine for orchestrating parallel jobs on Kubernetes. Argo Workflows is implemented as a Kubernetes CRD (Custom Resource Definition).
 
-Read more [here](./argo-rollouts/README.md)
 
-### - Argo Workflow
+### :hammer: Need to Fix:
 
-Read more [here](./argo-workflows/README.md)
-
-## Need to Fix
+|     Tools     |  Description  | Status |
+| :-----------: | :-----------: | :----: |
+|   wordpress   | Fix kustomize |   ❌   |
+| argo-worflows |   Fix Build   |   ❌   |
 
 ### Project Structure
 
