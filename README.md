@@ -23,10 +23,10 @@ Now that we know the central idea, let's go back a little bit to the acronym Git
 |     grafana      |    x    |    ✅    |
 
 
-### - [Argo-CD Auto Pilot](https://argocd-autopilot.readthedocs.io/en/stable/)
+### - [Argo CD Autopilot](https://argocd-autopilot.readthedocs.io/en/stable/)
 New users to GitOps and Argo CD are not often sure how they should structure their repos, add applications, promote apps across environments, and manage the Argo CD installation itself using GitOps.
 
-### - [Argo CD](./argo-cd/README.md)
+### - [Argo CD](https://argo-cd.readthedocs.io/en/stable/)
 Argo CD automates the deployment of the desired application states in the specified target environments. Application deployments can track updates to branches, tags, or pinned to a specific version of manifests at a Git commit. See tracking strategies for additional details about the different tracking strategies available.
 
 ### - [Argo Events](./argo-events/README.md)
