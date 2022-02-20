@@ -1,5 +1,4 @@
 ## ⚙️ GitOps
-----
 
 The core idea of GitOps is to have a git repository that contains declarative descriptions of the desired infrastructure in the production environment and has an automated process to make the production environment match the state described in that repository.
 
@@ -34,9 +33,9 @@ Argo Workflows is an open source container-native workflow engine for orchestrat
 | :--: | :-: | :--: |
 | argocd-autopilot | 0.2.28  |    ✅    |
 |      argocd      |  2.3.0  |    ✅    |
-|   argo-events    |         |    ✅    |
-|  argo-workflows  |         |    ✅    |
-|  argo-rollouts   |         |    ✅    |
+|   argo-events    |  1.5.5  |    ✅    |
+|  argo-workflows  |  3.2.8  |    ✅    |
+|  argo-rollouts   |  1.1.1  |    ✅    |
 |    kustomize     |         |    ✅    |
 |  sealed-secrets  | 0.17.3  |    ✅    |
 |      istio       | 1.11.4  |    ✅    |
@@ -48,13 +47,18 @@ Argo Workflows is an open source container-native workflow engine for orchestrat
 ### 🔨 Need to Fix
 
 
-|     Tools     |   Description   | Status |
+|     Issue     |   Description   | Status |
 | :-----------: | :-------------: | :----: |
 |   wordpress   |  Fix kustomize  |   ❌   |
 | argo-worflows |    Fix Build    |   ❌   |
 | yaml-validate | Fix CI Workflow |   ❌   |
 
+### 🛠️ Required
 
+|      Tools       | Version |
+| :--------------: | :-----: |
+|     kubectl      | v1.22.3 |
+| argocd-autopilot | v0.2.28 |
 
 ### 🌳 Project Structure
 
