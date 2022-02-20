@@ -5,33 +5,22 @@ The core idea of GitOps is to have a git repository that contains declarative de
 Now that we know the central idea, let's go back a little bit to the acronym GitOps and let's understand the role of git, the role of ops and how they meet.
 
 
-+------------------+---------|
-|       Tools      | Version |
-+------------------+---------|
-| argocd-autopilot | 0.2.28  |
-+------------------+---------+
-| argocd           |  2.3.0  |
-+------------------+---------+
-| argo-events      |     xxxx    |
-+------------------+---------+
-| argo-workflows   |         |
-+------------------+---------+
-| argo-rollouts    |         |
-+------------------+---------+
-| kustomize        |         |
-+------------------+---------+
-| sealed-secrets   | v0.17.3 |
-+------------------+---------+
-| istio            | 1.11.4  |
-+------------------+---------+
-| wordpress        |         |
-+------------------+---------+
-| cert-manager     |         |
-+------------------+---------+
-| prometheus       |         |
-+------------------+---------+
-| grafana          |         |
-+------------------+---------+
+| :--------------: | :-----: | :------: |
+| :--------------: | :-----: | :------: |
+| :--------------: | :-----: | :------: |
+| argocd-autopilot | 0.2.28  |  teste   |
+|      argocd      |  2.3.0  |          |
+|   argo-events    |         |          |
+|  argo-workflows  |         |          |
+|  argo-rollouts   |         |          |
+|    kustomize     |         |          |
+|  sealed-secrets  | v0.17.3 |          |
+|      istio       | 1.11.4  |          |
+|    wordpress     |    x    |    x     |
+|   cert-manager   |    x    |    x     |
+|    prometheus    |    x    |    x     |
+|     grafana      |    x    |    x     |
+| :--------------: | :-----: | :------: |
 
 ### - Argo-CD Auto Pilot
 
