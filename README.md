@@ -40,7 +40,7 @@ Argo Workflows is an open source container-native workflow engine for orchestrat
 |  sealed-secrets  | 0.17.3  |    ✅    |
 |      istio       | 1.11.4  |    ✅    |
 |    wordpress     |   5.9   |    ✅    |
-|   cert-manager   |    x    |    ✅    |
+|   cert-manager   |  1.6.1  |    ✅    |
 |    prometheus    |    x    |    ✅    |
 |     grafana      |    x    |    ✅    |
 
@@ -100,6 +100,9 @@ Argo Workflows is an open source container-native workflow engine for orchestrat
 └── projects
 ````
 
-### Security
+### 🖊️ Code of Conduct
+
+See [CODE-OF-CONDUCT.md](CODE-OF-CONDUCT.md).
+### 🔒 Security
 
 See [SECURITY.md](SECURITY.md).
