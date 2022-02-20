@@ -48,10 +48,9 @@ Argo Workflows is an open source container-native workflow engine for orchestrat
 |   wordpress   | Fix kustomize |   ❌   |
 | argo-worflows |   Fix Build   |   ❌   |
 
-### Project Structure
+### 🌳 Project Structure
 
 ````bash
-tree -d
 .
 ├── apps
 │   ├── argo
