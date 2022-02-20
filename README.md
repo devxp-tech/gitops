@@ -21,7 +21,7 @@ Now that we know the central idea, let's go back a little bit to the acronym Git
 |   cert-manager   |    x    |    ✅    |
 |    prometheus    |    x    |    ✅    |
 |     grafana      |    x    |    ✅    |
-| :--------------: | :-----: | :------: |
+
 
 ### - Argo-CD Auto Pilot
 
