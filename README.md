@@ -49,10 +49,12 @@ Argo Workflows is an open source container-native workflow engine for orchestrat
 
 
 |     Tools     |   Description   | Status |
-| :---: | :-: | :: |
-|   wordpress   |  Fix kustomize  |   ❌    |
-| argo-worflows |    Fix Build    |   ❌    |
-| yaml-validate | Fix CI Workflow |   ❌    |
+| :-----------: | :-------------: | :----: |
+|   wordpress   |  Fix kustomize  |   ❌   |
+| argo-worflows |    Fix Build    |   ❌   |
+| yaml-validate | Fix CI Workflow |   ❌   |
+
+
 
 ### 🌳 Project Structure
 
