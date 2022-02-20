@@ -23,22 +23,21 @@ Now that we know the central idea, let's go back a little bit to the acronym Git
 |     grafana      |    x    |    ✅    |
 
 
-img align="left" alt="Argo" width="26px" src=".images/argo-icon.svg" />
-### - [Argo CD Autopilot](https://argocd-autopilot.readthedocs.io/en/stable/)
+### <img align="left" alt="Git" width="16px" src="https://cncf-branding.netlify.app/img/projects/argo/icon/color/argo-icon-color.svg" /> [Argo CD Autopilot](https://argocd-autopilot.readthedocs.io/en/stable/)
 New users to GitOps and Argo CD are not often sure how they should structure their repos, add applications, promote apps across environments, and manage the Argo CD installation itself using GitOps.
 
-### - [Argo CD](https://argo-cd.readthedocs.io/en/stable/)
+### <img align="left" alt="Git" width="16px" src="https://cncf-branding.netlify.app/img/projects/argo/icon/color/argo-icon-color.svg" /> [Argo CD](https://argo-cd.readthedocs.io/en/stable/)
 Argo CD automates the deployment of the desired application states in the specified target environments. Application deployments can track updates to branches, tags, or pinned to a specific version of manifests at a Git commit. See tracking strategies for additional details about the different tracking strategies available.
 
-### - [Argo Events](https://argoproj.github.io/argo-events/)
+### <img align="left" alt="Git" width="16px" src="https://cncf-branding.netlify.app/img/projects/argo/icon/color/argo-icon-color.svg" /> [Argo Events](https://argoproj.github.io/argo-events/)
 Argo Events is an event-driven workflow automation framework for Kubernetes which helps you trigger K8s objects, Argo Workflows, Serverless workloads, etc. on events from a variety of sources like webhooks, S3, schedules, messaging queues, gcp pubsub, sns, sqs, etc.
 
-### - [Argo Rollouts](https://argoproj.github.io/argo-rollouts/)
+### <img align="left" alt="Git" width="16px" src="https://cncf-branding.netlify.app/img/projects/argo/icon/color/argo-icon-color.svg" /> [Argo Rollouts](https://argoproj.github.io/argo-rollouts/)
 Argo Rollouts is a Kubernetes controller and set of CRDs which provide advanced deployment capabilities such as blue-green, canary, canary analysis, experimentation, and progressive delivery features to Kubernetes.
 
 Argo Rollouts (optionally) integrates with ingress controllers and service meshes, leveraging their traffic shaping abilities to gradually shift traffic to the new version during an update. Additionally, Rollouts can query and interpret metrics from various providers to verify key KPIs and drive automated promotion or rollback during an update.
 
-### - [Argo Workflows](https://argoproj.github.io/argo-workflows/)
+### <img align="left" alt="Git" width="16px" src="https://cncf-branding.netlify.app/img/projects/argo/icon/color/argo-icon-color.svg" /> [Argo Workflows](https://argoproj.github.io/argo-workflows/)
 Argo Workflows is an open source container-native workflow engine for orchestrating parallel jobs on Kubernetes. Argo Workflows is implemented as a Kubernetes CRD (Custom Resource Definition).
 
 
