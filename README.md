@@ -4,26 +4,6 @@ The core idea of GitOps is to have a git repository that contains declarative de
 
 Now that we know the central idea, let's go back a little bit to the acronym GitOps and let's understand the role of git, the role of ops and how they meet.
 
-
-### 🔩 Technologys
-----
-
-|      Tools       | Version | Deployed |
-| :--------------: | :-----: | :------: |
-| argocd-autopilot | 0.2.28  |    ✅     |
-|      argocd      |  2.3.0  |    ✅     |
-|   argo-events    |         |    ✅     |
-|  argo-workflows  |         |    ✅     |
-|  argo-rollouts   |         |    ✅     |
-|    kustomize     |         |    ✅     |
-|  sealed-secrets  | 0.17.3  |    ✅     |
-|      istio       | 1.11.4  |    ✅     |
-|    wordpress     |    x    |    ✅     |
-|   cert-manager   |    x    |    ✅     |
-|    prometheus    |    x    |    ✅     |
-|     grafana      |    x    |    ✅     |
-
-
 ### <img align="left" alt="Git" width="18px" src="https://cncf-branding.netlify.app/img/projects/argo/icon/color/argo-icon-color.svg" /> [Argo CD Autopilot](https://argocd-autopilot.readthedocs.io/en/stable/)
 ----
 New users to GitOps and Argo CD are not often sure how they should structure their repos, add applications, promote apps across environments, and manage the Argo CD installation itself using GitOps.
@@ -46,6 +26,23 @@ Argo Rollouts (optionally) integrates with ingress controllers and service meshe
 ----
 Argo Workflows is an open source container-native workflow engine for orchestrating parallel jobs on Kubernetes. Argo Workflows is implemented as a Kubernetes CRD (Custom Resource Definition).
 
+### 🔩 Tooling
+----
+
+|      Tools       | Version | Deployed |
+| :--------------: | :-----: | :------: |
+| argocd-autopilot | 0.2.28  |    ✅     |
+|      argocd      |  2.3.0  |    ✅     |
+|   argo-events    |         |    ✅     |
+|  argo-workflows  |         |    ✅     |
+|  argo-rollouts   |         |    ✅     |
+|    kustomize     |         |    ✅     |
+|  sealed-secrets  | 0.17.3  |    ✅     |
+|      istio       | 1.11.4  |    ✅     |
+|    wordpress     |    x    |    ✅     |
+|   cert-manager   |    x    |    ✅     |
+|    prometheus    |    x    |    ✅     |
+|     grafana      |    x    |    ✅     |
 
 ### 🔨 Need to Fix
 ----
