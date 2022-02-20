@@ -41,15 +41,15 @@ Argo Rollouts (optionally) integrates with ingress controllers and service meshe
 Argo Workflows is an open source container-native workflow engine for orchestrating parallel jobs on Kubernetes. Argo Workflows is implemented as a Kubernetes CRD (Custom Resource Definition).
 
 
-### 🔨 Need to Fix:
+### 🔨 Need to Fix
 
-|     Tools     |  Description  | Status |
-| :-----------: | :-----------: | :----: |
-|   wordpress   | Fix kustomize |   ❌   |
-| argo-worflows |   Fix Build   |   ❌   |
+|     Tools     |   Description   | Status |
+| :-----------: | :-------------: | :----: |
+|   wordpress   |  Fix kustomize  |   ❌   |
+| argo-worflows |    Fix Build    |   ❌   |
+| yaml-validate | Fix CI Workflow |   ❌   |
 
 ### 🌳 Project Structure
-
 ````bash
 .
 ├── apps
