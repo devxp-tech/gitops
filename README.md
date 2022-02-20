@@ -23,6 +23,7 @@ Now that we know the central idea, let's go back a little bit to the acronym Git
 |     grafana      |    x    |    ✅    |
 
 
+img align="left" alt="Argo" width="26px" src=".images/argo-icon.svg" />
 ### - [Argo CD Autopilot](https://argocd-autopilot.readthedocs.io/en/stable/)
 New users to GitOps and Argo CD are not often sure how they should structure their repos, add applications, promote apps across environments, and manage the Argo CD installation itself using GitOps.
 
