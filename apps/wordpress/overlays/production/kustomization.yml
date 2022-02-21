@@ -3,4 +3,4 @@ kind: Kustomization
 resources :
 - ../../base
 patchesStrategicMerge:
-- sealed-secret.yaml
+- hpa.yml
