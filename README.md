@@ -49,7 +49,7 @@ Argo Workflows is an open source container-native workflow engine for orchestrat
 
 |     Issue     |   Description   | Status |
 | :-----------: | :-------------: | :----: |
-|   wordpress   |  Fix kustomize  |   ❌   |
+|   wordpress   |  Fix kustomize  |   ✅   |
 | argo-worflows |    Fix Build    |   ❌   |
 | yaml-validate | Fix CI Workflow |   ❌   |
 
@@ -102,7 +102,7 @@ Argo Workflows is an open source container-native workflow engine for orchestrat
 
 ### 🖊️ Code of Conduct
 
-See [CODE-OF-CONDUCT.md](CODE-OF-CONDUCT.md).
+See [CODE-OF-CONDUCT.md](.github/CODE-OF-CONDUCT.md).
 ### 🔒 Security
 
-See [SECURITY.md](SECURITY.md).
+See [SECURITY.md](.github/SECURITY.md).
