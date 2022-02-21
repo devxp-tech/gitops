@@ -44,7 +44,7 @@ Argo Workflows is an open source container-native workflow engine for orchestrat
 |    prometheus    |    x    |    ✅    |
 |     grafana      |    x    |    ✅    |
 
-### 🔨 Need to Fix
+### 🔨 To Do
 
 
 |     Issue     |   Description   | Status |
@@ -53,7 +53,7 @@ Argo Workflows is an open source container-native workflow engine for orchestrat
 | argo-worflows |    Fix Build    |   ❌   |
 | yaml-validate | Fix CI Workflow |   ❌   |
 
-### 🛠️ Required
+### 🛠️ Required Tools
 
 |      Tools       | Version |
 | :--------------: | :-----: |
