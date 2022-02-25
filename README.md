@@ -108,9 +108,12 @@ See [CODE-OF-CONDUCT.md](.github/CODE-OF-CONDUCT.md).
 
 See [SECURITY.md](.github/SECURITY.md).
 
+## ✨ Contributions
+
+We ❤️ contributions big or small. [See our guide](contributing.md) on how to get started.
+
+### Thanks to all our contributors!
 
 <a href="https://github.com/diegoluisi/argo/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=diegoluisi/argo" />
 </a>
-
-Made with [contrib.rocks](https://contrib.rocks).
