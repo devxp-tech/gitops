@@ -107,3 +107,10 @@ See [CODE-OF-CONDUCT.md](.github/CODE-OF-CONDUCT.md).
 ### 🔒 Security
 
 See [SECURITY.md](.github/SECURITY.md).
+
+
+<a href="https://github.com/diegoluisi/argo/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=diegoluisi/argo" />
+</a>
+
+Made with [contrib.rocks](https://contrib.rocks).
