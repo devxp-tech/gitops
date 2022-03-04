@@ -1,0 +1,66 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Sensor
+metadata:
+  name: workflow
+  finalizers:
+    - sensor-controller
+spec:
+  template:
+    serviceAccountName: operate-workflow-role
+  dependencies:
+    - eventName: argo
+      eventSourceName: github
+      name: wf-dep
+      filters:
+        data:
+        - path: body.X-GitHub-Event
+          type: string
+          value:
+          - pull_request
+        - path: body.action
+          type: string
+          value:
+          - opened
+          - edited
+          - reopened
+          - synchronize
+        - path: body.pull_request.state
+          type: string
+          value:
+          - open
+        - path: body.pull_request.base.ref
+          type: string
+          value:
+          - main
+
+  triggers:
+    # https://github.com/argoproj/argo-events/blob/master/api/sensor.md#triggertemplate
+    - template:
+        name: workflow-trigger-1
+          # https://github.com/argoproj/argo-events/blob/master/api/sensor.md#argoproj.io/v1alpha1.ArgoWorkflowTrigger
+        argoWorkflow:
+          operation: submit
+          source:
+            resource:
+              apiVersion: argoproj.io/v1alpha1
+              kind: Workflow
+              metadata:
+                name: special-trigger
+              spec:
+                serviceAccountName: operate-workflow-role
+                entrypoint: main
+                arguments:
+                  parameters:
+                    - name: repo
+                      value: "https://github.com/diegoluisi/hello-gitops"
+                    - name: branch
+                      value: "main"
+                    - name: image
+                      value: "diegoluisi/hello-gitops:latest"
+                    - name: path
+                      value: "hello-gitops"
+                workflowTemplateRef:
+                  name: cwt-buildkit
+                  clusterScope: true
+
