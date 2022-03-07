@@ -28,8 +28,8 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: wordpress
-      tier: frontend
+      app: wordpress'
+      tier: 'frontend'
   strategy:
     type: Recreate
   template:
