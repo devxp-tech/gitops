@@ -1,3 +1,5 @@
+[![App Status](https://argocd.diegoluisi.eti.br/api/badge?name=argo-cd&revision=true)](https://argocd.diegoluisi.eti.br/applications/argo-cd)
+
 ## ⚙️ GitOps
 
 The core idea of GitOps is to have a git repository that contains declarative descriptions of the desired infrastructure in the production environment and has an automated process to make the production environment match the state described in that repository.
