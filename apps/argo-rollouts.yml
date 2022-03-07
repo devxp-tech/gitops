@@ -12,7 +12,7 @@ spec:
     path: apps/argo-rollouts
     targetRevision: HEAD
   destination:
-    namespace: "argocd"
+    namespace: "argo-rollouts"
     server: https://kubernetes.default.svc
   syncPolicy:
     automated:
