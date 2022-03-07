@@ -8,5 +8,5 @@ resources:
 components:
  # extensions controller component
 - github.com/argoproj-labs/argocd-extensions/manifests
-#- https://raw.githubusercontent.com/argoproj-labs/rollout-extension/v0.1.0/manifests/
+- github.com/argoproj-labs/rollout-extension/manifests/
 namespace: argocd
