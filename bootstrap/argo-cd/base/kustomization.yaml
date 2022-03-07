@@ -5,8 +5,8 @@ resources:
 - github.com/argoproj/argo-cd/manifests/crds
 - github.com/argoproj/argo-cd/manifests/base
 - github.com/argoproj/argo-cd/manifests/cluster-rbac/
-#components:
-# extensions controller component
-#- https://github.com/argoproj-labs/argocd-extensions/manifests
+components:
+ # extensions controller component
+- github.com/argoproj-labs/argocd-extensions/manifests
 #- https://raw.githubusercontent.com/argoproj-labs/rollout-extension/v0.1.0/manifests/
 namespace: argocd
