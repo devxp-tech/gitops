@@ -1,9 +1,0 @@
-apiVersion: apps/v1
-kind: ConfigMap
-metadata:
-  name: 
-spec:
-  template: argocd-cm
-    spec:
-      data:
-      - statusbadge.enabled: "true"
