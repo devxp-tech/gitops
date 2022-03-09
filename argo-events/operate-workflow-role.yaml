@@ -8,6 +8,8 @@ rules:
     verbs:
       - "*"
     resources:
+      - workflowtaskresults
+      - pods
       - workflows
       - clusterworkflowtemplates
       - workflowtemplates
@@ -23,4 +25,4 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: operate-workflow-sa
-    namespace: argo-events
+    namespace: argo
