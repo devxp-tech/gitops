@@ -304,6 +304,7 @@ rules:
   - workflows/finalizers
   - workflowtasksets
   - workflowtasksets/finalizers
+  - workflowtaskresults
   verbs:
   - get
   - list
