@@ -7,7 +7,7 @@ metadata:
     - sensor-controller
 spec:
   template:
-    serviceAccountName: operate-workflow-role
+    serviceAccountName: operate-workflow-sa
   dependencies:
     - eventName: argo
       eventSourceName: github
@@ -41,21 +41,30 @@ spec:
           # https://github.com/argoproj/argo-events/blob/master/api/sensor.md#argoproj.io/v1alpha1.ArgoWorkflowTrigger
         argoWorkflow:
           operation: submit
+          parameters:
+            - src:
+                dependencyName: wf-dep
+                dataKey: body.repository.git_url
+              dest: spec.arguments.parameters.0.value
+            - src:
+                dependencyName: wf-dep
+                dataKey: body.pull_request.head.ref
+              dest: spec.arguments.parameters.1.value
           source:
             resource:
               apiVersion: argoproj.io/v1alpha1
               kind: Workflow
               metadata:
-                name: special-trigger
+                generateName: special-trigger-
               spec:
-                serviceAccountName: operate-workflow-role
+                serviceAccountName: operate-workflow-sa
                 entrypoint: main
                 arguments:
                   parameters:
                     - name: repo
-                      value: "https://github.com/diegoluisi/hello-gitops"
+                      value: ""
                     - name: branch
-                      value: "main"
+                      value: ""
                     - name: image
                       value: "diegoluisi/hello-gitops:latest"
                     - name: path
