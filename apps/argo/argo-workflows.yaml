@@ -995,6 +995,12 @@ metadata:
   name: argo-server-clusterworkflowtemplate-role
 rules:
 - apiGroups:
+  - ""
+  resources:
+  - pods
+  verbs:
+  - "*"
+- apiGroups:
   - argoproj.io
   resources:
   - clusterworkflowtemplates
