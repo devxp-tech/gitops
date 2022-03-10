@@ -50,6 +50,14 @@ spec:
                 dependencyName: wf-dep
                 dataKey: body.pull_request.head.ref
               dest: spec.arguments.parameters.1.value
+            - src:
+                dependencyName: wf-dep
+                dataTemplate: "{{ .Input.body.pull_request.head.repo.full_name }}:latest"
+              dest: spec.arguments.parameters.2.value
+            - src:
+                dependencyName: wf-dep
+                dataKey: body.pull_request.head.repo.name
+              dest: spec.arguments.parameters.3.value
           source:
             resource:
               apiVersion: argoproj.io/v1alpha1
@@ -66,9 +74,9 @@ spec:
                     - name: branch
                       value: ""
                     - name: image
-                      value: "diegoluisi/hello-gitops:latest"
+                      value: ""
                     - name: path
-                      value: "hello-gitops"
+                      value: ""
                 workflowTemplateRef:
                   name: cwt-buildkit
                   clusterScope: true
