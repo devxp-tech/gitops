@@ -52,7 +52,7 @@ spec:
               dest: spec.arguments.parameters.1.value
             - src:
                 dependencyName: wf-dep
-                dataTemplate: "{{ .Input.body.pull_request.head.repo.full_name }}:{{ .Input.body.ref | substr 11 16}}"
+                dataTemplate: "{{ .Input.body.repository.full_name }}:{{ .Input.body.ref | substr 11 16}}"
               dest: spec.arguments.parameters.2.value
             - src:
                 dependencyName: wf-dep
