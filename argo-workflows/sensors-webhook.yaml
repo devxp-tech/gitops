@@ -52,12 +52,12 @@ spec:
               dest: spec.arguments.parameters.1.value
             - src:
                 dependencyName: wf-dep
-                dataTemplate: "{{ .Input.body.pull_request.head.repo.full_name }}:latest"
+                dataTemplate: "{{ .Input.body.pull_request.head.repo.full_name }}:{{ .Input.body.ref | substr 11 16}}"
               dest: spec.arguments.parameters.2.value
             - src:
                 dependencyName: wf-dep
                 dataKey: body.pull_request.head.repo.name
-              dest: spec.arguments.parameters.3.value
+              dest: spec.arguments.parameters.3.value             
           source:
             resource:
               apiVersion: argoproj.io/v1alpha1
