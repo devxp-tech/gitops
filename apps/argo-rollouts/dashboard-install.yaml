@@ -125,7 +125,7 @@ spec:
         app.kubernetes.io/name: argo-rollouts-dashboard
     spec:
       containers:
-      - image: quay.io/argoproj/kubectl-argo-rollouts:v1.2.0-rc1
+      - image: quay.io/argoproj/kubectl-argo-rollouts:v1.2.0-rc2
         name: argo-rollouts-dashboard
         ports:
         - containerPort: 3100
