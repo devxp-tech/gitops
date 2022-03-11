@@ -57,7 +57,7 @@ spec:
       labels:
         app: hello-gitops
         tier: frontend
-        version: 1.0.8
+        version: 1.0.1
     spec:
       containers:
         - image: diegoluisi/hello-gitops:latest
