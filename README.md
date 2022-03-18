@@ -2,9 +2,18 @@
 
 ## ⚙️ GitOps
 
+GitOps is a set of best practices where the entire code delivery process is controlled via Git, including infrastructure and application definition as code and automation to complete updates and rollbacks.
+
 The core idea of GitOps is to have a git repository that contains declarative descriptions of the desired infrastructure in the production environment and has an automated process to make the production environment match the state described in that repository.
 
 Now that we know the central idea, let's go back a little bit to the acronym GitOps and let's understand the role of git, the role of ops and how they meet.
+
+The Key GitOps Principles:
+
+- The entire system (infrastructure and applications) is described declaratively.
+- The canonical desired system state is versioned in Git.
+- Changes approved are automated and applied to the system.
+- Software agents ensure correctness and alert on divergence.
 
 ### <img align="left" alt="Git" width="18px" src="https://cncf-branding.netlify.app/img/projects/argo/icon/color/argo-icon-color.svg" /> [Argo CD Autopilot](https://argocd-autopilot.readthedocs.io/en/stable/)
 

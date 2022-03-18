@@ -34,39 +34,40 @@ spec:
     app: hello-gitops
     tier: frontend
   type: ClusterIP
----
-# create deployment for hello-gitops
-apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
-kind: Deployment
-metadata:
-  name: hello-gitops
-  namespace: hello-gitops
-  labels:
-    app: hello-gitops
-    version: latest
-spec:
-  replicas: 0 
-  selector:
-    matchLabels:
-      app: hello-gitops
-      tier: frontend
-  strategy:
-    type: Recreate
-  template:
-    metadata:
-      labels:
-        app: hello-gitops
-        tier: frontend
-        version: 1.0.2
-    spec:
-      containers:
-        - image: diegoluisi/hello-gitops:latest
-          name: hello-gitops
-          ports:
-            - containerPort: 8000
-              name: hello-gitops
-          resources:
-            requests:
-              cpu: 50m
-            limits:
-              cpu: 100m
+#---
+## create deployment for hello-gitops
+#apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+#kind: Deployment
+#metadata:
+#  name: hello-gitops
+#  namespace: hello-gitops
+#  labels:
+#    app: hello-gitops
+#    version: latest
+#spec:
+#  replicas: 0 
+#  selector:
+#    matchLabels:
+#      app: hello-gitops
+#      tier: frontend
+#  strategy:
+#    type: Recreate
+#  template:
+#    metadata:
+#      labels:
+#        app: hello-gitops
+#        tier: frontend
+#        version: 1.0.2
+#    spec:
+#      containers:
+#        - image: diegoluisi/hello-gitops:latest
+#          name: hello-gitops
+#          ports:
+#            - containerPort: 8000
+#              name: hello-gitops
+#          resources:
+#            requests:
+#              cpu: 50m
+#            limits:
+#              cpu: 100m
+#
