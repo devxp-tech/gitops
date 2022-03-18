@@ -19,6 +19,12 @@ The Key GitOps Principles:
 
 New users to GitOps and Argo CD are not often sure how they should structure their repos, add applications, promote apps across environments, and manage the Argo CD installation itself using GitOps.
 
+### Example:
+
+```bash
+argocd-autopilot app create argo-events --app github.com/argoproj/argo-events/blob/master/manifests/namespace-install.yaml -p ops --wait-timeout 2m
+```
+
 ### <img align="left" alt="Git" width="18px" src="https://cncf-branding.netlify.app/img/projects/argo/icon/color/argo-icon-color.svg" /> [Argo CD](https://argo-cd.readthedocs.io/en/stable/)
 
 Argo CD automates the deployment of the desired application states in the specified target environments. Application deployments can track updates to branches, tags, or pinned to a specific version of manifests at a Git commit. See tracking strategies for additional details about the different tracking strategies available.
