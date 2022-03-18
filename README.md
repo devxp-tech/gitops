@@ -48,7 +48,7 @@ Argo Workflows is an open source container-native workflow engine for orchestrat
 
 |      Tools       | Version | Deployed |
 | :--------------: | :-----: | :------: |
-| argocd-autopilot | 0.2.28  |    ✅    |
+| argocd-autopilot | v0.3.0  |    ✅    |
 |      argocd      |  2.3.0  |    ✅    |
 |   argo-events    |  1.5.5  |    ✅    |
 |  argo-workflows  |  3.2.8  |    ✅    |

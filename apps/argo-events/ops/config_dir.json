@@ -1,1 +1,0 @@
-{"appName":"argo-events","userGivenName":"argo-events","destNamespace":"default","destServer":"https://kubernetes.default.svc","srcPath":"blob/master/manifests/namespace-install.yaml","srcRepoURL":"https://github.com/argoproj/argo-events.git","srcTargetRevision":"","labels":null,"exclude":"","include":""}
