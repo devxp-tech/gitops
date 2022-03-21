@@ -1,0 +1,1 @@
+{"appName":"backstage","userGivenName":"backstage","destNamespace":"backstage","destServer":"https://kubernetes.default.svc","srcPath":"apps/backstage/overlays/production","srcRepoURL":"https://github.com/diegoluisi/argo.git","srcTargetRevision":"","labels":null,"exclude":"","include":""}
