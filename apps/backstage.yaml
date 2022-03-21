@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-    name: "hello-gitops"
+    name: "backstage"
     annotations:
       # https://argoproj.github.io/argo-cd/operator-manual/high_availability/#webhook-and-manifest-paths-annotation
       argocd.argoproj.io/manifest-generate-paths: .
@@ -9,11 +9,11 @@ spec:
   project: dev
   source:
     repoURL: 'https://github.com/diegoluisi/argo'
-    path: apps/hello-gitops/overlays/production
+    path: apps/backstage/overlays/production
     targetRevision: HEAD
   destination:
     server: https://kubernetes.default.svc
-    namespace: hello-gitops
+    namespace: backstage
   syncPolicy:
     automated:
       selfHeal: true
