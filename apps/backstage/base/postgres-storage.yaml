@@ -16,8 +16,8 @@ spec:
     path: '/mnt/data'
   capacity:
     storage: 2Gi
-  awsElasticBlockStore: 
-    volumeID: 'vol-0383e9f82d1b90313'
+  #awsElasticBlockStore: 
+  #  volumeID: 'vol-0383e9f82d1b90313'
 
 ---
 apiVersion: v1
@@ -37,4 +37,4 @@ spec:
   selector: 
     matchLabels: 
       app: backstage
-      tier: postgres
+      tier: postgres    

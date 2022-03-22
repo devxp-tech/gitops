@@ -1,4 +1,3 @@
-# kubernetes/backstage.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -16,23 +15,15 @@ spec:
     spec:
       containers:
         - name: backstage
-          image: backstage:1.0.0
+          image: erangaeb/waula-backstage:0.1
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
               containerPort: 7007
           envFrom:
+            - configMapRef:
+                name: postgres-configs
             - secretRef:
                 name: postgres-secrets
             - secretRef:
                 name: backstage-secrets
-# Uncomment if health checks are enabled in your app:
-# https://backstage.io/docs/plugins/observability#health-checks
-#          readinessProbe:
-#            httpGet:
-#              port: 7007
-#              path: /healthcheck
-#          livenessProbe:
-#            httpGet:
-#              port: 7007
-#              path: /healthcheck
