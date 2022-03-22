@@ -7,3 +7,4 @@ resources:
   - postgres-secret.yaml
   - postgres.yaml
   - postgres-service.yaml
+  - postgres-storage.yaml
