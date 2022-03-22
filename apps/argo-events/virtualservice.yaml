@@ -1,0 +1,16 @@
+---
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: argo-events
+spec:
+  gateways:
+    - istio-system/istio-gateway
+  hosts:
+    - argo-events.diegoluisi.eti.br
+  http:
+    - route:
+      - destination:
+          host: github-eventsource-svc
+          port:
+            number: 12000
