@@ -1,0 +1,15 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: argo-workflows
+spec:
+  gateways:
+    - istio-system/istio-gateway
+  hosts:
+    - argo-workflows.diegoluisi.eti.br
+  http:
+    - route:
+      - destination:
+          host: argo-server
+          port:
+            number: 2746
