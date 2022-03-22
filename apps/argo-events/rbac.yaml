@@ -99,7 +99,7 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: argo-events-sa
-    namespace: argo-events
+    namespace: argo-events-events
 
 ---
 

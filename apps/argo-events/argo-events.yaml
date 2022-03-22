@@ -122,7 +122,7 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: argo-events-sa
-  namespace: argo
+  namespace: argo-events
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
@@ -267,7 +267,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   name: argo-events-role
-  namespace: argo
+  namespace: argo-events
 rules:
 - apiGroups:
   - argoproj.io
@@ -332,13 +332,13 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: argo-events-sa
-    namespace: argo
+    namespace: argo-events
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: argo-events-role-binding
-  namespace: argo
+  namespace: argo-events
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
@@ -346,13 +346,13 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: argo-events-sa
-  namespace: argo
+  namespace: argo-events
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: eventbus-controller
-  namespace: argo
+  namespace: argo-events
 spec:
   replicas: 1
   selector:
@@ -400,7 +400,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: eventsource-controller
-  namespace: argo
+  namespace: argo-events
 spec:
   replicas: 1
   selector:
@@ -446,7 +446,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: sensor-controller
-  namespace: argo
+  namespace: argo-events
 spec:
   replicas: 1
   selector:
@@ -493,7 +493,7 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: argo-events-webhook-sa
-  namespace: argo
+  namespace: argo-events
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
@@ -561,13 +561,13 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: argo-events-webhook-sa
-    namespace: argo
+    namespace: argo-events
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: events-webhook
-  namespace: argo
+  namespace: argo-events
 spec:
   ports:
     - port: 443
@@ -579,7 +579,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: events-webhook
-  namespace: argo
+  namespace: argo-events
 spec:
   replicas: 1
   selector:
