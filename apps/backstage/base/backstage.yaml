@@ -15,14 +15,12 @@ spec:
     spec:
       containers:
         - name: backstage
-          image: erangaeb/waula-backstage:0.1
+          image: backstage:1.0.0
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
               containerPort: 7007
           envFrom:
-            - configMapRef:
-                name: postgres-configs
             - secretRef:
                 name: postgres-secrets
             - secretRef:
