@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: backstage
-          image: erangaeb/waula-backstage:0.1
+          image: diegoluisi/backstage:0.1
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
