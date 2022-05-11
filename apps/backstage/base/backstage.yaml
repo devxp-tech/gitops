@@ -16,7 +16,7 @@ spec:
       containers:
         - name: backstage
           image: diegoluisi/backstage:0.2
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           ports:
             - name: http
               containerPort: 7007
