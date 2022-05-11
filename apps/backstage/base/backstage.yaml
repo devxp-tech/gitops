@@ -27,3 +27,7 @@ spec:
                 name: postgres-secrets
             - secretRef:
                 name: backstage-secrets
+            - secretRef:
+                name: backstage-secrets-github-id
+            - secretRef:
+                name: backstage-secrets-github-secret
