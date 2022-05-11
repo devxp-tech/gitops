@@ -9,6 +9,7 @@ resources:
   - postgres-storage.yaml  
   - postgres.yaml
   - sealed-backstage-secrets-github-id.yaml
+  - sealed-backstage-secrets-github-secret.yaml
   - sealed-backstage-secrets.yaml
   - sealed-postgres-secret.yaml
 
