@@ -20,7 +20,6 @@ spec:
           ports:
           - name: http
             containerPort: 7007
-                  resources:
           env:
           - name: BACKSTAGE_ENVIRONMENT
             value: production
@@ -35,7 +34,8 @@ spec:
                 name: backstage-secrets-github-id
             - secretRef:
                 name: backstage-secrets-github-secret
-          requests:
-            cpu: 100m
-          limits:
-            cpu: 300m
+          resources:
+            requests:
+              cpu: 100m
+            limits:
+              cpu: 300m
