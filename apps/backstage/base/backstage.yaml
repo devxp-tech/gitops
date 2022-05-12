@@ -31,9 +31,9 @@ spec:
             - secretRef:
                 name: backstage-secrets
             - secretRef:
-                name: backstage-secrets-github-id
+                name: backstage-secrets-github
             - secretRef:
-                name: backstage-secrets-github-secret
+                name: backstage-secrets-github
           resources:
             requests:
               cpu: 100m
