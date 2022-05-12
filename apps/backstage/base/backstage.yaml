@@ -21,8 +21,8 @@ spec:
           - name: http
             containerPort: 7007
           env:
-          - name: WORDPRESS_DB_HOST
-            value: wordpress-mysql    
+          - name: BACKSTAGE_ENVIRONMENT
+            value: production
           envFrom:
             - configMapRef:
                 name: postgres-configs
