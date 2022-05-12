@@ -18,8 +18,11 @@ spec:
           image: diegoluisi/backstage:0.3
           imagePullPolicy: IfNotPresent
           ports:
-            - name: http
-              containerPort: 7007
+          - name: http
+            containerPort: 7007
+          env:
+          - name: WORDPRESS_DB_HOST
+            value: wordpress-mysql    
           envFrom:
             - configMapRef:
                 name: postgres-configs
