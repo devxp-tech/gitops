@@ -21,8 +21,8 @@ spec:
           - name: http
             containerPort: 7007
           env:
-          - name: BACKSTAGE_ENVIRONMENT
-            value: production
+            - name: BACKSTAGE_ENVIRONMENT
+              value: production
           envFrom:
             - configMapRef:
                 name: postgres-configs
