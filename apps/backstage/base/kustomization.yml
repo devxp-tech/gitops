@@ -12,4 +12,5 @@ resources:
   - sealed-backstage-secrets-github-secret.yaml
   - sealed-backstage-secrets.yaml
   - sealed-postgres-secret.yaml
+  - virtualservice.yml
 
