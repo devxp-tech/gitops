@@ -20,9 +20,10 @@ spec:
           ports:
           - name: http
             containerPort: 7007
+                  resources:
           env:
-            - name: BACKSTAGE_ENVIRONMENT
-              value: production
+          - name: BACKSTAGE_ENVIRONMENT
+            value: production
           envFrom:
             - configMapRef:
                 name: postgres-configs
@@ -34,3 +35,7 @@ spec:
                 name: backstage-secrets-github-id
             - secretRef:
                 name: backstage-secrets-github-secret
+          requests:
+            cpu: 100m
+          limits:
+            cpu: 300m
