@@ -1,21 +1,15 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: crossplane-system
-spec:
-  destination:
-    name: ''
-    namespace: crossplane-system
-    server: 'https://kubernetes.default.svc'
-  source:
-    path: ''
-    repoURL: 'https://charts.crossplane.io/stable'
-    targetRevision: 1.7.1
-    chart: crossplane
-  project: ops
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
+project: ops
+source:
+  repoURL: 'https://charts.crossplane.io/stable'
+  targetRevision: 1.8.0
+  chart: crossplane
+destination:
+  server: 'https://kubernetes.default.svc'
+  namespace: crossplane-system
+syncPolicy:
+  automated:
+    prune: true
+    selfHeal: true
+  syncOptions:
+    - CreateNamespace=true
+    - Replace=true
