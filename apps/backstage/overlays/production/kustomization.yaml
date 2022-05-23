@@ -1,7 +1,7 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-resources :
-- ../../base
 images:
 - name: diegoluisi/backstage
-  newTag: xxxxxx
+  newTag: f3b144a0
+resources:
+- ../../base
