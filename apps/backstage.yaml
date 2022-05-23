@@ -9,7 +9,7 @@ spec:
   project: ops
   source:
     repoURL: 'https://github.com/diegoluisi/argo'
-    path: apps/backstage/base
+    path: apps/backstage/overlays/production
     targetRevision: HEAD
   destination:
     server: https://kubernetes.default.svc
