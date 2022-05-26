@@ -1,0 +1,8 @@
+kind: Simple
+apiVersion: k3d.io/v1alpha2
+name: teste-if
+image: rancher/k3s:v1.20.4-k3s1
+ports:
+- port: 80:80
+  nodeFilters:
+  - loadbalancer

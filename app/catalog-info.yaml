@@ -1,0 +1,12 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: "teste-if"
+  description: "teste-if"
+  annotations:
+    github.com/project-slug: diegoluisi/teste-if
+    backstage.io/techdocs-ref: dir:.
+spec:
+  type: website
+  lifecycle: experimental
+  owner: "infra"
