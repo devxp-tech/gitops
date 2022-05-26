@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: teste-argo2
+  labels:
+    app: teste-argo2
+    component: web
+spec:
+  selector:
+    matchLabels:
+      app: teste-argo2
+      component: web
+  template:
+    metadata:
+      labels:
+        app: teste-argo2
+        component: web
+    spec:
+      containers:
+      - name: teste-argo2
+        image: diegoluisi/teste-argo2:latest
+        ports:
+        - containerPort: 8000
+        resources:
+          limits:
+            cpu: 512m
+            memory: 512Mi
+          requests:
+            cpu: 256m
+            memory: 256Mi

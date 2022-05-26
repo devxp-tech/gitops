@@ -1,0 +1,12 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: "teste-argo2"
+  description: "teste-argo2"
+  annotations:
+    github.com/project-slug: diegoluisi/teste-argo2
+    backstage.io/techdocs-ref: dir:.
+spec:
+  type: website
+  lifecycle: experimental
+  owner: "mysql"

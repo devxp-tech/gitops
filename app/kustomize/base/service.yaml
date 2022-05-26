@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: teste-argo2
+  labels:
+    app: teste-argo2
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+    targetPort: 8000
+    protocol: TCP
+    name: http
+  selector:
+    app: teste-argo2
