@@ -2,13 +2,13 @@
 apiVersion: argoproj.io/v1alpha1               # Create a rollout resource
 kind: Rollout
 metadata:
-  name: hello-gitops
+  name: template-app-golang
 spec:
   replicas: 3
   workloadRef:                                 # Reference an existing Deployment using workloadRef field
     apiVersion: apps/v1
     kind: Deployment
-    name: hello-gitops
+    name: template-app-golang
   strategy:
     canary:
       steps:
@@ -16,55 +16,55 @@ spec:
         - pause: {duration: 10s}
 
 ---
-# create a service for hello-gitops
+# create a service for template-app-golang
 apiVersion: v1
 kind: Service
 metadata:
-  name: hello-gitops
-  namespace: hello-gitops
+  name: template-app-golang
+  namespace: template-app-golang
   labels:
-    app: hello-gitops
+    app: template-app-golang
   annotations:
-    external-dns.alpha.kubernetes.io/hostname: hello-gitops.diegoluisi.eti.br
+    external-dns.alpha.kubernetes.io/hostname: template-app-golang.diegoluisi.eti.br
 spec:
   ports:
-    - port: 8000
+    - port: 8080
       name: tcp-node
   selector:
-    app: hello-gitops
+    app: template-app-golang
     tier: frontend
   type: ClusterIP
 ---
-# create deployment for hello-gitops
+# create deployment for template-app-golang
 apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
 kind: Deployment
 metadata:
-  name: hello-gitops
-  namespace: hello-gitops
+  name: template-app-golang
+  namespace: template-app-golang
   labels:
-    app: hello-gitops
+    app: template-app-golang
     version: latest
 spec:
   replicas: 0 
   selector:
     matchLabels:
-      app: hello-gitops
+      app: template-app-golang
       tier: frontend
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: hello-gitops
+        app: template-app-golang
         tier: frontend
         version: 1.0.2
     spec:
       containers:
-        - image: diegoluisi/hello-gitops:latest
-          name: hello-gitops
+        - image: diegoluisi/template-app-golang:latest
+          name: template-app-golang
           ports:
             - containerPort: 8000
-              name: hello-gitops
+              name: template-app-golang
           resources:
             requests:
               cpu: 50m
