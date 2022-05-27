@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-infra5
+  labels:
+    app: test-infra5
+    component: web
+spec:
+  selector:
+    matchLabels:
+      app: test-infra5
+      component: web
+  template:
+    metadata:
+      labels:
+        app: test-infra5
+        component: web
+    spec:
+      containers:
+      - name: test-infra5
+        image: diegoluisi/test-infra5:latest
+        ports:
+        - containerPort: 8000
+        resources:
+          limits:
+            cpu: 512m
+            memory: 512Mi
+          requests:
+            cpu: 256m
+            memory: 256Mi
