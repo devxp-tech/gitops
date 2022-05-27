@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: teste-hell666
+  labels:
+    app: teste-hell666
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+    targetPort: 8000
+    protocol: TCP
+    name: http
+  selector:
+    app: teste-hell666
