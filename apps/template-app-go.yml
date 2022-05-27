@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-    name: "template-app-golang"
+    name: "template-app-go"
     annotations:
       # https://argoproj.github.io/argo-cd/operator-manual/high_availability/#webhook-and-manifest-paths-annotation
       argocd.argoproj.io/manifest-generate-paths: .
@@ -9,11 +9,11 @@ spec:
   project: dev
   source:
     repoURL: 'https://github.com/diegoluisi/argo'
-    path: apps/template-app-golang/overlays/development
+    path: apps/template-app-go/overlays/development
     targetRevision: HEAD
   destination:
     server: https://kubernetes.default.svc
-    namespace: template-app-golang
+    namespace: template-app-go
   syncPolicy:
     automated:
       selfHeal: true
