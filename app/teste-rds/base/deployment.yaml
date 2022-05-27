@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: teste-rds
+  labels:
+    app: teste-rds
+    component: web
+spec:
+  selector:
+    matchLabels:
+      app: teste-rds
+      component: web
+  template:
+    metadata:
+      labels:
+        app: teste-rds
+        component: web
+    spec:
+      containers:
+      - name: teste-rds
+        image: diegoluisi/teste-rds:latest
+        ports:
+        - containerPort: 8000
+        resources:
+          limits:
+            cpu: 512m
+            memory: 512Mi
+          requests:
+            cpu: 256m
+            memory: 256Mi
