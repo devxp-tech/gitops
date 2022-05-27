@@ -15,5 +15,5 @@ spec:
     route:
     - destination:
         port:
-          number: 8000
+          number: 8080
         host: template-app-golang

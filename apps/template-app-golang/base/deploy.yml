@@ -63,7 +63,7 @@ spec:
         - image: diegoluisi/template-app-golang:latest
           name: template-app-golang
           ports:
-            - containerPort: 8000
+            - containerPort: 8080
               name: template-app-golang
           resources:
             requests:
