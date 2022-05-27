@@ -60,7 +60,7 @@ spec:
         version: 1.0.2
     spec:
       containers:
-        - image: diegoluisi/template-app-go:latest
+        - image: diegoluisi/template-app-go:e8c894c4
           name: template-app-go
           ports:
             - containerPort: 8080
