@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+    name: "teste-kube2"
+    annotations:
+      # https://argoproj.github.io/argo-cd/operator-manual/high_availability/#webhook-and-manifest-paths-annotation
+      argocd.argoproj.io/manifest-generate-paths: .
+spec:
+  project: dev
+  source:
+    repoURL: 'https://github.com/diegoluisi/argo'
+    path: apps/teste-kube2/overlays/development
+    targetRevision: HEAD
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: teste-kube2
+  syncPolicy:
+    automated:
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
