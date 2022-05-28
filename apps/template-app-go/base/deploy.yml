@@ -27,23 +27,27 @@ metadata:
   labels:
     app: template-app-go
     version: 1.0.1
-spec:
   selector:
     matchLabels:
       app: template-app-go
-      tier: frontend
-  strategy:
-    type: Recreate
   template:
     metadata:
+      name: template-app-go
       labels:
         app: template-app-go
-        tier: frontend
-        version: 1.0.1
+  strategy:
+    type: Recreate
     spec:
       containers:
-      - image: arungupta/helloworld-spring-boot:latest
+      - image: diegoluisi/template-app-go:latest
         name: template-app-go
         ports:
         - containerPort: 8080
           name: template-app-go
+        resources:
+          requests:
+            cpu: 50m
+            memory: 128Mi
+          limits:
+            cpu: 100m
+            memory: 256Mi
