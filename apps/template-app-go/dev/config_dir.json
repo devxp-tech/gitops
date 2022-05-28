@@ -3,7 +3,7 @@
   "userGivenName": "template-app-go",
   "destNamespace": "template-app-go",
   "destServer": "https://kubernetes.default.svc",
-  "srcPath": "main/apps/template-app-go/overlays/development/kustomization.yml",
+  "srcPath": "blob/main/apps/template-app-go/overlays/development/kustomization.yml",
   "srcRepoURL": "https://github.com/diegoluisi/argo.git",
   "srcTargetRevision": "",
   "labels": null,
