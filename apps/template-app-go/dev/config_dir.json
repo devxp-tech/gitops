@@ -4,7 +4,7 @@
   "destNamespace": "template-app-go",
   "destServer": "https://kubernetes.default.svc",
   "srcPath": "blob/master/manifests/namespace-install.yaml",
-  "srcRepoURL": "https://github.com/argoproj/template-app-go.git",
+  "srcRepoURL": "https://github.com/diegoluisi/argo.git",
   "srcTargetRevision": "",
   "labels": null,
   "exclude": "",
