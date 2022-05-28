@@ -5,7 +5,7 @@
   "destServer": "https://kubernetes.default.svc",
   "srcPath": "blob/master/manifests/namespace-install.yaml",
   "srcRepoURL": "https://github.com/diegoluisi/argo.git",
-  "srcTargetRevision": "",
+  "srcTargetRevision": "HEAD",
   "labels": null,
   "exclude": "",
   "include": "",
