@@ -5,4 +5,4 @@ resources:
 
 images:
 - name: diegoluisi/template-app-go
-  newTag: xxx
+  newTag: 8e52fe11
