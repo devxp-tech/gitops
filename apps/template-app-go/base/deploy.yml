@@ -1,53 +1,38 @@
----
-# create a service for template-app-go
-apiVersion: v1
-kind: Service
-metadata:
-  name: template-app-go
-  namespace: template-app-go
-  labels:
-    app: template-app-go
-  annotations:
-    external-dns.alpha.kubernetes.io/hostname: template-app-go.diegoluisi.eti.br
-spec:
-  ports:
-    - port: 8080
-      name: tcp-node
-  selector:
-    app: template-app-go
-    tier: frontend
-  type: ClusterIP
----
-# create deployment for template-app-go
-apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: template-app-go
-  namespace: template-app-go
   labels:
     app: template-app-go
-    version: 1.0.1
+  name: template-app-go
+  namespace: template-app-go
+spec:
+  replicas: 1
   selector:
     matchLabels:
       app: template-app-go
   template:
     metadata:
-      name: template-app-go
       labels:
         app: template-app-go
-  strategy:
-    type: Recreate
     spec:
       containers:
-      - image: diegoluisi/template-app-go:latest
-        name: template-app-go
-        ports:
-        - containerPort: 8080
+        - image: diegoluisi/template-app-go:latest
+          imagePullPolicy: IfNotPresent
           name: template-app-go
-        resources:
-          requests:
-            cpu: 50m
-            memory: 128Mi
-          limits:
-            cpu: 100m
-            memory: 256Mi
+          resources:
+            limits:
+              cpu: 100m
+              memory: 256Mi
+            requests:
+              cpu: 50m
+              memory: 128Mi          
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30

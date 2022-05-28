@@ -1,0 +1,17 @@
+# create a service for template-app-go
+apiVersion: v1
+kind: Service
+metadata:
+  name: template-app-go
+  namespace: template-app-go
+  labels:
+    app: template-app-go
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: template-app-go.diegoluisi.eti.br
+spec:
+  ports:
+    - port: 8080
+      name: tcp-node
+  selector:
+    app: template-app-go
+  type: ClusterIP
