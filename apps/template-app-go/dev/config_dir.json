@@ -5,7 +5,7 @@
   "destServer": "https://kubernetes.default.svc",
   "srcPath": "apps/template-app-go/overlays/development",
   "srcRepoURL": "https://github.com/diegoluisi/argo",
-  "srcTargetRevision": "main",
+  "srcTargetRevision": "HEAD",
   "labels": null,
   "exclude": "",
   "include": ""
