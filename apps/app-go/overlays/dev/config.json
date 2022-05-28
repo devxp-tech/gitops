@@ -1,0 +1,10 @@
+{
+  "appName": "app-go",
+  "userGivenName": "app-go",
+  "destNamespace": "default",
+  "destServer": "https://kubernetes.default.svc",
+  "srcPath": "apps/app-go/overlays/dev",
+  "srcRepoURL": "https://github.com/diegoluisi/argo.git",
+  "srcTargetRevision": "",
+  "labels": null
+}
