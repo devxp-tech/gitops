@@ -1,20 +1,3 @@
-# Rollout Strategy
-apiVersion: argoproj.io/v1alpha1               # Create a rollout resource
-kind: Rollout
-metadata:
-  name: template-app-go
-spec:
-  replicas: 3
-  workloadRef:                                 # Reference an existing Deployment using workloadRef field
-    apiVersion: apps/v1
-    kind: Deployment
-    name: template-app-go
-  strategy:
-    canary:
-      steps:
-        - setWeight: 20
-        - pause: {duration: 10s}
-
 ---
 # create a service for template-app-go
 apiVersion: v1
@@ -43,9 +26,8 @@ metadata:
   namespace: template-app-go
   labels:
     app: template-app-go
-    version: latest
+    version: 1.0.1
 spec:
-  replicas: 0 
   selector:
     matchLabels:
       app: template-app-go
@@ -57,18 +39,11 @@ spec:
       labels:
         app: template-app-go
         tier: frontend
-        version: 1.0.2
+        version: 1.0.1
     spec:
       containers:
-        - image: diegoluisi/template-app-go:latest
+      - image: arungupta/helloworld-spring-boot:latest
+        name: template-app-go
+        ports:
+        - containerPort: 8080
           name: template-app-go
-          ports:
-            - containerPort: 8080
-              name: template-app-go
-          resources:
-            requests:
-              cpu: 50m
-              memory: 128Mi
-            limits:
-              cpu: 100m
-              memory: 256Mi
