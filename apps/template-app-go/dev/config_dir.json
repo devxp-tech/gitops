@@ -1,1 +1,13 @@
-{"appName":"template-app-go","userGivenName":"template-app-go","destNamespace":"template-app-go","destServer":"https://kubernetes.default.svc","srcPath":"blob/master/manifests/namespace-install.yaml","srcRepoURL":"https://github.com/argoproj/template-app-go.git","srcTargetRevision":"","labels":null,"exclude":"","include":""}
+{
+  "appName": "template-app-go",
+  "userGivenName": "template-app-go",
+  "destNamespace": "template-app-go",
+  "destServer": "https://kubernetes.default.svc",
+  "srcPath": "blob/master/manifests/namespace-install.yaml",
+  "srcRepoURL": "https://github.com/argoproj/template-app-go.git",
+  "srcTargetRevision": "",
+  "labels": null,
+  "exclude": "",
+  "include": "",
+  "CreateNamespace": true
+}
