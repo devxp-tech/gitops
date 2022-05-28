@@ -8,6 +8,5 @@
   "srcTargetRevision": "HEAD",
   "labels": null,
   "exclude": "",
-  "include": "",
-  "CreateNamespace": true
+  "include": ""
 }
