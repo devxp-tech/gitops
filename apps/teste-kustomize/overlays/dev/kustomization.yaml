@@ -4,4 +4,4 @@ resources:
 - ../../base
 images:
 - name: diegoluisi/teste-kustomize
-  newTag: latest
+  newTag: b3d97e9a
