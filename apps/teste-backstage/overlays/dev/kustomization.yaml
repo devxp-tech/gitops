@@ -4,4 +4,4 @@ resources:
 - ../../base
 images:
 - name: diegoluisi/teste-backstage
-  newTag: latest
+  newTag: ee4ba5d2
