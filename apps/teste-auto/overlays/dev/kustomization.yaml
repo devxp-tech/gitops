@@ -4,4 +4,3 @@ resources:
 - ../../base
 images:
 - name: diegoluisi/teste-auto
-  newTag: latest
