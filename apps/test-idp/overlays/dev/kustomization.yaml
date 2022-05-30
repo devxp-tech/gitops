@@ -4,4 +4,4 @@ resources:
 - ../../base
 images:
 - name: diegoluisi/test-idp
-  newTag: latest
+  newTag: 37de5ae7
