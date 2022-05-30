@@ -1,0 +1,11 @@
+{
+  "appName": "teste-pipe2",
+  "userGivenName": "teste-pipe2",
+  "destNamespace": "teste-pipe2",
+  "destServer": "https://kubernetes.default.svc",
+  "srcPath": "apps/teste-pipe2/overlays/dev",
+  "srcRepoURL": "https://github.com/diegoluisi/argo.git",
+  "srcTargetRevision": "",
+  "CreateNamespace": true,
+  "labels": null
+}
