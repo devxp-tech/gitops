@@ -1,0 +1,11 @@
+{
+  "appName": "teste-kustomize",
+  "userGivenName": "teste-kustomize",
+  "destNamespace": "teste-kustomize",
+  "destServer": "https://kubernetes.default.svc",
+  "srcPath": "apps/teste-kustomize/overlays/dev",
+  "srcRepoURL": "https://github.com/diegoluisi/argo.git",
+  "srcTargetRevision": "",
+  "CreateNamespace": true,
+  "labels": null
+}
