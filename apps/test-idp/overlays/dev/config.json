@@ -1,0 +1,11 @@
+{
+  "appName": "test-idp",
+  "userGivenName": "test-idp",
+  "destNamespace": "test-idp",
+  "destServer": "https://kubernetes.default.svc",
+  "srcPath": "apps/test-idp/overlays/dev",
+  "srcRepoURL": "https://github.com/diegoluisi/argo.git",
+  "srcTargetRevision": "",
+  "CreateNamespace": true,
+  "labels": null
+}
