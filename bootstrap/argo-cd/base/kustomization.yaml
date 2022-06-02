@@ -3,7 +3,7 @@ kind: Kustomization
 namespace: argocd
 resources:
 - install.yaml
-- github-secrets-sealed.yaml
+#- github-secrets-sealed.yaml
 - github.com/argoproj/argo-cd/manifests/crds
 - github.com/argoproj/argo-cd/manifests/base
 - github.com/argoproj/argo-cd/manifests/cluster-rbac/
