@@ -8,4 +8,3 @@ patchesStrategicMerge:
 - server.yaml
 - config-map.yaml
 - argocd-rbac-cm.yaml
-- github-secrets-sealed.yaml
