@@ -7,4 +7,15 @@ metadata:
     app.kubernetes.io/name: argocd-cm
     app.kubernetes.io/part-of: argocd
 data:
-    statusbadge.enabled: "false"
+    statusbadge.enabled: "true"
+    url: https://argocd.diegoluisi.eti.br
+    dex.config: |
+      connectors:
+        - type: github
+          id: github
+          name: GitHub
+          config:
+            clientID: 83427ea0b6f6645900a5
+            clientSecret: 38f45cb378c74731e8ce601e6e5cbf1f5cd1be90
+            orgs:
+            - name: devxp-tech    
