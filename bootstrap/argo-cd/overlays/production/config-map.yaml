@@ -15,7 +15,7 @@ data:
           id: github
           name: GitHub
           config:
-            clientID: 83427ea0b6f6645900a5
-            clientSecret: 38f45cb378c74731e8ce601e6e5cbf1f5cd1be90
+            clientID: XXX
+            clientSecret: XX
             orgs:
             - name: devxp-tech    
