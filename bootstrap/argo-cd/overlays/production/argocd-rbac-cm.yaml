@@ -1,0 +1,17 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: argocd-rbac-cm
+  namespace: argocd
+data:
+  policy.csv: |
+    # Below permissions is for admins
+    p, role:org-admin, applications, *, */*, allow
+    p, role:org-admin, projects, get, *, allow
+    p, role:org-admin, clusters, get, *, allow
+    p, role:org-admin, repositories, get, *, allow
+
+    # Groups here resembles to Github Teams
+    g, devxp-tech:engineering, role:org-admin
+  policy.default: ""
+

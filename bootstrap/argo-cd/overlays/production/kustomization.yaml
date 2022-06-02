@@ -7,3 +7,4 @@ resources:
 patchesStrategicMerge:
 - server.yaml
 - config-map.yaml
+- argocd-rbac-cm.yaml
