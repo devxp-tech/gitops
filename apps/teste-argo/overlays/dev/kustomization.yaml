@@ -4,4 +4,4 @@ resources:
 - ../../base
 images:
 - name: diegoluisi/teste-argo
-  newTag: latest
+  newTag: 1dcdf868
