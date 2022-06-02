@@ -19,5 +19,5 @@ spec:
             valueFrom:
               secretKeyRef:
                 name: github-secrets
-                key: $AUTH_GITHUB_CLIENT_SECRET
+                key: AUTH_GITHUB_CLIENT_SECRET
                 optional: false                 
