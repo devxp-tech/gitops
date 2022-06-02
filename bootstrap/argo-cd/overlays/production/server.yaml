@@ -7,17 +7,7 @@ spec:
     spec:
       containers:
       - name: argocd-server
-        command: [argocd-server, --staticassets, /shared/app, --insecure]
-        env:
-          - name: GITHUB_CLIENT_ID
-            valueFrom:
-              secretKeyRef:
-                name: github-secrets
-                key: GITHUB_CLIENT_ID
-                optional: false
-          - name: GITHUB_CLIENT_SECRET
-            valueFrom:
-              secretKeyRef:
-                name: github-secrets
-                key: GITHUB_CLIENT_SECRET
-                optional: false                 
+        command: [argocd-server, --staticassets, /shared/app, --insecure]                
+        envFrom:
+          - secretRef:
+              name: github-secrets
