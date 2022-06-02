@@ -19,3 +19,4 @@ data:
             clientSecret: $GITHUB_CLIENT_SECRET
             orgs:
             - name: devxp-tech    
+    accounts.backstage: apiKey, login        
