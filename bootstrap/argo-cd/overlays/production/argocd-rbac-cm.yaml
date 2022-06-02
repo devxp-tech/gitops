@@ -10,8 +10,12 @@ data:
     p, role:org-admin, projects, get, *, allow
     p, role:org-admin, clusters, get, *, allow
     p, role:org-admin, repositories, get, *, allow
+    p, role:org-admin, gpgkeys, get, *, allow
 
     # Groups here resembles to Github Teams
     g, devxp-tech:engineering, role:org-admin
+
+    # Backstage user permissions
+    g, backstage, role:org-admin
   policy.default: ""
 
