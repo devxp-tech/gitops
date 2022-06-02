@@ -8,9 +8,6 @@ spec:
       containers:
       - name: argocd-server
         command: [argocd-server, --staticassets, /shared/app, --insecure]                
-        envFrom:
-          - secretRef:
-              name: github-secrets
         env:
           - name: GITHUB_CLIENT_ID
               valueFrom:
