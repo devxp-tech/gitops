@@ -13,11 +13,11 @@ spec:
             valueFrom:
               secretKeyRef:
                 name: github-secrets
-                key: AUTH_GITHUB_CLIENT_ID
+                key: GITHUB_CLIENT_ID
                 optional: false
           - name: GITHUB_CLIENT_SECRET
             valueFrom:
               secretKeyRef:
                 name: github-secrets
-                key: AUTH_GITHUB_CLIENT_SECRET
+                key: GITHUB_CLIENT_SECRET
                 optional: false                 
