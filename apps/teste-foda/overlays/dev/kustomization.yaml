@@ -4,4 +4,4 @@ resources:
 - ../../base
 images:
 - name: diegoluisi/teste-foda
-  newTag: latest
+  newTag: d7061cdc
