@@ -4,4 +4,4 @@ resources:
 - ../../base
 images:
 - name: diegoluisi/teste-argoapp
-  newTag: latest
+  newTag: 5b45435b
