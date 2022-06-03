@@ -1,0 +1,109 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  labels:
+    kubernetes.io/metadata.name: teste-argoapp
+  name: teste-argoapp
+spec:
+  finalizers:
+  - kubernetes
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: teste-argoapp.diegoluisi.eti.br
+  labels:
+    app: teste-argoapp
+  name: teste-argoapp
+  namespace: teste-argoapp
+spec:
+  ports:
+  - name: tcp-node
+    port: 8080
+  selector:
+    app: teste-argoapp
+  type: ClusterIP
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: teste-argoapp
+  name: teste-argoapp
+  namespace: teste-argoapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: teste-argoapp
+  template:
+    metadata:
+      labels:
+        app: teste-argoapp
+    spec:
+      containers:
+      - image: diegoluisi/teste-argoapp:3c12d96f
+        imagePullPolicy: IfNotPresent
+        name: teste-argoapp
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        resources:
+          limits:
+            cpu: 100m
+            memory: 256Mi
+          requests:
+            cpu: 50m
+            memory: 128Mi
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+
+---
+apiVersion: autoscaling/v2beta2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: teste-argoapp
+spec:
+  maxReplicas: 3
+  metrics:
+  - resource:
+      name: cpu
+      target:
+        averageUtilization: 75
+        type: Utilization
+    type: Resource
+  minReplicas: 2
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: teste-argoapp
+
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: teste-argoapp
+  namespace: teste-argoapp
+spec:
+  gateways:
+  - istio-system/istio-gateway
+  hosts:
+  - teste-argoapp.diegoluisi.eti.br
+  http:
+  - match:
+    - uri:
+        prefix: /
+    route:
+    - destination:
+        host: teste-argoapp
+        port:
+          number: 8080
