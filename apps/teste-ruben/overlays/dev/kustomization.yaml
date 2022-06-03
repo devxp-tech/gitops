@@ -4,4 +4,4 @@ resources:
 - ../../base
 images:
 - name: diegoluisi/teste-ruben
-  newTag: latest
+  newTag: 5f90a575
