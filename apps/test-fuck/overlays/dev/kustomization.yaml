@@ -4,4 +4,4 @@ resources:
 - ../../base
 images:
 - name: diegoluisi/test-fuck
-  newTag: latest
+  newTag: 50f9c18f
