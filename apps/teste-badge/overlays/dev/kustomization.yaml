@@ -4,4 +4,4 @@ resources:
 - ../../base
 images:
 - name: diegoluisi/teste-badge
-  newTag: latest
+  newTag: c82b2b82
