@@ -20,6 +20,3 @@ data:
             orgs:
             - name: devxp-tech
     accounts.backstage: apiKey, login
-
-
-    #test
