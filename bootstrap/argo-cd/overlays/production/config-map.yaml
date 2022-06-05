@@ -15,8 +15,8 @@ data:
           id: github
           name: GitHub
           config:
-            clientID: $client-id
-            clientSecret: $client-secret
+            clientID: $github-secrets:GITHUB_CLIENT_ID
+            clientSecret: $github-secrets:GITHUB_CLIENT_SECRET
             orgs:
             - name: devxp-tech    
     accounts.backstage: apiKey, login        
