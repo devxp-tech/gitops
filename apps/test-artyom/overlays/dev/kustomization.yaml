@@ -4,4 +4,4 @@ resources:
 - ../../base
 images:
 - name: diegoluisi/test-artyom
-  newTag: latest
+  newTag: 7f4154bc
