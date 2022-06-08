@@ -4,4 +4,4 @@ resources:
 - ../../base
 images:
 - name: diegoluisi/teste-k8s
-  newTag: latest
+  newTag: d432f471
