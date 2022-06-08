@@ -43,7 +43,6 @@ spec:
   selector:
     matchLabels:
       app: teste-renars
-      backstage.io/kubernetes-id: teste-renars
   template:
     metadata:
       labels:
