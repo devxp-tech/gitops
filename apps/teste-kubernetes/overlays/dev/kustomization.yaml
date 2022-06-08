@@ -4,4 +4,4 @@ resources:
 - ../../base
 images:
 - name: diegoluisi/teste-kubernetes
-  newTag: latest
+  newTag: 08bd9ee8
