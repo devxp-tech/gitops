@@ -1,0 +1,11 @@
+{
+  "appName": "test-do-hell",
+  "userGivenName": "test-do-hell",
+  "destNamespace": "test-do-hell",
+  "destServer": "https://kubernetes.default.svc",
+  "srcPath": "apps/test-do-hell/overlays/dev",
+  "srcRepoURL": "https://github.com/diegoluisi/argo.git",
+  "srcTargetRevision": "",
+  "CreateNamespace": true,
+  "labels": null
+}
