@@ -43,10 +43,12 @@ spec:
   selector:
     matchLabels:
       app: teste-renars
+      backstage.io/kubernetes-id: teste-renars
   template:
     metadata:
       labels:
         app: teste-renars
+        backstage.io/kubernetes-id: teste-renars
     spec:
       containers:
       - image: diegoluisi/teste-renars:3c12d96f
