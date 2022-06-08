@@ -1,0 +1,115 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  labels:
+    kubernetes.io/metadata.name: test-do-hell
+    backstage.io/kubernetes-id: test-do-hell
+  name: test-do-hell
+spec:
+  finalizers:
+  - kubernetes
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: test-do-hell.diegoluisi.eti.br
+  labels:
+    app: test-do-hell
+    backstage.io/kubernetes-id: test-do-hell
+  name: test-do-hell
+  namespace: test-do-hell
+spec:
+  ports:
+  - name: tcp-node
+    port: 8080
+  selector:
+    app: test-do-hell
+  type: ClusterIP
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: test-do-hell
+    backstage.io/kubernetes-id: test-do-hell
+  name: test-do-hell
+  namespace: test-do-hell
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: test-do-hell
+  template:
+    metadata:
+      labels:
+        app: test-do-hell
+        backstage.io/kubernetes-id: test-do-hell
+    spec:
+      containers:
+      - image: diegoluisi/test-do-hell:3c12d96f
+        imagePullPolicy: IfNotPresent
+        name: test-do-hell
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        resources:
+          limits:
+            cpu: 100m
+            memory: 256Mi
+          requests:
+            cpu: 50m
+            memory: 128Mi
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+
+---
+apiVersion: autoscaling/v2beta2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: test-do-hell
+spec:
+  maxReplicas: 3
+  metrics:
+  - resource:
+      name: cpu
+      target:
+        averageUtilization: 75
+        type: Utilization
+    type: Resource
+  minReplicas: 2
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: test-do-hell
+
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: test-do-hell
+  namespace: test-do-hell
+  labels:
+    backstage.io/kubernetes-id: test-do-hell
+spec:
+  gateways:
+  - istio-system/istio-gateway
+  hosts:
+  - test-do-hell.diegoluisi.eti.br
+  http:
+  - match:
+    - uri:
+        prefix: /
+    route:
+    - destination:
+        host: test-do-hell
+        port:
+          number: 8080
