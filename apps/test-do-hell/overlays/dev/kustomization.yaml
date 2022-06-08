@@ -4,4 +4,4 @@ resources:
 - ../../base
 images:
 - name: diegoluisi/test-do-hell
-  newTag: latest
+  newTag: 73b5fe8d
