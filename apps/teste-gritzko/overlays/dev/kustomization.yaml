@@ -4,4 +4,4 @@ resources:
 - ../../base
 images:
 - name: diegoluisi/teste-gritzko
-  newTag: 510368ff
+  newTag: 01354d7f
