@@ -4,4 +4,4 @@ resources:
 - ../../base
 images:
 - name: diegoluisi/teste-renars
-  newTag: 33db9735
+  newTag: f505a474
