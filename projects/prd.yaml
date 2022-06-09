@@ -92,5 +92,6 @@ spec:
           allowEmpty: true
           prune: true
           selfHeal: true
-          CreateNamespace: true
+      syncOptions:
+        - CreateNamespace=true
 status: {}
