@@ -6,6 +6,8 @@
   "srcPath": "apps/sonarqube/overlays/prd",
   "srcRepoURL": "https://github.com/diegoluisi/argo.git",
   "srcTargetRevision": "",
-  "CreateNamespace": true,
+  "syncOptions": {
+    "CreateNamespace": true,
+  }
   "labels": null
 }
