@@ -1,0 +1,11 @@
+{
+  "appName": "teste-hpa",
+  "userGivenName": "teste-hpa",
+  "destNamespace": "teste-hpa",
+  "destServer": "https://kubernetes.default.svc",
+  "srcPath": "apps/teste-hpa/overlays/dev",
+  "srcRepoURL": "https://github.com/diegoluisi/argo.git",
+  "srcTargetRevision": "",
+  "CreateNamespace": true,
+  "labels": null
+}
