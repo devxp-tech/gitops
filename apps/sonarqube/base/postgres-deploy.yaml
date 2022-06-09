@@ -36,4 +36,4 @@ spec:
       volumes:
       - name: postgres
         persistentVolumeClaim:
-          claimName: postgres-pvc
+          claimName: sonar-postgres-pvc

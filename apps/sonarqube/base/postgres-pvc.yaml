@@ -2,7 +2,7 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: postgres-pvc
+  name: sonar-postgres-pvc
   namespace: sonar
 spec:
   accessModes:
