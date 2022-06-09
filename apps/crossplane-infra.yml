@@ -8,7 +8,7 @@ metadata:
 spec:
   project: ops
   source:
-    repoURL: 'https://github.com/diegoluisi/crossplane-infra.git'
+    repoURL: 'https://github.com/diegoluisi/crossplane-resources.git'
     path: resources/aws/infra
     targetRevision: HEAD
     directory:
