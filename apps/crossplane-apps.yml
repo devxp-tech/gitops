@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+    name: "crossplane-apps"
+    annotations:
+      # https://argoproj.github.io/argo-cd/operator-manual/high_availability/#webhook-and-manifest-paths-annotation
+      argocd.argoproj.io/manifest-generate-paths: .
+spec:
+  project: ops
+  source:
+    repoURL: 'https://github.com/diegoluisi/crossplane-resources.git'
+    path: resources/aws/apps
+    targetRevision: HEAD
+    directory:
+      recurse: true
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: crossplane-resources
+  syncPolicy:
+    automated:
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
