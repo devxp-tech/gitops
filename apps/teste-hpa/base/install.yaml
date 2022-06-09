@@ -57,18 +57,18 @@ spec:
         - name: app-port
           containerPort: 8080
           protocol: TCP
-        livenessProbe:
-          httpGet:
-            path: /health-check/liveness
-            port: 8080
-          failureThreshold: 2
-          periodSeconds: 15
-        startupProbe:
-          httpGet:
-            path: /health-check/readines
-            port: 8080
-          failureThreshold: 30
-          periodSeconds: 10
+        # livenessProbe:
+        #   httpGet:
+        #     path: /health-check/liveness
+        #     port: 8080
+        #   failureThreshold: 2
+        #   periodSeconds: 15
+        # startupProbe:
+        #   httpGet:
+        #     path: /health-check/readines
+        #     port: 8080
+        #   failureThreshold: 30
+        #   periodSeconds: 10
         resources:
           limits:
             cpu: 100m
