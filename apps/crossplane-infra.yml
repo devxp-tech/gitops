@@ -9,7 +9,7 @@ spec:
   project: ops
   source:
     repoURL: 'https://github.com/diegoluisi/crossplane-infra.git'
-    path: resources/
+    path: resources/aws/infra
     targetRevision: HEAD
     directory:
       recurse: true
