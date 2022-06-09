@@ -15,5 +15,5 @@ spec:
     route:
     - destination:
         port:
-          number: 9000
+          number: 80
         host: sonarqube

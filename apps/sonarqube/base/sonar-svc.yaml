@@ -8,5 +8,5 @@ spec:
     app: sonarqube
   ports:
     - name: http
-      port: 9000
-      targetPort: http
+      port: 80
+      targetPort: 9000
