@@ -60,15 +60,15 @@ spec:
         livenessProbe:
           httpGet:
             path: /health-check/liveness
-            port: app-port
+            port: 8080
           failureThreshold: 2
-          periodSeconds: 10  
+          periodSeconds: 15
         startupProbe:
           httpGet:
             path: /health-check/readines
-            port: app-port
+            port: 8080
           failureThreshold: 30
-          periodSeconds: 10  
+          periodSeconds: 10
         resources:
           limits:
             cpu: 100m
