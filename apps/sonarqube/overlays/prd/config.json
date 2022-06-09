@@ -1,7 +1,7 @@
 {
   "appName": "sonarqube",
   "userGivenName": "sonarqube",
-  "destNamespace": "sonarqube",
+  "destNamespace": "sonar",
   "destServer": "https://kubernetes.default.svc",
   "srcPath": "apps/sonarqube/overlays/prd",
   "srcRepoURL": "https://github.com/diegoluisi/argo.git",
