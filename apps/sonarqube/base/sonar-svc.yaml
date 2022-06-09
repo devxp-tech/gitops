@@ -1,21 +1,12 @@
-apiVersion: networking.k8s.io/v1beta1
-kind: Ingress
+apiVersion: v1
+kind: Service
 metadata:
-  name: sonar
-  namespace: sonar
-  annotations:
-    kubernetes.io/ingress.class: "nginx"
-    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+  name: sonarqube
+  namespace: sonarqube
 spec:
-  tls:
-    - hosts:
-      - myfancy.domain.com
-      secretName: my-fancy-certs
-  rules:
-  - host: myfancy.domain.com
-    http:
-      paths:
-      - path: /
-        backend:
-          serviceName: sonar
-          servicePort: 9000
+  selector:
+    app: sonarqube
+  ports:
+    - name: http
+      port: 9000
+      targetPort: http
