@@ -6,4 +6,5 @@ resources:
   - postgres-pvc.yaml
   - postgres-svc.yaml
   - sonar-cm.yaml
+  - sonar-deploy.yaml
   - sonar-pvc.yaml
