@@ -89,6 +89,9 @@ apiVersion: autoscaling/v2beta2
 kind: HorizontalPodAutoscaler
 metadata:
   name: teste-liveness
+  labels:
+    app: teste-liveness
+    backstage.io/kubernetes-id: teste-liveness
 spec:
   maxReplicas: 2
   metrics:
