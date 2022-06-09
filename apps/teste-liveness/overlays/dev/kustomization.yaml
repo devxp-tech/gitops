@@ -4,4 +4,4 @@ resources:
 - ../../base
 images:
 - name: diegoluisi/teste-liveness
-  newTag: latest
+  newTag: 6a87027b
