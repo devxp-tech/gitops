@@ -4,4 +4,4 @@ resources:
 - ../../base
 images:
 - name: diegoluisi/teste-hpa
-  newTag: latest
+  newTag: 95d27ea0
