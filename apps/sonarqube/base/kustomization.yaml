@@ -8,3 +8,4 @@ resources:
   - sonar-cm.yaml
   - sonar-deploy.yaml
   - sonar-pvc.yaml
+  - sonar-svc.yaml
