@@ -1,0 +1,131 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  labels:
+    kubernetes.io/metadata.name: cayke
+    backstage.io/kubernetes-id: cayke
+  name: cayke
+spec:
+  finalizers:
+  - kubernetes
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: cayke.diegoluisi.eti.br
+  labels:
+    app: cayke
+    backstage.io/kubernetes-id: cayke
+  name: cayke
+  namespace: cayke
+spec:
+  ports:
+  - name: tcp-node
+    port: 8080
+  selector:
+    app: cayke
+  type: ClusterIP
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: cayke
+    backstage.io/kubernetes-id: cayke
+  name: cayke
+  namespace: cayke
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cayke
+  template:
+    metadata:
+      labels:
+        app: cayke
+        backstage.io/kubernetes-id: cayke
+    spec:
+      containers:
+      - image: diegoluisi/cayke:3c12d96f
+        imagePullPolicy: IfNotPresent
+        name: cayke
+        ports:
+        - name: app-port
+          containerPort: 8080
+          protocol: TCP
+        # livenessProbe:
+        #   httpGet:
+        #     path: /health-check/liveness
+        #     port: app-port
+        #   failureThreshold: 2
+        #   periodSeconds: 10  
+        # startupProbe:
+        #   httpGet:
+        #     path: /health-check/readines
+        #     port: app-port
+        #   failureThreshold: 30
+        #   periodSeconds: 10  
+        resources:
+          limits:
+            cpu: 100m
+            memory: 128Mi
+          requests:
+            cpu: 50m
+            memory: 64Mi
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+
+---
+apiVersion: autoscaling/v2beta2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: cayke
+  labels:
+    app: cayke
+    backstage.io/kubernetes-id: cayke  
+spec:
+  maxReplicas: 2
+  metrics:
+  - resource:
+      name: cpu
+      target:
+        averageUtilization: 75
+        type: Utilization
+    type: Resource
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: cayke
+
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: cayke
+  namespace: cayke
+  labels:
+    backstage.io/kubernetes-id: cayke
+spec:
+  gateways:
+  - istio-system/istio-gateway
+  hosts:
+  - cayke.diegoluisi.eti.br
+  http:
+  - match:
+    - uri:
+        prefix: /
+    route:
+    - destination:
+        host: cayke
+        port:
+          number: 8080
