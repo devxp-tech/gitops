@@ -1,13 +1,18 @@
 {
-	"appName": "sonarqube",
-	"userGivenName": "sonarqube",
-	"destNamespace": "sonarqube",
-	"destServer": "https://kubernetes.default.svc",
-	"srcPath": "apps/sonarqube/overlays/prd",
-	"srcRepoURL": "https://github.com/diegoluisi/argo.git",
-	"srcTargetRevision": "",
-	"syncOptions": {
-		"CreateNamespace": true
-	},
-	"labels": null
+  "project": "prd",
+  "source": {
+    "repoURL": "https://github.com/diegoluisi/argo.git",
+    "path": "apps/sonarqube/overlays/prd"
+  },
+  "destination": {
+    "server": "https://kubernetes.default.svc",
+    "namespace": "sonarqube"
+  },
+  "syncPolicy": {
+    "automated": {
+      "prune": true,
+      "selfHeal": true,
+      "allowEmpty": true
+    }
+  }
 }
