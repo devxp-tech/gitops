@@ -4,4 +4,4 @@ resources:
 - ../../base
 images:
 - name: diegoluisi/cayke
-  newTag: latest
+  newTag: 3933aed2
