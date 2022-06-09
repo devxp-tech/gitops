@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: sonar
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    ingress.kubernetes.io/ssl-redirect: "false"
+spec:
+  rules:
+  - host: sonar.ingress.forkedprocess.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: sonar-svc
+          servicePort: 80

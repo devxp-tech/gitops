@@ -1,0 +1,36 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: sonar-mysql-deployment
+  labels:
+    app: sonar-mysql-deployment
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: sonar-mysql-deployment
+    spec:
+      containers:
+      - image: mysql:5.7
+        name: sonar-mysql-deployment
+        ports:
+        - containerPort: 3306
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: password
+        - name: MYSQL_DATABASE
+          value: sonar
+        - name: MYSQL_USER
+          value: sonar
+        - name: MYSQL_PASSWORD
+          value: sonar
+        volumeMounts:
+         - name: mysql-data
+           mountPath: /var/lib/mysql
+      volumes:
+      - name: mysql-data
+        nfs:
+          server: ""
+          path: "/sonarqube/mysql"
+          readOnly: false

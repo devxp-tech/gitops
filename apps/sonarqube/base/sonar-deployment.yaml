@@ -1,0 +1,42 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: sonar-deployment
+  labels:
+    app: sonar-deployment
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: sonar-deployment
+    spec:
+      containers:
+      - name: sonarqube
+        image: sonarqube:6.5
+        ports:
+        - name: sonarqube
+          containerPort: 9000
+        env:
+        - name: SONARQUBE_JDBC_USERNAME
+          value: sonar
+        - name: SONARQUBE_JDBC_PASSWORD
+          value: sonar
+        - name: SONARQUBE_JDBC_URL
+          value: jdbc:mysql://sonar-mysql:3306/sonar?useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true
+        volumeMounts:
+         - name: sonarqube-extensions
+           mountPath: /opt/sonarqube/extensions
+         - name: sonarqube-data
+           mountPath: /opt/sonarqube/data
+      volumes:
+      - name: sonarqube-extensions
+        nfs:
+          server: ""
+          path: "/sonarqube/extensions"
+          readOnly: false
+      - name: sonarqube-data
+        nfs:
+          server: ""
+          path: "/sonarqube/data"
+          readOnly: false
