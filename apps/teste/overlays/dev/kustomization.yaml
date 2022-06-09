@@ -4,4 +4,4 @@ resources:
 - ../../base
 images:
 - name: diegoluisi/teste
-  newTag: latest
+  newTag: 67b5f6b1
