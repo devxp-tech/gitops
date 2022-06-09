@@ -4,4 +4,4 @@ resources:
 - ../../base
 images:
 - name: diegoluisi/teste-health
-  newTag: latest
+  newTag: 3a866b7a
