@@ -4,4 +4,4 @@ resources:
 - ../../base
 images:
 - name: diegoluisi/hell
-  newTag: 2b07d077
+  newTag: 57ba185c
