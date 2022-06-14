@@ -4,4 +4,4 @@ resources:
 - ../../base
 images:
 - name: diegoluisi/pramod
-  newTag: latest
+  newTag: 8d6b4db1
