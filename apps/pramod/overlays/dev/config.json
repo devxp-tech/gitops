@@ -1,0 +1,11 @@
+{
+  "appName": "pramod",
+  "userGivenName": "pramod",
+  "destNamespace": "pramod",
+  "destServer": "https://kubernetes.default.svc",
+  "srcPath": "apps/pramod/overlays/dev",
+  "srcRepoURL": "https://github.com/diegoluisi/argo.git",
+  "srcTargetRevision": "",
+  "CreateNamespace": true,
+  "labels": null
+}
