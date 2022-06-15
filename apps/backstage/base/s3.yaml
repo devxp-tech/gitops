@@ -8,7 +8,5 @@ spec:
     acl: private
     locationConstraint: us-east-1
     objectLockEnabledForBucket: false
-  resourceRef:
-    namespace: backstage
   providerConfigRef:
     name: default
