@@ -8,6 +8,7 @@ resources:
   - postgres-service.yaml
   - postgres-storage.yaml
   - postgres.yaml
+  - s3.yaml
   - sealed-backstage-secrets.yaml
   - sealed-postgres-secret.yaml
   - virtualservice.yaml

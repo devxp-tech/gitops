@@ -1,0 +1,15 @@
+---
+apiVersion: s3.aws.crossplane.io/v1beta1
+kind: Bucket
+metadata:
+  name: devxp-tech-backstage-techdocs
+  namespace: backstage
+  annotations:
+    backstage.io/kubernetes-id: backstage
+spec:
+  forProvider:
+    acl: private
+    locationConstraint: us-east-1
+    objectLockEnabledForBucket: false
+  providerConfigRef:
+    name: default
