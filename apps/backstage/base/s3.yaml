@@ -4,7 +4,7 @@ kind: Bucket
 metadata:
   name: devxp-tech-backstage-techdocs
   namespace: backstage
-  annotations:
+  labels:
     backstage.io/kubernetes-id: backstage
 spec:
   forProvider:
