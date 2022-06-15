@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: backstage
   namespace: backstage
-  annotations:
+  labels:
     backstage.io/kubernetes-id: backstage
 spec:
   selector:
