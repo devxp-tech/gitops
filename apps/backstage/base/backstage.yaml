@@ -3,8 +3,10 @@ kind: Deployment
 metadata:
   name: backstage
   namespace: backstage
-  annotations:
-    backstage.io/kubernetes-id: backstage
+  labels:
+    annotations:
+      app: backstage
+      backstage.io/kubernetes-id: backstage
 spec:
   replicas: 1
   selector:
@@ -14,6 +16,7 @@ spec:
     metadata:
       labels:
         app: backstage
+        backstage.io/kubernetes-id: backstage
     spec:
       containers:
         - name: backstage
