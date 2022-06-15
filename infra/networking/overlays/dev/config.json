@@ -1,7 +1,7 @@
 {
-  "appName": "backstage",
-  "userGivenName": "backstage",
-  "destNamespace": "backstage",
+  "appName": "networking",
+  "userGivenName": "networking",
+  "destNamespace": "networking",
   "destServer": "https://kubernetes.default.svc",
   "srcPath": "infra/networking/overlays/dev",
   "srcRepoURL": "https://github.com/diegoluisi/argo.git",
