@@ -3,9 +3,8 @@ kind: HorizontalPodAutoscaler
 metadata:
   name: backstage
   labels:
-    annotations:
-      app: backstage
-      backstage.io/kubernetes-id: backstage
+    app: backstage
+    backstage.io/kubernetes-id: backstage
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
