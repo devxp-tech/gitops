@@ -3,6 +3,8 @@ kind: VirtualService
 metadata:
   name: backstage
   namespace: backstage
+  annotations:
+    backstage.io/kubernetes-id: backstage
 spec:
   hosts:
   - "backstage.diegoluisi.eti.br"
