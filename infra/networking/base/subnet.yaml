@@ -1,0 +1,51 @@
+apiVersion: ec2.aws.crossplane.io/v1beta1
+kind: Subnet
+metadata:
+  name: subnet-public-1a
+spec:
+  forProvider:
+    region: us-east-1
+    availabilityZone: us-east-1a
+    cidrBlock: 172.32.1.0/24
+    vpcIdRef:
+      name: development
+    mapPublicIPOnLaunch: true
+    tags:
+      - key: Environment
+        value: development
+      - key: Name
+        value: subnet-public-1a
+      - key: crossplane-kind
+        value: subnet.ec2.aws.crossplane.io
+      - key: crossplane-name
+        value: subnet-public-1a
+      - key: crossplane-providerconfig
+        value: default
+  providerConfigRef:
+    name: default
+---
+apiVersion: ec2.aws.crossplane.io/v1beta1
+kind: Subnet
+metadata:
+  name: subnet-private-1a
+spec:
+  forProvider:
+    region: us-east-1
+    availabilityZone: us-east-1a
+    cidrBlock: 172.32.2.0/24
+    vpcIdRef:
+      name: development
+    mapPublicIPOnLaunch: true
+    tags:
+      - key: Environment
+        value: development
+      - key: Name
+        value: subnet-private-1a
+      - key: crossplane-kind
+        value: subnet.ec2.aws.crossplane.io
+      - key: crossplane-name
+        value: subnet-private-1a
+      - key: crossplane-providerconfig
+        value: default
+  providerConfigRef:
+    name: default
