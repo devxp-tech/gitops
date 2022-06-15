@@ -4,6 +4,7 @@ namespace: backstage
 resources:
   - backstage-service.yaml
   - backstage.yaml
+  - hpa.yaml
   - postgres-config.yaml
   - postgres-service.yaml
   - postgres-storage.yaml
