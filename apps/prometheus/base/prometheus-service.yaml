@@ -3,15 +3,11 @@ kind: Service
 metadata:
   name: prometheus-service
   namespace: monitoring
-  annotations:
-      prometheus.io/scrape: 'true'
-      prometheus.io/port:   '9090'
-
+  labels:
+    run: prometheus-server
 spec:
-  selector:
-    app: prometheus-server
-  type: NodePort
   ports:
-    - port: 8080
-      targetPort: 9090
-      nodePort: 30000
+  - port: 8080
+    protocol: TCP
+  selector:
+    run: prometheus-server
