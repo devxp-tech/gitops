@@ -47,13 +47,19 @@ spec:
             valueFrom:
               secretKeyRef:
                 name: auth-generic-oauth-secret
-                key: client_id
+                key: GF_AUTH_GITHUB_CLIENT_ID
                 optional: false
           - name: GF_AUTH_GITHUB_CLIENT_SECRET
             valueFrom:
               secretKeyRef:
                 name: auth-generic-oauth-secret
-                key: client_secret
+                key: GF_AUTH_GITHUB_CLIENT_SECRET
+                optional: false
+          - name: GF_SECURITY_ADMIN_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: auth-generic-oauth-secret
+                key: GF_SECURITY_ADMIN_PASSWORD
                 optional: false
         resources:
           limits:
