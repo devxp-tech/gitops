@@ -33,6 +33,9 @@ spec:
           - mountPath: /etc/grafana/provisioning/datasources
             name: grafana-datasources
             readOnly: false
+        envFrom:
+          - configMapRef:
+            name: auth-generic-oauth-secret
       volumes:
         - name: grafana-storage
           emptyDir: {}
@@ -40,3 +43,8 @@ spec:
           configMap:
               defaultMode: 420
               name: grafana-datasources
+
+
+
+GF_AUTH_AZUREAD_CLIENT_ID
+GF_AUTH_AZUREAD_CLIENT_SECRET
