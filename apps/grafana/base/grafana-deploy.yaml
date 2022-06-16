@@ -23,7 +23,7 @@ spec:
         # env:
         #   - name: GF_AUTH_GITHUB_ENABLED
         #     value: 'true'
-        envFrom:
+        env:
           - name: GF_AUTH_GITHUB_CLIENT_ID
             valueFrom:
               secretKeyRef:
