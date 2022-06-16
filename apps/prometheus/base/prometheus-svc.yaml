@@ -9,5 +9,6 @@ spec:
   ports:
   - port: 8080
     protocol: TCP
+    targetPort: 9090
   selector:
     app: prometheus-server
