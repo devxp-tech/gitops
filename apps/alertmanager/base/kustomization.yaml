@@ -1,8 +1,7 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: alertmanager
+namespace: monitoring
 resources:
-  - alerttemplate-cm.yaml
   - config-map.yaml
   - deploy.yaml
   - service.yaml
