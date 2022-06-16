@@ -20,6 +20,13 @@ spec:
         ports:
         - name: grafana
           containerPort: 3000
+        env:
+          - name: GF_AUTH_GITHUB_CLIENT_ID
+            valueFrom:
+              secretKeyRef:
+                name: auth-generic-oauth-secret
+                key: client_id
+                optional: false
         resources:
           limits:
             memory: "1Gi"
@@ -33,9 +40,6 @@ spec:
           - mountPath: /etc/grafana/provisioning/datasources
             name: grafana-datasources
             readOnly: false
-        envFrom:
-          - configMapRef:
-              name: auth-generic-oauth-secret
       volumes:
         - name: grafana-storage
           emptyDir: {}
