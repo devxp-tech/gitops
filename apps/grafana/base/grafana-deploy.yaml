@@ -29,7 +29,7 @@ spec:
                 name: auth-generic-oauth-secret
                 key: client_id
                 optional: false
-          - name: GF_AUTH_AZUREAD_CLIENT_SECRET
+          - name: GF_AUTH_GITHUB_CLIENT_SECRET
             valueFrom:
               secretKeyRef:
                 name: auth-generic-oauth-secret
