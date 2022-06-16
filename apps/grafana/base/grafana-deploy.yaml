@@ -20,9 +20,10 @@ spec:
         ports:
         - name: grafana
           containerPort: 3000
-        env:
-          - name: GF_AUTH_GITHUB_ENABLED
-            value: true
+        # env:
+        #   - name: GF_AUTH_GITHUB_ENABLED
+        #     value: 'true'
+        envFrom:
           - name: GF_AUTH_GITHUB_CLIENT_ID
             valueFrom:
               secretKeyRef:
