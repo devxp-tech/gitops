@@ -23,6 +23,8 @@ spec:
         env:
           - name: GF_AUTH_GITHUB_ENABLED
             value: 'true'
+          - name: GF_AUTH_GITHUB_ALLOW_SIGN_UP
+            value: 'true'
           - name: GF_AUTH_GITHUB_CLIENT_ID
             valueFrom:
               secretKeyRef:
