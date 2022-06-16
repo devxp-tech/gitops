@@ -21,6 +21,10 @@ spec:
         - name: grafana
           containerPort: 3000
         env:
+          - name: DOMAIN
+            value: grafana.diegoluisi.eti.br
+          - name: ROOT_URL
+            value: 'https://grafana.diegoluisi.eti.br'
           - name: GF_AUTH_GITHUB_ENABLED
             value: 'true'
           - name: GF_AUTH_GITHUB_ALLOW_SIGN_UP
