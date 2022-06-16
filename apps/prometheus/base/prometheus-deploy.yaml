@@ -22,7 +22,7 @@ spec:
             - "--config.file=/etc/prometheus/prometheus.yml"
             - "--storage.tsdb.path=/prometheus/"
           ports:
-            - containerPort: 9090
+            - containerPort: 8080
           volumeMounts:
             - name: prometheus-config-volume
               mountPath: /etc/prometheus/

@@ -3,6 +3,6 @@ kind: Kustomization
 namespace: monitoring
 resources:
   - prometheus-cm.yaml
-  - prometheus-deployment.yaml
+  - prometheus-deploy.yaml
   - prometheus-role.yaml
-  - prometheus-service.yaml
+  - prometheus-svc.yaml
