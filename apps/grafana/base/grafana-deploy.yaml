@@ -20,6 +20,16 @@ spec:
         ports:
         - name: grafana
           containerPort: 3000
+        readinessProbe:
+          httpGet:
+            path: /api/health
+            port: http
+          initialDelaySeconds: 15
+          timeoutSeconds: 2
+          periodSeconds: 10
+          successThreshold: 1
+          failureThreshold: 5
+
         env:
           - name: GF_SERVER_DOMAIN
             value: grafana.diegoluisi.eti.br
@@ -47,11 +57,11 @@ spec:
                 optional: false
         resources:
           limits:
-            memory: "1Gi"
-            cpu: "1000m"
-          requests:
-            memory: 500M
+            memory: "512Mi"
             cpu: "500m"
+          requests:
+            memory: 256Mi
+            cpu: "250m"
         volumeMounts:
           - mountPath: /var/lib/grafana
             name: grafana-storage
