@@ -4,10 +4,10 @@ metadata:
   name: prometheus-service
   namespace: monitoring
   labels:
-    run: prometheus-server
+    app: prometheus-server
 spec:
   ports:
   - port: 8080
     protocol: TCP
   selector:
-    run: prometheus-server
+    app: prometheus-server
