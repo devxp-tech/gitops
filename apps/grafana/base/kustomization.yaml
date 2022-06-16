@@ -4,9 +4,9 @@ namespace: monitoring
 resources:
   - dashboard-def.yaml
   - dashboard-ds.yaml
-  - dashboard-sources.yaml
+  - grafana-datasources.yml
   - datasource-config.yml
-  - grafana-deployment.yml
+  - grafana-deploy.yml
   - grafana-sa.yaml
   - grafana-svc.yml
   - grafana-vs.yml
