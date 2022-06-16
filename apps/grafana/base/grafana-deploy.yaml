@@ -21,11 +21,19 @@ spec:
         - name: grafana
           containerPort: 3000
         env:
+          - name: GF_AUTH_GITHUB_ENABLED
+            value: true
           - name: GF_AUTH_GITHUB_CLIENT_ID
             valueFrom:
               secretKeyRef:
                 name: auth-generic-oauth-secret
                 key: client_id
+                optional: false
+          - name: GF_AUTH_AZUREAD_CLIENT_SECRET
+            valueFrom:
+              secretKeyRef:
+                name: auth-generic-oauth-secret
+                key: client_secret
                 optional: false
         resources:
           limits:
@@ -47,8 +55,3 @@ spec:
           configMap:
               defaultMode: 420
               name: grafana-datasources
-
-
-
-# GF_AUTH_AZUREAD_CLIENT_ID
-# GF_AUTH_AZUREAD_CLIENT_SECRET
