@@ -25,6 +25,12 @@ spec:
             value: 'true'
           - name: GF_AUTH_GITHUB_ALLOW_SIGN_UP
             value: 'true'
+          - name: GF_AUTH_GITHUB_SCOPES
+            value: 'user:email,read:org'
+          - name: GF_AUTH_GITHUB_SCOPES
+            value: 'user:email,read:org'
+          - name: GF_AUTH_GITHUB_ALLOWED_ORGANIZATIONS
+            value: devxp-tech
           - name: GF_AUTH_GITHUB_CLIENT_ID
             valueFrom:
               secretKeyRef:
