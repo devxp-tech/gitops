@@ -2,7 +2,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: monitoring
 resources:
-  - prometheus-cm.yml
-  - prometheus-deployment.yml
-  - prometheus-role.yml
-  - prometheus-service.yml
+  - prometheus-cm.yaml
+  - prometheus-deployment.yaml
+  - prometheus-role.yaml
+  - prometheus-service.yaml

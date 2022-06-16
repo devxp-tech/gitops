@@ -25,12 +25,12 @@ spec:
         livenessProbe:
           httpGet:
             path: /healthz
-            port: 8082
+            port: 8080
           initialDelaySeconds: 5
           timeoutSeconds: 5
         name: kube-state-metrics
         ports:
-        - containerPort: 8082
+        - containerPort: 8080
           name: http-metrics
         - containerPort: 8081
           name: telemetry
