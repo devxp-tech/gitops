@@ -1,16 +1,9 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: backstage
+namespace: kube-system
 resources:
-  - backstage-service.yaml
-  - backstage.yaml
-  - hpa.yaml
-  - postgres-config.yaml
-  - postgres-service.yaml
-  - postgres-storage.yaml
-  - postgres.yaml
-  - s3.yaml
-  - sealed-backstage-secrets.yaml
-  - sealed-postgres-secret.yaml
-  - virtualservice.yaml
-
+  - cluster-role-binding.yaml
+  - cluster-role.yaml
+  - deployment.yaml
+  - service-account.yaml
+  - service.yaml
