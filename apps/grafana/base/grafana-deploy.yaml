@@ -35,7 +35,7 @@ spec:
             readOnly: false
         envFrom:
           - configMapRef:
-            name: auth-generic-oauth-secret
+              name: auth-generic-oauth-secret
       volumes:
         - name: grafana-storage
           emptyDir: {}
