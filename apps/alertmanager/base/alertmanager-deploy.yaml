@@ -23,6 +23,13 @@ spec:
         ports:
         - name: alertmanager
           containerPort: 9093
+        env:
+        - name: SLACK_WEBHOOK
+            valueFrom:
+              secretKeyRef:
+                name: alertmanager-secrets
+                key: SLACK_WEBHOOK
+                optional: false
         resources:
             requests:
               cpu: 500m
