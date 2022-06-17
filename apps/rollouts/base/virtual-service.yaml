@@ -1,0 +1,22 @@
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: rollouts
+  namespace: rollouts
+  labels:
+    backstage.io/kubernetes-id: rollouts
+spec:
+  gateways:
+  - istio-system/istio-gateway
+  hosts:
+  - rollouts.diegoluisi.eti.br
+  http:
+  - match:
+    - uri:
+        prefix: /
+    route:
+    - destination:
+        host: rollouts
+        port:
+          number: 8080
