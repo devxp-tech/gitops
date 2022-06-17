@@ -31,5 +31,5 @@ data:
         require_tls: false
     - name: slack
       slack_configs:
-      - api_url: $SLACK_WEBHOOK
+      - api_url: $alertmanager-secrets:SLACK_WEBHOOK
         channel: '#alerts'
