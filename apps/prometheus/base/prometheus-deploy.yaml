@@ -23,6 +23,13 @@ spec:
             - "--storage.tsdb.path=/prometheus/"
           ports:
             - containerPort: 9090
+          resources:
+              requests:
+                cpu: 256m
+                memory: 556M
+              limits:
+                cpu: 500m
+                memory: 500M
           volumeMounts:
             - name: prometheus-config-volume
               mountPath: /etc/prometheus/
