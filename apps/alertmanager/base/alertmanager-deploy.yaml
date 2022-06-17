@@ -24,7 +24,7 @@ spec:
         - name: alertmanager
           containerPort: 9093
         env:
-        - name: SLACK_WEBHOOK
+          - name: SLACK_WEBHOOK
             valueFrom:
               secretKeyRef:
                 name: alertmanager-secrets
