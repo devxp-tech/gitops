@@ -4,4 +4,4 @@ resources:
 - ../../base
 images:
 - name: diegoluisi/demo
-  newTag: latest
+  newTag: 62e51055
