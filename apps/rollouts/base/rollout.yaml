@@ -27,7 +27,7 @@ spec:
             cpu: 5m
   strategy:
     canary:
-      canaryService: canary-demo-preview
+      canaryService: rollouts
       steps:
       - setWeight: 20
       - pause: {}
