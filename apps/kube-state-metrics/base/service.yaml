@@ -4,11 +4,11 @@ metadata:
   labels:
     app.kubernetes.io/component: exporter
     app.kubernetes.io/name: kube-state-metrics
-    app.kubernetes.io/version: 2.3.0
+    app.kubernetes.io/version: 2.5.0
   name: kube-state-metrics
   namespace: kube-system
 spec:
-  type: ClusterIP
+  clusterIP: None
   ports:
   - name: http-metrics
     port: 8080
