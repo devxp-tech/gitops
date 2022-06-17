@@ -2,6 +2,8 @@ apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
   name: rollouts
+  annotations:
+    notifications.argoproj.io/subscribe.on-rollout-step-completed.slack: argocd-notifications
 spec:
   replicas: 3
   revisionHistoryLimit: 1
