@@ -1,0 +1,18 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: rollouts.diegoluisi.eti.br
+  labels:
+    app: rollouts
+    backstage.io/kubernetes-id: rollouts
+  name: rollouts
+  namespace: rollouts
+spec:
+  ports:
+  - name: tcp-node
+    port: 8080
+  selector:
+    app: rollouts
+  type: ClusterIP
