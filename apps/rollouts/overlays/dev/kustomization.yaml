@@ -4,4 +4,4 @@ resources:
 - ../../base
 images:
 - name: diegoluisi/rollouts
-  newTag: latest
+  newTag: "21085120"
