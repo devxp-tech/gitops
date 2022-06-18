@@ -4,25 +4,18 @@ kind: VirtualService
 metadata:
   name: rollouts-vsvc
   namespace: rollouts
-  labels:
-    backstage.io/kubernetes-id: rollouts
 spec:
   gateways:
   - istio-system/istio-gateway
   hosts:
   - rollouts.diegoluisi.eti.br
+  - rollouts.local
   http:
   - name: primary
-  - match:
-    - uri:
-        prefix: /
+    route:
     - destination:
         host: rollouts-stable
-        port:
-          number: 8080
       weight: 100
     - destination:
         host: rollouts-canary
-        port:
-          number: 8080
       weight: 0
