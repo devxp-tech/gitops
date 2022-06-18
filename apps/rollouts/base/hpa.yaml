@@ -8,6 +8,11 @@ metadata:
     backstage.io/kubernetes-id: rollouts
 spec:
   maxReplicas: 2
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: argoproj.io/v1alpha1
+    kind: Rollout
+    name: rollouts
   metrics:
   - resource:
       name: cpu
@@ -15,8 +20,3 @@ spec:
         averageUtilization: 75
         type: Utilization
     type: Resource
-  minReplicas: 1
-  scaleTargetRef:
-    apiVersion: apps/v1
-    kind: Deployment
-    name: rollouts
