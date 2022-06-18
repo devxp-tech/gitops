@@ -12,11 +12,17 @@ spec:
   hosts:
   - rollouts.diegoluisi.eti.br
   http:
+  - name: primary
   - match:
     - uri:
         prefix: /
-    route:
     - destination:
-        host: rollouts
+        host: rollouts-stable
         port:
           number: 8080
+      weight: 100
+    - destination:
+        host: rollouts-canary
+        port:
+          number: 8080
+      weight: 0
