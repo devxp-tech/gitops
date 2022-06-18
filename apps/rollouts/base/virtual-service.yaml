@@ -2,7 +2,7 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: rollouts
+  name: rollouts-vsvc
   namespace: rollouts
   labels:
     backstage.io/kubernetes-id: rollouts
