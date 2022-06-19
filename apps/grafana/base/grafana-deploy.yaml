@@ -29,16 +29,6 @@ spec:
           periodSeconds: 10
           successThreshold: 1
           failureThreshold: 5
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-            - matchExpressions:
-              - key: topology.kubernetes.io/zone
-                operator: In
-                values:
-                - us-east-1a
-
         env:
           - name: GF_SERVER_DOMAIN
             value: grafana.diegoluisi.eti.br
@@ -90,3 +80,12 @@ spec:
       - name: grafana-script
         configMap:
           name: grafana-config
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: topology.kubernetes.io/zone
+                operator: In
+                values:
+                - us-east-1a
