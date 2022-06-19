@@ -77,9 +77,9 @@ spec:
             memory: 256Mi
             cpu: "250m"
         volumeMounts:
-        - name: grafana-persistent-storage-store
+        - name: grafana-volume
           mountPath: /var/lib/grafana/
       volumes:
-      - name: grafana-persistent-storage-store
+      - name: grafana-volume
         persistentVolumeClaim:
           claimName: grafana-storage-pvc
