@@ -71,6 +71,8 @@ spec:
       labels:
         app.kubernetes.io/managed-by: argocd-autopilot
         app.kubernetes.io/name: '{{ appName }}'
+      annotations:
+        notifications.argoproj.io/subscribe.on-sync-succeeded.slack: argocd-notifications
       name: prd-{{ userGivenName }}
       namespace: argocd
     spec:
