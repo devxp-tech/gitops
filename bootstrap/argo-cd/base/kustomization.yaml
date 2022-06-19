@@ -3,13 +3,12 @@ kind: Kustomization
 namespace: argocd
 resources:
 - install.yaml
+- argocd-notifications-controller.yaml
 #- github-secrets-sealed.yaml
 - github.com/argoproj/argo-cd/manifests/crds
 - github.com/argoproj/argo-cd/manifests/base
 - github.com/argoproj/argo-cd/manifests/cluster-rbac/
 #components:
-# - github.com/argoproj-labs/argocd-notifications/release-1.0/manifests/
-# - github.com/argoproj-labs/argocd-notifications/release-1.0/catalog/
 # extensions controller component
 #- github.com/argoproj-labs/argocd-extensions/manifests
-- github.com/argoproj-labs/rollout-extension/manifests
+#- github.com/argoproj-labs/rollout-extension/manifests
