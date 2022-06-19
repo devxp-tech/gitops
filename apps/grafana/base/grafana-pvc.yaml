@@ -6,7 +6,7 @@ metadata:
     vol: grafana-storage
 spec:
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   resources:
     requests:
       storage: 10Gi
