@@ -1,11 +1,12 @@
----
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: grafana-datasources
+  name: grafana-storage-pvc
+  labels:
+    vol: grafana-storage
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
       storage: 10Gi

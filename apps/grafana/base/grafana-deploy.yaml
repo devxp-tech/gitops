@@ -69,15 +69,15 @@ spec:
             memory: 256Mi
             cpu: "250m"
         volumeMounts:
-          - mountPath: /var/lib/grafana
-            name: grafana-storage
-          - mountPath: /etc/grafana/provisioning/datasources
-            name: grafana-datasources
-            readOnly: false
+        - name: grafana-persistent-storage-store
+          mountPath: /var/lib/grafana/
+        - name: grafana-script
+          mountPath: /etc/grafana/provisioning/datasources/datasource.yaml
+          subPath: datasource.yaml
       volumes:
-        - name: grafana-storage
-          emptyDir: {}
-        - name: grafana-datasources
-          configMap:
-              defaultMode: 420
-              name: grafana-datasources
+      - name: grafana-persistent-storage-store
+        persistentVolumeClaim:
+          claimName: grafana-storage-pvc
+      - name: grafana-script
+        configMap:
+          name: grafana-config
