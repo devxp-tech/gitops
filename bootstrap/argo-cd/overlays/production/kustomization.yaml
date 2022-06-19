@@ -9,3 +9,4 @@ patchesStrategicMerge:
 - config-map.yaml
 - argocd-rbac-cm.yaml
 - argocd-notifications-cm.yaml
+- argocd-notifications.yaml
