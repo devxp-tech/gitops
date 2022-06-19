@@ -79,13 +79,7 @@ spec:
         volumeMounts:
         - name: grafana-persistent-storage-store
           mountPath: /var/lib/grafana/
-        - name: grafana-script
-          mountPath: /etc/grafana/provisioning/datasources/datasource.yaml
-          subPath: datasource.yaml
       volumes:
       - name: grafana-persistent-storage-store
         persistentVolumeClaim:
           claimName: grafana-storage-pvc
-      # - name: grafana-script
-      #   configMap:
-      #     name: grafana-config
