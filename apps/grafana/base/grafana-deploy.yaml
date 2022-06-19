@@ -86,6 +86,6 @@ spec:
       - name: grafana-persistent-storage-store
         persistentVolumeClaim:
           claimName: grafana-storage-pvc
-      - name: grafana-script
-        configMap:
-          name: grafana-config
+      # - name: grafana-script
+      #   configMap:
+      #     name: grafana-config
