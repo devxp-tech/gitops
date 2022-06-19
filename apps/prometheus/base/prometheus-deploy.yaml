@@ -25,11 +25,11 @@ spec:
             - containerPort: 9090
           resources:
             limits:
-              memory: "512Mi"
-              cpu: "500m"
+              memory: 1Gi
+              cpu: 1
             requests:
-              memory: 256Mi
-              cpu: "250m"
+              memory: 512Mi
+              cpu: 500m
           volumeMounts:
             - name: prometheus-config-volume
               mountPath: /etc/prometheus/

@@ -6,3 +6,4 @@ resources:
   - prometheus-deploy.yaml
   - prometheus-role.yaml
   - prometheus-svc.yaml
+  - daemonset.yaml
