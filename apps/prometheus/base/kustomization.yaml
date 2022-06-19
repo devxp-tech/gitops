@@ -7,3 +7,4 @@ resources:
   - prometheus-role.yaml
   - prometheus-svc.yaml
   - daemonset.yaml
+  - node-exporter-svc.yaml
