@@ -73,6 +73,10 @@ spec:
         app.kubernetes.io/name: '{{ appName }}'
       annotations:
         notifications.argoproj.io/subscribe.on-sync-succeeded.slack: argocd-notifications
+        notifications.argoproj.io/subscribe.on-sync-failed.slack: argocd-notifications
+        notifications.argoproj.io/subscribe.on-sync-status-unknown.slack: argocd-notifications
+        notifications.argoproj.io/subscribe.on-health-degraded.slack: argocd-notifications
+        notifications.argoproj.io/subscribe.on-deployed.slack.slack: argocd-notifications
       name: dev-{{ userGivenName }}
       namespace: argocd
     spec:
