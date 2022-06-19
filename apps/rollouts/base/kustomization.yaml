@@ -3,8 +3,9 @@ kind: Kustomization
 namespace: rollouts
 resources:
   - namespace.yaml
-  - analyses.yaml
-  - hpa.yaml
-  - rollout.yaml
+  - deploy.yaml
+  # - analyses.yaml
+  # - hpa.yaml
+  # - rollout.yaml
   - service.yaml
   - virtual-service.yaml
