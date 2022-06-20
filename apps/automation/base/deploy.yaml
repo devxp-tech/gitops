@@ -1,0 +1,54 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: automation
+    backstage.io/kubernetes-id: automation
+  name: automation
+  namespace: automation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: automation
+  template:
+    metadata:
+      labels:
+        app: automation
+        backstage.io/kubernetes-id: automation
+    spec:
+      containers:
+      - image: diegoluisi/automation:3c12d96f
+        imagePullPolicy: IfNotPresent
+        name: automation
+        ports:
+        - name: app-port
+          containerPort: 8080
+          protocol: TCP
+        # livenessProbe:
+        #   httpGet:
+        #     path: /health-check/liveness
+        #     port: app-port
+        #   failureThreshold: 2
+        #   periodSeconds: 10
+        # startupProbe:
+        #   httpGet:
+        #     path: /health-check/readines
+        #     port: app-port
+        #   failureThreshold: 30
+        #   periodSeconds: 10
+        resources:
+          limits:
+            cpu: 100m
+            memory: 128Mi
+          requests:
+            cpu: 50m
+            memory: 64Mi
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
