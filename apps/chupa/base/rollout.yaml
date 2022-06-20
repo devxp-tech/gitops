@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
-  name: chupa
+  name: chupa-rollout
 spec:
   revisionHistoryLimit: 2
   selector:
