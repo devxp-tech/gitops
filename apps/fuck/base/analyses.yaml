@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AnalysisTemplate
 metadata:
-  name: fuck-istio-success-rate
+  name: istio-success-rate
 spec:
   # this analysis template requires a service name and namespace to be supplied to the query
   args:

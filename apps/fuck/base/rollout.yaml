@@ -41,13 +41,13 @@ spec:
             cpu: 5m
   strategy:
     canary:
-      canaryService: fuck-canary
-      stableService: fuck-stable
+      canaryService: fuck-canary-svc
+      stableService: fuck-stable-svc
       # analysis will be performed in background, while rollout is progressing through its steps
       analysis:
         startingStep: 1   # index of step list, of when to start this analysis
         templates:
-        - templateName: fuck-istio-success-rate
+        - templateName: istio-success-rate
         args:             # arguments allow AnalysisTemplates to be re-used
         - name: service
           value: fuck-canary-svc
