@@ -1,0 +1,12 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  labels:
+    kubernetes.io/metadata.name: chupa
+    backstage.io/kubernetes-id: chupa
+    istio-injection: enabled
+  name: chupa
+spec:
+  finalizers:
+  - kubernetes
