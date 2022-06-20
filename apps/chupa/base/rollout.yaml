@@ -27,8 +27,8 @@ spec:
             cpu: 5m
   strategy:
     canary:
-      canaryService: chupa-canary-svc
-      stableService: chupa-stable-svc
+      canaryService: chupa-canary
+      stableService: chupa-stable
       # analysis will be performed in background, while rollout is progressing through its steps
       analysis:
         startingStep: 1   # index of step list, of when to start this analysis

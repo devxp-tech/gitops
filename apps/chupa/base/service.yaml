@@ -7,7 +7,7 @@ metadata:
   labels:
     app: chupa
     backstage.io/kubernetes-id: chupa
-  name: chupa-canary-svc
+  name: chupa-canary
   namespace: chupa
 spec:
   ports:
@@ -26,7 +26,7 @@ metadata:
   labels:
     app: chupa
     backstage.io/kubernetes-id: chupa
-  name: chupa-stable-svc
+  name: chupa-stable
   namespace: chupa
 spec:
   ports:
