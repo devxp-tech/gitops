@@ -45,16 +45,16 @@ spec:
                 name: backstage-secrets
           resources:
             requests:
-              cpu: 100m
-              memory: 256Mi
-            limits:
-              cpu: 500m
               memory: 512Mi
-          # readinessProbe:
-          #   httpGet:
-          #     port: 7007
-          #     path: /healthcheck
-          # livenessProbe:
-          #   httpGet:
-          #     port: 7007
-          #     path: /healthcheck
+              cpu: 500m
+            limits:
+              memory: 1Gi
+              cpu: 1
+          readinessProbe:
+            httpGet:
+              port: 7007
+              path: /healthcheck
+          livenessProbe:
+            httpGet:
+              port: 7007
+              path: /healthcheck
