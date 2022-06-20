@@ -31,10 +31,10 @@ spec:
       canaryService: chupa-canary
       stableService: chupa-stable
       # analysis will be performed in background, while rollout is progressing through its steps
-      analysis:
-        startingStep: 1   # index of step list, of when to start this analysis
-        templates:
-        - templateName: istio-success-rate
+      # analysis:
+      #   startingStep: 1   # index of step list, of when to start this analysis
+      #   templates:
+      #   - templateName: istio-success-rate
         args:             # arguments allow AnalysisTemplates to be re-used
         - name: service
           value: chupa-canary.chupa.svc.cluster.local
