@@ -2,9 +2,11 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: monitoring
 resources:
+  - daemonset.yaml
+  - node-exporter-svc.yaml
   - prometheus-cm.yaml
   - prometheus-deploy.yaml
   - prometheus-role.yaml
   - prometheus-svc.yaml
-  - daemonset.yaml
-  - node-exporter-svc.yaml
+  - prometheus-pv.yaml
+  - prometheus-pvc.yaml
