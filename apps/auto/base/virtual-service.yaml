@@ -1,0 +1,21 @@
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: auto-vsvc
+  namespace: auto
+spec:
+  gateways:
+  - istio-system/istio-gateway
+  hosts:
+  - auto.diegoluisi.eti.br
+  - auto.local
+  http:
+  - name: primary
+    route:
+    - destination:
+        host: auto-stable
+      weight: 100
+    - destination:
+        host: auto-canary
+      weight: 0
