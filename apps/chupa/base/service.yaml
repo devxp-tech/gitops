@@ -7,7 +7,6 @@ metadata:
   labels:
     app: chupa
     backstage.io/kubernetes-id: chupa
-    version: 0.0.1
   name: chupa-canary-svc
   namespace: chupa
 spec:
@@ -27,7 +26,6 @@ metadata:
   labels:
     app: chupa
     backstage.io/kubernetes-id: chupa
-    version: 0.0.1
   name: chupa-stable-svc
   namespace: chupa
 spec:
