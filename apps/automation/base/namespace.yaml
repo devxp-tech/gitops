@@ -1,0 +1,11 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  labels:
+    kubernetes.io/metadata.name: automation
+    backstage.io/kubernetes-id: automation
+  name: automation
+spec:
+  finalizers:
+  - kubernetes
