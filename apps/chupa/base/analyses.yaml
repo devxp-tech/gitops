@@ -12,7 +12,8 @@ spec:
   - name: success-rate
     initialDelay: 60s
     interval: 20s
-    successCondition: result[0] > 0.90
+    successCondition: result[0] >= 0.95
+    failureLimit: 3
     provider:
       prometheus:
         address: http://prometheus-service.monitoring.svc.lgsk8sp1.grupologos.local:8080
