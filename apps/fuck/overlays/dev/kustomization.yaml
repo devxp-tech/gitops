@@ -4,4 +4,4 @@ resources:
 - ../../base
 images:
 - name: diegoluisi/fuck
-  newTag: 8d7ad948
+  newTag: 9596deb7
