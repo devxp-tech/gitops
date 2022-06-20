@@ -1,0 +1,37 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: mechupa.diegoluisi.eti.br
+  labels:
+    app: mechupa
+    backstage.io/kubernetes-id: mechupa
+  name: mechupa-canary-svc
+  namespace: mechupa
+spec:
+  ports:
+  - name: tcp-node
+    port: 8080
+  selector:
+    app: mechupa
+  type: ClusterIP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: mechupa.diegoluisi.eti.br
+  labels:
+    app: mechupa
+    backstage.io/kubernetes-id: mechupa
+  name: mechupa-stable-svc
+  namespace: mechupa
+spec:
+  ports:
+  - name: tcp-node
+    port: 8080
+  selector:
+    app: mechupa
+  type: ClusterIP
