@@ -14,7 +14,7 @@ spec:
         sidecar.istio.io/inject: "true"
       labels:
         app: fuck
-        version: 1.0.0
+        version: diegoluisi/fuck:latest
     spec:
       containers:
       - name: fuck
