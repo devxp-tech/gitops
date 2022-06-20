@@ -14,8 +14,8 @@ spec:
   - name: primary
     route:
     - destination:
-        host: fuck-stable
+        host: fuck-stable-svc
       weight: 100
     - destination:
-        host: fuck-canary
+        host: fuck-canary-svc
       weight: 0

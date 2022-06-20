@@ -18,6 +18,7 @@ spec:
       containers:
       - name: fuck
         image: diegoluisi/fuck:latest
+
         ports:
         - name: http
           containerPort: 8080
@@ -49,7 +50,7 @@ spec:
         - templateName: fuck-istio-success-rate
         args:             # arguments allow AnalysisTemplates to be re-used
         - name: service
-          value: fuck-canary
+          value: fuck-canary-svc
         - name: namespace
           valueFrom:
             fieldRef:

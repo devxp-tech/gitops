@@ -7,7 +7,7 @@ metadata:
   labels:
     app: fuck
     backstage.io/kubernetes-id: fuck
-  name: fuck-canary
+  name: fuck-canary-svc
   namespace: fuck
 spec:
   ports:
@@ -26,7 +26,7 @@ metadata:
   labels:
     app: fuck
     backstage.io/kubernetes-id: fuck
-  name: fuck-stable
+  name: fuck-stable-svc
   namespace: fuck
 spec:
   ports:
