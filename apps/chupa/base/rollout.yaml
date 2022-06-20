@@ -37,7 +37,7 @@ spec:
         - templateName: istio-success-rate
         args:             # arguments allow AnalysisTemplates to be re-used
         - name: service
-          value: canary
+          value: chupa-canary.chupa.svc.cluster.local
         - name: namespace
           valueFrom:
             fieldRef:
