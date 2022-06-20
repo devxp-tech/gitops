@@ -4,6 +4,6 @@ resources:
 - ../../base
 images:
 - name: diegoluisi/fuck
-  newTag: 0056d9f4
+  newTag: d1b4e161
 commonLabels:
-  version: 0056d9f4
+  version: d1b4e161
