@@ -1,0 +1,37 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: auto.diegoluisi.eti.br
+  labels:
+    app: auto
+    backstage.io/kubernetes-id: auto
+  name: auto-canary
+  namespace: auto
+spec:
+  ports:
+  - name: tcp-node
+    port: 8080
+  selector:
+    app: auto
+  type: ClusterIP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: auto.diegoluisi.eti.br
+  labels:
+    app: auto
+    backstage.io/kubernetes-id: auto
+  name: auto-stable
+  namespace: auto
+spec:
+  ports:
+  - name: tcp-node
+    port: 8080
+  selector:
+    app: auto
+  type: ClusterIP
