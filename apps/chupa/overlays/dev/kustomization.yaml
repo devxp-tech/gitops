@@ -5,3 +5,5 @@ resources:
 images:
 - name: diegoluisi/chupa
   newTag: 274d066a
+commonLabels:
+  version: 274d066a
