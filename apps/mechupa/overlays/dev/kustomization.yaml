@@ -4,6 +4,6 @@ resources:
 - ../../base
 images:
 - name: diegoluisi/mechupa
-  newTag: 060ab049
+  newTag: ead897c0
 commonLabels:
-  version: 060ab049
+  version: ead897c0
