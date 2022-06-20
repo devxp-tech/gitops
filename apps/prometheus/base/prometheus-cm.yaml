@@ -8,7 +8,7 @@ metadata:
 data:
   prometheus.rules: |-
     groups:
-    - name: devopscube demo alert
+    - name: devxp-tech-alerts
       rules:
       - alert: High Pod Memory
         expr: sum(container_memory_usage_bytes) > 1
