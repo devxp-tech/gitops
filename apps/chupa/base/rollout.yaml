@@ -14,7 +14,6 @@ spec:
         sidecar.istio.io/inject: "true"
       labels:
         app: chupa
-        version: 0.0.1
     spec:
       containers:
       - name: chupa
