@@ -5,3 +5,5 @@ resources:
 images:
 - name: diegoluisi/fuck
   newTag: 0056d9f4
+commonLabels:
+  version: 0056d9f4
