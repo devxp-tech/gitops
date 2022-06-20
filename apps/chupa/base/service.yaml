@@ -1,0 +1,39 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: chupa.diegoluisi.eti.br
+  labels:
+    app: chupa
+    backstage.io/kubernetes-id: chupa
+  name: chupa-canary-svc
+  namespace: chupa
+spec:
+  ports:
+  - name: tcp-node
+    port: 8080
+  selector:
+    app: chupa
+    version: 0.0.1
+  type: ClusterIP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: chupa.diegoluisi.eti.br
+  labels:
+    app: chupa
+    backstage.io/kubernetes-id: chupa
+  name: chupa-stable-svc
+  namespace: chupa
+spec:
+  ports:
+  - name: tcp-node
+    port: 8080
+  selector:
+    app: chupa
+    version: 0.0.1
+  type: ClusterIP
