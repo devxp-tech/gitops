@@ -8,7 +8,6 @@ spec:
   selector:
     matchLabels:
       app: chupa
-      version: 0.0.1
   template:
     metadata:
       annotations:
