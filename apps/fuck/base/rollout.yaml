@@ -14,11 +14,11 @@ spec:
         sidecar.istio.io/inject: "true"
       labels:
         app: fuck
+        version: 1.0.0
     spec:
       containers:
       - name: fuck
         image: diegoluisi/fuck:latest
-
         ports:
         - name: http
           containerPort: 8080
