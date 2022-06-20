@@ -1,59 +1,51 @@
+---
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
   name: chupa
+  labels:
+    app: chupa
 spec:
+  strategy:
+    canary:
+      steps:
+      - setWeight: 20
+      - pause:
+          duration: "1m"
+      - setWeight: 50
+      - pause:
+          duration: "2m"
+      canaryService: chupa-canary
+      stableService: chupa-stable
+      trafficRouting:
+        istio:
+           virtualService:
+            name: chupa-vsvc
+            routes:
+            - primary
+  replicas: 3
   revisionHistoryLimit: 2
   selector:
     matchLabels:
       app: chupa
+      version: 0.0.1
   template:
     metadata:
-      annotations:
-        sidecar.istio.io/inject: "true"
       labels:
         app: chupa
-        version: 7dcb6839
+        version: 0.0.1
     spec:
       containers:
       - name: chupa
-        image: diegoluisi/chupa:latest
+        image: diegoluisi/chupa:0.0.1
+        imagePullPolicy: Always
         ports:
-        - name: http
+        - name: web
           containerPort: 8080
-          protocol: TCP
         resources:
           requests:
-            memory: 32Mi
-            cpu: 5m
-  strategy:
-    canary:
-      trafficRouting:
-        istio:
-          virtualService:
-            name: chupa-vsvc        # required
-            routes:
-            - primary                 # optional if there is a single route in VirtualService, required otherwise
-          destinationRule:
-            name: rollout-destrule    # required
-            canarySubsetName: chupa-canary  # required
-            stableSubsetName: chupa-stable  # required
-      steps:
-      - setWeight: 10
-      - pause: {duration: 20s}
-      - setWeight: 20
-      - pause: {duration: 20s}
-      - setWeight: 30
-      - pause: {duration: 20s}
-      - setWeight: 40
-      - pause: {duration: 20s}
-      - setWeight: 50
-      - pause: {duration: 20s}
-      - setWeight: 60
-      - pause: {duration: 20s}
-      - setWeight: 70
-      - pause: {duration: 20s}
-      - setWeight: 80
-      - pause: {duration: 20s}
-      - setWeight: 90
-      - pause: {duration: 20s}
+            memory: "64Mi"
+            cpu: "100m"
+          limits:
+            memory: "128Mi"
+            cpu: "140m"
