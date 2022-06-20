@@ -6,7 +6,7 @@ resources:
   - node-exporter-svc.yaml
   - prometheus-cm.yaml
   - prometheus-deploy.yaml
-  - prometheus-pv.yaml
-  - prometheus-pvc.yaml
+  # - prometheus-pv.yaml
+  # - prometheus-pvc.yaml
   - prometheus-role.yaml
   - prometheus-svc.yaml
