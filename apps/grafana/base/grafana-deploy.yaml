@@ -15,14 +15,14 @@ spec:
         app: grafana
     spec:
       affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-            - matchExpressions:
-              - key: topology.kubernetes.io/zone
-                operator: In
-                values:
-                - us-east-1a
+        # nodeAffinity:
+        #   requiredDuringSchedulingIgnoredDuringExecution:
+        #     nodeSelectorTerms:
+        #     - matchExpressions:
+        #       - key: topology.kubernetes.io/zone
+        #         operator: In
+        #         values:
+        #         - us-east-1a
       containers:
       - name: grafana
         image: grafana/grafana:latest
@@ -77,9 +77,15 @@ spec:
             memory: 256Mi
             cpu: "250m"
         volumeMounts:
-        - name: grafana-volume
-          mountPath: /var/lib/grafana/
+          - mountPath: /var/lib/grafana
+            name: grafana-storage
+          - mountPath: /etc/grafana/provisioning/datasources
+            name: grafana-datasources
+            readOnly: false
       volumes:
-      - name: grafana-volume
-        persistentVolumeClaim:
-          claimName: grafana-storage-pvc
+        - name: grafana-storage
+          emptyDir: {}
+        - name: grafana-datasources
+          configMap:
+              defaultMode: 420
+              name: grafana-datasources
