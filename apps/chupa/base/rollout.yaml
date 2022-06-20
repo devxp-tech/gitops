@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: chupa
-        image: argoproj/rollouts-demo:blue
+        image: diegoluisi/chupa:latest
         ports:
         - name: http
           containerPort: 8080
@@ -36,7 +36,7 @@ spec:
         - templateName: istio-success-rate
         args:             # arguments allow AnalysisTemplates to be re-used
         - name: service
-          value: chupa-canary-svc
+          value: canary
         - name: namespace
           valueFrom:
             fieldRef:
@@ -49,7 +49,7 @@ spec:
             - primary
       steps:
       - setWeight: 10
-      - pause: {duration: 20s} #{} pause indefinitely
+      - pause: {duration: 20s}
       - setWeight: 20
       - pause: {duration: 20s}
       - setWeight: 30
