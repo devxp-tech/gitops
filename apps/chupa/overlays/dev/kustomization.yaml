@@ -4,4 +4,6 @@ resources:
 - ../../base
 images:
 - name: diegoluisi/chupa
-  newTag: latest
+  newTag: 7dcb6839
+commonLabels:
+  version: 7dcb6839
