@@ -1,4 +1,3 @@
----
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
@@ -17,31 +16,19 @@ spec:
     spec:
       containers:
       - name: chupa
-        image: diegoluisi/chupa:latest
+        image: argoproj/rollouts-demo:blue
         ports:
         - name: http
           containerPort: 8080
           protocol: TCP
-        livenessProbe:
-          httpGet:
-            path: /health-check/liveness
-            port: 8080
-          initialDelaySeconds: 5
-          periodSeconds: 10
-        readinessProbe:
-          httpGet:
-            path: /health-check/readiness
-            port: 8080
-          initialDelaySeconds: 5
-          periodSeconds: 10
         resources:
           requests:
             memory: 32Mi
             cpu: 5m
   strategy:
     canary:
-      canaryService: chupa-canary-svc
-      stableService: chupa-stable-svc
+      canaryService: chupa-canary
+      stableService: chupa-stable
       # analysis will be performed in background, while rollout is progressing through its steps
       analysis:
         startingStep: 1   # index of step list, of when to start this analysis
@@ -49,7 +36,7 @@ spec:
         - templateName: istio-success-rate
         args:             # arguments allow AnalysisTemplates to be re-used
         - name: service
-          value: chupa-canary-svc.chupa.svc.cluster.local
+          value: chupa-canary
         - name: namespace
           valueFrom:
             fieldRef:
