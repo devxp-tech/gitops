@@ -28,26 +28,16 @@ spec:
             cpu: 5m
   strategy:
     canary:
-      canaryService: chupa-canary
-      stableService: chupa-stable
-      # analysis will be performed in background, while rollout is progressing through its steps
-      # analysis:
-      #   startingStep: 1   # index of step list, of when to start this analysis
-      #   templates:
-      #   - templateName: istio-success-rate
-        args:             # arguments allow AnalysisTemplates to be re-used
-        - name: service
-          value: chupa-canary.chupa.svc.cluster.local
-        - name: namespace
-          valueFrom:
-            fieldRef:
-              fieldPath: metadata.namespace
       trafficRouting:
         istio:
           virtualService:
-            name: chupa-vsvc
+            name: chupa-vsvc        # required
             routes:
-            - primary
+            - primary                 # optional if there is a single route in VirtualService, required otherwise
+          destinationRule:
+            name: rollout-destrule    # required
+            canarySubsetName: chupa-canary  # required
+            stableSubsetName: chupa-stable  # required
       steps:
       - setWeight: 10
       - pause: {duration: 20s}
