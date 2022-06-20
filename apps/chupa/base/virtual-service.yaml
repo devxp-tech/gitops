@@ -13,8 +13,8 @@ spec:
   - name: primary
     route:
     - destination:
-        host: chupa-stable-svc
+        host: chupa-stable
       weight: 100
     - destination:
-        host: chupa-canary-svc
+        host: chupa-canary
       weight: 0
