@@ -15,6 +15,7 @@ spec:
     port: 8080
   selector:
     app: mechupa
+    version: 0.0.1
   type: ClusterIP
 
 ---
@@ -34,4 +35,5 @@ spec:
     port: 8080
   selector:
     app: mechupa
+    version: 0.0.1
   type: ClusterIP
