@@ -1,0 +1,22 @@
+---
+apiVersion: autoscaling/v2beta2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: mechupa-hpa
+  labels:
+    app: mechupa
+    backstage.io/kubernetes-id: mechupa
+spec:
+  maxReplicas: 5
+  minReplicas: 3
+  scaleTargetRef:
+    apiVersion: argoproj.io/v1alpha1
+    kind: Rollout
+    name: mechupa
+  metrics:
+  - resource:
+      name: cpu
+      target:
+        averageUtilization: 75
+        type: Utilization
+    type: Resource
