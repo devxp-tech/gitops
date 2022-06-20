@@ -10,3 +10,6 @@ spec:
   resources:
     requests:
       storage: 100Gi
+  selector:
+    matchLabels:
+      vol: prometheus-storage
