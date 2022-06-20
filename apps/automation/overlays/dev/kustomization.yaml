@@ -4,4 +4,4 @@ resources:
 - ../../base
 images:
 - name: diegoluisi/automation
-  newTag: latest
+  newTag: daa3c5a9
