@@ -1,0 +1,11 @@
+{
+  "appName": "hell",
+  "userGivenName": "hell",
+  "destNamespace": "hell",
+  "destServer": "https://kubernetes.default.svc",
+  "srcPath": "apps/hell/overlays/dev",
+  "srcRepoURL": "https://github.com/diegoluisi/argo.git",
+  "srcTargetRevision": "",
+  "CreateNamespace": true,
+  "labels": null
+}
