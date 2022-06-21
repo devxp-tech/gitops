@@ -8,7 +8,7 @@ resources:
   - grafana-datasources.yaml
   - grafana-deploy.yaml
   # - grafana-pv.yaml
-  # - grafana-pvc.yaml
+  - grafana-pvc.yaml
   - grafana-sa.yaml
   - grafana-svc.yaml
   - grafana-vs.yaml
