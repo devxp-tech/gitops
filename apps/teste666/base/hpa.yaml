@@ -1,0 +1,22 @@
+---
+apiVersion: autoscaling/v2beta2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: teste666-hpa
+  labels:
+    app: teste666
+    backstage.io/kubernetes-id: teste666
+spec:
+  maxReplicas: 5
+  minReplicas: 3
+  scaleTargetRef:
+    apiVersion: argoproj.io/v1alpha1
+    kind: Rollout
+    name: teste666
+  metrics:
+  - resource:
+      name: cpu
+      target:
+        averageUtilization: 75
+        type: Utilization
+    type: Resource
