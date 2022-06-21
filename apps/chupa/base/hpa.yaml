@@ -7,8 +7,8 @@ metadata:
     app: chupa
     backstage.io/kubernetes-id: chupa
 spec:
-  maxReplicas: 5
-  minReplicas: 3
+  maxReplicas: 6
+  minReplicas: 4
   scaleTargetRef:
     apiVersion: argoproj.io/v1alpha1
     kind: Rollout
