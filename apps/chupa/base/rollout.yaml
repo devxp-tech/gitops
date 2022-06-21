@@ -52,7 +52,7 @@ spec:
       containers:
       - name: chupa
         image: diegoluisi/chupa:0.0.1
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         ports:
         - name: http
           containerPort: 8080
