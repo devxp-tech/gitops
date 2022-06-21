@@ -9,12 +9,24 @@ spec:
   strategy:
     canary:
       steps:
+      - setWeight: 10
+      - pause: {duration: 20s} #{} pause indefinitely
       - setWeight: 20
-      - pause:
-          duration: "1m"
+      - pause: {duration: 20s}
+      - setWeight: 30
+      - pause: {duration: 20s}
+      - setWeight: 40
+      - pause: {duration: 20s}
       - setWeight: 50
-      - pause:
-          duration: "2m"
+      - pause: {duration: 20s}
+      - setWeight: 60
+      - pause: {duration: 20s}
+      - setWeight: 70
+      - pause: {duration: 20s}
+      - setWeight: 80
+      - pause: {duration: 20s}
+      - setWeight: 90
+      - pause: {duration: 20s}
       canaryService: chupa-canary
       stableService: chupa-stable
       trafficRouting:
@@ -28,12 +40,12 @@ spec:
   selector:
     matchLabels:
       app: chupa
-      version: 0.0.1
+      # version: 0.0.1
   template:
     metadata:
       labels:
         app: chupa
-        version: 0.0.1
+        # version: 0.0.1
     spec:
       containers:
       - name: chupa
