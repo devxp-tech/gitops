@@ -50,6 +50,37 @@ spec:
           volumeMounts:
             - mountPath: /var/lib/grafana
               name: grafana-pv
+          env:
+           - name: GF_SERVER_DOMAIN
+             value: grafana.diegoluisi.eti.br
+           - name: GF_SERVER_ROOT_URL
+             value: 'https://grafana.diegoluisi.eti.br'
+           - name: GF_AUTH_GITHUB_ENABLED
+             value: 'true'
+           - name: GF_AUTH_GITHUB_ALLOW_SIGN_UP
+             value: 'true'
+           - name: GF_AUTH_GITHUB_SCOPES
+             value: 'user:email,read:org'
+           - name: GF_AUTH_GITHUB_ALLOWED_ORGANIZATIONS
+             value: devxp-tech
+           - name: GF_AUTH_GITHUB_CLIENT_ID
+             valueFrom:
+               secretKeyRef:
+                 name: auth-generic-oauth-secret
+                 key: GF_AUTH_GITHUB_CLIENT_ID
+                 optional: false
+           - name: GF_AUTH_GITHUB_CLIENT_SECRET
+             valueFrom:
+               secretKeyRef:
+                 name: auth-generic-oauth-secret
+                 key: GF_AUTH_GITHUB_CLIENT_SECRET
+                 optional: false
+           - name: GF_SECURITY_ADMIN_PASSWORD
+             valueFrom:
+               secretKeyRef:
+                 name: auth-generic-oauth-secret
+                 key: GF_SECURITY_ADMIN_PASSWORD
+                 optional: false
       volumes:
         - name: grafana-pv
           persistentVolumeClaim:
