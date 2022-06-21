@@ -40,12 +40,12 @@ spec:
   selector:
     matchLabels:
       app: chupa
-      # version: 0.0.1
+      version: 0.0.1
   template:
     metadata:
       labels:
         app: chupa
-        # version: 0.0.1
+        version: 0.0.1
     spec:
       containers:
       - name: chupa
@@ -54,6 +54,7 @@ spec:
         ports:
         - name: http
           containerPort: 8080
+          protocol: TCP
         resources:
           requests:
             memory: "64Mi"
