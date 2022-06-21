@@ -1,0 +1,12 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  labels:
+    kubernetes.io/metadata.name: hellx
+    backstage.io/kubernetes-id: hellx
+    # istio-injection: enabled
+  name: hellx
+spec:
+  finalizers:
+  - kubernetes

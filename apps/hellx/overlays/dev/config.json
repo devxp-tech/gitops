@@ -1,0 +1,11 @@
+{
+  "appName": "hellx",
+  "userGivenName": "hellx",
+  "destNamespace": "hellx",
+  "destServer": "https://kubernetes.default.svc",
+  "srcPath": "apps/hellx/overlays/dev",
+  "srcRepoURL": "https://github.com/diegoluisi/argo.git",
+  "srcTargetRevision": "",
+  "CreateNamespace": true,
+  "labels": null
+}
