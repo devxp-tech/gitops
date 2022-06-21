@@ -61,3 +61,15 @@ spec:
           limits:
             memory: "128Mi"
             cpu: "140m"
+        livenessProbe:
+          httpGet:
+            path: /health-check/liveness
+            port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /health-check/readiness
+            port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 10
