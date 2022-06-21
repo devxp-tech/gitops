@@ -192,3 +192,16 @@ spec:
     namespace: kube-system
   version: v1beta1
   versionPriority: 100
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: kubelet-api-admin
+subjects:
+- kind: User
+  name: kubelet-api
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: ClusterRole
+  name: system:kubelet-api-admin
+  apiGroup: rbac.authorization.k8s.io
