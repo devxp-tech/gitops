@@ -12,11 +12,21 @@ data:
       rules:
       - alert: High Pod Memory
         expr: sum(container_memory_usage_bytes) > 1
-        for: 1m
+        for: 0m
         labels:
           severity: slack
         annotations:
           summary: High Memory Usage
+
+      - alert: TooManyRestarts
+        expr: changes(process_start_time_seconds{job=~"prometheus|pushgateway|alertmanager"}[15m]) > 2
+        for: 0m
+        labels:
+          severity: slack
+        annotations:
+          summary: Prometheus too many restarts (instance {{ $labels.instance }})
+          description: "Prometheus has restarted more than twice in the last 15 minutes. It might be crashlooping.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+
   prometheus.yml: |-
     global:
       scrape_interval: 5s
