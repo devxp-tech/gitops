@@ -10,6 +10,43 @@ data:
     groups:
     - name: devxp-tech-alerts
       rules:
+
+      - alert: PrometheusTargetMissing
+        expr: up == 0
+        for: 0m
+        labels:
+          severity: critical
+        annotations:
+          summary: Prometheus target missing (instance {{ $labels.instance }})
+          description: "A Prometheus target has disappeared. An exporter might be crashed.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+
+      - alert: PrometheusConfigurationReloadFailure
+        expr: prometheus_config_last_reload_successful != 1
+        for: 0m
+        labels:
+          severity: warning
+        annotations:
+          summary: Prometheus configuration reload failure (instance {{ $labels.instance }})
+          description: "Prometheus configuration reload error\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+
+      - alert: PrometheusTooManyRestarts
+        expr: changes(process_start_time_seconds{job=~"prometheus|pushgateway|alertmanager"}[15m]) > 2
+        for: 0m
+        labels:
+          severity: warning
+        annotations:
+          summary: Prometheus too many restarts (instance {{ $labels.instance }})
+          description: "Prometheus has restarted more than twice in the last 15 minutes. It might be crashlooping.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+
+      - alert: PrometheusAlertmanagerJobMissing
+        expr: absent(up{job="alertmanager"})
+        for: 0m
+        labels:
+          severity: warning
+        annotations:
+          summary: Prometheus AlertManager job missing (instance {{ $labels.instance }})
+          description: "A Prometheus AlertManager job has disappeared\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+
       - alert: High Pod Memory
         expr: sum(container_memory_usage_bytes) > 1
         for: 0m
@@ -18,14 +55,6 @@ data:
         annotations:
           summary: High Memory Usage
 
-      - alert: TooManyRestarts
-        expr: changes(process_start_time_seconds{job=~"prometheus|pushgateway|alertmanager"}[15m]) > 2
-        for: 0m
-        labels:
-          severity: warning
-        annotations:
-          summary: Prometheus too many restarts (instance {{ $labels.instance }})
-          description: "Prometheus has restarted more than twice in the last 15 minutes. It might be crashlooping.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 
   prometheus.yml: |-
     global:
