@@ -76,7 +76,7 @@ spec:
         notifications.argoproj.io/subscribe.on-sync-failed.slack: argocd-notifications
         notifications.argoproj.io/subscribe.on-sync-status-unknown.slack: argocd-notifications
         notifications.argoproj.io/subscribe.on-health-degraded.slack: argocd-notifications
-        # notifications.argoproj.io/subscribe.on-deployed.slack.slack: argocd-notifications
+        notifications.argoproj.io/subscribe.on-deployed.slack.slack: argocd-notifications
         notifications.argoproj.io/subscribe.on-sync-succeeded.grafana: deployment
       name: prd-{{ userGivenName }}
       namespace: argocd
