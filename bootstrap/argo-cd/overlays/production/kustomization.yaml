@@ -10,3 +10,4 @@ patchesStrategicMerge:
 - argocd-rbac-cm.yaml
 - argocd-notifications-cm.yaml
 - argocd-notifications.yaml
+
