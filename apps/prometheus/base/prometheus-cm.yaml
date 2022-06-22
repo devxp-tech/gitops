@@ -56,14 +56,14 @@ data:
           summary: Prometheus AlertManager configuration reload failure (instance {{ $labels.instance }})
           description: "AlertManager configuration reload error\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 
-      - alert: PrometheusAlertmanagerE2eDeadManSwitch
-        expr: vector(1)
-        for: 0m
-        labels:
-          severity: critical
-        annotations:
-          summary: Prometheus AlertManager E2E dead man switch (instance {{ $labels.instance }})
-          description: "Prometheus DeadManSwitch is an always-firing alert. It's used as an end-to-end test of Prometheus through the Alertmanager.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+      # - alert: PrometheusAlertmanagerE2eDeadManSwitch
+      #   expr: vector(1)
+      #   for: 0m
+      #   labels:
+      #     severity: critical
+      #   annotations:
+      #     summary: Prometheus AlertManager E2E dead man switch (instance {{ $labels.instance }})
+      #     description: "Prometheus DeadManSwitch is an always-firing alert. It's used as an end-to-end test of Prometheus through the Alertmanager.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 
       - alert: HostOutOfMemory
         expr: node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes * 100 < 10
