@@ -30,6 +30,13 @@ spec:
             limits:
               cpu: 250m
               memory: 256M
+        env:
+        # Define as variáveis de ambiente
+        - name: WEBHOOK_URL # Note que aqui a variável está definida em caixa alta
+          valueFrom:
+            configMapKeyRef:
+              name: slack-webhook           # O ConfigMap de onde esse valor vem.
+              key: webhookURL # A chave que deve ser buscada.
         volumeMounts:
         - name: config-volume
           mountPath: /etc/alertmanager
