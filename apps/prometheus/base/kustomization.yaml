@@ -7,6 +7,6 @@ resources:
   - prometheus-cm.yaml
   - prometheus-deploy.yaml
   # - prometheus-pv.yaml
-  # - prometheus-pvc.yaml
+  - prometheus-pvc.yaml
   - prometheus-role.yaml
   - prometheus-svc.yaml

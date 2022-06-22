@@ -49,9 +49,6 @@ spec:
             requests:
               cpu: 250m
               memory: 250Mi
-          volumeMounts:
-            - mountPath: /var/lib/grafana
-              name: grafana-pv
           env:
            - name: GF_SERVER_DOMAIN
              value: grafana.diegoluisi.eti.br
@@ -83,6 +80,9 @@ spec:
                  name: auth-generic-oauth-secret
                  key: GF_SECURITY_ADMIN_PASSWORD
                  optional: false
+          volumeMounts:
+            - mountPath: /var/lib/grafana
+              name: grafana-pv
       volumes:
         - name: grafana-pv
           persistentVolumeClaim:
