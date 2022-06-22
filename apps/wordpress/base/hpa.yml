@@ -8,7 +8,7 @@ spec:
     kind: Deployment
     name: wordpress
   minReplicas: 1
-  maxReplicas: 3
+  maxReplicas: 1
   metrics:
   - type: Resource
     resource:
