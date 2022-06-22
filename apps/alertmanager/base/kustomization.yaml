@@ -6,4 +6,4 @@ resources:
   - alertmanager-deploy.yaml
   - alertmanager-svc.yaml
   - alertmanager-templates.yaml
-  - slack-webhook-sealed.yaml
+  - secret-config-sealed.yaml
