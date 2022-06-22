@@ -24,6 +24,12 @@ spec:
             - "--storage.tsdb.path=/prometheus/"
           ports:
             - containerPort: 9090
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 9090
+            initialDelaySeconds: 3
+            periodSeconds: 5
           resources:
             requests:
               cpu: 500m
@@ -36,6 +42,8 @@ spec:
               mountPath: /etc/prometheus/
             - name: prometheus-pv
               mountPath: /prometheus/
+          securityContext:
+            privileged: true
       volumes:
         - name: prometheus-config-volume
           configMap:
