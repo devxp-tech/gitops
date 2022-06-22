@@ -1,0 +1,12 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  labels:
+    kubernetes.io/metadata.name: php-lindo
+    backstage.io/kubernetes-id: php-lindo
+    # istio-injection: enabled
+  name: php-lindo
+spec:
+  finalizers:
+  - kubernetes
