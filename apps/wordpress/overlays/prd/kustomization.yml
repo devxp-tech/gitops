@@ -3,5 +3,3 @@ kind: Kustomization
 
 bases:
 - ../../base
-patchesStrategicMerge:
-- hpa.yml
