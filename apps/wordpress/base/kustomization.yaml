@@ -4,7 +4,7 @@ namespace: wordpress
 resources:
   - deploy-mysql.yml
   - deploy-wordpress.yml
-  # - hpa.yml
+  - hpa.yml
   - pv.yml
   - pvc-mysql.yml
   - pvc-wordpress.yml
