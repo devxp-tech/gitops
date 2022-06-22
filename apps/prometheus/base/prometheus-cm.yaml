@@ -14,7 +14,7 @@ data:
         expr: sum(container_memory_usage_bytes) > 1
         for: 0m
         labels:
-          severity: slack
+          severity: warning
         annotations:
           summary: High Memory Usage
 
@@ -22,7 +22,7 @@ data:
         expr: changes(process_start_time_seconds{job=~"prometheus|pushgateway|alertmanager"}[15m]) > 2
         for: 0m
         labels:
-          severity: slack
+          severity: warning
         annotations:
           summary: Prometheus too many restarts (instance {{ $labels.instance }})
           description: "Prometheus has restarted more than twice in the last 15 minutes. It might be crashlooping.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
