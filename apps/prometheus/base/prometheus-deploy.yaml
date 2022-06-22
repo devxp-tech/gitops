@@ -34,7 +34,7 @@ spec:
           volumeMounts:
             - name: prometheus-config-volume
               mountPath: /etc/prometheus/
-            - name: prometheus-storage-volume
+            - name: prometheus-pv
               mountPath: /prometheus/
       volumes:
         - name: prometheus-config-volume
@@ -42,5 +42,9 @@ spec:
             defaultMode: 420
             name: prometheus-server-conf
 
-        - name: prometheus-storage-volume
-          emptyDir: {}
+        # - name: prometheus-storage-volume
+        #   emptyDir: {}
+
+        - name: prometheus-pv
+          persistentVolumeClaim:
+            claimName: prometheus-pvc
