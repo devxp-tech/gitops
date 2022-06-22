@@ -141,14 +141,14 @@ data:
           description: "{{ $labels.instance }} requires a reboot.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 
       # This rule can be very noisy in dynamic infra with legitimate container start/stop/deployment.
-      - alert: ContainerKilled
-        expr: time() - container_last_seen > 60
-        for: 0m
-        labels:
-          severity: warning
-        annotations:
-          summary: Container killed (instance {{ $labels.instance }})
-          description: "A container has disappeared\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+      # - alert: ContainerKilled
+      #   expr: time() - container_last_seen > 60
+      #   for: 0m
+      #   labels:
+      #     severity: warning
+      #   annotations:
+      #     summary: Container killed (instance {{ $labels.instance }})
+      #     description: "A container has disappeared\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 
       # This rule can be very noisy in dynamic infra with legitimate container start/stop/deployment.
       - alert: ContainerAbsent
