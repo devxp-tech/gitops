@@ -34,9 +34,10 @@ spec:
         # Define as variáveis de ambiente
         - name: WEBHOOK_URL # Note que aqui a variável está definida em caixa alta
           valueFrom:
-            configMapKeyRef:
+            secretKeyRef:
               name: slack-webhook           # O ConfigMap de onde esse valor vem.
               key: webhookURL # A chave que deve ser buscada.
+              optional: false
         volumeMounts:
         - name: config-volume
           mountPath: /etc/alertmanager
