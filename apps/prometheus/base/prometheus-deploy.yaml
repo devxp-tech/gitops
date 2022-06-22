@@ -15,6 +15,22 @@ spec:
       labels:
         app: prometheus-server
     spec:
+      securityContext:
+        fsGroup: 65534
+        runAsGroup: 65534
+        runAsNonRoot: true
+        runAsUser: 65534
+      initContainers:
+      - name: app-data-permission-fix
+        image: busybox
+        command: ["/bin/chmod","-R","777","/appdata"]
+        volumeMounts:
+        - name: prometheus-pv
+          mountPath: /appdata
+        securityContext:
+          runAsGroup: 0
+          runAsNonRoot: false
+          runAsUser: 0
       containers:
         - name: prometheus
           image: prom/prometheus:latest
@@ -42,22 +58,6 @@ spec:
               mountPath: /etc/prometheus/
             - name: prometheus-pv
               mountPath: /prometheus/
-          securityContext:
-            fsGroup: 65534
-            runAsGroup: 65534
-            runAsNonRoot: true
-            runAsUser: 65534
-          initContainers:
-          - name: app-data-permission-fix
-            image: busybox
-            command: ["/bin/chmod","-R","777","/appdata"]
-            volumeMounts:
-            - name: prometheus-pv
-              mountPath: /appdata
-            securityContext:
-              runAsGroup: 0
-              runAsNonRoot: false
-              runAsUser: 0
       volumes:
         - name: prometheus-config-volume
           configMap:
