@@ -28,7 +28,7 @@ spec:
           readinessProbe:
             httpGet:
               path: /api/health
-              port: grafana
+              port: http-grafana
             initialDelaySeconds: 15
             timeoutSeconds: 2
             periodSeconds: 10
