@@ -35,4 +35,4 @@ data:
     - name: slack
       slack_configs:
       - channel: '#alerts'
-        api_url: '$WEBHOOK_URL'
+        api_url: $WEBHOOK_URL
