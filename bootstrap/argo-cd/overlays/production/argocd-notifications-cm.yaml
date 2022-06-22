@@ -5,3 +5,6 @@ metadata:
 data:
   service.slack: |
     token: $slack-token
+  service.grafana: |
+    apiUrl: https://grafana.example.com/api
+    apiKey: $grafana-api-key
