@@ -114,7 +114,7 @@ data:
         scheme: http
         static_configs:
         - targets:
-          - kube-state-metrics.kube-system.svc.lgsk8sp1.grupologos.local:8080
+          - kube-state-metrics.kube-system.svc:8080
 
       - job_name: 'kubernetes-cadvisor'
 
