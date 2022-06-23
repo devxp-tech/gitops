@@ -1,14 +1,12 @@
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
-  annotations:
-  name: diego-hpa
-  namespace: diego
+ name: diego-hpa
 spec:
-  minReplicas: 1
-  maxReplicas: 4
-  scaleTargetRef:
-    apiVersion: extensions/v1
-    kind: Deployment
-    name: diego-deploy
-  targetCPUUtilizationPercentage: 75
+ scaleTargetRef:
+   apiVersion: apps/v1
+   kind: Deployment
+   name: diego-deploy
+ minReplicas: 1
+ maxReplicas: 4
+ targetCPUUtilizationPercentage: 50
