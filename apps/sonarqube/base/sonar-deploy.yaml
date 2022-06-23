@@ -37,6 +37,8 @@ spec:
         env:
           - name: SONAR_CE_JAVAOPTS
             value: "-Xmx1G -Xms1G"
+          - name: JAVA_OPTS
+            value: "-Duser.timezone=America/Sao_Paulo -Xmx1024m"
         envFrom:
         - configMapRef:
             name: sonar-config
