@@ -30,7 +30,7 @@ spec:
           privileged: true
       containers:
       - name: sonarqube
-        image: sonarqube:8.9.1-community
+        image: sonarqube:8.9.9-community
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 9000
@@ -46,9 +46,9 @@ spec:
           subPath: extensions
         resources:
           requests:
-            memory: "256Mi"
+            memory: "1024Mi"
           limits:
-            memory: "512Mi"
+            memory: "2048Mi"
       volumes:
       - name: app-pvc
         persistentVolumeClaim:
