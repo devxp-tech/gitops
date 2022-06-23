@@ -1,0 +1,11 @@
+{
+  "appName": "chupa3",
+  "userGivenName": "chupa3",
+  "destNamespace": "chupa3",
+  "destServer": "https://kubernetes.default.svc",
+  "srcPath": "apps/chupa3/overlays/dev",
+  "srcRepoURL": "https://github.com/diegoluisi/argo.git",
+  "srcTargetRevision": "",
+  "CreateNamespace": true,
+  "labels": null
+}

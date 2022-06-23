@@ -1,0 +1,45 @@
+---
+# create deployment for chupa3
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: chupa3
+  namespace: chupa3
+  labels:
+    app: chupa3
+    version: 0.0.1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: chupa3
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: chupa3
+        version: 0.0.1
+    spec:
+      containers:
+      - name: chupa3
+        image: diegoluisi/chupa3:latest
+        imagePullPolicy: IfNotPresent
+        resources:
+          requests:
+            cpu: 50m
+            memory: "64Mi"
+          limits:
+            cpu: 100m
+            memory: "128Mi"
+        ports:
+        - name: http
+          containerPort: 8080
+        readinessProbe:
+          httpGet:
+            port: http
+            path: /health-check/readiness
+        livenessProbe:
+          httpGet:
+            port: http
+            path: /health-check/liveness
