@@ -1,0 +1,45 @@
+---
+# create deployment for 
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: 
+  namespace: 
+  labels:
+    app: 
+    version: 0.0.1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: 
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: 
+        version: 0.0.1
+    spec:
+      containers:
+      - name: 
+        image: diegoluisi/:latest
+        imagePullPolicy: IfNotPresent
+        resources:
+          requests:
+            cpu: 50m
+            memory: "64Mi"
+          limits:
+            cpu: 100m
+            memory: "128Mi"
+        ports:
+        - name: http
+          containerPort: 8080
+        readinessProbe:
+          httpGet:
+            port: http
+            path: /health-check/readiness
+        livenessProbe:
+          httpGet:
+            port: http
+            path: /health-check/liveness
