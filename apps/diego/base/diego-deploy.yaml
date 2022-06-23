@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
       - name: diegoluisi
-        image: diegoluisi/diego:latest
+        image: diegoluisi/diegoxxx:latest
         imagePullPolicy: IfNotPresent
         resources:
           requests:
@@ -32,7 +32,7 @@ spec:
           limits:
             cpu: 100m
             memory: "128Mi"
-        portsx:
+        ports:
         - name: http
           containerPort: 8080
         readinessProbe:
