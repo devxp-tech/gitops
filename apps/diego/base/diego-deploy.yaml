@@ -35,7 +35,6 @@ spec:
         ports:
         - name: http
           containerPort: 8080
-          name: diego
           readinessProbe:
             httpGet:
               port: http
