@@ -34,6 +34,9 @@ spec:
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 9000
+        env:
+          - name: SONAR_CE_JAVAOPTS
+            value: "-Xmx1G -Xms1G"
         envFrom:
         - configMapRef:
             name: sonar-config
