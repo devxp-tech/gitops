@@ -38,7 +38,7 @@ spec:
           - name: SONAR_CE_JAVAOPTS
             value: "-Xmx1024m -Xms1024m"
           - name: JAVA_OPTS
-            value: "-Duser.timezone=America/Sao_Paulo -Xmx512m"
+            value: "-Duser.timezone=America/Sao_Paulo -Xmx1024m"
         envFrom:
         - configMapRef:
             name: sonar-config
@@ -51,7 +51,7 @@ spec:
           subPath: extensions
         resources:
           requests:
-            memory: "512Mi"
+            memory: "1024Mi"
           limits:
             memory: "2048Mi"
       volumes:
