@@ -1,8 +1,8 @@
 kind: ResourceQuota
 apiVersion: v1
 metadata:
-  name: -quota
-  namespace: 
+  name: chupa3-quota
+  namespace: chupa3
 spec:
   hard:
     limits.cpu: 100m
