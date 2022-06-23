@@ -3,7 +3,7 @@
 apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
 kind: Deployment
 metadata:
-  name: diego
+  name: diego-deploy
   namespace: diego
   labels:
     app: diego
@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
       - name: diegoluisi
-        image: diego:latest
+        image: diegoluisi/diego:latest
         resources:
           requests:
             cpu: 100m
