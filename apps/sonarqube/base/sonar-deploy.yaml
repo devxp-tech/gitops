@@ -36,9 +36,9 @@ spec:
         - containerPort: 9000
         env:
           - name: SONAR_CE_JAVAOPTS
-            value: "-Xmx1G -Xms1G"
+            value: "-Xmx512m -Xms512m"
           - name: JAVA_OPTS
-            value: "-Duser.timezone=America/Sao_Paulo -Xmx1024m"
+            value: "-Duser.timezone=America/Sao_Paulo -Xmx512m"
         envFrom:
         - configMapRef:
             name: sonar-config
@@ -51,9 +51,9 @@ spec:
           subPath: extensions
         resources:
           requests:
-            memory: "1024Mi"
+            memory: "512Mi"
           limits:
-            memory: "2048Mi"
+            memory: "1024Mi"
       volumes:
       - name: app-pvc
         persistentVolumeClaim:
