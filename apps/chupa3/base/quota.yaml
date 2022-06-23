@@ -1,0 +1,9 @@
+kind: ResourceQuota
+apiVersion: v1
+metadata:
+  name: -quota
+  namespace: 
+spec:
+  hard:
+    limits.cpu: 100m
+    limits.memory: 128Mi
