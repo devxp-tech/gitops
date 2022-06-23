@@ -4,6 +4,7 @@ kind: Kustomization
 namespace: diego
 resources:
   - diego-ns.yaml
+  - diego-quota.yaml
   - diego-deploy.yaml
   - diego-svc.yaml
   - diego-vs.yaml
