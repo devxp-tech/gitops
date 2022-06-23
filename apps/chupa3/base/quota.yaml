@@ -1,3 +1,4 @@
+---
 kind: ResourceQuota
 apiVersion: v1
 metadata:
@@ -5,5 +6,5 @@ metadata:
   namespace: chupa3
 spec:
   hard:
-    limits.cpu: 100m
-    limits.memory: 128Mi
+    limits.cpu: 500m
+    limits.memory: 512Mi
