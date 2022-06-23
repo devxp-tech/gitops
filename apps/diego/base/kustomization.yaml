@@ -3,10 +3,10 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: diego
 resources:
+  - namespace.yaml
   - analyses.yaml
   - diego-deploy.yaml
-  # - hpa.yaml
-  - namespace.yaml
+  # - diego-hpa.yaml
   # - rollout.yaml
   - diego-svc.yaml
   - diego-vs.yaml
