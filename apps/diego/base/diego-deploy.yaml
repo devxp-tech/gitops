@@ -9,7 +9,7 @@ metadata:
     app: diego
     version: 0.0.1
 spec:
-  # replicas: 1
+  replicas: 1
   selector:
     matchLabels:
       app: diego
