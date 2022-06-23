@@ -30,7 +30,7 @@ spec:
           privileged: true
       containers:
       - name: sonarqube
-        image: sonarqube:8.9.9-community
+        image: sonarqube:9.5.0-community
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 9000
