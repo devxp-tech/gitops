@@ -4,4 +4,4 @@ resources:
 - ../../base
 images:
 - name: diegoluisi/chupa2
-  newTag: latest
+  newTag: 1a8895b2
