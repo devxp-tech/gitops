@@ -35,11 +35,11 @@ spec:
         ports:
         - name: http
           containerPort: 8080
-          readinessProbe:
-            httpGet:
-              port: http
-              path: /health-check/readiness
-          livenessProbe:
-            httpGet:
-              port: http
-              path: /health-check/liveness
+        readinessProbe:
+          httpGet:
+            port: http
+            path: /health-check/readiness
+        livenessProbe:
+          httpGet:
+            port: http
+            path: /health-check/liveness
