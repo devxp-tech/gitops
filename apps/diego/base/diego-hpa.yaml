@@ -1,22 +1,19 @@
 ---
-apiVersion: autoscaling/v2beta2
+apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: diego-hpa
-  labels:
-    app: diego
-    backstage.io/kubernetes-id: diego
 spec:
-  maxReplicas: 5
-  minReplicas: 3
   scaleTargetRef:
-    apiVersion: argoproj.io/v1alpha1
-    kind: Rollout
-    name: diego
+    apiVersion: apps/v1
+    kind: Deployment
+    name: diego-deploy
+  minReplicas: 1
+  maxReplicas: 3
   metrics:
-  - resource:
+  - type: Resource
+    resource:
       name: cpu
       target:
-        averageUtilization: 75
         type: Utilization
-    type: Resource
+        averageUtilization: 75

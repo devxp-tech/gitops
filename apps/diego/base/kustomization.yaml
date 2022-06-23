@@ -7,6 +7,6 @@ resources:
   - diego-deploy.yaml
   - diego-svc.yaml
   - diego-vs.yaml
-  # - diego-hpa.yaml
+  - diego-hpa.yaml
   # - rollout.yaml
   - analyses.yaml
