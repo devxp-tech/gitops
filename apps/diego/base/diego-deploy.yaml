@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
       - name: diegoluisi
-        image: diegoluisi/diegoxxx:latest
+        image: diegoluisi/diego:latest
         imagePullPolicy: IfNotPresent
         resources:
           requests:
