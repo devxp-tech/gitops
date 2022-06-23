@@ -4,6 +4,7 @@ kind: Kustomization
 namespace: diego
 resources:
   - analyses.yaml
+  - diego-deploy.yaml
   - hpa.yaml
   - namespace.yaml
   - rollout.yaml

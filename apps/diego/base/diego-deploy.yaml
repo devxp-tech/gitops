@@ -1,0 +1,37 @@
+---
+# create deployment for diego
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: diego
+  namespace: diego
+  labels:
+    app: diego
+    version: 0.0.1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: diego
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: diego
+        version: 0.0.1
+    spec:
+      containers:
+      - name: diegoluisi
+        image: diego:latest
+        resources:
+          requests:
+            cpu: 100m
+            memory: "128Mi"
+          limits:
+            cpu: 300m
+            memory: "256Mi"
+        ports:
+        - containerPort: 8080
+          name: diego
+
