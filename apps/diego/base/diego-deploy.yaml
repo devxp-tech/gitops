@@ -24,6 +24,7 @@ spec:
       containers:
       - name: diegoluisi
         image: diegoluisi/diego:latest
+        imagePullPolicy: IfNotPresent
         resources:
           requests:
             cpu: 100m
@@ -34,4 +35,11 @@ spec:
         ports:
         - containerPort: 8080
           name: diego
-
+          readinessProbe:
+            httpGet:
+              port: 8080
+              path: /health-check/readiness
+          livenessProbe:
+            httpGet:
+              port: 8080
+              path: /health-check/liveness
