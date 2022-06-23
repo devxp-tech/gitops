@@ -4,4 +4,4 @@ resources:
 - ../../base
 images:
 - name: diegoluisi/diego
-  newTag: latest
+  newTag: 59193fb4
