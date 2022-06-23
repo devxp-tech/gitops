@@ -32,14 +32,14 @@ spec:
           limits:
             cpu: 100m
             memory: "128Mi"
-        ports:
+        portsx:
         - name: http
           containerPort: 8080
         readinessProbe:
           httpGet:
-            port: http
+            port: 8080
             path: /health-check/readiness
         livenessProbe:
           httpGet:
-            port: http
+            port: 8080
             path: /health-check/liveness
