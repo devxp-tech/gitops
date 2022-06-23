@@ -5,3 +5,5 @@ resources:
 images:
 - name: diegoluisi/chupa3
   newTag: a2a3e050
+commonLabels:
+  version: 0.0.2
