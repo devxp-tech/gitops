@@ -5,8 +5,8 @@ namespace: diego
 resources:
   - analyses.yaml
   - diego-deploy.yaml
-  - hpa.yaml
+  # - hpa.yaml
   - namespace.yaml
-  - rollout.yaml
-  - service.yaml
-  - virtual-service.yaml
+  # - rollout.yaml
+  - diego-svc.yaml
+  - diego-vs.yaml
