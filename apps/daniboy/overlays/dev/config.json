@@ -1,0 +1,11 @@
+{
+  "appName": "daniboy",
+  "userGivenName": "daniboy",
+  "destNamespace": "daniboy",
+  "destServer": "https://kubernetes.default.svc",
+  "srcPath": "apps/daniboy/overlays/dev",
+  "srcRepoURL": "https://github.com/diegoluisi/argo.git",
+  "srcTargetRevision": "",
+  "CreateNamespace": true,
+  "labels": null
+}
