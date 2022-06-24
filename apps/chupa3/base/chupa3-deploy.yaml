@@ -7,8 +7,6 @@ metadata:
   namespace: chupa3
   labels:
     app: chupa3
-  annotations:
-    app: chupa3
     version: 0.0.1
     backstage.io/kubernetes-id: chupa3
 spec:
@@ -23,6 +21,7 @@ spec:
       labels:
         app: chupa3
         version: 0.0.1
+        backstage.io/kubernetes-id: chupa3
     spec:
       containers:
       - name: chupa3
