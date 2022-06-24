@@ -4,4 +4,4 @@ resources:
 - ../../base
 images:
 - name: diegoluisi/fullfoda
-  newTag: latest
+  newTag: 8c68360b
