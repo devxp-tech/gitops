@@ -4,4 +4,4 @@ resources:
 - ../../base
 images:
 - name: diegoluisi/daniboy
-  newTag: latest
+  newTag: da3d57ef
