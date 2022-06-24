@@ -93,6 +93,15 @@ data:
         enabled: true
       istio:
         root_namespace: istio-system
+      prometheus:
+        # Prometheus service name is "metrics" and is in the "telemetry" namespace
+        url: "http://prometheus.monitoring:9090/"
+      grafana:
+        enabled: true
+        # Grafana service name is "grafana" and is in the "telemetry" namespace.
+        in_cluster_url: 'http://grafana.monitoring:3000/'
+        # Public facing URL of Grafana
+        url: 'https://grafana.diegoluisi.eti.br'
     identity:
       cert_file: ""
       private_key_file: ""
