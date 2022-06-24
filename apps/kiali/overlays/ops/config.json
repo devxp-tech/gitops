@@ -4,7 +4,7 @@
   "destNamespace": "kiali",
   "destServer": "https://kubernetes.default.svc",
   "srcPath": "apps/kiali/overlays/ops",
-  "srcRepoURL": "https://github.com/diegoluisi/argo.git",
+  "srcRepoURL": "https://kiali.org/helm-charts",
   "srcTargetRevision": "",
   "CreateNamespace": true,
   "labels": null
