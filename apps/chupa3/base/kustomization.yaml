@@ -4,7 +4,7 @@ kind: Kustomization
 namespace: chupa3
 resources:
   - ns.yaml
-  - quota.yaml
+  # - quota.yaml
   - chupa3-deploy.yaml
   - chupa3-svc.yaml
   - chupa3-vs.yaml
