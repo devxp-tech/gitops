@@ -6,6 +6,7 @@ metadata:
   labels:
     annotations:
       app: backstage
+      version: 1.0.0
       backstage.io/kubernetes-id: backstage
 spec:
   replicas: 1
