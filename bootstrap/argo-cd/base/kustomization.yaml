@@ -4,6 +4,7 @@ namespace: argocd
 resources:
   - namespace.yaml
   - argo-rollouts.yaml
+  - argocd-notifications-secret-sealed.yaml
 #- github-secrets-sealed.yaml
   - github.com/argoproj/argo-cd/manifests/crds
   - github.com/argoproj/argo-cd/manifests/base
