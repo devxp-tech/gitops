@@ -4,6 +4,10 @@ kind: VirtualService
 metadata:
   name: chupa3-vs
   namespace: chupa3
+  labels:
+    app: chupa3
+    version: 0.0.1
+    backstage.io/kubernetes-id: chupa3
 spec:
   gateways:
   - istio-system/istio-gateway
