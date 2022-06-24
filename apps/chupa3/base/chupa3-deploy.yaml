@@ -45,5 +45,5 @@ spec:
           httpGet:
             port: 8080
             path: /health-check/liveness
-          initialDelaySeconds: 5
-          periodSeconds: 10
+          initialDelaySeconds: 3
+          periodSeconds: 15
