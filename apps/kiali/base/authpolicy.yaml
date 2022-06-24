@@ -12,4 +12,4 @@ spec:
     when:
       - key: 'request.headers[x-envoy-external-address]'
         values:
-        - 94.62.74.120  # NE vpn ip
+        - 94.62.74.120  # home
