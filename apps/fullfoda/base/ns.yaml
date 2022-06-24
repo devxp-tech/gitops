@@ -1,0 +1,12 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: fullfoda
+  labels:
+    kubernetes.io/metadata.name: fullfoda
+    backstage.io/kubernetes-id: fullfoda
+    istio-injection: enabled
+spec:
+  finalizers:
+  - kubernetes

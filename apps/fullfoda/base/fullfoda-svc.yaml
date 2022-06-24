@@ -1,0 +1,19 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fullfoda-svc
+  namespace: fullfoda
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: fullfoda.diegoluisi.eti.br
+  labels:
+    app: fullfoda
+    version: 0.0.1
+    backstage.io/kubernetes-id: fullfoda
+spec:
+  type: ClusterIP
+  ports:
+  - name: tcp-node
+    port: 8080
+  selector:
+    app: fullfoda
