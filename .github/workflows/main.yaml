@@ -1,0 +1,30 @@
+---
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+env:
+  DATREE_TOKEN: ${{ secrets.ACCESS_TOKEN_GITHUB }}
+
+jobs:
+  k8sPolicyCheck:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Run Datree Policy Check
+        uses: datreeio/action-datree@main
+        with:
+          path: '**/*.yaml'
+          cliArguments: '--only-k8s-files'
+
+  lintAllTheThings:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: yaml-lint
+        uses: ibiqlik/action-yamllint@v3
