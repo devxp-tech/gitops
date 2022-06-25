@@ -24,6 +24,7 @@ jobs:
 
   lintAllTheThings:
     runs-on: ubuntu-latest
+    needs: k8sPolicyCheck
     steps:
       - uses: actions/checkout@v2
       - name: yaml-lint
