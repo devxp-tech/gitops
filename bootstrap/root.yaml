@@ -21,7 +21,7 @@ spec:
   project: default
   source:
     path: projects
-    repoURL: https://github.com/diegoluisi/argo.git
+    repoURL: https://github.com/devxp-tech/gitops.git
   syncPolicy:
     automated:
       allowEmpty: true

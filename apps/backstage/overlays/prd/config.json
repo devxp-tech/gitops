@@ -4,7 +4,7 @@
   "destNamespace": "backstage",
   "destServer": "https://kubernetes.default.svc",
   "srcPath": "apps/backstage/overlays/prd",
-  "srcRepoURL": "https://github.com/diegoluisi/argo.git",
+  "srcRepoURL": "https://github.com/devxp-tech/gitops.git",
   "srcTargetRevision": "",
   "CreateNamespace": true,
   "labels": null

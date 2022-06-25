@@ -4,7 +4,7 @@
   "destNamespace": "daniboy",
   "destServer": "https://kubernetes.default.svc",
   "srcPath": "apps/daniboy/overlays/dev",
-  "srcRepoURL": "https://github.com/diegoluisi/argo.git",
+  "srcRepoURL": "https://github.com/devxp-tech/gitops.git",
   "srcTargetRevision": "",
   "CreateNamespace": true,
   "labels": null
