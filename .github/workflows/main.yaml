@@ -6,7 +6,7 @@ on:
     branches: [ main ]
 
 env:
-  DATREE_TOKEN: ${{ secrets.ACCESS_TOKEN_GITHUB }}
+  DATREE_TOKEN: ${{ secrets.DATREE_TOKEN }}
 
 jobs:
   k8sPolicyCheck:
