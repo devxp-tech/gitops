@@ -16,7 +16,7 @@ Have a kubeconfig file (default location is ~/.kube/config).
 
 ### Clone my repo
 ````bash
-git@github.com:diegoluisi/argocd.git
+git@github.com:devxp-tech/gitopscd.git
 cd argocd
 ````
 

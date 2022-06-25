@@ -37,7 +37,7 @@ spec:
   - git:
       files:
       - path: apps/**/dev/config.json
-      repoURL: https://github.com/diegoluisi/argo.git
+      repoURL: https://github.com/devxp-tech/gitops.git
       requeueAfterSeconds: 20
       revision: ""
       template:
@@ -50,7 +50,7 @@ spec:
   - git:
       files:
       - path: apps/**/dev/config_dir.json
-      repoURL: https://github.com/diegoluisi/argo.git
+      repoURL: https://github.com/devxp-tech/gitops.git
       requeueAfterSeconds: 20
       revision: ""
       template:

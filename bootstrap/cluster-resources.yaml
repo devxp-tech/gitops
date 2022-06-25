@@ -11,7 +11,7 @@ spec:
   - git:
       files:
       - path: bootstrap/cluster-resources/*.json
-      repoURL: https://github.com/diegoluisi/argo.git
+      repoURL: https://github.com/devxp-tech/gitops.git
       requeueAfterSeconds: 20
       revision: ""
       template:
@@ -41,7 +41,7 @@ spec:
       project: default
       source:
         path: bootstrap/cluster-resources/{{name}}
-        repoURL: https://github.com/diegoluisi/argo.git
+        repoURL: https://github.com/devxp-tech/gitops.git
       syncPolicy:
         automated:
           allowEmpty: true

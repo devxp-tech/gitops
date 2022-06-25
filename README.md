@@ -131,6 +131,6 @@ We ❤️ contributions big or small. [See our guide](contributing.md) on how to
 
 ### Thanks to all our contributors!
 
-<a href="https://github.com/diegoluisi/argo/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=diegoluisi/argo" />
+<a href="https://github.com/devxp-tech/gitops/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=devxp-tech/gitops" />
 </a>

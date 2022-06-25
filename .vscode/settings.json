@@ -1,5 +1,5 @@
 {
     "yaml.schemas": {
-        "kubernetes://schema/v1%40persistentvolumeclaim": "file:///home/diego.luisi/projects/diegoluisi/argo/apps/backstage/base/postgres-storage.yaml"
+        "kubernetes://schema/v1%40persistentvolumeclaim": "file:///home/diego.luisi/projects/devxp-tech/gitops/apps/backstage/base/postgres-storage.yaml"
     }
 }

@@ -8,7 +8,7 @@ metadata:
 spec:
   project: ops
   source:
-    repoURL: 'https://github.com/diegoluisi/argo'
+    repoURL: 'https://github.com/devxp-tech/gitops'
     path: apps/cert-manager
     targetRevision: HEAD
   destination:

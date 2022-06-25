@@ -4,7 +4,7 @@
   "destNamespace": "kube-system",
   "destServer": "https://kubernetes.default.svc",
   "srcPath": "apps/kiali/overlays/ops",
-  "srcRepoURL": "https://github.com/diegoluisi/argo.git",
+  "srcRepoURL": "https://github.com/devxp-tech/gitops.git",
   "srcTargetRevision": "",
   "CreateNamespace": false,
   "labels": null
