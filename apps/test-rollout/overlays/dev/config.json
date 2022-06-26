@@ -1,0 +1,11 @@
+{
+  "appName": "test-rollout",
+  "userGivenName": "test-rollout",
+  "destNamespace": "test-rollout",
+  "destServer": "https://kubernetes.default.svc",
+  "srcPath": "apps/test-rollout/overlays/dev",
+  "srcRepoURL": "https://github.com/diegoluisi/argo.git",
+  "srcTargetRevision": "",
+  "CreateNamespace": true,
+  "labels": null
+}
