@@ -51,6 +51,7 @@ jobs:
 
   kube-linter:
     name: Kube Linter
+    if: always()
     needs:
       - policy-check
       - security-scan
