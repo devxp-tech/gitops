@@ -60,17 +60,18 @@ jobs:
         with:
           sarif_file: 'trivy-results.sarif'
 
-    kube-linter:
-      - name: Scan repo with kube-linter
-        needs:
-          - k8sPolicyCheck
-          - security-scan
-        uses: stackrox/kube-linter-action@v1.0.4
-        with:
-          directory: apps
-          config: .kube-linter/config.yaml
-          format: sarif
-          output-file: kube-linter.sarif
+  kube-linter:
+    name: Scan repo with kube-linter
+    needs:
+      - k8sPolicyCheck
+      - security-scan
+    uses: stackrox/kube-linter-action@v1.0.4
+    with:
+      directory: apps
+      config: .kube-linter/config.yaml
+      format: sarif
+      output-file: kube-linter.sarif
+
 
   slack-workflow-status:
     name: Post Workflow Status To Slack
