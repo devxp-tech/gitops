@@ -62,6 +62,9 @@ jobs:
 
     kube-linter:
       - name: Scan repo with kube-linter
+        needs:
+          - k8sPolicyCheck
+          - security-scan
         uses: stackrox/kube-linter-action@v1.0.4
         with:
           directory: apps
