@@ -1,0 +1,16 @@
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: lab-hpa
+  labels:
+    app: lab
+    version: 0.0.1
+    backstage.io/kubernetes-id: lab
+spec:
+ scaleTargetRef:
+   apiVersion: apps/v1
+   kind: Deployment
+   name: lab
+ minReplicas: 1
+ maxReplicas: 4
+ targetCPUUtilizationPercentage: 75
