@@ -60,10 +60,12 @@ jobs:
         with:
           sarif_file: 'trivy-results.sarif'
 
-  scan:
+  kube-linter:
     name: Kube Linter
     needs:
       - k8sPolicyCheck
+      - lintAllTheThings
+      - security-scan
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
