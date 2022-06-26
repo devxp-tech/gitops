@@ -1,0 +1,11 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: test-rollout
+resources:
+  - ns.yaml
+  # - quota.yaml
+  - test-rollout-deploy.yaml
+  - test-rollout-svc.yaml
+  - test-rollout-vs.yaml
+  - test-rollout-hpa.yaml
