@@ -11,19 +11,8 @@ env:
 
 jobs:
 
-  lintAllTheThings:
-    name: Yaml Lint
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: yaml-lint
-        uses: ibiqlik/action-yamllint@v3
-
-
-  k8sPolicyCheck:
+  policy-check:
     name: K8S Policy Check
-    needs:
-      - lintAllTheThings
     runs-on: ubuntu-latest
     if: always()
     steps:
@@ -39,7 +28,7 @@ jobs:
   security-scan:
     name: Trivy Vulnerability Scanner
     needs:
-      - k8sPolicyCheck
+      - policy-check
     runs-on: ubuntu-18.04
     steps:
       - name: Checkout code
@@ -63,8 +52,7 @@ jobs:
   kube-linter:
     name: Kube Linter
     needs:
-      - k8sPolicyCheck
-      - lintAllTheThings
+      - policy-check
       - security-scan
     runs-on: ubuntu-latest
     steps:
@@ -80,8 +68,7 @@ jobs:
     name: Post Workflow Status To Slack
     if: always()
     needs:
-      - k8sPolicyCheck
-      - lintAllTheThings
+      - policy-check
       - security-scan
       - kube-linter
     runs-on: ubuntu-latest
