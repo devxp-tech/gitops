@@ -1,6 +1,6 @@
+[![main](https://github.com/devxp-tech/gitops/actions/workflows/main.yaml/badge.svg)](https://github.com/devxp-tech/gitops/actions/workflows/main.yaml)
 [![App Status](https://argocd.diegoluisi.eti.br/api/badge?name=argo-cd&revision=true)](https://argocd.diegoluisi.eti.br/applications/argo-cd)
-
-## ⚙️ GitOps
+# ⚙️ GitOps
 
 GitOps is a set of best practices where the entire code delivery process is controlled via Git, including infrastructure and application definition as code and automation to complete updates and rollbacks.
 
