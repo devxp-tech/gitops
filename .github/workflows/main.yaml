@@ -11,18 +11,19 @@ env:
 
 jobs:
 
-  # lintAllTheThings:
-  #   name: Yaml Lint
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - name: yaml-lint
-  #       uses: ibiqlik/action-yamllint@v3
+  lintAllTheThings:
+    name: Yaml Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: yaml-lint
+        uses: ibiqlik/action-yamllint@v3
 
 
   k8sPolicyCheck:
     name: K8S Policy Check
     runs-on: ubuntu-latest
+    if: always()
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -59,8 +60,8 @@ jobs:
           sarif_file: 'trivy-results.sarif'
 
   slack-workflow-status:
-    if: always()
     name: Post Workflow Status To Slack
+    if: always()
     needs:
       - k8sPolicyCheck
       - lintAllTheThings
