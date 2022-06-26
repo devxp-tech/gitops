@@ -60,17 +60,18 @@ jobs:
         with:
           sarif_file: 'trivy-results.sarif'
 
-  kube-linter:
-    name: Scan repo with kube-linter
+  scan:
+    name: Kube Linter
     needs:
       - k8sPolicyCheck
-      - security-scan
-    uses: stackrox/kube-linter-action@v1.0.4
-    with:
-      directory: apps
-      config: .kube-linter/config.yaml
-      format: sarif
-      output-file: kube-linter.sarif
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Scan repo
+        id: kube-lint-repo
+        uses: stackrox/kube-linter-action@v1.0.4
+        with:
+          directory: apps
 
 
   slack-workflow-status:
