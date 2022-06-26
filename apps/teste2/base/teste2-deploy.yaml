@@ -1,0 +1,49 @@
+---
+# create deployment for teste2
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: teste2
+  namespace: teste2
+  labels:
+    app: teste2
+    version: 0.0.1
+    backstage.io/kubernetes-id: teste2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: teste2
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: teste2
+        version: 0.0.1
+        backstage.io/kubernetes-id: teste2
+    spec:
+      containers:
+      - name: teste2
+        image: diegoluisi/teste2:latest
+        imagePullPolicy: IfNotPresent
+        resources:
+          requests:
+            cpu: "50m"
+            memory: "64Mi"
+          limits:
+            cpu: "100m"
+            memory: "128Mi"
+        ports:
+        - name: http
+          containerPort: 8080
+        readinessProbe:
+          httpGet:
+            port: 8080
+            path: /health-check/readiness
+        livenessProbe:
+          httpGet:
+            port: 8080
+            path: /health-check/liveness
+          initialDelaySeconds: 3
+          periodSeconds: 15
