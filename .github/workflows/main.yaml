@@ -31,12 +31,38 @@ jobs:
       - name: yaml-lint
         uses: ibiqlik/action-yamllint@v3
 
+  build:
+    name: Build
+    needs:
+      - k8sPolicyCheck
+      - lintAllTheThings
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run Trivy vulnerability scanner in IaC mode
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'config'
+          hide-progress: false
+          format: 'table'
+          exit-code: '1'
+          ignore-unfixed: true
+          severity: 'CRITICAL,HIGH'
+
+      - name: Upload Trivy scan results to GitHub Security tab
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: 'trivy-results.sarif'
+
   slack-workflow-status:
     if: always()
     name: Post Workflow Status To Slack
     needs:
       - k8sPolicyCheck
       - lintAllTheThings
+      - build
     runs-on: ubuntu-latest
     steps:
       - name: Slack Workflow Notification
@@ -51,4 +77,3 @@ jobs:
           # icon_emoji: ':poop:'
           icon_url: ${{ secrets.SLACK_ICON }}
 
-          # force deploy
