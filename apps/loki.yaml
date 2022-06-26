@@ -9,6 +9,7 @@ metadata:
       controller: true
       kind: ApplicationSet
       name: ops# Should be the namespace in which ArgoCD is deployed
+      uid: fd8ec6a4-e552-4ca2-93b4-baf6c96c1430
 spec:
   destination:
     namespace: monitoring                             # Namespace in which Loki will be deployed
