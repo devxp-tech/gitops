@@ -1,0 +1,16 @@
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: test-rollout-hpa
+  labels:
+    app: test-rollout
+    version: 0.0.1
+    backstage.io/kubernetes-id: test-rollout
+spec:
+ scaleTargetRef:
+   apiVersion: apps/v1
+   kind: Deployment
+   name: test-rollout
+ minReplicas: 1
+ maxReplicas: 4
+ targetCPUUtilizationPercentage: 75
