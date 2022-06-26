@@ -22,6 +22,8 @@ jobs:
 
   k8sPolicyCheck:
     name: K8S Policy Check
+    needs:
+      - lintAllTheThings
     runs-on: ubuntu-latest
     if: always()
     steps:
@@ -34,10 +36,9 @@ jobs:
           cliArguments: '--only-k8s-files --ignore-missing-schemas'
 
 
-  build:
-    name: Build
+  security-scan:
+    name: Trivy Vulnerability Scanner
     needs:
-      # - lintAllTheThings
       - k8sPolicyCheck
     runs-on: ubuntu-18.04
     steps:
@@ -65,7 +66,7 @@ jobs:
     needs:
       - k8sPolicyCheck
       - lintAllTheThings
-      - build
+      - security-scan
     runs-on: ubuntu-latest
     steps:
       - name: Slack Workflow Notification
