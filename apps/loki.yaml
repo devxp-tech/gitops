@@ -2,7 +2,13 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: loki                                          # Name of ArgoCD application CR
-  namespace: argocd                                   # Should be the namespace in which ArgoCD is deployed
+  namespace: argocd
+  ownerReferences:
+    - apiVersion: argoproj.io/v1alpha1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ApplicationSet
+      name: ops# Should be the namespace in which ArgoCD is deployed
 spec:
   destination:
     namespace: monitoring                             # Namespace in which Loki will be deployed
