@@ -21,12 +21,13 @@ jobs:
       - name: Run Datree Policy Check
         uses: datreeio/action-datree@main
         with:
-          path: 'apps/**/*.yaml'
+          path: 'apps/*/base/*.yaml'
           cliArguments: '--only-k8s-files --ignore-missing-schemas'
 
 
   security-scan:
     name: Trivy Vulnerability Scanner
+    if: always()
     needs:
       - policy-check
     runs-on: ubuntu-18.04
