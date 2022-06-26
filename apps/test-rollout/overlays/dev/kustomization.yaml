@@ -4,4 +4,4 @@ resources:
 - ../../base
 images:
 - name: diegoluisi/test-rollout
-  newTag: 28e5f15f
+  newTag: 31cfaffb
