@@ -4,3 +4,4 @@ namespace: istio-system
 resources:
   - install.yaml
   - kiali-vs.yaml
+  - ip-restriction-policy.yaml
