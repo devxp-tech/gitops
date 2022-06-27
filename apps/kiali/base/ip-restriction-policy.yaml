@@ -15,6 +15,6 @@ spec:
         - key: 'request.headers[x-envoy-external-address]'
           values:
             - "94.62.74.120"  # Home
-  selector:
-    matchLabels:
-      app: kiali
+#  selector:
+#    matchLabels:
+#      app: kiali
