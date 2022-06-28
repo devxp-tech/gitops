@@ -1,5 +1,5 @@
-appName: crossplane-system
-userGivenName: crossplane-system
+appName: crossplane
+userGivenName: crossplane
 destNamespace: crossplane-system
 destServer: https://kubernetes.default.svc
 srcPath: ''
