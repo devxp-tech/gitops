@@ -8,14 +8,14 @@ metadata:
     app.kubernetes.io/part-of: argocd
 data:
     statusbadge.enabled: "true"
-    url: https://argocd.diegoluisi.eti.br
-    repositories:
-      - type: helm
-        name: crossplane
+    repositories: |
+      - name: crossplane
+        type: helm
         url: https://charts.crossplane.io/stable
-      - type: helm
-        name: grafana
+      - name: grafana
+        type: helm
         url: https://grafana.github.io/helm-charts
+    url: https://argocd.diegoluisi.eti.br
     dex.config: |
       connectors:
         - type: github
