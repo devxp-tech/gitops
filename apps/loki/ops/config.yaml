@@ -11,7 +11,7 @@ exclude: ''
 include: ''
 helm:
   chart: loki-distributed
-  values: value
+  helm.valueFiles: values
 
 
 # apiVersion: argoproj.io/v1alpha1
