@@ -9,7 +9,8 @@ metadata:
 data:
     statusbadge.enabled: "true"
     repositories: |
-      - url: https://github.com/devxp-tech/gitops.git
+      - name: gitops
+        url: https://github.com/devxp-tech/gitops.git
       - name: crossplane
         type: helm
         url: https://charts.crossplane.io/stable
