@@ -80,8 +80,8 @@ spec:
           source:
             chart: '{{ helm.chart }}'
             helm:
-              values: |-
-                  {{ helm.values }}
+              valueFiles:
+                - '{{helm.valueFiles}}.yaml'
             repoURL: ""
   syncPolicy: {}
   template:
