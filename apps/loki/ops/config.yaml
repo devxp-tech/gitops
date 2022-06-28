@@ -16,3 +16,4 @@ helm:
       fullnameOverride: loki
       global:
         dnsService: coredns
+        clusterDomain: null
