@@ -11,7 +11,20 @@ exclude: ''
 include: ''
 helm:
   chart: loki-distributed
-  valueFiles: values
+  values: |-
+        fullnameOverride: loki
+        loki:
+          config: |
+            auth_enabled: false
+            server:
+              http_listen_port: 3100
+            distributor:
+              ring:
+                kvstore:
+                  store: memberlist
+            memberlist:
+              join_members:
+                - {{ include "loki.fullname" . }}-memberlist
 
 
 # apiVersion: argoproj.io/v1alpha1
