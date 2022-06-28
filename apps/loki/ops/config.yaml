@@ -16,4 +16,4 @@ helm:
       fullnameOverride: loki
       global:
         dnsService: coredns
-        clusterDomain: null
+        clusterDomain: lgsk8sp1.grupologos.local
