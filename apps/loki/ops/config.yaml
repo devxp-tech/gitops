@@ -12,6 +12,8 @@ include: ''
 helm:
   chart: loki-distributed
   valueFiles: values
+  values: |-
+      fullnameOverride: loki
 
 
 # apiVersion: argoproj.io/v1alpha1
