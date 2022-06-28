@@ -83,7 +83,7 @@ spec:
               valueFiles:
                 - '{{helm.valueFiles}}.yaml'
               values: |-
-                   {{ helm.values }}
+                {{ helm.values }}
             repoURL: ""
   syncPolicy: {}
   template:
