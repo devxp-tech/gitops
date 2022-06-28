@@ -13,4 +13,4 @@ helm:
   chart: loki-distributed
   valueFiles: values
   values: |-
-    fullnameOverride: loki
+      fullnameOverride: loki
