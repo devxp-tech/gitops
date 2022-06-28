@@ -12,7 +12,7 @@ include: ''
 helm:
   chart: loki-distributed
   valueFiles: values
-  values: |-
+  values: |
         fullnameOverride: loki
         loki:
           config: |
