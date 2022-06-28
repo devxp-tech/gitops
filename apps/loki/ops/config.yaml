@@ -14,15 +14,3 @@ helm:
   valueFiles: values
   values: |-
       fullnameOverride: loki
-      loki:
-        config: |
-            auth_enabled: false
-            server:
-              http_listen_port: 3100
-            distributor:
-              ring:
-                kvstore:
-                  store: memberlist
-            memberlist:
-              join_members:
-                - {{ include "loki.fullname" . }}-memberlist
