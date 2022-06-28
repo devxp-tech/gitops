@@ -9,6 +9,13 @@ metadata:
 data:
     statusbadge.enabled: "true"
     url: https://argocd.diegoluisi.eti.br
+    repositories:
+      - type: helm
+        name: crossplane
+        url: https://charts.crossplane.io/stable
+      - type: helm
+        name: grafana
+        url: https://grafana.github.io/helm-charts
     dex.config: |
       connectors:
         - type: github
