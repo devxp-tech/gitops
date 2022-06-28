@@ -12,3 +12,4 @@ include: ''
 helm:
   chart: crossplane
   valueFiles: values
+  values: |-
