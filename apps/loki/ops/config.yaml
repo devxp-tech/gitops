@@ -1,0 +1,45 @@
+appName: loki
+userGivenName: loki
+destNamespace: monitoring
+destServer: https://kubernetes.default.svc
+srcPath: ''
+repoURL: https://grafana.github.io/helm-charts
+srcRepoURL: https://grafana.github.io/helm-charts
+srcTargetRevision: '2.12.0'
+labels:
+exclude: ''
+include: ''
+helm:
+  chart: loki-distributed
+  valueFiles: values
+
+
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: ops-loki                                          # Name of ArgoCD application CR
+#   namespace: argocd
+# spec:
+#   destination:
+#     namespace: monitoring                             # Namespace in which Loki will be deployed
+#     server: https://kubernetes.default.svc            # Cluster in which Loki will be deployed
+#   project: ops
+#   source:
+#     chart: loki-distributed                           # Using the loki-distributed chart from loki helm registry
+#     repoURL: https://grafana.github.io/helm-charts
+#     targetRevision: 2.12.0                            # Loki-distibuted chart version
+#     helm:
+#       values: |
+#         fullnameOverride: loki                        # Giving a fullnameoverride to avoid default names for resources
+#         loki:
+#           config: |
+#             auth_enabled: false
+#             server:
+#               http_listen_port: 3100
+#             distributor:
+#               ring:
+#                 kvstore:
+#                   store: memberlist
+#             memberlist:
+#               join_members:
+#                 - {{ include "loki.fullname" . }}-memberlist
