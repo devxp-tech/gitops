@@ -1,5 +1,6 @@
 {
     "yaml.schemas": {
-        "kubernetes://schema/v1%40persistentvolumeclaim": "file:///home/diego.luisi/projects/devxp-tech/gitops/apps/backstage/base/postgres-storage.yaml"
+        "kubernetes://schema/v1%40persistentvolumeclaim": "file:///home/diego.luisi/projects/devxp-tech/gitops/apps/backstage/base/postgres-storage.yaml",
+        "https://json.schemastore.org/yamllint.json": "file:///Users/diego.luisi/projects/devxp-tech/gitops/apps/loki/ops/config.yaml"
     }
 }
