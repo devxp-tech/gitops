@@ -12,4 +12,5 @@ include: ''
 helm:
   chart: promtail
   valueFiles: values
-  # values: |-
+  values: |-
+      fullnameOverride: promtail
