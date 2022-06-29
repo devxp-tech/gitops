@@ -45,9 +45,11 @@ spec:
         image: wordpress:5.8.3-apache
         resources:
           requests:
+            memory: 128Mi
             cpu: 100m
           limits:
-            cpu: 300m
+            memory: 256Mi
+            cpu: 500m
         env:
         - name: WORDPRESS_DB_HOST
           value: wordpress-mysql
