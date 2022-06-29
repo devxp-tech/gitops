@@ -527,7 +527,8 @@ spec:
           mountPath: "/kiali-cabundle"
         resources:
           limits:
-            memory: 1Gi
+            memory: 256Mi
+            cpu: 100m
           requests:
             cpu: 10m
             memory: 64Mi
