@@ -33,28 +33,6 @@ spec:
         volumeMounts:
         - name: postgres
           mountPath: /bitnami/postgresql
-        # livenessProbe:
-        #   exec:
-        #     command:
-        #       - sh
-        #       - '-c'
-        #       - exec pg_isready --host $POD_IP
-        #   initialDelaySeconds: 60
-        #   timeoutSeconds: 5
-        #   periodSeconds: 10
-        #   successThreshold: 1
-        #   failureThreshold: 6
-        # readinessProbe:
-        #   exec:
-        #     command:
-        #       - sh
-        #       - '-c'
-        #       - exec pg_isready --host $POD_IP
-        #   initialDelaySeconds: 5
-        #   timeoutSeconds: 3
-        #   periodSeconds: 5
-        #   successThreshold: 1
-        #   failureThreshold: 3
         resources:
           requests:
             memory: 128Mi
