@@ -45,9 +45,9 @@ spec:
           resources:
             limits:
              memory: 512Mi
-             cpu: "500m"
+             cpu: 200m
             requests:
-              cpu: 250m
+              cpu: 100m
               memory: 250Mi
           env:
            - name: GF_SERVER_DOMAIN
