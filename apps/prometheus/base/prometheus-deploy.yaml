@@ -24,6 +24,13 @@ spec:
       - name: app-data-permission-fix
         image: busybox
         command: ["/bin/chmod","-R","777","/appdata"]
+        resources:
+          requests:
+            memory: 64Mi
+            cpu: 50m
+          limits:
+            memory: 128Mi
+            cpu: 100m
         volumeMounts:
         - name: prometheus-pv
           mountPath: /appdata
