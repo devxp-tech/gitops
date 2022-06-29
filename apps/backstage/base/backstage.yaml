@@ -50,11 +50,11 @@ spec:
             limits:
               memory: 1Gi
               cpu: 1000m
-          # readinessProbe:
-          #   httpGet:
-          #     port: 7007
-          #     path: /healthcheck
-          # livenessProbe:
-          #   httpGet:
-          #     port: 7007
-          #     path: /healthcheck
+          readinessProbe:
+            httpGet:
+              port: 7007
+              path: /healthcheck
+          livenessProbe:
+            httpGet:
+              port: 7007
+              path: /healthcheck
