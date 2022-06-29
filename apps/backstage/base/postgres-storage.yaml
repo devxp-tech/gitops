@@ -6,7 +6,7 @@ metadata:
   namespace: backstage
   labels:
     app: backstage
-    tier: postgres  
+    tier: postgres
 spec:
   storageClassName: gp2
   accessModes:
@@ -16,12 +16,12 @@ spec:
     path: '/mnt/data'
   capacity:
     storage: 2Gi
-  #awsElasticBlockStore: 
+  #awsElasticBlockStore:
   #  volumeID: 'vol-0383e9f82d1b90313'
 
 ---
 apiVersion: v1
-gcePersistentDisk: ~
+# gcePersistentDisk: ~
 kind: PersistentVolumeClaim
 metadata:
   name: postgres-storage-claim
@@ -34,7 +34,7 @@ spec:
   resources:
     requests:
       storage: 2Gi
-  selector: 
-    matchLabels: 
+  selector:
+    matchLabels:
       app: backstage
-      tier: postgres    
+      tier: postgres
