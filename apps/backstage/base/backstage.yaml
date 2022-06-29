@@ -4,10 +4,9 @@ metadata:
   name: backstage
   namespace: backstage
   labels:
-    annotations:
-      app: backstage
-      version: 1.0.0
-      backstage.io/kubernetes-id: backstage
+    app: backstage
+    version: 1.0.0
+    backstage.io/kubernetes-id: backstage
 spec:
   replicas: 1
   selector:
