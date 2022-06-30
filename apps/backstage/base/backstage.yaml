@@ -46,10 +46,10 @@ spec:
           resources:
             requests:
               memory: 256Mi
-              cpu: 100m
+              cpu: 200m
             limits:
               memory: 512Mi
-              cpu: 200m
+              cpu: 400m
           # readinessProbe:
           #   httpGet:
           #     port: 7007
