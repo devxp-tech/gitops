@@ -18,7 +18,7 @@ spec:
     kind: Application
   project: default
   source:
-    path: bootstrap/argo-cd/overlays/production
+    path: bootstrap/argo-cd/overlays/prd
     repoURL: https://github.com/devxp-tech/gitops.git
   syncPolicy:
     automated:
