@@ -9,5 +9,6 @@ resources:
   - storage-class.yml
   - wordpress-deploy.yaml
   - wordpress-pvc.yaml
+  - wordpress-quota.yaml
   - wordpress-svc.yaml
   - wordpress-vs.yaml
