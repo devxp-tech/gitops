@@ -17,6 +17,9 @@ spec:
       labels:
         app: backstage
         backstage.io/kubernetes-id: backstage
+      annotations:
+        sidecar.istio.io/proxyCPU: "200m"
+        sidecar.istio.io/proxyMemory: "128Mi"
     spec:
       containers:
         - name: backstage
