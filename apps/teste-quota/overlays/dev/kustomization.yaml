@@ -4,4 +4,4 @@ resources:
 - ../../base
 images:
 - name: diegoluisi/teste-quota
-  newTag: latest
+  newTag: b684bf4b
