@@ -1,0 +1,16 @@
+---
+kind: ResourceQuota
+apiVersion: v1
+metadata:
+  name: teste-quota-quota
+  namespace: teste-quota
+  labels:
+    kubernetes.io/metadata.name: teste-quota
+    backstage.io/kubernetes-id: teste-quota
+    istio-injection: enabled
+spec:
+  hard:
+    requests.cpu: "1"
+    requests.memory: 1Gi
+    limits.cpu: "2"
+    limits.memory: 2Gi

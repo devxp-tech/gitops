@@ -1,0 +1,19 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: teste-quota-svc
+  namespace: teste-quota
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: teste-quota.diegoluisi.eti.br
+  labels:
+    app: teste-quota
+    version: 0.0.1
+    backstage.io/kubernetes-id: teste-quota
+spec:
+  type: ClusterIP
+  ports:
+  - name: tcp-node
+    port: 8080
+  selector:
+    app: teste-quota
