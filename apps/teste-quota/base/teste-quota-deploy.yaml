@@ -26,7 +26,7 @@ spec:
         sidecar.istio.io/proxyCPU: "100m"
         sidecar.istio.io/proxyMemory: "128Mi"
         sidecar.istio.io/proxyCPULimit: "200m"
-        sidecar.istio.io/proxyMemoryLimit: "128Mi"        
+        sidecar.istio.io/proxyMemoryLimit: "128Mi"
     spec:
       containers:
       - name: teste-quota
@@ -46,9 +46,11 @@ spec:
           httpGet:
             port: 8080
             path: /health-check/readiness
+          initialDelaySeconds: 15
+          periodSeconds: 10
         livenessProbe:
           httpGet:
             port: 8080
             path: /health-check/liveness
-          initialDelaySeconds: 3
-          periodSeconds: 15
+          initialDelaySeconds: 15
+          periodSeconds: 10
