@@ -1,0 +1,11 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: teste-quota
+resources:
+  - ns.yaml
+  - teste-quota-quota.yaml
+  - teste-quota-deploy.yaml
+  - teste-quota-svc.yaml
+  - teste-quota-vs.yaml
+  - teste-quota-hpa.yaml
