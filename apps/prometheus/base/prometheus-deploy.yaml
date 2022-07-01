@@ -14,6 +14,11 @@ spec:
     metadata:
       labels:
         app: prometheus-server
+      annotations:
+        sidecar.istio.io/proxyCPU: "100m"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPULimit: "200m"
+        sidecar.istio.io/proxyMemoryLimit: "128Mi"
     spec:
       securityContext:
         fsGroup: 65534
