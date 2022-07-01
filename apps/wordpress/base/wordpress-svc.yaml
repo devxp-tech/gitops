@@ -1,0 +1,17 @@
+---
+# create a service for wordpress
+apiVersion: v1
+kind: Service
+metadata:
+  name: wordpress
+  namespace: wordpress
+  labels:
+    app: wordpress
+spec:
+  ports:
+    - port: 80
+      name: http-frontend
+  selector:
+    app: wordpress
+    tier: frontend
+  type: ClusterIP

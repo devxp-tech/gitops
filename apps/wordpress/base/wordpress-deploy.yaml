@@ -1,21 +1,4 @@
 ---
-# create a service for wordpress
-apiVersion: v1
-kind: Service
-metadata:
-  name: wordpress
-  namespace: wordpress
-  labels:
-    app: wordpress
-spec:
-  ports:
-    - port: 80
-      name: http-frontend
-  selector:
-    app: wordpress
-    tier: frontend
-  type: ClusterIP
----
 # create deployment for wordpress
 apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
 kind: Deployment
@@ -25,11 +8,12 @@ metadata:
   labels:
     app: wordpress
     version: 1.0.1
+    tier: frontend
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: wordpress
+      app: "wordpress"
       tier: frontend
   strategy:
     type: Recreate
@@ -75,4 +59,3 @@ spec:
       - name: wordpress-persistent-storage
         persistentVolumeClaim:
           claimName: wordpress-persistent-storage
-
