@@ -23,10 +23,10 @@ spec:
         version: 0.0.1
         backstage.io/kubernetes-id: teste-quota
       annotations:
-        sidecar.istio.io/proxyCPU: "100m"
-        sidecar.istio.io/proxyMemory: "128Mi"
-        sidecar.istio.io/proxyCPULimit: "200m"
-        sidecar.istio.io/proxyMemoryLimit: "128Mi"
+        sidecar.istio.io/proxyCPU: "50m"
+        sidecar.istio.io/proxyMemory: "64Mi"
+        sidecar.istio.io/proxyCPULimit: "100m"
+        sidecar.istio.io/proxyMemoryLimit: "64Mi"
     spec:
       containers:
       - name: teste-quota

@@ -6,7 +6,7 @@ resources:
   - backstage-secrets-sealed.yaml
   - backstage-service.yaml
   - backstage.yaml
-  - hpa.yaml
+  # - hpa.yaml
   - postgres-config.yaml
   - postgres-secrets-sealed.yaml
   - postgres-service.yaml
