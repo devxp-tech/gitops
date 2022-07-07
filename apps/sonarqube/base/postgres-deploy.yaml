@@ -28,7 +28,8 @@ spec:
         image: bitnami/postgresql
         imagePullPolicy: IfNotPresent
         ports:
-        - containerPort: 5432
+        - name: tcp-postgres
+          containerPort: 5432
         env:
         - name: ALLOW_EMPTY_PASSWORD
           value: "yes"

@@ -9,6 +9,6 @@ metadata:
 spec:
   ports:
   - port: 5432
-    name: postgres
+    name: tcp-postgres
   selector:
     app: postgres
