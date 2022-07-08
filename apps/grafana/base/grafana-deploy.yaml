@@ -13,9 +13,9 @@ spec:
       labels:
         app: grafana
       annotations:
-        sidecar.istio.io/proxyCPU: "100m"
+        sidecar.istio.io/proxyCPU: "50m"
         sidecar.istio.io/proxyMemory: "128Mi"
-        sidecar.istio.io/proxyCPULimit: "200m"
+        sidecar.istio.io/proxyCPULimit: "100m"
         sidecar.istio.io/proxyMemoryLimit: "128Mi"
     spec:
       securityContext:
@@ -48,12 +48,12 @@ spec:
               port: 3000
             timeoutSeconds: 1
           resources:
-            limits:
-             memory: 512Mi
-             cpu: 200m
             requests:
               cpu: 100m
               memory: 250Mi
+            limits:
+             memory: 512Mi
+             cpu: 100m
           env:
            - name: GF_SERVER_DOMAIN
              value: grafana.diegoluisi.eti.br

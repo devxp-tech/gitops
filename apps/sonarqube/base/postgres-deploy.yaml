@@ -16,9 +16,9 @@ spec:
       labels:
         app: postgres
       annotations:
-        sidecar.istio.io/proxyCPU: "100m"
+        sidecar.istio.io/proxyCPU: "50m"
         sidecar.istio.io/proxyMemory: "128Mi"
-        sidecar.istio.io/proxyCPULimit: "200m"
+        sidecar.istio.io/proxyCPULimit: "100m"
         sidecar.istio.io/proxyMemoryLimit: "128Mi"
     spec:
       securityContext:
@@ -45,7 +45,7 @@ spec:
             cpu: 100m
           limits:
             memory: 256Mi
-            cpu: 200m
+            cpu: 100m
       volumes:
       - name: postgres
         persistentVolumeClaim:
