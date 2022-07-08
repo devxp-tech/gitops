@@ -14,9 +14,9 @@ spec:
       labels:
         app: alertmanager
       annotations:
-        sidecar.istio.io/proxyCPU: "100m"
+        sidecar.istio.io/proxyCPU: "50m"
         sidecar.istio.io/proxyMemory: "128Mi"
-        sidecar.istio.io/proxyCPULimit: "200m"
+        sidecar.istio.io/proxyCPULimit: "100m"
         sidecar.istio.io/proxyMemoryLimit: "128Mi"
     spec:
       containers:
