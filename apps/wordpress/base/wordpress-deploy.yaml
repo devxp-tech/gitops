@@ -24,9 +24,9 @@ spec:
         tier: frontend
         version: 1.0.1
       annotations:
-        sidecar.istio.io/proxyCPU: "100m"
+        sidecar.istio.io/proxyCPU: "50m"
         sidecar.istio.io/proxyMemory: "128Mi"
-        sidecar.istio.io/proxyCPULimit: "200m"
+        sidecar.istio.io/proxyCPULimit: "100m"
         sidecar.istio.io/proxyMemoryLimit: "128Mi"
     spec:
       containers:
@@ -35,10 +35,10 @@ spec:
         resources:
           requests:
             memory: 128Mi
-            cpu: 100m
+            cpu: 50m
           limits:
             memory: 256Mi
-            cpu: 200m
+            cpu: 100m
         env:
         - name: WORDPRESS_DB_HOST
           value: wordpress-mysql
