@@ -3,7 +3,9 @@ kind: Kustomization
 namespace: argo-events
 resources:
   - argo-events.yaml
-  - event-bus.yaml
+  - event-bus.yml
+  # - rbac.yaml
   - sensor-argo.yaml
-  - sensor-hello-gitops.yaml
+  - sensor-hello-gitops.yml
   - sensor-rbac.yaml
+  - virtualservice.yaml
