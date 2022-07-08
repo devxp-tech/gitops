@@ -60,10 +60,10 @@ spec:
             periodSeconds: 5
           resources:
             requests:
-              cpu: 100m
+              cpu: 400m
               memory: 2Gi
             limits:
-              cpu: 100m
+              cpu: 400m
               memory: 2Gi
           volumeMounts:
             - name: prometheus-config-volume
