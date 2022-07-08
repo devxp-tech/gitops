@@ -95,6 +95,9 @@ data:
         root_namespace: istio-system
       prometheus:
         # Prometheus service name is "metrics" and is in the "telemetry" namespace
+        cache_duration: 10
+        cache_enabled: true
+        cache_expiration: 300
         url: "http://prometheus.monitoring:9090/"
       grafana:
         enabled: true
