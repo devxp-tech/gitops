@@ -49,11 +49,11 @@ spec:
             timeoutSeconds: 1
           resources:
             requests:
-              cpu: 100m
+              cpu: 50m
               memory: 250Mi
             limits:
              memory: 512Mi
-             cpu: 100m
+             cpu: 50m
           env:
            - name: GF_SERVER_DOMAIN
              value: grafana.diegoluisi.eti.br
