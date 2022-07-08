@@ -4,6 +4,7 @@ kind: Kustomization
 namespace: teste-quota
 resources:
   - ns.yaml
+  - peerauthentication.yaml
   - sa.yaml
   - teste-quota-quota.yaml
   - teste-quota-deploy.yaml
