@@ -64,10 +64,10 @@ spec:
         resources:
           requests:
             memory: 1024Mi
-            cpu: 200m
+            cpu: 50m
           limits:
             memory: 2048Mi
-            cpu: 200m
+            cpu: 100m
       volumes:
       - name: app-pvc
         persistentVolumeClaim:
