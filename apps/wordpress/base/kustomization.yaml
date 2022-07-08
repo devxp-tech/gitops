@@ -5,7 +5,10 @@ resources:
   - mysql-deploy.yaml
   - mysql-pvc.yaml
   - mysql-svc.yaml
+  - ns.yaml
+  - peerauthentication.yaml
   - pv.yml
+  - sa.yaml
   - storage-class.yml
   - wordpress-deploy.yaml
   - wordpress-pvc.yaml

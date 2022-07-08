@@ -30,11 +30,11 @@ spec:
           containerPort: 9093
         resources:
             requests:
-              cpu: 50m
-              memory: 128M
+              cpu: 20m
+              memory: 64M
             limits:
               cpu: 50m
-              memory: 256M
+              memory: 128M
         livenessProbe:
             httpGet:
                 path: /-/ready

@@ -49,10 +49,10 @@ spec:
             timeoutSeconds: 1
           resources:
             requests:
-              cpu: 50m
-              memory: 250Mi
+              cpu: 10m
+              memory: 64Mi
             limits:
-             memory: 512Mi
+             memory: 128Mi
              cpu: 50m
           env:
            - name: GF_SERVER_DOMAIN

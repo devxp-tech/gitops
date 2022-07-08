@@ -1,0 +1,12 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: wordpress
+  labels:
+    kubernetes.io/metadata.name: wordpress
+    backstage.io/kubernetes-id: wordpress
+    istio-injection: enabled
+spec:
+  finalizers:
+  - kubernetes
