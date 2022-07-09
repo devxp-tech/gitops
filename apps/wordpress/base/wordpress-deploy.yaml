@@ -38,7 +38,7 @@ spec:
             cpu: 10m
           limits:
             memory: 256Mi
-            cpu: 50m
+            cpu: 10m
         env:
         - name: WORDPRESS_DB_HOST
           value: wordpress-mysql
