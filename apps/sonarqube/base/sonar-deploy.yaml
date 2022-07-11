@@ -54,6 +54,8 @@ spec:
         envFrom:
         - configMapRef:
             name: sonar-config
+        - secretRef:
+            name: postgres-secrets
         volumeMounts:
         - name: app-pvc
           mountPath: "/opt/sonarqube/data/"

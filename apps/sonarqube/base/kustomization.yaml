@@ -10,5 +10,6 @@ resources:
   - sonar-config.yaml
   - sonar-deploy.yaml
   - sonar-pvc.yaml
+  - postgres-secrets-sealed.yaml
   - sonar-svc.yaml
   - virtualservice.yaml
