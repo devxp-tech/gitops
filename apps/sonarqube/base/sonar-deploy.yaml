@@ -52,8 +52,8 @@ spec:
           - name: JAVA_OPTS
             value: "-Duser.timezone=America/Sao_Paulo -Xmx1024m"
         envFrom:
-        - configMapRef:
-            name: sonar-config
+        # - configMapRef:
+        #     name: sonar-config
         - secretRef:
             name: postgres-secrets
         volumeMounts:

@@ -34,8 +34,8 @@ spec:
         - name: ALLOW_EMPTY_PASSWORD
           value: "yes"
         envFrom:
-        - configMapRef:
-            name: postgres
+        # - configMapRef:
+        #     name: postgres
         - secretRef:
             name: postgres-secrets
         volumeMounts:
