@@ -26,7 +26,7 @@ spec:
       initContainers:
       - name: app-data-permission-fix
         image: busybox
-        command: ["/bin/chmod","-R","777","/bitnami/postgresql"]
+        command: ["/bin/chown","-R","1001:1001","/bitnami/postgresql"]
         resources:
           requests:
             memory: 128Mi
@@ -38,9 +38,9 @@ spec:
         - name: postgres
           mountPath: /bitnami/postgresql
         securityContext:
-          runAsGroup: 1001
-          runAsNonRoot: false
-          runAsUser: 1001
+          # runAsGroup: 1001
+          # runAsNonRoot: false
+          runAsUser: 0
       containers:
       - name: postgress
         image: bitnami/postgresql
