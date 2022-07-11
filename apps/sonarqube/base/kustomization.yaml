@@ -3,7 +3,7 @@ kind: Kustomization
 namespace: sonar
 resources:
   - ns.yaml
-  - peerauthentication.yaml
+  # - peerauthentication.yaml
   - postgres-config.yaml
   - postgres-deploy.yaml
   - postgres-pvc.yaml
