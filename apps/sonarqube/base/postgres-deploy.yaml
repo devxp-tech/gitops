@@ -38,9 +38,9 @@ spec:
         - name: postgres
           mountPath: /bitnami/postgresql
         securityContext:
-          runAsGroup: 0
+          runAsGroup: 1001
           runAsNonRoot: false
-          runAsUser: 0
+          runAsUser: 1001
       containers:
       - name: postgress
         image: bitnami/postgresql
