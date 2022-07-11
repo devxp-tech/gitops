@@ -5,7 +5,7 @@ metadata:
   labels:
     kubernetes.io/metadata.name: sonar
     backstage.io/kubernetes-id: sonar
-    # istio-injection: enabled
+    istio-injection: enabled
   name: sonar
 spec:
   finalizers:
