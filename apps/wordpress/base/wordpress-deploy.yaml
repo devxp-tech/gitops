@@ -37,7 +37,7 @@ spec:
             memory: 256Mi
             cpu: 20m
           limits:
-            memory: 256Mi
+            memory: 512Mi
             cpu: 50m
         env:
         - name: WORDPRESS_DB_HOST
