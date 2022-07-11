@@ -6,6 +6,8 @@ metadata:
   namespace: sonar
   labels:
     app: sonar
+    version: 9.5.0
+    backstage.io/kubernetes-id: sonar
 spec:
   replicas: 1
   strategy:
