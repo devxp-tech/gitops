@@ -1,0 +1,11 @@
+apiVersion: security.istio.io/v1beta1
+kind: PeerAuthentication
+metadata:
+  name: backstage-strict
+  namespace: istioinaction
+spec:
+  selector:
+    matchLabels:
+      app: backstage
+  mtls:
+    mode: STRICT

@@ -7,11 +7,13 @@ resources:
   - backstage-service.yaml
   - backstage.yaml
   # - hpa.yaml
+  - peerauthentication.yaml
   - postgres-config.yaml
   - postgres-secrets-sealed.yaml
   - postgres-service.yaml
   - postgres-storage.yaml
   - postgres.yaml
   - s3.yaml
+  - sa.yaml
   - virtualservice.yaml
 
