@@ -21,8 +21,31 @@ spec:
         sidecar.istio.io/proxyCPULimit: "200m"
         sidecar.istio.io/proxyMemoryLimit: "128Mi"
     spec:
+      # securityContext:
+      #   fsGroup: 2000
       securityContext:
         fsGroup: 2000
+        runAsGroup: 2000
+        runAsNonRoot: true
+        runAsUser: 2000
+      initContainers:
+      - name: app-data-permission-fix
+        image: busybox
+        command: ["/bin/chmod","-R","777","/bitnami/postgresql"]
+        resources:
+          requests:
+            memory: 128Mi
+            cpu: 50m
+          limits:
+            memory: 256Mi
+            cpu: 100m
+        volumeMounts:
+        - name: postgres
+          mountPath: /bitnami/postgresql
+        securityContext:
+          runAsGroup: 0
+          runAsNonRoot: false
+          runAsUser: 0
       containers:
       - name: postgress
         image: bitnami/postgresql
