@@ -22,7 +22,7 @@ spec:
       labels:
         app: wordpress
         tier: frontend
-        version: 1.0.1
+        version: 2.0.0
       annotations:
         sidecar.istio.io/proxyCPU: "50m"
         sidecar.istio.io/proxyMemory: "128Mi"
@@ -31,14 +31,14 @@ spec:
     spec:
       containers:
       - name: wordpress
-        image: wordpress:5.8.3-apache
+        image: wordpress:6.0.0-apache
         resources:
           requests:
             memory: 256Mi
             cpu: 10m
           limits:
             memory: 256Mi
-            cpu: 10m
+            cpu: 20m
         env:
         - name: WORDPRESS_DB_HOST
           value: wordpress-mysql
