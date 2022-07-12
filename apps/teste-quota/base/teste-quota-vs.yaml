@@ -18,4 +18,9 @@ spec:
     route:
     - destination:
         host: teste-quota-svc
+        subset: stable
       weight: 100
+    - destination:
+        host: teste-quota-svc
+        subset: canary  # referenced in canary.trafficRouting.istio.destinationRule.canarySubsetName
+      weight: 0
