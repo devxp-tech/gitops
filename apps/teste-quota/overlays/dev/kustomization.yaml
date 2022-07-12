@@ -6,6 +6,6 @@ images:
 - name: diegoluisi/teste-quota
   newTag: 90149bd2
 commonAnnotations:
-  version: 90149bd2
-  owner: dev-team
   app: teste-quota
+  owner: devxp-tech/dev-team
+  version: 90149bd2
