@@ -41,7 +41,7 @@ spec:
     metadata:
       labels:
         app: teste-quota
-        version: ba7ecd9f
+        version: 8e33c39a
         backstage.io/kubernetes-id: teste-quota
       annotations:
         sidecar.istio.io/proxyCPU: "50m"
