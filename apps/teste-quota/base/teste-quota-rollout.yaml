@@ -3,7 +3,7 @@ kind: Rollout
 metadata:
   name: teste-quota-rollout
 spec:
-  replicas: 10
+  replicas: 4
   selector:
     matchLabels:
       app: teste-quota
@@ -11,12 +11,42 @@ spec:
     metadata:
       labels:
         app: teste-quota
+        version: 0.0.1
+        backstage.io/kubernetes-id: teste-quota
+      annotations:
+        sidecar.istio.io/proxyCPU: "50m"
+        sidecar.istio.io/proxyMemory: "64Mi"
+        sidecar.istio.io/proxyCPULimit: "100m"
+        sidecar.istio.io/proxyMemoryLimit: "64Mi"
     spec:
+      serviceAccountName: teste-quota-sa
       containers:
       - name: teste-quota
-        image: teste-quota:90149bd2
+        image: diegoluisi/teste-quota:latest
+        imagePullPolicy: IfNotPresent
+        resources:
+          requests:
+            cpu: "50m"
+            memory: "64Mi"
+          limits:
+            cpu: "100m"
+            memory: "128Mi"
         ports:
-        - containerPort: 80
+        - name: http
+          containerPort: 8080
+        readinessProbe:
+          httpGet:
+            port: 8080
+            path: /health-check/readiness
+          initialDelaySeconds: 15
+          periodSeconds: 10
+        livenessProbe:
+          httpGet:
+            port: 8080
+            path: /health-check/liveness
+          initialDelaySeconds: 15
+          periodSeconds: 10
+
   minReadySeconds: 30
   revisionHistoryLimit: 3
   strategy:
@@ -24,9 +54,15 @@ spec:
       maxSurge: "25%"
       maxUnavailable: 0
       steps:
-      - setWeight: 10
+      - setWeight: 25
       - pause:
           duration: 20
-      - setWeight: 20
+      - setWeight: 50
+      - pause:
+          duration: 20
+      - setWeight: 75
+      - pause:
+          duration: 20
+      - setWeight: 100
       - pause:
           duration: 20
