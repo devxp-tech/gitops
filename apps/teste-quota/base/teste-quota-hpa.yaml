@@ -4,8 +4,8 @@ kind: HorizontalPodAutoscaler
 metadata:
   name: teste-quota-hpa
 spec:
-  maxReplicas: 6
-  minReplicas: 2
+  maxReplicas: 8
+  minReplicas: 4
   scaleTargetRef:
     apiVersion: argoproj.io/v1alpha1
     kind: Rollout
