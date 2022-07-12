@@ -4,6 +4,36 @@ metadata:
   name: teste-quota-rollout
 spec:
   replicas: 4
+  strategy:
+    canary: #Indicates that the rollout should use the Canary strategy
+      trafficRouting:
+        istio:
+          virtualService:
+            name: teste-quota-vs        # required
+            routes:
+            - primary                 # required
+          destinationRule:
+            name: teste-quota-destrule    # required
+            canarySubsetName: canary  # required
+            stableSubsetName: stable  # required
+      maxSurge: "25%"
+      maxUnavailable: 0
+      steps:
+      - setWeight: 5
+      - pause:
+          duration: 10s
+      - setWeight: 20
+      - pause:
+          duration: 10s
+      - setWeight: 40
+      - pause:
+          duration: 10s
+      - setWeight: 60
+      - pause:
+          duration: 10s
+      - setWeight: 80
+      - pause:
+          duration: 10s
   selector:
     matchLabels:
       app: teste-quota
@@ -46,23 +76,5 @@ spec:
             path: /health-check/liveness
           initialDelaySeconds: 15
           periodSeconds: 10
-
   minReadySeconds: 30
   revisionHistoryLimit: 3
-  strategy:
-    canary: #Indicates that the rollout should use the Canary strategy
-      maxSurge: "25%"
-      maxUnavailable: 0
-      steps:
-      - setWeight: 25
-      - pause:
-          duration: 20
-      - setWeight: 50
-      - pause:
-          duration: 20
-      - setWeight: 75
-      - pause:
-          duration: 20
-      - setWeight: 100
-      - pause:
-          duration: 20
