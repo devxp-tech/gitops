@@ -5,5 +5,3 @@ images:
   newTag: 0fc1f2bd
 resources:
 - ../../base
-commonAnnotations:
-  sample-go/version: 0fc1f2bd
