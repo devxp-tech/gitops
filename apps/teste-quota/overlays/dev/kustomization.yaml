@@ -4,6 +4,6 @@ resources:
 - ../../base
 images:
 - name: diegoluisi/teste-quota
-  newTag: b684bf4b
+  newTag: 3efe1b65
 commonAnnotations:
   teste-quota/version: b684bf4b
