@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
-  name: teste-quota-rollout
+  name: teste-quota-destrule
 spec:
   replicas: 4
   strategy:
