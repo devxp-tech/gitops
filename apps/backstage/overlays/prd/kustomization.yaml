@@ -6,4 +6,4 @@ images:
 resources:
 - ../../base
 commonAnnotations:
-  sample-go/version: 0fc1f2bd
+  teste-quota/version: 0fc1f2bd
