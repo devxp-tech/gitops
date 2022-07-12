@@ -1,16 +1,13 @@
+---
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
   name: teste-quota-hpa
-  labels:
-    app: teste-quota
-    version: 0.0.1
-    backstage.io/kubernetes-id: teste-quota
 spec:
- scaleTargetRef:
-   apiVersion: apps/v1
-   kind: Deployment
-   name: teste-quota
- minReplicas: 1
- maxReplicas: 4
- targetCPUUtilizationPercentage: 75
+  maxReplicas: 6
+  minReplicas: 2
+  scaleTargetRef:
+    apiVersion: argoproj.io/v1alpha1
+    kind: Rollout
+    name: teste-quota-rollout
+  targetCPUUtilizationPercentage: 80
