@@ -5,3 +5,5 @@ resources:
 images:
 - name: diegoluisi/teste-quota
   newTag: b684bf4b
+commonAnnotations:
+  teste-quota/version: b684bf4b
