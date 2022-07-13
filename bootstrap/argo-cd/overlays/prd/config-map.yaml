@@ -17,6 +17,9 @@ data:
       - name: grafana
         type: helm
         url: https://grafana.github.io/helm-charts
+      - name: devxp-tech
+        type: helm
+        url: https://devxp-tech.github.io/helm-charts
     url: https://argocd.diegoluisi.eti.br
     dex.config: |
       connectors:
