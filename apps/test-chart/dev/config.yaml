@@ -1,0 +1,16 @@
+appName: test-chart
+userGivenName: test-chart
+destNamespace: test-chart
+destServer: https://kubernetes.default.svc
+srcPath: ''
+repoURL: https://devxp-tech.github.io/helm-charts
+srcRepoURL: https://devxp-tech.github.io/helm-charts
+srcTargetRevision: '0.1.0'
+labels:
+exclude: ''
+include: ''
+helm:
+  chart: example
+  valueFiles: values
+  values: |-
+      fullnameOverride: test-chart

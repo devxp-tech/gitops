@@ -65,6 +65,26 @@ spec:
               jsonnet: {}
               recurse: true
             repoURL: ""
+  - git:
+      files:
+        - path: apps/**/dev/config.yaml
+      repoURL: https://github.com/devxp-tech/gitops.git
+      requeueAfterSeconds: 20
+      revision: ""
+      template:
+        metadata:
+          name: dev-{{userGivenName}}
+        spec:
+          destination: {}
+          project: ""
+          source:
+            chart: '{{ helm.chart }}'
+            helm:
+              valueFiles:
+                - '{{helm.valueFiles}}.yaml'
+              values: |-
+                  {{ helm.values }}
+            repoURL: ""
   syncPolicy: {}
   template:
     metadata:
