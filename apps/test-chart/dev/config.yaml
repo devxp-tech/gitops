@@ -14,3 +14,4 @@ helm:
   valueFiles: values
   values: |-
       fullnameOverride: test-chart
+      image.repository: diegoluisi
