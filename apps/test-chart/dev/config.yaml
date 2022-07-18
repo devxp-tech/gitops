@@ -13,4 +13,4 @@ helm:
   chart: web-application
   valueFiles: values
   values: |-
-      nameOverride: test-chart
+      fullnameOverride: test-chart
