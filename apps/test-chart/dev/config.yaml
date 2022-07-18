@@ -10,7 +10,7 @@ labels:
 exclude: ''
 include: ''
 helm:
-  chart: example
+  chart: web-application
   valueFiles: values
   values: |-
-      fullnameOverride: test-chart
+      fullname: test-chart
