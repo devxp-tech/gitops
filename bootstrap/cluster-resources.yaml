@@ -43,7 +43,7 @@ spec:
         path: bootstrap/cluster-resources/{{name}}
         repoURL: https://github.com/devxp-tech/gitops.git
       syncPolicy:
-        automated:
-          allowEmpty: true
-          selfHeal: true
+        automated: {}
+          # allowEmpty: true
+          # selfHeal: true
 status: {}
