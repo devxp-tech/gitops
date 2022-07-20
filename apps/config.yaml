@@ -1,0 +1,19 @@
+appName: teste-helm
+userGivenName: teste-helm
+destNamespace: teste-helm
+destServer: https://kubernetes.default.svc
+srcPath: ''
+repoURL: https://devxp-tech.github.io/helm-charts
+srcRepoURL: https://devxp-tech.github.io/helm-charts
+srcTargetRevision: '0.1.3'
+labels:
+exclude: ''
+include: ''
+helm:
+  chart: web-application
+  valueFiles: values
+  values: |-
+      fullnameOverride: teste-helm
+      image:
+        repository: diegoluisi/teste-helm
+        tag: latest
