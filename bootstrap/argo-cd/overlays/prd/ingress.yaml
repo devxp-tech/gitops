@@ -9,13 +9,13 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-  - http:
-      paths:
-      - path: /
-        pathType: ImplementationSpecific
-        backend:
-          service:
-           name: argocd-server
-           port:
-             number: 80
-    host: argocd.diegoluisi.eti.br
+    - http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: argocd-server
+                port:
+                  number: 80
+      host: argocd.diegoluisi.eti.br
