@@ -1,0 +1,17 @@
+appName: rollout-demo
+userGivenName: rollout-demo
+destNamespace: rollout-demo
+destServer: https://kubernetes.default.svc
+srcPath: ''
+repoURL: https://devxp-tech.github.io/helm-charts
+srcRepoURL: https://devxp-tech.github.io/helm-charts
+srcTargetRevision: '0.1.0'
+labels:
+exclude: ''
+include: ''
+helm:
+  chart: web-application
+  valueFiles: values
+  values: |-
+      fullnameOverride: rollout-demo
+      image.repository: diegoluisi
