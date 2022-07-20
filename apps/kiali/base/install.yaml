@@ -38,7 +38,7 @@ data:
       openid:
         client_id: "6d99474108ebaef950a8"
         disable_rbac: true
-        issuer_uri: "https://accounts.google.com"
+        issuer_uri: "https://github.com/login/oauth/authorize"
         scopes: ["openid", "email"]
         username_claim: "email"
       openshift:
