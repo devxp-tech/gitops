@@ -1,0 +1,11 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: teste-orlando
+resources:
+  - ns.yaml
+  - teste-orlando-quota.yaml
+  - teste-orlando-deploy.yaml
+  - teste-orlando-svc.yaml
+  - teste-orlando-vs.yaml
+  - teste-orlando-hpa.yaml
