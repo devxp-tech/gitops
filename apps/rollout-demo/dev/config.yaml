@@ -14,5 +14,6 @@ helm:
   valueFiles: values
   values: |-
       fullnameOverride: rollout-demo
-      image.repository: diegoluisi/teste-quota
-      image.tag: b8a0ce2b
+      image
+        repository: diegoluisi/teste-quota
+        tag: b8a0ce2b
