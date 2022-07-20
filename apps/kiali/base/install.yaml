@@ -34,10 +34,15 @@ metadata:
 data:
   config.yaml: |
     auth:
-      openid: {}
+      strategy: openid
+      openid:
+        client_id: "6d99474108ebaef950a8"
+        disable_rbac: true
+        issuer_uri: "https://accounts.google.com"
+        scopes: ["openid", "email"]
+        username_claim: "email"
       openshift:
         client_id_prefix: kiali
-      strategy: token
     deployment:
       accessible_namespaces:
       - '**'

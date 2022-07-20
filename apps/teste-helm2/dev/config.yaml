@@ -17,3 +17,4 @@ helm:
       image:
         repository: diegoluisi/teste-helm2
         tag: f8d1007e
+        
