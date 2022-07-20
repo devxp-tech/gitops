@@ -16,4 +16,4 @@ helm:
       fullnameOverride: teste-helm2
       image:
         repository: diegoluisi/teste-helm2
-        tag: latest
+        tag: 05e2faca
