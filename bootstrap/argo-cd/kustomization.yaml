@@ -15,4 +15,16 @@ configMapGenerator:
 kind: Kustomization
 namespace: argocd
 resources:
-- github.com/argoproj-labs/argocd-autopilot/manifests/base?ref=v0.2.28
+- github.com/argoproj-labs/argocd-autopilot/manifests/base?ref=v0.3.7
+- argo-grafana-secret-sealed.yaml
+- argo-rollouts.yaml
+- argocd-notifications-secret-sealed.yaml
+- argocd-notifications.yaml
+- config-map.yaml
+- github-secrets-sealed.yaml
+- sso-sealed.yaml
+patchesStrategicMerge:
+- argocd-notifications-cm.yaml
+- argocd-rbac-cm.yaml
+- ingress.yaml
+- server.yaml
