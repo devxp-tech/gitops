@@ -10,5 +10,5 @@ patchesStrategicMerge:
 - argocd-rbac-cm.yaml
 - argocd-notifications-cm.yaml
 - argocd-notifications.yaml
-- vs.yaml
+# - vs.yaml
 
