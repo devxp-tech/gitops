@@ -6,7 +6,7 @@ resources:
 #- ingress.yaml
 patchesStrategicMerge:
 - server.yaml
-- config-map.yaml
+- argocd-cm.yaml
 - argocd-rbac-cm.yaml
 - argocd-notifications-cm.yaml
 - argocd-notifications.yaml
