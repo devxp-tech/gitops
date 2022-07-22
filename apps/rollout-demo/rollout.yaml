@@ -1,0 +1,33 @@
+  strategy:
+    canary:
+      # analysis will be performed in background, while rollout is progressing through its steps
+      analysis:
+        startingStep: 1   # index of step list, of when to start this analysis
+        templates:
+        - templateName: istio-success-rate
+        args:             # arguments allow AnalysisTemplates to be re-used
+        - name: service
+          value: helloworld
+        - name: namespace
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+      trafficRouting:
+        istio:
+          virtualService:
+            name: httpbin-vsvc
+            routes:
+            - primary
+          destinationRule:
+            name: rollout-destrule    # required
+            canarySubsetName: canary  # required
+            stableSubsetName: stable  # required
+      steps:
+      - setWeight: 20
+      - pause: {duration: 30s}
+      - setWeight: 40
+      - pause: {duration: 30s}
+      - setWeight: 60
+      - pause: {duration: 30s}
+      - setWeight: 80
+      - pause: {duration: 30s}
