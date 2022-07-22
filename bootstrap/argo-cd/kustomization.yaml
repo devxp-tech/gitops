@@ -16,3 +16,6 @@ kind: Kustomization
 namespace: argocd
 resources:
 - github.com/argoproj-labs/argocd-autopilot/manifests/base?ref=v0.3.7
+components:
+# extensions controller component
+- https://github.com/argoproj-labs/argocd-extensions/manifests
