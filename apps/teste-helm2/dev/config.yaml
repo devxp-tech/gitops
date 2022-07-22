@@ -5,7 +5,7 @@ destServer: https://kubernetes.default.svc
 srcPath: ''
 repoURL: https://devxp-tech.github.io/helm-charts
 srcRepoURL: https://devxp-tech.github.io/helm-charts
-srcTargetRevision: '0.1.5'
+srcTargetRevision: '0.1.6'
 labels:
 exclude: ''
 include: ''
@@ -17,4 +17,3 @@ helm:
       image:
         repository: diegoluisi/teste-helm2
         tag: f8d1007e
-        
