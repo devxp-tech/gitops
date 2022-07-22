@@ -10,3 +10,4 @@ resources:
 components:
 # extensions controller component
 - https://github.com/argoproj-labs/argocd-extensions/manifests
+# - https://github.com/argoproj-labs/rollout-extension/manifests
