@@ -1,0 +1,60 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: tooling-in-cluster
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: default
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    repoURL: https://devxp-tech.github.io/helm-charts
+    chart: tooling
+    targetRevision: 0.1.5
+    helm:
+      valueFiles:
+        - values.yaml
+      values: |-
+        global:
+          application:
+            cluster:
+              name: in-cluster
+              server: https://kubernetes.default.svc
+            project: default
+        sealedSecrets:
+          values:
+            fullnameOverride: sealed-secrets-controller
+        istioBase:
+          values:
+            fullnameOverride: istio-base
+        istiod:
+          values:
+            fullnameOverride: istiod
+        istioGateway:
+          values:
+            name: istio-ingress
+        certManager:
+          values:
+            fullnameOverride: cert-manager
+            installCRDs: true
+        prometheus:
+          values:
+            fullnameOverride: prometheus
+            server:
+              fullnameOverride: prometheus
+            alertmanager:
+              fullnameOverride: alertmanager
+            nodeExporter:
+              fullnameOverride: node-exporter
+            pushgateway:
+              fullnameOverride: pushgateway
+            kube-state-metrics:
+              fullnameOverride: kube-state-metrics
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
