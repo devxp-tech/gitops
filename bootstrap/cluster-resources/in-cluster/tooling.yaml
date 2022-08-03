@@ -41,6 +41,17 @@ spec:
                 annotations:
                   kubernetes.io/ingress.class: alb
                   alb.ingress.kubernetes.io/scheme: internet-facing
+              containerSecurityContext:
+                capabilities:
+                  drop:
+                  - ALL
+                  add:
+                  - NET_BIND_SERVICE
+                runAsUser: 0
+                runAsGroup: 1337
+                runAsNonRoot: false
+                allowPrivilegeEscalation: true
+                readOnlyRootFilesystem: true
           private:
             enabled: false
         certManager:
