@@ -41,9 +41,6 @@ spec:
                 annotations:
                   kubernetes.io/ingress.class: alb
                   alb.ingress.kubernetes.io/scheme: internet-facing
-              containerSecurityContext:
-                capabilities:
-                  forbiddenSysctls: false
           private:
             enabled: false
         certManager:
