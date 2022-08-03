@@ -13,7 +13,7 @@ spec:
   source:
     repoURL: https://devxp-tech.github.io/helm-charts
     chart: tooling
-    targetRevision: 0.1.9
+    targetRevision: 0.1.10
     helm:
       valueFiles:
         - values.yaml
@@ -41,17 +41,6 @@ spec:
                 annotations:
                   kubernetes.io/ingress.class: alb
                   alb.ingress.kubernetes.io/scheme: internet-facing
-              containerSecurityContext:
-                capabilities:
-                  drop:
-                  - ALL
-                  add:
-                  - NET_BIND_SERVICE
-                runAsUser: 0
-                runAsGroup: 1337
-                runAsNonRoot: false
-                allowPrivilegeEscalation: true
-                readOnlyRootFilesystem: true
           private:
             enabled: false
         certManager:
