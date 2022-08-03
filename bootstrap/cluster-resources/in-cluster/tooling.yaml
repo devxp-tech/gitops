@@ -13,7 +13,7 @@ spec:
   source:
     repoURL: https://devxp-tech.github.io/helm-charts
     chart: tooling
-    targetRevision: 0.1.7
+    targetRevision: 0.1.8
     helm:
       valueFiles:
         - values.yaml
@@ -34,10 +34,15 @@ spec:
           values:
             fullnameOverride: istiod
         istioGateway:
+          public:
+            values:
+              name: istio-ingress-pub
+              service:
+                annotations:
+                  kubernetes.io/ingress.class: alb
+                  alb.ingress.kubernetes.io/scheme: internet-facing
           private:
             enabled: false
-          values:
-            name: istio-ingress
         certManager:
           values:
             fullnameOverride: cert-manager
