@@ -35,6 +35,7 @@ spec:
             fullnameOverride: istiod
         istioGateway:
           public:
+            enabled: false
             values:
               name: istio-ingress-pub
               service:
