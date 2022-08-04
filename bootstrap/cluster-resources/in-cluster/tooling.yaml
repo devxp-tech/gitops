@@ -13,7 +13,7 @@ spec:
   source:
     repoURL: https://devxp-tech.github.io/helm-charts
     chart: tooling
-    targetRevision: 0.1.24
+    targetRevision: 0.1.27
     helm:
       valueFiles:
         - values.yaml
@@ -53,11 +53,6 @@ spec:
             cr:
               create: true
               namespace: kiali-operator
-        metricsServer:
-          values:
-            extraArgs:
-              - --kubelet-insecure-tls=true
-              - --kubelet-preferred-address-types=InternalIP
         prometheus:
           values:
             fullnameOverride: prometheus
