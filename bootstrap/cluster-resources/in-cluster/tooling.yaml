@@ -64,9 +64,6 @@ spec:
               fullnameOverride: node-exporter
             pushgateway:
               fullnameOverride: pushgateway
-            kube-state-metrics:
-              fullnameOverride: kube-state-metrics
-
   syncPolicy:
     automated:
       prune: true
