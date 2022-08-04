@@ -51,6 +51,7 @@ spec:
         kiali:
           values:
             cr:
+              create: true
               namespace: kiali-operator
         prometheus:
           values:
