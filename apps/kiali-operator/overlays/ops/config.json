@@ -1,0 +1,11 @@
+{
+  "appName": "kiali-operator",
+  "userGivenName": "kiali-operator",
+  "destNamespace": "observability",
+  "destServer": "https://kubernetes.default.svc",
+  "srcPath": "apps/kiali-operator/overlays/tooling",
+  "srcRepoURL": "https://github.com/alanyoshida/homelab-argocd.git",
+  "srcTargetRevision": "",
+  "CreateNamespace": true,
+  "labels": null
+}
