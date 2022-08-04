@@ -53,6 +53,11 @@ spec:
             cr:
               create: true
               namespace: kiali-operator
+        metricsServer:
+          values:
+            extraArgs:
+              - --kubelet-insecure-tls=true
+              - --kubelet-preferred-address-types=InternalIP
         prometheus:
           values:
             fullnameOverride: prometheus
