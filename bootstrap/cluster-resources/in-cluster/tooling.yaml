@@ -48,6 +48,10 @@ spec:
           values:
             fullnameOverride: cert-manager
             installCRDs: true
+        kiali:
+          values:
+            cr:
+              namespace: kiali-operator
         prometheus:
           values:
             fullnameOverride: prometheus
