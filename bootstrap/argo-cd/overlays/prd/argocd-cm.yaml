@@ -7,11 +7,19 @@ metadata:
     app.kubernetes.io/name: argocd-cm
     app.kubernetes.io/part-of: argocd
 data:
+    # configManagementPlugins: |
+    #   - name: kustomize-build-with-helm
+    #     generate:
+    #       command: [ "sh", "-c" ]
+    #       args: [ "kustomize build --enable-helm" ]
     configManagementPlugins: |
-      - name: kustomize-build-with-helm
+      - name: kustomized-helm
+        init:
+          command: ["/bin/sh", "-c"]
+          args: ["helm dependency build || true"]
         generate:
-          command: [ "sh", "-c" ]
-          args: [ "kustomize build --enable-helm" ]
+          command: ["/bin/sh", "-c"]
+          args: ["helm template . --name-template $ARGOCD_APP_NAME -
     statusbadge.enabled: "true"
     repositories: |
       - name: gitops
