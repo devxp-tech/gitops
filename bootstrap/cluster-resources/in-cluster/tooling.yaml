@@ -13,7 +13,7 @@ spec:
   source:
     repoURL: https://devxp-tech.github.io/helm-charts
     chart: tooling
-    targetRevision: 0.1.21
+    targetRevision: 0.1.23
     helm:
       valueFiles:
         - values.yaml
