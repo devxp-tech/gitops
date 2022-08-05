@@ -52,12 +52,12 @@ spec:
             - "--storage.tsdb.path=/prometheus/"
           ports:
             - containerPort: 9090
-          livenessProbe:
-            httpGet:
-              path: /
-              port: 9090
-            initialDelaySeconds: 3
-            periodSeconds: 5
+          # livenessProbe:
+          #   httpGet:
+          #     path: /
+          #     port: 9090
+          #   initialDelaySeconds: 3
+          #   periodSeconds: 5
           resources:
             requests:
               cpu: 400m
