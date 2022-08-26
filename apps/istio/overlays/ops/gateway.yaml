@@ -21,6 +21,6 @@ spec:
       protocol: HTTPS
     tls:
       mode: SIMPLE
-      credentialName: issuer-key # This should match the Certificate secretName
+      credentialName: istio-certs # This should match the Certificate secretName
     hosts:
     - '*.diegoluisi.eti.br' # This should match a DNS name in the Certificate

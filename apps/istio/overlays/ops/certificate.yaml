@@ -1,0 +1,13 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: wildcard-certificate
+spec:
+  commonName: diegoluisi.eti.br
+  dnsNames:
+  - diegoluisi.eti.br
+  - '*.diegoluisi.eti.br'
+  issuerRef:
+    kind: ClusterIssuer
+    name: diegoluisi.eti.br
+  secretName: istio-certs
