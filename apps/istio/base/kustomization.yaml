@@ -1,0 +1,33 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: istio-system
+helmCharts:
+- name: base
+  includeCRDs: true
+  releaseName: base
+  version: 1.14.2
+  repo: https://istio-release.storage.googleapis.com/charts
+  valuesInline:
+    fullnameOverride: istio-base
+    global:
+      configValidation: false
+      istiod:
+        enableAnalysis: true
+- name: istiod
+  includeCRDs: true
+  releaseName: istiod
+  version: 1.14.2
+  repo: https://istio-release.storage.googleapis.com/charts
+  valuesInline:
+    fullnameOverride: istiod
+    global:
+      configValidation: false
+      # Resources for the sidecar.
+      proxy:
+        resources:
+          requests:
+            cpu: 50m
+            memory: 64Mi
+          limits:
+            cpu: 100m
+            memory: 1284Mi
