@@ -5,8 +5,12 @@ helmCharts:
 - name: cert-manager
   includeCRDs: true
   releaseName: cert-manager
-  version: 1.9.1
+  version: v1.9.0-beta.0
   repo: https://charts.jetstack.io
   valuesInline:
-    fullnameOverride: cert-manager
     installCRDs: true
+    namespace: "cert-manager"
+    fullnameOverride: "cert-manager"
+    global:
+      leaderElection:
+        namespace: "cert-manager"
