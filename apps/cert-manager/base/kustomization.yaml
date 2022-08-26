@@ -9,4 +9,4 @@ helmCharts:
   repo: https://charts.jetstack.io
   valuesInline:
     fullnameOverride: cert-manager
-    # installCRDs: true
+    installCRDs: true
