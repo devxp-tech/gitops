@@ -3,7 +3,6 @@ kind: Kustomization
 namespace: monitoring
 helmCharts:
 - name: sealed-secrets
-  includeCRDs: true
   releaseName: sealed-secrets
   version: 2.6.1
   repo: https://bitnami-labs.github.io/sealed-secrets
