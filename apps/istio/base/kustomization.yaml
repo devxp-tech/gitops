@@ -3,7 +3,6 @@ kind: Kustomization
 namespace: istio-system
 helmCharts:
 - name: base
-  includeCRDs: true
   releaseName: base
   version: 1.14.1
   repo: https://istio-release.storage.googleapis.com/charts
@@ -19,6 +18,9 @@ helmCharts:
   repo: https://istio-release.storage.googleapis.com/charts
   valuesInline:
     fullnameOverride: istiod
+    base:
+      # For istioctl usage to disable istio config crds in base
+      enableIstioConfigCRDs: true
     global:
       # configValidation: false
       # Resources for the sidecar.
