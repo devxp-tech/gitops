@@ -9,7 +9,7 @@ helmCharts:
   valuesInline:
     fullnameOverride: istio-base
     global:
-      # configValidation: false
+      configValidation: false
       istiod:
         enableAnalysis: true
 - name: istiod
@@ -18,9 +18,6 @@ helmCharts:
   repo: https://istio-release.storage.googleapis.com/charts
   valuesInline:
     fullnameOverride: istiod
-    base:
-      # For istioctl usage to disable istio config crds in base
-      enableIstioConfigCRDs: true
     global:
       # configValidation: false
       # Resources for the sidecar.
