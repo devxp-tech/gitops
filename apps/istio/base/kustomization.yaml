@@ -10,7 +10,7 @@ helmCharts:
   valuesInline:
     fullnameOverride: istio-base
     global:
-      configValidation: false
+      configValidation: true
       istiod:
         enableAnalysis: true
 - name: istiod
@@ -21,7 +21,7 @@ helmCharts:
   valuesInline:
     fullnameOverride: istiod
     global:
-      configValidation: false
+      configValidation: true
       # Resources for the sidecar.
       proxy:
         resources:
