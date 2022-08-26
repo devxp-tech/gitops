@@ -8,3 +8,6 @@ helmCharts:
   repo: https://kubernetes-sigs.github.io/metrics-server
   valuesInline:
     fullnameOverride: metrics-server
+    args:
+      - "--authorization-always-allow-paths=/metrics"
+      - "--kubelet-insecure-tls"
