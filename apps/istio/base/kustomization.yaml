@@ -20,7 +20,7 @@ helmCharts:
     fullnameOverride: istiod
     global:
       autoscalingv2API: false
-      # configValidation: false
+      configValidation: false
       # Resources for the sidecar.
       proxy:
         resources:
