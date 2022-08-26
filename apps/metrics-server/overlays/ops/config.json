@@ -1,0 +1,11 @@
+{
+  "appName": "metrics-server",
+  "userGivenName": "metrics-server",
+  "destNamespace": "kube-system",
+  "destServer": "https://kubernetes.default.svc",
+  "srcPath": "apps/metrics-server/overlays/ops",
+  "srcRepoURL": "https://github.com/devxp-tech/gitops.git",
+  "srcTargetRevision": "",
+  "CreateNamespace": true,
+  "labels": null
+}
