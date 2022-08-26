@@ -11,4 +11,3 @@ helmCharts:
     fullnameOverride: cert-manager
     # webhook:
     #   securePort: 10260
-    installCRDs: true
