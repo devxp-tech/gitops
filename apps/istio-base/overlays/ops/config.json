@@ -1,0 +1,11 @@
+{
+  "appName": "istio-base",
+  "userGivenName": "istio-base",
+  "destNamespace": "istio-system",
+  "destServer": "https://kubernetes.default.svc",
+  "srcPath": "apps/istio-base/overlays/ops",
+  "srcRepoURL": "https://github.com/devxp-tech/gitops.git",
+  "srcTargetRevision": "",
+  "CreateNamespace": true,
+  "labels": null
+}
