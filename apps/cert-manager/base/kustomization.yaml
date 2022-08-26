@@ -9,3 +9,5 @@ helmCharts:
   repo: https://charts.jetstack.io
   valuesInline:
     fullnameOverride: cert-manager
+    webhook:
+      securePort: 10260
