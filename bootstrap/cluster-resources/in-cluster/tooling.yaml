@@ -13,7 +13,7 @@ spec:
   source:
     repoURL: https://devxp-tech.github.io/helm-charts
     chart: tooling
-    targetRevision: 0.1.28
+    targetRevision: 0.1.29
     helm:
       valueFiles:
         - values.yaml
@@ -45,6 +45,7 @@ spec:
           private:
             enabled: false
         certManager:
+          enabled: false
           values:
             fullnameOverride: cert-manager
             installCRDs: true
