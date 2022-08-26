@@ -13,7 +13,7 @@ spec:
   source:
     repoURL: https://devxp-tech.github.io/helm-charts
     chart: tooling
-    targetRevision: 0.1.27
+    targetRevision: 0.1.28
     helm:
       valueFiles:
         - values.yaml
@@ -64,6 +64,8 @@ spec:
               fullnameOverride: node-exporter
             pushgateway:
               fullnameOverride: pushgateway
+        loki:
+          enabled: false
   syncPolicy:
     automated:
       prune: true
