@@ -20,7 +20,7 @@ spec:
         app: wordpress
         tier: mysql
         version: 1.0.0
-      # annotations:
+      annotations:
       #   sidecar.istio.io/proxyCPU: "50m"
       #   sidecar.istio.io/proxyMemory: "128Mi"
       #   sidecar.istio.io/proxyCPULimit: "100m"
