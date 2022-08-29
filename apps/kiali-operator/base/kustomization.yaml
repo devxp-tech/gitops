@@ -8,6 +8,7 @@ helmCharts:
   version: 1.53.0
   repo: https://kiali.org/helm-charts
   valuesInline:
+    fullnameOverride: kiali
     cr:
       create: true
       namespace: istio-system
