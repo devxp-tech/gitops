@@ -2,7 +2,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 images:
 - name: diegoluisi/backstage
-  newTag: 3796a10e
+  newTag: fe4659ac
 resources:
 - ../../base
 commonAnnotations:
