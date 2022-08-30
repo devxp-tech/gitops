@@ -4,9 +4,9 @@ namespace: istio-system
 helmCharts:
 - name: base
   releaseName: base
-  includeCRDs: true
   version: 1.14.1
   repo: https://istio-release.storage.googleapis.com/charts
+  includeCRDs: true
   valuesInline:
     fullnameOverride: istio-base
     global:
@@ -14,10 +14,10 @@ helmCharts:
       istiod:
         enableAnalysis: true
 - name: istiod
-  includeCRDs: true
   releaseName: istiod
   version: 1.14.1
   repo: https://istio-release.storage.googleapis.com/charts
+  includeCRDs: true
   valuesInline:
     fullnameOverride: istiod
     global:
@@ -34,7 +34,6 @@ helmCharts:
             memory: 1284Mi
     meshConfig:
       trustDomain: "lgsk8sp1.grupologos.local"
-    valuesInline:
       meshConfig:
         defaultConfig:
           discoveryAddress: istiod.istio-system.svc:15012
