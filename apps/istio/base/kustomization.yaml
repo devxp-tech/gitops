@@ -12,7 +12,7 @@ helmCharts:
     global:
       configValidation: false
       istiod:
-        enableAnalysis: true
+        enableAnalysis: false
 - name: istiod
   releaseName: istiod
   version: '1.15.0-rc.0'
