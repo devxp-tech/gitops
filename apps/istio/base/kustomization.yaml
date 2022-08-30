@@ -30,3 +30,5 @@ helmCharts:
           limits:
             cpu: 100m
             memory: 1284Mi
+    meshConfig:
+      trustDomain: "lgsk8sp1.grupologos.local"
