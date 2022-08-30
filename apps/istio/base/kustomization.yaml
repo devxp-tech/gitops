@@ -4,7 +4,7 @@ namespace: istio-system
 helmCharts:
 - name: base
   releaseName: base
-  version: 1.14.1
+  version: '1.15.0-rc.0'
   repo: https://istio-release.storage.googleapis.com/charts
   includeCRDs: true
   valuesInline:
@@ -15,7 +15,7 @@ helmCharts:
         enableAnalysis: true
 - name: istiod
   releaseName: istiod
-  version: 1.14.1
+  version: '1.15.0-rc.0'
   repo: https://istio-release.storage.googleapis.com/charts
   includeCRDs: true
   valuesInline:
