@@ -37,3 +37,5 @@ helmCharts:
       meshConfig:
         defaultConfig:
           discoveryAddress: istiod.istio-system.svc:15012
+      proxy:
+        clusterDomain: "lgsk8sp1.grupologos.local"
