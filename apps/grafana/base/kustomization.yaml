@@ -12,11 +12,11 @@ helmCharts:
     grafana.ini:
       server:
         domain: grafana.diegoluisi.eti.br
-    # envValueFrom:
-    #   GF_AUTH_GITHUB_CLIENT_ID:
-    #     secretKeyRef:
-    #       name: grafana-secrets
-    #       key: GF_AUTH_GITHUB_CLIENT_ID
+    envValueFrom:
+      GF_AUTH_GITHUB_CLIENT_ID:
+        secretKeyRef:
+          name: grafana-secrets
+          key: GF_AUTH_GITHUB_CLIENT_ID
     #   GF_AUTH_GITHUB_CLIENT_SECRET:
     #     secretKeyRef:
     #       name: grafana-secrets
