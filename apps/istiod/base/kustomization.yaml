@@ -16,13 +16,13 @@ helmCharts:
       trustDomain: "lgsk8sp1.grupologos.local"
       proxy:
         clusterDomain: "lgsk8sp1.grupologos.local"
+      # Resources for the sidecar.
         resources:
           requests:
             cpu: 50m
             memory: 64Mi
           limits:
             cpu: 100m
-            memory: 1284Mi
+            memory: 128Mi
       autoscalingv2API: false
       # configValidation: false
-      # Resources for the sidecar.
