@@ -11,5 +11,5 @@ helmCharts:
     fullnameOverride: istio-base
     global:
       configValidation: false
-      istiod:
-        enableAnalysis: false
+      # istiod:
+      #   enableAnalysis: false
