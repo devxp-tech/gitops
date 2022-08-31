@@ -6,6 +6,6 @@
   "srcPath": "apps/istio-base/overlays/ops",
   "srcRepoURL": "https://github.com/devxp-tech/gitops.git",
   "srcTargetRevision": "",
-  "CreateNamespace": false,
+  "CreateNamespace": true,
   "labels": null
 }
