@@ -9,3 +9,5 @@ helmCharts:
   repo: https://argoproj.github.io/argo-helm
   valuesInline:
     fullnameOverride: argo-rollouts
+    dashboard:
+      enabled: true
