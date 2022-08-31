@@ -10,5 +10,5 @@ helmCharts:
   valuesInline:
     podAnnotations:
       proxy.istio.io/config: '{"discoveryAddress" : "istiod.istio-system.svc:15012" }'
-    global:
-      autoscalingv2API: false
+    autoscaling:
+      enabled: false
