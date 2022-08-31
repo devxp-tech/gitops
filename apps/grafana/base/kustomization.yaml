@@ -33,3 +33,12 @@ helmCharts:
       GF_AUTH_GITHUB_ALLOW_SIGN_UP: true
       GF_AUTH_GITHUB_SCOPES: 'user:email,read:org'
       GF_AUTH_GITHUB_ALLOWED_ORGANIZATIONS: devxp-tech
+    datasources:
+      datasources.yaml:
+        apiVersion: 1
+        datasources:
+        - name: Prometheus
+          type: prometheus
+          url: http://prometheus-prometheus-server
+          access: proxy
+          isDefault: true
