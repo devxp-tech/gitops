@@ -21,10 +21,10 @@ helmCharts:
           limits:
             cpu: 100m
             memory: 128Mi
+      autoscalingv2API: false
     meshConfig:
       defaultConfig:
         discoveryAddress: istiod.istio-system.svc:15012
     telemetry:
       enabled: false
-      autoscalingv2API: false
       # configValidation: false
