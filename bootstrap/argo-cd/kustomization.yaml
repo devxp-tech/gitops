@@ -1,4 +1,6 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: argocd
 configMapGenerator:
 - behavior: merge
   literals:
@@ -12,8 +14,6 @@ configMapGenerator:
         key: git_username
         name: autopilot-secret
   name: argocd-cm
-kind: Kustomization
-namespace: argocd
 resources:
 - github.com/argoproj-labs/argocd-autopilot/manifests/base?ref=v0.4.4
 components:
