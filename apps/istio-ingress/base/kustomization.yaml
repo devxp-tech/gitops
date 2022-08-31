@@ -10,8 +10,8 @@ helmCharts:
   valuesInline:
     podAnnotations:
       proxy.istio.io/config: '{"discoveryAddress" : "istiod.istio-system.svc:15012" }'
-    # autoscaling:
-    #   enabled: false
+    autoscaling:
+      enabled: false
     # securityContext:
     #   runAsUser: 1000
     #   runAsGroup: 3000
