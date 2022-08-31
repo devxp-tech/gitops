@@ -10,10 +10,12 @@ helmCharts:
   valuesInline:
     fullnameOverride: istiod
     global:
-      meshConfig:
-        defaultConfig:
-          discoveryAddress: istiod.istio-system.svc:15012
       trustDomain: "lgsk8sp1.grupologos.local"
+    meshConfig:
+      defaultConfig:
+        discoveryAddress: istiod.istio-system.svc:15012
+    telemetry:
+      enabled: false
       proxy:
         clusterDomain: "lgsk8sp1.grupologos.local"
       # Resources for the sidecar.
