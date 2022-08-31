@@ -6,7 +6,7 @@ metadata:
   labels:
     kubernetes.io/metadata.name: wordpress
     backstage.io/kubernetes-id: wordpress
-    # istio-injection: enabled #TODO: Fix Istio
+    istio-injection: enabled #TODO: Fix Istio
 spec:
   finalizers:
   - kubernetes
