@@ -12,14 +12,6 @@ helmCharts:
     grafana.ini:
       server:
         domain: grafana.diegoluisi.eti.br
-    env:
-      # GF_INSTALL_PLUGINS: grafana-simple-json-datasource,alexanderzobnin-zabbix-app
-      GF_SERVER_DOMAIN: grafana.diegoluisi.eti.br
-      GF_SERVER_ROOT_URL: "https://grafana.diegoluisi.eti.br"
-      GF_AUTH_GITHUB_ENABLED: true
-      GF_AUTH_GITHUB_ALLOW_SIGN_UP: true
-      GF_AUTH_GITHUB_SCOPES: 'user:email,read:org'
-      GF_AUTH_GITHUB_ALLOWED_ORGANIZATIONS: devxp-tech
     envValueFrom:
       GF_AUTH_GITHUB_CLIENT_ID:
         secretKeyRef:
@@ -33,3 +25,11 @@ helmCharts:
         secretKeyRef:
           name: grafana-secrets
           key: GF_SECURITY_ADMIN_PASSWORD
+    env:
+      # GF_INSTALL_PLUGINS: grafana-simple-json-datasource,alexanderzobnin-zabbix-app
+      GF_SERVER_DOMAIN: grafana.diegoluisi.eti.br
+      GF_SERVER_ROOT_URL: "https://grafana.diegoluisi.eti.br"
+      GF_AUTH_GITHUB_ENABLED: true
+      GF_AUTH_GITHUB_ALLOW_SIGN_UP: true
+      GF_AUTH_GITHUB_SCOPES: 'user:email,read:org'
+      GF_AUTH_GITHUB_ALLOWED_ORGANIZATIONS: devxp-tech
