@@ -13,6 +13,4 @@ helmCharts:
     autoscaling:
       enabled: false
     containerSecurityContext:
-      sysctls:
-      - name: net.ipv4.ip_unprivileged_port_start
-        value: "0"
+      net.ipv4.ip_unprivileged_port_start: 0
