@@ -12,19 +12,19 @@ helmCharts:
     grafana.ini:
       server:
         domain: grafana.diegoluisi.eti.br
-    envValueFrom:
-      GF_AUTH_GITHUB_CLIENT_ID:
-        secretKeyRef:
-          name: grafana-secrets
-          key: GF_AUTH_GITHUB_CLIENT_ID
-      GF_AUTH_GITHUB_CLIENT_SECRET:
-        secretKeyRef:
-          name: grafana-secrets
-          key: GF_AUTH_GITHUB_CLIENT_SECRET
-      GF_SECURITY_ADMIN_PASSWORD:
-        secretKeyRef:
-          name: grafana-secrets
-          key: GF_SECURITY_ADMIN_PASSWORD
+    # envValueFrom:
+    #   GF_AUTH_GITHUB_CLIENT_ID:
+    #     secretKeyRef:
+    #       name: grafana-secrets
+    #       key: GF_AUTH_GITHUB_CLIENT_ID
+    #   GF_AUTH_GITHUB_CLIENT_SECRET:
+    #     secretKeyRef:
+    #       name: grafana-secrets
+    #       key: GF_AUTH_GITHUB_CLIENT_SECRET
+    #   GF_SECURITY_ADMIN_PASSWORD:
+    #     secretKeyRef:
+    #       name: grafana-secrets
+    #       key: GF_SECURITY_ADMIN_PASSWORD
     env:
       # GF_INSTALL_PLUGINS: grafana-simple-json-datasource,alexanderzobnin-zabbix-app
       GF_SERVER_DOMAIN: grafana.diegoluisi.eti.br
