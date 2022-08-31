@@ -9,3 +9,7 @@ helmCharts:
   repo: https://grafana.github.io/helm-charts
   valuesInline:
     fullnameOverride: grafana
+    env:
+      GF_INSTALL_PLUGINS: grafana-clock-panel,grafana-simple-json-datasource,alexanderzobnin-zabbix-app,instana-datasource,goshposh-metaqueries-datasource
+      GF_SERVER_DOMAIN: grafana.diegoluisi.eti.br
+      GF_SERVER_ROOT_URL: "https://grafana.diegoluisi.eti.br"
