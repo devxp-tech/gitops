@@ -1,7 +1,11 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: argo-rollouts
-resources:
-  - clusterrolebinding.yaml
-  - dashboard-install.yaml
-  - install.yaml
+helmCharts:
+- name: argo-rollouts
+  includeCRDs: true
+  releaseName: argo-rollouts
+  version: 2.20.0
+  repo: https://argoproj.github.io/argo-helm
+  valuesInline:
+    fullnameOverride: argo-rollouts
