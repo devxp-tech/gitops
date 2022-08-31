@@ -5,7 +5,7 @@ metadata:
   labels:
     kubernetes.io/metadata.name: backstage
     backstage.io/kubernetes-id: backstage
-    istio-injection: disabled #TODO: Fix Istio injection
+    # istio-injection: enabled #TODO: Fix Istio
   name: backstage
 spec:
   finalizers:
