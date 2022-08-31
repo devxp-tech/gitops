@@ -11,11 +11,6 @@ helmCharts:
     fullnameOverride: istiod
     global:
       trustDomain: "lgsk8sp1.grupologos.local"
-    meshConfig:
-      defaultConfig:
-        discoveryAddress: istiod.istio-system.svc:15012
-    telemetry:
-      enabled: false
       proxy:
         clusterDomain: "lgsk8sp1.grupologos.local"
       # Resources for the sidecar.
@@ -26,5 +21,10 @@ helmCharts:
           limits:
             cpu: 100m
             memory: 128Mi
+    meshConfig:
+      defaultConfig:
+        discoveryAddress: istiod.istio-system.svc:15012
+    telemetry:
+      enabled: false
       autoscalingv2API: false
       # configValidation: false
