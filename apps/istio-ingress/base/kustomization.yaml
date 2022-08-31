@@ -7,7 +7,7 @@ helmCharts:
 - name: gateway
   includeCRDs: true
   releaseName: gateway
-  version: 1.14.1
+  version: 1.15.0-rc.0
   repo: https://istio-release.storage.googleapis.com/charts
   valuesInline:
     podAnnotations:
