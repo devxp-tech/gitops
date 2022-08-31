@@ -23,6 +23,6 @@ helmCharts:
           limits:
             cpu: 100m
             memory: 1284Mi
-      # autoscalingv2API: false
+      autoscalingv2API: false
       # configValidation: false
       # Resources for the sidecar.
