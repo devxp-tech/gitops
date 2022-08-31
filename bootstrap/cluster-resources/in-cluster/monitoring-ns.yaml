@@ -6,7 +6,7 @@ metadata:
   labels:
     kubernetes.io/metadata.name: monitoring
     backstage.io/kubernetes-id: monitoring
-    # istio-injection: enabled
+    istio-injection: enabled
 spec:
   finalizers:
   - kubernetes
