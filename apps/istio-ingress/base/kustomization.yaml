@@ -12,6 +12,6 @@ helmCharts:
       proxy.istio.io/config: '{"discoveryAddress" : "istiod.istio-system.svc:15012" }'
     autoscaling:
       enabled: false
-    securityContext:
+    containerSecurityContext:
       sysctls:
         net.ipv4.ip_unprivileged_port_start: "0"
