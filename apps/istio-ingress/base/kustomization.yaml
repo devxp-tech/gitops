@@ -5,14 +5,14 @@ helmCharts:
 - name: gateway
   includeCRDs: true
   releaseName: gateway
-  version: 1.15.0-rc.0
+  version: 1.12.0
   repo: https://istio-release.storage.googleapis.com/charts
   valuesInline:
     podAnnotations:
       proxy.istio.io/config: '{"discoveryAddress" : "istiod.istio-system.svc:15012" }'
     autoscaling:
       enabled: false
-    securityContext: true
-      # sysctls:
-      # - name: net.ipv4.ip_unprivileged_port_start
-      #   value: "0"
+    securityContext:
+      sysctls:
+      - name: net.ipv4.ip_unprivileged_port_start
+        value: "0"
