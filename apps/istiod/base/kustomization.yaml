@@ -22,9 +22,9 @@ helmCharts:
             cpu: 100m
             memory: 128Mi
       autoscalingv2API: false
-    meshConfig:
-      defaultConfig:
-        discoveryAddress: istiod.istio-system.svc:15012
+    # meshConfig:
+    #   defaultConfig:
+    #     discoveryAddress: istiod.istio-system.svc:15012
     telemetry:
       enabled: false
       # configValidation: false
