@@ -17,10 +17,10 @@ helmCharts:
         secretKeyRef:
           name: grafana-secrets
           key: GF_AUTH_GITHUB_CLIENT_ID
-    #   GF_AUTH_GITHUB_CLIENT_SECRET:
-    #     secretKeyRef:
-    #       name: grafana-secrets
-    #       key: GF_AUTH_GITHUB_CLIENT_SECRET
+      GF_AUTH_GITHUB_CLIENT_SECRET:
+        secretKeyRef:
+          name: grafana-secrets
+          key: GF_AUTH_GITHUB_CLIENT_SECRET
     #   GF_SECURITY_ADMIN_PASSWORD:
     #     secretKeyRef:
     #       name: grafana-secrets
