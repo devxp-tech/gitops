@@ -95,12 +95,20 @@ helmCharts:
         providers:
         - name: 'default'
           orgId: 1
-          folder: ''
+          folder: 'Kubernetes'
           type: file
           disableDeletion: false
           editable: true
           options:
             path: /var/lib/grafana/dashboards/default
+        - name: 'Istio'
+          orgId: 1
+          folder: 'Istio'
+          type: file
+          disableDeletion: false
+          editable: true
+          options:
+            path: /var/lib/grafana/dashboards/istio
     dashboards:
       default:
         # Kubernetes dashboards
@@ -137,6 +145,7 @@ helmCharts:
         k8s_views_pods-kubernetes-views-pods:
           datasource: Prometheus
           url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/k8s_views_pods-kubernetes-views-pods.json"
+      istio:
         # Istio dashboards
         istio-control-plane-dashboard:
           datasource: Prometheus
