@@ -103,15 +103,36 @@ helmCharts:
             path: /var/lib/grafana/dashboards/default
     dashboards:
       default:
-        kubernetes-views-global:
+        k8s-addons-starboard-operator:
           datasource: Prometheus
-          url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes-views-global_rev1.json"
-          # gitlabToken: ''
-        # kubernetes-views-nodes:
-        #   datasource: Prometheus
-        #   url: "https://github.com/devxp-tech/grafana-dashboards/blob/main/dashboards/k8s_views_nodes-kubernetes-views-nodes.json"
-        #   # gitlabToken: ''
-        # kubernetes-cluster:
-        #   datasource: Prometheus
-        #   url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/os6Bh8Omk-kubernetes-cluster.json"
-        #   # gitlabToken: ''
+          url: "https://github.com/devxp-tech/grafana-dashboards/blob/main/dashboards/k8s-addons-starboard-operator.json"
+        k8s-system-api-server:
+          datasource: Prometheus
+          url: "https://github.com/devxp-tech/grafana-dashboards/blob/main/dashboards/k8s-system-api-server.json"
+        k8s-system-coredns:
+          datasource: Prometheus
+          url: "https://github.com/devxp-tech/grafana-dashboards/blob/main/dashboards/k8s-system-coredns.json"
+        k8s-views-global:
+          datasource: Prometheus
+          url: "https://github.com/devxp-tech/grafana-dashboards/blob/main/dashboards/k8s-views-global.json"
+        k8s-views-namespaces:
+          datasource: Prometheus
+          url: "https://github.com/devxp-tech/grafana-dashboards/blob/main/dashboards/k8s-views-namespaces.json"
+        k8s-views-nodes.json:
+          datasource: Prometheus
+          url: "https://github.com/devxp-tech/grafana-dashboards/blob/main/dashboards/k8s-views-nodes.json"
+        k8s-views-pods:
+          datasource: Prometheus
+          url: "https://github.com/devxp-tech/grafana-dashboards/blob/main/dashboards/k8s-views-pods.json"
+        k8s_views_global-kubernetes-views-global:
+          datasource: Prometheus
+          url: "https://github.com/devxp-tech/grafana-dashboards/blob/main/dashboards/k8s_views_global-kubernetes-views-global.json"
+        k8s_views_nodes-kubernetes-views-nodes:
+          datasource: Prometheus
+          url: "https://github.com/devxp-tech/grafana-dashboards/blob/main/dashboards/k8s_views_nodes-kubernetes-views-nodes.json"
+        k8s_views_ns-kubernetes-views-namespaces:
+          datasource: Prometheus
+          url: "https://github.com/devxp-tech/grafana-dashboards/blob/main/dashboards/k8s_views_ns-kubernetes-views-namespaces.json"
+        k8s_views_pods-kubernetes-views-pods.json:
+          datasource: Prometheus
+          url: "https://github.com/devxp-tech/grafana-dashboards/blob/main/dashboards/k8s_views_pods-kubernetes-views-pods.json"
