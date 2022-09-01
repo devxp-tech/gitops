@@ -10,7 +10,7 @@ metadata:
     version: 1.0.1
     tier: frontend
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: "wordpress"
