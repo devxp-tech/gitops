@@ -56,7 +56,7 @@ helmCharts:
           url: http://loki:3100
           version: 1
     dashboards:
-      default:
+      custom:
         k8s_views_global-kubernetes-views-global:
           datasource: Prometheus
           url: https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/k8s_views_global-kubernetes-views-global.json
