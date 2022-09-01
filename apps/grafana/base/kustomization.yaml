@@ -55,16 +55,6 @@ helmCharts:
           access: proxy
           url: http://loki:3100
           version: 1
-    dashboards:
-      custom:
-        k8s_views_global-kubernetes-views-global:
-          datasource: Prometheus
-          url: https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/k8s_views_global-kubernetes-views-global.json
-          # gitlabToken: ''
-        k8s_views_nodes-kubernetes-views-nodes.json:
-          datasource: Prometheus
-          url: https://github.com/devxp-tech/grafana-dashboards/blob/main/dashboards/k8s_views_nodes-kubernetes-views-nodes.json
-          # gitlabToken: ''
     notifiers:
       notifiers.yaml:
         notifiers:
@@ -76,3 +66,25 @@ helmCharts:
             settings:
               url: http://prometheus-alertmanager
         delete_notifiers: []
+    dashboardProviders:
+      dashboardproviders.yaml:
+        apiVersion: 1
+        providers:
+        - name: 'custom'
+          orgId: 1
+          folder: ''
+          type: file
+          disableDeletion: true
+          editable: true
+          options:
+            path: /var/lib/grafana/dashboards/custom
+    dashboards:
+      custom:
+        k8s_views_global-kubernetes-views-global:
+          datasource: Prometheus
+          url: https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/k8s_views_global-kubernetes-views-global.json
+          # gitlabToken: ''
+        k8s_views_nodes-kubernetes-views-nodes.json:
+          datasource: Prometheus
+          url: https://github.com/devxp-tech/grafana-dashboards/blob/main/dashboards/k8s_views_nodes-kubernetes-views-nodes.json
+          # gitlabToken: ''
