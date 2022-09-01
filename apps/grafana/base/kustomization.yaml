@@ -140,16 +140,16 @@ helmCharts:
         # Istio dashboards
         istio-control-plane-dashboard:
           datasource: Prometheus
-          url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/istio/istio-control-plane-dashboard_rev1.json"
+          url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/istio/istio-control-plane-dashboard.json"
         istio-mesh-dashboard:
           datasource: Prometheus
-          url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/istio/istio-mesh-dashboard_rev1.json"
+          url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/istio/istio-mesh-dashboard.json"
         istio-service-dashboard:
           datasource: Prometheus
-          url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/istio/istio-service-dashboard_rev1.json"
+          url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/istio/istio-service-dashboard.json"
         istio-wasm-extension-dashboard:
           datasource: Prometheus
-          url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/istio/istio-wasm-extension-dashboard_rev1.json"
+          url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/istio/istio-wasm-extension-dashboard.json"
         istio-workload-dashboard:
           datasource: Prometheus
           url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/istio/istio-workload-dashboard.json"
