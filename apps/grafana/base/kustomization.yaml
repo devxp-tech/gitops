@@ -50,11 +50,29 @@ helmCharts:
           access: proxy
           implementation: Prometheus
         - name: Loki
+          uid: loki
           type: loki
-          url: http://loki:3100
           access: proxy
+          url: http://loki:3100
+          version: 1
     dashboards:
       default:
         k8s_views_global-kubernetes-views-global:
-          url: https://github.com/devxp-tech/grafana-dashboards/blob/main/dashboards/k8s_views_global-kubernetes-views-global.json
+          datasource: Prometheus
+          url: https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/k8s_views_global-kubernetes-views-global.json
           # gitlabToken: ''
+        k8s_views_nodes-kubernetes-views-nodes.json:
+          datasource: Prometheus
+          url: https://github.com/devxp-tech/grafana-dashboards/blob/main/dashboards/k8s_views_nodes-kubernetes-views-nodes.json
+          # gitlabToken: ''
+    notifiers:
+      notifiers.yaml:
+        notifiers:
+          - name: prometheus-alertmanager
+            type: prometheus-alertmanager
+            uid: prometheus-alertmanager
+            org_id: 1
+            is_default: true
+            settings:
+              url: http://prometheus-alertmanager
+        delete_notifiers: []
