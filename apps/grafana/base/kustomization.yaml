@@ -95,7 +95,7 @@ helmCharts:
         providers:
         - name: 'default'
           orgId: 1
-          folder: 'Kubernetes'
+          folder: 'Kubernetes Dashboards'
           type: file
           disableDeletion: false
           editable: true
@@ -103,7 +103,7 @@ helmCharts:
             path: /var/lib/grafana/dashboards/default
         - name: 'istio'
           orgId: 1
-          folder: 'Istio'
+          folder: 'Istio Dashboards'
           type: file
           disableDeletion: false
           editable: true
@@ -111,7 +111,7 @@ helmCharts:
             path: /var/lib/grafana/dashboards/istio
         - name: 'argocd'
           orgId: 1
-          folder: 'ArgoCD'
+          folder: 'ArgoCD Dashboards'
           type: file
           disableDeletion: false
           editable: true
