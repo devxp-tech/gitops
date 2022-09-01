@@ -101,7 +101,7 @@ helmCharts:
           editable: true
           options:
             path: /var/lib/grafana/dashboards/default
-        - name: 'Istio'
+        - name: 'istio'
           orgId: 1
           folder: 'Istio'
           type: file
@@ -109,6 +109,14 @@ helmCharts:
           editable: true
           options:
             path: /var/lib/grafana/dashboards/istio
+        - name: 'argocd'
+          orgId: 1
+          folder: 'ArgoCD'
+          type: file
+          disableDeletion: false
+          editable: true
+          options:
+            path: /var/lib/grafana/dashboards/argocd
     dashboards:
       default:
         # Kubernetes dashboards
@@ -162,3 +170,8 @@ helmCharts:
         istio-workload-dashboard:
           datasource: Prometheus
           url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/istio/istio-workload-dashboard.json"
+      argocd:
+        # Istio dashboards
+        dashboard:
+          datasource: Prometheus
+          url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/argocd/dashboard.json"
