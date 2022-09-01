@@ -103,11 +103,15 @@ helmCharts:
             path: /var/lib/grafana/dashboards/default
     dashboards:
       default:
-        k8s_views_global-kubernetes-views-global:
+        global-kubernetes-views:
           datasource: Prometheus
           url: https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/k8s_views_global-kubernetes-views-global.json
           # gitlabToken: ''
-        k8s_views_nodes-kubernetes-views-nodes.json:
+        kubernetes-views-nodes:
           datasource: Prometheus
           url: https://github.com/devxp-tech/grafana-dashboards/blob/main/dashboards/k8s_views_nodes-kubernetes-views-nodes.json
+          # gitlabToken: ''
+        kubernetes-cluster:
+          datasource: Prometheus
+          url: https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/os6Bh8Omk-kubernetes-cluster.json
           # gitlabToken: ''
