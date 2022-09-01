@@ -53,3 +53,8 @@ helmCharts:
           type: loki
           url: http://loki:3100
           access: proxy
+    dashboards:
+      default:
+        k8s_views_global-kubernetes-views-global:
+          url: https://github.com/devxp-tech/grafana-dashboards/blob/main/dashboards/k8s_views_global-kubernetes-views-global.json
+          # gitlabToken: ''
