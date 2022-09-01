@@ -26,10 +26,6 @@ helmCharts:
         secretKeyRef:
           name: grafana-secrets
           key: GF_AUTH_GITHUB_CLIENT_SECRET
-      # GF_SECURITY_ADMIN_PASSWORD:
-      #   secretKeyRef:
-      #     name: grafana-secrets
-      #     key: GF_SECURITY_ADMIN_PASSWORD
     env:
       # GF_INSTALL_PLUGINS: grafana-simple-json-datasource,alexanderzobnin-zabbix-app
       GF_SERVER_DOMAIN: grafana.diegoluisi.eti.br
@@ -48,3 +44,7 @@ helmCharts:
           url: http://prometheus-server
           access: proxy
           isDefault: true
+        - name: Loki
+          type: loki
+          url: http://loki:3100
+          access: proxy
