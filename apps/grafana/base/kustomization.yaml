@@ -66,20 +66,43 @@ helmCharts:
             settings:
               url: http://prometheus-alertmanager
         delete_notifiers: []
+
+
+    sidecar:
+      plugins:
+        enabled: false
+      notifiers:
+        enabled: false
+      dashboards:
+        enabled: true
+        label: grafana_dashboard
+        labelValue: "1"
+        folder: /var/lib/grafana/dashboards/external
+        folderAnnotation: grafana.diegoluisi.eti.br/dashboard-folder
+  #      searchNamespace: ALL
+        provider:
+          disableDelete: false
+          allowUiUpdates: true
+          foldersFromFilesStructure: true
+      datasources:
+        enabled: false
+        label: grafana_datasource
+        labelValue: "1"
+
     dashboardProviders:
       dashboardproviders.yaml:
         apiVersion: 1
         providers:
-        - name: 'custom'
+        - name: 'default'
           orgId: 1
           folder: ''
           type: file
-          disableDeletion: true
+          disableDeletion: false
           editable: true
           options:
-            path: /var/lib/grafana/dashboards/custom
+            path: /var/lib/grafana/dashboards/default
     dashboards:
-      custom:
+      default:
         k8s_views_global-kubernetes-views-global:
           datasource: Prometheus
           url: https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/k8s_views_global-kubernetes-views-global.json
