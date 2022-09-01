@@ -118,7 +118,7 @@ helmCharts:
         k8s-views-namespaces:
           datasource: Prometheus
           url: "https://github.com/devxp-tech/grafana-dashboards/blob/main/dashboards/k8s-views-namespaces.json"
-        k8s-views-nodes.json:
+        k8s-views-nodes:
           datasource: Prometheus
           url: "https://github.com/devxp-tech/grafana-dashboards/blob/main/dashboards/k8s-views-nodes.json"
         k8s-views-pods:
@@ -133,6 +133,6 @@ helmCharts:
         k8s_views_ns-kubernetes-views-namespaces:
           datasource: Prometheus
           url: "https://github.com/devxp-tech/grafana-dashboards/blob/main/dashboards/k8s_views_ns-kubernetes-views-namespaces.json"
-        k8s_views_pods-kubernetes-views-pods.json:
+        k8s_views_pods-kubernetes-views-pods:
           datasource: Prometheus
           url: "https://github.com/devxp-tech/grafana-dashboards/blob/main/dashboards/k8s_views_pods-kubernetes-views-pods.json"
