@@ -16,7 +16,7 @@ helmCharts:
       namespace: istio-system
       values:
         kialiOperator:
-          fullnameOverride: kiali
+          fullnameOverride: kiali-operator
           cr:
             create: true
             namespace: istio-system
