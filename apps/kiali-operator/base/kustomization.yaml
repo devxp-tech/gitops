@@ -8,7 +8,7 @@ helmCharts:
   version: 1.55.1
   repo: https://kiali.org/helm-charts
   valuesInline:
-    # fullnameOverride: kiali
+    fullnameOverride: kiali
     # auth:
     #   strategy: anonymous
     cr:
