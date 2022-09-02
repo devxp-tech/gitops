@@ -39,6 +39,13 @@ helmCharts:
       datasources.yaml:
         apiVersion: 1
         datasources:
+        - name: Alertmanager
+          type: alertmanager
+          url: http://alertmanager:9093
+          uid: alertmanager
+          access: proxy
+          jsonData:
+            implementation: prometheus
         - name: Prometheus
           type: prometheus
           url: http://prometheus-server
@@ -47,12 +54,6 @@ helmCharts:
           jsonData:
             manageAlerts: true
             alertmanagerUid: alertmanager
-        - name: Alertmanager
-          type: alertmanager
-          url: http://alertmanager:9093
-          access: proxy
-          jsonData:
-            implementation: prometheus
         - name: Loki
           uid: loki
           type: loki
