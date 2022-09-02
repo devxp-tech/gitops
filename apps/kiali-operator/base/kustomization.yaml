@@ -5,7 +5,7 @@ helmCharts:
 - name: kiali-operator
   includeCRDs: true
   releaseName: kiali-operator
-  version: 1.53.0
+  version: 1.55.1
   repo: https://kiali.org/helm-charts
   valuesInline:
     # fullnameOverride: kiali
@@ -18,7 +18,6 @@ helmCharts:
         kialiOperator:
           fullnameOverride: kiali
           cr:
-            create: true
             namespace: istio-system
             spec:
               deployment:
