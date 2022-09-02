@@ -18,6 +18,7 @@ helmCharts:
         kialiOperator:
           fullnameOverride: kiali
           cr:
+            create: true
             namespace: istio-system
             spec:
               deployment:
