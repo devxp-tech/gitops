@@ -44,11 +44,15 @@ helmCharts:
           url: http://prometheus-server
           access: proxy
           isDefault: true
+          jsonData:
+            manageAlerts: true
+            alertmanagerUid: alertmanager
         - name: Alertmanager
           type: alertmanager
           url: http://alertmanager:9093
           access: proxy
-          implementation: Prometheus
+          jsonData:
+            implementation: prometheus
         - name: Loki
           uid: loki
           type: loki
