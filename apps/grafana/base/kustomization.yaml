@@ -46,6 +46,16 @@ helmCharts:
           access: proxy
           jsonData:
             implementation: prometheus
+        - name: Loki
+          uid: loki
+          type: loki
+          access: proxy
+          url: http://loki:3100
+          version: 1
+          jsonData:
+            alertmanagerUid: alertmanager
+            maxLines: 5000
+            timeout: "60"
         - name: Prometheus
           type: prometheus
           url: http://prometheus-server
@@ -54,12 +64,6 @@ helmCharts:
           jsonData:
             manageAlerts: true
             alertmanagerUid: alertmanager
-        - name: Loki
-          uid: loki
-          type: loki
-          access: proxy
-          url: http://loki:3100
-          version: 1
     notifiers:
       notifiers.yaml:
         notifiers:
