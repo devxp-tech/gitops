@@ -14,8 +14,9 @@ helmCharts:
       resources:
         limits:
           cpu: 200m
-    Release:
-      Namespace: default
+    enableSkipLogin: true
+    enableInsecureLogin: true
     rbac:
+      clusterAdminRole: true
       create: true
       clusterReadOnlyRole: true
