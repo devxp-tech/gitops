@@ -1,9 +1,9 @@
 {
-  "appName": "kiali-server",
-  "userGivenName": "kiali-server",
-  "destNamespace": "istio-system",
+  "appName": "kiali-operator",
+  "userGivenName": "kiali-operator",
+  "destNamespace": "kiali-operator",
   "destServer": "https://kubernetes.default.svc",
-  "srcPath": "apps/kiali-server/overlays/ops",
+  "srcPath": "apps/kiali-operator/overlays/ops",
   "srcRepoURL": "https://github.com/devxp-tech/gitops.git",
   "srcTargetRevision": "",
   "CreateNamespace": true,

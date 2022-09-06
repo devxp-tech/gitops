@@ -1,17 +1,16 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: istio-system
+namespace: kiali-operator
 helmCharts:
-- name: kiali-server
+- name: kiali-operator
   includeCRDs: true
-  releaseName: kiali-server
+  releaseName: kiali-operator
   version: 1.56.0
   repo: https://kiali.org/helm-charts
   valuesInline:
-    istio_namespace: istio-system
-    # cr:
-    #   create: true
-    #   namespace: istio-system
+    cr:
+      create: true
+      namespace: istio-system
     #   spec:
     #     deployment:
     #       accessible_namespaces:
