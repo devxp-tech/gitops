@@ -9,8 +9,8 @@ helmCharts:
   valuesInline:
     fullnameOverride: kubernetes-dashboard
     protocolHttp: true
-    extraArgs:
-      - --enable-skip-login
+    # extraArgs:
+    #   - --enable-skip-login
     ProtocolHttp: true
     service:
       externalPort: 8080
