@@ -8,15 +8,11 @@ helmCharts:
   repo: https://kubernetes.github.io/dashboard
   valuesInline:
     fullnameOverride: kubernetes-dashboard
+    ProtocolHttp: true
     service:
       externalPort: 8080
-      # type: clusterIP
-      resources:
-        limits:
-          cpu: 200m
     enableSkipLogin: true
     enableInsecureLogin: true
-    ProtocolHttp: true
     rbac:
       clusterAdminRole: true
       create: true
