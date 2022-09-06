@@ -9,7 +9,7 @@ helmCharts:
   repo: https://kiali.org/helm-charts
   valuesInline:
     cr:
-      create: true
+      create: false
       namespace: istio-system
       # spec:
       #   deployment:
