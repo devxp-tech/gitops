@@ -11,9 +11,6 @@ helmCharts:
     ProtocolHttp: true
     service:
       externalPort: 8080
-    enableSkipLogin: true
-    enableInsecureLogin: true
     rbac:
-      clusterAdminRole: true
       create: true
       clusterReadOnlyRole: true
