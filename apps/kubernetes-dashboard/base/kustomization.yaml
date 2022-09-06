@@ -14,7 +14,7 @@ helmCharts:
         limits:
           cpu: 200m
     Release:
-      Namespace: kubernetes-dashboard
+      Namespace: default
     rbac:
       create: true
       clusterReadOnlyRole: true
