@@ -16,6 +16,7 @@ helmCharts:
           cpu: 200m
     enableSkipLogin: true
     enableInsecureLogin: true
+    ProtocolHttp: true
     rbac:
       clusterAdminRole: true
       create: true
