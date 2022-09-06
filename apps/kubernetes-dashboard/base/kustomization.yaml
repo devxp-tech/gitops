@@ -8,6 +8,7 @@ helmCharts:
   repo: https://kubernetes.github.io/dashboard
   valuesInline:
     fullnameOverride: kubernetes-dashboard
+    protocolHttp: true
     extraArgs:
       - --enable-skip-login
     ProtocolHttp: true
