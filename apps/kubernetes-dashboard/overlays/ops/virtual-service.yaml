@@ -3,7 +3,7 @@ apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
   name: kubernetes-dashboard
-  namespace: default
+  namespace: kubernetes-dashboard
 spec:
   hosts:
   - "kubernetes-dashboard.diegoluisi.eti.br"
