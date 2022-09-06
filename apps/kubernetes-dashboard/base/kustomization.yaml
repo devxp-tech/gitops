@@ -8,6 +8,11 @@ helmCharts:
   repo: https://kubernetes.github.io/dashboard
   valuesInline:
     fullnameOverride: kubernetes-dashboard
+    extraArgs: [
+        --enable-skip-login,
+        --enable-insecure-login,
+        --auto-generate-certificates
+    ]
     ProtocolHttp: true
     service:
       externalPort: 8080
