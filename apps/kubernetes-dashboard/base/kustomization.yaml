@@ -8,6 +8,8 @@ helmCharts:
   repo: https://kubernetes.github.io/dashboard
   valuesInline:
     fullnameOverride: kubernetes-dashboard
+    Release:
+      Namespace: kubernetes-dashboard
     rbac:
       create: true
       clusterReadOnlyRole: true
