@@ -11,17 +11,17 @@ helmCharts:
     cr:
       create: true
       namespace: istio-system
-            # spec:
-            #   deployment:
-            #     accessible_namespaces:
-            #     - '**'
-            #   external_services:
-            #     grafana:
-            #       auth:
-            #         type: bearer
-            #         token: secret:kiali-secrets:grafanaToken
-            #       enabled: true
-            #       in_cluster_url: http://grafana.monitoring.svc
-            #       url: https://grafana.diegoluisi.eti.br
-            #     prometheus:
-            #       url: http://prometheus-server.monitoring.svc
+      # spec:
+      #   deployment:
+      #     accessible_namespaces:
+      #     - '**'
+      #   external_services:
+      #     grafana:
+      #       auth:
+      #         type: bearer
+      #         token: secret:kiali-secrets:grafanaToken
+      #       enabled: true
+      #       in_cluster_url: http://grafana.monitoring.svc
+      #       url: https://grafana.diegoluisi.eti.br
+      #     prometheus:
+      #       url: http://prometheus-server.monitoring.svc
