@@ -10,6 +10,7 @@ helmCharts:
     fullnameOverride: kubernetes-dashboard
     service:
       externalPort: 8080
+      # type: clusterIP
       resources:
         limits:
           cpu: 200m
