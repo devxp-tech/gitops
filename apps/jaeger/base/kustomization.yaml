@@ -3,9 +3,8 @@ kind: Kustomization
 namespace: istio-system
 helmCharts:
 - name: jaeger
-  includeCRDs: true
   releaseName: jaeger
-  version: 2.14.1
+  version: 0.61.0
   repo: https://jaegertracing.github.io/helm-charts
   valuesInline:
     fullnameOverride: jaeger
