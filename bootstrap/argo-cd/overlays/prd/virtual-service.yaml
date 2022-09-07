@@ -12,6 +12,6 @@ spec:
   http:
   - route:
     - destination:
-        host: argocd-server
+        host: argocd-server.argocd.svc.lgsk8sp1.grupologos.local
         port:
           number: 80
