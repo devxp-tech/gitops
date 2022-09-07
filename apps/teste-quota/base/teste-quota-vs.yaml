@@ -10,7 +10,7 @@ metadata:
     backstage.io/kubernetes-id: teste-quota
 spec:
   gateways:
-  - istio-system/istio-gateway
+  - istio-system/istio-ingressgateway
   hosts:
   - teste-quota.diegoluisi.eti.br
   http:

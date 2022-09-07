@@ -7,7 +7,7 @@ spec:
   hosts:
   - "www.diegoluisi.eti.br"
   gateways:
-  - istio-system/istio-gateway
+  - istio-system/istio-ingressgateway
   http:
   - match:
     - uri:
