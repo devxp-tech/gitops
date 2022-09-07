@@ -5,7 +5,7 @@ metadata:
 subjects:
 - kind: ServiceAccount
   name: kiali-service-account
-  namespace: kiali-operator
+  namespace: istio-system
 roleRef:
   kind: ClusterRole
   name: kiali-operator
