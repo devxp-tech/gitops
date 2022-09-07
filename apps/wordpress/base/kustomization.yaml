@@ -14,4 +14,3 @@ resources:
   - wordpress-pvc.yaml
   # - wordpress-quota.yaml
   - wordpress-svc.yaml
-  - wordpress-vs.yaml
