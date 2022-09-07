@@ -14,4 +14,3 @@ resources:
   - sonar-deploy.yaml
   - sonar-pvc.yaml
   - sonar-svc.yaml
-  - virtualservice.yaml

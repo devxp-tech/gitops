@@ -16,4 +16,4 @@ spec:
     - destination:
         port:
           number: 80
-        host: sonar
+        host: sonar.sonar.svc.lgsk8sp1.grupologos.local
