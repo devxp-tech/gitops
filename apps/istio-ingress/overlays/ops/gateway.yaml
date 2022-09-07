@@ -3,6 +3,8 @@ kind: Gateway
 metadata:
   name: istio-ingressgateway
   namespace: istio-system
+  labels:
+    app_label: istio-ingressgateway
 spec:
   selector:
     istio: gateway
