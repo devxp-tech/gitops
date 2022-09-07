@@ -15,5 +15,5 @@ resources:
   - postgres-storage.yaml
   - s3.yaml
   - sa.yaml
-  - virtualservice.yaml
+  - virtual-service.yaml
 
