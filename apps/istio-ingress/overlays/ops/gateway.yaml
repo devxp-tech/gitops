@@ -7,7 +7,7 @@ metadata:
     app_label: istio-ingressgateway
 spec:
   selector:
-    istio: istio-ingressgateway
+    istio: ingressgateway
   servers:
   - hosts:
     - '*.diegoluisi.eti.br'
