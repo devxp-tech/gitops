@@ -26,5 +26,5 @@ helmCharts:
       defaultConfig:
         discoveryAddress: istiod.istio-system.svc:15012
     telemetry:
-      enabled: false
+      enabled: true
       configValidation: false
