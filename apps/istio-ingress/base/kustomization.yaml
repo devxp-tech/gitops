@@ -8,6 +8,7 @@ helmCharts:
   version: 1.15.0
   repo: https://istio-release.storage.googleapis.com/charts
   valuesInline:
+    name: istio-ingressgateway
     labels:
       app_label: istio-ingressgateway
     podAnnotations:
