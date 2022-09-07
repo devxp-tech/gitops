@@ -8,5 +8,5 @@ subjects:
   namespace: kiali-operator
 roleRef:
   kind: ClusterRole
-  name: kiali
+  name: kiali-operator
   apiGroup: rbac.authorization.k8s.io
