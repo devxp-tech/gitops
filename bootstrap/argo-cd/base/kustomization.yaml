@@ -3,7 +3,7 @@ kind: Kustomization
 namespace: argocd
 resources:
 - virtual-service.yaml
-# - argocd-notifications-secret-sealed.yaml #fix
+- argocd-notifications-secret-sealed.yaml
 #- github-secrets-sealed.yaml
 - github.com/argoproj/argo-cd/manifests/crds
 - github.com/argoproj/argo-cd/manifests/base
