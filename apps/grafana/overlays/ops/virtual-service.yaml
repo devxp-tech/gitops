@@ -17,4 +17,4 @@ spec:
     - destination:
         port:
           number: 80
-        host: grafana.monitoring.svc.lgsk8sp1.grupologos.local
+        host: grafana.monitoring.svc
