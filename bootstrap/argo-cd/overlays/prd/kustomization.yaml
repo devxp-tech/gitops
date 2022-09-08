@@ -11,3 +11,12 @@ patchesStrategicMerge:
 - argocd-notifications-cm.yaml
 - argocd-notifications.yaml
 
+patches:
+  - patch: |-
+      apiVersion: v1
+      kind: Secret
+      type: Opaque
+      metadata:
+        name: argocd-notifications-secret
+        annotations:
+          sealedsecrets.bitnami.com/managed: "true"
