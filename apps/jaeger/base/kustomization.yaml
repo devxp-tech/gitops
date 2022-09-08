@@ -8,3 +8,8 @@ helmCharts:
   repo: https://jaegertracing.github.io/helm-charts
   valuesInline:
     fullnameOverride: jaeger
+    provisionDataStore:
+      cassandra: false
+      elasticsearch: true
+    storage:
+      type: elasticsearch
