@@ -1,0 +1,43 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-cm
+  namespace: argocd
+  labels:
+    app.kubernetes.io/name: argocd-cm
+    app.kubernetes.io/part-of: argocd
+data:
+    # configManagementPlugins: |
+    #   - name: kustomized-helm
+    #     init:
+    #       command: ["/bin/sh", "-c"]
+    #       args: ["helm dependency build"]
+    #     generate:
+    #       command: [sh, -c]
+    #       args: ["helm template --release-name release-name . > all.yaml && kustomize build"]
+    kustomize.buildOptions: --enable-helm
+    statusbadge.enabled: "true"
+    repositories: |
+      - name: gitops
+        url: https://github.com/devxp-tech/gitops.git
+      - name: crossplane
+        type: helm
+        url: https://charts.crossplane.io/stable
+      - name: grafana
+        type: helm
+        url: https://grafana.github.io/helm-charts
+      - name: devxp-tech
+        type: helm
+        url: https://devxp-tech.github.io/helm-charts
+    url: https://argocd.diegoluisi.eti.br
+    dex.config: |
+      connectors:
+        - type: github
+          id: github
+          name: GitHub
+          config:
+            clientID: 83427ea0b6f6645900a5
+            clientSecret: $sso:dex.github.clientSecret
+            orgs:
+            - name: devxp-tech
+    accounts.backstage: apiKey, login
