@@ -16,9 +16,6 @@ helmCharts:
       enabled: true
     pushgateway:
       enabled: false
-    server:
-      extraArgs:
-        storage.local.retention: 720h
     serverFiles:
       alerting_rules.yml:
         groups:
