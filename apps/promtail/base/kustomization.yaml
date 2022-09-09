@@ -1,0 +1,14 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: https://grafana.github.io/helm-charts
+helmCharts:
+- name: promtai
+  includeCRDs: true
+  releaseName: promtail
+  version: 6.3.0
+  repo: https://grafana.github.io/helm-charts
+  valuesInline:
+      config:
+        serverPort: 3101
+        clients:
+          - url: http://loki-stack:3100/loki/api/v1/push
