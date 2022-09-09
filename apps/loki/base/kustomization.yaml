@@ -4,18 +4,11 @@ namespace: monitoring
 helmCharts:
 - name: loki
   includeCRDs: true
-  releaseName: loki-stack
-  version: 2.8.2
+  releaseName: loki
+  version: 3.0.1
   repo: https://grafana.github.io/helm-charts
   valuesInline:
-    promtail:
-      enabled: true
-      config:
-        logLevel: info
-        serverPort: 3101
-        clients:
-          - url: http://loki-stack:3100/loki/api/v1/push
     # fullnameOverride: loki
-    # global:
-    #   dnsService: coredns
-    #   clusterDomain: lgsk8sp1.grupologos.local
+    global:
+      dnsService: coredns
+      clusterDomain: lgsk8sp1.grupologos.local
