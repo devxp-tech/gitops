@@ -11,7 +11,7 @@ configMapGenerator:
       - files/repositories
       - files/repository.credentials
     literals:
-      - admin.enabled=true
+      - admin.enabled=false
       - kustomize.buildOptions="--enable-alpha-plugins --enable-helm --load-restrictor LoadRestrictionsNone"
       - url=https://argocd.diegoluisi.eti.br
       - accounts.backstage="apiKey, login"
