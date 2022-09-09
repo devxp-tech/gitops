@@ -2,20 +2,47 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: argocd
 configMapGenerator:
-- behavior: merge
-  literals:
-  # - kustomize.buildOptions="--enable-alpha-plugins --enable-helm"
-  - |
-    repository.credentials=- passwordSecret:
-        key: git_token
-        name: autopilot-secret
-      url: https://github.com/
-      usernameSecret:
-        key: git_username
-        name: autopilot-secret
-  name: argocd-cm
+  - behavior: merge
+    options:
+      labels:
+        app.kubernetes.io/part-of: argocd
+    files:
+      - files/dex.config
+      - files/repositories
+      - files/repository.credentials
+    literals:
+      - admin.enabled=false
+      - kustomize.buildOptions="--enable-alpha-plugins --enable-helm --load-restrictor LoadRestrictionsNone"
+      - url=https://argocd.diegoluisi.eti.br
+      - accounts.backstage="apiKey, login"
+    name: argocd-cm
+  - behavior: merge
+    options:
+        labels:
+          app.kubernetes.io/part-of: argocd
+    files:
+      - files/policy.csv
+    literals:
+    - policy.default="role:readonly"
+    name: argocd-rbac-cm
+
 resources:
-- github.com/argoproj-labs/argocd-autopilot/manifests/base?ref=v0.4.4
-components:
-# extensions controller component
-- https://github.com/argoproj-labs/argocd-extensions/manifests
+  - github.com/argoproj-labs/argocd-autopilot/manifests/base?ref=v0.4.4
+  - argo-grafana-secret-sealed.yaml
+  - argo-rollouts.yaml
+  - argocd-notifications-secret-sealed.yaml
+  - github-secrets-sealed.yaml
+  - sso-sealed.yaml
+  - virtual-service.yaml
+patchesStrategicMerge:
+  - argocd-server.yaml
+  - argocd-notifications-cm.yaml
+patches:
+  - patch: |-
+      apiVersion: v1
+      kind: Secret
+      type: Opaque
+      metadata:
+        name: argocd-notifications-secret
+        annotations:
+          sealedsecrets.bitnami.com/managed: "true"
