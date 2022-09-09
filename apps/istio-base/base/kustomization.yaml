@@ -10,8 +10,8 @@ helmCharts:
   repo: https://istio-release.storage.googleapis.com/charts
   includeCRDs: true
   valuesInline:
-    fullnameOverride: istio-base
     global:
+      istioNamespace: istio-system
       configValidation: false
       istiod:
         enableAnalysis: true
