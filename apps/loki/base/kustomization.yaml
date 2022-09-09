@@ -8,6 +8,13 @@ helmCharts:
   version: 2.8.2
   repo: https://grafana.github.io/helm-charts
   valuesInline:
+    promtail:
+      enabled: true
+      config:
+        logLevel: info
+        serverPort: 3101
+        clients:
+          - url: http://{{ .Release.Name }}:3100/loki/api/v1/push
     # fullnameOverride: loki
     # global:
     #   dnsService: coredns
