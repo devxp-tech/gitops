@@ -3,7 +3,7 @@ kind: Kustomization
 namespace: monitoring
 helmCharts:
 - name: loki
-  releaseName: metrics-server
+  releaseName: loki
   version: 3.0.1
   repo: https://grafana.github.io/helm-charts
   valuesInline:
