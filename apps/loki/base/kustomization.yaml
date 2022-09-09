@@ -3,12 +3,11 @@ kind: Kustomization
 namespace: monitoring
 helmCharts:
 - name: loki
-  includeCRDs: true
-  releaseName: loki
+  releaseName: metrics-server
   version: 3.0.1
   repo: https://grafana.github.io/helm-charts
   valuesInline:
-    # fullnameOverride: loki
+    fullnameOverride: loki
     global:
       dnsService: coredns
       clusterDomain: lgsk8sp1.grupologos.local
