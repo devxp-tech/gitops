@@ -8,6 +8,7 @@ helmCharts:
   version: 0.56.7
   repo: https://grafana.github.io/helm-charts
   valuesInline:
+    fullnameOverride: loki
     global:
       dnsService: coredns
       clusterDomain: lgsk8sp1.grupologos.local
