@@ -8,7 +8,9 @@ helmCharts:
   version: 2.8.2
   repo: https://grafana.github.io/helm-charts
   valuesInline:
-    fullnameOverride: loki
+    # fullnameOverride: loki
     global:
       dnsService: coredns
       clusterDomain: lgsk8sp1.grupologos.local
+    promtail:
+      enabled: true
