@@ -193,6 +193,9 @@ helmCharts:
         k8s_views_pods-kubernetes-views-pods:
           datasource: Prometheus
           url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/k8s_views_pods-kubernetes-views-pods.json"
+        node-exporter-full:
+          datasource: Prometheus
+          url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/node-exporter-full.json"
       alertmanager:
         # Alertmanager dashboards
         alertmanager-default:
