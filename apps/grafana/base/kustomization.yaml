@@ -39,19 +39,19 @@ helmCharts:
       GF_AUTH_GITHUB_ALLOWED_ORGANIZATIONS: devxp-tech
       GF_AUTO_ASSIGN_ORG_ROLE: Admin
 
-    # autoscaling:
-    #   enabled: true
-    #   minReplicas: 1
-    #   maxReplicas: 3
-    #   metrics:
-    #   - type: Resource
-    #     resource:
-    #       name: cpu
-    #       targetAverageUtilization: 60
-    #   - type: Resource
-    #     resource:
-    #       name: memory
-    #       targetAverageUtilization: 60
+    autoscaling:
+      enabled: true
+      minReplicas: 1
+      maxReplicas: 3
+      metrics:
+      - type: Resource
+        resource:
+          name: cpu
+          targetAverageUtilization: 60
+      - type: Resource
+        resource:
+          name: memory
+          targetAverageUtilization: 60
 
     datasources:
       datasources.yaml:
