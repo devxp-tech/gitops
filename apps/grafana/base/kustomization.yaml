@@ -82,7 +82,7 @@ helmCharts:
 
     sidecar:
       plugins:
-        enabled: false
+        enabled: true
       notifiers:
         enabled: false
       dashboards:
@@ -96,12 +96,14 @@ helmCharts:
           disableDelete: false
           allowUiUpdates: true
           foldersFromFilesStructure: true
-      plugins:
-        - GitHub
       datasources:
         enabled: false
         label: grafana_datasource
         labelValue: "1"
+
+    plugins:
+      - grafana-github-datasource
+      - grafana-piechart-panel
 
     dashboardProviders:
       dashboardproviders.yaml:
