@@ -8,9 +8,7 @@ helmCharts:
   repo: https://prometheus-community.github.io/helm-charts
   includeCRDs: true
   valuesInline:
-    fullnameOverride: prometheus
-    alertmanager:
-      enabled: false
+    # fullnameOverride: prometheus
     serverFiles:
       alerting_rules.yml:
         groups:
