@@ -269,7 +269,7 @@ helmCharts:
           - scheme: http
             static_configs:
             - targets:
-              - "alertmanager.monitoring.svc:9093"
+              - "prometheus-alertmanager.monitoring.svc"
         scrape_configs:
           - job_name: serviceMonitor/argocd/argocd-metrics/0
             honor_timestamps: true
@@ -559,7 +559,7 @@ helmCharts:
             scrape_interval: 10s
             honor_labels: true
             static_configs:
-              - targets: ['grafana:3000']
+              - targets: ['grafana:80']
 
           - job_name: 'node-exporter'
             kubernetes_sd_configs:
