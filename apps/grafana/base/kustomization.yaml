@@ -113,14 +113,6 @@ helmCharts:
           editable: true
           options:
             path: /var/lib/grafana/dashboards/default
-        - name: 'istio'
-          orgId: 1
-          folder: 'Istio Dashboards'
-          type: file
-          disableDeletion: false
-          editable: true
-          options:
-            path: /var/lib/grafana/dashboards/istio
         - name: 'argocd'
           orgId: 1
           folder: 'ArgoCD Dashboards'
@@ -129,6 +121,22 @@ helmCharts:
           editable: true
           options:
             path: /var/lib/grafana/dashboards/argocd
+        - name: 'github'
+          orgId: 1
+          folder: 'GitHub Dashboards'
+          type: file
+          disableDeletion: false
+          editable: true
+          options:
+            path: /var/lib/grafana/dashboards/github
+        - name: 'istio'
+          orgId: 1
+          folder: 'Istio Dashboards'
+          type: file
+          disableDeletion: false
+          editable: true
+          options:
+            path: /var/lib/grafana/dashboards/istio
         - name: 'loki'
           orgId: 1
           folder: 'Loki Dashboards'
@@ -173,6 +181,19 @@ helmCharts:
         k8s_views_pods-kubernetes-views-pods:
           datasource: Prometheus
           url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/k8s_views_pods-kubernetes-views-pods.json"
+      argocd:
+        # Istio dashboards
+        argocd-default:
+          datasource: Prometheus
+          url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/argocd/dashboard.json"
+      github:
+        # GitHub dashboards
+        github-default:
+          datasource: GitHub
+          url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/github/github-default.json"
+        github-organization:
+          datasource: GitHub
+          url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/github/github-organization.json"
       istio:
         # Istio dashboards
         istio-control-plane-dashboard:
@@ -190,15 +211,8 @@ helmCharts:
         istio-workload-dashboard:
           datasource: Prometheus
           url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/istio/istio-workload-dashboard.json"
-      argocd:
-        # Istio dashboards
-        dashboard:
-          datasource: Prometheus
-          url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/argocd/dashboard.json"
       loki:
-        # Istio dashboards
+        # Loki dashboards
         dashboard:
-          # datasource: Prometheus
+          datasource: Loki
           url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/loki/loki_stack_monitoring_quortex.json"
-
-
