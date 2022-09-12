@@ -4,8 +4,8 @@ namespace: kube-system
 helmCharts:
 - name: metrics-server
   releaseName: metrics-server
-  version: 6.1.2
-  repo: https://charts.bitnami.com/bitnami
+  version: 3.8.2
+  repo: https://kubernetes-sigs.github.io/metrics-server
   valuesInline:
     fullnameOverride: metrics-server
     # hostNetwork:
