@@ -724,3 +724,7 @@ helmCharts:
             - source_labels: [__meta_kubernetes_pod_container_port_name]
               action: keep
               regex: '.*-envoy-prom'
+
+          - job_name: node
+            static_configs:
+              - targets: ['localhost:9100']
