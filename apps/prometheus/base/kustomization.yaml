@@ -11,7 +11,7 @@ helmCharts:
     # fullnameOverride: prometheus
     serverFiles:
       alerting_rules.yml:
-      groups:
+        groups:
         - name: devxp-tech-alerts
           rules:
           - alert: PrometheusTargetMissing
