@@ -59,7 +59,7 @@ helmCharts:
         datasources:
         - name: Alertmanager
           type: alertmanager
-          url: http://alertmanager:9093
+          url: http://prometheus-alertmanager
           uid: alertmanager
           access: proxy
           jsonData:
