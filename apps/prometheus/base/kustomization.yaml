@@ -721,4 +721,4 @@ helmCharts:
 
           - job_name: node
             static_configs:
-              - targets: ['localhost:9100']
+              - targets: ['prometheus-node-exporter:9100']
