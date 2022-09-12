@@ -160,6 +160,9 @@ helmCharts:
     dashboards:
       default:
         # Kubernetes dashboards
+        core-dns:
+          datasource: Prometheus
+          url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/core-dns.json"
         k8s-addons-starboard-operator:
           datasource: Prometheus
           url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/k8s-addons-starboard-operator.json"
