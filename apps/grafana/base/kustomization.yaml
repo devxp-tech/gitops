@@ -9,6 +9,13 @@ helmCharts:
   repo: https://grafana.github.io/helm-charts
   valuesInline:
     fullnameOverride: grafana
+    resources:
+      limits:
+        cpu: 100m
+        memory: 128Mi
+      requests:
+        cpu: 100m
+        memory: 128Mi
     grafana.ini:
       server:
         domain: grafana.diegoluisi.eti.br
