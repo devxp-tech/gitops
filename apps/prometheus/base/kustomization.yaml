@@ -10,7 +10,7 @@ helmCharts:
   valuesInline:
     # fullnameOverride: prometheus
     serverFiles:
-      alerting_rules.yml: ""
+      alerting_rules.yml:
       groups:
         - name: devxp-tech-alerts
           rules:
