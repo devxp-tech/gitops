@@ -6,6 +6,7 @@ helmCharts:
   releaseName: prometheus
   version: 15.12.0
   repo: https://prometheus-community.github.io/helm-charts
+  includeCRDs: true
   valuesInline:
     fullnameOverride: prometheus
     alertmanager:
