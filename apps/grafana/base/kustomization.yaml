@@ -96,6 +96,8 @@ helmCharts:
           disableDelete: false
           allowUiUpdates: true
           foldersFromFilesStructure: true
+      plugins:
+        - GitHub
       datasources:
         enabled: false
         label: grafana_datasource
