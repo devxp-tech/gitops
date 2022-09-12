@@ -4,17 +4,17 @@ namespace: kube-system
 helmCharts:
 - name: metrics-server
   releaseName: metrics-server
-  version: 3.8.2
-  repo: https://kubernetes-sigs.github.io/metrics-server
+  version: 6.1.2
+  repo: https://charts.bitnami.com/bitnami
   valuesInline:
     fullnameOverride: metrics-server
-    hostNetwork:
-      enabled: true
+    # hostNetwork:
+    #   enabled: true
     args:
-      - "--authorization-always-allow-paths=/metrics"
-      - "--cert-dir=/tmp"
-      - "--secure-port=4443"
-      - "--kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname"
-      - "--kubelet-use-node-status-port"
+      # - "--authorization-always-allow-paths=/metrics"
+      # - "--cert-dir=/tmp"
+      # - "--secure-port=4443"
+      # - "--kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname"
+      # - "--kubelet-use-node-status-port"
       - "--kubelet-insecure-tls"
-      - "--metric-resolution=15s"
+      # - "--metric-resolution=15s"
