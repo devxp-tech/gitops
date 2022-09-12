@@ -8,8 +8,8 @@ helmCharts:
   repo: https://kubernetes-sigs.github.io/metrics-server
   valuesInline:
     fullnameOverride: metrics-server
-    # hostNetwork:
-    #   enabled: true
+    hostNetwork:
+      enabled: true
     args:
       # - --cert-dir=/tmp
       - --secure-port=4443
