@@ -11,12 +11,6 @@ helmCharts:
     fullnameOverride: prometheus
     alertmanager:
       enabled: false
-    kubeStateMetrics:
-      enabled: true
-    nodeExporter:
-      enabled: true
-    pushgateway:
-      enabled: false
     serverFiles:
       alerting_rules.yml:
         groups:
