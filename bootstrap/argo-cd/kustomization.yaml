@@ -13,6 +13,7 @@ configMapGenerator:
     literals:
       - admin.enabled=true
       - kustomize.buildOptions="--enable-alpha-plugins --enable-helm --load-restrictor LoadRestrictionsNone"
+      - statusbadge.enabled=true
       - url=https://argocd.diegoluisi.eti.br
       - accounts.backstage="apiKey, login"
     name: argocd-cm
