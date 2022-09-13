@@ -10,12 +10,12 @@ helmCharts:
   valuesInline:
     fullnameOverride: grafana
     resources:
-      limits:
-        cpu: 200m
-        memory: 256Mi
       requests:
         cpu: 100m
         memory: 128Mi
+      limits:
+        cpu: 200m
+        memory: 256Mi
     grafana.ini:
       server:
         domain: grafana.diegoluisi.eti.br
@@ -54,7 +54,7 @@ helmCharts:
       - type: Resource
         resource:
           name: cpu
-          targetAverageUtilization: 60
+          targetAverageUtilization: 75
       # - type: Resource
       #   resource:
       #     name: memory
