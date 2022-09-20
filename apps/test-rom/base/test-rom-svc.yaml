@@ -1,0 +1,19 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: test-rom-svc
+  namespace: test-rom
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: test-rom.diegoluisi.eti.br
+  labels:
+    app: test-rom
+    version: 0.0.1
+    backstage.io/kubernetes-id: test-rom
+spec:
+  type: ClusterIP
+  ports:
+  - name: tcp-node
+    port: 8080
+  selector:
+    app: test-rom

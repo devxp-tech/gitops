@@ -1,0 +1,11 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: test-rom
+resources:
+  - ns.yaml
+  - test-rom-quota.yaml
+  - test-rom-deploy.yaml
+  - test-rom-svc.yaml
+  - test-rom-vs.yaml
+  - test-rom-hpa.yaml

@@ -1,0 +1,11 @@
+{
+  "appName": "test-rom",
+  "userGivenName": "test-rom",
+  "destNamespace": "test-rom",
+  "destServer": "https://kubernetes.default.svc",
+  "srcPath": "apps/test-rom/overlays/dev",
+  "srcRepoURL": "https://github.com/diegoluisi/argo.git",
+  "srcTargetRevision": "",
+  "CreateNamespace": true,
+  "labels": null
+}

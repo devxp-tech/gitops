@@ -1,0 +1,16 @@
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: test-rom-hpa
+  labels:
+    app: test-rom
+    version: 0.0.1
+    backstage.io/kubernetes-id: test-rom
+spec:
+ scaleTargetRef:
+   apiVersion: apps/v1
+   kind: Deployment
+   name: test-rom
+ minReplicas: 1
+ maxReplicas: 4
+ targetCPUUtilizationPercentage: 75

@@ -1,0 +1,16 @@
+---
+kind: ResourceQuota
+apiVersion: v1
+metadata:
+  name: test-rom-quota
+  namespace: test-rom
+  labels:
+    kubernetes.io/metadata.name: test-rom
+    backstage.io/kubernetes-id: test-rom
+    istio-injection: enabled
+spec:
+  hard:
+    requests.cpu: "1"
+    requests.memory: 1Gi
+    limits.cpu: "2"
+    limits.memory: 2Gi

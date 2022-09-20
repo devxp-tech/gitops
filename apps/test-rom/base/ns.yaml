@@ -1,0 +1,12 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: test-rom
+  labels:
+    kubernetes.io/metadata.name: test-rom
+    backstage.io/kubernetes-id: test-rom
+    istio-injection: enabled
+spec:
+  finalizers:
+  - kubernetes
