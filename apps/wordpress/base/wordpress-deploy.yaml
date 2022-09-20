@@ -57,11 +57,11 @@ spec:
           mountPath: "/var/www/html"          # which data will be stored
         startupProbe:
           httpGet:
+            httpHeaders:
+            - name: Host
+              value: www.diegoluisi.eti.br
             path: /wp-login.php
             port: http
-            httpHeaders:
-              - name: Host
-                value: localhost:80
           initialDelaySeconds: 10
           timeoutSeconds: 5
           failureThreshold: 30
@@ -69,29 +69,28 @@ spec:
           periodSeconds: 10
         livenessProbe:
           httpGet:
-            path: /wp-admin/install.php
-            port: http
             httpHeaders:
-              - name: Host
-                value: localhost:80
+            - name: Host
+              value: www.diegoluisi.eti.br
+            path: /wp-login.php
+            port: http
           initialDelaySeconds: 30
           timeoutSeconds: 5
           failureThreshold: 5
           successThreshold: 1
           periodSeconds: 10
         readinessProbe:
+          failureThreshold: 3
           httpGet:
+            httpHeaders:
+            - name: Host
+              value: www.diegoluisi.eti.br
             path: /wp-login.php
             port: http
-            httpHeaders:
-              - name: Host
-                value: localhost:80
-          initialDelaySeconds: 30
-          timeoutSeconds: 5
-          failureThreshold: 5
+          initialDelaySeconds: 10
+          periodSeconds: 5
           successThreshold: 1
-          periodSeconds: 10
-
+          timeoutSeconds: 30
       volumes:
       - name: wordpress-persistent-storage
         persistentVolumeClaim:
