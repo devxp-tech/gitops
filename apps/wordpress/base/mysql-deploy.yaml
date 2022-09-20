@@ -57,9 +57,13 @@ spec:
         livenessProbe:
           tcpSocket:
             port: mysql
+          initialDelaySeconds: 15
+          periodSeconds: 20
         readinessProbe:
           tcpSocket:
             port: mysql
+          initialDelaySeconds: 5
+          periodSeconds: 10
         volumeMounts:
         - name: mysql-persistent-storage  # which data will be stored
           mountPath: "/var/lib/mysql"
