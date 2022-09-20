@@ -52,8 +52,14 @@ spec:
               name: mysql-pass        # the one generated before in secret.yml
               key: password
         ports:
-        - containerPort: 3306
-          name: mysql
+        - name: mysql
+          containerPort: 3306
+        livenessProbe:
+          tcpSocket:
+            port: mysql
+        readinessProbe:
+          tcpSocket:
+            port: mysql
         volumeMounts:
         - name: mysql-persistent-storage  # which data will be stored
           mountPath: "/var/lib/mysql"
