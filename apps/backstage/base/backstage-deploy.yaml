@@ -55,11 +55,16 @@ spec:
             limits:
               memory: 512Mi
               cpu: 100m
-          # readinessProbe:
-          #   httpGet:
-          #     port: 7007
-          #     path: /healthcheck
-          # livenessProbe:
-          #   httpGet:
-          #     port: 7007
-          #     path: /healthcheck
+          readinessProbe:
+            httpGet:
+              port: 7007
+              path: /healthcheck
+            initialDelaySeconds: 15
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              port: 7007
+              path: /healthcheck
+            initialDelaySeconds: 15
+            periodSeconds: 10
+
