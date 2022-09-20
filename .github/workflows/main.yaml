@@ -28,7 +28,7 @@ jobs:
     name: Trivy Vulnerability Scanner
     if: always()
     needs:
-      - policy-check
+      - datree-check
     runs-on: ubuntu-18.04
     steps:
       - name: Checkout code
