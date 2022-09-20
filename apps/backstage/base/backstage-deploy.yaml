@@ -60,14 +60,14 @@ spec:
             periodSeconds: 10
             httpGet:
               port: http
-              path: /healthcheck
+              path: "/healthcheck"
               httpHeaders:
               - name: Host
                 value: backstage.diegoluisi.eti.br
           # readinessProbe:
           #   httpGet:
           #     port: http
-          #     path: /healthcheck
+          #     path: "/healthcheck"
           #   initialDelaySeconds: 15
           #   periodSeconds: 10
           livenessProbe:
@@ -75,7 +75,7 @@ spec:
             periodSeconds: 10
             httpGet:
               port: http
-              path: /healthcheck
+              path: "/healthcheck"
               httpHeaders:
               - name: Host
                 value: backstage.diegoluisi.eti.br
