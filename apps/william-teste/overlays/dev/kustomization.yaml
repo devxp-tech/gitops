@@ -4,4 +4,4 @@ resources:
 - ../../base
 images:
 - name: diegoluisi/william-teste
-  newTag: latest
+  newTag: 97182c48
