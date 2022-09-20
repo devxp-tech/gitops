@@ -83,39 +83,51 @@ Argo Workflows is an open source container-native workflow engine for orchestrat
 ````bash
 .
 ├── apps
-│   ├── argo
-│   ├── argo-rollouts
-│   ├── cert-manager
-│   ├── external-dns
-│   ├── grafana
-│   ├── hello-gitops
-│   │   ├── base
-│   │   └── overlays
-│   │       └── production
-│   ├── hello-world
-│   ├── istio
-│   ├── metrics-server
-│   ├── prometheus
-│   ├── sealed-secrets
-│   └── wordpress
-│       ├── base
-│       └── overlays
-│           └── production
+│   ├── argo-rollouts
+│   ├── backstage
+│   ├── cert-manager
+│   ├── crossplane
+│   ├── grafana
+│   ├── istio-base
+│   ├── istio-ingress
+│   ├── istiod
+│   ├── jaeger
+│   ├── kiali-operator
+│   ├── kubernetes-dashboard
+│   ├── loki
+│   ├── metrics-server
+│   ├── prometheus
+│   ├── promtail
+│   ├── rollout-demo
+│   ├── sealed-secrets
+│   ├── sonarqube
+│   └── wordpress
 ├── bootstrap
-│   ├── argo-cd
-│   │   ├── base
-│   │   └── overlays
-│   │       └── production
-│   └── cluster-resources
-│       └── in-cluster
-├── fix-folders
-│   ├── argo-cd
-│   │   └── base
-│   ├── argo-events
-│   ├── argo-rollouts
-│   └── argo-workflows
-│       └── workflows-templates
-└── projects
+│   ├── argo-cd
+│   └── cluster-resources
+├── infra
+│   └── networking
+├── old
+│   ├── alertmanager
+│   ├── argo-cd
+│   ├── argo-events
+│   ├── argo-rollouts
+│   ├── argo-workflows
+│   ├── cert-manager
+│   ├── grafana
+│   ├── istio
+│   ├── kiali
+│   ├── kiali-operator
+│   ├── kube-state-metrics
+│   ├── loki
+│   ├── loki2
+│   ├── metrics-server
+│   ├── prometheus
+│   ├── promtail
+│   ├── sealed-secrets
+│   └── teste-quota
+├── projects
+└── secrets
 ````
 
 ### 🖊️ Code of Conduct
