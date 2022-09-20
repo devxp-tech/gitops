@@ -55,12 +55,12 @@ spec:
             limits:
               memory: 512Mi
               cpu: 100m
-          readinessProbe:
-            httpGet:
-              port: http
-              path: /healthcheck
-            initialDelaySeconds: 15
-            periodSeconds: 10
+          # readinessProbe:
+          #   httpGet:
+          #     port: http
+          #     path: /healthcheck
+          #   initialDelaySeconds: 15
+          #   periodSeconds: 10
           livenessProbe:
             httpGet:
               port: http
