@@ -107,25 +107,6 @@ Argo Workflows is an open source container-native workflow engine for orchestrat
 │   └── cluster-resources
 ├── infra
 │   └── networking
-├── old
-│   ├── alertmanager
-│   ├── argo-cd
-│   ├── argo-events
-│   ├── argo-rollouts
-│   ├── argo-workflows
-│   ├── cert-manager
-│   ├── grafana
-│   ├── istio
-│   ├── kiali
-│   ├── kiali-operator
-│   ├── kube-state-metrics
-│   ├── loki
-│   ├── loki2
-│   ├── metrics-server
-│   ├── prometheus
-│   ├── promtail
-│   ├── sealed-secrets
-│   └── teste-quota
 ├── projects
 └── secrets
 ````
