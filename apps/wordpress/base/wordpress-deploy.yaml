@@ -55,42 +55,63 @@ spec:
         volumeMounts:
         - name: wordpress-persistent-storage
           mountPath: "/var/www/html"          # which data will be stored
-        startupProbe:
-          httpGet:
-            httpHeaders:
-            - name: Host
-              value: www.diegoluisi.eti.br
-            path: /wp-login.php
-            port: http
-          initialDelaySeconds: 10
-          timeoutSeconds: 5
-          failureThreshold: 30
-          successThreshold: 1
-          periodSeconds: 10
+        # startupProbe:
+        #   httpGet:
+        #     httpHeaders:
+        #     - name: Host
+        #       value: www.diegoluisi.eti.br
+        #     path: /wp-login.php
+        #     port: http
+        #   initialDelaySeconds: 10
+        #   timeoutSeconds: 5
+        #   failureThreshold: 30
+        #   successThreshold: 1
+        #   periodSeconds: 10
+        # livenessProbe:
+        #   httpGet:
+        #     httpHeaders:
+        #     - name: Host
+        #       value: www.diegoluisi.eti.br
+        #     path: /wp-login.php
+        #     port: http
+        #   initialDelaySeconds: 30
+        #   timeoutSeconds: 5
+        #   failureThreshold: 5
+        #   successThreshold: 1
+        #   periodSeconds: 10
+        # readinessProbe:
+        #   failureThreshold: 3
+        #   httpGet:
+        #     httpHeaders:
+        #     - name: Host
+        #       value: www.diegoluisi.eti.br
+        #     path: /wp-login.php
+        #     port: http
+        #   initialDelaySeconds: 10
+        #   periodSeconds: 5
+        #   successThreshold: 1
+        #   timeoutSeconds: 30
+
+
         livenessProbe:
-          httpGet:
-            httpHeaders:
-            - name: Host
-              value: www.diegoluisi.eti.br
-            path: /wp-login.php
-            port: http
-          initialDelaySeconds: 30
-          timeoutSeconds: 5
-          failureThreshold: 5
-          successThreshold: 1
+          initialDelaySeconds: 120
           periodSeconds: 10
-        readinessProbe:
-          failureThreshold: 3
-          httpGet:
-            httpHeaders:
-            - name: Host
-              value: www.diegoluisi.eti.br
-            path: /wp-login.php
-            port: http
-          initialDelaySeconds: 10
-          periodSeconds: 5
+          timeoutSeconds: 5
+          failureThreshold: 6
           successThreshold: 1
-          timeoutSeconds: 30
+          httpGet: null
+          tcpSocket:
+            port: 80
+        readinessProbe:
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 6
+          successThreshold: 1
+          httpGet: null
+          tcpSocket:
+            port: 80
+
       volumes:
       - name: wordpress-persistent-storage
         persistentVolumeClaim:
