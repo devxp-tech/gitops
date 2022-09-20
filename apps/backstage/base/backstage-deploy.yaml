@@ -55,6 +55,15 @@ spec:
             limits:
               memory: 512Mi
               cpu: 100m
+          startupProbe:
+            failureThreshold: 30
+            periodSeconds: 10
+            httpGet:
+              port: http
+              path: /healthcheck
+              httpHeaders:
+              - name: Host
+                value: backstage.diegoluisi.eti.br
           # readinessProbe:
           #   httpGet:
           #     port: http
@@ -62,15 +71,12 @@ spec:
           #   initialDelaySeconds: 15
           #   periodSeconds: 10
           livenessProbe:
-            httpGet:
-              port: http
-              path: /healthcheck
             initialDelaySeconds: 15
             periodSeconds: 10
-          startupProbe:
             httpGet:
               port: http
               path: /healthcheck
-            failureThreshold: 30
-            periodSeconds: 10
+              httpHeaders:
+              - name: Host
+                value: backstage.diegoluisi.eti.br
 
