@@ -55,6 +55,43 @@ spec:
         volumeMounts:
         - name: wordpress-persistent-storage
           mountPath: "/var/www/html"          # which data will be stored
+        startupProbe:
+          httpGet:
+            path: /wp-login.php
+            port: http
+            httpHeaders:
+              - name: Host
+                value: localhost:80
+          initialDelaySeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 30
+          successThreshold: 1
+          periodSeconds: 10
+        livenessProbe:
+          httpGet:
+            path: /wp-admin/install.php
+            port: http
+            httpHeaders:
+              - name: Host
+                value: localhost:80
+          initialDelaySeconds: 30
+          timeoutSeconds: 5
+          failureThreshold: 5
+          successThreshold: 1
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /wp-login.php
+            port: http
+            httpHeaders:
+              - name: Host
+                value: localhost:80
+          initialDelaySeconds: 30
+          timeoutSeconds: 5
+          failureThreshold: 5
+          successThreshold: 1
+          periodSeconds: 10
+
       volumes:
       - name: wordpress-persistent-storage
         persistentVolumeClaim:
