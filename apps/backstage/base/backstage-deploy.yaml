@@ -57,14 +57,20 @@ spec:
               cpu: 100m
           readinessProbe:
             httpGet:
-              port: 7007
+              port: http
               path: /healthcheck
             initialDelaySeconds: 15
             periodSeconds: 10
           livenessProbe:
             httpGet:
-              port: 7007
+              port: http
               path: /healthcheck
             initialDelaySeconds: 15
+            periodSeconds: 10
+          startupProbe:
+            httpGet:
+              port: http
+              path: /healthcheck
+            failureThreshold: 30
             periodSeconds: 10
 
