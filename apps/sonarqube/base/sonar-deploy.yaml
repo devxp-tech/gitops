@@ -72,19 +72,19 @@ spec:
           limits:
             memory: 2048Mi
             cpu: 100m
-        livenessProbe:
-          httpGet:
-            path: /sessions/new
-            port: 9000
-          initialDelaySeconds: 60
-          periodSeconds: 30
-        readinessProbe:
-          httpGet:
-            path: /sessions/new
-            port: 9000
-          initialDelaySeconds: 60
-          periodSeconds: 30
-          failureThreshold: 6
+        # livenessProbe:
+        #   httpGet:
+        #     path: /sessions/new
+        #     port: 9000
+        #   initialDelaySeconds: 60
+        #   periodSeconds: 30
+        # readinessProbe:
+        #   httpGet:
+        #     path: /sessions/new
+        #     port: 9000
+        #   initialDelaySeconds: 60
+        #   periodSeconds: 30
+        #   failureThreshold: 6
       volumes:
       - name: app-pvc
         persistentVolumeClaim:
