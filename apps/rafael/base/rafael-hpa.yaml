@@ -1,0 +1,16 @@
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: rafael-hpa
+  labels:
+    app: rafael
+    version: 0.0.1
+    backstage.io/kubernetes-id: rafael
+spec:
+ scaleTargetRef:
+   apiVersion: apps/v1
+   kind: Deployment
+   name: rafael
+ minReplicas: 1
+ maxReplicas: 4
+ targetCPUUtilizationPercentage: 75

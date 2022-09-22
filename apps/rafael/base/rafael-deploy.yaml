@@ -1,0 +1,54 @@
+---
+# create deployment for rafael
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: rafael
+  namespace: rafael
+  labels:
+    app: rafael
+    version: 0.0.1
+    backstage.io/kubernetes-id: rafael
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rafael
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: rafael
+        version: 0.0.1
+        backstage.io/kubernetes-id: rafael
+      annotations:
+        sidecar.istio.io/proxyCPU: "100m"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPULimit: "200m"
+        sidecar.istio.io/proxyMemoryLimit: "128Mi"        
+    spec:
+      containers:
+      - name: rafael
+        image: diegoluisi/rafael:latest
+        imagePullPolicy: IfNotPresent
+        resources:
+          requests:
+            cpu: "50m"
+            memory: "64Mi"
+          limits:
+            cpu: "100m"
+            memory: "128Mi"
+        ports:
+        - name: http
+          containerPort: 8080
+        readinessProbe:
+          httpGet:
+            port: 8080
+            path: /health-check/readiness
+        livenessProbe:
+          httpGet:
+            port: 8080
+            path: /health-check/liveness
+          initialDelaySeconds: 3
+          periodSeconds: 15

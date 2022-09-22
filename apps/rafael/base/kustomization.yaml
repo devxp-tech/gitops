@@ -1,0 +1,11 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: rafael
+resources:
+  - ns.yaml
+  - rafael-quota.yaml
+  - rafael-deploy.yaml
+  - rafael-svc.yaml
+  - rafael-vs.yaml
+  - rafael-hpa.yaml
