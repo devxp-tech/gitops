@@ -28,6 +28,7 @@ configMapGenerator:
         app.kubernetes.io/part-of: argocd
     files:
       - files/dex.config
+      - files/policy.csv
       - files/repositories
       - files/repository.credentials
     literals:
@@ -42,7 +43,5 @@ configMapGenerator:
     options:
         labels:
           app.kubernetes.io/part-of: argocd
-    files:
-      - files/policy.csv
     literals:
     - policy.default="role:readonly"
