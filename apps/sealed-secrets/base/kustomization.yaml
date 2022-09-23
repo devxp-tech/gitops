@@ -5,6 +5,7 @@ helmCharts:
 - name: sealed-secrets
   releaseName: sealed-secrets
   version: 2.6.1
+  includeCRDs: true
   repo: https://bitnami-labs.github.io/sealed-secrets
   valuesInline:
     fullnameOverride: sealed-secrets-controller

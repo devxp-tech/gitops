@@ -15,7 +15,6 @@ helmCharts:
           static_configs:
           - targets:
             - "prometheus-alertmanager.monitoring.svc"
-
     serverFiles:
       alerting_rules.yml:
         groups:

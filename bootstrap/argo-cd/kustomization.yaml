@@ -11,13 +11,14 @@ configMapGenerator:
       - files/repositories
       - files/repository.credentials
     literals:
-      - admin.enabled=true
+      - admin.enabled=false
       - kustomize.buildOptions="--enable-alpha-plugins --enable-helm --load-restrictor LoadRestrictionsNone"
       - statusbadge.enabled=true
       - url=https://argocd.diegoluisi.eti.br
       - accounts.backstage="apiKey, login"
     name: argocd-cm
   - behavior: merge
+    name: argocd-rbac-cm
     options:
         labels:
           app.kubernetes.io/part-of: argocd
@@ -25,8 +26,6 @@ configMapGenerator:
       - files/policy.csv
     literals:
     - policy.default="role:readonly"
-    name: argocd-rbac-cm
-
 resources:
   - github.com/argoproj-labs/argocd-autopilot/manifests/base?ref=v0.4.4
   - argo-grafana-secret-sealed.yaml
