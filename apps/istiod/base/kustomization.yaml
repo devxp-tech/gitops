@@ -6,7 +6,6 @@ helmCharts:
   releaseName: istiod
   version: 1.15.0
   repo: https://istio-release.storage.googleapis.com/charts
-  includeCRDs: true
   valuesInline:
     fullnameOverride: istiod
     global:

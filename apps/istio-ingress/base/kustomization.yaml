@@ -3,7 +3,6 @@ kind: Kustomization
 namespace: istio-system
 helmCharts:
 - name: gateway
-  includeCRDs: true
   releaseName: gateway
   version: 1.15.0
   repo: https://istio-release.storage.googleapis.com/charts
