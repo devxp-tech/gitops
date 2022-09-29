@@ -1,0 +1,12 @@
+admissionregistration.k8s.io/MutatingWebhookConfiguration:
+  ignoreDifferences: |
+    jsonPointers:
+    - /webhooks/0/clientConfig/caBundle
+    - /webhooks/0/failurePolicy
+    - /webhooks/0/rules
+admissionregistration.k8s.io/ValidatingWebhookConfiguration:
+  ignoreDifferences: |
+    jsonPointers:
+    - /webhooks/0/clientConfig/caBundle
+    - /webhooks/0/failurePolicy
+    - /webhooks/0/rules
