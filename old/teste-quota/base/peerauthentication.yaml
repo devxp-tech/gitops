@@ -1,0 +1,11 @@
+apiVersion: security.istio.io/v1beta1
+kind: PeerAuthentication
+metadata:
+  name: teste-quota-strict
+  namespace: istioinaction
+spec:
+  selector:
+    matchLabels:
+      app: teste-quota
+  mtls:
+    mode: STRICT

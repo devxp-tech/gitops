@@ -1,0 +1,80 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: teste-quota-rollout
+spec:
+  replicas: 4
+  strategy:
+    canary: #Indicates that the rollout should use the Canary strategy
+      trafficRouting:
+        istio:
+          virtualService:
+            name: teste-quota-vs        # required
+            routes:
+            - primary                 # required
+          destinationRule:
+            name: teste-quota-destrule    # required
+            canarySubsetName: canary  # required
+            stableSubsetName: stable  # required
+      maxSurge: "25%"
+      maxUnavailable: 0
+      steps:
+      - setWeight: 5
+      - pause:
+          duration: 10s
+      - setWeight: 20
+      - pause:
+          duration: 10s
+      - setWeight: 40
+      - pause:
+          duration: 10s
+      - setWeight: 60
+      - pause:
+          duration: 10s
+      - setWeight: 80
+      - pause:
+          duration: 10s
+  selector:
+    matchLabels:
+      app: teste-quota
+  template:
+    metadata:
+      labels:
+        app: teste-quota
+        version: b8a0ce2b
+        backstage.io/kubernetes-id: teste-quota
+      annotations:
+        sidecar.istio.io/proxyCPU: "50m"
+        sidecar.istio.io/proxyMemory: "64Mi"
+        sidecar.istio.io/proxyCPULimit: "100m"
+        sidecar.istio.io/proxyMemoryLimit: "64Mi"
+    spec:
+      serviceAccountName: teste-quota-sa
+      containers:
+      - name: teste-quota
+        image: diegoluisi/teste-quota:latest
+        imagePullPolicy: IfNotPresent
+        resources:
+          requests:
+            cpu: "50m"
+            memory: "64Mi"
+          limits:
+            cpu: "100m"
+            memory: "128Mi"
+        ports:
+        - name: http
+          containerPort: 8080
+        readinessProbe:
+          httpGet:
+            port: 8080
+            path: /health-check/readiness
+          initialDelaySeconds: 15
+          periodSeconds: 10
+        livenessProbe:
+          httpGet:
+            port: 8080
+            path: /health-check/liveness
+          initialDelaySeconds: 15
+          periodSeconds: 10
+  minReadySeconds: 30
+  revisionHistoryLimit: 3

@@ -1,0 +1,11 @@
+{
+  "appName": "loki",
+  "userGivenName": "loki",
+  "destNamespace": "observability",
+  "destServer": "https://kubernetes.default.svc",
+  "srcPath": "apps/loki/overlays/ops",
+  "srcRepoURL": "https://github.com/devxp-tech/gitops.git",
+  "srcTargetRevision": "",
+  "CreateNamespace": false,
+  "labels": null
+}

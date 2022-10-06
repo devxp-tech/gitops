@@ -1,0 +1,18 @@
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: sso
+  namespace: argocd
+spec:
+  encryptedData:
+    dex.github.clientSecret: AgAWTxol0Q/j0GExwBRxjUrO0aT8pEDbTv+95D71oTEND3c9+6XMzTwksiUgz1kHxYjqSIVojNZ2yiNKMu8mqmcQMpqeQzdaArZqFQYVhsiuEWl7kuN6FctyyLquEr/kZpyS/bXLl6uOn50EeQegujVo3wLsHkipYTeZ4aCAKuu2J2ViIv+98y5Znl5sGoDQiCRQlP5XTY0l1iu8h9FL4yuIwXix6ElbMLU0EZjoV6oRUSdeCx2UuV4yEO/339R7N7K7/ad6ulfuOHrHGFruNWPVsuPFvmr06BZEqaBv6cQXzj+XIyOD2AyFsmap+Y9M9XwbgB4aNx65ju6AGT4p1PCRMZdRrNwfFGbXJHnGZjL8YLatuIOQQJlphSmbpdfdCX2in94diM8mRfmG/tMn6zdrUafFK6SKx0UqM0b3QFzGnGenIC3DbuHnbhpolyTniGpceaxE6Jmpovtu/K5ChI956+bEJr8JbWF5hALDt522u1SRs1AkfuVCaO1pzsZwRms4yjxE0Vh1M6OYvA/B+HBUNsd+fYKcTwaD7djXD/jEDw8ZwYA5WPnK1hGvLJ7rb5EkxAkW/CCdmuuUl6NHt8G4SFtPlSMwndNx3XSJ4mB2B7Fio0wa/bpT+XgkSh9EHjXzwZoGQLHBaSvy3iyuecbOYtLAs4TGO7+S7KhPDWAOyufVPfjnsb//vAkti2YLie+rxF2RFPKUj+aNxIPsY492sBvb0ZpfbFTEa8REVuyE7Sh1G4Mdpyma
+  template:
+    data: null
+    metadata:
+      creationTimestamp: null
+      labels:
+        app.kubernetes.io/part-of: argocd
+      name: sso
+      namespace: argocd
+    type: Opaque

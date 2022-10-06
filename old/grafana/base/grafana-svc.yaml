@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: grafana
+  namespace: monitoring
+  annotations:
+      prometheus.io/scrape: 'true'
+      prometheus.io/port:   '3000'
+spec:
+  ports:
+    - name: tcp-grafana
+      port: 3000
+  selector: 
+    app: grafana
+  type: ClusterIP

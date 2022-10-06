@@ -1,0 +1,19 @@
+---
+apiVersion: v1
+#gcePersistentDisk: ~
+kind: PersistentVolume
+metadata:
+  name: grafana-pv
+  namespace: grafana
+  labels:
+    vol: grafana-storage
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  awsElasticBlockStore:
+    fsType: ext4
+    volumeID: 'vol-0f2c80f57129deffb'
+  storageClassName: gp2

@@ -1,0 +1,11 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- ../../base
+images:
+- name: diegoluisi/teste-quota
+  newTag: b8a0ce2b
+commonAnnotations:
+  app: teste-quota
+  owner: devxp-tech/dev-team
+  version: 90149bd2

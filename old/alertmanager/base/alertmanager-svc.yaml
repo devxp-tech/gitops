@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: alertmanager
+  namespace: monitoring
+  annotations:
+      prometheus.io/scrape: 'true'
+      prometheus.io/port:   '9093'
+spec:
+  ports:
+    - name: tcp-alertmanager
+      port: 9093
+  selector:
+    app: alertmanager
+  type: ClusterIP

@@ -1,0 +1,10 @@
+{
+  "appName": "istio",
+  "userGivenName": "istio",
+  "destNamespace": "istio-system",
+  "destServer": "https://kubernetes.default.svc",
+  "srcPath": "apps/istio/overlays/ops",
+  "srcRepoURL": "https://github.com/devxp-tech/gitops.git",
+  "srcTargetRevision": "",
+  "labels": null
+}

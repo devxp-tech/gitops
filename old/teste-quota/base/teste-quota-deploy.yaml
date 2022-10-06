@@ -1,0 +1,57 @@
+---
+# create deployment for teste-quota
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: teste-quota
+  namespace: teste-quota
+  labels:
+    app: teste-quota
+    version: 0.0.1
+    backstage.io/kubernetes-id: teste-quota
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: teste-quota
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: teste-quota
+        version: 0.0.1
+        backstage.io/kubernetes-id: teste-quota
+      annotations:
+        sidecar.istio.io/proxyCPU: "50m"
+        sidecar.istio.io/proxyMemory: "64Mi"
+        sidecar.istio.io/proxyCPULimit: "100m"
+        sidecar.istio.io/proxyMemoryLimit: "64Mi"
+    spec:
+      serviceAccountName: teste-quota-sa
+      containers:
+      - name: teste-quota
+        image: diegoluisi/teste-quota:latest
+        imagePullPolicy: IfNotPresent
+        resources:
+          requests:
+            cpu: "50m"
+            memory: "64Mi"
+          limits:
+            cpu: "100m"
+            memory: "128Mi"
+        ports:
+        - name: http
+          containerPort: 8080
+        readinessProbe:
+          httpGet:
+            port: 8080
+            path: /health-check/readiness
+          initialDelaySeconds: 15
+          periodSeconds: 10
+        livenessProbe:
+          httpGet:
+            port: 8080
+            path: /health-check/liveness
+          initialDelaySeconds: 15
+          periodSeconds: 10
