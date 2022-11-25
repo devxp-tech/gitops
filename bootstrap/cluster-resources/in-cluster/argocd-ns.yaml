@@ -3,8 +3,8 @@ kind: Namespace
 metadata:
   annotations:
     argocd.argoproj.io/sync-options: Prune=false
-  labels:
-    istio-injection: enabled
+  # labels:
+  #   istio-injection: enabled
   creationTimestamp: null
   name: argocd
 spec: {}
