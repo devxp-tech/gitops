@@ -14,5 +14,5 @@ resources:
   - teste-quota-destrule.yaml
   - teste-quota-svc.yaml
   - teste-quota-vs.yaml
-  # - teste-quota-hpa.yaml
+  - teste-quota-hpa.yaml
   - teste-quota-cr.yaml

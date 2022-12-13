@@ -4,10 +4,18 @@ kind: HorizontalPodAutoscaler
 metadata:
   name: teste-quota-hpa
 spec:
-  maxReplicas: 4
-  minReplicas: 2
+  maxReplicas: 8
+  minReplicas: 4
   scaleTargetRef:
     apiVersion: argoproj.io/v1alpha1
     kind: Rollout
     name: teste-quota-rollout
-  targetCPUUtilizationPercentage: 80
+  # targetCPUUtilizationPercentage: 80
+  metrics:
+  - type: ContainerResource
+    containerResource:
+      name: cpu
+      container: teste-quota
+      target:
+        type: Utilization
+        averageUtilization: 70
