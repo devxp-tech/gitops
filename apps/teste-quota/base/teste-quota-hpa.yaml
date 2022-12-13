@@ -9,8 +9,8 @@ spec:
     apiVersion: argoproj.io/v1alpha1
     kind: Rollout
     name: teste-quota-rollout
-  minReplicas: 4
-  maxReplicas: 8
+  minReplicas: 1
+  maxReplicas: 2
   # targetCPUUtilizationPercentage: 80
   metrics:
     - type: Resource
