@@ -2,8 +2,11 @@ apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
   name: {{ .Values.name }}
+  namespace: {{ include "namespace" . }}
 spec:
-  # replicas: 1
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ default 1 .Values.replicaCount }}
+  {{- end }}
   strategy:
     canary: #Indicates that the rollout should use the Canary strategy
       trafficRouting:
@@ -43,24 +46,20 @@ spec:
         app: {{ .Values.name }}
         version: {{ .Values.version }}
         backstage.io/kubernetes-id: {{ .Values.name }}
-      # annotations:
-      #   sidecar.istio.io/proxyCPU: "50m"
-      #   sidecar.istio.io/proxyMemory: "64Mi"
-      #   sidecar.istio.io/proxyCPULimit: "100m"
-      #   sidecar.istio.io/proxyMemoryLimit: "64Mi"
+      annotations:
+        sidecar.istio.io/proxyCPU: "50m"
+        sidecar.istio.io/proxyMemory: "64Mi"
+        sidecar.istio.io/proxyCPULimit: "100m"
+        sidecar.istio.io/proxyMemoryLimit: "64Mi"
     spec:
+      {{- if not .Values.ServiceAccount.enabled }}
       serviceAccountName: {{ .Values.name }}
+      {{- end }}
       containers:
       - name: {{ .Values.name }}
-        image: {{ .Values.image }}
+        image: {{ .Values.image.registry }}:{{ .Values.image.tag }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
-        resources:
-          requests:
-            cpu: "50m"
-            memory: "64Mi"
-          limits:
-            cpu: "100m"
-            memory: "128Mi"
+        resources: {{ toYaml .Values.resources | nindent 12 }}
         ports:
         - name: http
           containerPort: {{ .Values.port }}

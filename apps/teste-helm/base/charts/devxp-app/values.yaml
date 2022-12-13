@@ -20,6 +20,12 @@ ServiceAccount:
   # --Annotations to add to the service account
   annotations: {}
 
+PeerAuthentication:
+  enabled: true
+
+ingress:
+  enabled: true
+
 # --autoscaling is the main object of autoscaling
 autoscaling:
   # --enabled is the flag to sinalize this funcionality is enabled
@@ -27,7 +33,7 @@ autoscaling:
   # --minReplicas is the number of mim pods to be running
   minReplicas: 1
   # --maxReplicas is the number of maximum scaling pods
-  maxReplicas: 5
+  maxReplicas: 2
 
   # --image is the object to specify the image to run in the deployment
 image:
@@ -38,5 +44,12 @@ image:
   pullPolicy: IfNotPresent
   # --especify the tag of your image to deploy
   tag: "latest"
-  
-imagePullSecrets: []
+
+
+resources:
+  requests:
+    cpu: "50m"
+    memory: "64Mi"
+  limits:
+    cpu: "100m"
+    memory: "128Mi"
