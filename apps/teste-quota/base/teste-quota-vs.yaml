@@ -17,7 +17,7 @@ spec:
   - name: primary
     route:
     - destination:
-        host: teste-quota.teste-quota.svc
+        host: teste-quota.teste-quota.svc.lgsk8sp1.grupologos.local
         subset: stable
       weight: 100
     - destination:
