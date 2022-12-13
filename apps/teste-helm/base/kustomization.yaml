@@ -9,3 +9,7 @@ helmCharts:
   valuesInline:
     name: "teste-helm"
     namespace: "teste-helm"
+    ResourceQuota:
+      enabled: true
+    PeerAuthentication:
+      enabled: true
