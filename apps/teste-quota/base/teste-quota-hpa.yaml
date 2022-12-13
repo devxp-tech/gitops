@@ -1,5 +1,5 @@
 ---
-apiVersion: autoscaling/v2beta1
+apiVersion: autoscaling/v2beta2
 kind: HorizontalPodAutoscaler
 metadata:
   name: teste-quota-hpa
@@ -12,10 +12,10 @@ spec:
     name: teste-quota-rollout
   # targetCPUUtilizationPercentage: 80
   metrics:
-  - type: ContainerResource
-    containerResource:
-      name: cpu
-      container: teste-quota
-      target:
-        type: Utilization
-        averageUtilization: 70
+    - type: ContainerResource
+      containerResource:
+        name: cpu
+        container: teste-quota
+        target:
+          type: Utilization
+          averageUtilization: 70
