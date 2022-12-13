@@ -17,10 +17,10 @@ spec:
   - name: primary
     route:
     - destination:
-        host: teste-quota-stable
+        host: teste-quota
         subset: stable
       weight: 100
     - destination:
-        host: teste-quota-canary
+        host: teste-quota
         subset: canary  # referenced in canary.trafficRouting.istio.destinationRule.canarySubsetName
       weight: 0
