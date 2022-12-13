@@ -17,7 +17,7 @@ spec:
   - name: primary
     route:
     - destination:
-        host: teste-quota
+        host: teste-quota.teste-quota.svc
         subset: stable
       weight: 100
     - destination:
