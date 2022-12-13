@@ -6,18 +6,18 @@ spec:
   replicas: 1
   strategy:
     canary: #Indicates that the rollout should use the Canary strategy
-      canaryService: teste-quota-canary  # required
-      stableService: teste-quota-stable  # required
+      # canaryService: teste-quota-canary  # required
+      # stableService: teste-quota-stable  # required
       trafficRouting:
         istio:
           virtualService:
             name: teste-quota-vs        # required
             routes:
             - primary                 # required
-          # destinationRule:
-          #   name: teste-quota-destrule    # required
-          #   canarySubsetName: canary  # required
-          #   stableSubsetName: stable  # required
+          destinationRule:
+            name: teste-quota-destrule    # required
+            canarySubsetName: canary  # required
+            stableSubsetName: stable  # required
       maxSurge: "25%"
       maxUnavailable: 0
       steps:
