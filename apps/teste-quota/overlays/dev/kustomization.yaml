@@ -4,7 +4,7 @@ resources:
 - ../../base
 images:
 - name: diegoluisi/teste-quota
-  newTag: b8a0ce2b
+  newTag: 711fcbd4
 commonAnnotations:
   app: teste-quota
   owner: devxp-tech/dev-team
