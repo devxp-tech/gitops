@@ -21,6 +21,6 @@ spec:
         subset: stable
       weight: 100
     - destination:
-        host: teste-quota
+        host: teste-quota.teste-quota.svc.lgsk8sp1.grupologos.local
         subset: canary  # referenced in canary.trafficRouting.istio.destinationRule.canarySubsetName
       weight: 0
