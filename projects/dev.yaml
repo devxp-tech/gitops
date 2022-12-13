@@ -106,9 +106,13 @@ spec:
         server: '{{ destServer }}'
       ignoreDifferences:
       - group: argoproj.io
+        kind: Application
         jsonPointers:
         - /status
-        kind: Application
+      - group: networking.istio.io
+        kind: VirtualService
+        jsonPointers:
+        - /spec/http/0
       project: dev
       source:
         path: '{{ srcPath }}'
@@ -121,4 +125,5 @@ spec:
           selfHeal: true
         syncOptions:
           - CreateNamespace=true
+          - ApplyOutOfSyncOnly=true
 status: {}
