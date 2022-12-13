@@ -1,0 +1,18 @@
+{{- if .Values.ResourceQuota.enabled }}
+---
+kind: ResourceQuota
+apiVersion: v1
+metadata:
+  name: {{ .Values.name }}
+  namespace: {{ .Values.name }}
+  labels:
+    kubernetes.io/metadata.name: {{ .Values.name }}
+    backstage.io/kubernetes-id: {{ .Values.name }}
+    istio-injection: enabled
+spec:
+  hard:
+    requests.cpu: "1"
+    requests.memory: 1Gi
+    limits.cpu: "2"
+    limits.memory: 2Gi
+{{- end }}

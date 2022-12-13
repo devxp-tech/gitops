@@ -4,8 +4,9 @@ namespace: teste-helm
 helmCharts:
 - name: devxp-app
   releaseName: devxp-app
-  version: 0.1.4
+  version: 0.1.5
   repo: https://devxp-tech.github.io/helm-charts
   valuesInline:
     name: "teste-helm"
     namespace: "teste-helm"
+    image: diegoluisi/teste-quota:ae28704b

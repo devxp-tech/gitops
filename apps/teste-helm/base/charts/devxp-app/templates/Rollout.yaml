@@ -1,0 +1,80 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: {{ .Values.name }}
+spec:
+  # replicas: 1
+  strategy:
+    canary: #Indicates that the rollout should use the Canary strategy
+      trafficRouting:
+        istio:
+          virtualService:
+            name: {{ .Values.name }}        # required
+            routes:
+            - primary                 # required
+          destinationRule:
+            name: {{ .Values.name }}    # required
+            canarySubsetName: canary    # required
+            stableSubsetName: stable    # required
+      maxSurge: "25%"
+      maxUnavailable: 0
+      steps:
+      - setWeight: 5
+      - pause:
+          duration: 10s
+      - setWeight: 20
+      - pause:
+          duration: 10s
+      - setWeight: 40
+      - pause:
+          duration: 10s
+      - setWeight: 60
+      - pause:
+          duration: 10s
+      - setWeight: 80
+      - pause:
+          duration: 10s
+  selector:
+    matchLabels:
+      app: {{ .Values.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.name }}
+        version: {{ .Values.version }}
+        backstage.io/kubernetes-id: {{ .Values.name }}
+      # annotations:
+      #   sidecar.istio.io/proxyCPU: "50m"
+      #   sidecar.istio.io/proxyMemory: "64Mi"
+      #   sidecar.istio.io/proxyCPULimit: "100m"
+      #   sidecar.istio.io/proxyMemoryLimit: "64Mi"
+    spec:
+      serviceAccountName: {{ .Values.name }}
+      containers:
+      - name: {{ .Values.name }}
+        image: {{ .Values.image }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        resources:
+          requests:
+            cpu: "50m"
+            memory: "64Mi"
+          limits:
+            cpu: "100m"
+            memory: "128Mi"
+        ports:
+        - name: http
+          containerPort: {{ .Values.port }}
+        readinessProbe:
+          httpGet:
+            port: {{ .Values.port }}
+            path: /health-check/readiness
+          initialDelaySeconds: 15
+          periodSeconds: 10
+        livenessProbe:
+          httpGet:
+            port: {{ .Values.port }}
+            path: /health-check/liveness
+          initialDelaySeconds: 15
+          periodSeconds: 10
+  minReadySeconds: 30
+  revisionHistoryLimit: 3
