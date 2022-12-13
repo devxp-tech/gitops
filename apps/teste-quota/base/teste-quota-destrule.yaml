@@ -3,7 +3,7 @@ kind: DestinationRule
 metadata:
   name: teste-quota-destrule
 spec:
-  host: teste-quota-svc
+  host: teste-quota.teste-quota.svc.lgsk8sp1.grupologos.local
   subsets:
   - name: canary   # referenced in canary.trafficRouting.istio.destinationRule.canarySubsetName
     labels:        # labels will be injected with canary rollouts-pod-template-hash value
