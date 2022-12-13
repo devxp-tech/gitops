@@ -1,0 +1,11 @@
+{
+  "appName": "teste-helm",
+  "userGivenName": "teste-helm",
+  "destNamespace": "teste-helm",
+  "destServer": "https://kubernetes.default.svc",
+  "srcPath": "apps/teste-helm/overlays/dev",
+  "srcRepoURL": "https://github.com/devxp-tech/gitops.git",
+  "srcTargetRevision": "",
+  "CreateNamespace": true,
+  "labels": null
+}
