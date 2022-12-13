@@ -1,8 +1,9 @@
 ---
-apiVersion: autoscaling/v2beta2
+apiVersion: autoscaling/v2beta1
 kind: HorizontalPodAutoscaler
 metadata:
   name: teste-quota
+  namespace: teste-quota
 spec:
   scaleTargetRef:
     apiVersion: argoproj.io/v1alpha1
@@ -12,10 +13,7 @@ spec:
   maxReplicas: 8
   # targetCPUUtilizationPercentage: 80
   metrics:
-    - type: ContainerResource
-      containerResource:
+    - type: Resource
+      resource:
         name: cpu
-        container: teste-quota
-        target:
-          type: Utilization
-          averageUtilization: 70
+        targetAverageUtilization: 70
