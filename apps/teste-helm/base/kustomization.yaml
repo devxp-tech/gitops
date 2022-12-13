@@ -1,13 +1,3 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: teste-helm
-helmCharts:
-- name: devxp-app
-  releaseName: devxp-app
-  version: 0.1.13
-  repo: https://devxp-tech.github.io/helm-charts
-  valuesInline:
-    name: "teste-helm"
-    image:
-      repository: diegoluisi/teste-quota
-      tag: ae28704b
