@@ -3,7 +3,7 @@ kind: Rollout
 metadata:
   name: teste-quota-rollout
 spec:
-  replicas: 4
+  replicas: 1
   strategy:
     canary: #Indicates that the rollout should use the Canary strategy
       # canaryService: teste-quota-canary  # required
