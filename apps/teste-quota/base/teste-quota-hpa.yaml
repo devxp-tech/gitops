@@ -2,14 +2,14 @@
 apiVersion: autoscaling/v2beta2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: teste-quota-hpa
+  name: teste-quota
 spec:
-  maxReplicas: 8
-  minReplicas: 4
   scaleTargetRef:
     apiVersion: argoproj.io/v1alpha1
     kind: Rollout
     name: teste-quota-rollout
+  minReplicas: 4
+  maxReplicas: 8
   # targetCPUUtilizationPercentage: 80
   metrics:
     - type: ContainerResource
