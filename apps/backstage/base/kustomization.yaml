@@ -13,11 +13,11 @@ helmCharts:
   valuesInline:
     name: "backstage"
     image:
-      repository: diegoluisi/teste-quota
-      tag: ae28704b
+      repository: diegoluisi/backstage
+      tag: c8e1e18e
     ResourceQuota:
       enabled: false
-    port: 8080
+    port: 7007
     env:
     - name: ENV
       value: production
