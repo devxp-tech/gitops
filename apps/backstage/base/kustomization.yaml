@@ -67,11 +67,16 @@ helmCharts:
   version: 12.1.4
   repo: https://charts.bitnami.com/bitnami
   valuesInline:
-    primary:
-      initdb:
-          scripts:
-            create_db.sql: |
-              CREATE DATABASE backstage;
+    auth:
+      database: backstage
+      username: backstage
+      existingSecret: postgres-secrets
+    # primary:
+    #   initdb:
+    #       scripts:
+    #         create_db.sql: |
+    #           CREATE DATABASE backstage;
+
       resources:
         limits:
           cpu: 250m
@@ -79,6 +84,6 @@ helmCharts:
         requests:
           cpu: 50m
           memory: 512Mi
-      envFrom:
-        - secretRef:
-            name: postgres-secrets
+      # envFrom:
+      #   - secretRef:
+      #       name: postgres-secrets
