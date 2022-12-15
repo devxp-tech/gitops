@@ -5,7 +5,7 @@ namespace: backstage
 helmCharts:
 - name: devxp-app
   releaseName: devxp-app
-  version: 0.1.18
+  version: 0.1.20
   repo: https://devxp-tech.github.io/helm-charts
   valuesInline:
     name: "backstage"
@@ -15,6 +15,16 @@ helmCharts:
     ResourceQuota:
       enabled: false
     port: 7007
+    env:
+      - name: ENVIROMENT
+        value: production
+    envFrom:
+      - configMapRef:
+          name: postgres-configs
+      - secretRef:
+          name: postgres-secrets
+      - secretRef:
+          name: backstage-secrets
 
 - name: postgresql
   releaseName: postgresql
