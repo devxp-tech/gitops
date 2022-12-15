@@ -13,8 +13,9 @@ helmCharts:
     image:
       repository: diegoluisi/backstage
       tag: c8e1e18e
-      ResourceQuota:
-        enabled: false
+    ResourceQuota:
+      enabled: false
+
 - name: postgresql
   releaseName: postgresql
   version: 12.1.4
