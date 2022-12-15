@@ -17,7 +17,7 @@ helmCharts:
       tag: ae28704b
     ResourceQuota:
       enabled: false
-    port: 7007
+    port: 8080
     env:
     - name: ENV
       value: production
