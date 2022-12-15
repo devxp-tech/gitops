@@ -24,7 +24,7 @@ spec:
           image: postgres:13.2-alpine
           imagePullPolicy: 'IfNotPresent'
           securityContext:
-            runAsUser: 0
+            runAsUser: 999
           args:
             - pg_resetwal
             - /var/lib/postgresql/data
