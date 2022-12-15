@@ -79,8 +79,6 @@ helmCharts:
         requests:
           cpu: 50m
           memory: 512Mi
-
-  #   name: "backstage"
-  #   image:
-  #     repository: diegoluisi/backstage
-  #     tag: c8e1e18e
+      envFrom:
+        - secretRef:
+            name: postgres-secrets
