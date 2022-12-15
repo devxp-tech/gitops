@@ -27,6 +27,11 @@ helmCharts:
               CREATE DATABASE backstage;
       resources:
         limits:
+          cpu: 250m
+          memory: 2048Mi
+        requests:
+          cpu: 50m
+          memory: 512Mi
 
   #   name: "backstage"
   #   image:
