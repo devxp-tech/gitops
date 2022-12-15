@@ -61,6 +61,8 @@ helmCharts:
         httpHeaders:
         - name: Host
           value: backstage.diegoluisi.eti.br
+    PeerAuthentication:
+      enabled: false
 
 - name: postgresql
   releaseName: postgresql
