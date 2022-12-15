@@ -23,6 +23,8 @@ spec:
       - name: postgres-fix
         image: postgres:13.2-alpine
         imagePullPolicy: 'IfNotPresent'
+        securityContext:
+          runAsUser: 70
         command:
           - pg_resetwal
           - /var/lib/postgresql/data
