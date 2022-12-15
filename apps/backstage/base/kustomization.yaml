@@ -43,24 +43,24 @@ helmCharts:
       enabled: false
     service:
       port: 80
-    # readinessProbe:
-    #   initialDelaySeconds: 15
-    #   periodSeconds: 10
-    #   httpGet:
-    #     port: http
-    #     path: "/healthcheck"
-    #     httpHeaders:
-    #     - name: Host
-    #       value: backstage.diegoluisi.eti.br
-    # livenessProbe:
-    #   initialDelaySeconds: 15
-    #   periodSeconds: 10
-    #   httpGet:
-    #     port: http
-    #     path: "/healthcheck"
-    #     httpHeaders:
-    #     - name: Host
-    #       value: backstage.diegoluisi.eti.br
+    readinessProbe:
+      initialDelaySeconds: 15
+      periodSeconds: 10
+      httpGet:
+        port: http
+        path: "/healthcheck"
+        httpHeaders:
+        - name: Host
+          value: backstage.diegoluisi.eti.br
+    livenessProbe:
+      initialDelaySeconds: 15
+      periodSeconds: 10
+      httpGet:
+        port: http
+        path: "/healthcheck"
+        httpHeaders:
+        - name: Host
+          value: backstage.diegoluisi.eti.br
 
 - name: postgresql
   releaseName: postgresql
