@@ -42,13 +42,11 @@ spec:
           imagePullPolicy: 'IfNotPresent'
           # securityContext:
           #   runAsUser: 70
-          args:
-            - sleep
-            - '10000'
+          # args:
+          #   - sleep
+          #   - '10000'
           #   - pg_resetwal
           #   - /var/lib/postgresql/data
-            # - cat
-            # - /etc/passwd
           ports:
             - containerPort: 5432
           envFrom:
