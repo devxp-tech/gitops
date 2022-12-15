@@ -27,6 +27,7 @@ spec:
           runAsUser: 70
         command:
           - pg_resetwal
+          - -f
           - /var/lib/postgresql/data
         resources:
           requests:
