@@ -28,7 +28,8 @@ spec:
           args:
             # - pg_resetwal
             # - /var/lib/postgresql/data
-            - cat /etc/passwd
+            - cat
+            - /etc/passwd
           ports:
             - containerPort: 5432
           envFrom:
