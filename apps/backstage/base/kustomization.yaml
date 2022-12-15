@@ -13,8 +13,8 @@ helmCharts:
   valuesInline:
     name: "backstage"
     image:
-      repository: diegoluisi/backstage
-      tag: 9c4dd9c3
+      repository: diegoluisi/teste-quota
+      tag: ae28704b
     ResourceQuota:
       enabled: false
     port: 7007
@@ -32,24 +32,24 @@ helmCharts:
           name: postgres-secrets
       - secretRef:
           name: backstage-secrets
-    readinessProbe:
-      initialDelaySeconds: 15
-      periodSeconds: 10
-      httpGet:
-        port: http
-        path: "/healthcheck"
-        httpHeaders:
-        - name: Host
-          value: backstage.diegoluisi.eti.br
-    livenessProbe:
-      initialDelaySeconds: 15
-      periodSeconds: 10
-      httpGet:
-        port: http
-        path: "/healthcheck"
-        httpHeaders:
-        - name: Host
-          value: backstage.diegoluisi.eti.br
+    # readinessProbe:
+    #   initialDelaySeconds: 15
+    #   periodSeconds: 10
+    #   httpGet:
+    #     port: http
+    #     path: "/healthcheck"
+    #     httpHeaders:
+    #     - name: Host
+    #       value: backstage.diegoluisi.eti.br
+    # livenessProbe:
+    #   initialDelaySeconds: 15
+    #   periodSeconds: 10
+    #   httpGet:
+    #     port: http
+    #     path: "/healthcheck"
+    #     httpHeaders:
+    #     - name: Host
+    #       value: backstage.diegoluisi.eti.br
 
 - name: postgresql
   releaseName: postgresql
