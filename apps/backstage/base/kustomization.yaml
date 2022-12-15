@@ -8,7 +8,7 @@ configurations:
 helmCharts:
 - name: devxp-app
   releaseName: devxp-app
-  version: 0.1.28
+  version: 0.1.29
   repo: https://devxp-tech.github.io/helm-charts
   valuesInline:
     name: "backstage"
@@ -16,8 +16,6 @@ helmCharts:
       repository: diegoluisi/backstage
       tag: c8e1e18e
     ResourceQuota:
-      enabled: false
-    probe:
       enabled: false
     port: 7007
     env:
@@ -41,6 +39,10 @@ helmCharts:
       limits:
         memory: 512Mi
         cpu: 100m
+    probe:
+      enabled: false
+    service:
+      port: 80
     # readinessProbe:
     #   initialDelaySeconds: 15
     #   periodSeconds: 10
