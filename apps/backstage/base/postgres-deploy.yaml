@@ -19,15 +19,29 @@ spec:
         sidecar.istio.io/proxyCPULimit: "100m"
         sidecar.istio.io/proxyMemoryLimit: "128Mi"
     spec:
+      initContainers:
+      - name: postgres-fix
+        image: postgres:13.2-alpine
+        imagePullPolicy: 'IfNotPresent'
+        command:
+          - pg_resetwal
+          - /var/lib/postgresql/data
+        resources:
+          requests:
+            memory: 128Mi
+            cpu: 50m
+          limits:
+            memory: 256Mi
+            cpu: 50m
       containers:
         - name: postgres
           image: postgres:13.2-alpine
           imagePullPolicy: 'IfNotPresent'
-          securityContext:
-            runAsUser: 70
-          args:
-            - pg_resetwal
-            - /var/lib/postgresql/data
+          # securityContext:
+          #   runAsUser: 70
+          # args:
+          #   - pg_resetwal
+          #   - /var/lib/postgresql/data
             # - cat
             # - /etc/passwd
           ports:
