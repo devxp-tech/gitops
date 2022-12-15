@@ -34,6 +34,13 @@ helmCharts:
           name: postgres-secrets
       - secretRef:
           name: backstage-secrets
+    resources:
+      requests:
+        memory: 256Mi
+        cpu: 50m
+      limits:
+        memory: 512Mi
+        cpu: 100m
     # readinessProbe:
     #   initialDelaySeconds: 15
     #   periodSeconds: 10
