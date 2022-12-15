@@ -8,7 +8,7 @@ configurations:
 helmCharts:
 - name: devxp-app
   releaseName: devxp-app
-  version: 0.1.27
+  version: 0.1.28
   repo: https://devxp-tech.github.io/helm-charts
   valuesInline:
     name: "backstage"
