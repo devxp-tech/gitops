@@ -23,11 +23,12 @@ spec:
         - name: postgres
           image: postgres:13.2-alpine
           imagePullPolicy: 'IfNotPresent'
-          securityContext:
-            runAsUser: 999
+          # securityContext:
+          #   runAsUser: 999
           args:
-            - pg_resetwal
-            - /var/lib/postgresql/data
+            # - pg_resetwal
+            # - /var/lib/postgresql/data
+            - cat /etc/passwd
           ports:
             - containerPort: 5432
           envFrom:
