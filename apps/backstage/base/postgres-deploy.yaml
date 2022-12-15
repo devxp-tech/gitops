@@ -23,6 +23,9 @@ spec:
         - name: postgres
           image: postgres:13.2-alpine
           imagePullPolicy: 'IfNotPresent'
+          args:
+            - pg_resetwal
+            - /var/lib/postgresql/data
           ports:
             - containerPort: 5432
           envFrom:
