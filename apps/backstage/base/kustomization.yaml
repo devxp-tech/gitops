@@ -14,17 +14,17 @@ helmCharts:
     name: "backstage"
     image:
       repository: diegoluisi/backstage
-      tag: 9c4dd9c3
+      tag: e72ec6fc
     ResourceQuota:
       enabled: false
     port: 7007
     env:
     - name: ENV
       value: production
-    # - name: ENVIRONMENT
-    #   value: production
-    # - name: BACKSTAGE_ENVIRONMENT
-    #   value: production
+    - name: ENVIRONMENT
+      value: production
+    - name: BACKSTAGE_ENVIRONMENT
+      value: production
     envFrom:
       - configMapRef:
           name: postgres-configs
