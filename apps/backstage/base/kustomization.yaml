@@ -67,20 +67,21 @@ helmCharts:
   version: 12.1.5
   repo: https://charts.bitnami.com/bitnami
   valuesInline:
-    # global:
-    auth:
-      database: backstage
-      username: backstage
-      existingSecret: postgres-secrets
+    global:
+      auth:
+        database: backstage
+        username: backstage
+        password: hunter12
+        # existingSecret: postgres-secrets
     image:
       debug: true
-    primary:
-      initdb:
-          scripts:
-            grant_db.sql: |
-              CREATE ROLE backstage;
-              GRANT ALL PRIVILEGES ON DATABASE backstage TO backstage;
-              GRANT backstage TO backstage;
+    # primary:
+    #   initdb:
+    #       scripts:
+    #         grant_db.sql: |
+    #           CREATE ROLE backstage;
+    #           GRANT ALL PRIVILEGES ON DATABASE backstage TO backstage;
+    #           GRANT backstage TO backstage;
     resources:
       limits:
         cpu: 250m
