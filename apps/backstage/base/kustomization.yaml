@@ -15,8 +15,8 @@ helmCharts:
     image:
       repository: diegoluisi/backstage
       tag: e72ec6fc
-    ResourceQuota:
-      enabled: false
+    # ResourceQuota:
+    #   enabled: false
     port: 7007
     env:
     - name: ENV
@@ -39,8 +39,6 @@ helmCharts:
       limits:
         memory: 1024Mi
         cpu: 200m
-    service:
-      port: 80
     readinessProbe:
       initialDelaySeconds: 15
       periodSeconds: 10
@@ -59,8 +57,10 @@ helmCharts:
         httpHeaders:
         - name: Host
           value: backstage.diegoluisi.eti.br
-    PeerAuthentication:
-      enabled: false
+    service:
+      port: 80
+    # PeerAuthentication:
+    #   enabled: false
 
 - name: postgresql
   releaseName: postgresql
@@ -76,13 +76,6 @@ helmCharts:
           # existingSecret: postgres-secrets
     image:
       debug: true
-    # primary:
-    #   initdb:
-    #       scripts:
-    #         grant_db.sql: |
-    #           CREATE ROLE backstage;
-    #           GRANT ALL PRIVILEGES ON DATABASE backstage TO backstage;
-    #           GRANT backstage TO backstage;
     resources:
       limits:
         cpu: 250m
@@ -90,6 +83,3 @@ helmCharts:
       requests:
         cpu: 50m
         memory: 512Mi
-      # envFrom:
-      #   - secretRef:
-      #       name: postgres-secrets
