@@ -83,6 +83,7 @@ helmCharts:
               #!/bin/bash
               echo "Test Init Script..."
             create_db.sql: |
+              CREATE ROLE backstage;
               grant all privileges on database backstage to backstage;
     resources:
       limits:
