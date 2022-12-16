@@ -79,12 +79,10 @@ helmCharts:
     primary:
       initdb:
           scripts:
-            init.sh: |
-              #!/bin/bash
-              echo "Test Init Script..."
-            create_db.sql: |
+            grant_db.sql: |
               CREATE ROLE backstage;
-              grant all privileges on database backstage to backstage;
+              GRANT ALL PRIVILEGES ON DATABASE backstage TO backstage;
+              GRANT backstage TO backstage;
     resources:
       limits:
         cpu: 250m
