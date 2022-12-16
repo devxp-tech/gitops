@@ -71,12 +71,11 @@ helmCharts:
       database: backstage
       username: backstage
       password: postgres-secrets
-    # primary:
-    #   initdb:
-    #       scripts:
-    #         create_db.sql: |
-    #           CREATE DATABASE backstage;
-
+    primary:
+      initdb:
+          scripts:
+            create_db.sql: |
+              GRANT CONNECT ON DATABASE database_name TO username;
       resources:
         limits:
           cpu: 250m
