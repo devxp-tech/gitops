@@ -72,10 +72,6 @@ helmCharts:
         database: backstage
         username: backstage
         password: postgres-secrets
-    audit:
-      logHostname: true
-      logConnections: true
-      logDisconnections: true
     primary:
       initdb:
           scripts:
