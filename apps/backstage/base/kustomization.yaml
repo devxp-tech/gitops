@@ -70,7 +70,7 @@ helmCharts:
     auth:
       database: backstage
       username: backstage
-      existingSecret: postgres-secrets
+      password: postgres-secrets
     # primary:
     #   initdb:
     #       scripts:
