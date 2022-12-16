@@ -68,11 +68,10 @@ helmCharts:
   repo: https://charts.bitnami.com/bitnami
   valuesInline:
     global:
-      postgresql:
-        auth:
-          database: backstage
-          username: backstage
-          password: postgres-secrets
+      auth:
+        database: backstage
+        username: backstage
+        password: postgres-secrets
     audit:
       logHostname: true
       logConnections: true
@@ -82,7 +81,7 @@ helmCharts:
           scripts:
             init.sh: |
               #!/bin/bash
-              echo "Init database..."
+              echo "Test Init Script..."
             create_db.sql: |
               grant all privileges on database backstage to backstage;
     resources:
