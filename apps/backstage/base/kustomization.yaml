@@ -76,7 +76,7 @@ helmCharts:
       initdb:
           scripts:
             create_db.sql: |
-              GRANT CONNECT ON DATABASE backstage TO backstage;
+              grant all privileges on database backstage to backstage;
       resources:
         limits:
           cpu: 250m
