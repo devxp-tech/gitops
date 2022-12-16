@@ -68,11 +68,12 @@ helmCharts:
   repo: https://charts.bitnami.com/bitnami
   valuesInline:
     global:
-      auth:
-        database: backstage
-        username: backstage
-        password: hunter12
-        # existingSecret: postgres-secrets
+      postgresql:
+        auth:
+          database: backstage
+          username: backstage
+          password: hunter12
+          # existingSecret: postgres-secrets
     image:
       debug: true
     # primary:
