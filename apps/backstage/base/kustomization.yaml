@@ -72,18 +72,17 @@ helmCharts:
         database: backstage
         username: backstage
         password: postgres-secrets
-    primary:
-      initdb:
-          scripts:
-            create_db.sql: |
-              grant all privileges on database backstage to backstage;
-      resources:
-        limits:
-          cpu: 250m
-          memory: 2048Mi
-        requests:
-          cpu: 50m
-          memory: 512Mi
+    initdb:
+        scripts:
+          create_db.sql: |
+            grant all privileges on database backstage to backstage;
+    resources:
+      limits:
+        cpu: 250m
+        memory: 2048Mi
+      requests:
+        cpu: 50m
+        memory: 512Mi
       # envFrom:
       #   - secretRef:
       #       name: postgres-secrets
