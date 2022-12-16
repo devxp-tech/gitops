@@ -72,6 +72,8 @@ helmCharts:
         database: backstage
         username: backstage
         password: postgres-secrets
+    image:
+      debug: true
     primary:
       initdb:
           scripts:
