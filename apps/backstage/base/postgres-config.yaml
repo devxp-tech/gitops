@@ -4,6 +4,6 @@ metadata:
   name: postgres-configs
   namespace: backstage
 data:
-  POSTGRES_HOST: 'postgres'
+  POSTGRES_HOST: 'postgres.backstage.svc'
   POSTGRES_PORT: '5432'
   POSTGRES_DATABASE: 'backstage'
