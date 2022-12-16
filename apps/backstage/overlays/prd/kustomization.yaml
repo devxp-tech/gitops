@@ -4,3 +4,6 @@ resources:
 - backstage-secrets-sealed.yaml
 - postgres-secrets-sealed.yaml
 - ../../base
+images:
+- name: diegoluisi/backstage
+  newTag: e72ec6fc
