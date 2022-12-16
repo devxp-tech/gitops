@@ -80,6 +80,9 @@ helmCharts:
     primary:
       initdb:
           scripts:
+            init.sh: |
+              #!/bin/bash
+              echo "Init database..."
             create_db.sql: |
               grant all privileges on database backstage to backstage;
     resources:
