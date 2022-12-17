@@ -15,8 +15,8 @@ helmCharts:
     image:
       repository: diegoluisi/backstage
       tag: 0693876d
-    # ResourceQuota:
-    #   enabled: false
+    ResourceQuota:
+      enabled: false
     port: 7007
     env:
     - name: ENV
