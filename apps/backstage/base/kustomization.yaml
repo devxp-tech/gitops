@@ -59,8 +59,8 @@ helmCharts:
           value: backstage.diegoluisi.eti.br
     service:
       port: 80
-    # PeerAuthentication:
-    #   enabled: false
+    PeerAuthentication:
+      enabled: false
 
 - name: postgresql
   releaseName: postgresql
