@@ -7,3 +7,4 @@ data:
   POSTGRES_HOST: 'postgresql'
   POSTGRES_PORT: '5432'
   POSTGRES_DATABASE: 'backstage'
+  POSTGRES_USER: backstage

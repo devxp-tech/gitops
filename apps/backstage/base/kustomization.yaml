@@ -21,10 +21,10 @@ helmCharts:
     env:
     - name: ENV
       value: production
-    - name: ENVIRONMENT
-      value: production
-    - name: BACKSTAGE_ENVIRONMENT
-      value: production
+    # - name: ENVIRONMENT
+    #   value: production
+    # - name: BACKSTAGE_ENVIRONMENT
+    #   value: production
     envFrom:
       - configMapRef:
           name: postgres-configs
