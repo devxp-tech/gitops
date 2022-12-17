@@ -14,7 +14,7 @@ helmCharts:
     name: "backstage"
     image:
       repository: diegoluisi/backstage
-      tag: a287b9f4
+      tag: 0693876d
     # ResourceQuota:
     #   enabled: false
     port: 7007
