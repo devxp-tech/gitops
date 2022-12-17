@@ -58,7 +58,7 @@ helmCharts:
         - name: Host
           value: backstage.diegoluisi.eti.br
     service:
-      port: 80
+      port: 7070
     PeerAuthentication:
       enabled: false
 
