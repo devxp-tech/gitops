@@ -21,10 +21,10 @@ helmCharts:
     env:
     - name: ENV
       value: production
-    - name: ENVIRONMENT
-      value: production
-    - name: BACKSTAGE_ENVIRONMENT
-      value: production
+    # - name: ENVIRONMENT
+    #   value: production
+    # - name: BACKSTAGE_ENVIRONMENT
+    #   value: production
     envFrom:
       - configMapRef:
           name: postgres-configs
@@ -57,10 +57,6 @@ helmCharts:
         httpHeaders:
         - name: Host
           value: backstage.diegoluisi.eti.br
-    # service:
-    #   port: 7007
-    # PeerAuthentication:
-    #   enabled: false
 
 - name: postgresql
   releaseName: postgresql
