@@ -71,8 +71,8 @@ helmCharts:
         auth:
           database: backstage
           username: backstage
-          password: hunter12
-          # existingSecret: postgres-secrets
+          # password: hunter12
+          existingSecret: postgres-secrets
     image:
       debug: true
     resources:
