@@ -1,7 +1,7 @@
 {
   "appName": "sonarqube",
   "userGivenName": "sonarqube",
-  "destNamespace": "sonar",
+  "destNamespace": "sonarqube",
   "destServer": "https://kubernetes.default.svc",
   "srcPath": "apps/sonarqube/overlays/prd",
   "srcRepoURL": "https://github.com/devxp-tech/gitops.git",

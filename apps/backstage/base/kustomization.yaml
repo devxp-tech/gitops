@@ -3,8 +3,6 @@ kind: Kustomization
 namespace: backstage
 resources:
   - postgres-config.yaml
-configurations:
-  - https://argoproj.github.io/argo-rollouts/features/kustomize/rollout-transform.yaml
 helmCharts:
 - name: devxp-app
   releaseName: devxp-app

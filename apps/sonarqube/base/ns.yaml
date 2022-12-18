@@ -3,10 +3,10 @@ apiVersion: v1
 kind: Namespace
 metadata:
   labels:
-    kubernetes.io/metadata.name: sonar
-    backstage.io/kubernetes-id: sonar
+    kubernetes.io/metadata.name: sonarqube
+    backstage.io/kubernetes-id: sonarqube
     istio-injection: enabled
-  name: sonar
+  name: sonarqube
 spec:
   finalizers:
   - kubernetes
