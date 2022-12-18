@@ -24,32 +24,32 @@ jobs:
           path: 'apps/*/base/*.yaml'
           cliArguments: '--only-k8s-files --ignore-missing-schemas'
 
-  trivy-scan:
-    name: Trivy Vulnerability Scanner
-    if: always()
-    needs:
-      - datree-check
-    runs-on: ubuntu-18.04
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+  # trivy-scan:
+  #   name: Trivy Vulnerability Scanner
+  #   if: always()
+  #   needs:
+  #     - datree-check
+  #   runs-on: ubuntu-18.04
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v2
 
-      - name: Run Trivy vulnerability scanner in IaC mode
-        uses: aquasecurity/trivy-action@master
-        with:
-          scan-type: 'config'
-          hide-progress: false
-          format: 'sarif'
-          output: 'trivy-results.sarif'
-          exit-code: '1'
-          ignore-unfixed: true
-          severity: 'CRITICAL,HIGH'
+  #     - name: Run Trivy vulnerability scanner in IaC mode
+  #       uses: aquasecurity/trivy-action@master
+  #       with:
+  #         scan-type: 'config'
+  #         hide-progress: false
+  #         format: 'sarif'
+  #         output: 'trivy-results.sarif'
+  #         exit-code: '1'
+  #         ignore-unfixed: true
+  #         severity: 'CRITICAL,HIGH'
 
-      - name: Upload Trivy scan results to GitHub Security tab
-        uses: github/codeql-action/upload-sarif@v2
-        if: always()
-        with:
-          sarif_file: 'trivy-results.sarif'
+  #     - name: Upload Trivy scan results to GitHub Security tab
+  #       uses: github/codeql-action/upload-sarif@v2
+  #       if: always()
+  #       with:
+  #         sarif_file: 'trivy-results.sarif'
 
   # kube-linter:
   #   name: Kube Linter
@@ -66,15 +66,12 @@ jobs:
   #       with:
   #         directory: apps
 
-
-
-
   slack-workflow-status:
     name: Post Workflow Status To Slack
     if: always()
     needs:
       - datree-check
-      - trivy-scan
+      # - trivy-scan
       # - kube-linter
     runs-on: ubuntu-latest
     steps:
