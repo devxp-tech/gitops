@@ -12,3 +12,8 @@ helmCharts:
     commonLabels:
       app: sonarqube
       version: 15.1.0
+    resources:
+      # limits: {}
+      requests:
+        cpu: 100m
+        memory: 1024Mi
