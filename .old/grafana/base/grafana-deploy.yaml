@@ -1,0 +1,94 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: grafana
+  name: grafana
+spec:
+  selector:
+    matchLabels:
+      app: grafana
+  template:
+    metadata:
+      labels:
+        app: grafana
+      annotations:
+        sidecar.istio.io/proxyCPU: "50m"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPULimit: "100m"
+        sidecar.istio.io/proxyMemoryLimit: "128Mi"
+    spec:
+      securityContext:
+        fsGroup: 472
+        supplementalGroups:
+          - 0
+      containers:
+        - name: grafana
+          image: grafana/grafana:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 3000
+              name: http-grafana
+              protocol: TCP
+          readinessProbe:
+            httpGet:
+              path: /api/health
+              port: http-grafana
+            initialDelaySeconds: 15
+            timeoutSeconds: 2
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 5
+          livenessProbe:
+            failureThreshold: 3
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            successThreshold: 1
+            tcpSocket:
+              port: 3000
+            timeoutSeconds: 1
+          resources:
+            requests:
+              cpu: 10m
+              memory: 64Mi
+            limits:
+             memory: 128Mi
+             cpu: 50m
+          env:
+           - name: GF_SERVER_DOMAIN
+             value: grafana.diegoluisi.eti.br
+           - name: GF_SERVER_ROOT_URL
+             value: 'https://grafana.diegoluisi.eti.br'
+           - name: GF_AUTH_GITHUB_ENABLED
+             value: 'true'
+           - name: GF_AUTH_GITHUB_ALLOW_SIGN_UP
+             value: 'true'
+           - name: GF_AUTH_GITHUB_SCOPES
+             value: 'user:email,read:org'
+           - name: GF_AUTH_GITHUB_ALLOWED_ORGANIZATIONS
+             value: devxp-tech
+           - name: GF_AUTH_GITHUB_CLIENT_ID
+             valueFrom:
+               secretKeyRef:
+                 name: auth-generic-oauth-secret
+                 key: GF_AUTH_GITHUB_CLIENT_ID
+                 optional: false
+           - name: GF_AUTH_GITHUB_CLIENT_SECRET
+             valueFrom:
+               secretKeyRef:
+                 name: auth-generic-oauth-secret
+                 key: GF_AUTH_GITHUB_CLIENT_SECRET
+                 optional: false
+           - name: GF_SECURITY_ADMIN_PASSWORD
+             valueFrom:
+               secretKeyRef:
+                 name: auth-generic-oauth-secret
+                 key: GF_SECURITY_ADMIN_PASSWORD
+                 optional: false
+          volumeMounts:
+            - mountPath: /var/lib/grafana
+              name: grafana-pv
+      volumes:
+        - name: grafana-pv
+          persistentVolumeClaim:
+            claimName: grafana-pvc

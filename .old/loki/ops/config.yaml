@@ -1,0 +1,19 @@
+appName: loki
+userGivenName: loki
+destNamespace: monitoring
+destServer: https://kubernetes.default.svc
+srcPath: ''
+repoURL: https://grafana.github.io/helm-charts
+srcRepoURL: https://grafana.github.io/helm-charts
+srcTargetRevision: '0.49.0'
+labels:
+exclude: ''
+include: ''
+helm:
+  chart: loki-distributed
+  valueFiles: values
+  values: |-
+      fullnameOverride: loki
+      global:
+        dnsService: coredns
+        clusterDomain: lgsk8sp1.grupologos.local

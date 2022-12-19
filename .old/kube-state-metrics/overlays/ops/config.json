@@ -1,0 +1,11 @@
+{
+  "appName": "kube-state-metrics",
+  "userGivenName": "kube-state-metrics",
+  "destNamespace": "kube-system",
+  "destServer": "https://kubernetes.default.svc",
+  "srcPath": "apps/kube-state-metrics/overlays/ops",
+  "srcRepoURL": "https://github.com/devxp-tech/gitops.git",
+  "srcTargetRevision": "",
+  "CreateNamespace": true,
+  "labels": null
+}

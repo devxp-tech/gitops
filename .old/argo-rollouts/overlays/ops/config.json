@@ -1,0 +1,11 @@
+{
+  "appName": "argo-rollouts",
+  "userGivenName": "argo-rollouts",
+  "destNamespace": "argo-rollouts",
+  "destServer": "https://kubernetes.default.svc",
+  "srcPath": "apps/argo-rollouts/overlays/ops",
+  "srcRepoURL": "https://github.com/devxp-tech/gitops.git",
+  "srcTargetRevision": "",
+  "CreateNamespace": true,
+  "labels": null
+}

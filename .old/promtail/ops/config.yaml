@@ -1,0 +1,16 @@
+appName: promtail
+userGivenName: promtail
+destNamespace: monitoring
+destServer: https://kubernetes.default.svc
+srcPath: ''
+repoURL: https://grafana.github.io/helm-charts
+srcRepoURL: https://grafana.github.io/helm-charts
+srcTargetRevision: '6.0.0'
+labels:
+exclude: ''
+include: ''
+helm:
+  chart: promtail
+  valueFiles: values
+  values: |-
+      fullnameOverride: promtail

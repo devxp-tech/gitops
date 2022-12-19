@@ -1,0 +1,11 @@
+{
+  "appName": "argo-events",
+  "userGivenName": "argo-events",
+  "destNamespace": "argo-events",
+  "destServer": "https://kubernetes.default.svc",
+  "srcPath": "apps/argo-events/overlays/ops",
+  "srcRepoURL": "https://github.com/devxp-tech/gitops.git",
+  "srcTargetRevision": "",
+  "CreateNamespace": true,
+  "labels": null
+}

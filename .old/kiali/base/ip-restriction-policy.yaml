@@ -1,0 +1,20 @@
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: ip-restriction-policy
+  namespace: istio-system
+spec:
+  action: ALLOW
+  rules:
+    - to:
+        - operation:
+            methods:
+              - GET
+              - POST
+      when:
+        - key: 'request.headers[x-envoy-external-address]'
+          values:
+            - "94.62.74.120"  # Home
+  selector:
+    matchLabels:
+      app: kiali

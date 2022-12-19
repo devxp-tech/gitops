@@ -1,0 +1,83 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Sensor
+metadata:
+  name: workflow
+  finalizers:
+    - sensor-controller
+spec:
+  template:
+    serviceAccountName: operate-workflow-sa
+  dependencies:
+    - eventName: argo
+      eventSourceName: github
+      name: wf-dep
+      filters:
+        data:
+        - path: body.X-GitHub-Event
+          type: string
+          value:
+          - pull_request
+        - path: body.action
+          type: string
+          value:
+          - opened
+          - edited
+          - reopened
+          - synchronize
+        - path: body.pull_request.state
+          type: string
+          value:
+          - open
+        - path: body.pull_request.base.ref
+          type: string
+          value:
+          - main
+
+  triggers:
+    # https://github.com/argoproj/argo-events/blob/master/api/sensor.md#triggertemplate
+    - template:
+        name: workflow-trigger-1
+          # https://github.com/argoproj/argo-events/blob/master/api/sensor.md#argoproj.io/v1alpha1.ArgoWorkflowTrigger
+        argoWorkflow:
+          operation: submit
+          parameters:
+            - src:
+                dependencyName: wf-dep
+                dataKey: body.repository.git_url
+              dest: spec.arguments.parameters.0.value
+            - src:
+                dependencyName: wf-dep
+                dataKey: body.pull_request.head.ref
+              dest: spec.arguments.parameters.1.value
+            - src:
+                dependencyName: wf-dep
+                dataTemplate: "{{ .Input.body.repository.full_name }}:{{ .Input.body.ref | substr 11 16}}"
+              dest: spec.arguments.parameters.2.value
+            - src:
+                dependencyName: wf-dep
+                dataKey: body.pull_request.head.repo.name
+              dest: spec.arguments.parameters.3.value             
+          source:
+            resource:
+              apiVersion: argoproj.io/v1alpha1
+              kind: Workflow
+              metadata:
+                generateName: special-trigger-
+              spec:
+                serviceAccountName: operate-workflow-sa
+                entrypoint: main
+                arguments:
+                  parameters:
+                    - name: repo
+                      value: ""
+                    - name: branch
+                      value: ""
+                    - name: image
+                      value: ""
+                    - name: path
+                      value: ""
+                workflowTemplateRef:
+                  name: cwt-buildkit
+                  clusterScope: true
+
