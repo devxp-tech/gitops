@@ -11,7 +11,7 @@ helmCharts:
     name: teste-dev
     image:
       repository: diegoluisi/teste-quota
-      tag: ae28704b
+      tag: 02d75285
     autoscaling:
       enabled: true
       minReplicas: 1
