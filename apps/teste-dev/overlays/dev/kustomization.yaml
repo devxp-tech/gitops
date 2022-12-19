@@ -10,8 +10,8 @@ helmCharts:
   valuesInline:
     name: teste-dev
     image:
-      repository: diegoluisi/teste-dev
-      tag: latest
+      repository: diegoluisi/teste-quota
+      tag: ae28704b
     autoscaling:
       enabled: true
       minReplicas: 1
