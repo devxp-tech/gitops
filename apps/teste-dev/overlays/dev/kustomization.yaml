@@ -10,7 +10,7 @@ helmCharts:
   valuesInline:
     name: teste-dev
     image:
-      repository: diegoluisi/teste-quota
+      repository: diegoluisi/teste-dev
       tag: 02d75285
     autoscaling:
       enabled: true
