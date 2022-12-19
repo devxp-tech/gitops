@@ -11,7 +11,7 @@ helmCharts:
     name: teste-dev
     image:
       repository: diegoluisi/teste-dev
-      tag: 46b73f63
+      tag: f68c31bc
     autoscaling:
       enabled: true
       minReplicas: 1
