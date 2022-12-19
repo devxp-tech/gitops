@@ -1,0 +1,11 @@
+{
+  "appName": "teste-diego",
+  "userGivenName": "teste-diego",
+  "destNamespace": "teste-diego",
+  "destServer": "https://kubernetes.default.svc",
+  "srcPath": "apps/teste-diego/overlays/dev",
+  "srcRepoURL": "https://github.com/devxp-tech/gitops.git",
+  "srcTargetRevision": "",
+  "CreateNamespace": true,
+  "labels": null
+}
