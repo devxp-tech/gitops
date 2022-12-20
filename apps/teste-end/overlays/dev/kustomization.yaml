@@ -11,7 +11,7 @@ helmCharts:
     name: teste-end
     image:
       repository: diegoluisi/teste-end
-      tag: latest
+      tag: 51ad0c05
     autoscaling:
       enabled: true
       minReplicas: 2
