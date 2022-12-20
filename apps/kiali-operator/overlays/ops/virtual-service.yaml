@@ -14,4 +14,4 @@ spec:
     - destination:
         port:
           number: 20001
-        host: kiali.istio-system.svc.lgsk8sp1.grupologos.local
+        host: kiali.kiali-operator.svc.lgsk8sp1.grupologos.local
