@@ -18,10 +18,10 @@ helmCharts:
     resources:
       requests:
         memory: 1024Mi
-        cpu: 50m
+        cpu: 100m
       limits:
         memory: 2048Mi
-        cpu: 100m
+        cpu: 200m
     service:
       type: ClusterIP
     postgresql:
