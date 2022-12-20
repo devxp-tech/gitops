@@ -3,7 +3,7 @@ apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
   name: kiali
-  namespace: istio-system
+  namespace: kiali-operator
 spec:
   hosts:
   - "kiali.diegoluisi.eti.br"
