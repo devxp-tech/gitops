@@ -16,4 +16,4 @@ spec:
     - destination:
         port:
           number: 80
-        host: sonarqube.sonarqube.svc
+        host: sonarqube.sonarqube.svc.lgsk8sp1.grupologos.local
