@@ -13,15 +13,15 @@ helmCharts:
     commonLabels:
       app: sonarqube
       version: 9.7.1
-    minHeapSize: 1024m
-    maxHeapSize: 2048m
-    resources:
-      requests:
-        memory: 1024Mi
-        cpu: 100m
-      limits:
-        memory: 2048Mi
-        cpu: 200m
+    minHeapSize: 512m
+    maxHeapSize: 1024m
+    # resources:
+    #   requests:
+    #     memory: 1024Mi
+    #     cpu: 100m
+    #   limits:
+    #     memory: 2048Mi
+    #     cpu: 200m
     service:
       type: ClusterIP
     postgresql:
