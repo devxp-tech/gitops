@@ -11,7 +11,7 @@ helmCharts:
     name: teste-foda
     image:
       repository: diegoluisi/teste-foda
-      tag: latest
+      tag: 
     autoscaling:
       enabled: true
       minReplicas: 2
