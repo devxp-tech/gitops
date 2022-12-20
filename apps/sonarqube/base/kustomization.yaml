@@ -14,10 +14,12 @@ helmCharts:
       app: sonarqube
       version: 9.7.1
     resources:
-      # limits: {}
       requests:
-        cpu: 100m
         memory: 1024Mi
+        cpu: 50m
+      limits:
+        memory: 2048Mi
+        cpu: 100m
     service:
       type: ClusterIP
     postgresql:
