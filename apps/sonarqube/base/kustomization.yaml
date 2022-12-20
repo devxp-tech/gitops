@@ -13,8 +13,8 @@ helmCharts:
     commonLabels:
       app: sonarqube
       version: 9.7.1
-    minHeapSize: 512m
-    maxHeapSize: 1024m
+    minHeapSize: 1024m
+    maxHeapSize: 2048m
     resources:
       requests:
         memory: 1024Mi
