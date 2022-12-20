@@ -9,6 +9,7 @@ helmCharts:
   version: 2.0.3
   repo: https://charts.bitnami.com/bitnami
   valuesInline:
+    sonarqubeEmail: contato@diegoluisi.eti.br
     commonLabels:
       app: sonarqube
       version: 15.1.0
@@ -17,3 +18,5 @@ helmCharts:
       requests:
         cpu: 100m
         memory: 1024Mi
+    service:
+      type: ClusterIP

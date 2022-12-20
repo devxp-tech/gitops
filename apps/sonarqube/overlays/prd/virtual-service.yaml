@@ -5,7 +5,7 @@ metadata:
   namespace: sonarqube
 spec:
   hosts:
-  - "sonarqube.diegoluisi.eti.br"
+  - "sonar.diegoluisi.eti.br"
   gateways:
   - istio-system/istio-ingressgateway
   http:
@@ -16,4 +16,4 @@ spec:
     - destination:
         port:
           number: 80
-        host: sonarqube.sonarqube.svc.lgsk8sp1.grupologos.local
+        host: sonarqube.sonarqube.svc
