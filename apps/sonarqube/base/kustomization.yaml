@@ -9,7 +9,7 @@ helmCharts:
   version: 2.0.5
   repo: https://charts.bitnami.com/bitnami
   valuesInline:
-    sonarqubeEmail: contato@diegoluisi.eti.br
+    sonarqubeEmail: noreply@devxp-tech.io
     commonLabels:
       app: sonarqube
       version: 9.7.1
