@@ -11,7 +11,7 @@ helmCharts:
     name: teste-sonar
     image:
       repository: diegoluisi/teste-sonar
-      tag: latest
+      tag: b17cff91
     autoscaling:
       enabled: true
       minReplicas: 1
