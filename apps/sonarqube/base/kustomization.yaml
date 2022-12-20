@@ -12,7 +12,7 @@ helmCharts:
     sonarqubeEmail: contato@diegoluisi.eti.br
     commonLabels:
       app: sonarqube
-      version: 15.1.0
+      version: 9.7.1
     resources:
       # limits: {}
       requests:
@@ -20,3 +20,6 @@ helmCharts:
         memory: 1024Mi
     service:
       type: ClusterIP
+    postgresql:
+      auth:
+        existingSecret: sonarqube-postgresql-secret
