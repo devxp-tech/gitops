@@ -11,7 +11,7 @@ helmCharts:
     name: deletemeteste
     image:
       repository: diegoluisi/deletemeteste
-      tag: latest
+      tag: 99308b4c
     autoscaling:
       enabled: true
       minReplicas: 1
