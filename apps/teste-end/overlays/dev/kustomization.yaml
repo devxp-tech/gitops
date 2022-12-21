@@ -10,8 +10,8 @@ helmCharts:
   valuesInline:
     name: teste-end
     image:
-      repository: diegoluisi/teste-end
-      tag: d1254b74
+      repository: ghcr.io/devxp-tech/teste-end
+      tag: c2f109e5
     autoscaling:
       enabled: true
       minReplicas: 2
