@@ -12,11 +12,11 @@ env:
 jobs:
 
   datree-check:
-    name: Datree Check
+    name: Datree Check 🔒
     runs-on: ubuntu-latest
     if: always()
     steps:
-      - name: Checkout
+      - name: Checkout 🛎️
         uses: actions/checkout@v2
       - name: Run Datree Policy Check
         uses: datreeio/action-datree@main
@@ -25,16 +25,16 @@ jobs:
           cliArguments: '--only-k8s-files --ignore-missing-schemas'
 
   trivy-scan:
-    name: Trivy Vulnerability Scanner
+    name: Trivy Vulnerability Scanner 🔒
     if: always()
     needs:
       - datree-check
     runs-on: ubuntu-18.04
     steps:
-      - name: Checkout code
+      - name: Checkout code 🛎️
         uses: actions/checkout@v2
 
-      - name: Run Trivy vulnerability scanner in IaC mode
+      - name: Run Trivy vulnerability scanner in IaC mode 🔎
         uses: aquasecurity/trivy-action@master
         with:
           scan-type: 'config'
@@ -81,7 +81,7 @@ jobs:
   #         directory: apps
 
   slack-workflow-status:
-    name: Post Workflow Status To Slack
+    name: Post Workflow Status To Slack 📣
     if: always()
     needs:
       - datree-check
@@ -90,7 +90,7 @@ jobs:
       # - kube-linter
     runs-on: ubuntu-latest
     steps:
-      - name: Slack Workflow Notification
+      - name: Slack Workflow Notification 📣
         uses: Gamesight/slack-workflow-status@master
         with:
           # Required Input
