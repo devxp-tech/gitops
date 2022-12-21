@@ -1,0 +1,11 @@
+{
+  "appName": "delete-me",
+  "userGivenName": "delete-me",
+  "destNamespace": "delete-me",
+  "destServer": "https://kubernetes.default.svc",
+  "srcPath": "apps/delete-me/overlays/dev",
+  "srcRepoURL": "https://github.com/devxp-tech/gitops.git",
+  "srcTargetRevision": "",
+  "CreateNamespace": true,
+  "labels": null
+}
