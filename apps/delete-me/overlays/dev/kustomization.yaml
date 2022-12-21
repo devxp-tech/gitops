@@ -11,7 +11,7 @@ helmCharts:
     name: delete-me
     image:
       repository: diegoluisi/delete-me
-      tag: latest
+      tag: 24617f68
     autoscaling:
       enabled: true
       minReplicas: 1
