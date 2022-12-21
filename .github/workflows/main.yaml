@@ -27,8 +27,8 @@ jobs:
   trivy-scan:
     name: Trivy Vulnerability Scanner 🔒
     if: always()
-    needs:
-      - datree-check
+    # needs:
+    #   - datree-check
     runs-on: ubuntu-18.04
     steps:
       - name: Checkout code 🛎️
@@ -53,6 +53,7 @@ jobs:
 
   sonarqube:
     name: SonarQube Scan 🔍
+    if: always()
     runs-on: ubuntu-latest
     needs:
       - datree-check
