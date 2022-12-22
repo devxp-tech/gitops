@@ -10,7 +10,7 @@ helmCharts:
   valuesInline:
     name: teste-ghcr
     image:
-      repository: ghcr.io/devxp-tech/teste-ghcr/teste-ghcr
+      repository: ghcr.io/devxp-tech/teste-ghcr
       tag: d3eb30fe
     autoscaling:
       enabled: true
