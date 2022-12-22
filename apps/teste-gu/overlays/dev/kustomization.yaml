@@ -11,7 +11,7 @@ helmCharts:
     name: teste-gu
     image:
       repository: ghcr.io/devxp-tech/teste-gu
-      tag: 95d41330
+      tag: aa6ac1c7
     autoscaling:
       enabled: true
       minReplicas: 5
