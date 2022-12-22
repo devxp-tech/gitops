@@ -24,3 +24,4 @@ helmCharts:
       limits:
         memory: 128Mi
         cpu: 100m
+    sealedSecret: eyJhdXRocyI6eyJnaGNyLmlvIjp7InVzZXJuYW1lIjoiZGllZ29sdWlzaSIsInBhc3N3b3JkIjoiZ2hwX3dtVTI1YjF6eFNyOFNGc2RuSzR5c1dZckJ0SGhWZzBTa1YyMyIsImF1dGgiOiJaR2xsWjI5c2RXbHphVHBuYUhCZmQyMVZNalZpTVhwNFUzSTRVMFp6Wkc1TE5IbHpWMWx5UW5SSWFGWm5NRk5yVmpJeiJ9fX0=
