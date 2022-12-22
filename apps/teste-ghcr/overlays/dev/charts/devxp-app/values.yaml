@@ -1,0 +1,120 @@
+# Default values for devxp-app.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+# --name is the github repository name of this application deploy
+name: ""
+
+# --cluster Set Cluster Name
+cluster: lgsk8sp1.grupologos.local
+
+# --domain Set Default Domain
+domain: diegoluisi.eti.br
+
+application:
+# --port is the port your application runs under
+  port: 8080
+
+# --service An abstract way to expose an application running on a set of Pods as a network service.
+service:
+# --port is the port your application runs under
+  port: 80
+
+
+# --ResourceQuota provides constraints that limit aggregate resource consumption per namespace
+rollout:
+  # --Specifies whether a resource quota should be created
+  enabled: true
+
+# --ResourceQuota provides constraints that limit aggregate resource consumption per namespace
+ResourceQuota:
+  # --Specifies whether a resource quota should be created
+  enabled: true
+  hard:
+    requests.cpu: "1"
+    requests.memory: 1Gi
+    limits.cpu: "2"
+    limits.memory: 2Gi
+
+# --ServiceAccount A service account provides an identity for processes that run in a Pod, about more: https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/
+ServiceAccount:
+  # --Specifies whether a service account should be created
+  enabled: true
+  # --Annotations to add to the service account
+  annotations: {}
+
+# --PeerAuthentication defines how traffic will be tunneled (or not) to the sidecar.
+PeerAuthentication:
+  # --enable PeerAuthentication
+  enabled: true
+
+# --ingress Ingress exposes HTTP and HTTPS routes from outside the cluster to services within the cluster.
+ingress:
+  # -- enable ingress
+  enabled: true
+
+# --autoscaling is the main object of autoscaling
+autoscaling:
+  # --enabled is the flag to sinalize this funcionality is enabled
+  enabled: true
+  # --minReplicas is the number of mim pods to be running
+  minReplicas: 2
+  # --maxReplicas is the number of maximum scaling pods
+  maxReplicas: 4
+  # --targetCPUUtilizationPercentage is the percentage of CPU utilization do Scaling
+  targetCPUUtilizationPercentage: 70
+
+  # --image is the object to specify the image to run in the deployment
+image:
+  # --repository: is the registry of your application ex:556684128444.dkr.ecr.us-east-1.amazonaws.com/YOU-APP-ECR-REPO-NAME
+  # if empty this helm will auto generate the image using aws.registry/values.name:values.image.tag
+  repository: ""
+  # --pullPolicy is the prop to setup the behavior of pull police. options is: IfNotPresent \| allways
+  pullPolicy: IfNotPresent
+  # --especify the tag of your image to deploy
+  tag: "latest"
+
+imagePullSecrets:
+  name: ghcr-secret
+
+resources:
+  requests:
+    cpu: "50m"
+    memory: "64Mi"
+  limits:
+    cpu: "100m"
+    memory: "128Mi"
+
+probe:
+  enabled: true
+
+livenessProbe:
+  httpGet:
+    path: /health-check/liveness
+    port: 8080
+  initialDelaySeconds: 15
+  periodSeconds: 10
+
+readinessProbe:
+  httpGet:
+    path: /health-check/readiness
+    port: 8080
+  initialDelaySeconds: 15
+  periodSeconds: 10
+
+nodeSelector: {}
+tolerations: []
+affinity: {}
+
+env: []
+  # examples:
+  # please note that when the value is a number, you must quote the value to cast to string!
+  # - name: ENVIROMENT
+  #   value: dev
+
+envFrom: []
+  # examples:
+  # please note that when the value is a number, you must quote the value to cast to string!
+  # - configMapRef
+  #     name: postgres-configs
+
