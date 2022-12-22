@@ -11,7 +11,7 @@ helmCharts:
     name: teste-ghcr
     image:
       repository: diegoluisi/teste-ghcr
-      tag: latest
+      tag: d3eb30fe
     autoscaling:
       enabled: true
       minReplicas: 1
