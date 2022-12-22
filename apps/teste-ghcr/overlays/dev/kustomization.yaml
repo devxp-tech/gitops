@@ -5,7 +5,7 @@ resources:
 helmCharts:
 - name: devxp-app
   releaseName: devxp-app
-  version: 0.1.37
+  version: 0.1.38
   repo: https://devxp-tech.github.io/helm-charts
   valuesInline:
     name: teste-ghcr
@@ -24,4 +24,3 @@ helmCharts:
       limits:
         memory: 128Mi
         cpu: 100m
-    sealedSecrets: AgAgpPI8HoEvSU2MOe9ghHr48GgAFkvIKhTTyhWLJj3QFmv/vKHgiRD7GPuZHt88KZv/TOkmmigFaIkgEbzb4nNyyewd1ILB1Bh1sGbEYjSJ0p6I8LHwFAp+BcN3ZkAO1B8XqHuk7SfeubfAcjaezcTcwEOR4BQuZnHykSbqWoJS41FTj7JbWw06HmAX8fQzSQzz815oJN2f3AlfRuRWtgIQhXBpEzTOoxvWq95rgW0cey2ois4kHHQGED0UuafVHnDJfSnqz5g+O21h4MLsYOD0GJcxjXUQTUmeRiE316nzsJJkOKpzbgg6TJfzwAPRxSs6IT7zXp9epiky30Da89PtzlK4ctJsM/zAuJ1i+3EgrR/aUe9xFGWz+LSUAPrHM7O64thk16EkS7zRiMSujmfKJoXz/jTcFER52f/V2ssxIE6gUKs6/9gAYNfLb0FTq9fuNNl9Rc4z+o+O/3DEkp+4Aptt5eR1bKBvrT3Ecdkh3KvMBNaQJLeK3nFp080bfYX+TodarP/omRoFtggPAI0+HfK3GpsOFAtRjuz7yv5kcQvfu5SQz6Wur2RXo7IdVVCvuDCaHtFjzT+h2Ia/2+aQMdz5BcqoUvJ6yaYNjLnVN8jotNd2zD8ZfLxwqfixT9Xeh+UTB3fo417u6BTEdYlbOXqEtUGWQdYRfEXjZ7YS/tW7A5YIiNP5v/AoU04z5Znvmt4D7idI7su2q1gu911HjKUVymiYWOBvrRJNgtGqzX2vUKBazaVC/50s36lRsA1DsKgmFp6CBfoCzlcRx77XQG3Td0+QNt7M9y8ZQkrb6sAEk79PJ1IFGnFqjvfQDYnXglTl/w==
