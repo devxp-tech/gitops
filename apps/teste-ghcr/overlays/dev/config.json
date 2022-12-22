@@ -1,0 +1,11 @@
+{
+  "appName": "teste-ghcr",
+  "userGivenName": "teste-ghcr",
+  "destNamespace": "teste-ghcr",
+  "destServer": "https://kubernetes.default.svc",
+  "srcPath": "apps/teste-ghcr/overlays/dev",
+  "srcRepoURL": "https://github.com/devxp-tech/gitops.git",
+  "srcTargetRevision": "",
+  "CreateNamespace": true,
+  "labels": null
+}
