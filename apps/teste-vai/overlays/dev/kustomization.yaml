@@ -11,7 +11,7 @@ helmCharts:
     name: teste-vai
     image:
       repository: ghcr.io/devxp-tech/teste-vai
-      tag: latest
+      tag: e3fcdb07
     autoscaling:
       enabled: true
       minReplicas: 1
