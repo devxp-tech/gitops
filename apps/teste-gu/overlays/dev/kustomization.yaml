@@ -14,8 +14,8 @@ helmCharts:
       tag: aa6ac1c7
     autoscaling:
       enabled: true
-      minReplicas: 5
-      maxReplicas: 10
+      minReplicas: 2
+      maxReplicas: 4
       targetCPUUtilizationPercentage: 80
     resources:
       requests:
