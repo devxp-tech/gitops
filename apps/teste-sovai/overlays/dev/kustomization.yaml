@@ -11,7 +11,7 @@ helmCharts:
     name: teste-sovai
     image:
       repository: ghcr.io/devxp-tech/teste-sovai
-      tag: latest
+      tag: 8b07c11e
     autoscaling:
       enabled: true
       minReplicas: 1
