@@ -6,12 +6,12 @@ resources:
 helmCharts:
 - name: devxp-app
   releaseName: devxp-app
-  version: 0.1.30
+  version: 0.1.39
   repo: https://devxp-tech.github.io/helm-charts
   valuesInline:
     name: "backstage"
     image:
-      repository: diegoluisi/backstage
+      repository: ghcr.io/devxp-tech/backstage
       tag: 7bb9e151
     ResourceQuota:
       enabled: false
