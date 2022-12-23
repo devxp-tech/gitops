@@ -58,6 +58,15 @@ helmCharts:
       maxReplicas: 2
       targetCPUUtilizationPercentage: 80
 
+- name: devxp-infra
+  releaseName: devxp-infra
+  version: 0.0.3
+  repo: https://devxp-tech.github.io/helm-charts
+  valuesInline:
+    name: "backstage"
+    Bucket:
+      enabled: true
+
 - name: postgresql
   releaseName: postgresql
   version: 12.1.5
