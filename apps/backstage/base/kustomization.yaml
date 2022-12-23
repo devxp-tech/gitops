@@ -15,7 +15,8 @@ helmCharts:
       tag: 7bb9e151
     ResourceQuota:
       enabled: false
-    port: 7007
+    container:
+      port: 7007
     env:
     - name: ENV
       value: production
