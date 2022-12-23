@@ -11,7 +11,7 @@ helmCharts:
     name: teste-s3
     image:
       repository: ghcr.io/devxp-tech/teste-s3
-      tag: latest
+      tag: b2f70813
     autoscaling:
       enabled: 
       minReplicas: 
