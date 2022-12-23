@@ -60,7 +60,7 @@ helmCharts:
 
 - name: devxp-infra
   releaseName: devxp-infra
-  version: 0.0.3
+  version: 0.0.2
   repo: https://devxp-tech.github.io/helm-charts
   valuesInline:
     name: "backstage"
