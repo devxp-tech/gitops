@@ -4,11 +4,11 @@ namespace: monitoring
 helmCharts:
 - name: loki-distributed
   includeCRDs: true
-  releaseName: loki
+  releaseName: loki-distributed
   version: 0.67.1
   repo: https://grafana.github.io/helm-charts
   valuesInline:
-    #fullnameOverride: loki
+    nameOverride: loki
     global:
       dnsService: coredns
       clusterDomain: lgsk8sp1.grupologos.local
