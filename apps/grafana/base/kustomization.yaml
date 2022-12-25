@@ -265,3 +265,6 @@ helmCharts:
           datasource: Loki
           gnetId: 14876
           revision: 3
+        loki-container-log:
+          datasource: Loki
+          gnetId: 16966
