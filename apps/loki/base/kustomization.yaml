@@ -14,3 +14,4 @@ helmCharts:
       clusterDomain: lgsk8sp1.grupologos.local
       loki:
         distributorFullname: loki-distributor-teste
+      distributorFullname: loki-distributor-teste2
