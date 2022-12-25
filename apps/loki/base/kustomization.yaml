@@ -5,7 +5,7 @@ helmCharts:
 - name: loki-distributed
   includeCRDs: true
   releaseName: loki-distributed
-  version: 2.6.1
+  version: 0.67.1
   repo: https://grafana.github.io/helm-charts
   valuesInline:
     fullnameOverride: loki
