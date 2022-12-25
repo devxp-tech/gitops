@@ -261,3 +261,7 @@ helmCharts:
         dashboard:
           datasource: Loki
           url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/loki/loki_stack_monitoring_quortex.json"
+      loki-istio-service:
+        gnetId: 14876
+        revision: 3
+        datasource: Loki
