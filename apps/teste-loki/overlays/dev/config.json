@@ -1,0 +1,11 @@
+{
+  "appName": "teste-loki",
+  "userGivenName": "teste-loki",
+  "destNamespace": "teste-loki",
+  "destServer": "https://kubernetes.default.svc",
+  "srcPath": "apps/teste-loki/overlays/dev",
+  "srcRepoURL": "https://github.com/devxp-tech/gitops.git",
+  "srcTargetRevision": "",
+  "CreateNamespace": true,
+  "labels": null
+}
