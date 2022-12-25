@@ -13,4 +13,4 @@ helmCharts:
       dnsService: coredns
       clusterDomain: lgsk8sp1.grupologos.local
     loki:
-      distributorFullname: loki-distributor
+      distributorFullname: loki-distributor-teste
