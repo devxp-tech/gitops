@@ -3,7 +3,7 @@ kind: Kustomization
 namespace: argocd
 resources:
   - github.com/argoproj-labs/argocd-autopilot/manifests/base?ref=v0.4.4
-  - argo-grafana-secret-sealed.yaml
+  # - argo-grafana-secret-sealed.yaml
   - https://raw.githubusercontent.com/argoproj-labs/rollout-extension/v0.3.0/manifests/install.yaml
   - argocd-notifications-secret-sealed.yaml
   - github-secrets-sealed.yaml
