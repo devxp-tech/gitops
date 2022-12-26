@@ -15,3 +15,6 @@ helmCharts:
       clusterDomain: lgsk8sp1.grupologos.local
     labels:
       app: loki
+    loki:
+      distributorLabels:
+        app: loki
