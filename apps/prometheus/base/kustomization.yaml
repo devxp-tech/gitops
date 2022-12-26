@@ -11,14 +11,14 @@ helmCharts:
     alertmanager:
       extraSecretMounts:
         - name: slack-api-url
-          mountPath: /etc/secrets/slack_api_url_file.txt
+          mountPath: /etc/secrets/
           # subPath: "slack_api_url_file.txt"
           secretName: alertmanager-secret
           readOnly: true
       config:
         global:
           resolve_timeout: 1m
-          slack_api_url_file: '/etc/secrets/slack_api_url_file.txt'
+          slack_api_url_file: '/etc/secrets/SLACK-TOKEN'
         route:
           receiver: 'slack-notifications'
         receivers:
