@@ -26,29 +26,47 @@ helmCharts:
           slack_configs:
           - channel: '#prometheus-notifications'
             send_resolved: true
-            icon_url: https://avatars3.githubusercontent.com/u/3380462
-            title: |-
-              [{{ .Status | toUpper }}{{ if eq .Status "firing" }}:{{ .Alerts.Firing | len }}{{ end }}] {{ .CommonLabels.alertname }} for {{ .CommonLabels.job }}
-              {{- if gt (len .CommonLabels) (len .GroupLabels) -}}
-                {{" "}}(
-                {{- with .CommonLabels.Remove .GroupLabels.Names }}
-                  {{- range $index, $label := .SortedPairs -}}
-                    {{ if $index }}, {{ end }}
-                    {{- $label.Name }}="{{ $label.Value -}}"
-                  {{- end }}
-                {{- end -}}
-                )
-              {{- end }}
-              text: >-
-              {{ range .Alerts -}}
-              *Alert:* {{ .Annotations.title }}{{ if .Labels.severity }} - `{{ .Labels.severity }}`{{ end }}
-
-              *Description:* {{ .Annotations.description }}
-
-              *Details:*
+            username: '{{ template "slack.default.username" . }}'
+            color: '{{ if eq .Status "firing" }}danger{{ else }}good{{ end }}'
+            title: '{{ template "slack.default.title" . }}'
+            title_link: '{{ template "slack.default.titlelink" . }}'
+            pretext: '{{ .CommonAnnotations.summary }}'
+            text: |-
+              {{ range .Alerts }}
+                *Alert:* {{ .Annotations.summary }} - `{{ .Labels.severity }}`
+                *Description:* {{ .Annotations.description }}
+                *Details:*
                 {{ range .Labels.SortedPairs }} • *{{ .Name }}:* `{{ .Value }}`
                 {{ end }}
               {{ end }}
+            fallback: '{{ template "slack.default.fallback" . }}'
+            icon_emoji: '{{ template "slack.default.iconemoji" . }}'
+            icon_url: '{{ template "slack.default.iconurl" . }}'
+        templates:
+          alertmanager.tmpl: |-
+            {{ define "__alertmanager" }}Cluster: CLUSTER_NAME{{ end }}
+            {{ define "__alertmanagerURL" }}{{ .ExternalURL }}/#/alerts?receiver={{ .Receiver }}{{ end }}
+
+            {{ define "__subject" }}[{{ .Status | toUpper }}{{ if eq .Status "firing" }}:{{ .Alerts.Firing | len }}{{ end }}] {{ .GroupLabels.SortedPairs.Values | join " " }} {{ if gt (len .CommonLabels) (len .GroupLabels) }}({{ with .CommonLabels.Remove .GroupLabels.Names }}{{ .Values | join " " }}{{ end }}){{ end }}{{ end }}
+            {{ define "__description" }}{{ end }}
+
+            {{ define "__text_alert_list" }}{{ range . }}Labels:
+            {{ range .Labels.SortedPairs }} - {{ .Name }} = {{ .Value }}
+            {{ end }}Annotations:
+            {{ range .Annotations.SortedPairs }} - {{ .Name }} = {{ .Value }}
+            {{ end }}Source: {{ .GeneratorURL }}
+            {{ end }}{{ end }}
+
+
+            {{ define "slack.default.title" }}{{ template "__subject" . }}{{ end }}
+            {{ define "slack.default.username" }}{{ template "__alertmanager" . }}{{ end }}
+            {{ define "slack.default.fallback" }}{{ template "slack.default.title" . }} | {{ template "slack.default.titlelink" . }}{{ end }}
+            {{ define "slack.default.pretext" }}{{ end }}
+            {{ define "slack.default.titlelink" }}{{ template "__alertmanagerURL" . }}{{ end }}
+            {{ define "slack.default.iconemoji" }}{{ end }}
+            {{ define "slack.default.iconurl" }}{{ end }}
+            {{ define "slack.default.text" }}{{ end }}
+            {{ define "slack.default.footer" }}{{ end }}
     # fullnameOverride: prometheus
     server:
       alertmanagers:
