@@ -26,48 +26,97 @@ helmCharts:
           slack_configs:
           - channel: '#prometheus-notifications'
             send_resolved: true
-            username: '{{ template "slack.default.username" . }}'
-            color: '{{ if eq .Status "firing" }}danger{{ else }}good{{ end }}'
-            title: '{{ template "slack.default.title" . }}'
-            title_link: '{{ template "slack.default.titlelink" . }}'
-            pretext: '{{ .CommonAnnotations.summary }}'
-            text: |-
-              {{ range .Alerts }}
-                *Alert:* {{ .Annotations.summary }} - `{{ .Labels.severity }}`
-                *Description:* {{ .Annotations.description }}
-                *Details:*
-                {{ range .Labels.SortedPairs }} • *{{ .Name }}:* `{{ .Value }}`
-                {{ end }}
-              {{ end }}
-            fallback: '{{ template "slack.default.fallback" . }}'
-            icon_emoji: '{{ template "slack.default.iconemoji" . }}'
-            icon_url: '{{ template "slack.default.iconurl" . }}'
+            color: '{{ template "slack.color" . }}'
+            title: '{{ template "slack.title" . }}'
+            text: '{{ template "slack.text" . }}'
+            actions:
+              - type: button
+                text: 'Runbook :green_book:'
+                url: '{{ (index .Alerts 0).Annotations.runbook_url }}'
+              - type: button
+                text: 'Query :mag:'
+                url: '{{ (index .Alerts 0).GeneratorURL }}'
+              - type: button
+                text: 'Dashboard :chart_with_upwards_trend:'
+                url: '{{ (index .Alerts 0).Annotations.dashboard_url }}'
+              - type: button
+                text: 'Silence :no_bell:'
+                url: '{{ template "__alert_silence_link" . }}'
 
       templates:
         alertmanager.tmpl: |-
-          {{ define "__alertmanager" }}Cluster: CLUSTER_NAME{{ end }}
-          {{ define "__alertmanagerURL" }}{{ .ExternalURL }}/#/alerts?receiver={{ .Receiver }}{{ end }}
+          {{/* Alertmanager Silence link */}}
+          {{ define "__alert_silence_link" -}}
+              {{ .ExternalURL }}/#/silences/new?filter=%7B
+              {{- range .CommonLabels.SortedPairs -}}
+                  {{- if ne .Name "alertname" -}}
+                      {{- .Name }}%3D"{{- .Value -}}"%2C%20
+                  {{- end -}}
+              {{- end -}}
+              alertname%3D"{{- .CommonLabels.alertname -}}"%7D
+          {{- end }}
 
-          {{ define "__subject" }}[{{ .Status | toUpper }}{{ if eq .Status "firing" }}:{{ .Alerts.Firing | len }}{{ end }}] {{ .GroupLabels.SortedPairs.Values | join " " }} {{ if gt (len .CommonLabels) (len .GroupLabels) }}({{ with .CommonLabels.Remove .GroupLabels.Names }}{{ .Values | join " " }}{{ end }}){{ end }}{{ end }}
-          {{ define "__description" }}{{ end }}
+          {{/* Severity of the alert */}}
+          {{ define "__alert_severity" -}}
+              {{- if eq .CommonLabels.severity "critical" -}}
+              *Severity:* `Critical`
+              {{- else if eq .CommonLabels.severity "warning" -}}
+              *Severity:* `Warning`
+              {{- else if eq .CommonLabels.severity "info" -}}
+              *Severity:* `Info`
+              {{- else -}}
+              *Severity:* :question: {{ .CommonLabels.severity }}
+              {{- end }}
+          {{- end }}
 
-          {{ define "__text_alert_list" }}{{ range . }}Labels:
-          {{ range .Labels.SortedPairs }} - {{ .Name }} = {{ .Value }}
-          {{ end }}Annotations:
-          {{ range .Annotations.SortedPairs }} - {{ .Name }} = {{ .Value }}
-          {{ end }}Source: {{ .GeneratorURL }}
-          {{ end }}{{ end }}
+          {{/* Title of the Slack alert */}}
+          {{ define "slack.title" -}}
+            [{{ .Status | toUpper -}}
+            {{ if eq .Status "firing" }}:{{ .Alerts.Firing | len }}{{- end -}}
+            ] {{ .CommonLabels.alertname }}
+          {{- end }}
 
 
-          {{ define "slack.default.title" }}{{ template "__subject" . }}{{ end }}
-          {{ define "slack.default.username" }}{{ template "__alertmanager" . }}{{ end }}
-          {{ define "slack.default.fallback" }}{{ template "slack.default.title" . }} | {{ template "slack.default.titlelink" . }}{{ end }}
-          {{ define "slack.default.pretext" }}{{ end }}
-          {{ define "slack.default.titlelink" }}{{ template "__alertmanagerURL" . }}{{ end }}
-          {{ define "slack.default.iconemoji" }}{{ end }}
-          {{ define "slack.default.iconurl" }}{{ end }}
-          {{ define "slack.default.text" }}{{ end }}
-          {{ define "slack.default.footer" }}{{ end }}
+          {{/* Color of Slack attachment (appears as line next to alert )*/}}
+          {{ define "slack.color" -}}
+              {{ if eq .Status "firing" -}}
+                  {{ if eq .CommonLabels.severity "warning" -}}
+                      warning
+                  {{- else if eq .CommonLabels.severity "critical" -}}
+                      danger
+                  {{- else -}}
+                      #439FE0
+                  {{- end -}}
+              {{ else -}}
+              good
+              {{- end }}
+          {{- end }}
+
+          {{/* The text to display in the alert */}}
+          {{ define "slack.text" -}}
+
+              {{ template "__alert_severity" . }}
+              {{- if (index .Alerts 0).Annotations.summary }}
+              {{- "\n" -}}
+              *Summary:* {{ (index .Alerts 0).Annotations.summary }}
+              {{- end }}
+
+              {{ range .Alerts }}
+
+                  {{- if .Annotations.description }}
+                  {{- "\n" -}}
+                  {{ .Annotations.description }}
+                  {{- "\n" -}}
+                  {{- end }}
+                  {{- if .Annotations.message }}
+                  {{- "\n" -}}
+                  {{ .Annotations.message }}
+                  {{- "\n" -}}
+                  {{- end }}
+
+              {{- end }}
+
+          {{- end }}
 
     server:
       alertmanagers:
