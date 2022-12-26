@@ -6,7 +6,7 @@ data:
   service.slack: |
     token: $slack-token
   service.grafana: |
-    apiUrl: http://grafana.monitoring.svc/api
+    apiUrl: http://grafana.monitoring.svc.lgsk8sp1.grupologos.local/api
     apiKey: $grafana-api-key
   config.yaml: |
       triggers:
