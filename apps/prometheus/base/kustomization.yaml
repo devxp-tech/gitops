@@ -44,7 +44,7 @@ helmCharts:
             icon_url: '{{ template "slack.default.iconurl" . }}'
 
       templates:
-        default.tmpl: |-
+        alertmanager.tmpl: |-
           {{ define "__alertmanager" }}Cluster: CLUSTER_NAME{{ end }}
           {{ define "__alertmanagerURL" }}{{ .ExternalURL }}/#/alerts?receiver={{ .Receiver }}{{ end }}
 
