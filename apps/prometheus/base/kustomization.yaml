@@ -22,7 +22,7 @@ helmCharts:
             send_resolved: true
             http_config:
               authorization:
-                credentials: $SLACK-TOKEN
+                credentials: alertmanager-secret
     # fullnameOverride: prometheus
     server:
       alertmanagers:
