@@ -555,7 +555,7 @@ helmCharts:
             scrape_interval: 10s
             honor_labels: true
             static_configs:
-              - targets: ['prometheus-alertmanager:80']
+              - targets: ['prometheus-alertmanager:9093']
 
           - job_name: 'grafana'
             scrape_interval: 10s
