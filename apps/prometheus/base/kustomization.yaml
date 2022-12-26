@@ -9,16 +9,16 @@ helmCharts:
   includeCRDs: true
   valuesInline:
     alertmanager:
+      extraSecretMounts:
+        - name: alertmanager-secret
+          mountPath: /etc/secrets
+          subPath: "slack_api_url_file.txt"
+          secretName: alertmanager-secret
+          readOnly: true
       config:
         global:
           resolve_timeout: 1m
           slack_api_url_file: '/etc/secrets/slack_api_url_file.txt'
-        extraSecretMounts:
-          - name: alertmanager-secret
-            mountPath: /etc/secrets
-            subPath: "slack_api_url_file.txt"
-            secretName: alertmanager-secret
-            readOnly: true
         route:
           receiver: 'slack-notifications'
         receivers:
