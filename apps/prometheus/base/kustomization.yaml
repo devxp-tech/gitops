@@ -8,6 +8,17 @@ helmCharts:
   repo: https://prometheus-community.github.io/helm-charts
   includeCRDs: true
   valuesInline:
+    alertmanager:
+      config:
+        route:
+          receiver: 'slack-notifications'
+
+        receivers:
+        - name: 'slack-notifications'
+          slack_configs:
+          - channel: '#prometheus'
+            send_resolved: true
+
     # fullnameOverride: prometheus
     server:
       alertmanagers:
