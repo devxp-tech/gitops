@@ -10,9 +10,9 @@ helmCharts:
   valuesInline:
     alertmanager:
       extraSecretMounts:
-        - name: alertmanager-secret
-          mountPath: /etc/secrets
-          subPath: "slack_api_url_file.txt"
+        - name: slack-api-url
+          mountPath: /etc/secrets/slack_api_url_file.txt
+          # subPath: "slack_api_url_file.txt"
           secretName: alertmanager-secret
           readOnly: true
       config:
