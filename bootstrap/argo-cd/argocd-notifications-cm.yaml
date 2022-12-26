@@ -5,6 +5,8 @@ metadata:
 data:
   service.slack: |
     token: $slack-token
+    username: ArgoCD
+    icon: https://cncf-branding.netlify.app/img/projects/argo/icon/color/argo-icon-color.png
   service.grafana: |
     apiUrl: http://grafana.monitoring.svc.lgsk8sp1.grupologos.local/api
     apiKey: $grafana-api-key
