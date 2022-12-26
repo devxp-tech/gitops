@@ -223,9 +223,9 @@ helmCharts:
           url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/node-exporter-full.json"
       alertmanager:
         # Alertmanager dashboards
-        alertmanager-default:
+        alertmanager-grafana-dashboard:
           datasource: Prometheus
-          url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/alertmanager/alertmanager.json"
+          gnetId: 9578
       argocd:
         # ArgoCD dashboards
         argocd-default:
