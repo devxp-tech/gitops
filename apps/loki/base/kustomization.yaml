@@ -14,7 +14,5 @@ helmCharts:
       dnsService: coredns
       clusterDomain: lgsk8sp1.grupologos.local
     loki:
-      compactorLabels:
-        app: loki
-      distributorLabels:
+      labels:
         app: loki
