@@ -18,3 +18,7 @@ helmCharts:
         app: loki
       distributorLabels:
         app: loki
+    serviceMonitor:
+      enabled: true
+    prometheus:
+      enabled: true
