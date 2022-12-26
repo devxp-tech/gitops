@@ -10,15 +10,16 @@ helmCharts:
   valuesInline:
     alertmanager:
       config:
+        global:
+          resolve_timeout: 1m
+          slack_api_url: 'https://hooks.slack.com/services/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'
         route:
           receiver: 'slack-notifications'
-
         receivers:
         - name: 'slack-notifications'
           slack_configs:
           - channel: '#prometheus'
             send_resolved: true
-
     # fullnameOverride: prometheus
     server:
       alertmanagers:
