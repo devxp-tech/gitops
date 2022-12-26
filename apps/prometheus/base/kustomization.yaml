@@ -12,7 +12,13 @@ helmCharts:
       config:
         global:
           resolve_timeout: 1m
-          slack_api_url: 'https://hooks.slack.com/services/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'
+          slack_api_url_file: '/etc/secrets/slack'
+          extraSecretMounts:
+            - name: secret-files
+              mountPath: /etc/secrets/slack
+              # subPath: ""
+              secretName: alertmanager-secret
+              readOnly: true
         route:
           receiver: 'slack-notifications'
         receivers:
@@ -20,9 +26,9 @@ helmCharts:
           slack_configs:
           - channel: '#prometheus-notifications'
             send_resolved: true
-            http_config:
-              authorization:
-                credentials: alertmanager-secret
+            # http_config:
+            #   authorization:
+            #     credentials: alertmanager-secret
     # fullnameOverride: prometheus
     server:
       alertmanagers:
