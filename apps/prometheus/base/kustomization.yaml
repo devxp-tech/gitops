@@ -12,7 +12,7 @@ helmCharts:
       config:
         global:
           resolve_timeout: 1m
-          slack_api_url: 'https://hooks.slack.com/services/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'
+          slack_api_url: 'https://hooks.slack.com/services/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'
         route:
           receiver: 'slack-notifications'
         receivers:
