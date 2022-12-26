@@ -12,11 +12,11 @@ helmCharts:
       config:
         global:
           resolve_timeout: 1m
-          slack_api_url_file: '/etc/secrets/slack'
+          slack_api_url_file: '/etc/secrets/slack_api_url_file.txt'
           extraSecretMounts:
             - name: secret-files
-              mountPath: /etc/secrets/slack
-              # subPath: ""
+              mountPath: /etc/secrets
+              subPath: "slack_api_url_file.txt"
               secretName: alertmanager-secret
               readOnly: true
         route:
