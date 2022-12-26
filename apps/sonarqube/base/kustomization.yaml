@@ -29,3 +29,6 @@ helmCharts:
     postgresql:
       auth:
         existingSecret: sonarqube-postgresql-secret
+    metrics:
+      jmx:
+        enabled: true
