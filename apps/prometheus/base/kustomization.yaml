@@ -20,6 +20,9 @@ helmCharts:
           slack_configs:
           - channel: '#prometheus-notifications'
             send_resolved: true
+            http_config:
+              authorization:
+                credentials: SLACK-TOKEN
     # fullnameOverride: prometheus
     server:
       alertmanagers:
