@@ -143,252 +143,260 @@ helmCharts:
     serverFiles:
       alerting_rules.yml:
         groups:
-        - name: devxp-tech-alerts
+        #### Prometheus Alerts
+        - name: PrometheusSelfMonitoring
           rules:
-          - alert: PrometheusTargetMissing
-            expr: up == 0
-            for: 0m
-            labels:
-              severity: critical
-            annotations:
-              summary: Prometheus target missing (instance {{ $labels.instance }})
-              description: "A Prometheus target has disappeared. An exporter might be crashed.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
-          - alert: PrometheusConfigurationReloadFailure
-            expr: prometheus_config_last_reload_successful != 1
-            for: 0m
-            labels:
-              severity: warning
-            annotations:
-              summary: Prometheus configuration reload failure (instance {{ $labels.instance }})
-              description: "Prometheus configuration reload error\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
-          - alert: PrometheusTooManyRestarts
-            expr: changes(process_start_time_seconds{job=~"prometheus|pushgateway|alertmanager"}[15m]) > 2
-            for: 0m
-            labels:
-              severity: warning
-            annotations:
-              summary: Prometheus too many restarts (instance {{ $labels.instance }})
-              description: "Prometheus has restarted more than twice in the last 15 minutes. It might be crashlooping.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
-          - alert: PrometheusAlertmanagerJobMissing
-            expr: absent(up{job="alertmanager"})
-            for: 0m
-            labels:
-              severity: warning
-            annotations:
-              summary: Prometheus AlertManager job missing (instance {{ $labels.instance }})
-              description: "A Prometheus AlertManager job has disappeared\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
-          - alert: PrometheusAlertmanagerConfigurationReloadFailure
-            expr: alertmanager_config_last_reload_successful != 1
-            for: 0m
-            labels:
-              severity: warning
-            annotations:
-              summary: Prometheus AlertManager configuration reload failure (instance {{ $labels.instance }})
-              description: "AlertManager configuration reload error\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
-          # - alert: PrometheusAlertmanagerE2eDeadManSwitch
-          #   expr: vector(1)
-          #   for: 0m
-          #   labels:
-          #     severity: critical
-          #   annotations:
-          #     summary: Prometheus AlertManager E2E dead man switch (instance {{ $labels.instance }})
-          #     description: "Prometheus DeadManSwitch is an always-firing alert. It's used as an end-to-end test of Prometheus through the Alertmanager.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
-          - alert: HostOutOfMemory
-            expr: node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes * 100 < 10
-            for: 2m
-            labels:
-              severity: warning
-            annotations:
-              summary: Host out of memory (instance {{ $labels.instance }})
-              description: "Node memory is filling up (< 10% left)\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
-          - alert: HostMemoryUnderMemoryPressure
-            expr: rate(node_vmstat_pgmajfault[1m]) > 1000
-            for: 2m
-            labels:
-              severity: warning
-            annotations:
-              summary: Host memory under memory pressure (instance {{ $labels.instance }})
-              description: "The node is under heavy memory pressure. High rate of major page faults\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
-          # Please add ignored mountpoints in node_exporter parameters like
-          # "--collector.filesystem.ignored-mount-points=^/(sys|proc|dev|run)($|/)".
-          # Same rule using "node_filesystem_free_bytes" will fire when disk fills for non-root users.
-          - alert: HostOutOfDiskSpace
-            expr: (node_filesystem_avail_bytes * 100) / node_filesystem_size_bytes < 10 and ON (instance, device, mountpoint) node_filesystem_readonly == 0
-            for: 2m
-            labels:
-              severity: warning
-            annotations:
-              summary: Host out of disk space (instance {{ $labels.instance }})
-              description: "Disk is almost full (< 10% left)\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
-          - alert: HostHighCpuLoad
-            expr: 100 - (avg by(instance) (rate(node_cpu_seconds_total{mode="idle"}[2m])) * 100) > 80
-            for: 0m
-            labels:
-              severity: warning
-            annotations:
-              summary: Host high CPU load (instance {{ $labels.instance }})
-              description: "CPU load is > 80%\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
-          # - alert: HostCpuStealNoisyNeighbor
-          #   expr: avg by(instance) (rate(node_cpu_seconds_total{mode="steal"}[5m])) * 100 > 10
-          #   for: 0m
-          #   labels:
-          #     severity: warning
-          #   annotations:
-          #     summary: Host CPU steal noisy neighbor (instance {{ $labels.instance }})
-          #     description: "CPU steal is > 10%. A noisy neighbor is killing VM performances or a spot instance may be out of credit.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
-          # - alert: HostCpuHighIowait
-          #   expr: avg by (instance) (rate(node_cpu_seconds_total{mode="iowait"}[5m])) * 100 > 5
-          #   for: 0m
-          #   labels:
-          #     severity: warning
-          #   annotations:
-          #     summary: Host CPU high iowait (instance {{ $labels.instance }})
-          #     description: "CPU iowait > 5%. A high iowait means that you are disk or network bound.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
-          - alert: HostOomKillDetected
-            expr: increase(node_vmstat_oom_kill[1m]) > 0
-            for: 0m
-            labels:
-              severity: warning
-            annotations:
-              summary: Host OOM kill detected (instance {{ $labels.instance }})
-              description: "OOM kill detected\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
-          - alert: HostRequiresReboot
-            expr: node_reboot_required > 0
-            for: 4h
-            labels:
-              severity: info
-            annotations:
-              summary: Host requires reboot (instance {{ $labels.instance }})
-              description: "{{ $labels.instance }} requires a reboot.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
-          - alert: ContainerAbsent
-            expr: absent(container_last_seen)
-            for: 5m
-            labels:
-              severity: warning
-            annotations:
-              summary: Container absent (instance {{ $labels.instance }})
-              description: "A container is absent for 5 min\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
-          - alert: ContainerCpuUsage
-            expr: (sum(rate(container_cpu_usage_seconds_total{name!=""}[3m])) BY (instance, name) * 100) > 80
-            for: 2m
-            labels:
-              severity: warning
-            annotations:
-              summary: Container CPU usage (instance {{ $labels.instance }})
-              description: "Container CPU usage is above 80%\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
-          # See https://medium.com/faun/how-much-is-too-much-the-linux-oomkiller-and-used-memory-d32186f29c9d
-          - alert: ContainerMemoryUsage
-            expr: (sum(container_memory_working_set_bytes{name!=""}) BY (instance, name) / sum(container_spec_memory_limit_bytes > 0) BY (instance, name) * 100) > 80
-            for: 2m
-            labels:
-              severity: warning
-            annotations:
-              summary: Container Memory usage (instance {{ $labels.instance }})
-              description: "Container Memory usage is above 80%\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
-          - alert: ContainerVolumeUsage
-            expr: (1 - (sum(container_fs_inodes_free{name!=""}) BY (instance) / sum(container_fs_inodes_total) BY (instance))) * 100 > 80
-            for: 2m
-            labels:
-              severity: warning
-            annotations:
-              summary: Container Volume usage (instance {{ $labels.instance }})
-              description: "Container Volume usage is above 80%\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
-          - alert: ContainerHighThrottleRate
-            expr: rate(container_cpu_cfs_throttled_seconds_total[3m]) > 1
-            for: 2m
-            labels:
-              severity: warning
-            annotations:
-              summary: Container high throttle rate (instance {{ $labels.instance }})
-              description: "Container is being throttled\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
-          - alert: CorednsPanicCount
-            expr: increase(coredns_panics_total[1m]) > 0
-            for: 0m
-            labels:
-              severity: critical
-            annotations:
-              summary: CoreDNS Panic Count (instance {{ $labels.instance }})
-              description: "Number of CoreDNS panics encountered\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
-          - alert: KubernetesNodeReady
-            expr: kube_node_status_condition{condition="Ready",status="true"} == 0
-            for: 10m
-            labels:
-              severity: critical
-            annotations:
-              summary: Kubernetes Node ready (instance {{ $labels.instance }})
-              description: "Node {{ $labels.node }} has been unready for a long time\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
-          - alert: KubernetesMemoryPressure
-            expr: kube_node_status_condition{condition="MemoryPressure",status="true"} == 1
-            for: 2m
-            labels:
-              severity: critical
-            annotations:
-              summary: Kubernetes memory pressure (instance {{ $labels.instance }})
-              description: "{{ $labels.node }} has MemoryPressure condition\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
-          - alert: KubernetesContainerOomKiller
-            expr: (kube_pod_container_status_restarts_total - kube_pod_container_status_restarts_total offset 10m >= 1) and ignoring (reason) min_over_time(kube_pod_container_status_last_terminated_reason{reason="OOMKilled"}[10m]) == 1
-            for: 0m
-            labels:
-              severity: warning
-            annotations:
-              summary: Kubernetes container oom killer (instance {{ $labels.instance }})
-              description: "Container {{ $labels.container }} in pod {{ $labels.namespace }}/{{ $labels.pod }} has been OOMKilled {{ $value }} times in the last 10 minutes.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
-          - alert: KubernetesPersistentvolumeclaimPending
-            expr: kube_persistentvolumeclaim_status_phase{phase="Pending"} == 1
-            for: 2m
-            labels:
-              severity: warning
-            annotations:
-              summary: Kubernetes PersistentVolumeClaim pending (instance {{ $labels.instance }})
-              description: "PersistentVolumeClaim {{ $labels.namespace }}/{{ $labels.persistentvolumeclaim }} is pending\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
-          - alert: KubernetesVolumeOutOfDiskSpace
-            expr: kubelet_volume_stats_available_bytes / kubelet_volume_stats_capacity_bytes * 100 < 10
-            for: 2m
-            labels:
-              severity: warning
-            annotations:
-              summary: Kubernetes Volume out of disk space (instance {{ $labels.instance }})
-              description: "Volume is almost full (< 10% left)\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
-          - alert: KubernetesPersistentvolumeError
-            expr: kube_persistentvolume_status_phase{phase=~"Failed|Pending", job="kube-state-metrics"} > 0
-            for: 0m
-            labels:
-              severity: critical
-            annotations:
-              summary: Kubernetes PersistentVolume error (instance {{ $labels.instance }})
-              description: "Persistent volume is in bad state\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
-          - alert: KubernetesHpaScalingAbility
-            expr: kube_horizontalpodautoscaler_status_condition{status="false", condition="AbleToScale"} == 1
-            for: 2m
-            labels:
-              severity: warning
-            annotations:
-              summary: Kubernetes HPA scaling ability (instance {{ $labels.instance }})
-              description: "Pod is unable to scale\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
-          - alert: KubernetesPodNotHealthy
-            expr: min_over_time(sum by (namespace, pod) (kube_pod_status_phase{phase=~"Pending|Unknown|Failed"})[15m:1m]) > 0
-            for: 0m
-            labels:
-              severity: critical
-            annotations:
-              summary: Kubernetes Pod not healthy (instance {{ $labels.instance }})
-              description: "Pod has been in a non-ready state for longer than 15 minutes.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
-          - alert: KubernetesPodCrashLooping
-            expr: increase(kube_pod_container_status_restarts_total[1m]) > 3
-            for: 2m
-            labels:
-              severity: warning
-            annotations:
-              summary: Kubernetes pod crash looping (instance {{ $labels.instance }})
-              description: "Pod {{ $labels.pod }} is crash looping\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
-          - alert: KubernetesApiServerErrors
-            expr: sum(rate(apiserver_request_total{job="apiserver",code=~"^(?:5..)$"}[1m])) / sum(rate(apiserver_request_total{job="apiserver"}[1m])) * 100 > 3
-            for: 2m
-            labels:
-              severity: critical
-            annotations:
-              summary: Kubernetes API server errors (instance {{ $labels.instance }})
-              description: "Kubernetes API server is experiencing high error rate\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+            - alert: PrometheusJobMissing
+              expr: 'absent(up{job="prometheus"})'
+              for: 0m
+              labels:
+                severity: warning
+              annotations:
+                summary: Prometheus job missing (instance {{ $labels.instance }})
+                description: "A Prometheus job has disappeared\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+
+            - alert: PrometheusTargetMissing
+              expr: 'up == 0'
+              for: 0m
+              labels:
+                severity: critical
+              annotations:
+                summary: Prometheus target missing (instance {{ $labels.instance }})
+                description: "A Prometheus target has disappeared. An exporter might be crashed.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+
+            - alert: PrometheusAllTargetsMissing
+              expr: 'sum by (job) (up) == 0'
+              for: 0m
+              labels:
+                severity: critical
+              annotations:
+                summary: Prometheus all targets missing (instance {{ $labels.instance }})
+                description: "A Prometheus job does not have living target anymore.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+
+            - alert: PrometheusTargetMissingWithWarmupTime
+              expr: 'sum by (instance, job) ((up == 0) * on (instance) group_right(job) (node_time_seconds - node_boot_time_seconds > 600))'
+              for: 0m
+              labels:
+                severity: critical
+              annotations:
+                summary: Prometheus target missing with warmup time (instance {{ $labels.instance }})
+                description: "Allow a job time to start up (10 minutes) before alerting that it's down.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+
+            - alert: PrometheusConfigurationReloadFailure
+              expr: 'prometheus_config_last_reload_successful != 1'
+              for: 0m
+              labels:
+                severity: warning
+              annotations:
+                summary: Prometheus configuration reload failure (instance {{ $labels.instance }})
+                description: "Prometheus configuration reload error\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+
+            - alert: PrometheusTooManyRestarts
+              expr: 'changes(process_start_time_seconds{job=~"prometheus|pushgateway|alertmanager"}[15m]) > 2'
+              for: 0m
+              labels:
+                severity: warning
+              annotations:
+                summary: Prometheus too many restarts (instance {{ $labels.instance }})
+                description: "Prometheus has restarted more than twice in the last 15 minutes. It might be crashlooping.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+
+            - alert: PrometheusAlertmanagerJobMissing
+              expr: 'absent(up{job="alertmanager"})'
+              for: 0m
+              labels:
+                severity: warning
+              annotations:
+                summary: Prometheus AlertManager job missing (instance {{ $labels.instance }})
+                description: "A Prometheus AlertManager job has disappeared\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+
+            - alert: PrometheusAlertmanagerConfigurationReloadFailure
+              expr: 'alertmanager_config_last_reload_successful != 1'
+              for: 0m
+              labels:
+                severity: warning
+              annotations:
+                summary: Prometheus AlertManager configuration reload failure (instance {{ $labels.instance }})
+                description: "AlertManager configuration reload error\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+
+            - alert: PrometheusAlertmanagerConfigNotSynced
+              expr: 'count(count_values("config_hash", alertmanager_config_hash)) > 1'
+              for: 0m
+              labels:
+                severity: warning
+              annotations:
+                summary: Prometheus AlertManager config not synced (instance {{ $labels.instance }})
+                description: "Configurations of AlertManager cluster instances are out of sync\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+
+            - alert: PrometheusAlertmanagerE2eDeadManSwitch
+              expr: 'vector(1)'
+              for: 0m
+              labels:
+                severity: critical
+              annotations:
+                summary: Prometheus AlertManager E2E dead man switch (instance {{ $labels.instance }})
+                description: "Prometheus DeadManSwitch is an always-firing alert. It's used as an end-to-end test of Prometheus through the Alertmanager.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+
+            - alert: PrometheusNotConnectedToAlertmanager
+              expr: 'prometheus_notifications_alertmanagers_discovered < 1'
+              for: 0m
+              labels:
+                severity: critical
+              annotations:
+                summary: Prometheus not connected to alertmanager (instance {{ $labels.instance }})
+                description: "Prometheus cannot connect the alertmanager\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+
+            - alert: PrometheusRuleEvaluationFailures
+              expr: 'increase(prometheus_rule_evaluation_failures_total[3m]) > 0'
+              for: 0m
+              labels:
+                severity: critical
+              annotations:
+                summary: Prometheus rule evaluation failures (instance {{ $labels.instance }})
+                description: "Prometheus encountered {{ $value }} rule evaluation failures, leading to potentially ignored alerts.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+
+            - alert: PrometheusTemplateTextExpansionFailures
+              expr: 'increase(prometheus_template_text_expansion_failures_total[3m]) > 0'
+              for: 0m
+              labels:
+                severity: critical
+              annotations:
+                summary: Prometheus template text expansion failures (instance {{ $labels.instance }})
+                description: "Prometheus encountered {{ $value }} template text expansion failures\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+
+            - alert: PrometheusRuleEvaluationSlow
+              expr: 'prometheus_rule_group_last_duration_seconds > prometheus_rule_group_interval_seconds'
+              for: 5m
+              labels:
+                severity: warning
+              annotations:
+                summary: Prometheus rule evaluation slow (instance {{ $labels.instance }})
+                description: "Prometheus rule evaluation took more time than the scheduled interval. It indicates a slower storage backend access or too complex query.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+
+            - alert: PrometheusNotificationsBacklog
+              expr: 'min_over_time(prometheus_notifications_queue_length[10m]) > 0'
+              for: 0m
+              labels:
+                severity: warning
+              annotations:
+                summary: Prometheus notifications backlog (instance {{ $labels.instance }})
+                description: "The Prometheus notification queue has not been empty for 10 minutes\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+
+            - alert: PrometheusAlertmanagerNotificationFailing
+              expr: 'rate(alertmanager_notifications_failed_total[1m]) > 0'
+              for: 0m
+              labels:
+                severity: critical
+              annotations:
+                summary: Prometheus AlertManager notification failing (instance {{ $labels.instance }})
+                description: "Alertmanager is failing sending notifications\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+
+            - alert: PrometheusTargetEmpty
+              expr: 'prometheus_sd_discovered_targets == 0'
+              for: 0m
+              labels:
+                severity: critical
+              annotations:
+                summary: Prometheus target empty (instance {{ $labels.instance }})
+                description: "Prometheus has no target in service discovery\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+
+            - alert: PrometheusTargetScrapingSlow
+              expr: 'prometheus_target_interval_length_seconds{quantile="0.9"} / on (interval, instance, job) prometheus_target_interval_length_seconds{quantile="0.5"} > 1.05'
+              for: 5m
+              labels:
+                severity: warning
+              annotations:
+                summary: Prometheus target scraping slow (instance {{ $labels.instance }})
+                description: "Prometheus is scraping exporters slowly since it exceeded the requested interval time. Your Prometheus server is under-provisioned.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+
+            - alert: PrometheusLargeScrape
+              expr: 'increase(prometheus_target_scrapes_exceeded_sample_limit_total[10m]) > 10'
+              for: 5m
+              labels:
+                severity: warning
+              annotations:
+                summary: Prometheus large scrape (instance {{ $labels.instance }})
+                description: "Prometheus has many scrapes that exceed the sample limit\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+
+            - alert: PrometheusTargetScrapeDuplicate
+              expr: 'increase(prometheus_target_scrapes_sample_duplicate_timestamp_total[5m]) > 0'
+              for: 0m
+              labels:
+                severity: warning
+              annotations:
+                summary: Prometheus target scrape duplicate (instance {{ $labels.instance }})
+                description: "Prometheus has many samples rejected due to duplicate timestamps but different values\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+
+            - alert: PrometheusTsdbCheckpointCreationFailures
+              expr: 'increase(prometheus_tsdb_checkpoint_creations_failed_total[1m]) > 0'
+              for: 0m
+              labels:
+                severity: critical
+              annotations:
+                summary: Prometheus TSDB checkpoint creation failures (instance {{ $labels.instance }})
+                description: "Prometheus encountered {{ $value }} checkpoint creation failures\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+
+            - alert: PrometheusTsdbCheckpointDeletionFailures
+              expr: 'increase(prometheus_tsdb_checkpoint_deletions_failed_total[1m]) > 0'
+              for: 0m
+              labels:
+                severity: critical
+              annotations:
+                summary: Prometheus TSDB checkpoint deletion failures (instance {{ $labels.instance }})
+                description: "Prometheus encountered {{ $value }} checkpoint deletion failures\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+
+            - alert: PrometheusTsdbCompactionsFailed
+              expr: 'increase(prometheus_tsdb_compactions_failed_total[1m]) > 0'
+              for: 0m
+              labels:
+                severity: critical
+              annotations:
+                summary: Prometheus TSDB compactions failed (instance {{ $labels.instance }})
+                description: "Prometheus encountered {{ $value }} TSDB compactions failures\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+
+            - alert: PrometheusTsdbHeadTruncationsFailed
+              expr: 'increase(prometheus_tsdb_head_truncations_failed_total[1m]) > 0'
+              for: 0m
+              labels:
+                severity: critical
+              annotations:
+                summary: Prometheus TSDB head truncations failed (instance {{ $labels.instance }})
+                description: "Prometheus encountered {{ $value }} TSDB head truncation failures\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+
+            - alert: PrometheusTsdbReloadFailures
+              expr: 'increase(prometheus_tsdb_reloads_failures_total[1m]) > 0'
+              for: 0m
+              labels:
+                severity: critical
+              annotations:
+                summary: Prometheus TSDB reload failures (instance {{ $labels.instance }})
+                description: "Prometheus encountered {{ $value }} TSDB reload failures\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+
+            - alert: PrometheusTsdbWalCorruptions
+              expr: 'increase(prometheus_tsdb_wal_corruptions_total[1m]) > 0'
+              for: 0m
+              labels:
+                severity: critical
+              annotations:
+                summary: Prometheus TSDB WAL corruptions (instance {{ $labels.instance }})
+                description: "Prometheus encountered {{ $value }} TSDB WAL corruptions\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+
+            - alert: PrometheusTsdbWalTruncationsFailed
+              expr: 'increase(prometheus_tsdb_wal_truncations_failed_total[1m]) > 0'
+              for: 0m
+              labels:
+                severity: critical
+              annotations:
+                summary: Prometheus TSDB WAL truncations failed (instance {{ $labels.instance }})
+                description: "Prometheus encountered {{ $value }} TSDB WAL truncation failures\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+
+            - alert: PrometheusTimeserieCardinality
+              expr: 'label_replace(count by(__name__) ({__name__=~".+"}), "name", "$1", "__name__", "(.+)") > 10000'
+              for: 0m
+              labels:
+                severity: warning
+              annotations:
+                summary: Prometheus timeserie cardinality (instance {{ $labels.instance }})
+                description: "The \"{{ $labels.name }}\" timeserie cardinality is getting very high: {{ $value }}\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 
         #### Istio Alerts
         - name: Istio
