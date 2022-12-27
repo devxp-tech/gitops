@@ -391,7 +391,7 @@ helmCharts:
               description: "Kubernetes API server is experiencing high error rate\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 
         #### Istio Alerts
-        - name: EmbeddedExporter
+        - name: Istio
           rules:
             - alert: IstioKubernetesGatewayAvailabilityDrop
               expr: 'min(kube_deployment_status_replicas_available{deployment="istio-ingressgateway", namespace="istio-system"}) without (instance, pod) < 2'
@@ -482,6 +482,27 @@ helmCharts:
               annotations:
                 summary: Istio Pilot Duplicate Entry (instance {{ $labels.instance }})
                 description: "Istio pilot duplicate entry error.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+
+        - name: ArgoCD
+          rules:
+            - alert: ArgocdServiceNotSynced
+              expr: 'argocd_app_info{sync_status!="Synced"} != 0'
+              for: 15m
+              labels:
+                severity: warning
+              annotations:
+                summary: ArgoCD service not synced (instance {{ $labels.instance }})
+                description: "Service {{ $labels.name }} run by argo is currently not in sync.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+
+            - alert: ArgocdServiceUnhealthy
+              expr: 'argocd_app_info{health_status!="Healthy"} != 0'
+              for: 15m
+              labels:
+                severity: warning
+              annotations:
+                summary: ArgoCD service unhealthy (instance {{ $labels.instance }})
+                description: "Service {{ $labels.name }} run by argo is currently not healthy.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+
 
       prometheus.yml:
         scrape_configs:
