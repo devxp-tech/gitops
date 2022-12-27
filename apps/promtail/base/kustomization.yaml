@@ -11,4 +11,4 @@ helmCharts:
     fullnameOverride: promtail
     config:
       clients:
-        - url: http://loki-gateway.monitoring.svc/loki/api/v1/push
+        - url: http://loki-gateway.monitoring/loki/api/v1/push

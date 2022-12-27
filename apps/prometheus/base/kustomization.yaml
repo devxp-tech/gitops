@@ -139,7 +139,7 @@ helmCharts:
         - scheme: http
           static_configs:
           - targets:
-            - "prometheus-alertmanager.monitoring.svc:9093"
+            - "prometheus-alertmanager.monitoring:9093"
     serverFiles:
       alerting_rules.yml:
         groups:
@@ -391,12 +391,6 @@ helmCharts:
               description: "Kubernetes API server is experiencing high error rate\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 
       prometheus.yml:
-        # alerting:
-        #   alertmanagers:
-        #   - scheme: http
-        #     static_configs:
-        #     - targets:
-        #       - "prometheus-alertmanager.monitoring.svc"
         scrape_configs:
           - job_name: serviceMonitor/argocd/argocd-metrics/0
             honor_timestamps: true
@@ -726,7 +720,7 @@ helmCharts:
             - action: labelmap
               regex: __meta_kubernetes_node_label_(.+)
             - target_label: __address__
-              replacement: kubernetes.default.svc:443
+              replacement: kubernetes.default:443
             - source_labels: [__meta_kubernetes_node_name]
               regex: (.+)
               target_label: __metrics_path__
@@ -767,7 +761,7 @@ helmCharts:
             scheme: http
             static_configs:
             - targets:
-              - prometheus-kube-state-metrics.monitoring.svc:8080
+              - prometheus-kube-state-metrics:8080
 
           - job_name: 'kubernetes-cadvisor'
 
@@ -784,7 +778,7 @@ helmCharts:
             - action: labelmap
               regex: __meta_kubernetes_node_label_(.+)
             - target_label: __address__
-              replacement: kubernetes.default.svc:443
+              replacement: kubernetes.default.:443
             - source_labels: [__meta_kubernetes_node_name]
               regex: (.+)
               target_label: __metrics_path__
