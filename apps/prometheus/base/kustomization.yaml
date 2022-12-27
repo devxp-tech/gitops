@@ -1130,14 +1130,14 @@ helmCharts:
                 summary: ArgoCD service not synced (instance {{ $labels.instance }})
                 description: "Service {{ $labels.name }} run by argo is currently not in sync.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 
-            - alert: ArgocdServiceUnhealthy
-              expr: 'argocd_app_info{health_status!="Healthy"} != 0'
-              for: 15m
-              labels:
-                severity: warning
-              annotations:
-                summary: ArgoCD service unhealthy (instance {{ $labels.instance }})
-                description: "Service {{ $labels.name }} run by argo is currently not healthy.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+            # - alert: ArgocdServiceUnhealthy
+            #   expr: 'argocd_app_info{health_status!="Healthy"} != 0'
+            #   for: 15m
+            #   labels:
+            #     severity: warning
+            #   annotations:
+            #     summary: ArgoCD service unhealthy (instance {{ $labels.instance }})
+            #     description: "Service {{ $labels.name }} run by argo is currently not healthy.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 
         #### Loki Alerts
         - name: Loki
@@ -1602,10 +1602,8 @@ helmCharts:
               replacement: /api/v1/nodes/${1}/proxy/metrics/cadvisor
 
           - job_name: 'kubernetes-service-endpoints'
-
             kubernetes_sd_configs:
             - role: endpoints
-
             relabel_configs:
             - source_labels: [__meta_kubernetes_service_annotation_prometheus_io_scrape]
               action: keep
