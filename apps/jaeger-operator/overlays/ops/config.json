@@ -1,9 +1,9 @@
 {
-  "appName": "jaeger",
-  "userGivenName": "jaeger",
+  "appName": "jaeger-operator",
+  "userGivenName": "jaeger-operator",
   "destNamespace": "observability",
   "destServer": "https://kubernetes.default.svc",
-  "srcPath": "apps/jaeger/overlays/ops",
+  "srcPath": "apps/jaeger-operator/overlays/ops",
   "srcRepoURL": "https://github.com/devxp-tech/gitops.git",
   "srcTargetRevision": "",
   "CreateNamespace": true,
