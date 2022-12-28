@@ -9,6 +9,9 @@ helmCharts:
   includeCRDs: true
   valuesInline:
     # fullnameOverride: jaeger
+    cassandra:
+      config:
+        cluster_domain: lgsk8sp1.grupologos.local
     provisionDataStore:
       cassandra: true
     storage:
