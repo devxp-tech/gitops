@@ -8,8 +8,8 @@ helmCharts:
   repo: https://istio-release.storage.googleapis.com/charts
   valuesInline:
     fullnameOverride: istiod
+    trustDomain: "lgsk8sp1.grupologos.local"
     global:
-      trustDomain: "lgsk8sp1.grupologos.local"
       proxy:
         clusterDomain: "lgsk8sp1.grupologos.local"
       # Resources for the sidecar.
