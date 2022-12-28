@@ -23,3 +23,9 @@ helmCharts:
     #   enabled: false
     # query:
     #   enabled: false
+patches:
+  - target:
+      kind: CustomResourceDefinition
+    patch: |-
+      - op: remove
+        path: /metadata/labels/app.kubernetes.io~1instance
