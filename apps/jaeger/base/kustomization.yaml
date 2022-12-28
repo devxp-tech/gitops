@@ -6,6 +6,7 @@ helmCharts:
   releaseName: jaeger
   version: 2.38.0
   repo: https://jaegertracing.github.io/helm-charts
+  includeCRDs: true
   valuesInline:
     # fullnameOverride: jaeger
     jaeger:
