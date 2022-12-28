@@ -12,7 +12,10 @@ helmCharts:
     cassandra:
       config:
         cluster_domain: lgsk8sp1.grupologos.local
-
+    collector:
+      service:
+        zipkin:
+          port: 9411
     # allInOne:
     #   enabled: true
     # storage:
