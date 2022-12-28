@@ -6,16 +6,12 @@ helmCharts:
   releaseName: jaeger
   version: 0.65.4
   repo: https://jaegertracing.github.io/helm-charts
-  includeCRDs: true
+  namespace: observability
   valuesInline:
     # fullnameOverride: jaeger
     cassandra:
       config:
         cluster_domain: lgsk8sp1.grupologos.local
-    provisionDataStore:
-      cassandra: true
-    storage:
-      type: cassandra
 
     # allInOne:
     #   enabled: true
