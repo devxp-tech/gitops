@@ -17,4 +17,4 @@ spec:
     - destination:
         port:
           number: 80
-        host: jaeger-query.observability.svc
+        host: jaeger-query.observability.svc.lgsk8sp1.grupologos.local
