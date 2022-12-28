@@ -11,7 +11,7 @@ helmCharts:
     labels:
       app_label: istio-ingressgateway
     podAnnotations:
-      proxy.istio.io/config: '{"discoveryAddress" : "istiod.istio-system.svc:15012" }'
+      proxy.istio.io/config: '{"discoveryAddress" : "istiod.istio-system:15012" }'
     autoscaling:
       enabled: false
     replicaCount: 2
