@@ -36,7 +36,7 @@ helmCharts:
       autoscalingv2API: false
       tracer:
         zipkin:
-          address: jaeger-collector.observability:9411
+          address: "jaeger-collector.observability.svc.lgsk8sp1.grupologos.local:9411"
     meshConfig:
       defaultConfig:
         discoveryAddress: istiod.istio-system.svc:15012
