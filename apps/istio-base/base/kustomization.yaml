@@ -34,6 +34,9 @@ helmCharts:
             cpu: 100m
             memory: 128Mi
       autoscalingv2API: false
+      tracer:
+        zipkin:
+          address: jaeger-collector.observability:9411
     meshConfig:
       defaultConfig:
         discoveryAddress: istiod.istio-system.svc:15012
