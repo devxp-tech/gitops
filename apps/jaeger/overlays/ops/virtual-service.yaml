@@ -17,4 +17,4 @@ spec:
     - destination:
         port:
           number: 80
-        host: jaeger-query.observability
+        host: jaeger-query.observability.svc
