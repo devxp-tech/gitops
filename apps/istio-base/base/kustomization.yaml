@@ -11,8 +11,8 @@ helmCharts:
   includeCRDs: true
   valuesInline:
     global:
-      istioNamespace: istio-system
-      configValidation: false
+      # istioNamespace: istio-system
+      # configValidation: false
       istiod:
         enableAnalysis: true
 - name: istiod
@@ -37,6 +37,6 @@ helmCharts:
     meshConfig:
       defaultConfig:
         discoveryAddress: istiod.istio-system:15012
-    telemetry:
-      enabled: true
-      configValidation: false
+    # telemetry:
+    #   enabled: true
+    #   configValidation: false
