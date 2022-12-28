@@ -9,8 +9,6 @@ helmCharts:
   includeCRDs: true
   valuesInline:
     fullnameOverride: jaeger
-    jaeger:
-      create: true
     # provisionDataStore:
     #   cassandra: false
     # allInOne:
