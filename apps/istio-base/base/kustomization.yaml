@@ -40,6 +40,6 @@ helmCharts:
     meshConfig:
       defaultConfig:
         discoveryAddress: istiod.istio-system.svc:15012
-    # telemetry:
-    #   enabled: true
-    #   configValidation: false
+    telemetry:
+      enabled: true
+      configValidation: false
