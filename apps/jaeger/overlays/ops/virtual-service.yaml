@@ -2,11 +2,11 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: grafana
-  namespace: monitoring
+  name: jaeger
+  namespace: observability
 spec:
   hosts:
-  - "grafana.diegoluisi.eti.br"
+  - "jaeger.diegoluisi.eti.br"
   gateways:
   - istio-system/istio-ingressgateway
   http:
