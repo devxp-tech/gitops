@@ -2,9 +2,9 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: observability
 helmCharts:
-- name: jaeger-operator
+- name: jaeger
   releaseName: jaeger
-  version: 2.38.0
+  version: 0.65.4
   repo: https://jaegertracing.github.io/helm-charts
   includeCRDs: true
   valuesInline:
@@ -21,9 +21,3 @@ helmCharts:
     #   enabled: false
     # query:
     #   enabled: false
-patches:
-  - target:
-      kind: CustomResourceDefinition
-    patch: |-
-      - op: remove
-        path: /metadata/labels/app.kubernetes.io~1instance
