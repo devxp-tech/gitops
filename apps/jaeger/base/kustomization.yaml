@@ -10,10 +10,9 @@ helmCharts:
   valuesInline:
     fullnameOverride: jaeger
     provisionDataStore:
-      cassandra: false
-      elasticsearch: true
+      cassandra: true
     storage:
-      type: elasticsearch
+      type: cassandra
 
     # allInOne:
     #   enabled: true
