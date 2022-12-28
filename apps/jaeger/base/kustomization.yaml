@@ -2,7 +2,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: observability
 helmCharts:
-- name: jaeger
+- name: jaeger-operator
   releaseName: jaeger-operator
   version: 1.39.0
   repo: https://jaegertracing.github.io/helm-charts
