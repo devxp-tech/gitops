@@ -5,7 +5,7 @@ helmCharts:
 - name: kiali-operator
   includeCRDs: true
   releaseName: kiali-operator
-  version: 1.56.0
+  version: 1.61.0
   repo: https://kiali.org/helm-charts
   valuesInline:
     cr:
@@ -26,3 +26,9 @@ helmCharts:
             enabled: true
             in_cluster_url: http://grafana.monitoring.svc
             url: https://grafana.diegoluisi.eti.br
+          tracing:
+            enabled: true
+            in_cluster_url: 'http://jaeger.observability/jaeger'
+            use_grpc: true
+            # Public facing URL of Jaeger
+            url: 'https://jaeger.diegoluisi.eti.br/jaeger'

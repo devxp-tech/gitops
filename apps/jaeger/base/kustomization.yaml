@@ -7,7 +7,9 @@ helmCharts:
   version: 2.38.0
   repo: https://jaegertracing.github.io/helm-charts
   valuesInline:
-    fullnameOverride: jaeger
+    # fullnameOverride: jaeger
+    jaeger:
+      create: true
     # provisionDataStore:
     #   cassandra: false
     # allInOne:
