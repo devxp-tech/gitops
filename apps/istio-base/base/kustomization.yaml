@@ -15,8 +15,6 @@ helmCharts:
       # configValidation: false
       istiod:
         enableAnalysis: true
-    meshConfig:
-      trustDomain: lgsk8sp1.grupologos.local
 - name: istiod
   releaseName: istiod
   version: 1.15.0
@@ -42,6 +40,7 @@ helmCharts:
     meshConfig:
       defaultConfig:
         discoveryAddress: istiod.istio-system.svc:15012
+      trustDomain: "lgsk8sp1.grupologos.local"
     telemetry:
       enabled: true
       configValidation: false
