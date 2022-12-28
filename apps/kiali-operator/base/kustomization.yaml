@@ -18,13 +18,13 @@ helmCharts:
           - '**'
         external_services:
           prometheus:
-            url: http://prometheus-server.monitoring.svc
+            url: http://prometheus-server.monitoring
           grafana:
             auth:
               type: bearer
               token: secret:kiali-secrets:grafanaToken
             enabled: true
-            in_cluster_url: http://grafana.monitoring.svc
+            in_cluster_url: http://grafana.monitoring
             url: https://grafana.diegoluisi.eti.br
           tracing:
             enabled: true
