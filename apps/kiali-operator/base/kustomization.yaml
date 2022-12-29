@@ -27,7 +27,7 @@ helmCharts:
             in_cluster_url: http://grafana.monitoring
             url: https://grafana.diegoluisi.eti.br
           tracing:
-            enabled: true
+            enabled: false
             in_cluster_url: 'http://jaeger-query.observability/jaeger'
             use_grpc: false
             # Public facing URL of Jaeger

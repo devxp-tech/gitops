@@ -8,7 +8,6 @@ helmCharts:
   repo: https://jaegertracing.github.io/helm-charts
   namespace: observability
   valuesInline:
-    # fullnameOverride: jaeger
     cassandra:
       config:
         cluster_domain: lgsk8sp1.grupologos.local
