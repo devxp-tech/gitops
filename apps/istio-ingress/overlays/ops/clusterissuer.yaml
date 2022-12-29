@@ -17,4 +17,24 @@ spec:
       selector:
         dnsZones:
         - diegoluisi.eti.br
+---
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  labels:
+    app.kubernetes.io/instance: certs
+  name: devxp-tech.io
+spec:
+  acme:
+    email: contato@diegoluisi.eti.br
+    privateKeySecretRef:
+      name: issuer-key
+    server: https://acme-v02.api.letsencrypt.org/directory
+    solvers:
+    - dns01:
+        route53:
+          region: us-east-1
+      selector:
+        dnsZones:
+        - devxp-tech.io
 

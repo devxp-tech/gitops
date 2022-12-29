@@ -11,3 +11,17 @@ spec:
     kind: ClusterIssuer
     name: diegoluisi.eti.br
   secretName: istio-certs
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: devxp-tech.io
+spec:
+  commonName: devxp-tech.io
+  dnsNames:
+  - devxp-tech.io
+  - '*.devxp-tech.io'
+  issuerRef:
+    kind: ClusterIssuer
+    name: devxp-tech.io
+  secretName: devxp-tech.io
