@@ -23,6 +23,9 @@ helmCharts:
     fullnameOverride: istiod
     trustDomain: "lgsk8sp1.grupologos.local"
     global:
+      tracer:
+        zipkin:
+          address: "jaeger-collector.observability.svc.lgsk8sp1.grupologos.local:9411"
       proxy:
         clusterDomain: "lgsk8sp1.grupologos.local"
       # Resources for the sidecar.
@@ -34,13 +37,12 @@ helmCharts:
             cpu: 100m
             memory: 128Mi
       autoscalingv2API: false
-      tracer:
-        zipkin:
-          address: "jaeger-collector.observability.svc.lgsk8sp1.grupologos.local:9411"
+    pilot:
+      traceSampling: 25.0
     meshConfig:
+      trustDomain: "lgsk8sp1.grupologos.local"
       defaultConfig:
         discoveryAddress: istiod.istio-system.svc:15012
-      trustDomain: "lgsk8sp1.grupologos.local"
     telemetry:
       enabled: true
       configValidation: false
