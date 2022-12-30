@@ -17,8 +17,7 @@ helmCharts:
           readOnly: true
       config:
         global:
-          resolve_timeout: 1m
-          slack_api_url_file: '/etc/secrets/SLACK-TOKEN'
+          resolve_timeout: 5m
         route:
           # When a new group of alerts is created by an incoming alert, wait at
           # least 'group_wait' to send the initial notification.
@@ -52,7 +51,8 @@ helmCharts:
         receivers:
         - name: 'slack-notifications'
           slack_configs:
-          - channel: '#prometheus-notifications'
+          - slack_api_url_file: '/etc/secrets/SLACK-TOKEN'
+            channel: '#prometheus-notifications'
             color: '{{ template "slack.color" . }}'
             title: '{{ template "slack.title" . }}'
             text: '{{ template "slack.text" . }}'
