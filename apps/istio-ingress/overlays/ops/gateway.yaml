@@ -11,6 +11,7 @@ spec:
   servers:
   - hosts:
     - '*.diegoluisi.eti.br'
+    - '*.devxp-tech.io'
     port:
       name: http
       number: 80
@@ -18,7 +19,7 @@ spec:
     tls:
       httpsRedirect: true
   - port:
-      name: https
+      name: https-diegoluisi
       number: 443
       protocol: HTTPS
     tls:
@@ -26,15 +27,6 @@ spec:
       credentialName: istio-certs # This should match the Certificate secretName
     hosts:
     - '*.diegoluisi.eti.br' # This should match a DNS name in the Certificate
-
-  - hosts:
-    - '*.devxp-tech.io'
-    port:
-      name: http-devxp
-      number: 80
-      protocol: HTTP
-    tls:
-      httpsRedirect: true
   - port:
       name: https-devxp
       number: 443
