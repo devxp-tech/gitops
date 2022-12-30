@@ -52,8 +52,7 @@ helmCharts:
         receivers:
         - name: 'slack-notifications'
           slack_configs:
-          - slack_api_url_file: '/etc/secrets/SLACK-TOKEN'
-            channel: '#prometheus-notifications'
+          - channel: '#prometheus-notifications'
             color: '{{ template "slack.color" . }}'
             title: '{{ template "slack.title" . }}'
             text: '{{ template "slack.text" . }}'
@@ -74,8 +73,7 @@ helmCharts:
 
         - name: 'sre-team-alerts'
           slack_configs:
-          - slack_api_url_file: '/etc/secrets/SLACK-TOKEN'
-            channel: '#sre-team-alerts'
+          - channel: '#sre-team-alerts'
             color: '{{ template "slack.color" . }}'
             title: '{{ template "slack.title" . }}'
             team: '{{ template "slack.team" . }}'
