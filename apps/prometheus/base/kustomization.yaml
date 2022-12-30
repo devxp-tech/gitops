@@ -41,7 +41,7 @@ helmCharts:
           routes:
             # capture All Critical to the 'slack-notifications'
             - match:
-                severity: Critical
+                severity: "critical"
               receiver: 'slack-notifications'
 
         receivers:
