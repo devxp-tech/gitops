@@ -8,7 +8,7 @@ spec:
   acme:
     email: contato@diegoluisi.eti.br
     privateKeySecretRef:
-      name: diegoluisi.eti.br
+      name: issuer-key
     server: https://acme-v02.api.letsencrypt.org/directory
     solvers:
     - dns01:
