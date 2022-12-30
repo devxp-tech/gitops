@@ -6,6 +6,7 @@ metadata:
 spec:
   hosts:
   - "www.diegoluisi.eti.br"
+  - "blog.devxp-tech.io"
   gateways:
   - istio-system/istio-ingressgateway
   http:

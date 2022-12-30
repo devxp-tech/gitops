@@ -26,3 +26,20 @@ spec:
       credentialName: istio-certs # This should match the Certificate secretName
     hosts:
     - '*.diegoluisi.eti.br' # This should match a DNS name in the Certificate
+  - hosts:
+    - '*.devxp-tech.io'
+    port:
+      name: http
+      number: 80
+      protocol: HTTP
+    tls:
+      httpsRedirect: true
+  - port:
+      name: https
+      number: 443
+      protocol: HTTPS
+    tls:
+      mode: SIMPLE
+      credentialName: devxp-tech.io # This should match the Certificate secretName
+    hosts:
+    - '*.devxp-tech.io' # This should match a DNS name in the Certificate
