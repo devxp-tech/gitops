@@ -18,6 +18,7 @@ helmCharts:
       config:
         global:
           resolve_timeout: 5m
+          slack_api_url_file: '/etc/secrets/SLACK-TOKEN'
         route:
           # When a new group of alerts is created by an incoming alert, wait at
           # least 'group_wait' to send the initial notification.
