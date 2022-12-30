@@ -73,7 +73,8 @@ helmCharts:
 
         - name: 'sre-team-alerts'
           slack_configs:
-          - channel: '#sre-team-alerts'
+          - slack_api_url_file: '/etc/secrets/SLACK-TOKEN'
+            channel: '#sre-team-alerts'
             color: '{{ template "slack.color" . }}'
             title: '{{ template "slack.title" . }}'
             text: '{{ template "slack.text" . }}'
