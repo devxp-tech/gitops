@@ -20,8 +20,6 @@ helmCharts:
           resolve_timeout: 1m
           slack_api_url_file: '/etc/secrets/SLACK-TOKEN'
         route:
-          # A default receiver
-          receiver: 'slack-notifications'
           # When a new group of alerts is created by an incoming alert, wait at
           # least 'group_wait' to send the initial notification.
           # This way ensures that you get multiple alerts for the same group that start
@@ -36,7 +34,16 @@ helmCharts:
           # If an alert has successfully been sent, wait 'repeat_interval' to
           # resend them.
           repeat_interval: 8h
-          group_by: [ alertname, job]
+          group_by: ['alertname', 'cluster', 'job', 'env']
+
+          # A default receiver
+          receiver: 'slack-notifications'
+          routes:
+            # capture All Critical to the 'slack-notifications'
+            - match:
+                severity: Critical
+              receiver: 'slack-notifications'
+
         receivers:
         - name: 'slack-notifications'
           slack_configs:
