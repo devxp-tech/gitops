@@ -34,25 +34,50 @@ helmCharts:
           # If an alert has successfully been sent, wait 'repeat_interval' to
           # resend them.
           repeat_interval: 8h
-          group_by: ['alertname', 'cluster', 'job', 'env', 'team']
+          group_by: ['alertname', 'cluster', 'service']
 
           # A default receiver
           receiver: 'slack-notifications'
           routes:
             # capture All Critical to the 'slack-notifications'
-            - match:
-                severity: 'critical'
-              group_by: ['team']
-              receiver: 'slack-notifications'
+          - match:
+              severity: 'critical'
+            continue: true
+            receiver: 'slack-notifications'
+          - match:
+              team: 'sre-team'
+            continue: true
+            receiver: 'sre-team-alerts'
 
         receivers:
         - name: 'slack-notifications'
           slack_configs:
           - channel: '#prometheus-notifications'
-            send_resolved: true
             color: '{{ template "slack.color" . }}'
             title: '{{ template "slack.title" . }}'
             text: '{{ template "slack.text" . }}'
+            send_resolved: true
+            actions:
+              - type: button
+                text: 'Runbook :green_book:'
+                url: '{{ (index .Alerts 0).Annotations.runbook_url }}'
+              - type: button
+                text: 'Query :mag:'
+                url: '{{ (index .Alerts 0).GeneratorURL }}'
+              - type: button
+                text: 'Dashboard :chart_with_upwards_trend:'
+                url: '{{ (index .Alerts 0).Annotations.dashboard_url }}'
+              - type: button
+                text: 'Silence :no_bell:'
+                url: '{{ template "__alert_silence_link" . }}'
+
+        - name: 'sre-team-alerts'
+          slack_configs:
+          - channel: '#sre-team-alerts'
+            color: '{{ template "slack.color" . }}'
+            title: '{{ template "slack.title" . }}'
+            text: '{{ template "slack.text" . }}'
+            send_resolved: true
             actions:
               - type: button
                 text: 'Runbook :green_book:'
