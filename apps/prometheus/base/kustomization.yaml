@@ -77,6 +77,7 @@ helmCharts:
             channel: '#sre-team-alerts'
             color: '{{ template "slack.color" . }}'
             title: '{{ template "slack.title" . }}'
+            team: '{{ template "slack.team" . }}'
             text: '{{ template "slack.text" . }}'
             send_resolved: true
             actions:
@@ -117,6 +118,12 @@ helmCharts:
               {{- else -}}
               *Severity:* :question: {{ .CommonLabels.severity }}
               {{- end }}
+          {{- end }}
+
+          {{/* Title of the Slack Team */}}
+          {{ define "slack.team" -}}
+            [{{ .Status | toUpper -}}
+            ] {{ .CommonLabels.team }}
           {{- end }}
 
           {{/* Title of the Slack alert */}}
