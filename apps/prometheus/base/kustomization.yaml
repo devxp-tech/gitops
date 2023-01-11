@@ -44,10 +44,10 @@ helmCharts:
               severity: 'critical'
             continue: true
             receiver: 'slack-notifications'
-          - match:
-              team: 'sre-team'
-            continue: true
-            receiver: 'sre-team-alerts'
+          # - match:
+          #     team: 'sre-team'
+          #   continue: true
+          #   receiver: 'sre-team-alerts'
 
         receivers:
         - name: 'slack-notifications'
@@ -71,27 +71,27 @@ helmCharts:
                 text: 'Silence :no_bell:'
                 url: '{{ template "__alert_silence_link" . }}'
 
-        - name: 'sre-team-alerts'
-          slack_configs:
-          - channel: '#sre-team-alerts'
-            color: '{{ template "slack.color" . }}'
-            title: '{{ template "slack.title" . }}'
-            team: '{{ template "slack.team" . }}'
-            text: '{{ template "slack.text" . }}'
-            send_resolved: true
-            actions:
-              - type: button
-                text: 'Runbook :green_book:'
-                url: '{{ (index .Alerts 0).Annotations.runbook_url }}'
-              - type: button
-                text: 'Query :mag:'
-                url: '{{ (index .Alerts 0).GeneratorURL }}'
-              - type: button
-                text: 'Dashboard :chart_with_upwards_trend:'
-                url: '{{ (index .Alerts 0).Annotations.dashboard_url }}'
-              - type: button
-                text: 'Silence :no_bell:'
-                url: '{{ template "__alert_silence_link" . }}'
+        # - name: 'sre-team-alerts'
+        #   slack_configs:
+        #   - channel: '#sre-team-alerts'
+        #     color: '{{ template "slack.color" . }}'
+        #     title: '{{ template "slack.title" . }}'
+        #     team: '{{ template "slack.team" . }}'
+        #     text: '{{ template "slack.text" . }}'
+        #     send_resolved: true
+        #     actions:
+        #       - type: button
+        #         text: 'Runbook :green_book:'
+        #         url: '{{ (index .Alerts 0).Annotations.runbook_url }}'
+        #       - type: button
+        #         text: 'Query :mag:'
+        #         url: '{{ (index .Alerts 0).GeneratorURL }}'
+        #       - type: button
+        #         text: 'Dashboard :chart_with_upwards_trend:'
+        #         url: '{{ (index .Alerts 0).Annotations.dashboard_url }}'
+        #       - type: button
+        #         text: 'Silence :no_bell:'
+        #         url: '{{ template "__alert_silence_link" . }}'
 
       templates:
         alertmanager.tmpl: |-
