@@ -12,11 +12,19 @@ helmCharts:
       enabled: true
     metrics:
       enabled: true
+    apiService:
+      create: true
     args:
-      # - "--cert-dir=/tmp"
-      # - "--secure-port=4443"
-      # - "--kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname"
-      # - "--metric-resolution=15s"
-      - "--kubelet-use-node-status-port"
-      - "--kubelet-insecure-tls"
-      - "--authorization-always-allow-paths=/livez,/readyz,/metrics"
+      - --cert-dir=/tmp
+      - --kubelet-insecure-tls
+      - --secure-port=4443
+      - --kubelet-use-node-status-port
+      - --kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname
+      - --metric-resolution=15s
+    containerPorts:
+      https: 4443
+
+    # args:
+    #   - "--kubelet-use-node-status-port"
+    #   - "--kubelet-insecure-tls"
+    #   - "--authorization-always-allow-paths=/livez,/readyz,/metrics"
