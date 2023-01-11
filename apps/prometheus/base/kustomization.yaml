@@ -10,7 +10,7 @@ helmCharts:
   valuesInline:
     server:
       persistentVolume:
-        size: 30Gi
+        size: "30Gi"
       retention: "7d"
     alertmanager:
       extraSecretMounts:
