@@ -4,10 +4,13 @@ namespace: monitoring
 helmCharts:
 - name: prometheus
   releaseName: prometheus
-  version: 19.2.1
+  version: 19.3.1
   repo: https://prometheus-community.github.io/helm-charts
   includeCRDs: true
   valuesInline:
+    server:
+      persistentVolume:
+        size: 30Gi
     alertmanager:
       extraSecretMounts:
         - name: slack-api-url
