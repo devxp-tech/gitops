@@ -11,6 +11,7 @@ helmCharts:
     server:
       persistentVolume:
         size: 30Gi
+      retention: "7d"
     alertmanager:
       extraSecretMounts:
         - name: slack-api-url
