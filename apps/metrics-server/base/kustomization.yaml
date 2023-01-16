@@ -8,10 +8,10 @@ helmCharts:
   repo: https://charts.bitnami.com/bitnami
   valuesInline:
     # nameOverride: metrics-server
-    hostNetwork:
-      enabled: true
-    metrics:
-      enabled: true
+    # hostNetwork:
+    #   enabled: true
+    # metrics:
+    #   enabled: true
     apiService:
       create: true
     args:
@@ -21,6 +21,7 @@ helmCharts:
       # - --kubelet-use-node-status-port
       - --kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname
       - --metric-resolution=15s
+      - "--authorization-always-allow-paths=/livez,/readyz,/metrics"
     containerPorts:
       https: 4443
 
