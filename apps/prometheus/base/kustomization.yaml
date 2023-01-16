@@ -9,7 +9,8 @@ helmCharts:
   includeCRDs: true
   valuesInline:
     kube-state-metrics:
-      enabled: false
+      kubeResources:
+        horizontalpodautoscalers: false
     alertmanager:
       extraSecretMounts:
         - name: slack-api-url
@@ -1663,7 +1664,7 @@ helmCharts:
             scheme: http
             static_configs:
             - targets:
-              - kube-state-metrics.kube-system:8080
+              - kube-state-metrics:8080
 
           - job_name: 'kubernetes-cadvisor'
             scheme: https
