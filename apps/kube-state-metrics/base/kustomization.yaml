@@ -8,3 +8,5 @@ helmCharts:
   repo: https://charts.bitnami.com/bitnami
   valuesInline:
     nameOverride: kube-state-metrics
+    kubeResources:
+      horizontalpodautoscalers: false
