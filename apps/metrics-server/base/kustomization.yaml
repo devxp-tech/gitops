@@ -12,8 +12,8 @@ helmCharts:
     #   enabled: true
     # metrics:
     #   enabled: true
-    apiService:
-      create: true
+    # apiService:
+    #   create: true
     args:
       # - --cert-dir=/tmp
       - --kubelet-insecure-tls
