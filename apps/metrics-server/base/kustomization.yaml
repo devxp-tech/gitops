@@ -15,10 +15,10 @@ helmCharts:
     apiService:
       create: true
     args:
-      - --cert-dir=/tmp
+      # - --cert-dir=/tmp
       - --kubelet-insecure-tls
       - --secure-port=4443
-      - --kubelet-use-node-status-port
+      # - --kubelet-use-node-status-port
       - --kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname
       - --metric-resolution=15s
     containerPorts:
