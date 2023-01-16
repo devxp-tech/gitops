@@ -4,14 +4,12 @@ namespace: kube-system
 helmCharts:
 - name: metrics-server
   releaseName: metrics-server
-  version: 6.2.6
-  repo: https://charts.bitnami.com/bitnami
+  version: 3.8.3
+  repo: https://kubernetes-sigs.github.io/metrics-server/
   valuesInline:
     apiService:
       create: true
     hostNetwork:
-      enabled: true
-    metrics:
       enabled: true
     args:
       - --cert-dir=/tmp
