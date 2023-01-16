@@ -1663,7 +1663,7 @@ helmCharts:
             scheme: http
             static_configs:
             - targets:
-              - prometheus-kube-state-metrics:8080
+              - kube-state-metrics.kube-system:8080
 
           - job_name: 'kubernetes-cadvisor'
             scheme: https
