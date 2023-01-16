@@ -8,6 +8,8 @@ helmCharts:
   repo: https://prometheus-community.github.io/helm-charts
   includeCRDs: true
   valuesInline:
+    kube-state-metrics:
+      enabled: false
     alertmanager:
       extraSecretMounts:
         - name: slack-api-url
