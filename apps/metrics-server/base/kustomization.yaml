@@ -9,8 +9,8 @@ helmCharts:
   valuesInline:
     apiService:
       create: true
-    # hostNetwork:
-    #   enabled: true
+    hostNetwork:
+      enabled: true
     metrics:
       enabled: true
     args:
