@@ -17,11 +17,11 @@ helmCharts:
       # - --cert-dir=/tmp
       # - --kubelet-use-node-status-port
       - --kubelet-insecure-tls
-      # - --secure-port=4443
+      - --secure-port=10250
       - --kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname
       - --metric-resolution=15s
-    # containerPorts:
-    #   https: 4443
+    containerPorts:
+      https: 10250
 
     # args:
     #   - "--kubelet-use-node-status-port"
