@@ -7,12 +7,12 @@ helmCharts:
   version: 6.2.6
   repo: https://charts.bitnami.com/bitnami
   valuesInline:
-    hostNetwork:
-      enabled: true
+    # hostNetwork:
+    #   enabled: true
     # metrics:
     #   enabled: true
-    # apiService:
-    #   create: true
+    apiService:
+      create: true
     args:
       # - --cert-dir=/tmp
       # - --kubelet-use-node-status-port
