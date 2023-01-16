@@ -9,7 +9,7 @@ helmCharts:
   includeCRDs: true
   valuesInline:
     kube-state-metrics:
-      kubeResources:
+      collectors:
         horizontalpodautoscalers: false
     alertmanager:
       extraSecretMounts:
