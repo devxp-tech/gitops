@@ -40,12 +40,8 @@ helmCharts:
       postgresql:
         auth:
           database: teste-loki
-          # username: teste-loki
-          existingSecret:
-            secretKeys:
-              adminPasswordKey: "POSTGRES_USER"
-              userPasswordKey: "POSTGRES_USER"
-              replicationPasswordKey: "POSTGRES_PASSWORD"
+          username: teste-loki
+          existingSecret: postgres-secrets
     image:
       debug: true
     primary:
