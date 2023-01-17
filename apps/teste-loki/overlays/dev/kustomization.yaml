@@ -2,6 +2,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
 - ../../base
+- postgres-secrets-sealed.yaml
 helmCharts:
 - name: devxp-app
   releaseName: devxp-app
@@ -24,3 +25,26 @@ helmCharts:
       limits:
         memory:
         cpu:
+- name: postgresql
+  releaseName: postgresql
+  version: 12.1.5
+  repo: https://charts.bitnami.com/bitnami
+  valuesInline:
+    commonLabels:
+      app: teste-loki
+      version: 15.1.0
+    global:
+      postgresql:
+        auth:
+          database: teste-loki
+          username: teste-loki
+          existingSecret: postgres-secrets
+    image:
+      debug: true
+    resources:
+      limits:
+        cpu: 250m
+        memory: 2048Mi
+      requests:
+        cpu: 50m
+        memory: 512Mi
