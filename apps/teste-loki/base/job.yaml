@@ -11,7 +11,7 @@ spec:
   template:
     spec:
       containers:
-        - image: diegoluisi/teste-loki-migraton:latest
+        - image: diegoluisi/teste-loki-migraton:9081df20
           name: teste-loki-migration
           env:
             - name: POSTGRES_HOST
