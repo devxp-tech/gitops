@@ -20,7 +20,7 @@ spec:
               value: teste-loki
             - name: POSTGRES_USERNAME
               value: teste-loki
-            - name: POSTGRES_USERNAME
+            - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: postgres-secrets
