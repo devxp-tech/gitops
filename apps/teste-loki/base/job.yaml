@@ -15,7 +15,7 @@ spec:
           name: teste-loki-migration
           env:
             - name: URL
-              value: postgres-postgresql
+              value: jdbc:postgresql://postgres-postgresql:5432/teste-loki
             - name: USERNAME
               value: teste-loki
             - name: PASSWORD
