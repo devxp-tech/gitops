@@ -14,11 +14,11 @@ spec:
         - image: diegoluisi/teste-loki-migraton:latest
           name: teste-loki-migration
           env:
-            - name: POSTGRES_HOST
+            - name: URL
               value: postgres-postgresql
-            - name: POSTGRES_USER
+            - name: USERNAME
               value: teste-loki
-            - name: POSTGRES_PASSWORD
+            - name: PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: postgres-secrets
