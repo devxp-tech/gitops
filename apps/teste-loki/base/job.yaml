@@ -17,10 +17,7 @@ spec:
             - name: POSTGRES_HOST
               value: postgres-postgresql
             - name: POSTGRES_USER
-              valueFrom:
-                secretKeyRef:
-                  name: postgres-secrets
-                  key: POSTGRES_USER
+              value: teste-loki
             - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
