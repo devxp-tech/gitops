@@ -11,7 +11,7 @@ helmCharts:
     name: teste-loki
     image:
       repository: ghcr.io/devxp-tech/teste-loki
-      tag: 20fde81e
+      tag: f59eb326
     autoscaling:
       enabled:
       minReplicas:
