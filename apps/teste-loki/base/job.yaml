@@ -1,0 +1,35 @@
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: teste-loki-migration
+  annotations:
+    argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/hook-delete-policy: BeforeHookCreation
+spec:
+  ttlSecondsAfterFinished: 3600
+  template:
+    spec:
+      # imagePullSecrets:
+      #   - name: regcred2
+      containers:
+        - image: diegoluisi/teste-loki-migraton:latest
+          name: teste-loki-migration
+          # env:
+          #   - name: POSTGRES_HOST
+          #     value: postgres-postgresql
+          #   - name: POSTGRES_USER
+          #     valueFrom:
+          #       secretKeyRef:
+          #         name: postgres-credentials
+          #         key: username
+          #   - name: POSTGRES_PASSWORD
+          #     valueFrom:
+          #       secretKeyRef:
+          #         name: postgres-credentials
+          #         key: password
+          resources:
+            requests:
+              cpu: 50m
+              memory: 400Mi
+      restartPolicy: Never
