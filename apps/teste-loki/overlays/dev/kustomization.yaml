@@ -46,10 +46,11 @@ helmCharts:
               replicationPasswordKey: "POSTGRES_PASSWORD"
     image:
       debug: true
-    resources:
-      limits:
-        cpu: 250m
-        memory: 2048Mi
-      requests:
-        cpu: 50m
-        memory: 512Mi
+    primary:
+      resources:
+        limits:
+          cpu: 250m
+          memory: 2048Mi
+        requests:
+          cpu: 50m
+          memory: 512Mi
