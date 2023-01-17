@@ -11,11 +11,11 @@ helmCharts:
   repo: https://devxp-tech.github.io/helm-charts
   valuesInline:
     name: teste-loki
-    ResourceQuota:
-      enabled: false
     image:
       repository: ghcr.io/devxp-tech/teste-loki
-      tag: f59eb326
+      tag: 20fde81e
+    ResourceQuota:
+      enabled: false
     autoscaling:
       enabled:
       minReplicas:
