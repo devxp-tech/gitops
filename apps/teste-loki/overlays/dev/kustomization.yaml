@@ -13,7 +13,7 @@ helmCharts:
     name: teste-loki
     image:
       repository: ghcr.io/devxp-tech/teste-loki
-      tag: 9081df20
+      tag: 5e9a37de
     ResourceQuota:
       enabled: false
     autoscaling:
