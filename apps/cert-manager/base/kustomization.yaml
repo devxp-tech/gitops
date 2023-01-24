@@ -14,6 +14,7 @@ helmCharts:
     global:
       leaderElection:
         namespace: "cert-manager"
+    replicaCount: 2
     resources:
       requests:
         cpu: 10m
@@ -22,6 +23,7 @@ helmCharts:
         cpu: 20m
         memory: 64Mi
     webhook:
+      replicaCount: 2
       resources:
         requests:
           cpu: 10m
@@ -30,6 +32,7 @@ helmCharts:
           cpu: 20m
           memory: 64Mi
     cainjector:
+      replicaCount: 2
       resources:
         requests:
           cpu: 10m
