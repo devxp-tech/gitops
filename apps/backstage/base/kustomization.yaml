@@ -81,6 +81,11 @@ helmCharts:
           database: backstage
           username: backstage
           existingSecret: postgres-secrets
+    primary:
+      resources:
+        limits:
+          cpu: 250m
+          memory: 256Mi
     image:
       debug: true
     resources:
