@@ -24,6 +24,13 @@ helmCharts:
     fullnameOverride: istiod
     trustDomain: "lgsk8sp1.grupologos.local"
     global:
+      defaultResources:
+        requests:
+          cpu: 10m
+          memory: 128Mi
+        limits:
+          cpu: 100m
+          memory: 128Mi
       # tracer:
       #   zipkin:
       #     address: jaeger-collector.observability.svc.lgsk8sp1.grupologos.local:9411
