@@ -47,6 +47,13 @@ helmCharts:
       autoscalingv2API: false
     pilot:
       traceSampling: 25.0
+    resources:
+        limits:
+          cpu: 500m
+          memory: 2048Mi
+        requests:
+          cpu: 500m
+          memory: 2048Mi
     meshConfig:
       trustDomain: "lgsk8sp1.grupologos.local"
       defaultConfig:
