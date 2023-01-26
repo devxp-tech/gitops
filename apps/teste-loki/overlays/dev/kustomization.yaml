@@ -19,10 +19,10 @@ helmCharts:
     migration:
       enabled: true
     autoscaling:
-      enabled:
-      minReplicas:
-      maxReplicas:
-      targetCPUUtilizationPercentage:
+      enabled: true
+      minReplicas: 1
+      maxReplicas: 2
+      targetCPUUtilizationPercentage: 80
     resources:
       requests:
         memory:
