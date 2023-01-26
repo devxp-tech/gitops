@@ -38,19 +38,15 @@ helmCharts:
     commonLabels:
       app: teste-loki
       version: 15.1.0
-    auth:
-      secretKeys:
-        adminPasswordKey: POSTGRES_PASSWORD
-        userPasswordKey: POSTGRES_PASSWORD
     global:
       postgresql:
         auth:
           database: teste-loki
           username: teste-loki
           # existingSecret: postgres-secrets
-          # secretKeys:
-          #   adminPasswordKey: POSTGRES_PASSWORD
-          #   userPasswordKey: POSTGRES_PASSWORD
+          secretKeys:
+            adminPasswordKey: POSTGRES_PASSWORD
+            userPasswordKey: POSTGRES_PASSWORD
     image:
       debug: true
     primary:
