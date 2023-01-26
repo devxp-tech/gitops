@@ -17,7 +17,7 @@ helmCharts:
     ResourceQuota:
       enabled: false
     migration:
-      enabled: false
+      enabled: true
     autoscaling:
       enabled: true
       minReplicas: 1
