@@ -17,7 +17,7 @@ helmCharts:
     ResourceQuota:
       enabled: false
     migration:
-      enabled: false
+      enabled: true
     autoscaling:
       enabled: true
       minReplicas: 1
@@ -35,7 +35,6 @@ helmCharts:
   version: 12.1.5
   repo: https://charts.bitnami.com/bitnami
   valuesInline:
-
     commonAnnotations:
       sidecar.istio.io/inject: "false"
     commonLabels:
