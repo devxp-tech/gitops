@@ -48,9 +48,9 @@ helmCharts:
           database: teste-loki
           username: teste-loki
           # existingSecret: postgres-secrets
-          secretKeys:
-            adminPasswordKey: POSTGRES_PASSWORD
-            userPasswordKey: POSTGRES_PASSWORD
+          # secretKeys:
+          #   adminPasswordKey: POSTGRES_PASSWORD
+          #   userPasswordKey: POSTGRES_PASSWORD
     image:
       debug: true
     primary:
