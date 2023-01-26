@@ -35,6 +35,7 @@ helmCharts:
   version: 12.1.5
   repo: https://charts.bitnami.com/bitnami
   valuesInline:
+
     commonAnnotations:
       sidecar.istio.io/inject: "false"
     commonLabels:
@@ -52,6 +53,8 @@ helmCharts:
     image:
       debug: true
     primary:
+      podAnnotations:
+        sidecar.istio.io/inject: "false"
       resources:
         limits:
           cpu: 250m
