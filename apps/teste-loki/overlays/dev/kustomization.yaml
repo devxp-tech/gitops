@@ -11,6 +11,9 @@ helmCharts:
   repo: https://devxp-tech.github.io/helm-charts
   valuesInline:
     name: teste-loki
+    envFrom:
+    - secretRef:
+        name: postgres-secrets
     image:
       repository: ghcr.io/devxp-tech/teste-loki
       tag: 9caefa11
