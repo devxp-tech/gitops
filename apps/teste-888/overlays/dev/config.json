@@ -1,0 +1,11 @@
+{
+  "appName": "teste-888",
+  "userGivenName": "teste-888",
+  "destNamespace": "teste-888",
+  "destServer": "https://kubernetes.default.svc",
+  "srcPath": "apps/teste-888/overlays/dev",
+  "srcRepoURL": "https://github.com/devxp-tech/gitops.git",
+  "srcTargetRevision": "",
+  "CreateNamespace": true,
+  "labels": null
+}
