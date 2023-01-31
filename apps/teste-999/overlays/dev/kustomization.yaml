@@ -1,0 +1,26 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- ../../base
+helmCharts:
+- name: devxp-app
+  releaseName: devxp-app
+  version: 0.1.39
+  repo: https://devxp-tech.github.io/helm-charts
+  valuesInline:
+    name: teste-999
+    image:
+      repository: ghcr.io/devxp-tech/teste-999
+      tag: latest
+    autoscaling:
+      enabled: 
+      minReplicas: 
+      maxReplicas: 
+      targetCPUUtilizationPercentage: 
+    resources:
+      requests:
+        memory: 
+        cpu: 
+      limits:
+        memory: 
+        cpu: 
