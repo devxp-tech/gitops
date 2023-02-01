@@ -7,4 +7,4 @@ helmCharts:
   version: 46.0.0
   repo: https://sonatype.github.io/helm3-charts
   valuesInline:
-    fullnameOverride: nexus
+    nameOverride: nexus
