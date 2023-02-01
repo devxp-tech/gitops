@@ -17,4 +17,4 @@ spec:
     - destination:
         port:
           number: 8081
-        host: nexus.nexus.svc.lgsk8sp1.grupologos.local
+        host: nexus-repository-manager.nexus.svc.lgsk8sp1.grupologos.local
