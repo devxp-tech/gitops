@@ -2,8 +2,8 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: nexus
 helmCharts:
-- name: sonatype/nexus-repository-manager
-  releaseName: nexus
+- name: nexus
+  releaseName: sonatype/nexus-repository-manager
   version: 46.0.0
   repo: https://sonatype.github.io/helm3-charts/
   valuesInline:
