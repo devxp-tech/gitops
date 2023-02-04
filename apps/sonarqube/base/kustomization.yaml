@@ -30,12 +30,12 @@ helmCharts:
       auth:
         existingSecret: sonarqube-postgresql-secret
       resources:
-        requests:
-          memory: 256Mi
-          cpu: 250m
         limits:
-          memory: 1Gi
-          cpu: 1
+          cpu: 100m
+          memory: 256Mi
+        requests:
+          cpu: 50m
+          memory: 128Mi
     # metrics:
     #   jmx:
     #     enabled: true
