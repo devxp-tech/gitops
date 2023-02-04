@@ -182,6 +182,13 @@ helmCharts:
           static_configs:
           - targets:
             - "prometheus-alertmanager.monitoring:9093"
+      resources:
+        limits:
+          cpu: 500m
+          memory: 512Mi
+        requests:
+          cpu: 500m
+          memory: 512Mi
       persistentVolume:
         size: "30Gi"
       retention: "7d"
