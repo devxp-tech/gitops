@@ -184,10 +184,10 @@ helmCharts:
             - "prometheus-alertmanager.monitoring:9093"
       resources:
         limits:
-          cpu: 500m
+          cpu: 1
           memory: 4096Mi
         requests:
-          cpu: 250m
+          cpu: 500m
           memory: 2048Mi
       persistentVolume:
         size: "30Gi"
