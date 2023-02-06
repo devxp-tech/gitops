@@ -1,0 +1,22 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: EnvoyFilter
+metadata:
+  name: rsl-envoyfilter
+  namespace: istio-system
+spec:
+  workloadLabels:
+    app: istio-ingressgateway
+  filters:
+    - listenerMatch:
+        portNumber: 80
+        listenerType: GATEWAY
+      filterName: envoy.lua
+      filterType: HTTP
+      filterConfig:
+        inlineCode: |
+          function envoy_on_request(request_handle)
+            local xff_header = request_handle:headers():get("X-Forwarded-For")
+            local first_ip = string.gmatch(xff_header, "(%d+.%d+.%d+.%d+)")();
+            first_ip = string.gsub(first_ip, ",", "")
+            request_handle:headers():add("X-Custom-User-IP", first_ip);
+          end
