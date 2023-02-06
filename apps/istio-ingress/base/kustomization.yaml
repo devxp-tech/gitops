@@ -16,5 +16,6 @@ helmCharts:
       enabled: false
     replicaCount: 2
     gateway:
-      annotations:
-        service.beta.kubernetes.io/aws-load-balancer-type: nlb
+      service:
+        annotations:
+          service.beta.kubernetes.io/aws-load-balancer-type: nlb
