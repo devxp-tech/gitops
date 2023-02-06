@@ -11,7 +11,7 @@ spec:
   rules:
   - from:
     - source:
-       ipBlocks: ["94.62.74.120"]
+       remoteIpBlocks: ["94.62.74.120"]
     to:
     - operation:
         hosts:
