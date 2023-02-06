@@ -6,8 +6,8 @@ metadata:
   namespace: istio-system
 spec:
   workloadLabels:
-    # app: istio-ingressgateway
-    app_label: istio-ingressgateway
+    app: istio-ingressgateway
+    # app_label: istio-ingressgateway
   filters:
     - listenerMatch:
         portNumber: 443
