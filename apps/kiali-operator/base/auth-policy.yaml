@@ -1,0 +1,21 @@
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: kiali
+spec:
+  action: ALLOW
+  selector:
+    matchLabels:
+      app: kiali
+  rules:
+  - to:
+    - operation:
+        paths:
+        - "/kiali"
+        ports:
+        - "9090"
+    when:
+    - key: request.headers[X-Forwarded-For]
+      values:
+      - "94.62.74.120" # diegoluisi home
