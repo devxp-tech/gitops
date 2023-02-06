@@ -2,19 +2,20 @@
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: kiali
+  name: teste-loki
 spec:
   action: ALLOW
   selector:
     matchLabels:
-      app: kiali
+      app: teste-loki
   rules:
   - to:
     - operation:
         paths:
-        - "/kiali"
+        - "/"
+        - "/*"
         ports:
-        - "9090"
+        - "80"
     when:
     - key: request.headers[X-Forwarded-For]
       values:
