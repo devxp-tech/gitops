@@ -16,7 +16,6 @@ spec:
         - "/*"
         ports:
         - "80"
-    when:
-    - key: request.headers[X-Forwarded-For]
-      values:
-      - "94.62.74.120" # diegoluisi home
+    - from:
+      - source:
+        ipBlocks: ["94.62.74.120/32", "5.6.7.0/24"]
