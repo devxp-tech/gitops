@@ -1,26 +1,22 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: EnvoyFilter
 metadata:
-  name: ingress-ip-restrictions
-  namespace: default
+  name: rsl-envoyfilter
+  namespace: istio-system
 spec:
   workloadLabels:
-    app: sleep
+    app: istio-ingressgateway
   filters:
-    - filterName: envoy.filters.network.rbac
-      filterType: NETWORK
+    - listenerMatch:
+        portNumber: 80
+        listenerType: GATEWAY
+      filterName: envoy.lua
+      filterType: HTTP
       filterConfig:
-        rules:
-          action: ALLOW
-          policies:
-            "ip-restrictions":
-              permissions:
-                - any: true
-              principals:
-                - source_ip:
-                    address_prefix: 1.2.3.4
-                    prefix_len: 32
-                - source_ip:
-                    address_prefix: 5.6.7.8
-                    prefix_lenbad: 32
-        stat_prefix: ingress-ip-restrictions
+        inlineCode: |
+          function envoy_on_request(request_handle)
+            local xff_header = request_handle:headers():get("X-Forwarded-For")
+            local first_ip = string.gmatch(xff_header, "(%d+.%d+.%d+.%d+)")();
+            first_ip = string.gsub(first_ip, ",", "")
+            request_handle:headers():add("X-Custom-User-IP", first_ip);
+          end
