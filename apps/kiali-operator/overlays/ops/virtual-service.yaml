@@ -4,6 +4,8 @@ kind: VirtualService
 metadata:
   name: kiali
   namespace: kiali-operator
+  labels:
+    app: kiali
 spec:
   hosts:
   - "kiali.diegoluisi.eti.br"
