@@ -12,8 +12,6 @@ helmCharts:
   includeCRDs: true
   valuesInline:
     global:
-      # istioNamespace: istio-system
-      configValidation: false
       istiod:
         enableAnalysis: true
 - name: istiod
@@ -61,6 +59,3 @@ helmCharts:
         discoveryAddress: istiod.istio-system.svc:15012
         gatewayTopology:
           numTrustedProxies: 2
-    # telemetry:
-    #   enabled: true
-    #   configValidation: false
