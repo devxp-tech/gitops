@@ -1,14 +1,18 @@
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: kiali
-  namespace: kiali
+  name: kiali-authz-allowip
+  namespace: kiali-operator
 spec:
-  selector:
-    matchLabels:
-      app: kiali
+  # selector:
+  #   matchLabels:
+  #     app: kiali
   action: ALLOW
   rules:
-  - from:
-    - source:
-       remoteIpBlocks: ["94.62.74.130"]
+  - to:
+    - operation:
+        methods: ["GET", "POST"]
+    when:
+      - key: 'request.headers[x-envoy-external-address]'
+        values:
+        - 94.62.74.130
