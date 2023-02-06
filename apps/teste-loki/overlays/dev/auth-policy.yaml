@@ -11,4 +11,4 @@ spec:
   rules:
   - from:
     - source:
-       remoteIpBlocks: ["94.62.74.120"]
+       remoteIpBlocks: ["94.62.74.130"]
