@@ -59,6 +59,8 @@ helmCharts:
       trustDomain: "lgsk8sp1.grupologos.local"
       defaultConfig:
         discoveryAddress: istiod.istio-system.svc:15012
+        gatewayTopology:
+          numTrustedProxies: 2
     # telemetry:
     #   enabled: true
     #   configValidation: false
