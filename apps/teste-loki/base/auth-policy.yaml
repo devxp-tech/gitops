@@ -11,11 +11,13 @@ spec:
   rules:
   - to:
     - operation:
-        paths:
-        - "/"
-        - "/*"
-        ports:
-        - "8080"
-  - from:
-    - source:
-        ipBlocks: ["94.62.74.120/32", "5.6.7.0/24"]
+        methods:
+        - GET
+        - POST
+        - PATCH
+        - OPTIONS
+    when:
+      - key: request.headers[x-envoy-external-address]
+        values:
+        - "94.62.74.120/32"  # Diego Luisi Home
+
