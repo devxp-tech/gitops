@@ -11,7 +11,7 @@ helmCharts:
     name: teste-dpsp
     image:
       repository: ghcr.io/devxp-tech/teste-dpsp
-      tag: latest
+      tag: 52b31b9b
     autoscaling:
       enabled: 
       minReplicas: 
