@@ -1,0 +1,11 @@
+{
+  "appName": "teste-rollback",
+  "userGivenName": "teste-rollback",
+  "destNamespace": "teste-rollback",
+  "destServer": "https://kubernetes.default.svc",
+  "srcPath": "apps/teste-rollback/overlays/dev",
+  "srcRepoURL": "https://github.com/devxp-tech/gitops.git",
+  "srcTargetRevision": "",
+  "CreateNamespace": true,
+  "labels": null
+}
