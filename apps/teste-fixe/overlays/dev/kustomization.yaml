@@ -11,7 +11,7 @@ helmCharts:
     name: teste-fixe
     image:
       repository: ghcr.io/devxp-tech/teste-fixe
-      tag: latest
+      tag: 21a9c8b6
     autoscaling:
       enabled: 
       minReplicas: 
