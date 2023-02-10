@@ -11,7 +11,7 @@ helmCharts:
     name: teste-rollback
     image:
       repository: ghcr.io/devxp-tech/teste-rollback
-      tag: e536713b
+      tag: f1292bfa
     autoscaling:
       enabled: 
       minReplicas: 
