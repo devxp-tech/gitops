@@ -21,7 +21,7 @@ spec:
       - "94.62.74.120" # Diego
 
 ---
-apiVersion: "authentication.istio.io/v1alpha1"
+apiVersion: "v1beta1.policy"
 kind: Policy
 metadata:
   name: teste-loki
