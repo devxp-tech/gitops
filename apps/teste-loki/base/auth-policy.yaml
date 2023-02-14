@@ -1,7 +1,7 @@
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: teste-loki-network-filters
+  name: teste-loki-policy
   namespace: teste-loki
 spec:
   selector:
@@ -15,9 +15,4 @@ spec:
       when:
         - key: request.headers[x-envoy-external-address]
           notValues:
-            - "189.19.121.35"
-
-      # - "172.31.0.0/24" # Hosts Network
-      # - "10.233.0.0/16" # Pods Network
-      # - "34.205.60.141" # Istio GW
-      # - "94.62.74.120" # Diego
+            - "94.62.74.120" # Diego

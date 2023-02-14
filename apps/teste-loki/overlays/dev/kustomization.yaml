@@ -3,7 +3,6 @@ kind: Kustomization
 namespace: teste-loki
 resources:
 - ../../base
-- auth-policy.yaml
 - postgres-secrets-sealed.yaml
 helmCharts:
 - name: devxp-app
