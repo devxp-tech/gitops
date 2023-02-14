@@ -22,7 +22,7 @@ helmCharts:
     migration:
       enabled: false
     PeerAuthentication:
-      enabled: false
+      enabled: true
     autoscaling:
       enabled: true
       minReplicas: 1
