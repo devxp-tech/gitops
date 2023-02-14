@@ -15,7 +15,8 @@ spec:
     when:
     - key: request.headers[X-Envoy-External-Address]
       values:
-      - "172.31." # Hosts Network
+      - "172.31.0.0/24" # Hosts Network
+      - "10.233.0.0/16"
       - "34.205.60.141" # Istio GW
       - "94.62.74.120" # Diego
 
