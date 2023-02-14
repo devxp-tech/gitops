@@ -1,7 +1,7 @@
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: auth-policy
+  name: teste-loki-auth-policy
   namespace: teste-loki
 spec:
   selector:
@@ -19,6 +19,26 @@ spec:
       - "10.233.0.0/16" # Pods Network
       - "34.205.60.141" # Istio GW
       - "94.62.74.120" # Diego
+---
+apiVersion: "authentication.istio.io/v1alpha1"
+kind: "Policy"
+metadata:
+  name: teste-loki-policy
+  namespace: teste-loki
+spec:
+  peers:
+  - mtls: {}
+---
+apiVersion: "networking.istio.io/v1alpha3"
+kind: "DestinationRule"
+metadata:
+  name: teste-loki-dest-rule
+  namespace: teste-loki
+spec:
+  host: "*.lgsk8sp1.grupologos.local"
+  trafficPolicy:
+    tls:
+      mode: ISTIO_MUTUAL
 
 # apiVersion: security.istio.io/v1beta1
 # kind: AuthorizationPolicy
