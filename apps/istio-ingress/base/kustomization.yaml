@@ -4,7 +4,7 @@ namespace: istio-system
 helmCharts:
 - name: gateway
   releaseName: gateway
-  version: 1.17.0-beta.1
+  version: 1.16.2
   repo: https://istio-release.storage.googleapis.com/charts
   valuesInline:
     name: istio-ingressgateway
