@@ -14,7 +14,10 @@ spec:
         namespaces: ["istio-system"]
     when:
     - key: request.headers[X-Envoy-External-Address]
-      values: ["94.62.74.120/32"] #Ip to allow
+      values:
+      - "172.31." # Hosts Network
+      - "34.205.60.141" # Istio GW
+      - "94.62.74.120" # Diego
 
 # apiVersion: security.istio.io/v1beta1
 # kind: AuthorizationPolicy
