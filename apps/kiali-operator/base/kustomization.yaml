@@ -3,6 +3,7 @@ kind: Kustomization
 namespace: kiali-operator
 resources:
   - auth-policy.yaml
+  - ns.yaml
 helmCharts:
 - name: kiali-operator
   includeCRDs: true

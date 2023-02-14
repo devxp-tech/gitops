@@ -1,0 +1,12 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: kiali-operator
+  labels:
+    kubernetes.io/metadata.name: kiali-operator
+    backstage.io/kubernetes-id: kiali-operator
+    istio-injection: enabled
+spec:
+  finalizers:
+  - kubernetes
