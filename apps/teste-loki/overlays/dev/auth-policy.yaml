@@ -9,12 +9,20 @@ spec:
       app: teste-loki
   action: ALLOW
   rules:
-    - to:
-        - operation:
-            methods: ["GET"]
-      when:
-        - key: request.headers[x-whoami]
-          notValues:
-            - "172.31.*" # Hosts Network
-            - "34.205.60.141" # Istio GW
-            - "94.62.74.120" # Diego
+  - from:
+    - source:
+       ipBlocks:
+        - "172.31.*" # Hosts Network
+        - "34.205.60.141" # Istio GW
+        - "94.62.74.120" # Diego
+
+  # rules:
+  #   - to:
+  #       - operation:
+  #           methods: ["GET"]
+  #     when:
+  #       - key: request.headers[x-whoami]
+  #         notValues:
+  #           - "172.31.*" # Hosts Network
+  #           - "34.205.60.141" # Istio GW
+  #           - "94.62.74.120" # Diego
