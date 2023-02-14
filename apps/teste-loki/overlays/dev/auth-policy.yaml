@@ -11,18 +11,25 @@ spec:
   rules:
   - from:
     - source:
-       ipBlocks:
-        - "172.31.*" # Hosts Network
-        - "34.205.60.141" # Istio GW
-        - "94.62.74.120" # Diego
+        namespaces: ["istio-system"]
+    when:
+    - key: request.headers[X-Envoy-External-Address]
+      values: ["94.62.74.120/32"] #Ip to allow
 
-  # rules:
-  #   - to:
-  #       - operation:
-  #           methods: ["GET"]
-  #     when:
-  #       - key: request.headers[x-whoami]
-  #         notValues:
-  #           - "172.31.*" # Hosts Network
-  #           - "34.205.60.141" # Istio GW
-  #           - "94.62.74.120" # Diego
+# apiVersion: security.istio.io/v1beta1
+# kind: AuthorizationPolicy
+# metadata:
+#   name: auth-policy
+#   namespace: teste-loki
+# spec:
+#   selector:
+#     matchLabels:
+#       app: teste-loki
+#   action: ALLOW
+#   rules:
+#   - from:
+#     - source:
+#        ipBlocks:
+#         - "172.31.*" # Hosts Network
+#         - "34.205.60.141" # Istio GW
+#         - "94.62.74.120" # Diego
