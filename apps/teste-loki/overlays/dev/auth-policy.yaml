@@ -19,15 +19,15 @@ spec:
       - "10.233.0.0/16" # Pods Network
       - "34.205.60.141" # Istio GW
       - "94.62.74.120" # Diego
----
-apiVersion: "authentication.istio.io/v1alpha1"
-kind: "Policy"
-metadata:
-  name: teste-loki-policy
-  namespace: teste-loki
-spec:
-  peers:
-  - mtls: {}
+# ---
+# apiVersion: "authentication.istio.io/v1alpha1"
+# kind: "Policy"
+# metadata:
+#   name: teste-loki-policy
+#   namespace: teste-loki
+# spec:
+#   peers:
+#   - mtls: {}
 ---
 apiVersion: "networking.istio.io/v1alpha3"
 kind: "DestinationRule"
