@@ -20,42 +20,24 @@ spec:
       - "34.205.60.141" # Istio GW
       - "94.62.74.120" # Diego
 
-# ---
-# apiVersion: "authentication.istio.io/v1alpha1"
-# kind: Policy
-# metadata:
-#   name: teste-loki
-#   namespace: teste-loki
-# spec:
-#   peers:
-#   - mtls: {}
-
 ---
-apiVersion: "networking.istio.io/v1alpha3"
-kind: "DestinationRule"
+apiVersion: "authentication.istio.io/v1alpha1"
+kind: Policy
 metadata:
   name: teste-loki
   namespace: teste-loki
 spec:
-  host: "*.teste-loki.lgsk8sp1.grupologos.local"
-  trafficPolicy:
-    tls:
-      mode: ISTIO_MUTUAL
+  peers:
+  - mtls: {}
 
-# apiVersion: security.istio.io/v1beta1
-# kind: AuthorizationPolicy
+# ---
+# apiVersion: "networking.istio.io/v1alpha3"
+# kind: DestinationRule
 # metadata:
-#   name: auth-policy
+#   name: teste-loki-dest
 #   namespace: teste-loki
 # spec:
-#   selector:
-#     matchLabels:
-#       app: teste-loki
-#   action: ALLOW
-#   rules:
-#   - from:
-#     - source:
-#        ipBlocks:
-#         - "172.31.*" # Hosts Network
-#         - "34.205.60.141" # Istio GW
-#         - "94.62.74.120" # Diego
+#   host: "*.teste-loki.lgsk8sp1.grupologos.local"
+#   trafficPolicy:
+#     tls:
+#       mode: ISTIO_MUTUAL
