@@ -1,9 +1,18 @@
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: teste-loki
+  name: auth-policy
   namespace: teste-loki
 spec:
   selector:
     matchLabels:
       app: teste-loki
+  action: DENY
+  rules:
+    - to:
+        - operation:
+            methods: ["GET"]
+      when:
+        - key: request.headers[x-whoami]
+          notValues:
+            - "94.62.74.120"
