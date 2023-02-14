@@ -7,7 +7,7 @@ spec:
   selector:
     matchLabels:
       app: teste-loki
-  action: DENY
+  action: ALLOW
   rules:
     - to:
         - operation:
