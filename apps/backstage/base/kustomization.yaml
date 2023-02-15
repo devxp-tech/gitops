@@ -3,6 +3,7 @@ kind: Kustomization
 namespace: backstage
 resources:
   - postgres-config.yaml
+  - auth-policy.yaml
 helmCharts:
 - name: devxp-app
   releaseName: devxp-app
