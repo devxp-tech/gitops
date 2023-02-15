@@ -1,0 +1,11 @@
+{
+  "appName": "teste-dioculos",
+  "userGivenName": "teste-dioculos",
+  "destNamespace": "teste-dioculos",
+  "destServer": "https://kubernetes.default.svc",
+  "srcPath": "apps/teste-dioculos/overlays/dev",
+  "srcRepoURL": "https://github.com/devxp-tech/gitops.git",
+  "srcTargetRevision": "",
+  "CreateNamespace": true,
+  "labels": null
+}
