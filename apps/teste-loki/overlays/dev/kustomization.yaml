@@ -16,7 +16,7 @@ helmCharts:
         name: postgres-secrets
     image:
       repository: ghcr.io/devxp-tech/teste-loki
-      tag: 3e13cebf
+      tag: f4ed2c91
     ResourceQuota:
       enabled: false
     migration:
