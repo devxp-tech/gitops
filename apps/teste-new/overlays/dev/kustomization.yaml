@@ -11,7 +11,7 @@ helmCharts:
     name: teste-new
     image:
       repository: ghcr.io/devxp-tech/teste-new
-      tag: latest
+      tag: 8bb69bd3
     autoscaling:
       enabled: 
       minReplicas: 
