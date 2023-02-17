@@ -13,7 +13,7 @@ helmCharts:
     name: "backstage"
     image:
       repository: ghcr.io/devxp-tech/backstage
-      tag: 9a2d875e
+      tag: 3a5ac0df
     ResourceQuota:
       enabled: false
     container:
