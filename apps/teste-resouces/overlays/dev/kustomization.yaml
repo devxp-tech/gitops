@@ -11,7 +11,7 @@ helmCharts:
     name: teste-resouces
     image:
       repository: ghcr.io/devxp-tech/teste-resouces
-      tag: latest
+      tag: d36be76f
     autoscaling:
       enabled: true
       minReplicas: 1
