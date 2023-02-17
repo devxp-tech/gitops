@@ -1,0 +1,11 @@
+{
+  "appName": "teste-autoscaling",
+  "userGivenName": "teste-autoscaling",
+  "destNamespace": "teste-autoscaling",
+  "destServer": "https://kubernetes.default.svc",
+  "srcPath": "apps/teste-autoscaling/overlays/dev",
+  "srcRepoURL": "https://github.com/devxp-tech/gitops.git",
+  "srcTargetRevision": "",
+  "CreateNamespace": true,
+  "labels": null
+}
