@@ -11,7 +11,7 @@ helmCharts:
     name: teste-162
     image:
       repository: ghcr.io/devxp-tech/teste-162
-      tag: 01b42121
+      tag: a49c44d5
     autoscaling:
       enabled: true
       minReplicas: 1
