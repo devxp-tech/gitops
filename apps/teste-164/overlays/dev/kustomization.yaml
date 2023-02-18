@@ -11,7 +11,7 @@ helmCharts:
     name: teste-164
     image:
       repository: ghcr.io/devxp-tech/teste-164
-      tag: latest
+      tag: 53fb7a9b
     autoscaling:
       enabled: true
       minReplicas: 1
