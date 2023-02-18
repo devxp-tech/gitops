@@ -28,8 +28,8 @@ helmCharts:
       enabled: true
       domain: devxp-tech.io
       service:
-        type: 
-        port: 8080
+        type:
+        port: 80
     probe:
       enabled: true
       livenessProbe:
