@@ -25,11 +25,11 @@ helmCharts:
         memory: 128Mi
         cpu: 100m
     network:
-      enabled: 
-      domain: 
+      enabled: true
+      domain: devxp-tech.io
       service:
-        type: 
-        port: 
+        type: ClusterIP
+        port: 80
     probe:
       enabled: true
       livenessProbe:
