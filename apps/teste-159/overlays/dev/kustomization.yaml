@@ -24,7 +24,7 @@ helmCharts:
       limits:
         memory: 128Mi
         cpu: 100m
-    networking:
+    network:
       enabled: true
       domain: devxp-tech.io
       service: ClusterIP
