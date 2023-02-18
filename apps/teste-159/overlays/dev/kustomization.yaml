@@ -11,7 +11,7 @@ helmCharts:
     name: teste-159
     image:
       repository: ghcr.io/devxp-tech/teste-159
-      tag: latest
+      tag: 4cb472bb
     autoscaling:
       enabled: true
       minReplicas: 1
