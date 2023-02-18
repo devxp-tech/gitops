@@ -27,8 +27,9 @@ helmCharts:
     network:
       enabled: true
       domain: devxp-tech.io
-      service: ClusterIP
-      port: 8080
+      service:
+        type: ClusterIP
+        port: 80
     probe:
       enabled: true
       livenessProbe:

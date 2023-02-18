@@ -1,0 +1,12 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: {{ include "namespace" . }}
+  labels:
+    kubernetes.io/metadata.name: {{ .Values.name }}
+    backstage.io/kubernetes-id: {{ .Values.name }}
+    istio-injection: {{ .Values.istioInjection }}
+spec:
+  finalizers:
+  - kubernetes

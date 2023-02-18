@@ -1,0 +1,18 @@
+{{- if .Values.argoRollouts.enabled }}
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: {{ .Values.name }}
+rules:
+- apiGroups:
+  - networking.istio.io
+  resources:
+  - virtualservices
+  - destinationrules
+  verbs:
+  - get
+  - list
+  - watch
+  - update
+  - patch
+{{- end }}
