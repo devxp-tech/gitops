@@ -1,0 +1,20 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.name }}
+  namespace: {{ include "namespace" . }}
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: {{ .Values.name }}.{{ .Values.network.domain }}
+  labels:
+    app: {{ .Values.name }}
+    version: {{ .Values.image.tag }}
+    backstage.io/kubernetes-id: {{ .Values.name }}
+spec:
+  type: ClusterIP
+  ports:
+  - name: tcp-node
+    port: {{ .Values.network.service.port }}
+    targetPort:  {{ .Values.container.port }}
+  selector:
+    app: {{ .Values.name }}

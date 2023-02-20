@@ -1,0 +1,15 @@
+{{- if .Values.ingress.enabled }}
+  {{- if .Values.PeerAuthentication.enabled }}
+apiVersion: security.istio.io/v1beta1
+kind: PeerAuthentication
+metadata:
+  name: {{ .Values.name }}-strict
+  namespace: {{ include "namespace" . }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ .Values.name }}
+  mtls:
+    mode: STRICT
+  {{- end }}
+{{- end }}

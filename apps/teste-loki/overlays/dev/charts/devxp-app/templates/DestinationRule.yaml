@@ -1,0 +1,16 @@
+{{- if .Values.argoRollouts.enabled }}
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: {{ .Values.name }}
+  namespace: {{ include "namespace" . }}
+spec:
+  host: {{ .Values.name }}.{{ include "namespace" . }}.svc.{{ .Values.cluster }}
+  subsets:
+  - name: canary   # referenced in canary.trafficRouting.istio.destinationRule.canarySubsetName
+    labels:        # labels will be injected with canary rollouts-pod-template-hash value
+      app: {{ .Values.name }}
+  - name: stable   # referenced in canary.trafficRouting.istio.destinationRule.stableSubsetName
+    labels:        # labels will be injected with canary rollouts-pod-template-hash value
+      app: {{ .Values.name }}
+{{- end }}

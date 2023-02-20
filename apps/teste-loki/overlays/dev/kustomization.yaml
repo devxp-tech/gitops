@@ -7,7 +7,7 @@ resources:
 helmCharts:
 - name: devxp-app
   releaseName: devxp-app
-  version: 0.1.58
+  version: 0.1.62
   repo: https://devxp-tech.github.io/helm-charts
   valuesInline:
     name: teste-loki
@@ -17,6 +17,8 @@ helmCharts:
     image:
       repository: ghcr.io/devxp-tech/teste-loki
       tag: 72a41ba8
+    network:
+      domain: diegoluisi.eti.br
     ResourceQuota:
       enabled: false
     migration:
@@ -40,13 +42,6 @@ helmCharts:
         port: 8080
       initialDelaySeconds: 15
       periodSeconds: 10
-    resources:
-      requests:
-        memory:
-        cpu:
-      limits:
-        memory:
-        cpu:
 
 # - name: postgresql
 #   releaseName: postgresql

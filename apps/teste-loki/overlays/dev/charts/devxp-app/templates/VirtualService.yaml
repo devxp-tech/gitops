@@ -1,0 +1,28 @@
+{{- if .Values.ingress.enabled }}
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: {{ .Values.name }}
+  namespace: {{ include "namespace" . }}
+  labels:
+    app: {{ .Values.name }}
+    version: {{ .Values.image.tag }}
+    backstage.io/kubernetes-id: {{ .Values.name }}
+spec:
+  gateways:
+  - istio-system/istio-ingressgateway
+  hosts:
+  - {{ .Values.name }}.{{ .Values.network.domain }}
+  http:
+  - name: primary
+    route:
+    - destination:
+        host: {{ .Values.name }}.{{ .Values.name }}.svc.{{ .Values.cluster }}
+        subset: stable
+      weight: 100
+    - destination:
+        host: {{ .Values.name }}.{{ .Values.name }}.svc.{{ .Values.cluster }}
+        subset: canary  # referenced in canary.trafficRouting.istio.destinationRule.canarySubsetName
+      weight: 0
+{{- end }}

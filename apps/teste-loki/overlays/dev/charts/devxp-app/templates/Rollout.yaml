@@ -1,0 +1,70 @@
+{{- if .Values.argoRollouts.enabled }}
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: {{ .Values.name }}
+  namespace: {{ include "namespace" . }}
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ default 1 .Values.replicaCount }}
+  {{- end }}
+  revisionHistoryLimit: {{ default 5 .Values.argoRollouts.revisionHistoryLimit }}
+  strategy:
+    canary: #Indicates that the rollout should use the Canary strategy
+      {{- if .Values.argoRollouts.strategy.dynamicStableScale }}
+      dynamicStableScale: true
+      {{- else }}
+      steps: {{toYaml .Values.argoRollouts.strategy.steps | nindent 8 }}
+      {{- end }}
+      trafficRouting:
+        istio:
+          virtualService:
+            name: {{ .Values.name }}        # required
+            routes:
+            - primary                 # required
+          destinationRule:
+            name: {{ .Values.name }}    # required
+            canarySubsetName: canary    # required
+            stableSubsetName: stable    # required
+      maxSurge: "25%"
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: {{ .Values.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.name }}
+        version: {{ .Values.image.tag }}
+        backstage.io/kubernetes-id: {{ .Values.name }}
+    spec:
+      {{- if not .Values.ServiceAccount.enabled }}
+      serviceAccountName: {{ .Values.name }}
+      {{- end }}
+      containers:
+      - name: {{ .Values.name }}
+        image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        env:
+        {{- with .Values.env }}
+          {{- toYaml . | nindent 8 }}
+        {{- end }}
+        envFrom:
+        {{- with .Values.envFrom }}
+          {{- toYaml . | nindent 8 }}
+        {{- end }}
+        ports:
+        - name: http
+          containerPort: {{ .Values.container.port }}
+        resources: {{ toYaml .Values.resources | nindent 12 }}
+        {{- if not .Values.probe.enabled }}
+        livenessProbe: {{ toYaml .Values.livenessProbe | nindent 12 }}
+        readinessProbe: {{ toYaml .Values.readinessProbe | nindent 12 }}
+        {{- end }}
+      imagePullSecrets:
+        - name: {{ .Values.imagePullSecrets.name }}
+      nodeSelector: {{ toYaml (default dict .Values.nodeSelector) | nindent 8 }}
+      affinity: {{ toYaml (default dict .Values.affinity) | nindent 8 }}
+      tolerations: {{ toYaml (default list .Values.tolerations)  | nindent 8 }}
+  minReadySeconds: 30
+{{- end }}

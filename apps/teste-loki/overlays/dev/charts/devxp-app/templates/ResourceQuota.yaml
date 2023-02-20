@@ -1,0 +1,12 @@
+{{- if .Values.ResourceQuota.enabled }}
+---
+kind: ResourceQuota
+apiVersion: v1
+metadata:
+  name: {{ .Values.name }}
+  namespace: {{ include "namespace" . }}
+  labels:
+    kubernetes.io/metadata.name: {{ .Values.name }}
+    backstage.io/kubernetes-id: {{ .Values.name }}
+spec: {{ toYaml .Values.ResourceQuota.resources | nindent 2 }}
+{{- end }}
