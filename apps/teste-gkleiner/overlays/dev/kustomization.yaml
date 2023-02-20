@@ -11,7 +11,7 @@ helmCharts:
     name: teste-gkleiner
     image:
       repository: ghcr.io/devxp-tech/teste-gkleiner
-      tag: latest
+      tag: 975c0a0d
     autoscaling:
       enabled: true
       minReplicas: 1
