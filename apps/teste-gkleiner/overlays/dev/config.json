@@ -1,0 +1,11 @@
+{
+  "appName": "teste-gkleiner",
+  "userGivenName": "teste-gkleiner",
+  "destNamespace": "teste-gkleiner",
+  "destServer": "https://kubernetes.default.svc",
+  "srcPath": "apps/teste-gkleiner/overlays/dev",
+  "srcRepoURL": "https://github.com/devxp-tech/gitops.git",
+  "srcTargetRevision": "",
+  "CreateNamespace": true,
+  "labels": null
+}
