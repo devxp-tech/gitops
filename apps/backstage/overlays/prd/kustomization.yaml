@@ -79,7 +79,6 @@ helmCharts:
       app: backstage
       version: 15.1.0
     auth:
-      username: backstage
       existingSecret: postgres-secrets
     # global:
     #   postgresql:
