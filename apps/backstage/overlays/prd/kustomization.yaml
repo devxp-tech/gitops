@@ -91,5 +91,5 @@ helmCharts:
         requests:
           cpu: 50m
           memory: 128Mi
-    image:
-      debug: true
+    # image:
+    #   debug: true
