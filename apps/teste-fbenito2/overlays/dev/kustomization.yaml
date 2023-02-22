@@ -11,7 +11,7 @@ helmCharts:
     name: teste-fbenito2
     image:
       repository: ghcr.io/devxp-tech/teste-fbenito2
-      tag: latest
+      tag: 54b831b6
     autoscaling:
       enabled: true
       minReplicas: 1
