@@ -1,0 +1,11 @@
+{
+  "appName": "teste-fbenito",
+  "userGivenName": "teste-fbenito",
+  "destNamespace": "teste-fbenito",
+  "destServer": "https://kubernetes.default.svc",
+  "srcPath": "apps/teste-fbenito/overlays/dev",
+  "srcRepoURL": "https://github.com/devxp-tech/gitops.git",
+  "srcTargetRevision": "",
+  "CreateNamespace": true,
+  "labels": null
+}
