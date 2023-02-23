@@ -11,7 +11,7 @@ helmCharts:
     name: teste-promote
     image:
       repository: ghcr.io/devxp-tech/teste-promote
-      tag: 7fb0d4aa
+      tag: 2fd101c4
     autoscaling:
       enabled: true
       minReplicas: 1
