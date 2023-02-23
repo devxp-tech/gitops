@@ -1,0 +1,11 @@
+{
+  "appName": "teste-infra2",
+  "userGivenName": "teste-infra2",
+  "destNamespace": "teste-infra2",
+  "destServer": "https://kubernetes.default.svc",
+  "srcPath": "apps/teste-infra2/overlays/dev",
+  "srcRepoURL": "https://github.com/devxp-tech/gitops.git",
+  "srcTargetRevision": "",
+  "CreateNamespace": true,
+  "labels": null
+}
