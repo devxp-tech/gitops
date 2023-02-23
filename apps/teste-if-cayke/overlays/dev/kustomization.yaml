@@ -11,7 +11,7 @@ helmCharts:
     name: teste-if-cayke
     image:
       repository: ghcr.io/devxp-tech/teste-if-cayke
-      tag: latest
+      tag: bf557f91
     autoscaling:
       enabled: true
       minReplicas: 1
