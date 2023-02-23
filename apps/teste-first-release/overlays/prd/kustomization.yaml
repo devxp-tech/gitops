@@ -11,7 +11,7 @@ helmCharts:
     name: teste-first-release
     image:
       repository: ghcr.io/devxp-tech/teste-first-release
-      tag: latest
+      tag: f34b50aa
     autoscaling:
       enabled: true
       minReplicas: 1
