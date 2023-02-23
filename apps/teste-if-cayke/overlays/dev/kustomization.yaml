@@ -1,5 +1,6 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
+namespace: teste-if-cayke
 resources:
 - ../../base
 helmCharts:
@@ -55,7 +56,7 @@ helmCharts:
   version: 0.0.3
   repo: https://devxp-tech.github.io/helm-charts
   valuesInline:
-    name: "backstage"
+    name: "teste-if-cayke"
     bucket:
       enabled: true
 
