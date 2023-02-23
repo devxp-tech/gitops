@@ -57,7 +57,7 @@ helmCharts:
   repo: https://devxp-tech.github.io/helm-charts
   valuesInline:
     name: "teste-if-cayke"
-    bucket:
+    Bucket:
       enabled: true
 
 
