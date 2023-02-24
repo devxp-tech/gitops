@@ -1,0 +1,11 @@
+{
+  "appName": "teste-argopr",
+  "userGivenName": "teste-argopr",
+  "destNamespace": "teste-argopr",
+  "destServer": "https://kubernetes.default.svc",
+  "srcPath": "apps/teste-argopr/overlays/dev",
+  "srcRepoURL": "https://github.com/devxp-tech/gitops.git",
+  "srcTargetRevision": "",
+  "CreateNamespace": true,
+  "labels": null
+}
