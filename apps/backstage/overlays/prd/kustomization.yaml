@@ -78,14 +78,16 @@ helmCharts:
     commonLabels:
       app: backstage
       version: 15.1.0
-    # auth:
-    #   existingSecret: postgres-secrets
-    global:
-      postgresql:
-        auth:
-          database: backstage
-          username: backstage
-          existingSecret: postgres-secrets
+    auth:
+      username: backstage
+      database: backstage
+      existingSecret: postgres-secrets
+    # global:
+    #   postgresql:
+    #     auth:
+    #       database: backstage
+    #       username: backstage
+    #       existingSecret: postgres-secrets
     primary:
       resources:
         limits:
