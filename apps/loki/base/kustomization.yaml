@@ -18,3 +18,4 @@ helmCharts:
     loki:
       distributorLabels:
         app: loki
+
