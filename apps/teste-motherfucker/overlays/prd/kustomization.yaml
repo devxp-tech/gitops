@@ -12,7 +12,7 @@ helmCharts:
     name: teste-motherfucker
     image:
       repository: ghcr.io/devxp-tech/teste-motherfucker
-      tag: latest
+      tag: e31506ab
     autoscaling:
       enabled: true
       minReplicas: 1
