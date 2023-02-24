@@ -70,27 +70,27 @@ helmCharts:
     Bucket:
       enabled: true
 
-# - name: postgresql
-#   releaseName: postgresql
-#   version: 12.2.1
-#   repo: https://charts.bitnami.com/bitnami
-#   valuesInline:
-#     commonLabels:
-#       app: backstage
-#       version: 15.1.0
-#     auth:
-#       existingSecret: postgres-secrets
-#     # global:
-#     #   postgresql:
-#     #     auth:
-#     #       database: backstage
-#     #       username: backstage
-#     #       existingSecret: postgres-secrets
-#     primary:
-#       resources:
-#         limits:
-#           cpu: 100m
-#           memory: 256Mi
-#         requests:
-#           cpu: 50m
-#           memory: 128Mi
+- name: postgresql
+  releaseName: postgresql
+  version: 12.2.1
+  repo: https://charts.bitnami.com/bitnami
+  valuesInline:
+    commonLabels:
+      app: backstage
+      version: 15.1.0
+    auth:
+      existingSecret: postgres-secrets
+    # global:
+    #   postgresql:
+    #     auth:
+    #       database: backstage
+    #       username: backstage
+    #       existingSecret: postgres-secrets
+    primary:
+      resources:
+        limits:
+          cpu: 100m
+          memory: 256Mi
+        requests:
+          cpu: 50m
+          memory: 128Mi
