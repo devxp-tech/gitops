@@ -12,7 +12,7 @@ helmCharts:
     name: test-workflow
     image:
       repository: ghcr.io/devxp-tech/test-workflow
-      tag: latest
+      tag: c085bf72
     autoscaling:
       enabled: true
       minReplicas: 1
