@@ -12,7 +12,7 @@ helmCharts:
     name: teste-docs
     image:
       repository: ghcr.io/devxp-tech/teste-docs
-      tag: latest
+      tag: a9375a77
     autoscaling:
       enabled: true
       minReplicas: 1
