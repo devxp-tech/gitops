@@ -12,7 +12,7 @@ helmCharts:
     name: teste-soufoda
     image:
       repository: ghcr.io/devxp-tech/teste-soufoda
-      tag: latest
+      tag: 1fa0a945
     autoscaling:
       enabled: true
       minReplicas: 1
