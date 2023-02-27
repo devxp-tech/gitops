@@ -12,7 +12,7 @@ helmCharts:
     name: test-vfarcic
     image:
       repository: ghcr.io/devxp-tech/test-vfarcic
-      tag: latest
+      tag: 4c032a24
     autoscaling:
       enabled: true
       minReplicas: 1
