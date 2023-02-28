@@ -125,6 +125,5 @@ spec:
           selfHeal: true
         syncOptions:
           - CreateNamespace={{ CreateNamespace }}
-          - ServerSideApply=true
           - Replace=true
 status: {}
