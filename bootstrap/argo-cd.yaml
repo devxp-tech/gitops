@@ -16,17 +16,6 @@ spec:
     jsonPointers:
     - /status
     kind: Application
-  # Test Kyverno
-  resource.exclusions: |
-    - apiGroups:
-        - kyverno.io
-      kinds:
-        - AdmissionReport
-        - BackgroundScanReport
-        - ClusterAdmissionReport
-        - ClusterBackgroundScanReport
-      clusters:
-        - '*'
   project: default
   source:
     path: bootstrap/argo-cd

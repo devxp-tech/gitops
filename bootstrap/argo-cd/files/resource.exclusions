@@ -1,0 +1,9 @@
+- apiGroups:
+    - kyverno.io
+kinds:
+    - AdmissionReport
+    - BackgroundScanReport
+    - ClusterAdmissionReport
+    - ClusterBackgroundScanReport
+clusters:
+    - '*'
