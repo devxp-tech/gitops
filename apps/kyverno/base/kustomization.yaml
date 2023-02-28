@@ -19,7 +19,7 @@ helmCharts:
     cleanupController:
       enabled: false
 
-- name: kyverno-policies
-  releaseName: kyverno-policies
-  version: 2.7.0
-  repo: https://kyverno.github.io/kyverno
+# - name: kyverno-policies
+#   releaseName: kyverno-policies
+#   version: 2.7.0
+#   repo: https://kyverno.github.io/kyverno
