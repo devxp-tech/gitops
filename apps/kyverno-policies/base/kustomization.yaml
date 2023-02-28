@@ -3,7 +3,7 @@ kind: Kustomization
 namespace: kyverno-policies
 helmCharts:
 - name: kyverno-policies
-  includeCRDs: true
+  # includeCRDs: true
   releaseName: kyverno-policies
   version: 2.7.0
   repo: https://kyverno.github.io/kyverno
