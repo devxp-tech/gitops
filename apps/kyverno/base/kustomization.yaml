@@ -13,8 +13,9 @@ helmCharts:
   releaseName: kyverno
   version: 2.7.0
   repo: https://kyverno.github.io/kyverno
-  # valuesInline:
-  #   nameOverride: kyverno
+  valuesInline:
+    namespace: kyverno
+
 - name: kyverno-policies
   releaseName: kyverno-policies
   version: 2.7.0
