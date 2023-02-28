@@ -17,6 +17,8 @@ helmCharts:
     namespace: kyverno
     cleanupController:
       enabled: false
+    metricsService:
+      create: false
 
 - name: kyverno-policies
   releaseName: kyverno-policies
