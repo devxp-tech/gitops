@@ -1,16 +1,11 @@
 # Below permissions is for admins
-p, role:org-admin, applications, *, */*, allow
-p, role:org-admin, clusters, get, *, allow
-p, role:org-admin, repositories, get, *, allow
-p, role:org-admin, repositories, create, *, allow
-p, role:org-admin, repositories, update, *, allow
-p, role:org-admin, repositories, delete, *, allow
-p, role:org-admin, logs, get, *, allow
-p, role:org-admin, exec, create, */*, allow
+p, role:org-admin, applications, *, *, allow
+p, role:org-admin, projects, *, *, allow
+p, role:org-admin, clusters, *, *, allow
 
 # Groups here resembles to Github Teams
-g, devxp-tech:engineering, role:org-admin
 g, devxp-tech:sre-team, role:org-admin
+g, devxp-tech:dev-team, role:org-admin
 
 # Backstage user permissions
 g, backstage, role:org-admin
