@@ -12,7 +12,7 @@ helmCharts:
     name: test-pkumar
     image:
       repository: ghcr.io/devxp-tech/test-pkumar
-      tag: latest
+      tag: bd78054d
     autoscaling:
       enabled: true
       minReplicas: 1
