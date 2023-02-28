@@ -1,9 +1,9 @@
 {
-  "appName": "kyverno",
-  "userGivenName": "kyverno",
-  "destNamespace": "kyverno",
+  "appName": "kyverno-policies",
+  "userGivenName": "kyverno-policies",
+  "destNamespace": "kyverno-policies",
   "destServer": "https://kubernetes.default.svc",
-  "srcPath": "apps/kyverno/overlays/ops",
+  "srcPath": "apps/kyverno-policies/overlays/ops",
   "srcRepoURL": "https://github.com/devxp-tech/gitops.git",
   "srcTargetRevision": "",
   "CreateNamespace": true,
