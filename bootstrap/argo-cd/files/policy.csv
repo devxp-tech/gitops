@@ -8,10 +8,10 @@ p, role:org-admin, exec, create, */*, allow
 # Policy for Developers Team 
 p, role:dev-team, clusters, get, *, allow
 p, role:dev-team, repositories, get, *, allow
-p, role:dev-team, applications, sync, br-dafiti-live/*, allow
-p, role:dev-team, applications, get, br-dafiti-live/*, allow
-p, role:dev-team, applications, delete, br-dafiti-live/pod, allow
-p, role:dev-team, applications, action/*, br-dafiti-live/*, allow
+p, role:dev-team, applications, sync, */*, allow
+p, role:dev-team, applications, get, */*, allow
+p, role:dev-team, applications, delete, */pod, allow
+p, role:dev-team, applications, action/*, */*, allow
 
 # Groups here resembles to Github Teams
 g, devxp-tech:sre-team, role:org-admin
