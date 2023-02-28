@@ -15,13 +15,9 @@ helmCharts:
   repo: https://kyverno.github.io/kyverno
   valuesInline:
     namespace: kyverno
-    rbac:
-      serviceAccount:
-        name: kyverno
+    replicaCount: 1
     cleanupController:
       enabled: false
-    metricsService:
-      create: false
 
 - name: kyverno-policies
   releaseName: kyverno-policies
