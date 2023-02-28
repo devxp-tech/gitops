@@ -9,3 +9,9 @@ helmCharts:
   repo: https://kyverno.github.io/kyverno
   # valuesInline:
   #   fullnameOverride: kyverno
+patches:
+  - target:
+      kind: CustomResourceDefinition
+    patch: |-
+      - op: remove
+        path: /metadata/labels/app.kubernetes.io~1instance
