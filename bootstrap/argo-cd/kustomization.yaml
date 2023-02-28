@@ -32,7 +32,7 @@ configMapGenerator:
       - files/repositories
       - files/repository.credentials
       - files/resource.customizations
-      - files/resource.exclusions
+      # - files/resource.exclusions
     literals:
       - admin.enabled=true
       - kustomize.buildOptions="--enable-alpha-plugins --enable-helm --load-restrictor LoadRestrictionsNone"
