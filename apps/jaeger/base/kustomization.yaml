@@ -12,6 +12,9 @@ helmCharts:
   valuesInline:
     # allInOne:
     #   enabled: true
+    cassandra:
+      config:
+        cluster_domain: lgsk8sp1.grupologos.local
     collector:
       service:
         zipkin:
