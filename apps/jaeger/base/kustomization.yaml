@@ -15,13 +15,13 @@ helmCharts:
       service:
         zipkin:
           port: 9411
-    # allInOne:
-    #   enabled: true
-    # storage:
-    #   type: none
-    # agent:
-    #   enabled: false
+    allInOne:
+      enabled: true
+    storage:
+      type: none
+    agent:
+      enabled: false
     # collector:
     #   enabled: false
-    # query:
-    #   enabled: false
+    query:
+      enabled: false
