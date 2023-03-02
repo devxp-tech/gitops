@@ -16,3 +16,4 @@ spec:
         - key: request.headers[x-envoy-external-address]
           notValues:
             - "94.62.74.120" # Diego
+            - "187.56.61.31" #Grizko
