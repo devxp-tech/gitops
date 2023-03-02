@@ -26,15 +26,13 @@ helmCharts:
         type: memory
       enablePasswordDB: true
       connectors:
-        - type: github
-          id: github
-          name: GitHub
-          config:
-            orgs:
-              - name: devxp-tech
-            loadAllGroups: false
-            teamNameField: slug
-            useLoginAsID: false
-            clientID: $GITHUB_CLIENT_ID
-            clientSecret: $GITHUB_CLIENT_SECRET
-            redirectURI: https://dex.diegoluisi.eti.br/callback
+      - type: github
+        # Required field for connector id.
+        id: github
+        # Required field for connector name.
+        name: GitHub
+        config:
+          # Credentials can be string literals or pulled from the environment.
+          clientID: $GITHUB_CLIENT_ID
+          clientSecret: $GITHUB_CLIENT_SECRET
+          redirectURI: http://dex.diegoluisi.eti.br/dex/callback
