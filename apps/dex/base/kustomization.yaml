@@ -9,6 +9,8 @@ helmCharts:
   version: 0.13.0
   repo: https://charts.dexidp.io
   valuesInline:
+    image:
+      tag: v2.30.2
     envVars:
     - name: GITHUB_CLIENT_ID
       valueFrom:
