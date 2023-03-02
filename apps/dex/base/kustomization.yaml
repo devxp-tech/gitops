@@ -24,6 +24,17 @@ helmCharts:
       issuer: https://dex.diegoluisi.eti.br
       storage:
         type: memory
+      staticClients:
+      - name: 'DevXP Tech'
+        id: devxp-tech
+        secret: AiAImuXKhoI5ApvKWF988txjZ+6rG3S7o6X5En
+        redirectURIs:
+        - 'https://localhost:9001/oauth2/callback'
+        - 'https://0.0.0.0:9001/oauth2/callback'
+        - 'http://0.0.0.0:9001/oauth2/callback'
+        - 'http://localhost:4567/oauth2/callback'
+        - 'https://localhost:4567/oauth2/callback'
+        - 'http://localhost:3000/oauth2/callback'
       enablePasswordDB: true
       connectors:
         - type: github
