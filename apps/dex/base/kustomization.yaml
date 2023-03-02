@@ -37,4 +37,4 @@ helmCharts:
             useLoginAsID: false
             clientID: "${CLIENT_ID}"
             clientSecret: "${CLIENT_SECRET}"
-            redirectURI: https://${CORTEX_DOMAIN}${AUTH_PROVIDER_PATH}/callback
+            redirectURI: https://dex.diegoluisi.eti.br/callback
