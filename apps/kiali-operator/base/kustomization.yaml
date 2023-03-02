@@ -42,16 +42,16 @@ helmCharts:
             password: secret:kiali-secrets:oidc-secret
             api_token: access_token
             issuer_uri: https://github.com/login/oauth/authorize
+            username_claim: email
             authentication_timeout: 300
             # authorization_endpoint: https://github.com/login/oauth/authorize
+            # token_endpoint: https://github.com/login/oauth/access_token
             disable_rbac: true
             insecure_skip_verify_tls: false
             scopes:
             - openid
             - profile
             - email
-            # token_endpoint: https://github.com/login/oauth/access_token
-            username_claim: email
             additional_request_params:
               prompt: login
               redirect_uri: "https://kiali.diegoluisi.eti.br/svc/kiali"
