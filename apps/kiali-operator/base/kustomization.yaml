@@ -38,7 +38,7 @@ helmCharts:
         auth:
           strategy: "openid"
           openid:
-            client_id: "clientID"
+            client_id: "6d99474108ebaef950a8"
             disable_rbac: true
             issuer_uri: https://github.com/settings/connections/applications/6d99474108ebaef950a8
             password: secret:kiali-secrets:oidc-secret
