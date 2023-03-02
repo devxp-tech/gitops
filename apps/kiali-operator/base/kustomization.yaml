@@ -38,10 +38,10 @@ helmCharts:
         auth:
           strategy: "openid"
           openid:
-            client_id: "6d99474108ebaef950a8"
+            client_id: 6d99474108ebaef950a8
             password: secret:kiali-secrets:oidc-secret
             api_token: access_token
-            # issuer_uri: https://github.com/login/oauth/authorize
+            issuer_uri: https://github.com/login/oauth/authorize
             username_claim: email
             authentication_timeout: 300
             authorization_endpoint: https://github.com/login/oauth/authorize
