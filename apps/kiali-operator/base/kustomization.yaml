@@ -38,20 +38,19 @@ helmCharts:
         auth:
           strategy: "openid"
           openid:
-            # additional_request_params: {}
             client_id: "Iv1.e7a9a1f7587d4b79"
+            password: secret:kiali-secrets:oidc-secret
             api_token: access_token
+            issuer_uri: https://github.com/login/oauth/authorize
             authentication_timeout: 300
-            authorization_endpoint: https://github.com/login/oauth/authorize
+            # authorization_endpoint: https://github.com/login/oauth/authorize
             disable_rbac: true
             insecure_skip_verify_tls: false
-            issuer_uri: https://api.github.com/user
-            password: secret:kiali-secrets:oidc-secret
             scopes:
             - openid
             - profile
             - email
-            token_endpoint: https://github.com/login/oauth/access_token
+            # token_endpoint: https://github.com/login/oauth/access_token
             username_claim: email
             additional_request_params:
               prompt: login
