@@ -41,11 +41,11 @@ helmCharts:
             client_id: 6d99474108ebaef950a8
             password: secret:kiali-secrets:oidc-secret
             api_token: access_token
-            issuer_uri: https://github.com/login/oauth/authorize
+            issuer_uri: https://github.com
             username_claim: email
             authentication_timeout: 300
-            # authorization_endpoint: https://github.com/login/oauth/authorize
-            # token_endpoint: https://github.com/login/oauth/access_token
+            authorization_endpoint: https://github.com/login/oauth/authorize
+            token_endpoint: https://github.com/login/oauth/access_token
             disable_rbac: true
             insecure_skip_verify_tls: false
             scopes:
