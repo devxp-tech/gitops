@@ -5,7 +5,7 @@ helmCharts:
 - name: dex
   includeCRDs: true
   releaseName: dex
-  version: 2.22.2
+  version: 0.13.0
   repo: https://argoproj.github.io/argo-helm
   valuesInline:
     config:
