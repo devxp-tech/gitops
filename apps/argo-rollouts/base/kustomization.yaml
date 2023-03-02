@@ -1,15 +1,13 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: dex
+namespace: argocd
 helmCharts:
-- name: dex
+- name: argo-rollouts
   includeCRDs: true
-  releaseName: dex
-  version: 0.13.0
-  repo: https://charts.dexidp.io
+  releaseName: argo-rollouts
+  version: 2.22.2
+  repo: https://argoproj.github.io/argo-helm
   valuesInline:
-    config:
-      issuer: http://my-issuer-url.com
-      storage:
-        type: memory
-      enablePasswordDB: true
+    fullnameOverride: argo-rollouts
+    dashboard:
+      enabled: true
