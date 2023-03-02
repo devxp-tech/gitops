@@ -52,4 +52,4 @@ helmCharts:
             - profile
             - email
             token_endpoint: https://github.com/login/oauth/access_token
-            username_claim: preferred_username
+            username_claim: email
