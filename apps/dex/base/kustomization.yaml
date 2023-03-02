@@ -3,10 +3,9 @@ kind: Kustomization
 namespace: dex
 helmCharts:
 - name: dex
-  includeCRDs: true
   releaseName: dex
   version: 0.13.0
-  repo: https://argoproj.github.io/argo-helm
+  repo: https://charts.dexidp.io
   valuesInline:
     config:
       issuer: http://my-issuer-url.com
