@@ -14,3 +14,16 @@ helmCharts:
       storage:
         type: memory
       enablePasswordDB: true
+      connectors:
+        - type: github
+          id: "${CLIENT_NAME}"
+          name: GitHub
+          config:
+            orgs:
+              - name: devxp-tech
+            loadAllGroups: false
+            teamNameField: slug
+            useLoginAsID: false
+            clientID: "${CLIENT_ID}"
+            clientSecret: "${CLIENT_SECRET}"
+            redirectURI: https://${CORTEX_DOMAIN}${AUTH_PROVIDER_PATH}/callback
