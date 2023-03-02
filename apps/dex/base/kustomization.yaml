@@ -32,9 +32,14 @@ helmCharts:
         # Required field for connector id.
         id: github
         # Required field for connector name.
-        name: GitHub
+        name: GitHub Auth
         config:
           # Credentials can be string literals or pulled from the environment.
           clientID: $GITHUB_CLIENT_ID
           clientSecret: $GITHUB_CLIENT_SECRET
           redirectURI: http://dex.diegoluisi.eti.br/dex/callback
+          orgs:
+          - name: devxp-tech
+          loadAllGroups: false
+          teamNameField: slug
+          useLoginAsID: false
