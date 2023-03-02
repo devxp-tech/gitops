@@ -42,7 +42,7 @@ helmCharts:
             api_token: access_token
             authentication_timeout: 300
             authorization_endpoint: https://github.com/login/oauth/authorize
-            client_id: Iv1.e7a9a1f7587d4b79
+            client_id: "Iv1.e7a9a1f7587d4b79"
             disable_rbac: true
             insecure_skip_verify_tls: false
             issuer_uri: https://api.github.com/user
