@@ -39,10 +39,10 @@ helmCharts:
           strategy: "openid"
           openid:
             # additional_request_params: {}
+            client_id: "Iv1.e7a9a1f7587d4b79"
             api_token: access_token
             authentication_timeout: 300
             authorization_endpoint: https://github.com/login/oauth/authorize
-            client_id: "Iv1.e7a9a1f7587d4b79"
             disable_rbac: true
             insecure_skip_verify_tls: false
             issuer_uri: https://api.github.com/user
@@ -53,3 +53,10 @@ helmCharts:
             - email
             token_endpoint: https://github.com/login/oauth/access_token
             username_claim: email
+            additional_request_params:
+              prompt: login
+              redirect_uri: "https://kiali.diegoluisi.eti.br/svc/kiali"
+              restartPolicy: Never
+              server:
+              web_port: 443
+              web_root: /svc/kiali
