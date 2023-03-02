@@ -27,7 +27,7 @@ helmCharts:
       enablePasswordDB: true
       connectors:
         - type: github
-          id: "${CLIENT_NAME}"
+          id: github
           name: GitHub
           config:
             orgs:
@@ -35,6 +35,6 @@ helmCharts:
             loadAllGroups: false
             teamNameField: slug
             useLoginAsID: false
-            clientID: "${CLIENT_ID}"
-            clientSecret: "${CLIENT_SECRET}"
+            clientID: $GITHUB_CLIENT_ID
+            clientSecret: $GITHUB_CLIENT_SECRET
             redirectURI: https://dex.diegoluisi.eti.br/callback
