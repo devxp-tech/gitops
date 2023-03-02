@@ -41,7 +41,7 @@ helmCharts:
             client_id: Iv1.1c177ab92398b0b3
             password: secret:kiali-secrets:oidc-secret
             api_token: access_token
-            issuer_uri: https://github.com
+            issuer_uri: https://api.github.com/
             username_claim: email
             authentication_timeout: 300
             authorization_endpoint: https://github.com/login/oauth/authorize
