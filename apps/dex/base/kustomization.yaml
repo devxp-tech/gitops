@@ -35,6 +35,6 @@ helmCharts:
             loadAllGroups: false
             teamNameField: slug
             useLoginAsID: false
-            clientID: 71b198a7449ad3badeb7
-            clientSecret: "$GITHUB_CLIENT_SECRET"
+            clientID: $GITHUB_CLIENT_ID
+            clientSecret: $GITHUB_CLIENT_SECRET
             redirectURI: https://dex.diegoluisi.eti.br/callback
