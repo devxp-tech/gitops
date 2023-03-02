@@ -35,6 +35,15 @@ helmCharts:
             use_grpc: false
             # Public facing URL of Jaeger
             url: 'https://jaeger.diegoluisi.eti.br/jaeger'
+        auth:
+          strategy: "openid"
+          openid:
+            client_id: kiali
+            issuer_uri: https://dex.diegoluisi.eti.br/dex
+            username_claim: email
+            scopes: ["openid", "profile", "email", "groups"]
+
+
         # auth:
         #   strategy: "openid"
         #   openid:
