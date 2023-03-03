@@ -48,7 +48,7 @@ helmCharts:
         name: 'Example App'
         secret: ZXhhbXBsZS1hcHAtc2VjcmV0
       - id: kiali
+        name: 'Kiali'
         redirectURIs:
         - 'https://kiali.diegoluisi.eti.br/kiali'
-        name: 'Kiali'
         secret: ZXhhbXBsZS1hcHAtc2VjcmV0

@@ -43,8 +43,7 @@ helmCharts:
             issuer_uri: https://dex.diegoluisi.eti.br
             password: ZXhhbXBsZS1hcHAtc2VjcmV0
             # password: secret:kiali-secrets:oidc-secret
-            username_claim: groups
-            authentication_timeout: 60
+            username_claim: email
             # api_token: access_token
             # token_endpoint: https://github.com/login/oauth/access_token
             scopes: ["openid", "profile", "email", "groups"]
