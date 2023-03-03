@@ -2,50 +2,51 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: dex
 resources:
+  - deploy.yaml
   - virtual-service.yaml
-helmCharts:
-- name: dex
-  releaseName: dex
-  version: 0.13.0
-  repo: https://charts.dexidp.io
-  valuesInline:
-    image:
-      tag: v2.30.2
-    envVars:
-    - name: GITHUB_CLIENT_ID
-      valueFrom:
-        secretKeyRef:
-          name: github-client
-          key: client-id
-    - name: GITHUB_CLIENT_SECRET
-      valueFrom:
-        secretKeyRef:
-          name: github-client
-          key: client-secret
-    config:
-      issuer: https://dex.diegoluisi.eti.br
-      storage:
-        type: memory
-      # enablePasswordDB: true
-      connectors:
-      - type: github
-        # Required field for connector id.
-        id: github
-        # Required field for connector name.
-        name: GitHub
-        config:
-          # Credentials can be string literals or pulled from the environment.
-          clientID: $GITHUB_CLIENT_ID
-          clientSecret: $GITHUB_CLIENT_SECRET
-          redirectURI: https://dex.diegoluisi.eti.br/dex/callback
-          orgs:
-          - name: devxp-tech
-          loadAllGroups: false
-          teamNameField: slug
-          useLoginAsID: false
-      staticClients:
-      - id: github
-        redirectURIs:
-        - 'http://localhost:8000'
-        name: 'GitHub'
-        secret: ZXhhbXBsZS1hcHAtc2VjcmV0
+# helmCharts:
+# - name: dex
+#   releaseName: dex
+#   version: 0.13.0
+#   repo: https://charts.dexidp.io
+#   valuesInline:
+#     image:
+#       tag: v2.30.2
+#     envVars:
+#     - name: GITHUB_CLIENT_ID
+#       valueFrom:
+#         secretKeyRef:
+#           name: github-client
+#           key: client-id
+#     - name: GITHUB_CLIENT_SECRET
+#       valueFrom:
+#         secretKeyRef:
+#           name: github-client
+#           key: client-secret
+#     config:
+#       issuer: https://dex.diegoluisi.eti.br
+#       storage:
+#         type: memory
+#       # enablePasswordDB: true
+#       connectors:
+#       - type: github
+#         # Required field for connector id.
+#         id: github
+#         # Required field for connector name.
+#         name: GitHub
+#         config:
+#           # Credentials can be string literals or pulled from the environment.
+#           clientID: $GITHUB_CLIENT_ID
+#           clientSecret: $GITHUB_CLIENT_SECRET
+#           redirectURI: https://dex.diegoluisi.eti.br/dex/callback
+#           orgs:
+#           - name: devxp-tech
+#           loadAllGroups: false
+#           teamNameField: slug
+#           useLoginAsID: false
+#       staticClients:
+#       - id: github
+#         redirectURIs:
+#         - 'http://localhost:8000'
+#         name: 'GitHub'
+#         secret: ZXhhbXBsZS1hcHAtc2VjcmV0
