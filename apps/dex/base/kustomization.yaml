@@ -58,4 +58,4 @@ helmCharts:
         name: 'Kiali'
         redirectURIs:
         - 'https://kiali.diegoluisi.eti.br/kiali'
-        secret: $KIALI_CLIENT_SECRET
+        secret: ZXhhbXBsZS1hcHAtc2VjcmV0
