@@ -35,8 +35,8 @@ helmCharts:
         name: GitHub
         config:
           # Credentials can be string literals or pulled from the environment.
-          clientID: $dex.github-client.client-id
-          clientSecret: $dex.github-client.client-secret
+          clientID: "$GITHUB_CLIENT_ID"
+          clientSecret: "$GITHUB_CLIENT_SECRET"
           redirectURI: https://dex.diegoluisi.eti.br/dex/callback
           orgs:
           - name: devxp-tech
