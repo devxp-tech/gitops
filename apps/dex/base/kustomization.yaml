@@ -49,6 +49,6 @@ helmCharts:
         secret: ZXhhbXBsZS1hcHAtc2VjcmV0
       - id: kiali
         redirectURIs:
-        - 'http://127.0.0.1:5555/callback'
+        - 'https://kiali.diegoluisi.eti.br/kiali'
         name: 'Kiali'
         secret: ZXhhbXBsZS1hcHAtc2VjcmV0
