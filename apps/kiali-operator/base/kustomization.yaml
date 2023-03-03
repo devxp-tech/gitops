@@ -19,6 +19,7 @@ helmCharts:
         deployment:
           accessible_namespaces:
           - '**'
+          view_only_mode: true
         external_services:
           prometheus:
             url: http://prometheus-server.monitoring
