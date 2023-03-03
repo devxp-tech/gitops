@@ -49,6 +49,6 @@ helmCharts:
         secret: ZXhhbXBsZS1hcHAtc2VjcmV0
       - id: kiali
         redirectURIs:
-        - 'https://kiali.diegoluisi.eti.br/kiali'
+        - 'https://kiali.diegoluisi.eti.br/kiali/api/auth/openid_redirect'
         name: 'Kiali'
         secret: ZXhhbXBsZS1hcHAtc2VjcmV0

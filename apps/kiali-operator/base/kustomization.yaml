@@ -47,4 +47,4 @@ helmCharts:
             authentication_timeout: 60
             api_token: access_token
             # token_endpoint: https://github.com/login/oauth/access_token
-            scopes: ["openid", "email"]
+            scopes: ["openid", "profile", "email", "groups"]
