@@ -43,3 +43,9 @@ helmCharts:
           loadAllGroups: false
           teamNameField: slug
           useLoginAsID: false
+      staticClients:
+      - id: github
+        redirectURIs:
+        - 'http://localhost:8000'
+        name: 'GitHub'
+        secret: ZXhhbXBsZS1hcHAtc2VjcmV0
