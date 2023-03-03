@@ -140,4 +140,4 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: dex           # Service account assigned to the dex pod, created above
-  namespace: default  # The namespace dex is running in
+  namespace: dex  # The namespace dex is running in
