@@ -42,7 +42,7 @@ helmCharts:
         #     disable_rbac: true
         #     issuer_uri: https://dex.diegoluisi.eti.br
         #     password: ZXhhbXBsZS1hcHAtc2VjcmV0
-        #     # password: secret:kiali-secrets:oidc-secret
+        #
         #     username_claim: email
         #     # api_token: access_token
         #     # token_endpoint: https://github.com/login/oauth/access_token
@@ -53,8 +53,10 @@ helmCharts:
           openid:
             client_id: kiali
             password: ZXhhbXBsZS1hcHAtc2VjcmV0
+            # password: secret:kiali-secrets:oidc-secret
             issuer_uri: https://dex.diegoluisi.eti.br
             username_claim: email
+            disable_rbac: true
             scopes:
             - "openid"
             - "profile"
