@@ -20,7 +20,7 @@ spec:
           name: dex
           command: ["/usr/local/bin/dex", "serve", "/etc/dex/cfg/config.yaml"]
           ports:
-            - name: https
+            - name: http
               containerPort: 5556
           volumeMounts:
             - name: config
