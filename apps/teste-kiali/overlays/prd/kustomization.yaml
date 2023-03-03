@@ -12,7 +12,7 @@ helmCharts:
     name: teste-kiali
     image:
       repository: ghcr.io/devxp-tech/teste-kiali
-      tag: latest
+      tag: 064f3a06
     autoscaling:
       enabled: true
       minReplicas: 1
