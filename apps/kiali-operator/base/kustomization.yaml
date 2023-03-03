@@ -41,12 +41,13 @@ helmCharts:
           openid:
             client_id: kiali-client
             # password: ZXhhbXBsZS1hcHAtc2VjcmV0
-            # password: secret:kiali-secrets:oidc-secret
+            password: secret:kiali-secrets:oidc-secret
             issuer_uri: https://dex.diegoluisi.eti.br
             username_claim: email
             disable_rbac: true
-            # api_token: access_token
+            api_token: access_token
             token_endpoint: https://dex.diegoluisi.eti.br/token
+            authorization_endpoint: https://dex.diegoluisi.eti.br/auth
             scopes:
             - "openid"
             - "profile"
