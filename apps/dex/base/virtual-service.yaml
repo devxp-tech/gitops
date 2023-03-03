@@ -10,11 +10,12 @@ spec:
   gateways:
   - istio-system/istio-ingressgateway
   http:
-  - match:
-    - uri:
-        prefix: /
+  - headers:
+      request:
+        set:
+          X-Forwarded-Port: "443"
     route:
     - destination:
+        host: dex.dex.svc.lgsk8sp1.grupologos.local
         port:
           number: 5556
-        host: dex.dex.svc.lgsk8sp1.grupologos.local
