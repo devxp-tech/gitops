@@ -51,9 +51,9 @@ helmCharts:
         auth:
           strategy: openid
           openid:
-            client_id: kiali
-            password: ZXhhbXBsZS1hcHAtc2VjcmV0
-            # password: secret:kiali-secrets:oidc-secret
+            client_id: kiali-client
+            # password: ZXhhbXBsZS1hcHAtc2VjcmV0
+            password: secret:kiali-secrets:oidc-secret
             issuer_uri: https://dex.diegoluisi.eti.br
             username_claim: "sub"
             disable_rbac: true
@@ -61,4 +61,4 @@ helmCharts:
             - "openid"
             - "profile"
             - "email"
-            - "groups"
+            # - "groups"

@@ -20,6 +20,11 @@ helmCharts:
         secretKeyRef:
           name: github-client
           key: client-secret
+    - name: KIALI_CLIENT_SECRET
+      valueFrom:
+        secretKeyRef:
+          name: github-client
+          key: kiali-secret
     config:
       issuer: https://dex.diegoluisi.eti.br
       storage:
@@ -47,8 +52,8 @@ helmCharts:
         - 'http://127.0.0.1:5555/callback'
         name: 'Example App'
         secret: ZXhhbXBsZS1hcHAtc2VjcmV0
-      - id: kiali
+      - id: kiali-client
         name: 'Kiali'
         redirectURIs:
         - 'https://kiali.diegoluisi.eti.br/kiali'
-        secret: ZXhhbXBsZS1hcHAtc2VjcmV0
+        secret: $KIALI_CLIENT_SECRET
