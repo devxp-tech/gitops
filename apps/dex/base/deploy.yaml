@@ -45,9 +45,9 @@ spec:
           items:
           - key: config.yaml
             path: config.yaml
-      - name: tls
-        secret:
-          secretName: dex.example.com.tls
+      # - name: tls
+      #   secret:
+      #     secretName: dex.example.com.tls
 ---
 kind: ConfigMap
 apiVersion: v1
@@ -93,9 +93,7 @@ kind: Service
 metadata:
   name: dex
   selector:
-    app.kubernetes.io/instance: dex
-    app.kubernetes.io/name: dex
-  sessionAffinity: None
+    app: dex
   type: ClusterIP
 spec:
   ports:
