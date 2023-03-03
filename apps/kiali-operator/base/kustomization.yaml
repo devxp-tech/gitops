@@ -56,7 +56,7 @@ helmCharts:
             # password: ZXhhbXBsZS1hcHAtc2VjcmV0
             password: secret:kiali-secrets:oidc-secret
             issuer_uri: https://dex.diegoluisi.eti.br
-            username_claim: group
+            username_claim: email
             disable_rbac: true
             api_token: access_token
             token_endpoint: https://dex.diegoluisi.eti.br/token
