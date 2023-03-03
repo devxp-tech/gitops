@@ -43,6 +43,8 @@ helmCharts:
           redirectURI: https://dex.diegoluisi.eti.br/callback
           orgs:
           - name: devxp-tech
+            teams:
+            - sre-team
           loadAllGroups: false
           teamNameField: slug
           useLoginAsID: false
