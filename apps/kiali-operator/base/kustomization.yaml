@@ -35,15 +35,28 @@ helmCharts:
             use_grpc: false
             # Public facing URL of Jaeger
             url: 'https://jaeger.diegoluisi.eti.br/jaeger'
+        # auth:
+        #   strategy: "openid"
+        #   openid:
+        #     client_id: "kiali"
+        #     disable_rbac: true
+        #     issuer_uri: https://dex.diegoluisi.eti.br
+        #     password: ZXhhbXBsZS1hcHAtc2VjcmV0
+        #     # password: secret:kiali-secrets:oidc-secret
+        #     username_claim: email
+        #     # api_token: access_token
+        #     # token_endpoint: https://github.com/login/oauth/access_token
+        #     scopes: ["openid", "profile", "email", "groups"]
+
         auth:
-          strategy: "openid"
+          strategy: openid
           openid:
-            client_id: "kiali"
-            disable_rbac: true
-            issuer_uri: https://dex.diegoluisi.eti.br
+            client_id: kiali
             password: ZXhhbXBsZS1hcHAtc2VjcmV0
-            # password: secret:kiali-secrets:oidc-secret
+            issuer_uri: https://dex.diegoluisi.eti.br
             username_claim: email
-            # api_token: access_token
-            # token_endpoint: https://github.com/login/oauth/access_token
-            scopes: ["openid", "profile", "email", "groups"]
+            scopes:
+            - "openid"
+            - "profile"
+            - "email"
+            - "groups"
