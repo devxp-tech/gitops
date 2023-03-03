@@ -94,8 +94,6 @@ kind: Service
 metadata:
   name: dex
 spec:
-  clusterIPs:
-  - 10.233.43.65
   internalTrafficPolicy: Cluster
   ipFamilies:
   - IPv4
