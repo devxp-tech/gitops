@@ -59,9 +59,7 @@ data:
       config:
         inCluster: true
     web:
-      https: 0.0.0.0:5556
-      # tlsCert: /etc/dex/tls/tls.crt
-      # tlsKey: /etc/dex/tls/tls.key
+      http: 0.0.0.0:5556
     logger:
       level: debug
       format: text
