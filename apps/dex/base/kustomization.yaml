@@ -54,11 +54,13 @@ helmCharts:
         - 'http://127.0.0.1:5555/callback'
         name: 'Example App'
         secret: ZXhhbXBsZS1hcHAtc2VjcmV0
+        
       - id: kiali-client
         name: 'Kiali'
         redirectURIs:
         - 'https://kiali.diegoluisi.eti.br/kiali'
         SecretEnv: KIALI_CLIENT_SECRET
+
       - id: dex-k8s-authenticator
         name: dex-k8s-authenticator
         secret: 6sn6i0DXn0ANG4b0nycOnrvbtFi3UQqZxmx
