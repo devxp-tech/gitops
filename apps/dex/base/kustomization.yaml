@@ -75,10 +75,30 @@ helmCharts:
       debug: true
       clusters:
         - name: lgsk8sp1
-          short_description: "Cluster K8S XPTO"
-          description: "Cluster K8S XPTO"
+          short_description: "Cluster AWS - K8S lgsk8sp1"
+          description: "Cluster K8S lgsk8sp1"
           client_secret: 6sn6i0DXn0ANG4b0nycOnrvbtFi3UQqZxmx
           issuer: https://dex.diegoluisi.eti.br
           k8s_master_uri: https://kubernetes-elb-lgsk8sp1-1949553965.us-east-1.elb.amazonaws.com:6443
           client_id: dex-k8s-authenticator
           redirect_uri: https://kubelogin.diegoluisi.eti.br/callback/
+          k8s_ca_pem: |
+            -----BEGIN CERTIFICATE-----
+            MIIC/jCCAeagAwIBAgIBADANBgkqhkiG9w0BAQsFADAVMRMwEQYDVQQDEwprdWJl
+            cm5ldGVzMB4XDTIxMTAyNjEzMTczNFoXDTMxMTAyNDEzMTczNFowFTETMBEGA1UE
+            AxMKa3ViZXJuZXRlczCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALog
+            NwuCt3aKyVVCwAAfA1GAoujuT7RmLFbVeHV9O73NVWbT++Gyi/Ayv4PDa2oWLS6g
+            Lj7fyb9Smdw1LKm4L/Qk8kabxSFIPEPzp9cD+fWbFfwRx/e7wyNlKKwcTlMPuXGF
+            pVY+NU+tP30lHvthxymwgbpmiOQ/gCEWLtM9/bgiU57wnkWuwCObyWtHJLkrkwhR
+            tV9Qb4BbZ9SGETcu2r9ehR2ATwSR1msEZRsXMmtV6Sy+zzrePG9P9NFh0+e/kpdg
+            UO8FljRB/PnFvMg4eu+eFoBoaPE7iRuLjbNjIVLhRtsTJ7SHyAdXxi5C1WLBr6T6
+            vWcWyHkKb9+aHMgEHesCAwEAAaNZMFcwDgYDVR0PAQH/BAQDAgKkMA8GA1UdEwEB
+            /wQFMAMBAf8wHQYDVR0OBBYEFPynsEMQYphs1KsVi7Mph10SnUrjMBUGA1UdEQQO
+            MAyCCmt1YmVybmV0ZXMwDQYJKoZIhvcNAQELBQADggEBAJsNPmJwxBwEOe40O1LQ
+            herYNU4T06Qm5j4D0Nqx8AHhRWOub0zJl5Hx4Ph5tMLhlVo6c77X2H5RNGgHMxpJ
+            SPUIinpoiR8BceDBzGPVI6mmqYc9MOVThGy+/uhf+140DldE3gG2vsdVjqbLlmXb
+            MsbZEQhMTJrlA69QEs+EJC7Dihmevorc51UUf5hB0oN+GkCOs7z5jljjjotoGuCN
+            YngJnm6SCbWwhhGfmhPIAVzGh9bBDmb/G3bEWLZ6pyHBJonRgWxlh/I200po7apP
+            /JIOuCA89l4gG2v92O4iYS+wmmDSaPxNQQpeFU8ZaZRrnVnO1l/MFWPgQ4cvURoQ
+            Bxo=
+            -----END CERTIFICATE-----
