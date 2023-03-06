@@ -59,9 +59,13 @@ helmCharts:
         redirectURIs:
         - 'https://kiali.diegoluisi.eti.br/kiali'
         SecretEnv: KIALI_CLIENT_SECRET
+      - id: dex-k8s-authenticator
+        name: dex-k8s-authenticator
+        secret: 6sn6i0DXn0ANG4b0nycOnrvbtFi3UQqZxmx
+        redirectURIs:
+        - https://kubelogin.diegoluisi.eti.br/callback/
 
 - name: dex-k8s-authenticator
-
   releaseName: dex-k8s-authenticator
   version: 0.0.2
   repo: https://charts.sagikazarmark.dev
@@ -70,11 +74,11 @@ helmCharts:
       web_path_prefix: /
       debug: true
       clusters:
-        - name: diegoluisi.eti.br example "qa.k8s.your.domain.here"
+        - name: Example "qa.k8s.your.domain.here"
           short_description: "Cluster K8S XPTO"
           description: "Cluster K8S XPTO"
           client_secret: 6sn6i0DXn0ANG4b0nycOnrvbtFi3UQqZxmx
-          issuer: https://dex.diegoluisi.eti.br/
+          issuer: https://dex.diegoluisi.eti.br
           k8s_master_uri: https://api.diegoluisi.eti.br
           client_id: dex-k8s-authenticator
-          redirect_uri: https://kubelogin.your.domain.here/callback/
+          redirect_uri: https://kubelogin.diegoluisi.eti.br/callback/
