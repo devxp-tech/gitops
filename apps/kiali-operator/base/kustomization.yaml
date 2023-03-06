@@ -31,12 +31,12 @@ helmCharts:
             enabled: true
             in_cluster_url: http://grafana.monitoring
             url: https://grafana.diegoluisi.eti.br
-          tracing:
-            enabled: true
-            in_cluster_url: 'http://tracing.istio-system/jaeger'
-            use_grpc: false
-            # Public facing URL of Jaeger
-            url: 'https://jaeger.diegoluisi.eti.br/jaeger'
+          # tracing:
+          #   enabled: true
+          #   in_cluster_url: 'http://tracing.istio-system/jaeger'
+          #   use_grpc: false
+          #   # Public facing URL of Jaeger
+          #   url: 'https://jaeger.diegoluisi.eti.br/jaeger'
         auth:
           strategy: openid
           openid:
