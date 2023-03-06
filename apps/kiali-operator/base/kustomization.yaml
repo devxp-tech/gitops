@@ -19,7 +19,7 @@ helmCharts:
         istio_namespace: "istio-system"
         deployment:
           view_only_mode: true
-          disable_rbac: true
+          # disable_rbac: true
           accessible_namespaces:
           - '**'
         external_services:
