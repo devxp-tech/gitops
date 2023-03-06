@@ -3,7 +3,7 @@ kind: Kustomization
 namespace: dex
 resources:
   - ns.yaml
-  - auth-policy.yaml
+  # - auth-policy.yaml
 helmCharts:
 - name: dex
   releaseName: dex
