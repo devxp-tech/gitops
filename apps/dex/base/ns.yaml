@@ -1,0 +1,12 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: dex
+  labels:
+    kubernetes.io/metadata.name: dex
+    backstage.io/kubernetes-id: dex
+    istio-injection: enabled
+spec:
+  finalizers:
+  - kubernetes
