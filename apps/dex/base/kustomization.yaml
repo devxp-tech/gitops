@@ -59,3 +59,12 @@ helmCharts:
         redirectURIs:
         - 'https://kiali.diegoluisi.eti.br/kiali'
         SecretEnv: KIALI_CLIENT_SECRET
+
+- name: dex-k8s-authenticator
+
+  releaseName: dex-k8s-authenticator
+  version: 0.0.2
+  repo: https://charts.sagikazarmark.dev
+  valuesInline:
+    global:
+      deployEnv: prd
