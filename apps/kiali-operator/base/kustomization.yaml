@@ -18,9 +18,10 @@ helmCharts:
       spec:
         istio_namespace: "istio-system"
         deployment:
+          view_only_mode: true
+          disable_rbac: true
           accessible_namespaces:
           - '**'
-          view_only_mode: true
         external_services:
           prometheus:
             url: http://prometheus-server.monitoring
