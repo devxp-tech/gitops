@@ -10,7 +10,7 @@ p, role:org-admin, exec, create, */*, allow
 
 # sre all-clusters roles =====================================
 p, role:sre-team, applications, *, */*, allow
-p, role:sre-team, action/apps/Deployment/restart, ops/*, allow
+p, role:sre-team, applications, action/apps/Deployment/restart, ops/*, allow
 p, role:sre-team, clusters, *, *, allow
 p, role:sre-team, repositories, *, *, allow
 p, role:sre-team, logs, get, *, allow
