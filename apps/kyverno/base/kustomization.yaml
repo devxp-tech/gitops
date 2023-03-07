@@ -18,9 +18,9 @@ helmCharts:
       enabled: true
     version: 1.7.0
     namespace: kyverno
+    cleanupController:
+      enabled: false
     # replicaCount: 1
-    # cleanupController:
-    #   enabled: false
 
 # - name: kyverno-policies
 #   releaseName: kyverno-policies
