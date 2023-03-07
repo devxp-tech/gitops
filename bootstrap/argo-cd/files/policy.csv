@@ -8,15 +8,7 @@ p, role:org-admin, repositories, delete, *, allow
 p, role:org-admin, logs, get, *, allow
 p, role:org-admin, exec, create, */*, allow
 
-# sre all-clusters roles =====================================
-p, role:sre-team, applications, *, */*, allow
-p, role:sre-team, applications, action/apps/Deployment/restart, ops/*, allow
-p, role:sre-team, clusters, *, *, allow
-p, role:sre-team, repositories, *, *, allow
-p, role:sre-team, logs, get, *, allow
-p, role:sre-team, exec, create, */*, allow
-
-# Policy for Developers Team 
+# Policy for Developers Team =====================================
 p, role:dev-team, clusters, get, *, allow
 p, role:dev-team, repositories, get, *, allow
 p, role:dev-team, applications, sync, */*, allow
@@ -25,7 +17,7 @@ p, role:dev-team, applications, delete, */pod, allow
 p, role:dev-team, applications, action/*, */*, allow
 
 # Groups here resembles to Github Teams
-g, devxp-tech:sre-team, role:sre-team
+g, devxp-tech:sre-team, role:org-admin
 g, devxp-tech:dev-team, role:dev-team
 
 # Backstage user permissions
