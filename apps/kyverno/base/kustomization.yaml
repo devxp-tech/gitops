@@ -14,11 +14,13 @@ helmCharts:
   version: 2.6.0
   repo: https://kyverno.github.io/kyverno
   valuesInline:
-    namespace: kyverno
-    replicaCount: 1
-    version: 1.7.0
-    cleanupController:
-      enabled: false
+    networkPolicy:
+      enabled: true
+    # namespace: kyverno
+    # replicaCount: 1
+    # version: 1.7.0
+    # cleanupController:
+    #   enabled: false
 
 # - name: kyverno-policies
 #   releaseName: kyverno-policies
