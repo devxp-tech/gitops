@@ -256,6 +256,9 @@ helmCharts:
         istio-workload-dashboard:
           datasource: Prometheus
           url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/istio/istio-workload-dashboard.json"
+        istio-performance-dashboard:
+          datasource: Prometheus
+          gnetId: 12153
       loki:
         # Loki dashboards
         loki-stack-monitoring:
