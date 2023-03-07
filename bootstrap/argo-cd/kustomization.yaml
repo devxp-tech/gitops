@@ -28,7 +28,7 @@ configMapGenerator:
         app.kubernetes.io/part-of: argocd
     files:
       - files/dex.config
-      - files/policy.csv
+      # - files/policy.csv
       - files/repositories
       - files/repository.credentials
       - files/resource.customizations
@@ -47,6 +47,8 @@ configMapGenerator:
           app.kubernetes.io/part-of: argocd
     literals:
     - policy.default="role:readonly"
+    files:
+      - files/policy.csv
 components:
 # extensions controller component
 - https://github.com/argoproj-labs/argocd-extensions/manifests
