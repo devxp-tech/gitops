@@ -82,6 +82,9 @@ helmCharts:
   version: 0.0.2
   repo: https://charts.sagikazarmark.dev
   valuesInline:
+    envFrom:
+    - secretRef:
+        name: github-client
     config:
       web_path_prefix: /
       debug: true
