@@ -27,7 +27,7 @@ metadata:
   namespace: dex
 spec:
   hosts:
-  - "kubelogin.diegoluisi.eti.br"
+  - "kube-login.diegoluisi.eti.br"
   gateways:
   - istio-system/istio-ingressgateway
   http:
