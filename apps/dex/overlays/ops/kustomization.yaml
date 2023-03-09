@@ -6,4 +6,4 @@ commonLabels:
 resources:
   - ../../base
   - virtual-service.yaml
-  - dex-secrets-sealed.yaml
+  - secrets.yaml

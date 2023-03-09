@@ -28,11 +28,11 @@ helmCharts:
         secretKeyRef:
           name: github-client
           key: kiali-secret
-    - name: K8S_AUTHENTICATOR_SECRET
+    - name: DEX_K8S_AUTH_SECRET
       valueFrom:
         secretKeyRef:
           name: github-client
-          key: dex-k8s-authenticator
+          key: DEX_K8S_AUTH_SECRET
     config:
       issuer: https://dex.diegoluisi.eti.br
       storage:
@@ -73,7 +73,7 @@ helmCharts:
 
       - id: dex-k8s-authenticator
         name: dex-k8s-authenticator
-        SecretEnv: K8S_AUTHENTICATOR_SECRET
+        SecretEnv: DEX_K8S_AUTH_SECRET
         redirectURIs:
         - https://kube-login.diegoluisi.eti.br/callback/
 
@@ -93,7 +93,7 @@ helmCharts:
           short_description: "Cluster AWS - K8S lgsk8sp1"
           description: "Cluster K8S lgsk8sp1"
           client_id: dex-k8s-authenticator
-          client_secret: ${dex-k8s-authenticator}
+          client_secret: ${DEX_K8S_AUTH_SECRET}
           issuer: https://dex.diegoluisi.eti.br
           k8s_master_uri: https://kubernetes-elb-lgsk8sp1-1949553965.us-east-1.elb.amazonaws.com:6443
           redirect_uri: https://kube-login.diegoluisi.eti.br/callback/
