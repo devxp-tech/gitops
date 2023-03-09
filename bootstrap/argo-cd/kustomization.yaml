@@ -33,7 +33,7 @@ configMapGenerator:
       - files/resource.customizations
       # - files/resource.exclusions
     literals:
-      - admin.enabled=true
+      - admin.enabled=false
       - kustomize.buildOptions="--enable-alpha-plugins --enable-helm --load-restrictor LoadRestrictionsNone"
       - statusbadge.enabled=true
       - url=https://argocd.diegoluisi.eti.br
