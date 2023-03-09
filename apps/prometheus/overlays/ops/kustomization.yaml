@@ -3,5 +3,6 @@ kind: Kustomization
 resources:
 - ../../base
 - alertmanager-secret-sealed.yaml
+- virtual-service.yaml
 # - alertmanager-templates.yaml
 # - secret-config-sealed.yaml
