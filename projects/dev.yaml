@@ -49,23 +49,21 @@ spec:
             repoURL: ""
   - git:
       files:
-        - path: apps/**/dev/config.yaml
+      - path: apps/**/dev/config_dir.json
       repoURL: https://github.com/devxp-tech/gitops.git
       requeueAfterSeconds: 20
       revision: ""
       template:
-        metadata:
-          name: {{userGivenName}}-dev
+        metadata: {}
         spec:
           destination: {}
           project: ""
           source:
-            chart: '{{ helm.chart }}'
-            helm:
-              valueFiles:
-                - '{{helm.valueFiles}}.yaml'
-              values: |-
-                  {{ helm.values }}
+            directory:
+              exclude: '{{ exclude }}'
+              include: '{{ include }}'
+              jsonnet: {}
+              recurse: true
             repoURL: ""
   syncPolicy: {}
   template:
@@ -74,13 +72,13 @@ spec:
         app.kubernetes.io/managed-by: argocd-autopilot
         app.kubernetes.io/name: '{{ appName }}'
       annotations:
-        notifications.argoproj.io/subscribe.on-sync-succeeded.slack: argocd-notifications
+        # notifications.argoproj.io/subscribe.on-sync-succeeded.slack: argocd-notifications
         notifications.argoproj.io/subscribe.on-sync-failed.slack: argocd-notifications
         notifications.argoproj.io/subscribe.on-sync-status-unknown.slack: argocd-notifications
         notifications.argoproj.io/subscribe.on-health-degraded.slack: argocd-notifications
         # notifications.argoproj.io/subscribe.on-deployed.slack.slack: argocd-notifications
         notifications.argoproj.io/subscribe.on-sync-succeeded.grafana: argocd-notifications
-      name: {{ userGivenName }}-dev
+      name: dev-{{ userGivenName }}
       namespace: argocd
     spec:
       destination:
