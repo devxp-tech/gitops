@@ -89,10 +89,10 @@ helmCharts:
         - name: lgsk8sp1
           short_description: "Cluster AWS - K8S lgsk8sp1"
           description: "Cluster K8S lgsk8sp1"
-          client_secret: 6sn6i0DXn0ANG4b0nycOnrvbtFi3UQqZxmx
+          client_id: dex-k8s-authenticator
+          client_secret: $K8S_AUTHENTICATOR_SECRET
           issuer: https://dex.diegoluisi.eti.br
           k8s_master_uri: https://kubernetes-elb-lgsk8sp1-1949553965.us-east-1.elb.amazonaws.com:6443
-          client_id: dex-k8s-authenticator
           redirect_uri: https://kube-login.diegoluisi.eti.br/callback/
           k8s_ca_pem: |
             -----BEGIN CERTIFICATE-----
