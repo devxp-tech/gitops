@@ -1,0 +1,16 @@
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: backstagek8s-hpa
+  labels:
+    app: backstagek8s
+    version: 0.0.1
+    backstage.io/kubernetes-id: backstagek8s
+spec:
+ scaleTargetRef:
+   apiVersion: apps/v1
+   kind: Deployment
+   name: backstagek8s
+ minReplicas: 1
+ maxReplicas: 4
+ targetCPUUtilizationPercentage: 75

@@ -1,0 +1,16 @@
+---
+kind: ResourceQuota
+apiVersion: v1
+metadata:
+  name: backstagek8s-quota
+  namespace: backstagek8s
+  labels:
+    kubernetes.io/metadata.name: backstagek8s
+    backstage.io/kubernetes-id: backstagek8s
+    istio-injection: enabled
+spec:
+  hard:
+    requests.cpu: "1"
+    requests.memory: 1Gi
+    limits.cpu: "2"
+    limits.memory: 2Gi

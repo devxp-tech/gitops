@@ -1,0 +1,21 @@
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: backstagek8s-vs
+  namespace: backstagek8s
+  labels:
+    app: backstagek8s
+    version: 0.0.1
+    backstage.io/kubernetes-id: backstagek8s
+spec:
+  gateways:
+  - istio-system/istio-ingressgateway
+  hosts:
+  - backstagek8s.diegoluisi.eti.br
+  http:
+  - name: primary
+    route:
+    - destination:
+        host: backstagek8s-svc
+      weight: 100

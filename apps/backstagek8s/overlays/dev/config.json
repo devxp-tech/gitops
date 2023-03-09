@@ -1,0 +1,11 @@
+{
+  "appName": "backstagek8s",
+  "userGivenName": "backstagek8s",
+  "destNamespace": "backstagek8s",
+  "destServer": "https://kubernetes.default.svc",
+  "srcPath": "apps/backstagek8s/overlays/dev",
+  "srcRepoURL": "https://github.com/diegoluisi/argo.git",
+  "srcTargetRevision": "",
+  "CreateNamespace": true,
+  "labels": null
+}

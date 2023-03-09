@@ -1,0 +1,11 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: backstagek8s
+resources:
+  - ns.yaml
+  - backstagek8s-quota.yaml
+  - backstagek8s-deploy.yaml
+  - backstagek8s-svc.yaml
+  - backstagek8s-vs.yaml
+  - backstagek8s-hpa.yaml
