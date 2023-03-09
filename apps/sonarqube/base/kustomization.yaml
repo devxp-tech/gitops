@@ -17,13 +17,13 @@ helmCharts:
     existingSecret: sonarqube-postgresql-secret
     minHeapSize: 512m
     maxHeapSize: 1024m
-    # resources:
-    #   requests:
-    #     memory: 1024Mi
-    #     cpu: 100m
-    #   limits:
-    #     memory: 2048Mi
-    #     cpu: 200m
+    resources:
+      requests:
+        memory: 500Mi
+        cpu: 100m
+      limits:
+        memory: 1024Mi
+        cpu: 200m
     service:
       type: ClusterIP
     postgresql:
