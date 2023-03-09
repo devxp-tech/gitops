@@ -49,24 +49,6 @@ spec:
             repoURL: ""
   - git:
       files:
-      - path: apps/**/dev/config_dir.json
-      repoURL: https://github.com/devxp-tech/gitops.git
-      requeueAfterSeconds: 20
-      revision: ""
-      template:
-        metadata: {}
-        spec:
-          destination: {}
-          project: ""
-          source:
-            directory:
-              exclude: '{{ exclude }}'
-              include: '{{ include }}'
-              jsonnet: {}
-              recurse: true
-            repoURL: ""
-  - git:
-      files:
         - path: apps/**/dev/config.yaml
       repoURL: https://github.com/devxp-tech/gitops.git
       requeueAfterSeconds: 20
