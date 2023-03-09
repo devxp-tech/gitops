@@ -1,0 +1,12 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: kubernetes
+  labels:
+    kubernetes.io/metadata.name: kubernetes
+    backstage.io/kubernetes-id: kubernetes
+    istio-injection: enabled
+spec:
+  finalizers:
+  - kubernetes

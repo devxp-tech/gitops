@@ -1,0 +1,21 @@
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: kubernetes-vs
+  namespace: kubernetes
+  labels:
+    app: kubernetes
+    version: 0.0.1
+    backstage.io/kubernetes-id: kubernetes
+spec:
+  gateways:
+  - istio-system/istio-ingressgateway
+  hosts:
+  - kubernetes.diegoluisi.eti.br
+  http:
+  - name: primary
+    route:
+    - destination:
+        host: kubernetes-svc
+      weight: 100
