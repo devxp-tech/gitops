@@ -78,7 +78,7 @@ spec:
         notifications.argoproj.io/subscribe.on-health-degraded.slack: argocd-notifications
         # notifications.argoproj.io/subscribe.on-deployed.slack.slack: argocd-notifications
         notifications.argoproj.io/subscribe.on-sync-succeeded.grafana: argocd-notifications
-      name: {{ userGivenName }}-dev
+      name: "{{ userGivenName }}-dev"
       namespace: argocd
     spec:
       destination:
