@@ -3,4 +3,4 @@ kind: Kustomization
 resources:
 - ../../base
 - virtual-service.yaml
-- secret.yaml
+- secrets.yaml

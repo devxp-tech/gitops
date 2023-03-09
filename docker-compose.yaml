@@ -1,0 +1,10 @@
+version: "3.8"
+services:
+  cript: &defaults
+    image: gitops:dev
+    build: .
+    container_name: giops_dev
+    working_dir: /app
+    command: sh -c 'secrets/generate.sh'
+    volumes:
+      - .:/app
