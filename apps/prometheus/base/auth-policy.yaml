@@ -18,7 +18,9 @@ spec:
             - "94.62.74.120" # Diego
     - from:
       - source:
-          principals: ["lgsk8sp1.grupologos.local/ns/kiali-operator/sa/kiali-service-account"]
+          principals:
+            - lgsk8sp1.grupologos.local/ns/kiali-operator/sa/kiali-service-account
+            - lgsk8sp1.grupologos.local/ns/monitoring/sa/prometheus-server
       to:
       - operation:
           methods: ["GET", "POST", "OPTIONS", "DELETE", "PATCH"]
