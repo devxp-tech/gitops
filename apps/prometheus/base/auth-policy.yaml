@@ -19,12 +19,11 @@ spec:
     - from:
       - source:
           principals:
-            - lgsk8sp1.grupologos.local/ns/kiali-operator/sa/kiali-service-account
-            - lgsk8sp1.grupologos.local/ns/monitoring/sa/prometheus-server
+            - spiffe://lgsk8sp1.grupologos.local/ns/monitoring/sa/prometheus-server
+            - spiffe://lgsk8sp1.grupologos.local/ns/kiali-operator/sa/kiali-service-account
       to:
       - operation:
           methods: ["GET", "POST", "OPTIONS", "DELETE", "PATCH"]
-
     # - to:
     #   - operation:
     #       methods:
