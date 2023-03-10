@@ -18,7 +18,7 @@ spec:
             - "94.62.74.120" # Diego
     - from:
       - source:
-          namespaces: ["monitoring", "kiali-operator"]
+          namespaces: ["*"]
       # - source:
       #     principals: ["lgsk8sp1.grupologos.local/ns/kiali-operator/sa/kiali-operator"]
       to:
