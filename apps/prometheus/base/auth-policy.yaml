@@ -1,5 +1,5 @@
 apiVersion: security.istio.io/v1beta1
-kind:
+kind: AuthorizationPolicy
 metadata:
   name: prometheus-policy
   namespace: prometheus
@@ -7,12 +7,12 @@ spec:
   selector:
     matchLabels:
       app: prometheus
-  action: DENY
+  action: ALLOW
   rules:
     - to:
         - operation:
             methods: ["GET", "POST", "OPTIONS", "DELETE", "PATCH"]
       when:
         - key: request.headers[x-envoy-external-address]
-          notValues:
+          values:
             - "94.62.74.120" # Diego
