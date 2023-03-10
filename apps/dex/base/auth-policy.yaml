@@ -6,7 +6,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: dex-auth
+      app.kubernetes.io/instance: dex-k8s-authenticator
   action: ALLOW
   rules:
     - when:

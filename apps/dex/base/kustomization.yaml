@@ -94,7 +94,7 @@ helmCharts:
           description: "Cluster K8S lgsk8sp1"
           client_id: dex-k8s-authenticator
           client_secret: ${DEX_K8S_AUTH_SECRET}
-          issuer: http://dex.dex.svc.lgsk8sp1.grupologos.local:5556
+          issuer: https://dex.diegoluisi.eti.br
           k8s_master_uri: https://kubernetes-elb-lgsk8sp1-1949553965.us-east-1.elb.amazonaws.com:6443
           redirect_uri: https://kube-login.diegoluisi.eti.br/callback/
           k8s_ca_pem: |
