@@ -16,17 +16,26 @@ spec:
         - key: request.headers[x-envoy-external-address]
           values:
             - "94.62.74.120" # Diego
-    - to:
+    - from:
+      - source:
+          principals: ["lgsk8sp1.grupologos.local/ns/kiali-operator/sa/kiali-service-account"]
+      to:
       - operation:
-          methods:
-          - GET
-          - POST
-          paths:
-          - /metrics
-          - /actuator/prometheus
-          - /api/v1/*
-      when:
-      - key: request.headers[User-Agent]
-        values:
-        - Prometheus/*
-        - Go-http-client/1.1
+          methods: ["GET", "POST", "OPTIONS", "DELETE", "PATCH"]
+
+    # - to:
+    #   - operation:
+    #       methods:
+    #       - GET
+    #       - POST
+    #       paths:
+    #       - /metrics
+    #       - /actuator/prometheus
+    #       - /api/v1/*
+    #   when:
+    #   - key: request.headers[User-Agent]
+    #     values:
+    #     - Prometheus/*
+    #     - Go-http-client/1.1
+
+
