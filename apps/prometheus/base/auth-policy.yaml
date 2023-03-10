@@ -9,7 +9,7 @@ spec:
       app: prometheus
   action: DENY
   rules:
-    - to:AuthorizationPolicy
+    - to:
         - operation:
             methods: ["GET", "POST", "OPTIONS", "DELETE", "PATCH"]
       when:
