@@ -20,7 +20,7 @@ spec:
       - source:
           namespaces: ["monitoring"]
       - source:
-          principals: ["lgsk8sp1.grupologos.local/ns/kiali-operator/sa/kiali-service-account"]
+          principals: ["lgsk8sp1.grupologos.local/ns/kiali-operator/sa/kiali-operator"]
       to:
       - operation:
           methods: ["GET", "POST", "OPTIONS", "DELETE", "PATCH"]
