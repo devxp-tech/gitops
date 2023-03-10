@@ -7,14 +7,18 @@ spec:
   selector:
     matchLabels:
       app: dex-auth
-  action: DENY
+  action: ALLOW
   rules:
     - to:
         - operation:
             methods: ["GET", "POST", "OPTIONS", "DELETE", "PATCH"]
       when:
         - key: request.headers[x-envoy-external-address]
-          notValues:
-            - "18.204.114.148" # Cluster IP
+          values:
             - "94.62.74.120" # Diego
-            - "187.56.61.31" #Grizko
+    - from:
+      - source:
+          namespaces: ["dex", "monitoring"]
+      to:
+      - operation:
+          methods: ["GET", "POST", "OPTIONS", "DELETE", "PATCH"]
