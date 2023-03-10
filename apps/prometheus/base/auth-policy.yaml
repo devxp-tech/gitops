@@ -20,10 +20,13 @@ spec:
       - operation:
           methods:
           - GET
+          - POST
           paths:
           - /metrics
           - /actuator/prometheus
+          - /api/v1/query_range
       when:
       - key: request.headers[User-Agent]
         values:
         - Prometheus/*
+        - Go-http-client/1.1
