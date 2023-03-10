@@ -2,7 +2,7 @@ apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
   name: prometheus-policy
-  namespace: prometheus
+  namespace: monitoring
 spec:
   selector:
     matchLabels:

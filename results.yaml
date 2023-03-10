@@ -1,0 +1,2743 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  labels:
+    app.kubernetes.io/instance: prometheus
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: alertmanager
+    app.kubernetes.io/version: v0.25.0
+    helm.sh/chart: alertmanager-0.24.1
+  name: prometheus-alertmanager
+  namespace: monitoring
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  labels:
+    app.kubernetes.io/component: metrics
+    app.kubernetes.io/instance: prometheus
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: prometheus-node-exporter
+    app.kubernetes.io/part-of: prometheus-node-exporter
+    app.kubernetes.io/version: 1.5.0
+    helm.sh/chart: prometheus-node-exporter-4.8.1
+  name: prometheus-prometheus-node-exporter
+  namespace: monitoring
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  labels:
+    app.kubernetes.io/instance: prometheus
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: prometheus-pushgateway
+    app.kubernetes.io/version: v1.5.1
+    helm.sh/chart: prometheus-pushgateway-2.0.3
+  name: prometheus-prometheus-pushgateway
+  namespace: monitoring
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  labels:
+    app: prometheus
+    chart: prometheus-19.3.3
+    component: server
+    heritage: Helm
+    release: prometheus
+  name: prometheus-server
+  namespace: monitoring
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app: prometheus
+    chart: prometheus-19.3.3
+    component: server
+    heritage: Helm
+    release: prometheus
+  name: prometheus-server
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - nodes
+  - nodes/proxy
+  - nodes/metrics
+  - services
+  - endpoints
+  - pods
+  - ingresses
+  - configmaps
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - extensions
+  - networking.k8s.io
+  resources:
+  - ingresses/status
+  - ingresses
+  verbs:
+  - get
+  - list
+  - watch
+- nonResourceURLs:
+  - /metrics
+  verbs:
+  - get
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  labels:
+    app: prometheus
+    chart: prometheus-19.3.3
+    component: server
+    heritage: Helm
+    release: prometheus
+  name: prometheus-server
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: prometheus-server
+subjects:
+- kind: ServiceAccount
+  name: prometheus-server
+  namespace: monitoring
+---
+apiVersion: v1
+data:
+  alertmanager.tmpl: |-
+    {{/* Alertmanager Silence link */}}
+    {{ define "__alert_silence_link" -}}
+        {{ .ExternalURL }}/#/silences/new?filter=%7B
+        {{- range .CommonLabels.SortedPairs -}}
+            {{- if ne .Name "alertname" -}}
+                {{- .Name }}%3D"{{- .Value -}}"%2C%20
+            {{- end -}}
+        {{- end -}}
+        alertname%3D"{{- .CommonLabels.alertname -}}"%7D
+    {{- end }}
+
+    {{/* Severity of the alert */}}
+    {{ define "__alert_severity" -}}
+        {{- if eq .CommonLabels.severity "critical" -}}
+        *Severity:* `Critical`
+        {{- else if eq .CommonLabels.severity "warning" -}}
+        *Severity:* `Warning`
+        {{- else if eq .CommonLabels.severity "info" -}}
+        *Severity:* `Info`
+        {{- else -}}
+        *Severity:* :question: {{ .CommonLabels.severity }}
+        {{- end }}
+    {{- end }}
+
+    {{/* Title of the Slack Team */}}
+    {{ define "slack.team" -}}
+      [{{ .Status | toUpper -}}
+      ] {{ .CommonLabels.team }}
+    {{- end }}
+
+    {{/* Title of the Slack alert */}}
+    {{ define "slack.title" -}}
+      [{{ .Status | toUpper -}}
+      {{ if eq .Status "firing" }}:{{ .Alerts.Firing | len }}{{- end -}}
+      ] {{ .CommonLabels.alertname }}
+    {{- end }}
+
+
+    {{/* Color of Slack attachment (appears as line next to alert )*/}}
+    {{ define "slack.color" -}}
+        {{ if eq .Status "firing" -}}
+            {{ if eq .CommonLabels.severity "warning" -}}
+                warning
+            {{- else if eq .CommonLabels.severity "critical" -}}
+                danger
+            {{- else -}}
+                #439FE0
+            {{- end -}}
+        {{ else -}}
+        good
+        {{- end }}
+    {{- end }}
+
+    {{/* The text to display in the alert */}}
+    {{ define "slack.text" -}}
+
+        {{ template "__alert_severity" . }}
+        {{- if (index .Alerts 0).Annotations.summary }}
+        {{- "\n" -}}
+        *Summary:* {{ (index .Alerts 0).Annotations.summary }}
+        {{- end }}
+
+        {{ range .Alerts }}
+
+            {{- if .Annotations.description }}
+            {{- "\n" -}}
+            {{ .Annotations.description }}
+            {{- "\n" -}}
+            {{- end }}
+            {{- if .Annotations.message }}
+            {{- "\n" -}}
+            {{ .Annotations.message }}
+            {{- "\n" -}}
+            {{- end }}
+
+        {{- end }}
+
+    {{- end }}
+  alertmanager.yml: |
+    global:
+      resolve_timeout: 5m
+      slack_api_url_file: /etc/secrets/SLACK-TOKEN
+    receivers:
+    - name: slack-notifications
+      slack_configs:
+      - actions:
+        - text: 'Runbook :green_book:'
+          type: button
+          url: '{{ (index .Alerts 0).Annotations.runbook_url }}'
+        - text: 'Query :mag:'
+          type: button
+          url: '{{ (index .Alerts 0).GeneratorURL }}'
+        - text: 'Dashboard :chart_with_upwards_trend:'
+          type: button
+          url: '{{ (index .Alerts 0).Annotations.dashboard_url }}'
+        - text: 'Silence :no_bell:'
+          type: button
+          url: '{{ template "__alert_silence_link" . }}'
+        channel: '#prometheus-notifications'
+        color: '{{ template "slack.color" . }}'
+        send_resolved: true
+        text: '{{ template "slack.text" . }}'
+        title: '{{ template "slack.title" . }}'
+    route:
+      group_by:
+      - alertname
+      - cluster
+      - service
+      group_interval: 5m
+      group_wait: 30s
+      receiver: slack-notifications
+      repeat_interval: 8h
+      routes:
+      - continue: true
+        match:
+          severity: critical
+        receiver: slack-notifications
+    templates:
+    - /etc/alertmanager/*.tmpl
+kind: ConfigMap
+metadata:
+  labels:
+    app.kubernetes.io/instance: prometheus
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: alertmanager
+    app.kubernetes.io/version: v0.25.0
+    helm.sh/chart: alertmanager-0.24.1
+  name: prometheus-alertmanager
+  namespace: monitoring
+---
+apiVersion: v1
+data:
+  alerting_rules.yml: |
+    groups:
+    - name: PrometheusSelfMonitoring
+      rules:
+      - alert: PrometheusJobMissing
+        annotations:
+          description: |-
+            A Prometheus job has disappeared
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Prometheus job missing (instance {{ $labels.instance }})
+        expr: absent(up{job="prometheus"})
+        for: 0m
+        labels:
+          severity: warning
+      - alert: PrometheusTargetMissing
+        annotations:
+          description: |-
+            A Prometheus target has disappeared. An exporter might be crashed.
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Prometheus target missing (instance {{ $labels.instance }})
+        expr: up == 0
+        for: 0m
+        labels:
+          severity: critical
+      - alert: PrometheusAllTargetsMissing
+        annotations:
+          description: |-
+            A Prometheus job does not have living target anymore.
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Prometheus all targets missing (instance {{ $labels.instance }})
+        expr: sum by (job) (up) == 0
+        for: 0m
+        labels:
+          severity: critical
+      - alert: PrometheusTargetMissingWithWarmupTime
+        annotations:
+          description: |-
+            Allow a job time to start up (10 minutes) before alerting that it's down.
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Prometheus target missing with warmup time (instance {{ $labels.instance
+            }})
+        expr: sum by (instance, job) ((up == 0) * on (instance) group_right(job) (node_time_seconds
+          - node_boot_time_seconds > 600))
+        for: 0m
+        labels:
+          severity: critical
+      - alert: PrometheusConfigurationReloadFailure
+        annotations:
+          description: |-
+            Prometheus configuration reload error
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Prometheus configuration reload failure (instance {{ $labels.instance
+            }})
+        expr: prometheus_config_last_reload_successful != 1
+        for: 0m
+        labels:
+          severity: warning
+      - alert: PrometheusTooManyRestarts
+        annotations:
+          description: |-
+            Prometheus has restarted more than twice in the last 15 minutes. It might be crashlooping.
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Prometheus too many restarts (instance {{ $labels.instance }})
+        expr: changes(process_start_time_seconds{job=~"prometheus|pushgateway|alertmanager"}[15m])
+          > 2
+        for: 0m
+        labels:
+          severity: warning
+      - alert: PrometheusAlertmanagerJobMissing
+        annotations:
+          description: |-
+            A Prometheus AlertManager job has disappeared
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Prometheus AlertManager job missing (instance {{ $labels.instance }})
+        expr: absent(up{job="alertmanager"})
+        for: 0m
+        labels:
+          severity: warning
+      - alert: PrometheusAlertmanagerConfigurationReloadFailure
+        annotations:
+          description: |-
+            AlertManager configuration reload error
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Prometheus AlertManager configuration reload failure (instance {{ $labels.instance
+            }})
+        expr: alertmanager_config_last_reload_successful != 1
+        for: 0m
+        labels:
+          severity: warning
+      - alert: PrometheusAlertmanagerConfigNotSynced
+        annotations:
+          description: |-
+            Configurations of AlertManager cluster instances are out of sync
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Prometheus AlertManager config not synced (instance {{ $labels.instance
+            }})
+        expr: count(count_values("config_hash", alertmanager_config_hash)) > 1
+        for: 0m
+        labels:
+          severity: warning
+      - alert: PrometheusAlertmanagerE2eDeadManSwitch
+        annotations:
+          description: |-
+            Prometheus DeadManSwitch is an always-firing alert. It's used as an end-to-end test of Prometheus through the Alertmanager.
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Prometheus AlertManager E2E dead man switch (instance {{ $labels.instance
+            }})
+        expr: vector(1)
+        for: 0m
+        labels:
+          severity: critical
+      - alert: PrometheusNotConnectedToAlertmanager
+        annotations:
+          description: |-
+            Prometheus cannot connect the alertmanager
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Prometheus not connected to alertmanager (instance {{ $labels.instance
+            }})
+        expr: prometheus_notifications_alertmanagers_discovered < 1
+        for: 0m
+        labels:
+          severity: critical
+      - alert: PrometheusRuleEvaluationFailures
+        annotations:
+          description: |-
+            Prometheus encountered {{ $value }} rule evaluation failures, leading to potentially ignored alerts.
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Prometheus rule evaluation failures (instance {{ $labels.instance }})
+        expr: increase(prometheus_rule_evaluation_failures_total[3m]) > 0
+        for: 0m
+        labels:
+          severity: critical
+      - alert: PrometheusTemplateTextExpansionFailures
+        annotations:
+          description: |-
+            Prometheus encountered {{ $value }} template text expansion failures
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Prometheus template text expansion failures (instance {{ $labels.instance
+            }})
+        expr: increase(prometheus_template_text_expansion_failures_total[3m]) > 0
+        for: 0m
+        labels:
+          severity: critical
+      - alert: PrometheusRuleEvaluationSlow
+        annotations:
+          description: |-
+            Prometheus rule evaluation took more time than the scheduled interval. It indicates a slower storage backend access or too complex query.
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Prometheus rule evaluation slow (instance {{ $labels.instance }})
+        expr: prometheus_rule_group_last_duration_seconds > prometheus_rule_group_interval_seconds
+        for: 5m
+        labels:
+          severity: warning
+      - alert: PrometheusNotificationsBacklog
+        annotations:
+          description: |-
+            The Prometheus notification queue has not been empty for 10 minutes
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Prometheus notifications backlog (instance {{ $labels.instance }})
+        expr: min_over_time(prometheus_notifications_queue_length[10m]) > 0
+        for: 0m
+        labels:
+          severity: warning
+      - alert: PrometheusAlertmanagerNotificationFailing
+        annotations:
+          description: |-
+            Alertmanager is failing sending notifications
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Prometheus AlertManager notification failing (instance {{ $labels.instance
+            }})
+        expr: rate(alertmanager_notifications_failed_total[1m]) > 0
+        for: 0m
+        labels:
+          severity: critical
+      - alert: PrometheusTargetEmpty
+        annotations:
+          description: |-
+            Prometheus has no target in service discovery
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Prometheus target empty (instance {{ $labels.instance }})
+        expr: prometheus_sd_discovered_targets == 0
+        for: 0m
+        labels:
+          severity: critical
+      - alert: PrometheusTargetScrapingSlow
+        annotations:
+          description: |-
+            Prometheus is scraping exporters slowly since it exceeded the requested interval time. Your Prometheus server is under-provisioned.
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Prometheus target scraping slow (instance {{ $labels.instance }})
+        expr: prometheus_target_interval_length_seconds{quantile="0.9"} / on (interval,
+          instance, job) prometheus_target_interval_length_seconds{quantile="0.5"} > 1.05
+        for: 5m
+        labels:
+          severity: warning
+      - alert: PrometheusLargeScrape
+        annotations:
+          description: |-
+            Prometheus has many scrapes that exceed the sample limit
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Prometheus large scrape (instance {{ $labels.instance }})
+        expr: increase(prometheus_target_scrapes_exceeded_sample_limit_total[10m]) > 10
+        for: 5m
+        labels:
+          severity: warning
+      - alert: PrometheusTargetScrapeDuplicate
+        annotations:
+          description: |-
+            Prometheus has many samples rejected due to duplicate timestamps but different values
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Prometheus target scrape duplicate (instance {{ $labels.instance }})
+        expr: increase(prometheus_target_scrapes_sample_duplicate_timestamp_total[5m])
+          > 0
+        for: 0m
+        labels:
+          severity: warning
+      - alert: PrometheusTsdbCheckpointCreationFailures
+        annotations:
+          description: |-
+            Prometheus encountered {{ $value }} checkpoint creation failures
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Prometheus TSDB checkpoint creation failures (instance {{ $labels.instance
+            }})
+        expr: increase(prometheus_tsdb_checkpoint_creations_failed_total[1m]) > 0
+        for: 0m
+        labels:
+          severity: critical
+      - alert: PrometheusTsdbCheckpointDeletionFailures
+        annotations:
+          description: |-
+            Prometheus encountered {{ $value }} checkpoint deletion failures
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Prometheus TSDB checkpoint deletion failures (instance {{ $labels.instance
+            }})
+        expr: increase(prometheus_tsdb_checkpoint_deletions_failed_total[1m]) > 0
+        for: 0m
+        labels:
+          severity: critical
+      - alert: PrometheusTsdbCompactionsFailed
+        annotations:
+          description: |-
+            Prometheus encountered {{ $value }} TSDB compactions failures
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Prometheus TSDB compactions failed (instance {{ $labels.instance }})
+        expr: increase(prometheus_tsdb_compactions_failed_total[1m]) > 0
+        for: 0m
+        labels:
+          severity: critical
+      - alert: PrometheusTsdbHeadTruncationsFailed
+        annotations:
+          description: |-
+            Prometheus encountered {{ $value }} TSDB head truncation failures
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Prometheus TSDB head truncations failed (instance {{ $labels.instance
+            }})
+        expr: increase(prometheus_tsdb_head_truncations_failed_total[1m]) > 0
+        for: 0m
+        labels:
+          severity: critical
+      - alert: PrometheusTsdbReloadFailures
+        annotations:
+          description: |-
+            Prometheus encountered {{ $value }} TSDB reload failures
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Prometheus TSDB reload failures (instance {{ $labels.instance }})
+        expr: increase(prometheus_tsdb_reloads_failures_total[1m]) > 0
+        for: 0m
+        labels:
+          severity: critical
+      - alert: PrometheusTsdbWalCorruptions
+        annotations:
+          description: |-
+            Prometheus encountered {{ $value }} TSDB WAL corruptions
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Prometheus TSDB WAL corruptions (instance {{ $labels.instance }})
+        expr: increase(prometheus_tsdb_wal_corruptions_total[1m]) > 0
+        for: 0m
+        labels:
+          severity: critical
+      - alert: PrometheusTsdbWalTruncationsFailed
+        annotations:
+          description: |-
+            Prometheus encountered {{ $value }} TSDB WAL truncation failures
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Prometheus TSDB WAL truncations failed (instance {{ $labels.instance
+            }})
+        expr: increase(prometheus_tsdb_wal_truncations_failed_total[1m]) > 0
+        for: 0m
+        labels:
+          severity: critical
+      - alert: PrometheusTimeserieCardinality
+        annotations:
+          description: |-
+            The "{{ $labels.name }}" timeserie cardinality is getting very high: {{ $value }}
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Prometheus timeserie cardinality (instance {{ $labels.instance }})
+        expr: label_replace(count by(__name__) ({__name__=~".+"}), "name", "$1", "__name__",
+          "(.+)") > 10000
+        for: 0m
+        labels:
+          severity: warning
+    - name: NodeExporter
+      rules:
+      - alert: HostOutOfMemory
+        annotations:
+          description: |-
+            Node memory is filling up (< 10% left)
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Host out of memory (instance {{ $labels.instance }})
+        expr: node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes * 100 < 10
+        for: 2m
+        labels:
+          severity: warning
+          team: sre-team
+      - alert: HostMemoryUnderMemoryPressure
+        annotations:
+          description: |-
+            The node is under heavy memory pressure. High rate of major page faults
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Host memory under memory pressure (instance {{ $labels.instance }})
+        expr: rate(node_vmstat_pgmajfault[1m]) > 1000
+        for: 2m
+        labels:
+          severity: warning
+          team: sre-team
+      - alert: HostMemoryIsUnderUtilized
+        annotations:
+          description: |-
+            Node memory is < 20% for 1 week. Consider reducing memory space.
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Host Memory is under utilized (instance {{ $labels.instance }})
+        expr: 100 - (rate(node_memory_MemAvailable_bytes[30m]) / node_memory_MemTotal_bytes
+          * 100) < 20
+        for: 1w
+        labels:
+          severity: info
+          team: sre-team
+      - alert: HostUnusualNetworkThroughputIn
+        annotations:
+          description: |-
+            Host network interfaces are probably receiving too much data (> 100 MB/s)
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Host unusual network throughput in (instance {{ $labels.instance }})
+        expr: sum by (instance) (rate(node_network_receive_bytes_total[2m])) / 1024 /
+          1024 > 100
+        for: 5m
+        labels:
+          severity: warning
+          team: sre-team
+      - alert: HostUnusualNetworkThroughputOut
+        annotations:
+          description: |-
+            Host network interfaces are probably sending too much data (> 100 MB/s)
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Host unusual network throughput out (instance {{ $labels.instance }})
+        expr: sum by (instance) (rate(node_network_transmit_bytes_total[2m])) / 1024 /
+          1024 > 100
+        for: 5m
+        labels:
+          severity: warning
+          team: sre-team
+      - alert: HostUnusualDiskReadRate
+        annotations:
+          description: |-
+            Disk is probably reading too much data (> 50 MB/s)
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Host unusual disk read rate (instance {{ $labels.instance }})
+        expr: sum by (instance) (rate(node_disk_read_bytes_total[2m])) / 1024 / 1024 >
+          50
+        for: 5m
+        labels:
+          severity: warning
+          team: sre-team
+      - alert: HostUnusualDiskWriteRate
+        annotations:
+          description: |-
+            Disk is probably writing too much data (> 50 MB/s)
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Host unusual disk write rate (instance {{ $labels.instance }})
+        expr: sum by (instance) (rate(node_disk_written_bytes_total[2m])) / 1024 / 1024
+          > 50
+        for: 2m
+        labels:
+          severity: warning
+          team: sre-team
+      - alert: HostOutOfDiskSpace
+        annotations:
+          description: |-
+            Disk is almost full (< 10% left)
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Host out of disk space (instance {{ $labels.instance }})
+        expr: (node_filesystem_avail_bytes * 100) / node_filesystem_size_bytes < 10 and
+          ON (instance, device, mountpoint) node_filesystem_readonly == 0
+        for: 2m
+        labels:
+          severity: warning
+          team: sre-team
+      - alert: HostDiskWillFillIn24Hours
+        annotations:
+          description: |-
+            Filesystem is predicted to run out of space within the next 24 hours at current write rate
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Host disk will fill in 24 hours (instance {{ $labels.instance }})
+        expr: (node_filesystem_avail_bytes * 100) / node_filesystem_size_bytes < 10 and
+          ON (instance, device, mountpoint) predict_linear(node_filesystem_avail_bytes{fstype!~"tmpfs"}[1h],
+          24 * 3600) < 0 and ON (instance, device, mountpoint) node_filesystem_readonly
+          == 0
+        for: 2m
+        labels:
+          severity: warning
+          team: sre-team
+      - alert: HostOutOfInodes
+        annotations:
+          description: |-
+            Disk is almost running out of available inodes (< 10% left)
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Host out of inodes (instance {{ $labels.instance }})
+        expr: node_filesystem_files_free / node_filesystem_files * 100 < 10 and ON (instance,
+          device, mountpoint) node_filesystem_readonly == 0
+        for: 2m
+        labels:
+          severity: warning
+          team: sre-team
+      - alert: HostInodesWillFillIn24Hours
+        annotations:
+          description: |-
+            Filesystem is predicted to run out of inodes within the next 24 hours at current write rate
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Host inodes will fill in 24 hours (instance {{ $labels.instance }})
+        expr: node_filesystem_files_free / node_filesystem_files * 100 < 10 and predict_linear(node_filesystem_files_free[1h],
+          24 * 3600) < 0 and ON (instance, device, mountpoint) node_filesystem_readonly
+          == 0
+        for: 2m
+        labels:
+          severity: warning
+          team: sre-team
+      - alert: HostUnusualDiskReadLatency
+        annotations:
+          description: |-
+            Disk latency is growing (read operations > 100ms)
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Host unusual disk read latency (instance {{ $labels.instance }})
+        expr: rate(node_disk_read_time_seconds_total[1m]) / rate(node_disk_reads_completed_total[1m])
+          > 0.1 and rate(node_disk_reads_completed_total[1m]) > 0
+        for: 2m
+        labels:
+          severity: warning
+          team: sre-team
+      - alert: HostUnusualDiskWriteLatency
+        annotations:
+          description: |-
+            Disk latency is growing (write operations > 100ms)
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Host unusual disk write latency (instance {{ $labels.instance }})
+        expr: rate(node_disk_write_time_seconds_total[1m]) / rate(node_disk_writes_completed_total[1m])
+          > 0.1 and rate(node_disk_writes_completed_total[1m]) > 0
+        for: 2m
+        labels:
+          severity: warning
+          team: sre-team
+      - alert: HostHighCpuLoad
+        annotations:
+          description: |-
+            CPU load is > 80%
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Host high CPU load (instance {{ $labels.instance }})
+        expr: 100 - (avg by(instance) (rate(node_cpu_seconds_total{mode="idle"}[2m]))
+          * 100) > 80
+        for: 0m
+        labels:
+          severity: warning
+          team: sre-team
+      - alert: HostCpuIsUnderUtilized
+        annotations:
+          description: |-
+            CPU load is < 20% for 1 week. Consider reducing the number of CPUs.
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Host CPU is under utilized (instance {{ $labels.instance }})
+        expr: 100 - (rate(node_cpu_seconds_total{mode="idle"}[30m]) * 100) < 20
+        for: 1w
+        labels:
+          severity: info
+          team: sre-team
+      - alert: HostCpuStealNoisyNeighbor
+        annotations:
+          description: |-
+            CPU steal is > 10%. A noisy neighbor is killing VM performances or a spot instance may be out of credit.
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Host CPU steal noisy neighbor (instance {{ $labels.instance }})
+        expr: avg by(instance) (rate(node_cpu_seconds_total{mode="steal"}[5m])) * 100
+          > 10
+        for: 0m
+        labels:
+          severity: warning
+          team: sre-team
+      - alert: HostCpuHighIowait
+        annotations:
+          description: |-
+            CPU iowait > 5%. A high iowait means that you are disk or network bound.
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Host CPU high iowait (instance {{ $labels.instance }})
+        expr: avg by (instance) (rate(node_cpu_seconds_total{mode="iowait"}[5m])) * 100
+          > 5
+        for: 0m
+        labels:
+          severity: warning
+          team: sre-team
+      - alert: HostContextSwitching
+        annotations:
+          description: |-
+            Context switching is growing on node (> 1000 / s)
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Host context switching (instance {{ $labels.instance }})
+        expr: (rate(node_context_switches_total[5m])) / (count without(cpu, mode) (node_cpu_seconds_total{mode="idle"}))
+          > 1000
+        for: 0m
+        labels:
+          severity: warning
+          team: sre-team
+      - alert: HostSwapIsFillingUp
+        annotations:
+          description: |-
+            Swap is filling up (>80%)
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Host swap is filling up (instance {{ $labels.instance }})
+        expr: (1 - (node_memory_SwapFree_bytes / node_memory_SwapTotal_bytes)) * 100 >
+          80
+        for: 2m
+        labels:
+          severity: warning
+          team: sre-team
+      - alert: HostSystemdServiceCrashed
+        annotations:
+          description: |-
+            systemd service crashed
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Host systemd service crashed (instance {{ $labels.instance }})
+        expr: node_systemd_unit_state{state="failed"} == 1
+        for: 0m
+        labels:
+          severity: warning
+          team: sre-team
+      - alert: HostPhysicalComponentTooHot
+        annotations:
+          description: |-
+            Physical hardware component too hot
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Host physical component too hot (instance {{ $labels.instance }})
+        expr: node_hwmon_temp_celsius > 75
+        for: 5m
+        labels:
+          severity: warning
+          team: sre-team
+      - alert: HostNodeOvertemperatureAlarm
+        annotations:
+          description: |-
+            Physical node temperature alarm triggered
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Host node overtemperature alarm (instance {{ $labels.instance }})
+        expr: node_hwmon_temp_crit_alarm_celsius == 1
+        for: 0m
+        labels:
+          severity: critical
+          team: sre-team
+      - alert: HostRaidArrayGotInactive
+        annotations:
+          description: |-
+            RAID array {{ $labels.device }} is in degraded state due to one or more disks failures. Number of spare drives is insufficient to fix issue automatically.
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Host RAID array got inactive (instance {{ $labels.instance }})
+        expr: node_md_state{state="inactive"} > 0
+        for: 0m
+        labels:
+          severity: critical
+          team: sre-team
+      - alert: HostRaidDiskFailure
+        annotations:
+          description: |-
+            At least one device in RAID array on {{ $labels.instance }} failed. Array {{ $labels.md_device }} needs attention and possibly a disk swap
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Host RAID disk failure (instance {{ $labels.instance }})
+        expr: node_md_disks{state="failed"} > 0
+        for: 2m
+        labels:
+          severity: warning
+          team: sre-team
+      - alert: HostKernelVersionDeviations
+        annotations:
+          description: |-
+            Different kernel versions are running
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Host kernel version deviations (instance {{ $labels.instance }})
+        expr: count(sum(label_replace(node_uname_info, "kernel", "$1", "release", "([0-9]+.[0-9]+.[0-9]+).*"))
+          by (kernel)) > 1
+        for: 6h
+        labels:
+          severity: warning
+          team: sre-team
+      - alert: HostOomKillDetected
+        annotations:
+          description: |-
+            OOM kill detected
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Host OOM kill detected (instance {{ $labels.instance }})
+        expr: increase(node_vmstat_oom_kill[1m]) > 0
+        for: 0m
+        labels:
+          severity: warning
+          team: sre-team
+      - alert: HostEdacCorrectableErrorsDetected
+        annotations:
+          description: |-
+            Host {{ $labels.instance }} has had {{ printf "%.0f" $value }} correctable memory errors reported by EDAC in the last 5 minutes.
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Host EDAC Correctable Errors detected (instance {{ $labels.instance
+            }})
+        expr: increase(node_edac_correctable_errors_total[1m]) > 0
+        for: 0m
+        labels:
+          severity: info
+          team: sre-team
+      - alert: HostEdacUncorrectableErrorsDetected
+        annotations:
+          description: |-
+            Host {{ $labels.instance }} has had {{ printf "%.0f" $value }} uncorrectable memory errors reported by EDAC in the last 5 minutes.
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Host EDAC Uncorrectable Errors detected (instance {{ $labels.instance
+            }})
+        expr: node_edac_uncorrectable_errors_total > 0
+        for: 0m
+        labels:
+          severity: warning
+          team: sre-team
+      - alert: HostNetworkReceiveErrors
+        annotations:
+          description: |-
+            Host {{ $labels.instance }} interface {{ $labels.device }} has encountered {{ printf "%.0f" $value }} receive errors in the last two minutes.
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Host Network Receive Errors (instance {{ $labels.instance }})
+        expr: rate(node_network_receive_errs_total[2m]) / rate(node_network_receive_packets_total[2m])
+          > 0.01
+        for: 2m
+        labels:
+          severity: warning
+          team: sre-team
+      - alert: HostNetworkTransmitErrors
+        annotations:
+          description: |-
+            Host {{ $labels.instance }} interface {{ $labels.device }} has encountered {{ printf "%.0f" $value }} transmit errors in the last two minutes.
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Host Network Transmit Errors (instance {{ $labels.instance }})
+        expr: rate(node_network_transmit_errs_total[2m]) / rate(node_network_transmit_packets_total[2m])
+          > 0.01
+        for: 2m
+        labels:
+          severity: warning
+          team: sre-team
+      - alert: HostNetworkInterfaceSaturated
+        annotations:
+          description: |-
+            The network interface "{{ $labels.device }}" on "{{ $labels.instance }}" is getting overloaded.
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Host Network Interface Saturated (instance {{ $labels.instance }})
+        expr: (rate(node_network_receive_bytes_total{device!~"^tap.*|^vnet.*|^veth.*|^tun.*"}[1m])
+          + rate(node_network_transmit_bytes_total{device!~"^tap.*|^vnet.*|^veth.*|^tun.*"}[1m]))
+          / node_network_speed_bytes{device!~"^tap.*|^vnet.*|^veth.*|^tun.*"} > 0.8 <
+          10000
+        for: 1m
+        labels:
+          severity: warning
+          team: sre-team
+      - alert: HostNetworkBondDegraded
+        annotations:
+          description: |-
+            Bond "{{ $labels.device }}" degraded on "{{ $labels.instance }}".
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Host Network Bond Degraded (instance {{ $labels.instance }})
+        expr: (node_bonding_active - node_bonding_slaves) != 0
+        for: 2m
+        labels:
+          severity: warning
+          team: sre-team
+      - alert: HostConntrackLimit
+        annotations:
+          description: |-
+            The number of conntrack is approaching limit
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Host conntrack limit (instance {{ $labels.instance }})
+        expr: node_nf_conntrack_entries / node_nf_conntrack_entries_limit > 0.8
+        for: 5m
+        labels:
+          severity: warning
+          team: sre-team
+      - alert: HostClockSkew
+        annotations:
+          description: |-
+            Clock skew detected. Clock is out of sync. Ensure NTP is configured correctly on this host.
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Host clock skew (instance {{ $labels.instance }})
+        expr: (node_timex_offset_seconds > 0.05 and deriv(node_timex_offset_seconds[5m])
+          >= 0) or (node_timex_offset_seconds < -0.05 and deriv(node_timex_offset_seconds[5m])
+          <= 0)
+        for: 2m
+        labels:
+          severity: warning
+          team: sre-team
+      - alert: HostClockNotSynchronising
+        annotations:
+          description: |-
+            Clock not synchronising. Ensure NTP is configured on this host.
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Host clock not synchronising (instance {{ $labels.instance }})
+        expr: min_over_time(node_timex_sync_status[1m]) == 0 and node_timex_maxerror_seconds
+          >= 16
+        for: 2m
+        labels:
+          severity: warning
+          team: sre-team
+      - alert: HostRequiresReboot
+        annotations:
+          description: |-
+            {{ $labels.instance }} requires a reboot.
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Host requires reboot (instance {{ $labels.instance }})
+        expr: node_reboot_required > 0
+        for: 4h
+        labels:
+          severity: info
+          team: sre-team
+    - name: KubestateExporter
+      rules:
+      - alert: KubernetesNodeReady
+        annotations:
+          description: |-
+            Node {{ $labels.node }} has been unready for a long time
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Kubernetes Node ready (instance {{ $labels.instance }})
+        expr: kube_node_status_condition{condition="Ready",status="true"} == 0
+        for: 10m
+        labels:
+          severity: critical
+      - alert: KubernetesMemoryPressure
+        annotations:
+          description: |-
+            {{ $labels.node }} has MemoryPressure condition
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Kubernetes memory pressure (instance {{ $labels.instance }})
+        expr: kube_node_status_condition{condition="MemoryPressure",status="true"} ==
+          1
+        for: 2m
+        labels:
+          severity: critical
+      - alert: KubernetesDiskPressure
+        annotations:
+          description: |-
+            {{ $labels.node }} has DiskPressure condition
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Kubernetes disk pressure (instance {{ $labels.instance }})
+        expr: kube_node_status_condition{condition="DiskPressure",status="true"} == 1
+        for: 2m
+        labels:
+          severity: critical
+      - alert: KubernetesNetworkUnavailable
+        annotations:
+          description: |-
+            {{ $labels.node }} has NetworkUnavailable condition
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Kubernetes network unavailable (instance {{ $labels.instance }})
+        expr: kube_node_status_condition{condition="NetworkUnavailable",status="true"}
+          == 1
+        for: 2m
+        labels:
+          severity: critical
+      - alert: KubernetesContainerOomKiller
+        annotations:
+          description: |-
+            Container {{ $labels.container }} in pod {{ $labels.namespace }}/{{ $labels.pod }} has been OOMKilled {{ $value }} times in the last 10 minutes.
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Kubernetes container oom killer (instance {{ $labels.instance }})
+        expr: (kube_pod_container_status_restarts_total - kube_pod_container_status_restarts_total
+          offset 10m >= 1) and ignoring (reason) min_over_time(kube_pod_container_status_last_terminated_reason{reason="OOMKilled"}[10m])
+          == 1
+        for: 0m
+        labels:
+          severity: warning
+      - alert: KubernetesJobFailed
+        annotations:
+          description: |-
+            Job {{ $labels.namespace }}/{{ $labels.exported_job }} failed to complete
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Kubernetes Job failed (instance {{ $labels.instance }})
+        expr: kube_job_status_failed > 0
+        for: 0m
+        labels:
+          severity: warning
+      - alert: KubernetesCronjobSuspended
+        annotations:
+          description: |-
+            CronJob {{ $labels.namespace }}/{{ $labels.cronjob }} is suspended
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Kubernetes CronJob suspended (instance {{ $labels.instance }})
+        expr: kube_cronjob_spec_suspend != 0
+        for: 0m
+        labels:
+          severity: warning
+      - alert: KubernetesPersistentvolumeclaimPending
+        annotations:
+          description: |-
+            PersistentVolumeClaim {{ $labels.namespace }}/{{ $labels.persistentvolumeclaim }} is pending
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Kubernetes PersistentVolumeClaim pending (instance {{ $labels.instance
+            }})
+        expr: kube_persistentvolumeclaim_status_phase{phase="Pending"} == 1
+        for: 2m
+        labels:
+          severity: warning
+      - alert: KubernetesVolumeOutOfDiskSpace
+        annotations:
+          description: |-
+            Volume is almost full (< 10% left)
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Kubernetes Volume out of disk space (instance {{ $labels.instance }})
+        expr: kubelet_volume_stats_available_bytes / kubelet_volume_stats_capacity_bytes
+          * 100 < 10
+        for: 2m
+        labels:
+          severity: warning
+      - alert: KubernetesVolumeFullInFourDays
+        annotations:
+          description: |-
+            {{ $labels.namespace }}/{{ $labels.persistentvolumeclaim }} is expected to fill up within four days. Currently {{ $value | humanize }}% is available.
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Kubernetes Volume full in four days (instance {{ $labels.instance }})
+        expr: predict_linear(kubelet_volume_stats_available_bytes[6h], 4 * 24 * 3600)
+          < 0
+        for: 0m
+        labels:
+          severity: critical
+      - alert: KubernetesPersistentvolumeError
+        annotations:
+          description: |-
+            Persistent volume is in bad state
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Kubernetes PersistentVolume error (instance {{ $labels.instance }})
+        expr: kube_persistentvolume_status_phase{phase=~"Failed|Pending", job="kube-state-metrics"}
+          > 0
+        for: 0m
+        labels:
+          severity: critical
+      - alert: KubernetesStatefulsetDown
+        annotations:
+          description: |-
+            A StatefulSet went down
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Kubernetes StatefulSet down (instance {{ $labels.instance }})
+        expr: kube_statefulset_replicas != kube_statefulset_status_replicas_ready > 0
+        for: 1m
+        labels:
+          severity: critical
+      - alert: KubernetesHpaScalingAbility
+        annotations:
+          description: |-
+            Pod is unable to scale
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Kubernetes HPA scaling ability (instance {{ $labels.instance }})
+        expr: kube_horizontalpodautoscaler_status_condition{status="false", condition="AbleToScale"}
+          == 1
+        for: 2m
+        labels:
+          severity: warning
+      - alert: KubernetesHpaMetricAvailability
+        annotations:
+          description: |-
+            HPA is not able to collect metrics
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Kubernetes HPA metric availability (instance {{ $labels.instance }})
+        expr: kube_horizontalpodautoscaler_status_condition{status="false", condition="ScalingActive"}
+          == 1
+        for: 0m
+        labels:
+          severity: warning
+      - alert: KubernetesHpaScaleCapability
+        annotations:
+          description: |-
+            The maximum number of desired Pods has been hit
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Kubernetes HPA scale capability (instance {{ $labels.instance }})
+        expr: kube_horizontalpodautoscaler_status_desired_replicas >= kube_horizontalpodautoscaler_spec_max_replicas
+        for: 2m
+        labels:
+          severity: info
+      - alert: KubernetesPodNotHealthy
+        annotations:
+          description: |-
+            Pod has been in a non-ready state for longer than 15 minutes.
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Kubernetes Pod not healthy (instance {{ $labels.instance }})
+        expr: sum by (namespace, pod) (kube_pod_status_phase{phase=~"Pending|Unknown|Failed"})
+          > 0
+        for: 15m
+        labels:
+          severity: critical
+      - alert: KubernetesPodCrashLooping
+        annotations:
+          description: |-
+            Pod {{ $labels.pod }} is crash looping
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Kubernetes pod crash looping (instance {{ $labels.instance }})
+        expr: increase(kube_pod_container_status_restarts_total[1m]) > 3
+        for: 2m
+        labels:
+          severity: warning
+      - alert: KubernetesReplicassetMismatch
+        annotations:
+          description: |-
+            Deployment Replicas mismatch
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Kubernetes ReplicasSet mismatch (instance {{ $labels.instance }})
+        expr: kube_replicaset_spec_replicas != kube_replicaset_status_ready_replicas
+        for: 10m
+        labels:
+          severity: warning
+      - alert: KubernetesDeploymentReplicasMismatch
+        annotations:
+          description: |-
+            Deployment Replicas mismatch
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Kubernetes Deployment replicas mismatch (instance {{ $labels.instance
+            }})
+        expr: kube_deployment_spec_replicas != kube_deployment_status_replicas_available
+        for: 10m
+        labels:
+          severity: warning
+      - alert: KubernetesStatefulsetReplicasMismatch
+        annotations:
+          description: |-
+            A StatefulSet does not match the expected number of replicas.
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Kubernetes StatefulSet replicas mismatch (instance {{ $labels.instance
+            }})
+        expr: kube_statefulset_status_replicas_ready != kube_statefulset_status_replicas
+        for: 10m
+        labels:
+          severity: warning
+      - alert: KubernetesDeploymentGenerationMismatch
+        annotations:
+          description: |-
+            A Deployment has failed but has not been rolled back.
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Kubernetes Deployment generation mismatch (instance {{ $labels.instance
+            }})
+        expr: kube_deployment_status_observed_generation != kube_deployment_metadata_generation
+        for: 10m
+        labels:
+          severity: critical
+      - alert: KubernetesStatefulsetGenerationMismatch
+        annotations:
+          description: |-
+            A StatefulSet has failed but has not been rolled back.
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Kubernetes StatefulSet generation mismatch (instance {{ $labels.instance
+            }})
+        expr: kube_statefulset_status_observed_generation != kube_statefulset_metadata_generation
+        for: 10m
+        labels:
+          severity: critical
+      - alert: KubernetesStatefulsetUpdateNotRolledOut
+        annotations:
+          description: |-
+            StatefulSet update has not been rolled out.
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Kubernetes StatefulSet update not rolled out (instance {{ $labels.instance
+            }})
+        expr: max without (revision) (kube_statefulset_status_current_revision unless
+          kube_statefulset_status_update_revision) * (kube_statefulset_replicas != kube_statefulset_status_replicas_updated)
+        for: 10m
+        labels:
+          severity: warning
+      - alert: KubernetesDaemonsetRolloutStuck
+        annotations:
+          description: |-
+            Some Pods of DaemonSet are not scheduled or not ready
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Kubernetes DaemonSet rollout stuck (instance {{ $labels.instance }})
+        expr: kube_daemonset_status_number_ready / kube_daemonset_status_desired_number_scheduled
+          * 100 < 100 or kube_daemonset_status_desired_number_scheduled - kube_daemonset_status_current_number_scheduled
+          > 0
+        for: 10m
+        labels:
+          severity: warning
+      - alert: KubernetesDaemonsetMisscheduled
+        annotations:
+          description: |-
+            Some DaemonSet Pods are running where they are not supposed to run
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Kubernetes DaemonSet misscheduled (instance {{ $labels.instance }})
+        expr: kube_daemonset_status_number_misscheduled > 0
+        for: 1m
+        labels:
+          severity: critical
+      - alert: KubernetesCronjobTooLong
+        annotations:
+          description: |-
+            CronJob {{ $labels.namespace }}/{{ $labels.cronjob }} is taking more than 1h to complete.
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Kubernetes CronJob too long (instance {{ $labels.instance }})
+        expr: time() - kube_cronjob_next_schedule_time > 3600
+        for: 0m
+        labels:
+          severity: warning
+      - alert: KubernetesJobSlowCompletion
+        annotations:
+          description: |-
+            Kubernetes Job {{ $labels.namespace }}/{{ $labels.job_name }} did not complete in time.
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Kubernetes job slow completion (instance {{ $labels.instance }})
+        expr: kube_job_spec_completions - kube_job_status_succeeded > 0
+        for: 12h
+        labels:
+          severity: critical
+      - alert: KubernetesApiServerErrors
+        annotations:
+          description: |-
+            Kubernetes API server is experiencing high error rate
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Kubernetes API server errors (instance {{ $labels.instance }})
+        expr: sum(rate(apiserver_request_total{job="apiserver",code=~"^(?:5..)$"}[1m]))
+          / sum(rate(apiserver_request_total{job="apiserver"}[1m])) * 100 > 3
+        for: 2m
+        labels:
+          severity: critical
+      - alert: KubernetesApiClientErrors
+        annotations:
+          description: |-
+            Kubernetes API client is experiencing high error rate
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Kubernetes API client errors (instance {{ $labels.instance }})
+        expr: (sum(rate(rest_client_requests_total{code=~"(4|5).."}[1m])) by (instance,
+          job) / sum(rate(rest_client_requests_total[1m])) by (instance, job)) * 100 >
+          1
+        for: 2m
+        labels:
+          severity: critical
+      - alert: KubernetesClientCertificateExpiresNextWeek
+        annotations:
+          description: |-
+            A client certificate used to authenticate to the apiserver is expiring next week.
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Kubernetes client certificate expires next week (instance {{ $labels.instance
+            }})
+        expr: apiserver_client_certificate_expiration_seconds_count{job="apiserver"} >
+          0 and histogram_quantile(0.01, sum by (job, le) (rate(apiserver_client_certificate_expiration_seconds_bucket{job="apiserver"}[5m])))
+          < 7*24*60*60
+        for: 0m
+        labels:
+          severity: warning
+      - alert: KubernetesClientCertificateExpiresSoon
+        annotations:
+          description: |-
+            A client certificate used to authenticate to the apiserver is expiring in less than 24.0 hours.
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Kubernetes client certificate expires soon (instance {{ $labels.instance
+            }})
+        expr: apiserver_client_certificate_expiration_seconds_count{job="apiserver"} >
+          0 and histogram_quantile(0.01, sum by (job, le) (rate(apiserver_client_certificate_expiration_seconds_bucket{job="apiserver"}[5m])))
+          < 24*60*60
+        for: 0m
+        labels:
+          severity: critical
+      - alert: KubernetesApiServerLatency
+        annotations:
+          description: |-
+            Kubernetes API server has a 99th percentile latency of {{ $value }} seconds for {{ $labels.verb }} {{ $labels.resource }}.
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Kubernetes API server latency (instance {{ $labels.instance }})
+        expr: histogram_quantile(0.99, sum(rate(apiserver_request_latencies_bucket{subresource!="log",verb!~"^(?:CONNECT|WATCHLIST|WATCH|PROXY)$"}
+          [10m])) WITHOUT (instance, resource)) / 1e+06 > 1
+        for: 2m
+        labels:
+          severity: warning
+    - name: Istio
+      rules:
+      - alert: IstioKubernetesGatewayAvailabilityDrop
+        annotations:
+          description: |-
+            Gateway pods have dropped. Inbound traffic will likely be affected.
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Istio Kubernetes gateway availability drop (instance {{ $labels.instance
+            }})
+        expr: min(kube_deployment_status_replicas_available{deployment="istio-ingressgateway",
+          namespace="istio-system"}) without (instance, pod) < 2
+        for: 1m
+        labels:
+          severity: warning
+      - alert: IstioPilotHighTotalRequestRate
+        annotations:
+          description: |-
+            Number of Istio Pilot push errors is too high (> 5%). Envoy sidecars might have outdated configuration.
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Istio Pilot high total request rate (instance {{ $labels.instance }})
+        expr: sum(rate(pilot_xds_push_errors[1m])) / sum(rate(pilot_xds_pushes[1m])) *
+          100 > 5
+        for: 1m
+        labels:
+          severity: warning
+      - alert: IstioMixerPrometheusDispatchesLow
+        annotations:
+          description: |-
+            Number of Mixer dispatches to Prometheus is too low. Istio metrics might not be being exported properly.
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Istio Mixer Prometheus dispatches low (instance {{ $labels.instance
+            }})
+        expr: sum(rate(mixer_runtime_dispatches_total{adapter=~"prometheus"}[1m])) < 180
+        for: 1m
+        labels:
+          severity: warning
+      - alert: IstioHighTotalRequestRate
+        annotations:
+          description: |-
+            Global request rate in the service mesh is unusually high.
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Istio high total request rate (instance {{ $labels.instance }})
+        expr: sum(rate(istio_requests_total{reporter="destination"}[5m])) > 1000
+        for: 2m
+        labels:
+          severity: warning
+      - alert: IstioLowTotalRequestRate
+        annotations:
+          description: |-
+            Global request rate in the service mesh is unusually low.
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Istio low total request rate (instance {{ $labels.instance }})
+        expr: sum(rate(istio_requests_total{reporter="destination"}[5m])) < 100
+        for: 2m
+        labels:
+          severity: warning
+      - alert: IstioHigh4xxErrorRate
+        annotations:
+          description: |-
+            High percentage of HTTP 5xx responses in Istio (> 5%).
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Istio high 4xx error rate (instance {{ $labels.instance }})
+        expr: sum(rate(istio_requests_total{reporter="destination", response_code=~"4.*"}[5m]))
+          / sum(rate(istio_requests_total{reporter="destination"}[5m])) * 100 > 5
+        for: 1m
+        labels:
+          severity: warning
+      - alert: IstioHigh5xxErrorRate
+        annotations:
+          description: |-
+            High percentage of HTTP 5xx responses in Istio (> 5%).
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Istio high 5xx error rate (instance {{ $labels.instance }})
+        expr: sum(rate(istio_requests_total{reporter="destination", response_code=~"5.*"}[5m]))
+          / sum(rate(istio_requests_total{reporter="destination"}[5m])) * 100 > 5
+        for: 1m
+        labels:
+          severity: warning
+      - alert: IstioHighRequestLatency
+        annotations:
+          description: |-
+            Istio average requests execution is longer than 100ms.
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Istio high request latency (instance {{ $labels.instance }})
+        expr: rate(istio_request_duration_milliseconds_sum{reporter="destination"}[1m])
+          / rate(istio_request_duration_milliseconds_count{reporter="destination"}[1m])
+          > 100
+        for: 1m
+        labels:
+          severity: warning
+      - alert: IstioLatency99Percentile
+        annotations:
+          description: |-
+            Istio 1% slowest requests are longer than 1s.
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Istio latency 99 percentile (instance {{ $labels.instance }})
+        expr: histogram_quantile(0.99, sum(rate(istio_request_duration_milliseconds_bucket[1m]))
+          by (destination_canonical_service, destination_workload_namespace, source_canonical_service,
+          source_workload_namespace, le)) > 1
+        for: 1m
+        labels:
+          severity: warning
+      - alert: IstioPilotDuplicateEntry
+        annotations:
+          description: |-
+            Istio pilot duplicate entry error.
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Istio Pilot Duplicate Entry (instance {{ $labels.instance }})
+        expr: sum(rate(pilot_duplicate_envoy_clusters{}[5m])) > 0
+        for: 0m
+        labels:
+          severity: critical
+    - name: ArgoCD
+      rules:
+      - alert: ArgocdServiceNotSynced
+        annotations:
+          description: |-
+            Service {{ $labels.name }} run by argo is currently not in sync.
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: ArgoCD service not synced (instance {{ $labels.instance }})
+        expr: argocd_app_info{sync_status!="Synced"} != 0
+        for: 15m
+        labels:
+          severity: warning
+    - name: Loki
+      rules:
+      - alert: LokiProcessTooManyRestarts
+        annotations:
+          description: |-
+            A loki process had too many restarts (target {{ $labels.instance }})
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Loki process too many restarts (instance {{ $labels.instance }})
+        expr: changes(process_start_time_seconds{job=~"loki"}[15m]) > 2
+        for: 0m
+        labels:
+          severity: warning
+      - alert: LokiRequestErrors
+        annotations:
+          description: |-
+            The {{ $labels.job }} and {{ $labels.route }} are experiencing errors
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Loki request errors (instance {{ $labels.instance }})
+        expr: 100 * sum(rate(loki_request_duration_seconds_count{status_code=~"5.."}[1m]))
+          by (namespace, job, route) / sum(rate(loki_request_duration_seconds_count[1m]))
+          by (namespace, job, route) > 10
+        for: 15m
+        labels:
+          severity: critical
+      - alert: LokiRequestPanic
+        annotations:
+          description: |-
+            The {{ $labels.job }} is experiencing {{ printf "%.2f" $value }}% increase of panics
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Loki request panic (instance {{ $labels.instance }})
+        expr: sum(increase(loki_panic_total[10m])) by (namespace, job) > 0
+        for: 5m
+        labels:
+          severity: critical
+      - alert: LokiRequestLatency
+        annotations:
+          description: |-
+            The {{ $labels.job }} {{ $labels.route }} is experiencing {{ printf "%.2f" $value }}s 99th percentile latency
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Loki request latency (instance {{ $labels.instance }})
+        expr: (histogram_quantile(0.99, sum(rate(loki_request_duration_seconds_bucket{route!~"(?i).*tail.*"}[5m]))
+          by (le)))  > 1
+        for: 5m
+        labels:
+          severity: critical
+    - name: CoreDNS
+      rules:
+      - alert: CorednsPanicCount
+        annotations:
+          description: |-
+            Number of CoreDNS panics encountered
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: CoreDNS Panic Count (instance {{ $labels.instance }})
+        expr: increase(coredns_panics_total[1m]) > 0
+        for: 0m
+        labels:
+          severity: critical
+    - name: Promtail
+      rules:
+      - alert: PromtailRequestErrors
+        annotations:
+          description: |-
+            The {{ $labels.job }} {{ $labels.route }} is experiencing {{ printf "%.2f" $value }}% errors.
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Promtail request errors (instance {{ $labels.instance }})
+        expr: 100 * sum(rate(promtail_request_duration_seconds_count{status_code=~"5..|failed"}[1m]))
+          by (namespace, job, route, instance) / sum(rate(promtail_request_duration_seconds_count[1m]))
+          by (namespace, job, route, instance) > 10
+        for: 5m
+        labels:
+          severity: critical
+      - alert: PromtailRequestLatency
+        annotations:
+          description: |-
+            The {{ $labels.job }} {{ $labels.route }} is experiencing {{ printf "%.2f" $value }}s 99th percentile latency.
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          summary: Promtail request latency (instance {{ $labels.instance }})
+        expr: histogram_quantile(0.99, sum(rate(promtail_request_duration_seconds_bucket[5m]))
+          by (le)) > 1
+        for: 5m
+        labels:
+          severity: critical
+  alerts: |
+    {}
+  allow-snippet-annotations: "false"
+  prometheus.yml: |
+    global:
+      evaluation_interval: 1m
+      scrape_interval: 1m
+      scrape_timeout: 10s
+    rule_files:
+    - /etc/config/recording_rules.yml
+    - /etc/config/alerting_rules.yml
+    - /etc/config/rules
+    - /etc/config/alerts
+    scrape_configs:
+    - follow_redirects: true
+      honor_timestamps: true
+      job_name: serviceMonitor/argocd/argocd-metrics/0
+      kubernetes_sd_configs:
+      - follow_redirects: true
+        kubeconfig_file: ""
+        namespaces:
+          names:
+          - argocd
+        role: endpoints
+      metrics_path: /metrics
+      relabel_configs:
+      - action: replace
+        regex: (.*)
+        replacement: $1
+        separator: ;
+        source_labels:
+        - job
+        target_label: __tmp_prometheus_job_name
+      - action: keep
+        regex: argocd-metrics
+        replacement: $1
+        separator: ;
+        source_labels:
+        - __meta_kubernetes_service_label_app_kubernetes_io_name
+      - action: keep
+        regex: metrics
+        replacement: $1
+        separator: ;
+        source_labels:
+        - __meta_kubernetes_endpoint_port_name
+      - action: replace
+        regex: Node;(.*)
+        replacement: ${1}
+        separator: ;
+        source_labels:
+        - __meta_kubernetes_endpoint_address_target_kind
+        - __meta_kubernetes_endpoint_address_target_name
+        target_label: node
+      - action: replace
+        regex: Pod;(.*)
+        replacement: ${1}
+        separator: ;
+        source_labels:
+        - __meta_kubernetes_endpoint_address_target_kind
+        - __meta_kubernetes_endpoint_address_target_name
+        target_label: pod
+      - action: replace
+        regex: (.*)
+        replacement: $1
+        separator: ;
+        source_labels:
+        - __meta_kubernetes_namespace
+        target_label: namespace
+      - action: replace
+        regex: (.*)
+        replacement: $1
+        separator: ;
+        source_labels:
+        - __meta_kubernetes_service_name
+        target_label: service
+      - action: replace
+        regex: (.*)
+        replacement: $1
+        separator: ;
+        source_labels:
+        - __meta_kubernetes_pod_name
+        target_label: pod
+      - action: replace
+        regex: (.*)
+        replacement: $1
+        separator: ;
+        source_labels:
+        - __meta_kubernetes_pod_container_name
+        target_label: container
+      - action: replace
+        regex: (.*)
+        replacement: ${1}
+        separator: ;
+        source_labels:
+        - __meta_kubernetes_service_name
+        target_label: job
+      - action: replace
+        regex: (.*)
+        replacement: metrics
+        separator: ;
+        target_label: endpoint
+      - action: hashmod
+        modulus: 1
+        regex: (.*)
+        replacement: $1
+        separator: ;
+        source_labels:
+        - __address__
+        target_label: __tmp_hash
+      - action: keep
+        regex: "0"
+        replacement: $1
+        separator: ;
+        source_labels:
+        - __tmp_hash
+      scheme: http
+      scrape_interval: 30s
+      scrape_timeout: 10s
+    - follow_redirects: true
+      honor_timestamps: true
+      job_name: serviceMonitor/argocd/argocd-repo-server-metrics/0
+      kubernetes_sd_configs:
+      - follow_redirects: true
+        kubeconfig_file: ""
+        namespaces:
+          names:
+          - argocd
+        role: endpoints
+      metrics_path: /metrics
+      relabel_configs:
+      - action: replace
+        regex: (.*)
+        replacement: $1
+        separator: ;
+        source_labels:
+        - job
+        target_label: __tmp_prometheus_job_name
+      - action: keep
+        regex: argocd-repo-server
+        replacement: $1
+        separator: ;
+        source_labels:
+        - __meta_kubernetes_service_label_app_kubernetes_io_name
+      - action: keep
+        regex: metrics
+        replacement: $1
+        separator: ;
+        source_labels:
+        - __meta_kubernetes_endpoint_port_name
+      - action: replace
+        regex: Node;(.*)
+        replacement: ${1}
+        separator: ;
+        source_labels:
+        - __meta_kubernetes_endpoint_address_target_kind
+        - __meta_kubernetes_endpoint_address_target_name
+        target_label: node
+      - action: replace
+        regex: Pod;(.*)
+        replacement: ${1}
+        separator: ;
+        source_labels:
+        - __meta_kubernetes_endpoint_address_target_kind
+        - __meta_kubernetes_endpoint_address_target_name
+        target_label: pod
+      - action: replace
+        regex: (.*)
+        replacement: $1
+        separator: ;
+        source_labels:
+        - __meta_kubernetes_namespace
+        target_label: namespace
+      - action: replace
+        regex: (.*)
+        replacement: $1
+        separator: ;
+        source_labels:
+        - __meta_kubernetes_service_name
+        target_label: service
+      - action: replace
+        regex: (.*)
+        replacement: $1
+        separator: ;
+        source_labels:
+        - __meta_kubernetes_pod_name
+        target_label: pod
+      - action: replace
+        regex: (.*)
+        replacement: $1
+        separator: ;
+        source_labels:
+        - __meta_kubernetes_pod_container_name
+        target_label: container
+      - action: replace
+        regex: (.*)
+        replacement: ${1}
+        separator: ;
+        source_labels:
+        - __meta_kubernetes_service_name
+        target_label: job
+      - action: replace
+        regex: (.*)
+        replacement: metrics
+        separator: ;
+        target_label: endpoint
+      - action: hashmod
+        modulus: 1
+        regex: (.*)
+        replacement: $1
+        separator: ;
+        source_labels:
+        - __address__
+        target_label: __tmp_hash
+      - action: keep
+        regex: "0"
+        replacement: $1
+        separator: ;
+        source_labels:
+        - __tmp_hash
+      scheme: http
+      scrape_interval: 30s
+      scrape_timeout: 10s
+    - follow_redirects: true
+      honor_timestamps: true
+      job_name: serviceMonitor/argocd/argocd-server-metrics/0
+      kubernetes_sd_configs:
+      - follow_redirects: true
+        kubeconfig_file: ""
+        namespaces:
+          names:
+          - argocd
+        role: endpoints
+      metrics_path: /metrics
+      relabel_configs:
+      - action: replace
+        regex: (.*)
+        replacement: $1
+        separator: ;
+        source_labels:
+        - job
+        target_label: __tmp_prometheus_job_name
+      - action: keep
+        regex: argocd-server-metrics
+        replacement: $1
+        separator: ;
+        source_labels:
+        - __meta_kubernetes_service_label_app_kubernetes_io_name
+      - action: keep
+        regex: metrics
+        replacement: $1
+        separator: ;
+        source_labels:
+        - __meta_kubernetes_endpoint_port_name
+      - action: replace
+        regex: Node;(.*)
+        replacement: ${1}
+        separator: ;
+        source_labels:
+        - __meta_kubernetes_endpoint_address_target_kind
+        - __meta_kubernetes_endpoint_address_target_name
+        target_label: node
+      - action: replace
+        regex: Pod;(.*)
+        replacement: ${1}
+        separator: ;
+        source_labels:
+        - __meta_kubernetes_endpoint_address_target_kind
+        - __meta_kubernetes_endpoint_address_target_name
+        target_label: pod
+      - action: replace
+        regex: (.*)
+        replacement: $1
+        separator: ;
+        source_labels:
+        - __meta_kubernetes_namespace
+        target_label: namespace
+      - action: replace
+        regex: (.*)
+        replacement: $1
+        separator: ;
+        source_labels:
+        - __meta_kubernetes_service_name
+        target_label: service
+      - action: replace
+        regex: (.*)
+        replacement: $1
+        separator: ;
+        source_labels:
+        - __meta_kubernetes_pod_name
+        target_label: pod
+      - action: replace
+        regex: (.*)
+        replacement: $1
+        separator: ;
+        source_labels:
+        - __meta_kubernetes_pod_container_name
+        target_label: container
+      - action: replace
+        regex: (.*)
+        replacement: ${1}
+        separator: ;
+        source_labels:
+        - __meta_kubernetes_service_name
+        target_label: job
+      - action: replace
+        regex: (.*)
+        replacement: metrics
+        separator: ;
+        target_label: endpoint
+      - action: hashmod
+        modulus: 1
+        regex: (.*)
+        replacement: $1
+        separator: ;
+        source_labels:
+        - __address__
+        target_label: __tmp_hash
+      - action: keep
+        regex: "0"
+        replacement: $1
+        separator: ;
+        source_labels:
+        - __tmp_hash
+      scheme: http
+      scrape_interval: 30s
+      scrape_timeout: 10s
+    - job_name: prometheus
+      scrape_interval: 5s
+      static_configs:
+      - targets:
+        - prometheus-server:80
+    - honor_labels: true
+      job_name: alertmanager
+      scrape_interval: 10s
+      static_configs:
+      - targets:
+        - prometheus-alertmanager:9093
+    - honor_labels: true
+      job_name: grafana
+      scrape_interval: 10s
+      static_configs:
+      - targets:
+        - grafana:80
+    - job_name: node-exporter
+      kubernetes_sd_configs:
+      - role: endpoints
+      relabel_configs:
+      - action: keep
+        regex: node-exporter
+        source_labels:
+        - __meta_kubernetes_endpoints_name
+    - bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
+      job_name: kubernetes-apiservers
+      kubernetes_sd_configs:
+      - role: endpoints
+      relabel_configs:
+      - action: keep
+        regex: default;kubernetes;https
+        source_labels:
+        - __meta_kubernetes_namespace
+        - __meta_kubernetes_service_name
+        - __meta_kubernetes_endpoint_port_name
+      scheme: https
+      tls_config:
+        ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+    - bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
+      job_name: kubernetes-nodes
+      kubernetes_sd_configs:
+      - role: node
+      relabel_configs:
+      - action: labelmap
+        regex: __meta_kubernetes_node_label_(.+)
+      - replacement: kubernetes.default:443
+        target_label: __address__
+      - regex: (.+)
+        replacement: /api/v1/nodes/${1}/proxy/metrics
+        source_labels:
+        - __meta_kubernetes_node_name
+        target_label: __metrics_path__
+      scheme: https
+      tls_config:
+        ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+    - job_name: kubernetes-pods
+      kubernetes_sd_configs:
+      - role: pod
+      relabel_configs:
+      - action: keep
+        regex: true
+        source_labels:
+        - __meta_kubernetes_pod_annotation_prometheus_io_scrape
+      - action: replace
+        regex: (.+)
+        source_labels:
+        - __meta_kubernetes_pod_annotation_prometheus_io_path
+        target_label: __metrics_path__
+      - action: replace
+        regex: ([^:]+)(?::\d+)?;(\d+)
+        replacement: $1:$2
+        source_labels:
+        - __address__
+        - __meta_kubernetes_pod_annotation_prometheus_io_port
+        target_label: __address__
+      - action: labelmap
+        regex: __meta_kubernetes_pod_label_(.+)
+      - action: replace
+        source_labels:
+        - __meta_kubernetes_namespace
+        target_label: kubernetes_namespace
+      - action: replace
+        source_labels:
+        - __meta_kubernetes_pod_name
+        target_label: kubernetes_pod_name
+    - honor_timestamps: true
+      job_name: kube-state-metrics
+      metrics_path: /metrics
+      scheme: http
+      scrape_interval: 1m
+      scrape_timeout: 1m
+      static_configs:
+      - targets:
+        - kube-state-metrics.kube-system:8080
+    - bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
+      job_name: kubernetes-cadvisor
+      kubernetes_sd_configs:
+      - role: node
+      relabel_configs:
+      - action: labelmap
+        regex: __meta_kubernetes_node_label_(.+)
+      - replacement: kubernetes.default:443
+        target_label: __address__
+      - regex: (.+)
+        replacement: /api/v1/nodes/${1}/proxy/metrics/cadvisor
+        source_labels:
+        - __meta_kubernetes_node_name
+        target_label: __metrics_path__
+      scheme: https
+      tls_config:
+        ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+    - job_name: kubernetes-service-endpoints
+      kubernetes_sd_configs:
+      - role: endpoints
+      relabel_configs:
+      - action: keep
+        regex: true
+        source_labels:
+        - __meta_kubernetes_service_annotation_prometheus_io_scrape
+      - action: replace
+        regex: (https?)
+        source_labels:
+        - __meta_kubernetes_service_annotation_prometheus_io_scheme
+        target_label: __scheme__
+      - action: replace
+        regex: (.+)
+        source_labels:
+        - __meta_kubernetes_service_annotation_prometheus_io_path
+        target_label: __metrics_path__
+      - action: replace
+        regex: ([^:]+)(?::\d+)?;(\d+)
+        replacement: $1:$2
+        source_labels:
+        - __address__
+        - __meta_kubernetes_service_annotation_prometheus_io_port
+        target_label: __address__
+      - action: labelmap
+        regex: __meta_kubernetes_service_label_(.+)
+      - action: replace
+        source_labels:
+        - __meta_kubernetes_namespace
+        target_label: kubernetes_namespace
+      - action: replace
+        source_labels:
+        - __meta_kubernetes_service_name
+        target_label: kubernetes_namespace
+    - job_name: istiod
+      kubernetes_sd_configs:
+      - namespaces:
+          names:
+          - istio-system
+        role: endpoints
+      relabel_configs:
+      - action: keep
+        regex: istiod;http-monitoring
+        source_labels:
+        - __meta_kubernetes_service_name
+        - __meta_kubernetes_endpoint_port_name
+    - job_name: envoy-stats
+      kubernetes_sd_configs:
+      - role: pod
+      metrics_path: /stats/prometheus
+      relabel_configs:
+      - action: keep
+        regex: .*-envoy-prom
+        source_labels:
+        - __meta_kubernetes_pod_container_port_name
+    - job_name: node
+      static_configs:
+      - targets:
+        - prometheus-prometheus-node-exporter:9100
+    alerting:
+      alertmanagers:
+        - scheme: http
+          static_configs:
+          - targets:
+            - prometheus-alertmanager.monitoring:9093
+  recording_rules.yml: |
+    {}
+  rules: |
+    {}
+kind: ConfigMap
+metadata:
+  labels:
+    app: prometheus
+    chart: prometheus-19.3.3
+    component: server
+    heritage: Helm
+    release: prometheus
+  name: prometheus-server
+  namespace: monitoring
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app.kubernetes.io/instance: prometheus
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: alertmanager
+    app.kubernetes.io/version: v0.25.0
+    helm.sh/chart: alertmanager-0.24.1
+  name: prometheus-alertmanager
+  namespace: monitoring
+spec:
+  ports:
+  - name: http
+    port: 9093
+    protocol: TCP
+    targetPort: http
+  selector:
+    app.kubernetes.io/instance: prometheus
+    app.kubernetes.io/name: alertmanager
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app.kubernetes.io/instance: prometheus
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: alertmanager
+    app.kubernetes.io/version: v0.25.0
+    helm.sh/chart: alertmanager-0.24.1
+  name: prometheus-alertmanager-headless
+  namespace: monitoring
+spec:
+  clusterIP: None
+  ports:
+  - name: http
+    port: 9093
+    protocol: TCP
+    targetPort: http
+  selector:
+    app.kubernetes.io/instance: prometheus
+    app.kubernetes.io/name: alertmanager
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    prometheus.io/scrape: "true"
+  labels:
+    app.kubernetes.io/component: metrics
+    app.kubernetes.io/instance: prometheus
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: prometheus-node-exporter
+    app.kubernetes.io/part-of: prometheus-node-exporter
+    app.kubernetes.io/version: 1.5.0
+    helm.sh/chart: prometheus-node-exporter-4.8.1
+  name: prometheus-prometheus-node-exporter
+  namespace: monitoring
+spec:
+  ports:
+  - name: metrics
+    port: 9100
+    protocol: TCP
+    targetPort: 9100
+  selector:
+    app.kubernetes.io/instance: prometheus
+    app.kubernetes.io/name: prometheus-node-exporter
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    prometheus.io/probe: pushgateway
+  labels:
+    app.kubernetes.io/instance: prometheus
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: prometheus-pushgateway
+    app.kubernetes.io/version: v1.5.1
+    helm.sh/chart: prometheus-pushgateway-2.0.3
+  name: prometheus-prometheus-pushgateway
+  namespace: monitoring
+spec:
+  ports:
+  - name: http
+    port: 9091
+    protocol: TCP
+    targetPort: 9091
+  selector:
+    app.kubernetes.io/instance: prometheus
+    app.kubernetes.io/name: prometheus-pushgateway
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: prometheus
+    chart: prometheus-19.3.3
+    component: server
+    heritage: Helm
+    release: prometheus
+  name: prometheus-server
+  namespace: monitoring
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 9090
+  selector:
+    app: prometheus
+    component: server
+    release: prometheus
+  sessionAffinity: None
+  type: ClusterIP
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  labels:
+    app: prometheus
+    chart: prometheus-19.3.3
+    component: server
+    heritage: Helm
+    release: prometheus
+  name: prometheus-server
+  namespace: monitoring
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 30Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/instance: prometheus
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: prometheus-pushgateway
+    app.kubernetes.io/version: v1.5.1
+    helm.sh/chart: prometheus-pushgateway-2.0.3
+  name: prometheus-prometheus-pushgateway
+  namespace: monitoring
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: prometheus
+      app.kubernetes.io/name: prometheus-pushgateway
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/instance: prometheus
+        app.kubernetes.io/managed-by: Helm
+        app.kubernetes.io/name: prometheus-pushgateway
+        app.kubernetes.io/version: v1.5.1
+        helm.sh/chart: prometheus-pushgateway-2.0.3
+    spec:
+      containers:
+      - image: prom/pushgateway:v1.5.1
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          httpGet:
+            path: /-/ready
+            port: 9091
+          initialDelaySeconds: 10
+          timeoutSeconds: 10
+        name: pushgateway
+        ports:
+        - containerPort: 9091
+          name: metrics
+          protocol: TCP
+        readinessProbe:
+          httpGet:
+            path: /-/ready
+            port: 9091
+          initialDelaySeconds: 10
+          timeoutSeconds: 10
+        volumeMounts:
+        - mountPath: /data
+          name: storage-volume
+          subPath: ""
+      securityContext:
+        fsGroup: 65534
+        runAsNonRoot: true
+        runAsUser: 65534
+      serviceAccountName: prometheus-prometheus-pushgateway
+      volumes:
+      - emptyDir: {}
+        name: storage-volume
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: prometheus
+    chart: prometheus-19.3.3
+    component: server
+    heritage: Helm
+    release: prometheus
+  name: prometheus-server
+  namespace: monitoring
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: prometheus
+      component: server
+      release: prometheus
+  strategy:
+    rollingUpdate: null
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: prometheus
+        chart: prometheus-19.3.3
+        component: server
+        heritage: Helm
+        release: prometheus
+    spec:
+      containers:
+      - args:
+        - --volume-dir=/etc/config
+        - --webhook-url=http://127.0.0.1:9090/-/reload
+        image: jimmidyson/configmap-reload:v0.8.0
+        imagePullPolicy: IfNotPresent
+        name: prometheus-server-configmap-reload
+        resources: {}
+        volumeMounts:
+        - mountPath: /etc/config
+          name: config-volume
+          readOnly: true
+      - args:
+        - --storage.tsdb.retention.time=7d
+        - --config.file=/etc/config/prometheus.yml
+        - --storage.tsdb.path=/data
+        - --web.console.libraries=/etc/prometheus/console_libraries
+        - --web.console.templates=/etc/prometheus/consoles
+        - --web.enable-lifecycle
+        image: quay.io/prometheus/prometheus:v2.41.0
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /-/healthy
+            port: 9090
+            scheme: HTTP
+          initialDelaySeconds: 30
+          periodSeconds: 15
+          successThreshold: 1
+          timeoutSeconds: 10
+        name: prometheus-server
+        ports:
+        - containerPort: 9090
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /-/ready
+            port: 9090
+            scheme: HTTP
+          initialDelaySeconds: 30
+          periodSeconds: 5
+          successThreshold: 1
+          timeoutSeconds: 4
+        resources:
+          limits:
+            cpu: 1
+            memory: 5120Mi
+          requests:
+            cpu: 500m
+            memory: 3072Mi
+        volumeMounts:
+        - mountPath: /etc/config
+          name: config-volume
+        - mountPath: /data
+          name: storage-volume
+          subPath: ""
+      dnsPolicy: ClusterFirst
+      enableServiceLinks: true
+      securityContext:
+        fsGroup: 65534
+        runAsGroup: 65534
+        runAsNonRoot: true
+        runAsUser: 65534
+      serviceAccountName: prometheus-server
+      terminationGracePeriodSeconds: 300
+      volumes:
+      - configMap:
+          name: prometheus-server
+        name: config-volume
+      - name: storage-volume
+        persistentVolumeClaim:
+          claimName: prometheus-server
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  labels:
+    app.kubernetes.io/instance: prometheus
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: alertmanager
+    app.kubernetes.io/version: v0.25.0
+    helm.sh/chart: alertmanager-0.24.1
+  name: prometheus-alertmanager
+  namespace: monitoring
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: prometheus
+      app.kubernetes.io/name: alertmanager
+  serviceName: prometheus-alertmanager-headless
+  template:
+    metadata:
+      annotations:
+        checksum/config: be9ea792b8a3fa2617205f16174ee6dd82bb6f93465a6eb43e3900dbde1a151b
+      labels:
+        app.kubernetes.io/instance: prometheus
+        app.kubernetes.io/name: alertmanager
+    spec:
+      containers:
+      - args:
+        - --storage.path=/alertmanager
+        - --config.file=/etc/alertmanager/alertmanager.yml
+        env:
+        - name: POD_IP
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: status.podIP
+        image: quay.io/prometheus/alertmanager:v0.25.0
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          httpGet:
+            path: /
+            port: http
+        name: alertmanager
+        ports:
+        - containerPort: 9093
+          name: http
+          protocol: TCP
+        readinessProbe:
+          httpGet:
+            path: /
+            port: http
+        resources: {}
+        securityContext:
+          runAsGroup: 65534
+          runAsNonRoot: true
+          runAsUser: 65534
+        volumeMounts:
+        - mountPath: /etc/alertmanager
+          name: config
+        - mountPath: /etc/secrets/
+          name: slack-api-url
+          readOnly: true
+          subPath: null
+        - mountPath: /alertmanager
+          name: storage
+      securityContext:
+        fsGroup: 65534
+        runAsGroup: 65534
+        runAsNonRoot: true
+        runAsUser: 65534
+      serviceAccountName: prometheus-alertmanager
+      volumes:
+      - configMap:
+          name: prometheus-alertmanager
+        name: config
+      - name: slack-api-url
+        secret:
+          secretName: alertmanager-secret
+  volumeClaimTemplates:
+  - metadata:
+      name: storage
+    spec:
+      accessModes:
+      - ReadWriteOnce
+      resources:
+        requests:
+          storage: 2Gi
+---
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  labels:
+    app.kubernetes.io/component: metrics
+    app.kubernetes.io/instance: prometheus
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: prometheus-node-exporter
+    app.kubernetes.io/part-of: prometheus-node-exporter
+    app.kubernetes.io/version: 1.5.0
+    helm.sh/chart: prometheus-node-exporter-4.8.1
+  name: prometheus-prometheus-node-exporter
+  namespace: monitoring
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: prometheus
+      app.kubernetes.io/name: prometheus-node-exporter
+  template:
+    metadata:
+      annotations:
+        cluster-autoscaler.kubernetes.io/safe-to-evict: "true"
+      labels:
+        app.kubernetes.io/component: metrics
+        app.kubernetes.io/instance: prometheus
+        app.kubernetes.io/managed-by: Helm
+        app.kubernetes.io/name: prometheus-node-exporter
+        app.kubernetes.io/part-of: prometheus-node-exporter
+        app.kubernetes.io/version: 1.5.0
+        helm.sh/chart: prometheus-node-exporter-4.8.1
+    spec:
+      automountServiceAccountToken: false
+      containers:
+      - args:
+        - --path.procfs=/host/proc
+        - --path.sysfs=/host/sys
+        - --path.rootfs=/host/root
+        - --web.listen-address=[$(HOST_IP)]:9100
+        env:
+        - name: HOST_IP
+          value: 0.0.0.0
+        image: quay.io/prometheus/node-exporter:v1.5.0
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            httpHeaders: null
+            path: /
+            port: 9100
+            scheme: HTTP
+          initialDelaySeconds: 0
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 1
+        name: node-exporter
+        ports:
+        - containerPort: 9100
+          name: metrics
+          protocol: TCP
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            httpHeaders: null
+            path: /
+            port: 9100
+            scheme: HTTP
+          initialDelaySeconds: 0
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 1
+        securityContext:
+          allowPrivilegeEscalation: false
+        volumeMounts:
+        - mountPath: /host/proc
+          name: proc
+          readOnly: true
+        - mountPath: /host/sys
+          name: sys
+          readOnly: true
+        - mountPath: /host/root
+          mountPropagation: HostToContainer
+          name: root
+          readOnly: true
+      hostNetwork: true
+      hostPID: true
+      securityContext:
+        fsGroup: 65534
+        runAsGroup: 65534
+        runAsNonRoot: true
+        runAsUser: 65534
+      serviceAccountName: prometheus-prometheus-node-exporter
+      tolerations:
+      - effect: NoSchedule
+        operator: Exists
+      volumes:
+      - hostPath:
+          path: /proc
+        name: proc
+      - hostPath:
+          path: /sys
+        name: sys
+      - hostPath:
+          path: /
+        name: root
+  updateStrategy:
+    rollingUpdate:
+      maxUnavailable: 1
+    type: RollingUpdate
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: alertmanager-secret
+  namespace: monitoring
+spec:
+  encryptedData:
+    SLACK-TOKEN: AgDE+2o+Rap4IfhOgCxuY1lvuDJVqYi6c7q/NEGn834KOBnAA6JebAJ3JRPpcA64f16+kDM61Q4nQLd8OH+HS5k3DFF75Is5e3ZNLIoZUu/d1VnMnf21eeu4YlTRK4Anjbq1TPXwcNN6oIGCIAgvXJtaxxPlnm3Xt6J4iHIUhm0raeL0FVEwvMNJQA0VL5hAAwa413orQEwwH+NqXOfQVmyXv8nm5EznTJe5tAvohwFr4wQKxseCL4qTTHEZXRQQEDlyuTLXHQGbBifwfP8x0ZPuf6fQbluok8ijMtqxeuSFnjqajDl+/6ywd4de2VURm/8ZSlQgnD7zexOpTVigJ1DHkLK5qj+oT76ND2zW2fcI+fsCxZOZGOJ1aGGAIcVV/k2Lg2XZtW20/qYw+20yLLvKyPJQcJ5BKx2YZhYT6yosGwJm904Fa/8hKrgCsjWumziSuSbcUgKxN2XwGXwhOAy1x4D3ThsRingiB5+I6Ge4U5u7A+pct6hiFo3nRLNvNGwKA7mE0dvNa54Vsp/uHMXDuojZXZ+AWialXbSE2sXKo6E4pK7KGGUWPTy2CoOkpFWtgr0n5Nd/EcdbtoB8g9VzeHuxZSRhS2RzdcBJEIaGgxqhmJ1ezWODJbhQBAIZ7n5ENnmuVwcXvNk/gH2Yy1H08ssDE6W+m5frjmwi35Kc1SZ5pUf1US1xBd5ZIt65kjT/C2yKolR4dXtcRlXtDCtTWocmqhqnPr8GqT8BajdW8b+1cduvvliFAbQOx6lme9lETSD8YYefrwbJ/ldynWEKjO/tBupP/Q1WAB7BqxTOJLg=
+  template:
+    metadata:
+      creationTimestamp: null
+      name: alertmanager-secret
+      namespace: monitoring
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: prometheus
+  namespace: monitoring
+spec:
+  gateways:
+  - istio-system/istio-ingressgateway
+  hosts:
+  - prometheus.diegoluisi.eti.br
+  http:
+  - match:
+    - uri:
+        prefix: /
+    route:
+    - destination:
+        host: prometheus-server.monitoring.svc.lgsk8sp1.grupologos.local
+        port:
+          number: 80
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: prometheus-policy
+  namespace: monitoring
+spec:
+  action: ALLOW
+  rules:
+  - to:
+    - operation:
+        methods:
+        - GET
+        - POST
+        - OPTIONS
+        - DELETE
+        - PATCH
+    when:
+    - key: request.headers[x-envoy-external-address]
+      values:
+      - 94.62.74.120
+  selector:
+    matchLabels:
+      app: prometheus
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    helm.sh/hook: test-success
+  labels:
+    app.kubernetes.io/instance: prometheus
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: alertmanager
+    app.kubernetes.io/version: v0.25.0
+    helm.sh/chart: alertmanager-0.24.1
+  name: prometheus-alertmanager-test-connection
+  namespace: monitoring
+spec:
+  containers:
+  - args:
+    - prometheus-alertmanager:9093
+    command:
+    - wget
+    image: busybox
+    name: wget
+  restartPolicy: Never
