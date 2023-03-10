@@ -21,6 +21,7 @@ spec:
           methods:
           - GET
           paths:
+          - /metrics
           - /actuator/prometheus
       when:
       - key: request.headers[User-Agent]
