@@ -24,7 +24,7 @@ spec:
           paths:
           - /metrics
           - /actuator/prometheus
-          - /api/v1/query_range
+          - /api/v1/*
       when:
       - key: request.headers[User-Agent]
         values:
