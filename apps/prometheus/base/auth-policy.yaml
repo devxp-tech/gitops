@@ -18,9 +18,10 @@ spec:
             - "94.62.74.120" # Diego
     - from:
       - source:
-          principals:
-            - spiffe://lgsk8sp1.grupologos.local/ns/monitoring/sa/prometheus-server
-            - spiffe://lgsk8sp1.grupologos.local/ns/kiali-operator/sa/kiali-service-account
+          namespaces: ["kiali-operator", "monitoring"]
+          # principals:
+          #   - spiffe://lgsk8sp1.grupologos.local/ns/monitoring/sa/prometheus-server
+          #   - spiffe://lgsk8sp1.grupologos.local/ns/kiali-operator/sa/kiali-service-account
       to:
       - operation:
           methods: ["GET", "POST", "OPTIONS", "DELETE", "PATCH"]
