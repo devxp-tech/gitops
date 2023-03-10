@@ -18,27 +18,9 @@ spec:
             - "94.62.74.120" # Diego
     - from:
       - source:
-          namespaces: ["monitoring"]
-      - source:
-          principals: ["lgsk8sp1.grupologos.local/ns/kiali-operator/sa/kiali-operator"]
+          namespaces: ["monitoring", "kiali-operator"]
+      # - source:
+      #     principals: ["lgsk8sp1.grupologos.local/ns/kiali-operator/sa/kiali-operator"]
       to:
       - operation:
           methods: ["GET", "POST", "OPTIONS", "DELETE", "PATCH"]
-
-
-    # - to:
-    #   - operation:
-    #       methods:
-    #       - GET
-    #       - POST
-    #       paths:
-    #       - /metrics
-    #       - /actuator/prometheus
-    #       - /api/v1/*
-    #   when:
-    #   - key: request.headers[User-Agent]
-    #     values:
-    #     - Prometheus/*
-    #     - Go-http-client/1.1
-
-
