@@ -40,8 +40,10 @@ spec:
         kind: Application
       project: default
       source:
-        path: bootstrap/cluster-resources/{{name}}/**/
+        path: bootstrap/cluster-resources/{{name}}
         repoURL: https://github.com/devxp-tech/gitops.git
+        directory:
+          recurse: true
       syncPolicy:
         automated:
           allowEmpty: true
