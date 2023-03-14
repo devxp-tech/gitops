@@ -26,11 +26,15 @@ indent_style = space
 indent_style = space
 indent_size = 2
 
+# Tab indentation (no size specified)
+[Makefile]
+indent_style = tab
+
 [*.{yml,yaml}]
 indent_size = 2
 indent_style = space
 end_of_line = lf
 charset = utf-8
 trim_trailing_whitespace = true
-insert_final_newline = false
+insert_final_newline = true
 line_wrap_mode = soft wrap

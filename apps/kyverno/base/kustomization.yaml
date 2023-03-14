@@ -8,19 +8,19 @@ patches:
       - op: remove
         path: /metadata/labels/app.kubernetes.io~1instance
 helmCharts:
-- name: kyverno
-  includeCRDs: true
-  releaseName: kyverno
-  version: 2.7.1-rc.1
-  repo: https://kyverno.github.io/kyverno
-  valuesInline:
-    networkPolicy:
-      enabled: true
-    version: 1.7.0
-    namespace: kyverno
-    cleanupController:
-      enabled: false
-    # replicaCount: 1
+  - name: kyverno
+    includeCRDs: true
+    releaseName: kyverno
+    version: 2.7.1-rc.1
+    repo: https://kyverno.github.io/kyverno
+    valuesInline:
+      networkPolicy:
+        enabled: true
+      version: 1.7.0
+      namespace: kyverno
+      cleanupController:
+        enabled: false
+      # replicaCount: 1
 
 # - name: kyverno-policies
 #   releaseName: kyverno-policies
