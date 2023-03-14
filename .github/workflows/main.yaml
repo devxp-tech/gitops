@@ -22,8 +22,16 @@ jobs:
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v3
-      - name: Run Script
-        run: .github/secret-find.sh
+      - name: Find Secrets 🔍
+        shell: bash
+        run: |
+          if find apps/ -name '*.yaml' | xargs grep -q "kind: Secret"; then
+              echo "Fail, secret found! :("
+              exit 1
+          else
+              echo "Success, secret not found! :)"
+              exit 0
+          fi
 
   datree-check:
     name: Datree Check 🔒
