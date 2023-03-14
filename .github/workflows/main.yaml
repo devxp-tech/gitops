@@ -10,6 +10,14 @@ env:
   DATREE_TOKEN: ${{ secrets.DATREE_TOKEN }}
 
 jobs:
+  secret-find:
+    name: Secrets Find 🔒
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v3
+      - name: Run Script
+        run: .github/secret-find.sh
 
   datree-check:
     name: Datree Check 🔒
