@@ -10,6 +10,9 @@ env:
   DATREE_TOKEN: ${{ secrets.DATREE_TOKEN }}
 
 jobs:
+  env:
+    uses: devxp-tech/.github/.github/workflows/env.yaml@main
+
   secret-find:
     name: Secrets Find 🔒
     runs-on: ubuntu-latest
@@ -57,21 +60,14 @@ jobs:
         with:
           sarif_file: 'trivy-results.sarif'
 
-  sonarqube:
-    name: SonarQube Scan 🔍
-    if: always()
-    runs-on: ubuntu-latest
+  quality-gate:
+    uses: devxp-tech/.github/.github/workflows/sonarqube.yaml@main
+    secrets: inherit
     needs:
+      - env
       - secret-find
       - datree-check
       - trivy-scan
-    steps:
-    - uses: actions/checkout@master
-    - name: SonarQube Scan 🔍
-      uses: kitabisa/sonarqube-action@v1.2.0
-      with:
-        host: ${{ secrets.SONARQUBE_HOST }}
-        login: ${{ secrets.SONARQUBE_TOKEN }}
 
   # kube-linter:
   #   name: Kube Linter
@@ -88,26 +84,13 @@ jobs:
   #       with:
   #         directory: apps
 
-  slack-workflow-status:
-    name: Post Workflow Status To Slack 📣
+  notify:
+    uses: devxp-tech/.github/.github/workflows/notify.yaml@main
     if: always()
+    secrets: inherit
     needs:
       - secret-find
       - datree-check
-      - sonarqube
+      - quality-gate
       - trivy-scan
       # - kube-linter
-    runs-on: ubuntu-latest
-    steps:
-      - name: Slack Workflow Notification 📣
-        uses: Gamesight/slack-workflow-status@master
-        with:
-          # Required Input
-          repo_token: ${{secrets.ACCESS_TOKEN_GITHUB}}
-          slack_webhook_url: ${{ secrets.SLACK_WEBHOOK }}
-          # Optional Input
-          channel: 'github-notifications'
-          name: 'github-notifications'
-          # icon_emoji: ':poop:'
-          icon_url: ${{ secrets.SLACK_ICON }}
-
