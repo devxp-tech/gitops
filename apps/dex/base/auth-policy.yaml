@@ -14,6 +14,7 @@ spec:
           values:
             - "94.62.74.120" # Diego
             - "177.76.170.30" # Gritzko
+            - "200.186.50.162" #DiOculos
       to:
         - operation:
             methods: ["GET", "POST", "OPTIONS", "DELETE", "PATCH"]
