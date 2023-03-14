@@ -60,6 +60,20 @@ jobs:
         with:
           sarif_file: 'trivy-results.sarif'
 
+  kube-linter:
+    name: Kube Linter
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Scan repo
+        id: kube-lint-repo
+        uses: stackrox/kube-linter-action@v1.0.4
+        with:
+          directory: apps
+          format: sarif
+          output-file: kube-linter.sarif
+
   quality-gate:
     uses: devxp-tech/.github/.github/workflows/sonarqube.yaml@main
     secrets: inherit
@@ -68,21 +82,7 @@ jobs:
       - secret-find
       - datree-check
       - trivy-scan
-
-  # kube-linter:
-  #   name: Kube Linter
-  #   if: always()
-  #   needs:
-  #     - policy-check
-  #     - security-scan
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v3
-  #     - name: Scan repo
-  #       id: kube-lint-repo
-  #       uses: stackrox/kube-linter-action@v1.0.4
-  #       with:
-  #         directory: apps
+      - kube-linter
 
   notify:
     uses: devxp-tech/.github/.github/workflows/notify.yaml@main
