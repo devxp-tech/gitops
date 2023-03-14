@@ -1,5 +1,6 @@
 ---
 name: main
+
 on:
   push:
     branches: [ main ]
@@ -16,6 +17,8 @@ jobs:
   secret-find:
     name: Secrets Find 🔒
     runs-on: ubuntu-latest
+    needs:
+      - env
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v3
@@ -25,7 +28,8 @@ jobs:
   datree-check:
     name: Datree Check 🔒
     runs-on: ubuntu-latest
-    if: always()
+    needs:
+      - env
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v3
@@ -37,7 +41,8 @@ jobs:
 
   trivy-scan:
     name: Trivy Vulnerability Scanner 🔒
-    if: always()
+    needs:
+      - env
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout code 🛎️
@@ -64,6 +69,8 @@ jobs:
     name: Kube Linter
     if: always()
     runs-on: ubuntu-latest
+    needs:
+      - env
     steps:
       - uses: actions/checkout@v3
       - name: Scan repo
