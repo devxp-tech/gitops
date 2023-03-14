@@ -11,7 +11,8 @@ rules:
   comments:
     min-spaces-from-content: 1
   # document start with ---
-  document-start: disable
+  document-start:
+    level: warning
   # 80 chars should be enough, but don't fail if a line is longer
   line-length:
     max: 80

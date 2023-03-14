@@ -24,12 +24,12 @@ helmCharts:
     - name: ENV
       value: production
     envFrom:
-      - configMapRef:
-          name: postgres-configs
-      - secretRef:
-          name: postgres-secrets
-      - secretRef:
-          name: backstage-secrets
+    - configMapRef:
+        name: postgres-configs
+    - secretRef:
+        name: postgres-secrets
+    - secretRef:
+        name: backstage-secrets
     resources:
       requests:
         memory: 256Mi

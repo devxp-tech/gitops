@@ -5,57 +5,57 @@ resources:
   - peerauthentication.yaml
   # - https://raw.githubusercontent.com/istio/istio/release-1.16/samples/addons/jaeger.yaml
 helmCharts:
-- name: base
-  releaseName: base
-  version: 1.16.2
-  repo: https://istio-release.storage.googleapis.com/charts
-  includeCRDs: true
-  valuesInline:
-    global:
-      istiod:
-        enableAnalysis: true
-- name: istiod
-  releaseName: istiod
-  version: 1.16.2
-  repo: https://istio-release.storage.googleapis.com/charts
-  valuesInline:
-    fullnameOverride: istiod
-    trustDomain: "lgsk8sp1.grupologos.local"
-    global:
-      defaultResources:
-        requests:
-          cpu: 10m
-          memory: 128Mi
-        limits:
-          cpu: 100m
-          memory: 128Mi
-      # tracer:
-      #   zipkin:
-      #     address: jaeger-collector.observability.svc.lgsk8sp1.grupologos.local:9411
-      proxy:
-        clusterDomain: "lgsk8sp1.grupologos.local"
-      # Resources for the sidecar.
-        resources:
-          requests:
-            cpu: 30m
-            memory: 64Mi
-          limits:
-            cpu: 50m
-            memory: 128Mi
-      autoscalingv2API: false
-    pilot:
-      traceSampling: 25.0
-      replicaCount: 2
-      resources:
-          limits:
-            cpu: 500m
-            memory: 2048Mi
-          requests:
-            cpu: 500m
-            memory: 2048Mi
-    meshConfig:
+  - name: base
+    releaseName: base
+    version: 1.16.2
+    repo: https://istio-release.storage.googleapis.com/charts
+    includeCRDs: true
+    valuesInline:
+      global:
+        istiod:
+          enableAnalysis: true
+  - name: istiod
+    releaseName: istiod
+    version: 1.16.2
+    repo: https://istio-release.storage.googleapis.com/charts
+    valuesInline:
+      fullnameOverride: istiod
       trustDomain: "lgsk8sp1.grupologos.local"
-      defaultConfig:
-        discoveryAddress: istiod.istio-system.svc:15012
-        gatewayTopology:
-          numTrustedProxies: 2
+      global:
+        defaultResources:
+          requests:
+            cpu: 10m
+            memory: 128Mi
+          limits:
+            cpu: 100m
+            memory: 128Mi
+        # tracer:
+        #   zipkin:
+        #     address: jaeger-collector.observability.svc.lgsk8sp1.grupologos.local:9411
+        proxy:
+          clusterDomain: "lgsk8sp1.grupologos.local"
+        # Resources for the sidecar.
+          resources:
+            requests:
+              cpu: 30m
+              memory: 64Mi
+            limits:
+              cpu: 50m
+              memory: 128Mi
+        autoscalingv2API: false
+      pilot:
+        traceSampling: 25.0
+        replicaCount: 2
+        resources:
+          limits:
+            cpu: 500m
+            memory: 2048Mi
+          requests:
+            cpu: 500m
+            memory: 2048Mi
+      meshConfig:
+        trustDomain: "lgsk8sp1.grupologos.local"
+        defaultConfig:
+          discoveryAddress: istiod.istio-system.svc:15012
+          gatewayTopology:
+            numTrustedProxies: 2
