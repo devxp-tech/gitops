@@ -26,7 +26,6 @@ jobs:
         uses: ibiqlik/action-yamllint@v3
         with:
           no_warnings: true
-          config_file: .github/.yamllint-config.yaml
 
   kube-linter:
     name: Kube Linter 🧹
