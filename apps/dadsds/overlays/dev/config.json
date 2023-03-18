@@ -1,0 +1,11 @@
+{
+  "appName": "dadsds",
+  "userGivenName": "dadsds",
+  "destNamespace": "dadsds",
+  "destServer": "https://kubernetes.default.svc",
+  "srcPath": "apps/dadsds/overlays/dev",
+  "srcRepoURL": "https://github.com/devxp-tech/gitops.git",
+  "srcTargetRevision": "",
+  "CreateNamespace": true,
+  "labels": null
+}
