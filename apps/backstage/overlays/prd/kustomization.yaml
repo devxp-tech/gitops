@@ -3,7 +3,7 @@ kind: Kustomization
 namespace: backstage
 resources:
 - secrets.yaml
-- postgres-secrets-sealed.yaml
+- postgres-secrets.yaml
 - postgres-config.yaml
 - ../../base
 helmCharts:
