@@ -67,7 +67,7 @@ spec:
             repoURL: ""
   - git:
       files:
-        - path: apps/**/ops/config.yaml
+      - path: apps/**/ops/config.yaml
       repoURL: https://github.com/devxp-tech/gitops.git
       requeueAfterSeconds: 20
       revision: ""
@@ -81,7 +81,7 @@ spec:
             chart: '{{ helm.chart }}'
             helm:
               valueFiles:
-                - '{{helm.valueFiles}}.yaml'
+              - '{{helm.valueFiles}}.yaml'
               values: |-
                   {{ helm.values }}
             repoURL: ""
@@ -112,7 +112,7 @@ spec:
       - group: kyverno.io
         kind: ClusterPolicy
         jqPathExpressions:
-          - .spec.rules[] | select(.name|test("autogen-."))
+        - .spec.rules[] | select(.name|test("autogen-."))
       project: ops
       source:
         path: '{{ srcPath }}'
