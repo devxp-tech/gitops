@@ -103,7 +103,6 @@ spec:
           allowEmpty: true
           prune: true
           selfHeal: true
-        preserveResourcesOnDeletion: true
         syncOptions:
           - CreateNamespace=true
           - ApplyOutOfSyncOnly=true
