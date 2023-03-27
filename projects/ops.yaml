@@ -85,7 +85,8 @@ spec:
               values: |-
                   {{ helm.values }}
             repoURL: ""
-  syncPolicy: {}
+  syncPolicy:
+    preserveResourcesOnDeletion: true
   template:
     metadata:
       labels:
