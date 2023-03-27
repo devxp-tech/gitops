@@ -73,7 +73,7 @@ spec:
       revision: ""
       template:
         metadata:
-          name: ops-{{userGivenName}}
+          name: "{{userGivenName}}-ops"
         spec:
           destination: {}
           project: ""
@@ -99,7 +99,7 @@ spec:
         notifications.argoproj.io/subscribe.on-health-degraded.slack: argocd-notifications
         # notifications.argoproj.io/subscribe.on-deployed.slack.slack: argocd-notifications
         notifications.argoproj.io/subscribe.on-sync-succeeded.grafana: argocd-notifications
-      name: ops-{{ userGivenName }}
+      name: "{{ userGivenName }}-ops"
       namespace: argocd
     spec:
       destination:
