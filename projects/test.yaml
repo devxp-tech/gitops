@@ -6,13 +6,13 @@ metadata:
     argocd.argoproj.io/sync-options: PruneLast=true
     argocd.argoproj.io/sync-wave: "-2"
   creationTimestamp: null
-  name: dev
+  name: test
   namespace: argocd
 spec:
   clusterResourceWhitelist:
   - group: '*'
     kind: '*'
-  description: dev project
+  description: test project
   destinations:
   - namespace: '*'
     server: '*'
@@ -30,13 +30,13 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "0"
   creationTimestamp: null
-  name: dev
+  name: test
   namespace: argocd
 spec:
   generators:
   - git:
       files:
-      - path: apps/**/dev/config.json
+      - path: apps/**/test/config.json
       repoURL: https://github.com/devxp-tech/gitops.git
       requeueAfterSeconds: 20
       revision: ""
@@ -49,7 +49,7 @@ spec:
             repoURL: ""
   - git:
       files:
-      - path: apps/**/dev/config_dir.json
+      - path: apps/**/test/config_dir.json
       repoURL: https://github.com/devxp-tech/gitops.git
       requeueAfterSeconds: 20
       revision: ""
@@ -65,8 +65,7 @@ spec:
               jsonnet: {}
               recurse: true
             repoURL: ""
-  syncPolicy:
-    preserveResourcesOnDeletion: true
+  syncPolicy: {}
   template:
     metadata:
       labels:
@@ -79,7 +78,7 @@ spec:
         notifications.argoproj.io/subscribe.on-health-degraded.slack: argocd-notifications
         # notifications.argoproj.io/subscribe.on-deployed.slack.slack: argocd-notifications
         notifications.argoproj.io/subscribe.on-sync-succeeded.grafana: argocd-notifications
-      name: "{{ userGivenName }}-dev"
+      name: "{{ userGivenName }}-test"
       namespace: argocd
     spec:
       destination:
@@ -94,7 +93,7 @@ spec:
         kind: VirtualService
         jsonPointers:
         - /spec/http/0
-      project: dev
+      project: test
       source:
         path: '{{ srcPath }}'
         repoURL: '{{ srcRepoURL }}'
@@ -104,6 +103,7 @@ spec:
           allowEmpty: true
           prune: true
           selfHeal: true
+        preserveResourcesOnDeletion: true
         syncOptions:
           - CreateNamespace=true
           - ApplyOutOfSyncOnly=true
