@@ -11,20 +11,22 @@ helmCharts:
   repo: https://devxp-tech.github.io/helm-charts
   valuesInline:
     name: teste-loki
-    envFrom:
-    - secretRef:
-        name: postgres-secrets
     image:
       repository: ghcr.io/devxp-tech/teste-loki
       tag: b289a6c9
+    envFrom:
+    - secretRef:
+        name: postgres-secrets
     network:
       domain: diegoluisi.eti.br
-    ResourceQuota:
-      enabled: false
-    migration:
+    deployment:
       enabled: false
     PeerAuthentication:
       enabled: true
+    quota:
+      enabled: false
+    migration:
+      enabled: false
     autoscaling:
       enabled: true
       minReplicas: 1
