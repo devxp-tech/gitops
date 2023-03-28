@@ -271,3 +271,8 @@ helmCharts:
         loki-container-log:
           datasource: Loki
           gnetId: 16966
+      golang:
+        # GoLang dashboards
+        golang-metrics:
+          datasource: Prometheus
+          gnetId: 13240
