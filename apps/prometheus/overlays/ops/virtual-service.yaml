@@ -4,6 +4,8 @@ kind: VirtualService
 metadata:
   name: prometheus
   namespace: monitoring
+  annotations:
+    link.argocd.argoproj.io/external-link: https://prometheus.diegoluisi.eti.br
 spec:
   hosts:
   - "prometheus.diegoluisi.eti.br"
