@@ -7,5 +7,6 @@
   "srcRepoURL": "https://github.com/devxp-tech/gitops.git",
   "srcTargetRevision": "",
   "CreateNamespace": true,
+  "appLink": "https://teste-loki.diegoluisi.eti.br",
   "labels": null
 }
