@@ -181,6 +181,10 @@ helmCharts:
             path: /var/lib/grafana/dashboards/loki
     dashboards:
       default:
+        # GoLang dashboards
+        golang-metrics:
+          datasource: Prometheus
+          gnetId: 13240
         # Kubernetes dashboards
         core-dns:
           datasource: Prometheus
@@ -271,8 +275,4 @@ helmCharts:
         loki-container-log:
           datasource: Loki
           gnetId: 16966
-      golang:
-        # GoLang dashboards
-        golang-metrics:
-          datasource: Prometheus
-          gnetId: 13240
+
