@@ -16,7 +16,7 @@ helmCharts:
         name: postgres-secrets
     image:
       repository: ghcr.io/devxp-tech/teste-loki
-      tag: b289a6c9
+      tag: 237ab79d
     network:
       domain: diegoluisi.eti.br
     ResourceQuota:
