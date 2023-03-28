@@ -4,6 +4,8 @@ kind: VirtualService
 metadata:
   name: grafana
   namespace: monitoring
+  annotations:
+    link.argocd.argoproj.io/external-link: https://grafana.diegoluisi.eti.br
 spec:
   hosts:
   - "grafana.diegoluisi.eti.br"

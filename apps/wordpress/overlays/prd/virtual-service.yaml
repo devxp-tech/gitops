@@ -3,6 +3,8 @@ kind: VirtualService
 metadata:
   name: wordpress
   namespace: wordpress
+  annotations:
+    link.argocd.argoproj.io/external-link: https://www.diegoluisi.eti.br
 spec:
   hosts:
   - "www.diegoluisi.eti.br"

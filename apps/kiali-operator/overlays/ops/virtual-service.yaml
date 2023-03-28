@@ -6,6 +6,8 @@ metadata:
   namespace: kiali-operator
   labels:
     app: kiali
+  annotations:
+    link.argocd.argoproj.io/external-link: https://kiali.diegoluisi.eti.br
 spec:
   gateways:
   - istio-system/istio-ingressgateway

@@ -3,6 +3,8 @@ kind: VirtualService
 metadata:
   name: sonarqube
   namespace: sonarqube
+  annotations:
+    link.argocd.argoproj.io/external-link: https://sonar.diegoluisi.eti.br
 spec:
   hosts:
   - "sonar.diegoluisi.eti.br"
