@@ -13,7 +13,7 @@ helmCharts:
     name: teste-loki
     image:
       repository: ghcr.io/devxp-tech/teste-loki
-      tag: ee5a6749
+      tag: d29b10f3
     envFrom:
     - secretRef:
         name: postgres-secrets
