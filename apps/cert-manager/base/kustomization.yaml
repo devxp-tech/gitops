@@ -3,12 +3,12 @@ kind: Kustomization
 namespace: cert-manager
 helmCharts:
 - name: cert-manager
-  includeCRDs: false
+  # includeCRDs: false
   releaseName: cert-manager
   version: v1.11.0
   repo: https://charts.jetstack.io
   valuesInline:
-    installCRDs: false
+    installCRDs: true
     namespace: "cert-manager"
     fullnameOverride: "cert-manager"
     global:
