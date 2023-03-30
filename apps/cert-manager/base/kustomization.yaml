@@ -3,7 +3,7 @@ kind: Kustomization
 namespace: cert-manager
 helmCharts:
 - name: cert-manager
-  # includeCRDs: false
+  includeCRDs: true
   releaseName: cert-manager
   version: v1.11.0
   repo: https://charts.jetstack.io
