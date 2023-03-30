@@ -11,32 +11,32 @@ helmCharts:
     installCRDs: true
     namespace: "cert-manager"
     fullnameOverride: "cert-manager"
-    global:
-      leaderElection:
-        namespace: "cert-manager"
-    replicaCount: 2
-    resources:
-      requests:
-        cpu: 10m
-        memory: 32Mi
-      limits:
-        cpu: 20m
-        memory: 64Mi
-    webhook:
-      replicaCount: 2
-      resources:
-        requests:
-          cpu: 10m
-          memory: 32Mi
-        limits:
-          cpu: 20m
-          memory: 64Mi
-    cainjector:
-      replicaCount: 2
-      resources:
-        requests:
-          cpu: 10m
-          memory: 32Mi
-        limits:
-          cpu: 20m
-          memory: 64Mi
+    # global:
+    #   leaderElection:
+    #     namespace: "cert-manager"
+    # replicaCount: 2
+    # resources:
+    #   requests:
+    #     cpu: 10m
+    #     memory: 32Mi
+    #   limits:
+    #     cpu: 20m
+    #     memory: 64Mi
+    # webhook:
+    #   replicaCount: 2
+    #   resources:
+    #     requests:
+    #       cpu: 10m
+    #       memory: 32Mi
+    #     limits:
+    #       cpu: 20m
+    #       memory: 64Mi
+    # cainjector:
+    #   replicaCount: 2
+    #   resources:
+    #     requests:
+    #       cpu: 10m
+    #       memory: 32Mi
+    #     limits:
+    #       cpu: 20m
+    #       memory: 64Mi
