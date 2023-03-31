@@ -1,0 +1,11 @@
+{
+  "appName": "test-automation",
+  "userGivenName": "test-automation",
+  "destNamespace": "test-automation",
+  "destServer": "https://kubernetes.default.svc",
+  "srcPath": "apps/test-automation/overlays/dev",
+  "srcRepoURL": "https://github.com/devxp-tech/gitops.git",
+  "srcTargetRevision": "",
+  "CreateNamespace": true,
+  "labels": null
+}
