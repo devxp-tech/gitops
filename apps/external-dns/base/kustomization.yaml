@@ -13,6 +13,7 @@ helmCharts:
       - istio-virtualservice
     domainFilters:
       - diegoluisi.eti.br
+      - devxp-tech.io
     provider: aws
     policy: upsert-only
     aws-zone-type: public # only look at public hosted zones (valid values are public, private or no value for both)
