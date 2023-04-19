@@ -1,9 +1,9 @@
 {
-  "appName": "teste-auto3",
-  "userGivenName": "teste-auto3",
-  "destNamespace": "teste-auto3",
+  "appName": "external-dns",
+  "userGivenName": "external-dns",
+  "destNamespace": "external-dns",
   "destServer": "https://kubernetes.default.svc",
-  "srcPath": "apps/teste-auto3/overlays/dev",
+  "srcPath": "apps/external-dns/overlays/ops",
   "srcRepoURL": "https://github.com/devxp-tech/gitops.git",
   "srcTargetRevision": "",
   "CreateNamespace": true,
