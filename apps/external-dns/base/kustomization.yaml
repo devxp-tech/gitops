@@ -9,7 +9,8 @@ helmCharts:
   repo: https://charts.bitnami.com/bitnami
   valuesInline:
     clusterDomain: "lgsk8sp1.grupologos.local"
-    source: istio-virtualservice
+    sources:
+      - istio-virtualservice
     domainFilters:
       - diegoluisi.eti.br
     provider: aws
