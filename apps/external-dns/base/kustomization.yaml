@@ -10,7 +10,8 @@ helmCharts:
   valuesInline:
     clusterDomain: "lgsk8sp1.grupologos.local"
     source: istio-gateway
-    domainFilters: diegoluisi.eti.br
+    domainFilters:
+      - diegoluisi.eti.br
     aws:
       region: us-east-1
 
