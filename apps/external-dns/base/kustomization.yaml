@@ -12,6 +12,11 @@ helmCharts:
     source: istio-gateway
     domainFilters:
       - diegoluisi.eti.br
+    provider: aws
+    policy: upsert-only
+    aws-zone-type: public # only look at public hosted zones (valid values are public, private or no value for both)
+    registry: txt
+    txt-owner-id: external-dns
     aws:
       region: us-east-1
 
