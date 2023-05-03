@@ -1,8 +1,8 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: kubecost
-resources:
-  - virtual-service.yaml
+# resources:
+#   - virtual-service.yaml
 helmCharts:
   - name: cost-analyzer
     releaseName: kubecost
