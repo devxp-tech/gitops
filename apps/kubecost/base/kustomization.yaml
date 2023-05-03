@@ -6,6 +6,7 @@ namespace: kubecost
 helmCharts:
   - name: cost-analyzer
     releaseName: kubecost
+    namespace: kubecost
     repo: https://kubecost.github.io/cost-analyzer
     version: 1.102.2
     valuesInline:
