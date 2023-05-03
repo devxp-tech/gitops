@@ -11,6 +11,7 @@ helmCharts:
     valuesInline:
       kubecostToken: aGVsbUBrdWJlY29zdC5jb20=xm343yadf98
       prometheus:
+        fqdn: kubecost-prometheus-server.kubecost.svc.cluster.local
         nodeExporter:
           enabled: false
         serviceAccounts:
@@ -18,7 +19,7 @@ helmCharts:
             enabled: false
         kubeStateMetrics:
           enabled: false
-      global:
-        prometheus:
-          fqdn: kubecost-prometheus-server.kubecost.svc.cluster.local
+      # global:
+      #   prometheus:
+      #     fqdn: kubecost-prometheus-server.kubecost.svc.cluster.local
 
