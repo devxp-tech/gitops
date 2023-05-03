@@ -18,3 +18,7 @@ helmCharts:
             enabled: false
         kubeStateMetrics:
           enabled: false
+      global:
+        prometheus:
+          fqdn: kubecost-prometheus-server.kubecost.svc.cluster.local
+
