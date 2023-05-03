@@ -11,7 +11,8 @@ helmCharts:
     valuesInline:
       global:
         prometheus:
-          fqdn: kubecost-prometheus-server.kubecost.svc.cluster.local
+          zone: lgsk8sp1.grupologos.local
+          fqdn: kubecost-prometheus-server.kubecost.svc
       kubecostToken: aGVsbUBrdWJlY29zdC5jb20=xm343yadf98
       prometheus:
         nodeExporter:
