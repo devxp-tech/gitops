@@ -9,10 +9,10 @@ helmCharts:
     repo: https://kubecost.github.io/cost-analyzer
     version: 1.102.2
     valuesInline:
-      global:
-        prometheus:
-          zone: lgsk8sp1.grupologos.local
-          fqdn: kubecost-prometheus-server.kubecost.svc
+      # global:
+      #   prometheus:
+      #     zone: lgsk8sp1.grupologos.local
+      #     fqdn: kubecost-prometheus-server.kubecost.svc
       kubecostToken: aGVsbUBrdWJlY29zdC5jb20=xm343yadf98
       prometheus:
         server: kubecost-prometheus-server.kubecost.svc
