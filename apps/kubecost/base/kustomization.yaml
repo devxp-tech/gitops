@@ -9,9 +9,11 @@ helmCharts:
     repo: https://kubecost.github.io/cost-analyzer
     version: 1.102.2
     valuesInline:
+      global:
+        prometheus:
+          fqdn: kubecost-prometheus-server.kubecost.svc.cluster.local
       kubecostToken: aGVsbUBrdWJlY29zdC5jb20=xm343yadf98
       prometheus:
-        fqdn: kubecost-prometheus-server.kubecost.svc.cluster.local
         nodeExporter:
           enabled: false
         serviceAccounts:
@@ -19,7 +21,4 @@ helmCharts:
             enabled: false
         kubeStateMetrics:
           enabled: false
-      # global:
-      #   prometheus:
-      #     fqdn: kubecost-prometheus-server.kubecost.svc.cluster.local
 
