@@ -1,12 +1,12 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: kyverno
-patches:
-  - target:
-      kind: CustomResourceDefinition
-    patch: |-
-      - op: remove
-        path: /metadata/labels/app.kubernetes.io~1instance
+# patches:
+#   - target:
+#       kind: CustomResourceDefinition
+#     patch: |-
+#       - op: remove
+#         path: /metadata/labels/app.kubernetes.io~1instance
 helmCharts:
   - name: kyverno
     includeCRDs: true
@@ -20,7 +20,7 @@ helmCharts:
       version: 1.7.0
       namespace: kyverno
       cleanupController:
-        enabled: false
+        enabled: true
       # replicaCount: 1
 
 # - name: kyverno-policies
