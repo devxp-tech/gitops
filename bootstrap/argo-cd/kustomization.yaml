@@ -48,6 +48,10 @@ configMapGenerator:
     - policy.default="role:readonly"
     files:
       - files/policy.csv
+  - name: argocd-cmd-params-cm
+    behavior: merge
+    literals:
+    - server.insecure="true"
 components:
 # extensions controller component
 - https://github.com/argoproj-labs/argocd-extensions/manifests
