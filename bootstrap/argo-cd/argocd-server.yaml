@@ -8,7 +8,7 @@ spec:
       containers:
       - name: argocd-server
         # command: [argocd-server, --staticassets, /shared/app, --insecure]
-        command: [--insecure]
+        command: [argocd-server, --insecure]
         env:
         - name: GITHUB_CLIENT_ID
           valueFrom:
