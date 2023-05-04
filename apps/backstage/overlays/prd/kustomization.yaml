@@ -32,7 +32,7 @@ helmCharts:
         name: backstage-secrets
     resources:
       requests:
-        memory: 512Mi
+        memory: 768Mi
         cpu: 100m
       limits:
         memory: 1024Mi
