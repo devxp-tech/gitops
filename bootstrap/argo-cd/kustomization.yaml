@@ -22,7 +22,12 @@ patches:
         annotations:
           sealedsecrets.bitnami.com/managed: "true"
 configMapGenerator:
-  - behavior: merge
+  - name: argocd-cmd-params-cm
+    behavior: merge
+    literals:
+    - server.insecure="true"
+  - name: argocd-cm
+    behavior: merge
     options:
       labels:
         app.kubernetes.io/part-of: argocd
@@ -38,9 +43,8 @@ configMapGenerator:
       - statusbadge.enabled=true
       - url=https://argocd.diegoluisi.eti.br
       - accounts.backstage="apiKey, login"
-    name: argocd-cm
-  - behavior: merge
-    name: argocd-rbac-cm
+  - name: argocd-rbac-cm
+    behavior: merge
     options:
         labels:
           app.kubernetes.io/part-of: argocd
@@ -48,10 +52,6 @@ configMapGenerator:
     - policy.default="role:readonly"
     files:
       - files/policy.csv
-  - name: argocd-cmd-params-cm
-    behavior: merge
-    literals:
-    - server.insecure="true"
 components:
 # extensions controller component
 - https://github.com/argoproj-labs/argocd-extensions/manifests
