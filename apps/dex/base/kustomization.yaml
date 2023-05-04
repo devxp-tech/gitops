@@ -28,6 +28,11 @@ helmCharts:
         secretKeyRef:
           name: github-client
           key: kiali-secret
+    - name: KUBECOST_CLIENT_SECRET
+      valueFrom:
+        secretKeyRef:
+          name: github-client
+          key: kubecost-secret
     - name: DEX_K8S_AUTH_SECRET
       valueFrom:
         secretKeyRef:
@@ -71,12 +76,11 @@ helmCharts:
         - 'https://kiali.diegoluisi.eti.br/kiali'
         SecretEnv: KIALI_CLIENT_SECRET
 
-      - id: kubecost
-        name: 'Kubecost'
+      - id: kubecost-client
+        name: 'KubeCost'
         redirectURIs:
         - 'https://kubecost.devxp-tech.io/model/oidc/authorize'
-        # SecretEnv: KUBECOST_CLIENT_SECRET
-        secret: 7224d634ded61a926c84
+        SecretEnv: KUBECOST_CLIENT_SECRET
 
       - id: dex-k8s-authenticator
         name: dex-k8s-authenticator
