@@ -60,9 +60,9 @@ helmCharts:
         skipApprovalScreen: true
       staticClients:
       - id: example-app
+        name: 'Example App'
         redirectURIs:
         - 'http://127.0.0.1:5555/callback'
-        name: 'Example App'
         secret: ZXhhbXBsZS1hcHAtc2VjcmV0
 
       - id: kiali-client
@@ -75,13 +75,14 @@ helmCharts:
         name: 'Kubecost'
         redirectURIs:
         - 'https://kubecost.devxp-tech.io/model/oidc/authorize'
-        SecretEnv: KUBECOST_CLIENT_SECRET
+        # SecretEnv: KUBECOST_CLIENT_SECRET
+        secret: 7224d634ded61a926c84
 
       - id: dex-k8s-authenticator
         name: dex-k8s-authenticator
-        SecretEnv: DEX_K8S_AUTH_SECRET
         redirectURIs:
         - https://kube-login.diegoluisi.eti.br/callback/
+        SecretEnv: DEX_K8S_AUTH_SECRET
 
 - name: dex-k8s-authenticator
   releaseName: dex-k8s-authenticator
