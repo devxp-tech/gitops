@@ -29,7 +29,7 @@ helmCharts:
         clientID: "client_id" # application/client client_id paramter obtained from provider, used to make requests to server
         clientSecret: "client_secret" # application/client client_secret paramter obtained from provider, used to make requests to server
         secretName: "kubecost-secrets" # k8s secret where clientsecret will be stored
-        authURL: "https://github.com/login/oauth/authorize" # endpoint for login to auth server
+        authURL: "https://dex.diegoluisi.eti.br" # endpoint for login to auth server
         loginRedirectURL: "https://kubecost.devxp-tech.io/model/oidc/authorize" # Kubecost url configured in provider for redirect after authentication
-        discoveryURL: "https://token.actions.githubusercontent.com/.well-known/openid-configuration" # url for OIDC endpoint discovery
+        discoveryURL: "http://dex.diegoluisi.eti.br/.well-known/openid-configuration" # url for OIDC endpoint discovery
         # hostedDomain: "devxp-tech.io" # blocks access to the auth domain specified in the hd claim of the provider ID token
