@@ -1,8 +1,6 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: kubecost
-# resources:
-#   - virtual-service.yaml
 helmCharts:
   - name: cost-analyzer
     releaseName: kubecost
@@ -24,11 +22,11 @@ helmCharts:
           global:
             external_labels:
               cluster_id: ops-cluster # Each cluster should have a unique ID
-      oidc:
-        enabled: true
-        clientID: "kubecost-client" #"client_id" # application/client client_id paramter obtained from provider, used to make requests to server
-        # clientSecret: "client_secret" # application/client client_secret paramter obtained from provider, used to make requests to server
-        secretName: "kubecost-secrets" # k8s secret where clientsecret will be stored
-        authURL: "https://dex.diegoluisi.eti.br/auth" # endpoint for login to auth server
-        loginRedirectURL: "https://kubecost.devxp-tech.io/model/oidc/authorize" # Kubecost url configured in provider for redirect after authentication
-        discoveryURL: "https://dex.diegoluisi.eti.br/.well-known/openid-configuration" # url for OIDC endpoint discovery
+      # oidc:
+      #   enabled: true
+      #   clientID: "kubecost-client" #"client_id" # application/client client_id paramter obtained from provider, used to make requests to server
+      #   # clientSecret: "client_secret" # application/client client_secret paramter obtained from provider, used to make requests to server
+      #   secretName: "kubecost-secrets" # k8s secret where clientsecret will be stored
+      #   authURL: "https://dex.diegoluisi.eti.br/auth" # endpoint for login to auth server
+      #   loginRedirectURL: "https://kubecost.devxp-tech.io/model/oidc/authorize" # Kubecost url configured in provider for redirect after authentication
+      #   discoveryURL: "https://dex.diegoluisi.eti.br/.well-known/openid-configuration" # url for OIDC endpoint discovery
