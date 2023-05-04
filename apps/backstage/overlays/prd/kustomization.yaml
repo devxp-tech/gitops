@@ -17,7 +17,7 @@ helmCharts:
       repository: ghcr.io/devxp-tech/backstage
       tag: 3c65267c
     quota:
-      enabled: true
+      enabled: false
     container:
       port: 7007
     env:
