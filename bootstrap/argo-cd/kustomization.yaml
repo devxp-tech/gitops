@@ -2,7 +2,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: argocd
 resources:
-  - github.com/argoproj-labs/argocd-autopilot/manifests/base?ref=v0.4.4
+  - github.com/argoproj-labs/argocd-autopilot/manifests/base?ref=v0.4.15
   # - argo-grafana-secret-sealed.yaml
   - https://raw.githubusercontent.com/argoproj-labs/rollout-extension/v0.3.0/manifests/install.yaml
   - argocd-notifications-secret-sealed.yaml
