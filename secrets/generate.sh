@@ -20,7 +20,7 @@ read -p "Enter VALUE: " VALUE
 hr
 echo "Select target env (folder)"
 PS3="Type the relative number of the folder options and press enter: "
-select ENV in dev prd; do break; done
+select ENV in dev prd ops; do break; done
 hr
 echo "Select cluster certificate"
 PS3="Type the relative number of the cluster pub key and press enter: "
