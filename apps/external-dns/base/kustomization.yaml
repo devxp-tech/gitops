@@ -2,23 +2,22 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: external-dns
 helmCharts:
-- name: external-dns
-  includeCRDs: true
-  releaseName: external-dns
-  version: 6.16.0
-  repo: https://charts.bitnami.com/bitnami
-  valuesInline:
-    clusterDomain: "lgsk8sp1.grupologos.local"
-    sources:
-      - istio-virtualservice
-    domainFilters:
-      - diegoluisi.eti.br
-      - devxp-tech.io
-    provider: aws
-    policy: upsert-only
-    aws-zone-type: public # only look at public hosted zones (valid values are public, private or no value for both)
-    registry: txt
-    txt-owner-id: external-dns
-    aws:
-      region: us-east-1
-
+  - name: external-dns
+    includeCRDs: true
+    releaseName: external-dns
+    version: 6.16.0
+    repo: https://charts.bitnami.com/bitnami
+    valuesInline:
+      clusterDomain: "lgsk8sp1.grupologos.local"
+      sources:
+        - istio-virtualservice
+      domainFilters:
+        - diegoluisi.eti.br
+        - devxp-tech.io
+      provider: aws
+      policy: upsert-only
+      aws-zone-type: public # only look at public hosted zones (valid values are public, private or no value for both)
+      registry: txt
+      txt-owner-id: external-dns
+      aws:
+        region: us-east-1

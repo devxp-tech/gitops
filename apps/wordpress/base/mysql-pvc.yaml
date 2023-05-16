@@ -13,6 +13,6 @@ spec:
   resources:
     requests:
       storage: 10Gi
-  selector: 
-    matchLabels: 
+  selector:
+    matchLabels:
       tier: mysql
