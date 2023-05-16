@@ -6,12 +6,12 @@ metadata:
   namespace: argocd
 spec:
   hosts:
-  - "argocd.diegoluisi.eti.br"
+    - "argocd.diegoluisi.eti.br"
   gateways:
-  - istio-system/istio-ingressgateway
+    - istio-system/istio-ingressgateway
   http:
-  - route:
-    - destination:
-        host: argocd-server.argocd.svc.lgsk8sp1.grupologos.local
-        port:
-          number: 80
+    - route:
+        - destination:
+            host: argocd-server.argocd.svc.lgsk8sp1.grupologos.local
+            port:
+              number: 80

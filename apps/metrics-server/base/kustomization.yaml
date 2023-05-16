@@ -2,21 +2,21 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: kube-system
 helmCharts:
-- name: metrics-server
-  releaseName: metrics-server
-  version: 3.8.3
-  repo: https://kubernetes-sigs.github.io/metrics-server/
-  valuesInline:
-    # apiService:
-    #   create: true
-    metrics:
-      enabled: true
-    hostNetwork:
-      enabled: true
-    args:
-      - --cert-dir=/tmp
-      - --kubelet-use-node-status-port
-      - --kubelet-insecure-tls
-      - --kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname
-      # - --metric-resolution=30s
-      # - --secure-port=10250
+  - name: metrics-server
+    releaseName: metrics-server
+    version: 3.8.3
+    repo: https://kubernetes-sigs.github.io/metrics-server/
+    valuesInline:
+      # apiService:
+      #   create: true
+      metrics:
+        enabled: true
+      hostNetwork:
+        enabled: true
+      args:
+        - --cert-dir=/tmp
+        - --kubelet-use-node-status-port
+        - --kubelet-insecure-tls
+        - --kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname
+        # - --metric-resolution=30s
+        # - --secure-port=10250

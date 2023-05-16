@@ -7,5 +7,5 @@ roleRef:
   kind: ClusterRole
   name: cluster-admin
 subjects:
-- kind: Group
-  name: devxp-tech:sre-team
+  - kind: Group
+    name: devxp-tech:sre-team

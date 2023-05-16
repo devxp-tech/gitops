@@ -19,8 +19,8 @@ spec:
         - operation:
             methods: ["GET", "POST", "OPTIONS", "DELETE", "PATCH"]
     - from:
-      - source:
-          namespaces: ["dex", "monitoring"]
+        - source:
+            namespaces: ["dex", "monitoring"]
       to:
-      - operation:
-          methods: ["GET", "POST", "OPTIONS", "DELETE", "PATCH"]
+        - operation:
+            methods: ["GET", "POST", "OPTIONS", "DELETE", "PATCH"]
