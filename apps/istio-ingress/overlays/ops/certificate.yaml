@@ -5,8 +5,8 @@ metadata:
 spec:
   commonName: diegoluisi.eti.br
   dnsNames:
-  - diegoluisi.eti.br
-  - '*.diegoluisi.eti.br'
+    - diegoluisi.eti.br
+    - "*.diegoluisi.eti.br"
   issuerRef:
     kind: ClusterIssuer
     name: diegoluisi.eti.br
@@ -19,8 +19,8 @@ metadata:
 spec:
   commonName: devxp-tech.io
   dnsNames:
-  - devxp-tech.io
-  - '*.devxp-tech.io'
+    - devxp-tech.io
+    - "*.devxp-tech.io"
   issuerRef:
     kind: ClusterIssuer
     name: devxp-tech.io

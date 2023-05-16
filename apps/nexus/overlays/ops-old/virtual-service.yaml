@@ -6,15 +6,15 @@ metadata:
   namespace: nexus
 spec:
   hosts:
-  - "nexus.diegoluisi.eti.br"
+    - "nexus.diegoluisi.eti.br"
   gateways:
-  - istio-system/istio-ingressgateway
+    - istio-system/istio-ingressgateway
   http:
-  - match:
-    - uri:
-        prefix: /
-    route:
-    - destination:
-        port:
-          number: 8081
-        host: nexus-repository-manager.nexus.svc.lgsk8sp1.grupologos.local
+    - match:
+        - uri:
+            prefix: /
+      route:
+        - destination:
+            port:
+              number: 8081
+            host: nexus-repository-manager.nexus.svc.lgsk8sp1.grupologos.local
