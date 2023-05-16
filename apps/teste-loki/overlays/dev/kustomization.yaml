@@ -14,10 +14,6 @@ helmCharts:
       image:
         repository: ghcr.io/devxp-tech/teste-loki
         tag: a245b9ef
-      deployment:
-        enabled: true
-      argoRollouts:
-        enabled: false
       envFrom:
         - secretRef:
             name: postgres-secrets
