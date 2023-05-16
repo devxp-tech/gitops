@@ -4,24 +4,24 @@ namespace: observability
 resources:
   - auth-policy.yaml
 helmCharts:
-- name: jaeger
-  releaseName: jaeger
-  version: 0.67.5
-  repo: https://jaegertracing.github.io/helm-charts
-  namespace: observability
-  valuesInline:
-    # allInOne:
-    #   enabled: true
-    cassandra:
-      config:
-        cluster_domain: lgsk8sp1.grupologos.local
-    collector:
-      service:
-        zipkin:
-          port: 9411
-    storage:
-      type: none
-    agent:
-      enabled: false
-    query:
-      enabled: false
+  - name: jaeger
+    releaseName: jaeger
+    version: 0.67.5
+    repo: https://jaegertracing.github.io/helm-charts
+    namespace: observability
+    valuesInline:
+      # allInOne:
+      #   enabled: true
+      cassandra:
+        config:
+          cluster_domain: lgsk8sp1.grupologos.local
+      collector:
+        service:
+          zipkin:
+            port: 9411
+      storage:
+        type: none
+      agent:
+        enabled: false
+      query:
+        enabled: false

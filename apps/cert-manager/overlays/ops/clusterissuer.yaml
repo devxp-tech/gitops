@@ -11,12 +11,12 @@ spec:
       name: issuer-key
     server: https://acme-v02.api.letsencrypt.org/directory
     solvers:
-    - dns01:
-        route53:
-          region: us-east-1
-      selector:
-        dnsZones:
-        - diegoluisi.eti.br
+      - dns01:
+          route53:
+            region: us-east-1
+        selector:
+          dnsZones:
+            - diegoluisi.eti.br
 ---
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
@@ -31,10 +31,9 @@ spec:
       name: issuer-key
     server: https://acme-v02.api.letsencrypt.org/directory
     solvers:
-    - dns01:
-        route53:
-          region: us-east-1
-      selector:
-        dnsZones:
-        - devxp-tech.io
-
+      - dns01:
+          route53:
+            region: us-east-1
+        selector:
+          dnsZones:
+            - devxp-tech.io
