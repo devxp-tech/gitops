@@ -25,7 +25,7 @@ configMapGenerator:
   - name: argocd-cmd-params-cm
     behavior: merge
     literals:
-    - server.insecure="true"
+      - server.insecure="true"
   - name: argocd-cm
     behavior: merge
     options:
@@ -46,12 +46,12 @@ configMapGenerator:
   - name: argocd-rbac-cm
     behavior: merge
     options:
-        labels:
-          app.kubernetes.io/part-of: argocd
+      labels:
+        app.kubernetes.io/part-of: argocd
     literals:
-    - policy.default="role:readonly"
+      - policy.default="role:readonly"
     files:
       - files/policy.csv
 components:
-# extensions controller component
-- https://github.com/argoproj-labs/argocd-extensions/manifests
+  # extensions controller component
+  - https://github.com/argoproj-labs/argocd-extensions/manifests

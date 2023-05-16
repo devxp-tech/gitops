@@ -2,277 +2,275 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: monitoring
 helmCharts:
-- name: grafana
-  includeCRDs: true
-  releaseName: grafana
-  version: 6.50.7
-  repo: https://grafana.github.io/helm-charts
-  valuesInline:
-    fullnameOverride: grafana
-    resources:
-      requests:
-        cpu: 100m
-        memory: 128Mi
-      limits:
-        cpu: 200m
-        memory: 256Mi
-    grafana.ini:
-      server:
-        domain: grafana.diegoluisi.eti.br
-    admin:
-      ## Name of the secret. Can be templated.
-      existingSecret: "grafana-secrets"
-      userKey: GF_SECURITY_ADMIN_USER
-      passwordKey: GF_SECURITY_ADMIN_PASSWORD
-    persistence:
-      type: pvc
-      enabled: true
-    envValueFrom:
-      GF_AUTH_GITHUB_CLIENT_ID:
-        secretKeyRef:
-          name: grafana-secrets
-          key: GF_AUTH_GITHUB_CLIENT_ID
-      GF_AUTH_GITHUB_CLIENT_SECRET:
-        secretKeyRef:
-          name: grafana-secrets
-          key: GF_AUTH_GITHUB_CLIENT_SECRET
-    env:
-      # GF_INSTALL_PLUGINS: grafana-simple-json-datasource,alexanderzobnin-zabbix-app
-      GF_SERVER_DOMAIN: grafana.diegoluisi.eti.br
-      GF_SERVER_ROOT_URL: "https://grafana.diegoluisi.eti.br"
-      GF_AUTH_GITHUB_ENABLED: true
-      GF_AUTH_GITHUB_ALLOW_SIGN_UP: true
-      GF_AUTH_GITHUB_SCOPES: 'user:email,read:org'
-      GF_AUTH_GITHUB_ALLOWED_ORGANIZATIONS: devxp-tech
-      GF_AUTO_ASSIGN_ORG_ROLE: Admin
+  - name: grafana
+    includeCRDs: true
+    releaseName: grafana
+    version: 6.50.7
+    repo: https://grafana.github.io/helm-charts
+    valuesInline:
+      fullnameOverride: grafana
+      resources:
+        requests:
+          cpu: 100m
+          memory: 128Mi
+        limits:
+          cpu: 200m
+          memory: 256Mi
+      grafana.ini:
+        server:
+          domain: grafana.diegoluisi.eti.br
+      admin:
+        ## Name of the secret. Can be templated.
+        existingSecret: "grafana-secrets"
+        userKey: GF_SECURITY_ADMIN_USER
+        passwordKey: GF_SECURITY_ADMIN_PASSWORD
+      persistence:
+        type: pvc
+        enabled: true
+      envValueFrom:
+        GF_AUTH_GITHUB_CLIENT_ID:
+          secretKeyRef:
+            name: grafana-secrets
+            key: GF_AUTH_GITHUB_CLIENT_ID
+        GF_AUTH_GITHUB_CLIENT_SECRET:
+          secretKeyRef:
+            name: grafana-secrets
+            key: GF_AUTH_GITHUB_CLIENT_SECRET
+      env:
+        # GF_INSTALL_PLUGINS: grafana-simple-json-datasource,alexanderzobnin-zabbix-app
+        GF_SERVER_DOMAIN: grafana.diegoluisi.eti.br
+        GF_SERVER_ROOT_URL: "https://grafana.diegoluisi.eti.br"
+        GF_AUTH_GITHUB_ENABLED: true
+        GF_AUTH_GITHUB_ALLOW_SIGN_UP: true
+        GF_AUTH_GITHUB_SCOPES: "user:email,read:org"
+        GF_AUTH_GITHUB_ALLOWED_ORGANIZATIONS: devxp-tech
+        GF_AUTO_ASSIGN_ORG_ROLE: Admin
 
-    # autoscaling:
-    #   enabled: true
-    #   minReplicas: 1
-    #   maxReplicas: 3
-    #   metrics:
-    #   - type: Resource
-    #     resource:
-    #       name: cpu
-    #       targetAverageUtilization: 75
+      # autoscaling:
+      #   enabled: true
+      #   minReplicas: 1
+      #   maxReplicas: 3
+      #   metrics:
+      #   - type: Resource
+      #     resource:
+      #       name: cpu
+      #       targetAverageUtilization: 75
       # - type: Resource
       #   resource:
       #     name: memory
       #     targetAverageUtilization: 60
 
-    datasources:
-      datasources.yaml:
-        apiVersion: 1
-        datasources:
-        - name: Alertmanager
-          type: alertmanager
-          url: http://prometheus-alertmanager
-          uid: alertmanager
-          access: proxy
-          jsonData:
-            implementation: prometheus
-        - name: Loki
-          uid: loki
-          type: loki
-          access: proxy
-          url: http://loki-query-frontend:3100
-          version: 1
-          jsonData:
-            alertmanagerUid: alertmanager
-            maxLines: 5000
-            timeout: "60"
-        - name: Prometheus
-          type: prometheus
-          url: http://prometheus-server
-          access: proxy
-          isDefault: true
-          jsonData:
-            manageAlerts: true
-            alertmanagerUid: alertmanager
-    notifiers:
-      notifiers.yaml:
-        notifiers:
-          - name: prometheus-alertmanager
-            type: prometheus-alertmanager
-            uid: prometheus-alertmanager
-            org_id: 1
-            is_default: true
-            settings:
-              url: http://prometheus-alertmanager
-        delete_notifiers: []
-
-
-    sidecar:
-      plugins:
-        enabled: true
-      notifiers:
-        enabled: false
-      dashboards:
-        enabled: true
-        label: grafana_dashboard
-        labelValue: "1"
-        folder: /var/lib/grafana/dashboards/external
-        folderAnnotation: grafana.diegoluisi.eti.br/dashboard-folder
-  #      searchNamespace: ALL
-        provider:
-          disableDelete: false
-          allowUiUpdates: true
-          foldersFromFilesStructure: true
       datasources:
-        enabled: false
-        label: grafana_datasource
-        labelValue: "1"
+        datasources.yaml:
+          apiVersion: 1
+          datasources:
+            - name: Alertmanager
+              type: alertmanager
+              url: http://prometheus-alertmanager
+              uid: alertmanager
+              access: proxy
+              jsonData:
+                implementation: prometheus
+            - name: Loki
+              uid: loki
+              type: loki
+              access: proxy
+              url: http://loki-query-frontend:3100
+              version: 1
+              jsonData:
+                alertmanagerUid: alertmanager
+                maxLines: 5000
+                timeout: "60"
+            - name: Prometheus
+              type: prometheus
+              url: http://prometheus-server
+              access: proxy
+              isDefault: true
+              jsonData:
+                manageAlerts: true
+                alertmanagerUid: alertmanager
+      notifiers:
+        notifiers.yaml:
+          notifiers:
+            - name: prometheus-alertmanager
+              type: prometheus-alertmanager
+              uid: prometheus-alertmanager
+              org_id: 1
+              is_default: true
+              settings:
+                url: http://prometheus-alertmanager
+          delete_notifiers: []
 
-    plugins:
-      - grafana-github-datasource
-      - grafana-piechart-panel
+      sidecar:
+        plugins:
+          enabled: true
+        notifiers:
+          enabled: false
+        dashboards:
+          enabled: true
+          label: grafana_dashboard
+          labelValue: "1"
+          folder: /var/lib/grafana/dashboards/external
+          folderAnnotation: grafana.diegoluisi.eti.br/dashboard-folder
+          #      searchNamespace: ALL
+          provider:
+            disableDelete: false
+            allowUiUpdates: true
+            foldersFromFilesStructure: true
+        datasources:
+          enabled: false
+          label: grafana_datasource
+          labelValue: "1"
 
-    dashboardProviders:
-      dashboardproviders.yaml:
-        apiVersion: 1
-        providers:
-        - name: 'default'
-          orgId: 1
-          folder: 'Kubernetes Dashboards'
-          type: file
-          disableDeletion: false
-          editable: true
-          options:
-            path: /var/lib/grafana/dashboards/default
-        - name: 'alertmanager'
-          orgId: 1
-          folder: 'Alertmanager Dashboards'
-          type: file
-          disableDeletion: false
-          editable: true
-          options:
-            path: /var/lib/grafana/dashboards/alertmanager
-        - name: 'argocd'
-          orgId: 1
-          folder: 'ArgoCD Dashboards'
-          type: file
-          disableDeletion: false
-          editable: true
-          options:
-            path: /var/lib/grafana/dashboards/argocd
-        - name: 'github'
-          orgId: 1
-          folder: 'GitHub Dashboards'
-          type: file
-          disableDeletion: false
-          editable: true
-          options:
-            path: /var/lib/grafana/dashboards/github
-        - name: 'istio'
-          orgId: 1
-          folder: 'Istio Dashboards'
-          type: file
-          disableDeletion: false
-          editable: true
-          options:
-            path: /var/lib/grafana/dashboards/istio
-        - name: 'loki'
-          orgId: 1
-          folder: 'Loki Dashboards'
-          type: file
-          disableDeletion: false
-          editable: true
-          options:
-            path: /var/lib/grafana/dashboards/loki
-    dashboards:
-      default:
-        # GoLang dashboards
-        golang-metrics:
-          datasource: Prometheus
-          gnetId: 13240
-        # Kubernetes dashboards
-        core-dns:
-          datasource: Prometheus
-          url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/core-dns.json"
-        k8s-addons-starboard-operator:
-          datasource: Prometheus
-          url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/k8s-addons-starboard-operator.json"
-        k8s-system-api-server:
-          datasource: Prometheus
-          url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/k8s-system-api-server.json"
-        k8s-system-coredns:
-          datasource: Prometheus
-          url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/k8s-system-coredns.json"
-        k8s-views-global:
-          datasource: Prometheus
-          url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/k8s-views-global.json"
-        k8s-views-namespaces:
-          datasource: Prometheus
-          url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/k8s-views-namespaces.json"
-        k8s-views-nodes:
-          datasource: Prometheus
-          url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/k8s-views-nodes.json"
-        k8s-views-pods:
-          datasource: Prometheus
-          url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/k8s-views-pods.json"
-        k8s_views_global-kubernetes-views-global:
-          datasource: Prometheus
-          url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/k8s_views_global-kubernetes-views-global.json"
-        k8s_views_nodes-kubernetes-views-nodes:
-          datasource: Prometheus
-          url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/k8s_views_nodes-kubernetes-views-nodes.json"
-        k8s_views_ns-kubernetes-views-namespaces:
-          datasource: Prometheus
-          url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/k8s_views_ns-kubernetes-views-namespaces.json"
-        k8s_views_pods-kubernetes-views-pods:
-          datasource: Prometheus
-          url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/k8s_views_pods-kubernetes-views-pods.json"
-        node-exporter-full:
-          datasource: Prometheus
-          url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/node-exporter-full.json"
-      alertmanager:
-        # Alertmanager dashboards
-        alertmanager-grafana-dashboard:
-          datasource: Prometheus
-          gnetId: 9578
-      argocd:
-        # ArgoCD dashboards
-        argocd-default:
-          datasource: Prometheus
-          url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/argocd/dashboard.json"
-      github:
-        # GitHub dashboards
-        github-default:
-          datasource: GitHub
-          url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/github/github-default.json"
-        github-organization:
-          datasource: GitHub
-          url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/github/github-organization.json"
-      istio:
-        # Istio dashboards
-        istio-control-plane-dashboard:
-          datasource: Prometheus
-          url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/istio/istio-control-plane-dashboard.json"
-        istio-mesh-dashboard:
-          datasource: Prometheus
-          url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/istio/istio-mesh-dashboard.json"
-        istio-service-dashboard:
-          datasource: Prometheus
-          url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/istio/istio-service-dashboard.json"
-        istio-wasm-extension-dashboard:
-          datasource: Prometheus
-          url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/istio/istio-wasm-extension-dashboard.json"
-        istio-workload-dashboard:
-          datasource: Prometheus
-          url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/istio/istio-workload-dashboard.json"
-        istio-performance-dashboard:
-          datasource: Prometheus
-          gnetId: 12153
-      loki:
-        # Loki dashboards
-        loki-stack-monitoring:
-          datasource: Loki
-          gnetId: 14055
-        loki-istio-service:
-          datasource: Loki
-          gnetId: 14876
-          revision: 3
-        loki-container-log:
-          datasource: Loki
-          gnetId: 16966
+      plugins:
+        - grafana-github-datasource
+        - grafana-piechart-panel
 
+      dashboardProviders:
+        dashboardproviders.yaml:
+          apiVersion: 1
+          providers:
+            - name: "default"
+              orgId: 1
+              folder: "Kubernetes Dashboards"
+              type: file
+              disableDeletion: false
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/default
+            - name: "alertmanager"
+              orgId: 1
+              folder: "Alertmanager Dashboards"
+              type: file
+              disableDeletion: false
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/alertmanager
+            - name: "argocd"
+              orgId: 1
+              folder: "ArgoCD Dashboards"
+              type: file
+              disableDeletion: false
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/argocd
+            - name: "github"
+              orgId: 1
+              folder: "GitHub Dashboards"
+              type: file
+              disableDeletion: false
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/github
+            - name: "istio"
+              orgId: 1
+              folder: "Istio Dashboards"
+              type: file
+              disableDeletion: false
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/istio
+            - name: "loki"
+              orgId: 1
+              folder: "Loki Dashboards"
+              type: file
+              disableDeletion: false
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/loki
+      dashboards:
+        default:
+          # GoLang dashboards
+          golang-metrics:
+            datasource: Prometheus
+            gnetId: 13240
+          # Kubernetes dashboards
+          core-dns:
+            datasource: Prometheus
+            url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/core-dns.json"
+          k8s-addons-starboard-operator:
+            datasource: Prometheus
+            url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/k8s-addons-starboard-operator.json"
+          k8s-system-api-server:
+            datasource: Prometheus
+            url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/k8s-system-api-server.json"
+          k8s-system-coredns:
+            datasource: Prometheus
+            url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/k8s-system-coredns.json"
+          k8s-views-global:
+            datasource: Prometheus
+            url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/k8s-views-global.json"
+          k8s-views-namespaces:
+            datasource: Prometheus
+            url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/k8s-views-namespaces.json"
+          k8s-views-nodes:
+            datasource: Prometheus
+            url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/k8s-views-nodes.json"
+          k8s-views-pods:
+            datasource: Prometheus
+            url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/k8s-views-pods.json"
+          k8s_views_global-kubernetes-views-global:
+            datasource: Prometheus
+            url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/k8s_views_global-kubernetes-views-global.json"
+          k8s_views_nodes-kubernetes-views-nodes:
+            datasource: Prometheus
+            url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/k8s_views_nodes-kubernetes-views-nodes.json"
+          k8s_views_ns-kubernetes-views-namespaces:
+            datasource: Prometheus
+            url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/k8s_views_ns-kubernetes-views-namespaces.json"
+          k8s_views_pods-kubernetes-views-pods:
+            datasource: Prometheus
+            url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/k8s_views_pods-kubernetes-views-pods.json"
+          node-exporter-full:
+            datasource: Prometheus
+            url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/node-exporter-full.json"
+        alertmanager:
+          # Alertmanager dashboards
+          alertmanager-grafana-dashboard:
+            datasource: Prometheus
+            gnetId: 9578
+        argocd:
+          # ArgoCD dashboards
+          argocd-default:
+            datasource: Prometheus
+            url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/argocd/dashboard.json"
+        github:
+          # GitHub dashboards
+          github-default:
+            datasource: GitHub
+            url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/github/github-default.json"
+          github-organization:
+            datasource: GitHub
+            url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/github/github-organization.json"
+        istio:
+          # Istio dashboards
+          istio-control-plane-dashboard:
+            datasource: Prometheus
+            url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/istio/istio-control-plane-dashboard.json"
+          istio-mesh-dashboard:
+            datasource: Prometheus
+            url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/istio/istio-mesh-dashboard.json"
+          istio-service-dashboard:
+            datasource: Prometheus
+            url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/istio/istio-service-dashboard.json"
+          istio-wasm-extension-dashboard:
+            datasource: Prometheus
+            url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/istio/istio-wasm-extension-dashboard.json"
+          istio-workload-dashboard:
+            datasource: Prometheus
+            url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/istio/istio-workload-dashboard.json"
+          istio-performance-dashboard:
+            datasource: Prometheus
+            gnetId: 12153
+        loki:
+          # Loki dashboards
+          loki-stack-monitoring:
+            datasource: Loki
+            gnetId: 14055
+          loki-istio-service:
+            datasource: Loki
+            gnetId: 14876
+            revision: 3
+          loki-container-log:
+            datasource: Loki
+            gnetId: 16966
