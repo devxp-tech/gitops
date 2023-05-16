@@ -2,20 +2,19 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: monitoring
 helmCharts:
-- name: loki-distributed
-  includeCRDs: true
-  releaseName: loki-distributed
-  namespace: monitoring
-  version: 0.67.1
-  repo: https://grafana.github.io/helm-charts
-  valuesInline:
-    fullnameOverride: loki
-    global:
-      dnsService: coredns
-      clusterDomain: lgsk8sp1.grupologos.local
-    labels:
-      app: loki
-    loki:
-      distributorLabels:
+  - name: loki-distributed
+    includeCRDs: true
+    releaseName: loki-distributed
+    namespace: monitoring
+    version: 0.67.1
+    repo: https://grafana.github.io/helm-charts
+    valuesInline:
+      fullnameOverride: loki
+      global:
+        dnsService: coredns
+        clusterDomain: lgsk8sp1.grupologos.local
+      labels:
         app: loki
-
+      loki:
+        distributorLabels:
+          app: loki

@@ -2,13 +2,13 @@ appName: crossplane
 userGivenName: crossplane
 destNamespace: crossplane-system
 destServer: https://kubernetes.default.svc
-srcPath: ''
+srcPath: ""
 repoURL: https://kubernetes-sigs.github.io/crossplane-system/
 srcRepoURL: https://charts.crossplane.io/stable
-srcTargetRevision: '1.8.0'
+srcTargetRevision: "1.8.0"
 labels:
-exclude: ''
-include: ''
+exclude: ""
+include: ""
 helm:
   chart: crossplane
   valueFiles: values

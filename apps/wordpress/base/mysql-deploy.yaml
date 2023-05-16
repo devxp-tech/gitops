@@ -1,12 +1,12 @@
 ---
-apiVersion:  apps/v1 # for versions before 1.9.0 use apps/v1beta2
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
 kind: Deployment
 metadata:
   name: wordpress-mysql
   namespace: wordpress
   labels:
     app: wordpress
-    version: '1.0.0'
+    version: "1.0.0"
 spec:
   selector:
     matchLabels:
@@ -30,44 +30,44 @@ spec:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
             nodeSelectorTerms:
-            - matchExpressions:
-              - key: topology.kubernetes.io/zone
-                operator: In
-                values:
-                - us-east-1a
+              - matchExpressions:
+                  - key: topology.kubernetes.io/zone
+                    operator: In
+                    values:
+                      - us-east-1a
       containers:
-      - image: mysql:5.6
-        name: mysql
-        resources:
-          requests:
-            memory: 1Gi
-            cpu: 10m
-          limits:
-            memory: 1Gi
-            cpu: 50m
-        env:
-        - name: MYSQL_ROOT_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: mysql-pass        # the one generated before in secret.yml
-              key: password
-        ports:
-        - name: mysql
-          containerPort: 3306
-        livenessProbe:
-          tcpSocket:
-            port: mysql
-          initialDelaySeconds: 15
-          periodSeconds: 20
-        readinessProbe:
-          tcpSocket:
-            port: mysql
-          initialDelaySeconds: 5
-          periodSeconds: 10
-        volumeMounts:
-        - name: mysql-persistent-storage  # which data will be stored
-          mountPath: "/var/lib/mysql"
+        - image: mysql:5.6
+          name: mysql
+          resources:
+            requests:
+              memory: 1Gi
+              cpu: 10m
+            limits:
+              memory: 1Gi
+              cpu: 50m
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-pass # the one generated before in secret.yml
+                  key: password
+          ports:
+            - name: mysql
+              containerPort: 3306
+          livenessProbe:
+            tcpSocket:
+              port: mysql
+            initialDelaySeconds: 15
+            periodSeconds: 20
+          readinessProbe:
+            tcpSocket:
+              port: mysql
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          volumeMounts:
+            - name: mysql-persistent-storage # which data will be stored
+              mountPath: "/var/lib/mysql"
       volumes:
-      - name: mysql-persistent-storage    # PVC
-        persistentVolumeClaim:
-          claimName: mysql-persistent-storage
+        - name: mysql-persistent-storage # PVC
+          persistentVolumeClaim:
+            claimName: mysql-persistent-storage
