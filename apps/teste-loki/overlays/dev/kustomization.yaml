@@ -2,41 +2,44 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: teste-loki
 resources:
-- ../../base
-- postgres-secrets-sealed.yaml
+  - ../../base
+  - postgres-secrets-sealed.yaml
 helmCharts:
-- name: devxp-app
-  releaseName: devxp-app
-  version: 0.1.77
-  repo: https://devxp-tech.github.io/helm-charts
-  valuesInline:
-    name: teste-loki
-    image:
-      repository: ghcr.io/devxp-tech/teste-loki
-      tag: a245b9ef
-    envFrom:
-    - secretRef:
-        name: postgres-secrets
-    network:
-      domain: diegoluisi.eti.br
-    autoscaling:
-      enabled: true
-      minReplicas: 1
-      maxReplicas: 2
-      targetCPUUtilizationPercentage: 80
-    livenessProbe:
-      httpGet:
-        path: /health-check/liveness
-        port: 8080
-      initialDelaySeconds: 15
-      periodSeconds: 10
-    readinessProbe:
-      httpGet:
-        path: /health-check/readiness
-        port: 8080
-      initialDelaySeconds: 15
-      periodSeconds: 10
-
+  - name: devxp-app
+    releaseName: devxp-app
+    version: 0.1.77
+    repo: https://devxp-tech.github.io/helm-charts
+    valuesInline:
+      name: teste-loki
+      image:
+        repository: ghcr.io/devxp-tech/teste-loki
+        tag: a245b9ef
+      deployment:
+        enabled: true
+      argoRollouts:
+        enabled: false
+      envFrom:
+        - secretRef:
+            name: postgres-secrets
+      network:
+        domain: diegoluisi.eti.br
+      autoscaling:
+        enabled: true
+        minReplicas: 1
+        maxReplicas: 2
+        targetCPUUtilizationPercentage: 80
+      livenessProbe:
+        httpGet:
+          path: /health-check/liveness
+          port: 8080
+        initialDelaySeconds: 15
+        periodSeconds: 10
+      readinessProbe:
+        httpGet:
+          path: /health-check/readiness
+          port: 8080
+        initialDelaySeconds: 15
+        periodSeconds: 10
 # - name: postgresql
 #   releaseName: postgresql
 #   version: 12.1.5
