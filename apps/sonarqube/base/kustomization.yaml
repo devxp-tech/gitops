@@ -6,7 +6,7 @@ resources:
 helmCharts:
   - name: sonarqube
     releaseName: sonarqube
-    version: 1.6.4
+    version: 2.0.1
     repo: https://charts.bitnami.com/bitnami
     valuesInline:
       commonLabels:
@@ -15,7 +15,7 @@ helmCharts:
       sonarqubeEmail: noreply@devxp-tech.io
       sonarqubeUsername: admin
       existingSecret: sonarqube-postgresql-secret
-      replicaCount: 1
+      # replicaCount: 1
       # minHeapSize: 512m
       # maxHeapSize: 1024m
       sonarqubeSkipInstall: true
