@@ -20,10 +20,10 @@ helmCharts:
       # maxHeapSize: 1024m
       resources:
         requests:
-          memory: 512Mi
+          memory: 2048Mi
           cpu: 200m
         limits:
-          memory: 2048Mi
+          memory: 4096Mi
           cpu: 400m
       service:
         type: ClusterIP
