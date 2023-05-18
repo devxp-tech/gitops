@@ -6,12 +6,12 @@ resources:
 helmCharts:
   - name: sonarqube
     releaseName: sonarqube
-    version: 2.0.1
+    version: 1.6.4
     repo: https://charts.bitnami.com/bitnami
     valuesInline:
       commonLabels:
         app: sonarqube
-        version: 9.8.0
+        version: 9.7.0
       sonarqubeEmail: noreply@devxp-tech.io
       sonarqubeUsername: admin
       existingSecret: sonarqube-postgresql-secret
