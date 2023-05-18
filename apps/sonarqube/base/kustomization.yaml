@@ -15,8 +15,8 @@ helmCharts:
       sonarqubeEmail: noreply@devxp-tech.io
       sonarqubeUsername: admin
       existingSecret: sonarqube-postgresql-secret
-      persistence:
-        enabled: false
+      diagnosticMode:
+        enabled: true
       replicaCount: 1
       minHeapSize: 512m
       maxHeapSize: 1024m
