@@ -20,11 +20,11 @@ helmCharts:
       maxHeapSize: 1024m
       resources:
         requests:
-          memory: 500Mi
-          cpu: 100m
-        limits:
           memory: 1024Mi
           cpu: 200m
+        limits:
+          memory: 2048Mi
+          cpu: 400m
       service:
         type: ClusterIP
       postgresql:
