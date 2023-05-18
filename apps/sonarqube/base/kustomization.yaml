@@ -6,7 +6,7 @@ resources:
 helmCharts:
   - name: sonarqube
     releaseName: sonarqube
-    version: 3.1.1
+    version: 3.2.1
     repo: https://charts.bitnami.com/bitnami
     valuesInline:
       commonLabels:
@@ -18,6 +18,8 @@ helmCharts:
       replicaCount: 1
       minHeapSize: 512m
       maxHeapSize: 1024m
+      persistence:
+        enabled: true
       resources:
         requests:
           memory: 512Mi
