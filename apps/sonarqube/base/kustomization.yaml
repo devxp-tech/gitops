@@ -19,7 +19,7 @@ helmCharts:
       minHeapSize: 512m
       maxHeapSize: 1024m
       persistence:
-        enabled: true
+        enabled: false
       resources:
         requests:
           memory: 512Mi
