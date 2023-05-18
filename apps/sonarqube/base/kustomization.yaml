@@ -6,7 +6,7 @@ resources:
 helmCharts:
   - name: sonarqube
     releaseName: sonarqube
-    version: 3.2.1
+    version: 1.0.3
     repo: https://charts.bitnami.com/bitnami
     valuesInline:
       commonLabels:
@@ -22,13 +22,18 @@ helmCharts:
         enabled: false
       resources:
         requests:
-          memory: 512Mi
+          memory: 1024Mi
           cpu: 200m
         limits:
-          memory: 1024Mi
+          memory: 2048Mi
           cpu: 400m
       service:
         type: ClusterIP
+      extraEnvVars:
+        - name: SONAR_CE_JAVAOPTS
+          value: "-Xmx2048m -Xmx2048m"
+        - name: JAVA_OPTS
+          value: "-Duser.timezone=America/Sao_Paulo -Xmx2048m"
       postgresql:
         volumePermissions:
           enabled: true
