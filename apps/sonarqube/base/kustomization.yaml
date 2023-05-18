@@ -18,6 +18,7 @@ helmCharts:
       replicaCount: 1
       minHeapSize: 512m
       maxHeapSize: 1024m
+      clusterDomain: "lgsk8sp1.grupologos.local"
       persistence:
         enabled: false
       resources:
