@@ -16,7 +16,7 @@ helmCharts:
       sonarqubeUsername: admin
       existingSecret: sonarqube-postgresql-secret
       diagnosticMode:
-        enabled: true
+        enabled: false
       replicaCount: 1
       minHeapSize: 512m
       maxHeapSize: 1024m
