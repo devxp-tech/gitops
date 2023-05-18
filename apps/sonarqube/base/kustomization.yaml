@@ -6,7 +6,7 @@ resources:
 helmCharts:
   - name: sonarqube
     releaseName: sonarqube
-    version: 1.5.4
+    version: 2.0.1
     repo: https://charts.bitnami.com/bitnami
     valuesInline:
       commonLabels:
