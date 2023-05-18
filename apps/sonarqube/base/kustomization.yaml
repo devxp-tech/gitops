@@ -35,8 +35,6 @@ helmCharts:
         - name: JAVA_OPTS
           value: "-Duser.timezone=America/Sao_Paulo -Xmx2048m"
       postgresql:
-        volumePermissions:
-          enabled: true
         auth:
           existingSecret: sonarqube-postgresql-secret
         primary:
