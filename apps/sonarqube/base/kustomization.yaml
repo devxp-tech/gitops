@@ -16,8 +16,9 @@ helmCharts:
       sonarqubeUsername: admin
       existingSecret: sonarqube-postgresql-secret
       replicaCount: 1
-      minHeapSize: 512m
-      maxHeapSize: 1024m
+      # minHeapSize: 512m
+      # maxHeapSize: 1024m
+      sonarqubeSkipInstall: true
       clusterDomain: "lgsk8sp1.grupologos.local"
       persistence:
         enabled: false
