@@ -21,6 +21,8 @@ helmCharts:
       clusterDomain: "lgsk8sp1.grupologos.local"
       persistence:
         enabled: false
+      service:
+        type: ClusterIP
       # resources:
       #   requests:
       #     memory: 512Mi
@@ -28,13 +30,11 @@ helmCharts:
       #   limits:
       #     memory: 1024Mi
       #     cpu: 400m
-      service:
-        type: ClusterIP
-      extraEnvVars:
-        - name: SONAR_CE_JAVAOPTS
-          value: "-Xmx1024m -Xmx1024m"
-        - name: JAVA_OPTS
-          value: "-Duser.timezone=America/Sao_Paulo -Xmx1024m"
+      # extraEnvVars:
+      #   - name: SONAR_CE_JAVAOPTS
+      #     value: "-Xmx1024m -Xmx1024m"
+      #   - name: JAVA_OPTS
+      #     value: "-Duser.timezone=America/Sao_Paulo -Xmx1024m"
       postgresql:
         auth:
           existingSecret: sonarqube-postgresql-secret
