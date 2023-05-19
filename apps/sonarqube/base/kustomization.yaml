@@ -20,7 +20,7 @@ helmCharts:
       # sonarqubeSkipInstall: true
       clusterDomain: "lgsk8sp1.grupologos.local"
       persistence:
-        enabled: true
+        enabled: false
       service:
         type: ClusterIP
       # resources:
