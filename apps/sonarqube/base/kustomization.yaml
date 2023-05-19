@@ -15,9 +15,8 @@ helmCharts:
       sonarqubeEmail: noreply@devxp-tech.io
       sonarqubeUsername: admin
       existingSecret: sonarqube-postgresql-secret
-      # replicaCount: 1
-      # minHeapSize: 512m
-      # maxHeapSize: 1024m
+      podAnnotations:
+        - proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
       sonarqubeSkipInstall: true
       clusterDomain: "lgsk8sp1.grupologos.local"
       persistence:
