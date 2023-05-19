@@ -20,16 +20,16 @@ helmCharts:
       # sonarqubeSkipInstall: true
       clusterDomain: "lgsk8sp1.grupologos.local"
       persistence:
-        enabled: false
+        enabled: true
       service:
         type: ClusterIP
       # resources:
       #   requests:
       #     memory: 512Mi
-      #     cpu: 200m
+      #     cpu: 100m
       #   limits:
       #     memory: 1024Mi
-      #     cpu: 400m
+      #     cpu: 200m
       # extraEnvVars:
       #   - name: SONAR_CE_JAVAOPTS
       #     value: "-Xmx1024m -Xmx1024m"
