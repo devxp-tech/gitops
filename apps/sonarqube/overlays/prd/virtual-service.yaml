@@ -4,18 +4,18 @@ metadata:
   name: sonarqube
   namespace: sonarqube
   annotations:
-    link.argocd.argoproj.io/external-link: https://sonar.diegoluisi.eti.br
+    link.argocd.argoproj.io/external-link: https://sonar.devxp-tech.io
 spec:
   hosts:
-  - "sonar.diegoluisi.eti.br"
+    - "sonar.devxp-tech.io"
   gateways:
-  - istio-system/istio-ingressgateway
+    - istio-system/istio-ingressgateway
   http:
-  - match:
-    - uri:
-        prefix: /
-    route:
-    - destination:
-        port:
-          number: 80
-        host: sonarqube.sonarqube.svc.lgsk8sp1.grupologos.local
+    - match:
+        - uri:
+            prefix: /
+      route:
+        - destination:
+            port:
+              number: 80
+            host: sonarqube.sonarqube.svc.lgsk8sp1.grupologos.local
