@@ -73,7 +73,7 @@ helmCharts:
           - id: kiali-client
             name: "Kiali"
             redirectURIs:
-              - "https://kiali.diegoluisi.eti.br/kiali"
+              - "https://kiali.devxp-tech.io/kiali"
             SecretEnv: KIALI_CLIENT_SECRET
 
           - id: kubecost-client

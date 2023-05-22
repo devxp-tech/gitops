@@ -7,19 +7,19 @@ metadata:
   labels:
     app: kiali
   annotations:
-    link.argocd.argoproj.io/external-link: https://kiali.diegoluisi.eti.br
+    link.argocd.argoproj.io/external-link: https://kiali.devxp-tech.io
 spec:
   gateways:
-  - istio-system/istio-ingressgateway
+    - istio-system/istio-ingressgateway
   hosts:
-  - "kiali.diegoluisi.eti.br"
+    - "kiali.devxp-tech.io"
   http:
-  - headers:
-      request:
-        set:
-          X-Forwarded-Port: "443"
-    route:
-    - destination:
-        host: kiali.kiali-operator.svc.lgsk8sp1.grupologos.local
-        port:
-          number: 20001
+    - headers:
+        request:
+          set:
+            X-Forwarded-Port: "443"
+      route:
+        - destination:
+            host: kiali.kiali-operator.svc.lgsk8sp1.grupologos.local
+            port:
+              number: 20001
