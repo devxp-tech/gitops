@@ -30,6 +30,8 @@ helmCharts:
             name: postgres-secrets
         - secretRef:
             name: backstage-secrets
+      network:
+        domain: diegoluisi.eti.br
       resources:
         requests:
           memory: 1024Mi
