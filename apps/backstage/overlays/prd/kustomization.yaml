@@ -47,7 +47,7 @@ helmCharts:
           path: "/healthcheck"
           httpHeaders:
             - name: Host
-              value: backstage.diegoluisi.eti.br
+              value: backstage.devxp-tech.io
       livenessProbe:
         initialDelaySeconds: 15
         periodSeconds: 10
@@ -56,7 +56,7 @@ helmCharts:
           path: "/healthcheck"
           httpHeaders:
             - name: Host
-              value: backstage.diegoluisi.eti.br
+              value: backstage.devxp-tech.io
       autoscaling:
         enabled: true
         minReplicas: 1
