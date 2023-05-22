@@ -12,7 +12,7 @@ helmCharts:
     name: teste-moro
     image:
       repository: ghcr.io/devxp-tech/teste-moro
-      tag: latest
+      tag: 3becb468
     autoscaling:
       enabled: true
       minReplicas: 1
