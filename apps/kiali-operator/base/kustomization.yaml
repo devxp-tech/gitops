@@ -19,7 +19,7 @@ helmCharts:
           istio_namespace: "istio-system"
           deployment:
             accessible_namespaces:
-              - '**'
+              - "**"
             view_only_mode: true
             # disable_rbac: true
           external_services:
@@ -46,13 +46,13 @@ helmCharts:
                 token: secret:kiali-secrets:grafanaToken
               enabled: true
               in_cluster_url: http://grafana.monitoring
-              url: https://grafana.diegoluisi.eti.br
+              url: https://grafana.devxp-tech.io
             # tracing:
             #   enabled: true
             #   in_cluster_url: 'http://tracing.istio-system/jaeger'
             #   use_grpc: false
             #   # Public facing URL of Jaeger
-            #   url: 'https://jaeger.diegoluisi.eti.br/jaeger'
+            #   url: 'https://jaeger.devxp-tech.io/jaeger'
           auth:
             strategy: openid
             openid:

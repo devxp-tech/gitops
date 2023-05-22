@@ -5,18 +5,18 @@ metadata:
   name: prometheus
   namespace: monitoring
   annotations:
-    link.argocd.argoproj.io/external-link: https://prometheus.diegoluisi.eti.br
+    link.argocd.argoproj.io/external-link: https://prometheus.devxp-tech.io
 spec:
   hosts:
-  - "prometheus.diegoluisi.eti.br"
+    - "prometheus.devxp-tech.io"
   gateways:
-  - istio-system/istio-ingressgateway
+    - istio-system/istio-ingressgateway
   http:
-  - match:
-    - uri:
-        prefix: /
-    route:
-    - destination:
-        port:
-          number: 80
-        host: prometheus-server.monitoring.svc.lgsk8sp1.grupologos.local
+    - match:
+        - uri:
+            prefix: /
+      route:
+        - destination:
+            port:
+              number: 80
+            host: prometheus-server.monitoring.svc.lgsk8sp1.grupologos.local
