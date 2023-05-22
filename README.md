@@ -1,5 +1,5 @@
 [![main](https://github.com/devxp-tech/gitops/actions/workflows/main.yaml/badge.svg)](https://github.com/devxp-tech/gitops/actions/workflows/main.yaml)
-[![Quality Gate Status](https://sonar.diegoluisi.eti.br/api/project_badges/measure?project=gitops&metric=alert_status&token=f2955563c1490d9562ba76db3c4a7c4afdc9efba)](https://sonar.diegoluisi.eti.br/dashboard?id=gitops)
+[![Quality Gate Status](https://sonar.devxp-tech.io/api/project_badges/measure?project=gitops&metric=alert_status&token=sqb_a0a10eb1070c347d4fea82aeb0e5c62c19b6b576)](https://sonar.devxp-tech.io/dashboard?id=gitops)
 [![App Status](https://argocd.diegoluisi.eti.br/api/badge?name=argo-cd&revision=true)](https://argocd.diegoluisi.eti.br/applications/argo-cd)
 # ⚙️ GitOps
 
@@ -49,28 +49,28 @@ Argo Workflows is an open source container-native workflow engine for orchestrat
 
 |      Tools       | Version | Deployed |
 | :--------------: | :-----: | :------: |
-| argocd-autopilot | v0.3.0  |    ✅    |
-|      argocd      |  2.3.0  |    ✅    |
-|   argo-events    |  1.5.5  |    ✅    |
-|  argo-workflows  |  3.2.8  |    ✅    |
-|  argo-rollouts   |  1.1.1  |    ✅    |
-|    kustomize     |         |    ✅    |
-|  sealed-secrets  | 0.17.3  |    ✅    |
-|      istio       | 1.11.4  |    ✅    |
-|    wordpress     |   5.9   |    ✅    |
-|   cert-manager   |  1.6.1  |    ✅    |
-|    prometheus    |    x    |    ✅    |
-|     grafana      |    x    |    ✅    |
-|  metrics-server  |  0.5.1  |    ✅    |
+| argocd-autopilot | v0.3.0  |    ✅     |
+|      argocd      |  2.3.0  |    ✅     |
+|   argo-events    |  1.5.5  |    ✅     |
+|  argo-workflows  |  3.2.8  |    ✅     |
+|  argo-rollouts   |  1.1.1  |    ✅     |
+|    kustomize     |         |    ✅     |
+|  sealed-secrets  | 0.17.3  |    ✅     |
+|      istio       | 1.11.4  |    ✅     |
+|    wordpress     |   5.9   |    ✅     |
+|   cert-manager   |  1.6.1  |    ✅     |
+|    prometheus    |    x    |    ✅     |
+|     grafana      |    x    |    ✅     |
+|  metrics-server  |  0.5.1  |    ✅     |
 
 ### 🔨 To Do
 
 
 |     Issue     |   Description   | Status |
 | :-----------: | :-------------: | :----: |
-|   wordpress   |  Fix kustomize  |   ✅   |
-| argo-worflows |    Fix Build    |   ❌   |
-| yaml-validate | Fix CI Workflow |   ❌   |
+|   wordpress   |  Fix kustomize  |   ✅    |
+| argo-worflows |    Fix Build    |   ❌    |
+| yaml-validate | Fix CI Workflow |   ❌    |
 
 ### 🛠️ Required Tools
 
