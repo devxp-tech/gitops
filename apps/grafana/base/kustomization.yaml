@@ -18,7 +18,7 @@ helmCharts:
           memory: 256Mi
       grafana.ini:
         server:
-          domain: grafana.diegoluisi.eti.br
+          domain: grafana.devxp-tech.io
       admin:
         ## Name of the secret. Can be templated.
         existingSecret: "grafana-secrets"
@@ -38,8 +38,8 @@ helmCharts:
             key: GF_AUTH_GITHUB_CLIENT_SECRET
       env:
         # GF_INSTALL_PLUGINS: grafana-simple-json-datasource,alexanderzobnin-zabbix-app
-        GF_SERVER_DOMAIN: grafana.diegoluisi.eti.br
-        GF_SERVER_ROOT_URL: "https://grafana.diegoluisi.eti.br"
+        GF_SERVER_DOMAIN: grafana.devxp-tech.io
+        GF_SERVER_ROOT_URL: "https://grafana.devxp-tech.io"
         GF_AUTH_GITHUB_ENABLED: true
         GF_AUTH_GITHUB_ALLOW_SIGN_UP: true
         GF_AUTH_GITHUB_SCOPES: "user:email,read:org"
@@ -111,7 +111,7 @@ helmCharts:
           label: grafana_dashboard
           labelValue: "1"
           folder: /var/lib/grafana/dashboards/external
-          folderAnnotation: grafana.diegoluisi.eti.br/dashboard-folder
+          folderAnnotation: grafana.devxp-tech.io/dashboard-folder
           #      searchNamespace: ALL
           provider:
             disableDelete: false

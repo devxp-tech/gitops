@@ -5,18 +5,18 @@ metadata:
   name: grafana
   namespace: monitoring
   annotations:
-    link.argocd.argoproj.io/external-link: https://grafana.diegoluisi.eti.br
+    link.argocd.argoproj.io/external-link: https://grafana.devxp-tech.io
 spec:
   hosts:
-  - "grafana.diegoluisi.eti.br"
+    - "grafana.devxp-tech.io"
   gateways:
-  - istio-system/istio-ingressgateway
+    - istio-system/istio-ingressgateway
   http:
-  - match:
-    - uri:
-        prefix: /
-    route:
-    - destination:
-        port:
-          number: 80
-        host: grafana.monitoring.svc.lgsk8sp1.grupologos.local
+    - match:
+        - uri:
+            prefix: /
+      route:
+        - destination:
+            port:
+              number: 80
+            host: grafana.monitoring.svc.lgsk8sp1.grupologos.local
