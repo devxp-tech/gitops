@@ -41,7 +41,7 @@ configMapGenerator:
       - admin.enabled=false
       - kustomize.buildOptions="--enable-alpha-plugins --enable-helm --load-restrictor LoadRestrictionsNone"
       - statusbadge.enabled=true
-      - url=https://argocd.diegoluisi.eti.br
+      - url=https://argocd.devxp-tech.io
       - accounts.backstage="apiKey, login"
   - name: argocd-rbac-cm
     behavior: merge

@@ -18,7 +18,7 @@ helmCharts:
         - secretRef:
             name: postgres-secrets
       network:
-        domain: diegoluisi.eti.br
+        domain: devxp-tech.io
       autoscaling:
         enabled: true
         minReplicas: 1

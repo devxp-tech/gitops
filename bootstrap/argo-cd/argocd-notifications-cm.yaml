@@ -28,7 +28,7 @@ data:
       template: app-out-of-sync-status
       enabled: true
     context:
-      argocdUrl: https://argocd.diegoluisi.eti.br
+      argocdUrl: https://argocd.devxp-tech.io
     templates:
       - name: app-sync-status
         title: Application {{.app.metadata.name}} sync status is {{.app.status.sync.status}}

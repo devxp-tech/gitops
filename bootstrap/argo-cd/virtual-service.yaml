@@ -6,7 +6,7 @@ metadata:
   namespace: argocd
 spec:
   hosts:
-    - "argocd.diegoluisi.eti.br"
+    - "argocd.devxp-tech.io"
   gateways:
     - istio-system/istio-ingressgateway
   http:
