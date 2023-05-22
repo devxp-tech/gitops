@@ -16,7 +16,7 @@ helmCharts:
             name: postgres-secrets
       image:
         repository: ghcr.io/devxp-tech/teste-loki
-        tag: 20cf9503
+        tag: b504b8ed
       network:
         domain: devxp-tech.io
       ResourceQuota:
