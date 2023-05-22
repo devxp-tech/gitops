@@ -12,7 +12,7 @@ helmCharts:
     name: test-update
     image:
       repository: ghcr.io/devxp-tech/test-update
-      tag: latest
+      tag: 43ae8e62
     autoscaling:
       enabled: true
       minReplicas: 1
