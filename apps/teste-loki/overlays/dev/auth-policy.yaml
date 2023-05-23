@@ -32,4 +32,7 @@ spec:
   rules:
     - from:
         - source:
-            principals: ["cluster.local/*"]
+            principals: ["*"]
+      to:
+        - operation:
+            methods: ["GET"]
