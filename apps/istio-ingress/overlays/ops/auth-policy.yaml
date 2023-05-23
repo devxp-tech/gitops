@@ -12,9 +12,7 @@ spec:
     - to:
         - operation:
             hosts:
-              - "argocd.devxp-tech.io"
-              - "teste-loki.devxp-tech.io"
-              - "kiali.devxp-tech.io"
+              - "*.devxp-tech.io"
             # ports: ["443"]
       when:
         - key: request.headers[x-envoy-external-address]
@@ -26,7 +24,6 @@ spec:
         - operation:
             hosts:
               - "*.diegoluisi.eti.br"
-              - "backstage.devxp-tech.io"
 
     # - from:
     #     - source:
