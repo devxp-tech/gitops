@@ -19,7 +19,7 @@ spec:
         - operation:
             hosts:
               - kiali.devxp-tech.io
-            ports: ["443"]
+            ports: ["443", "9090", "20001"]
   # action: ALLOW
   # rules:
   #   - to:
