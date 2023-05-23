@@ -20,7 +20,7 @@ spec:
             methods: ["GET", "POST", "OPTIONS", "DELETE", "PATCH"]
     - from:
         - source:
-            namespaces: ["dex", "monitoring", "kiali-operator"]
+            namespaces: ["dex", "monitoring", "kiali-operator", "teste-loki"]
       to:
         - operation:
             methods: ["GET", "POST", "OPTIONS", "DELETE", "PATCH"]
