@@ -18,9 +18,9 @@ spec:
             - "94.62.74.120" # Diego
             - "187.56.61.31" #Grizko
             - "179.191.119.178" #DiOculos
-    - from:
-        - source:
-            principals: ["cluster.local/*"]
-      to:
-        - operation:
-            methods: ["GET", "POST", "OPTIONS", "DELETE", "PATCH"]
+    # - from:
+    #     - source:
+    #         principals: ["cluster.local/*"]
+    #   to:
+    #     - operation:
+    #         methods: ["GET", "POST", "OPTIONS", "DELETE", "PATCH"]
