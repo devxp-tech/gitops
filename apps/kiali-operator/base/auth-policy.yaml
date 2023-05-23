@@ -7,7 +7,7 @@ spec:
   selector:
     matchLabels:
       app: kiali
-  action: ALLOW
+  action: DENY
   rules:
     - to:
         - operation:
