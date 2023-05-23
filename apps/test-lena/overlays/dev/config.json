@@ -1,0 +1,11 @@
+{
+  "appName": "test-lena",
+  "userGivenName": "test-lena",
+  "destNamespace": "test-lena",
+  "destServer": "https://kubernetes.default.svc",
+  "srcPath": "apps/test-lena/overlays/dev",
+  "srcRepoURL": "https://github.com/devxp-tech/gitops.git",
+  "srcTargetRevision": "",
+  "CreateNamespace": true,
+  "labels": null
+}
