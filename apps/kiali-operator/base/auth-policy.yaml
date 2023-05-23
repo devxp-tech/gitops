@@ -18,19 +18,6 @@ spec:
             - "94.62.74.120" # Diego
             - "187.56.61.31" #Grizko
             - "179.191.119.178" #DiOculos
-
-# ---
-# apiVersion: security.istio.io/v1beta1
-# kind: AuthorizationPolicy
-# metadata:
-#   name: allow-policy
-#   namespace: kiali-operator
-# spec:
-#   selector:
-#     matchLabels:
-#       app: kiali
-#   action: ALLOW
-#   rules:
-#     - from:
-#         - source:
-#             requestPrincipals: ["*"]
+    - from:
+        - source:
+            requestPrincipals: ["*"]
