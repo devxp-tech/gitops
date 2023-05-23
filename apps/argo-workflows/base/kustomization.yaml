@@ -1,0 +1,11 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: argo-workflows
+helmCharts:
+  - name: argo-workflows
+    includeCRDs: true
+    releaseName: argo-workflows
+    version: 0.28.0
+    repo: https://argoproj.github.io/argo-helm
+    valuesInline:
+      fullnameOverride: argo-workflows
