@@ -20,4 +20,4 @@ spec:
             - "179.191.119.178" #DiOculos
     - from:
         - source:
-            requestPrincipals: ["*"]
+            namespace: ["*"]
