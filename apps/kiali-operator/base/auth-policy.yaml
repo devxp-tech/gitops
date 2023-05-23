@@ -28,7 +28,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: kiali-operator
+      app: kiali
   action: ALLOW
   rules:
     - from:
