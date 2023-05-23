@@ -4,4 +4,4 @@ resources:
   - ../../base
   - certificate.yaml
   - gateway.yaml
-  - auth-policy.yaml
+  # - auth-policy.yaml
