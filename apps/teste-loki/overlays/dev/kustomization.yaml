@@ -4,11 +4,10 @@ namespace: teste-loki
 resources:
   - ../../base
   - postgres-secrets-sealed.yaml
-  # - auth-policy.yaml
 helmCharts:
   - name: devxp-app
     releaseName: devxp-app
-    version: 0.1.80
+    version: 0.1.82
     repo: https://devxp-tech.github.io/helm-charts
     valuesInline:
       name: teste-loki
@@ -20,6 +19,7 @@ helmCharts:
             name: postgres-secrets
       network:
         domain: devxp-tech.io
+        gateways: istio-system/private
       quota:
         enabled: false
       autoscaling:
