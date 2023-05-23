@@ -12,7 +12,7 @@ spec:
     - from:
         - source:
             notIpBlocks:
-              - "94.62.74.120" # Diego
+              - "94.62.74.120/32" # Diego
               # - "187.56.61.31" #Grizko
               # - "179.191.119.178" #DiOculos
       to:
