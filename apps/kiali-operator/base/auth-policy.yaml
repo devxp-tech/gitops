@@ -1,24 +1,18 @@
-# apiVersion: security.istio.io/v1beta1
-# kind: AuthorizationPolicy
-# metadata:
-#   name: deny-policy
-#   namespace: kiali-operator
-# spec:
-#   selector:
-#     matchLabels:
-#       app: kiali
-#   action: DENY
-#   rules:
-#     - to:
-#         - operation:
-#             methods: ["GET", "POST", "OPTIONS", "DELETE", "PATCH"]
-#       when:
-#         - key: request.headers[x-envoy-external-address]
-#           values:
-#             - "94.62.74.120" # Diego
-#             - "187.56.61.31" #Grizko
-#             - "179.191.119.178" #DiOculos
-# - "85.244.177.235" #temp office
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: deny-policy
+  namespace: kiali-operator
+spec:
+  selector:
+    matchLabels:
+      app: kiali
+  action: DENY
+  rules:
+    - from:
+        - source:
+            notIpBlocks:
+              - "94.62.74.120/32" # Diego
 
 ---
 apiVersion: security.istio.io/v1beta1
