@@ -32,7 +32,7 @@ spec:
   rules:
     - from:
         - source:
-            namespaces: ["*"]
+            namespaces: ["teste-loki"]
       to:
         - operation:
             methods: ["GET", "POST", "OPTIONS", "DELETE", "PATCH"]
