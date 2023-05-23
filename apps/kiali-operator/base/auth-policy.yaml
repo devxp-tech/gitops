@@ -1,7 +1,7 @@
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: kiali-operator-policy
+  name: deny-policy
   namespace: kiali-operator
 spec:
   selector:
@@ -18,7 +18,7 @@ spec:
       to:
         - operation:
             hosts:
-              - kiali.devxp-tech.io
+              - kiali.kiali-operator.svc.lgsk8sp1.grupologos.local
             ports: ["443", "9090", "20001"]
   # action: ALLOW
   # rules:
