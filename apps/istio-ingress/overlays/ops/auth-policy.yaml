@@ -25,7 +25,8 @@ spec:
     - to:
         - operation:
             hosts:
-              - "www.diegoluisi.eti.br"
+              - "*.diegoluisi.eti.br"
+              - "backstage.devxp-tech.io"
 
     # - from:
     #     - source:
