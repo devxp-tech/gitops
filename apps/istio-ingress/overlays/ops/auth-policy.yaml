@@ -23,5 +23,6 @@ spec:
     - to:
         - operation:
             hosts:
-              - "*.diegoluisi.eti.br"
+              - "argocd.devxp-tech.io"
               - "sonar.devxp-tech.io"
+              - "*.diegoluisi.eti.br"
