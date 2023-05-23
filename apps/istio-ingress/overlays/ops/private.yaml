@@ -5,6 +5,7 @@ metadata:
   namespace: istio-system
   labels:
     app_label: private
+    app: private
     app.kubernetes.io/version: 1.16.2
 spec:
   selector:
