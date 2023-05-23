@@ -19,7 +19,7 @@ helmCharts:
             name: postgres-secrets
       network:
         domain: devxp-tech.io
-        gateways: istio-system/private
+        # gateways: istio-system/private
       quota:
         enabled: false
       autoscaling:

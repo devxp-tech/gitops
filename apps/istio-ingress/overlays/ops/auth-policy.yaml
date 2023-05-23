@@ -6,7 +6,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: private
+      app: istio-ingressgateway
   action: ALLOW
   rules:
     - to:
