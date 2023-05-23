@@ -1,0 +1,22 @@
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: deny-policy
+  namespace: teste-loki
+spec:
+  selector:
+    matchLabels:
+      app: teste-loki
+  action: DENY
+  rules:
+    - from:
+        - source:
+            notIpBlocks:
+              - "94.62.74.120" # Diego
+              # - "187.56.61.31" #Grizko
+              # - "179.191.119.178" #DiOculos
+        - to:
+            - operation:
+                hosts:
+                  - teste-loki.devxp-tech.io
+              ports: ["443"]
