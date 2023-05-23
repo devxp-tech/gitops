@@ -13,7 +13,6 @@ spec:
         - operation:
             hosts:
               - "*.devxp-tech.io"
-            # ports: ["443"]
       when:
         - key: request.headers[x-envoy-external-address]
           values:
