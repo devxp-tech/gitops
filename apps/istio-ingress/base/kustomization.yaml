@@ -13,7 +13,7 @@ helmCharts:
       podAnnotations:
         proxy.istio.io/config: '{"discoveryAddress" : "istiod.istio-system.svc:15012" }'
       autoscaling:
-        enabled: true
+        enabled: false
       replicaCount: 2
       service:
         annotations:
