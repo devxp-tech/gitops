@@ -22,7 +22,10 @@ spec:
             - "94.62.74.120" # Diego
             - "177.76.170.30" # Gritzko
             - "179.191.119.178" #DiOculos
-
+    - to:
+        - operation:
+            hosts:
+              - "www.diegoluisi.eti.br"
 
     # - from:
     #     - source:
