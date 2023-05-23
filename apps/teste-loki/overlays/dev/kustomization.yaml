@@ -20,6 +20,8 @@ helmCharts:
             name: postgres-secrets
       network:
         domain: devxp-tech.io
+      quota:
+        enabled: false
       autoscaling:
         enabled: true
         minReplicas: 1
