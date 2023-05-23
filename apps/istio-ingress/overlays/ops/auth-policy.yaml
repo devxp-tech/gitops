@@ -6,13 +6,13 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: private
+      app: istio-ingressgateway
   action: ALLOW
   rules:
     - to:
         - operation:
             hosts:
-              - "teste-loki.devxp-tech.io"
+              - "*.devxp-tech.io"
             # ports: ["443"]
       when:
         - key: request.headers[x-envoy-external-address]
@@ -20,10 +20,11 @@ spec:
             - "94.62.74.120" # Diego
             - "177.76.170.30" # Gritzko
             - "179.191.119.178" #DiOculos
-    # - to:
-    #     - operation:
-    #         hosts:
-    #           - "*.diegoluisi.eti.br"
+    - to:
+        - operation:
+            hosts:
+              - "*.diegoluisi.eti.br"
+              - "sonar.devxp-tech.io"
 
     # - from:
     #     - source:
