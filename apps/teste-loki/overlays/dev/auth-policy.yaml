@@ -28,6 +28,9 @@ metadata:
   name: allow-policy
   namespace: teste-loki
 spec:
+  selector:
+    matchLabels:
+      app: teste-loki
   action: ALLOW
   rules:
     - from:
@@ -35,4 +38,4 @@ spec:
             principals: ["*"]
       to:
         - operation:
-            methods: ["GET"]
+            methods: ["GET", "POST", "OPTIONS", "DELETE", "PATCH"]
