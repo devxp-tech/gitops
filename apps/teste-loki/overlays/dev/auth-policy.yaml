@@ -2,11 +2,11 @@ apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
   name: teste-loki-policy
-  namespace: teste-loki
+  namespace: istio-system
 spec:
   selector:
     matchLabels:
-      app: istio-ingressgateway
+      app_label: istio-ingressgateway
   action: ALLOW
   rules:
     - to:
