@@ -6,7 +6,7 @@ metadata:
   namespace: dex
 spec:
   hosts:
-    - "dex.diegoluisi.eti.br"
+    - "dex.devxp-tech.io"
   gateways:
     - istio-system/istio-ingressgateway
   http:
@@ -27,7 +27,7 @@ metadata:
   namespace: dex
 spec:
   hosts:
-    - "kube-login.diegoluisi.eti.br"
+    - "kube-login.devxp-tech.io"
   gateways:
     - istio-system/istio-ingressgateway
   http:

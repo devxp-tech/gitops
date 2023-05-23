@@ -3,7 +3,7 @@ kind: Kustomization
 namespace: dex
 resources:
   - ns.yaml
-  - auth-policy.yaml
+  # - auth-policy.yaml
 helmCharts:
   - name: dex
     releaseName: dex
@@ -39,7 +39,7 @@ helmCharts:
               name: github-client
               key: DEX_K8S_AUTH_SECRET
       config:
-        issuer: https://dex.diegoluisi.eti.br
+        issuer: https://dex.devxp-tech.io
         storage:
           type: memory
         # enablePasswordDB: true
@@ -53,7 +53,7 @@ helmCharts:
               # Credentials can be string literals or pulled from the environment.
               clientID: $GITHUB_CLIENT_ID
               clientSecret: $GITHUB_CLIENT_SECRET
-              redirectURI: https://dex.diegoluisi.eti.br/callback
+              redirectURI: https://dex.devxp-tech.io/callback
               orgs:
                 - name: devxp-tech
                   teams:
@@ -85,7 +85,7 @@ helmCharts:
           - id: dex-k8s-authenticator
             name: dex-k8s-authenticator
             redirectURIs:
-              - https://kube-login.diegoluisi.eti.br/callback/
+              - https://kube-login.devxp-tech.io/callback/
             SecretEnv: DEX_K8S_AUTH_SECRET
 
   - name: dex-k8s-authenticator
@@ -105,9 +105,9 @@ helmCharts:
             description: "Cluster K8S lgsk8sp1"
             client_id: dex-k8s-authenticator
             client_secret: ${DEX_K8S_AUTH_SECRET}
-            issuer: https://dex.diegoluisi.eti.br
+            issuer: https://dex.devxp-tech.io
             k8s_master_uri: https://kubernetes-elb-lgsk8sp1-1949553965.us-east-1.elb.amazonaws.com:6443
-            redirect_uri: https://kube-login.diegoluisi.eti.br/callback/
+            redirect_uri: https://kube-login.devxp-tech.io/callback/
             k8s_ca_pem: |
               -----BEGIN CERTIFICATE-----
               MIIC/jCCAeagAwIBAgIBADANBgkqhkiG9w0BAQsFADAVMRMwEQYDVQQDEwprdWJl
