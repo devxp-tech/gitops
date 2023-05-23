@@ -35,7 +35,7 @@ spec:
   rules:
     - from:
         - source:
-            principals: ["*"]
+            namespaces: ["*"]
       to:
         - operation:
             methods: ["GET", "POST", "OPTIONS", "DELETE", "PATCH"]
