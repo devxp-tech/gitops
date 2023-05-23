@@ -1,18 +1,18 @@
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: auth-policy
+  name: teste-loki-policy
   namespace: istio-system
 spec:
   selector:
     matchLabels:
-      app: istio-ingressgateway
+      app: teste-loki
   action: ALLOW
   rules:
     - to:
         - operation:
             hosts:
-              - *.devxp-tech.io
+              - teste-loki.devxp-tech.io
             # ports: ["443"]
       when:
         - key: request.headers[x-envoy-external-address]
