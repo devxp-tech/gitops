@@ -32,22 +32,21 @@ spec:
   #           - "187.56.61.31" #Grizko
   #           - "179.191.119.178" #DiOculos
   #           - "85.244.177.235" #temp office
-
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: allow-policy
-  namespace: kiali-operator
-spec:
-  selector:
-    matchLabels:
-      app: kiali
-  action: ALLOW
-  rules:
-    - from:
-        - source:
-            namespaces: ["*"]
-      to:
-        - operation:
-            methods: ["GET", "POST", "OPTIONS", "DELETE", "PATCH"]
+# ---
+# apiVersion: security.istio.io/v1beta1
+# kind: AuthorizationPolicy
+# metadata:
+#   name: allow-policy
+#   namespace: kiali-operator
+# spec:
+#   selector:
+#     matchLabels:
+#       app: kiali
+#   action: ALLOW
+#   rules:
+#     - from:
+#         - source:
+#             namespaces: ["*"]
+#       to:
+#         - operation:
+#             methods: ["GET", "POST", "OPTIONS", "DELETE", "PATCH"]
