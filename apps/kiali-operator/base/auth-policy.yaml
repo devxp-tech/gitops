@@ -24,15 +24,3 @@ spec:
       to:
         - operation:
             methods: ["GET", "POST", "OPTIONS", "DELETE", "PATCH"]
-# ---
-# apiVersion: security.istio.io/v1beta1
-# kind: AuthorizationPolicy
-# metadata:
-#   name: allow-policy
-#   namespace: kiali-operator
-# spec:
-#   selector:
-#     matchLabels:
-#       app: kiali
-#   action: ALLOW
-#   rules:
