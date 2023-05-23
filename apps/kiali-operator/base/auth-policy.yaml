@@ -14,18 +14,18 @@ spec:
             notIpBlocks:
               - "94.62.74.120/32" # Diego
 
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: allow-policy
-  namespace: kiali-operator
-spec:
-  selector:
-    matchLabels:
-      app: kiali
-  action: ALLOW
-  rules:
-    - from:
-        - source:
-            requestPrincipals: ["*"]
+# ---
+# apiVersion: security.istio.io/v1beta1
+# kind: AuthorizationPolicy
+# metadata:
+#   name: allow-policy
+#   namespace: kiali-operator
+# spec:
+#   selector:
+#     matchLabels:
+#       app: kiali
+#   action: ALLOW
+#   rules:
+#     - from:
+#         - source:
+#             requestPrincipals: ["*"]
