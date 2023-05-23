@@ -19,7 +19,7 @@ spec:
         - operation:
             hosts:
               - teste-loki.devxp-tech.io
-          ports: ["443"]
+            ports: ["443"]
 
     # - from:
     #     - source:
