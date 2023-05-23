@@ -12,7 +12,7 @@ helmCharts:
     name: test-lena
     image:
       repository: ghcr.io/devxp-tech/test-lena
-      tag: latest
+      tag: 5671364a
     autoscaling:
       enabled: true
       minReplicas: 1
