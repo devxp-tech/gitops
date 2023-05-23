@@ -58,7 +58,7 @@ helmCharts:
             openid:
               client_id: kiali-client
               password: secret:kiali:oidc-secret
-              issuer_uri: https://dex.diegoluisi.eti.br
+              issuer_uri: https://dex.devxp-tech.io
               username_claim: preferred_username
               disable_rbac: true
               scopes:

@@ -6,15 +6,15 @@ metadata:
   namespace: observability
 spec:
   hosts:
-  - "jaeger.diegoluisi.eti.br"
+    - "jaeger.devxp-tech.io"
   gateways:
-  - istio-system/istio-ingressgateway
+    - istio-system/istio-ingressgateway
   http:
-  - match:
-    - uri:
-        prefix: /
-    route:
-    - destination:
-        port:
-          number: 80
-        host: jaeger-query.observability.svc.lgsk8sp1.grupologos.local
+    - match:
+        - uri:
+            prefix: /
+      route:
+        - destination:
+            port:
+              number: 80
+            host: jaeger-query.observability.svc.lgsk8sp1.grupologos.local
