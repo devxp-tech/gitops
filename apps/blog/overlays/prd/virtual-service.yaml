@@ -8,7 +8,7 @@ metadata:
     link.argocd.argoproj.io/external-link: https://blog.devxp-tech.io
 spec:
   hosts:
-    - "blog.devxp-tech.io"
+    - "blog-tmp.devxp-tech.io"
   gateways:
     - istio-system/istio-ingressgateway
   http:
