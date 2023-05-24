@@ -16,3 +16,6 @@ helmCharts:
       wordpressBlogName: blog-tmp.devxp-tech.io
       service:
         type: ClusterIP
+      commonLabels:
+        app: wordpress
+        version: 10.0.0
