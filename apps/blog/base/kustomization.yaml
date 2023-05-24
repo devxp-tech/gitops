@@ -12,3 +12,5 @@ helmCharts:
       wordpressFirstName: Diego
       wordpressLastName: Luisi
       wordpressBlogName: www.diegoluisi.eti.br
+      service:
+        type: ClusterIP
