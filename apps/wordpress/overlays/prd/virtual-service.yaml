@@ -7,16 +7,16 @@ metadata:
     link.argocd.argoproj.io/external-link: https://www.diegoluisi.eti.br
 spec:
   hosts:
-  - "www.diegoluisi.eti.br"
-  - "blog.devxp-tech.io"
+    - "www.diegoluisi.eti.br"
+  # - "blog.devxp-tech.io"
   gateways:
-  - istio-system/istio-ingressgateway
+    - istio-system/istio-ingressgateway
   http:
-  - match:
-    - uri:
-        prefix: /
-    route:
-    - destination:
-        port:
-          number: 80
-        host: wordpress.wordpress.svc.lgsk8sp1.grupologos.local
+    - match:
+        - uri:
+            prefix: /
+      route:
+        - destination:
+            port:
+              number: 80
+            host: wordpress.wordpress.svc.lgsk8sp1.grupologos.local
