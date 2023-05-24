@@ -11,10 +11,10 @@ helmCharts:
       installCRDs: true
       namespace: "cert-manager"
       fullnameOverride: "cert-manager"
-      global:
-        leaderElection:
-          namespace: "cert-manager"
-      replicaCount: 2
+      # global:
+      #   leaderElection:
+      #     namespace: "cert-manager"
+      # replicaCount: 2
       resources:
         requests:
           cpu: 10m
