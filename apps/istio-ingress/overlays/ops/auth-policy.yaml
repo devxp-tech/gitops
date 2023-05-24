@@ -24,5 +24,6 @@ spec:
             hosts:
               - "argocd.devxp-tech.io" # Need for GitHub repository badge
               - "dex.devxp-tech.io" # Need for kube-login
+              - "grafana.devxp-tech.io" # Need for Backstage
               - "sonar.devxp-tech.io" # Need for GitHub pipelines
               - "*.diegoluisi.eti.br" # Allow wordpress for everyone
