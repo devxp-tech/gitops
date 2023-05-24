@@ -7,5 +7,8 @@ helmCharts:
     version: 16.1.8
     repo: https://charts.bitnami.com/bitnami
     valuesInline:
-      dashboard:
-        enabled: true
+      wordpressUsername: dluisi
+      wordpressEmail: contato@diegoluisi.eti.br
+      wordpressFirstName: Diego
+      wordpressLastName: Luisi
+      wordpressBlogName: www.diegoluisi.eti.br
