@@ -22,4 +22,4 @@ helmCharts:
       serviceAccount:
         create: true
       persistence:
-        accessModes: ReadWriteMany
+        accessMode: ReadWriteMany
