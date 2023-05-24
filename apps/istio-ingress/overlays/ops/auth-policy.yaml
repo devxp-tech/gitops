@@ -22,7 +22,7 @@ spec:
     - to:
         - operation:
             hosts:
-              - "argocd.devxp-tech.io"
-              - "dex.devxp-tech.io"
-              - "sonar.devxp-tech.io"
-              - "*.diegoluisi.eti.br"
+              - "argocd.devxp-tech.io" # Need for GitHub repository badge
+              - "dex.devxp-tech.io" # Need for kube-login
+              - "sonar.devxp-tech.io" # Need for GitHub pipelines
+              - "*.diegoluisi.eti.br" # Allow wordpress for everyone

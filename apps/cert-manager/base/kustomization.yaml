@@ -2,41 +2,41 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: cert-manager
 helmCharts:
-- name: cert-manager
-  includeCRDs: true
-  releaseName: cert-manager
-  version: v1.11.0
-  repo: https://charts.jetstack.io
-  valuesInline:
-    installCRDs: true
-    namespace: "cert-manager"
-    fullnameOverride: "cert-manager"
-    # global:
-    #   leaderElection:
-    #     namespace: "cert-manager"
-    # replicaCount: 2
-    # resources:
-    #   requests:
-    #     cpu: 10m
-    #     memory: 32Mi
-    #   limits:
-    #     cpu: 20m
-    #     memory: 64Mi
-    # webhook:
-    #   replicaCount: 2
-    #   resources:
-    #     requests:
-    #       cpu: 10m
-    #       memory: 32Mi
-    #     limits:
-    #       cpu: 20m
-    #       memory: 64Mi
-    # cainjector:
-    #   replicaCount: 2
-    #   resources:
-    #     requests:
-    #       cpu: 10m
-    #       memory: 32Mi
-    #     limits:
-    #       cpu: 20m
-    #       memory: 64Mi
+  - name: cert-manager
+    includeCRDs: true
+    releaseName: cert-manager
+    version: v1.12.0
+    repo: https://charts.jetstack.io
+    valuesInline:
+      installCRDs: true
+      namespace: "cert-manager"
+      fullnameOverride: "cert-manager"
+      global:
+        leaderElection:
+          namespace: "cert-manager"
+      replicaCount: 2
+      resources:
+        requests:
+          cpu: 10m
+          memory: 32Mi
+        limits:
+          cpu: 20m
+          memory: 64Mi
+      # webhook:
+      #   replicaCount: 2
+      #   resources:
+      #     requests:
+      #       cpu: 10m
+      #       memory: 32Mi
+      #     limits:
+      #       cpu: 20m
+      #       memory: 64Mi
+      # cainjector:
+      #   replicaCount: 2
+      #   resources:
+      #     requests:
+      #       cpu: 10m
+      #       memory: 32Mi
+      #     limits:
+      #       cpu: 20m
+      #       memory: 64Mi
