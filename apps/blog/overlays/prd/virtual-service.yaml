@@ -1,0 +1,22 @@
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: blog
+  namespace: monitoring
+  annotations:
+    link.argocd.argoproj.io/external-link: https://blog.devxp-tech.io
+spec:
+  hosts:
+    - "blog.devxp-tech.io"
+  gateways:
+    - istio-system/istio-ingressgateway
+  http:
+    - match:
+        - uri:
+            prefix: /
+      route:
+        - destination:
+            port:
+              number: 80
+            host: blog.wordpress.svc.lgsk8sp1.grupologos.local
