@@ -19,4 +19,4 @@ spec:
         - destination:
             port:
               number: 80
-            host: blog.wordpress.svc.lgsk8sp1.grupologos.local
+            host: wordpress.blog.svc.lgsk8sp1.grupologos.local
