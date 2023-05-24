@@ -19,3 +19,7 @@ helmCharts:
       commonLabels:
         app: wordpress
         version: 10.0.0
+      serviceAccount:
+        create: true
+      autoscaling:
+        enabled: true
