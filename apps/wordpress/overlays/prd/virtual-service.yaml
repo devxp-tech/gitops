@@ -5,7 +5,7 @@ metadata:
   name: wordpress
   namespace: monitoring
   annotations:
-    link.argocd.argoproj.io/external-link: https://wordpress.devxp-tech.io
+    link.argocd.argoproj.io/external-link: https://www.diegoluisi.eti.br
 spec:
   hosts:
     - "www.diegoluisi.eti.br"
