@@ -5,4 +5,3 @@ resources:
   - certificate.yaml
   - gateway.yaml
   - auth-policy.yaml
-  # - private.yaml

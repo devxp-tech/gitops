@@ -5,6 +5,7 @@ metadata:
   namespace: istio-system
   labels:
     app_label: istio-ingressgateway
+    version: 1.16.2
     app.kubernetes.io/version: 1.16.2
 spec:
   selector:
