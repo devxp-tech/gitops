@@ -5,7 +5,7 @@ metadata:
   name: blog
   namespace: monitoring
   annotations:
-    link.argocd.argoproj.io/external-link: https://blog-tmp.devxp-tech.io
+    link.argocd.argoproj.io/external-link: https://blog.devxp-tech.io
 spec:
   hosts:
     - "blog-tmp.devxp-tech.io"

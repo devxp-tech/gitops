@@ -14,6 +14,8 @@ helmCharts:
       wordpressFirstName: Diego
       wordpressLastName: Luisi
       wordpressBlogName: blog-tmp.devxp-tech.io
+      allowEmptyPassword: false
+      existingSecret: blog-secrets
       service:
         type: ClusterIP
       commonLabels:
@@ -21,4 +23,3 @@ helmCharts:
         version: 6.2.2
       serviceAccount:
         create: true
-      existingSecret: blog-secrets
