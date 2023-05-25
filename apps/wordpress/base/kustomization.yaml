@@ -2,15 +2,24 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: wordpress
 resources:
-  - mysql-deploy.yaml
-  - mysql-pvc.yaml
-  - mysql-svc.yaml
   - ns.yaml
-  - peerauthentication.yaml
-  - pv.yml
-  - sa.yaml
-  - storage-class.yml
-  - wordpress-deploy.yaml
-  - wordpress-pvc.yaml
-  # - wordpress-quota.yaml
-  - wordpress-svc.yaml
+helmCharts:
+  - name: wordpress
+    releaseName: wordpress
+    version: 16.1.8
+    repo: https://charts.bitnami.com/bitnami
+    valuesInline:
+      wordpressUsername: dluisi
+      wordpressEmail: contato@diegoluisi.eti.br
+      wordpressFirstName: Diego
+      wordpressLastName: Luisi
+      wordpressBlogName: "www.diegoluisi.eti.br"
+      # allowEmptyPassword: false
+      existingSecret: wordpress-secrets
+      service:
+        type: ClusterIP
+      commonLabels:
+        app: wordpress
+        version: 6.2.2
+      serviceAccount:
+        create: true

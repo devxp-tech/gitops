@@ -1,0 +1,11 @@
+{
+  "appName": "wordpress",
+  "userGivenName": "wordpress",
+  "destNamespace": "wordpress",
+  "destServer": "https://kubernetes.default.svc",
+  "srcPath": "apps/wordpress/overlays/prd",
+  "srcRepoURL": "https://github.com/devxp-tech/gitops.git",
+  "srcTargetRevision": "",
+  "CreateNamespace": true,
+  "labels": null
+}
