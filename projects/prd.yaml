@@ -65,8 +65,8 @@ spec:
                 jsonnet: {}
                 recurse: true
               repoURL: ""
-  syncPolicy:
-    preserveResourcesOnDeletion: true
+  # syncPolicy:
+  #   preserveResourcesOnDeletion: true
   template:
     metadata:
       labels:
