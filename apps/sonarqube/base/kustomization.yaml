@@ -22,13 +22,13 @@ helmCharts:
         enabled: false
       service:
         type: ClusterIP
-      resources:
-        requests:
-          memory: 512Mi
-          cpu: 100m
-        limits:
-          memory: 1024Mi
-          cpu: 200m
+      # resources:
+      #   requests:
+      #     memory: 512Mi
+      #     cpu: 100m
+      #   limits:
+      #     memory: 1024Mi
+      #     cpu: 200m
       extraEnvVars:
         - name: SONAR_CE_JAVAOPTS
           value: "-Xmx1024m -Xmx1024m"
