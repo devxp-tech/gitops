@@ -12,7 +12,7 @@ helmCharts:
     name: teste55
     image:
       repository: ghcr.io/devxp-tech/teste55
-      tag: latest
+      tag: 07f43a5c
     autoscaling:
       enabled: true
       minReplicas: 1
