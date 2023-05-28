@@ -8,24 +8,13 @@ helmCharts:
     repo: https://jaegertracing.github.io/helm-charts
     namespace: istio-system
     valuesInline:
-      allInOne:
-        enabled: false
-        resources:
-          limits:
-            cpu: 500m
-            memory: 512Mi
-          requests:
-            cpu: 256m
-            memory: 128Mi
+      # allInOne:
+      #   enabled: false
       provisionDataStore:
         cassandra: false
       # cassandra:
       #   config:
       #     cluster_domain: lgsk8sp1.grupologos.local
-      # collector:
-      #   service:
-      #     zipkin:
-      #       port: 9411
       storage:
         type: memory
         # type: cassandra
