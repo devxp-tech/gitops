@@ -57,7 +57,7 @@ helmCharts:
             client_id = "jaeger-query"
             oidc_issuer_url = "https://dex.devxp-tech.io"
             cookie_secure = "true"
-            cookie_secret = "OSolRRYb1Tt5xFV3Xopa4ReHG9x7v4c"
+            cookie_secret = "Y29va2llX3NlY3JldA=="
             email_domains = "*"
             oidc_groups_claim = "groups"
             user_id_claim = "preferred_username"
