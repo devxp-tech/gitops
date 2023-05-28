@@ -1,7 +1,7 @@
 {
   "appName": "jaeger",
   "userGivenName": "jaeger",
-  "destNamespace": "observability",
+  "destNamespace": "istio-system",
   "destServer": "https://kubernetes.default.svc",
   "srcPath": "apps/jaeger/overlays/ops",
   "srcRepoURL": "https://github.com/devxp-tech/gitops.git",
