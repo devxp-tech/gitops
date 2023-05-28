@@ -8,6 +8,10 @@ helmCharts:
     repo: https://jaegertracing.github.io/helm-charts
     namespace: istio-system
     valuesInline:
+      jaeger:
+        labels:
+          app: jaeger
+          version: 0.71.2
       # allInOne:
       #   enabled: false
       provisionDataStore:
