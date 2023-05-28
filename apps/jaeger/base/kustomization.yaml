@@ -36,7 +36,7 @@ helmCharts:
       query:
         enabled: true
         oAuthSidecar:
-          enabled: true
+          enabled: false
           image: quay.io/oauth2-proxy/oauth2-proxy:v7.3.0
           pullPolicy: IfNotPresent
           containerPort: 4180
@@ -60,8 +60,8 @@ helmCharts:
             redirect_url = "https://jaeger.devxp-tech.io/oauth2/callback"
             client_id = "jaeger-query"
             oidc_issuer_url = "https://dex.devxp-tech.io"
-            cookie_secure = "false"
-            cookie-secret = XXXX
+            cookie_secure = "true"
+            cookie-secret = "XXXX"
             email_domains = "*"
             oidc_groups_claim = "groups"
             user_id_claim = "preferred_username"
