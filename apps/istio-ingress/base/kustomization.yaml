@@ -4,13 +4,13 @@ namespace: istio-system
 helmCharts:
   - name: gateway
     releaseName: gateway
-    version: 1.16.2
+    version: 1.18.0
     repo: https://istio-release.storage.googleapis.com/charts
     valuesInline:
       name: istio-ingressgateway
       labels:
         app_label: istio-ingressgateway
-        version: 1.16.2
+        version: 1.18.0
       podAnnotations:
         proxy.istio.io/config: '{"discoveryAddress" : "istiod.istio-system.svc:15012" }'
       autoscaling:
