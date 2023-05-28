@@ -31,7 +31,7 @@ helmCharts:
             memory: 128Mi
         tracer:
           zipkin:
-            address: jaeger-collector.istio-system.svc:9411
+            address: jaeger-collector.istio-system.svc:50051
         proxy:
           clusterDomain: "lgsk8sp1.grupologos.local"
           # Resources for the sidecar.
