@@ -38,34 +38,34 @@ helmCharts:
             port: 9411
       query:
         enabled: true
-        oAuthSidecar:
-          enabled: false
-          image: quay.io/oauth2-proxy/oauth2-proxy:v7.3.0
-          pullPolicy: IfNotPresent
-          containerPort: 4180
-          args:
-            - --config
-            - /etc/oauth2-proxy/oauth2-proxy.cfg
-            - --client-secret
-            - "$(client-secret)"
-          extraEnv:
-            - name: client-secret
-              valueFrom:
-                secretKeyRef:
-                  name: jaeger-secrets
-                  key: client-secret-key
-          extraConfigmapMounts: []
-          extraSecretMounts: []
-          config: |-
-            provider = "oidc"
-            https_address = ":4180"
-            upstreams = ["http://localhost:16686"]
-            redirect_url = "https://jaeger.devxp-tech.io/oauth2/callback"
-            client_id = "jaeger-query"
-            oidc_issuer_url = "https://dex.devxp-tech.io"
-            cookie_secure = "true"
-            cookie-secret = "XXXX"
-            email_domains = "*"
-            oidc_groups_claim = "groups"
-            user_id_claim = "preferred_username"
-            skip_provider_button = "true"
+        # oAuthSidecar:
+        #   enabled: true
+        #   image: quay.io/oauth2-proxy/oauth2-proxy:v7.3.0
+        #   pullPolicy: IfNotPresent
+        #   containerPort: 4180
+        #   args:
+        #     - --config
+        #     - /etc/oauth2-proxy/oauth2-proxy.cfg
+        #     - --client-secret
+        #     - "$(client-secret)"
+        #   extraEnv:
+        #     - name: client-secret
+        #       valueFrom:
+        #         secretKeyRef:
+        #           name: jaeger-secrets
+        #           key: client-secret-key
+        #   extraConfigmapMounts: []
+        #   extraSecretMounts: []
+        #   config: |-
+        #     provider = "oidc"
+        #     https_address = ":4180"
+        #     upstreams = ["http://localhost:16686"]
+        #     redirect_url = "https://jaeger.devxp-tech.io/oauth2/callback"
+        #     client_id = "jaeger-query"
+        #     oidc_issuer_url = "https://dex.devxp-tech.io"
+        #     cookie_secure = "true"
+        #     cookie-secret = "XXXX"
+        #     email_domains = "*"
+        #     oidc_groups_claim = "groups"
+        #     user_id_claim = "preferred_username"
+        #     skip_provider_button = "true"
