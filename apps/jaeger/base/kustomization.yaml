@@ -28,7 +28,7 @@ helmCharts:
         enabled: true
         service:
           grpc:
-            port: 50051
+            port: 50050
           zipkin:
             port: 9411
       query:
