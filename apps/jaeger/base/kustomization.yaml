@@ -60,8 +60,6 @@ helmCharts:
             redirect_url = "https://jaeger.devxp-tech.io/oauth2/callback"
             client_id = "jaeger-query"
             oidc_issuer_url = "https://dex.devxp-tech.io"
-            cookie_secure = "true"
-            cookie_secret = ""
             email_domains = "*"
             oidc_groups_claim = "groups"
             user_id_claim = "preferred_username"
