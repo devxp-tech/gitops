@@ -47,12 +47,12 @@ helmCharts:
               enabled: true
               in_cluster_url: http://grafana.monitoring
               url: https://grafana.devxp-tech.io
-            # tracing:
-            #   enabled: true
-            #   in_cluster_url: 'http://tracing.istio-system/jaeger'
-            #   use_grpc: false
-            #   # Public facing URL of Jaeger
-            #   url: 'https://jaeger.devxp-tech.io/jaeger'
+            tracing:
+              enabled: true
+              in_cluster_url: "http://jaeger-query.istio-system/jaeger"
+              use_grpc: false
+              # Public facing URL of Jaeger
+              url: "https://jaeger.devxp-tech.io/jaeger"
           auth:
             strategy: openid
             openid:
