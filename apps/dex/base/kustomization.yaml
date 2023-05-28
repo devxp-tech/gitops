@@ -33,6 +33,11 @@ helmCharts:
             secretKeyRef:
               name: github-client
               key: kubecost-secret
+        - name: JAEGER_CLIENT_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: github-client
+              key: jaeger-secret
         - name: DEX_K8S_AUTH_SECRET
           valueFrom:
             secretKeyRef:
@@ -81,6 +86,12 @@ helmCharts:
             redirectURIs:
               - "https://kubecost.devxp-tech.io/model/oidc/authorize"
             SecretEnv: KUBECOST_CLIENT_SECRET
+
+          - id: jaeger-query
+            name: "Jaeger"
+            redirectURIs:
+              - "https://jaeger.devxp-tech.io/oauth2/callback"
+            SecretEnv: JAEGER_CLIENT_SECRET
 
           - id: dex-k8s-authenticator
             name: dex-k8s-authenticator
