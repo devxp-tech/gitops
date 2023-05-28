@@ -16,6 +16,8 @@ helmCharts:
         service:
           zipkin:
             port: 9411
+      provisionDataStore:
+        cassandra: false
       # storage:
       #   type: cassandra
       agent:
