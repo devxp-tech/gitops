@@ -49,7 +49,7 @@ helmCharts:
             - name: client-secret
               valueFrom:
                 secretKeyRef:
-                  name: client-secret
+                  name: jaeger-secrets
                   key: client-secret-key
           extraConfigmapMounts: []
           extraSecretMounts: []
