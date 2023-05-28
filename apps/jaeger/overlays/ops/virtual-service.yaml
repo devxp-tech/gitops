@@ -18,5 +18,5 @@ spec:
       route:
         - destination:
             port:
-              number: 16686
+              number: 80
             host: jaeger-query.istio-system.svc.lgsk8sp1.grupologos.local
