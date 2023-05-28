@@ -57,8 +57,8 @@ helmCharts:
         trustDomain: "lgsk8sp1.grupologos.local"
         defaultConfig:
           discoveryAddress: istiod.istio-system.svc:15012
-          tracing:
-            sampling: 50
+          # tracing:
+          #   sampling: 50
           # holdApplicationUntilProxyStarts: true
           gatewayTopology:
             numTrustedProxies: 2
