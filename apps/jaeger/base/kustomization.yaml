@@ -1,0 +1,37 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: istio-system
+helmCharts:
+  - name: jaeger
+    releaseName: jaeger
+    version: 0.71.2
+    repo: https://jaegertracing.github.io/helm-charts
+    namespace: istio-system
+    valuesInline:
+      allInOne:
+        enabled: true
+        resources:
+          limits:
+            cpu: 500m
+            memory: 512Mi
+          requests:
+            cpu: 256m
+            memory: 128Mi
+      provisionDataStore:
+        cassandra: false
+      # cassandra:
+      #   config:
+      #     cluster_domain: lgsk8sp1.grupologos.local
+      # collector:
+      #   service:
+      #     zipkin:
+      #       port: 9411
+      storage:
+        type: none
+        # type: cassandra
+      agent:
+        enabled: false
+      collector:
+        enabled: false
+      query:
+        enabled: false
