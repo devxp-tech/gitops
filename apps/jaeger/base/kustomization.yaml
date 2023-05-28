@@ -27,7 +27,7 @@ helmCharts:
       #     zipkin:
       #       port: 9411
       storage:
-        type: none
+        type: memory
         # type: cassandra
       agent:
         enabled: true
