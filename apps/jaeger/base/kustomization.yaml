@@ -9,7 +9,7 @@ helmCharts:
     namespace: istio-system
     valuesInline:
       allInOne:
-        enabled: true
+        enabled: false
         resources:
           limits:
             cpu: 500m
@@ -30,11 +30,11 @@ helmCharts:
         type: none
         # type: cassandra
       agent:
-        enabled: false
+        enabled: true
       collector:
-        enabled: false
+        enabled: true
       query:
-        enabled: false
+        enabled: true
         oAuthSidecar:
           enabled: true
           image: quay.io/oauth2-proxy/oauth2-proxy:v7.3.0
