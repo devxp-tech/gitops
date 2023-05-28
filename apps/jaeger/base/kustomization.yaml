@@ -4,7 +4,7 @@ namespace: istio-system
 helmCharts:
   - name: jaeger
     releaseName: jaeger
-    version: 0.71.2
+    version: 0.68.2
     repo: https://jaegertracing.github.io/helm-charts
     namespace: istio-system
     valuesInline:
@@ -57,7 +57,6 @@ helmCharts:
             client_id = "jaeger-query"
             oidc_issuer_url = "https://dex.devxp-tech.io"
             cookie_secure = "true"
-            cookie-secret = "amFlZ2VyLXF1ZXJ5"
             email_domains = "*"
             oidc_groups_claim = "groups"
             user_id_claim = "preferred_username"
