@@ -4,6 +4,8 @@ kind: VirtualService
 metadata:
   name: jaeger
   namespace: observability
+  annotations:
+    link.argocd.argoproj.io/external-link: https://jaeger.devxp-tech.io
 spec:
   hosts:
     - "jaeger.devxp-tech.io"
