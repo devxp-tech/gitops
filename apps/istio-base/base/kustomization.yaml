@@ -31,7 +31,7 @@ helmCharts:
             memory: 128Mi
         tracer:
           zipkin:
-            address: jaeger-collector.istio-system.svc:14250
+            address: jaeger-collector.istio-system.svc:9411
         proxy:
           clusterDomain: "lgsk8sp1.grupologos.local"
           # Resources for the sidecar.
@@ -57,6 +57,8 @@ helmCharts:
         trustDomain: "lgsk8sp1.grupologos.local"
         defaultConfig:
           discoveryAddress: istiod.istio-system.svc:15012
+          tracing:
+            sampling: 50
           # holdApplicationUntilProxyStarts: true
           gatewayTopology:
             numTrustedProxies: 2
