@@ -23,6 +23,8 @@ helmCharts:
       collector:
         enabled: true
         service:
+          grpc:
+            port: 50101
           zipkin:
             port: 9411
       query:
