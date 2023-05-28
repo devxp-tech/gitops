@@ -8,17 +8,17 @@ helmCharts:
     repo: https://jaegertracing.github.io/helm-charts
     namespace: istio-system
     valuesInline:
-      # allInOne:
-      #   enabled: true
-      cassandra:
-        config:
-          cluster_domain: lgsk8sp1.grupologos.local
+      allInOne:
+        enabled: true
+      # cassandra:
+      #   config:
+      #     cluster_domain: lgsk8sp1.grupologos.local
       collector:
         service:
           zipkin:
             port: 9411
-      storage:
-        type: cassandra
+      # storage:
+      #   type: cassandra
       agent:
         enabled: false
       query:
