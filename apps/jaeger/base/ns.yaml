@@ -1,0 +1,12 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  labels:
+    kubernetes.io/metadata.name: observability
+    backstage.io/kubernetes-id: observability
+    istio-injection: enabled
+  name: observability
+spec:
+  finalizers:
+    - kubernetes
