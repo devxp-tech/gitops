@@ -9,7 +9,7 @@ helmCharts:
     valuesInline:
       name: istio-ingressgateway
       labels:
-        app_label: istio-ingressgateway
+        app: istio-ingressgateway
       podAnnotations:
         proxy.istio.io/config: '{"discoveryAddress" : "istiod.istio-system.svc:15012" }'
       autoscaling:
