@@ -29,9 +29,9 @@ helmCharts:
           limits:
             cpu: 100m
             memory: 128Mi
-        # tracer:
-        #   zipkin:
-        #     address: jaeger-collector.observability.svc.lgsk8sp1.grupologos.local:9411
+        tracer:
+          zipkin:
+            address: jaeger-collector.observability.svc.lgsk8sp1.grupologos.local:9411
         proxy:
           clusterDomain: "lgsk8sp1.grupologos.local"
           # Resources for the sidecar.
