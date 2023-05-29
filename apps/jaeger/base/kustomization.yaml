@@ -1,6 +1,6 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: istio-system
+namespace: observability
 commonLabels:
   app: jaeger
   version: 1.45.0
@@ -9,7 +9,7 @@ helmCharts:
     releaseName: jaeger
     version: 0.71.2
     repo: https://jaegertracing.github.io/helm-charts
-    namespace: istio-system
+    namespace: observability
     valuesInline:
       allInOne:
         enabled: false
@@ -22,7 +22,7 @@ helmCharts:
         type: memory
         # type: cassandra
       agent:
-        enabled: false
+        enabled: true
       collector:
         enabled: true
         service:
@@ -30,10 +30,10 @@ helmCharts:
             port: 9411
       query:
         enabled: true
-        service:
-          targetPort: 4180
+        # service:
+        #   targetPort: 4180
         oAuthSidecar:
-          enabled: true
+          enabled: false
           image: quay.io/oauth2-proxy/oauth2-proxy:v7.3.0
           pullPolicy: IfNotPresent
           containerPort: 4180
