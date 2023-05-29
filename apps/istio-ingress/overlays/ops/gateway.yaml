@@ -3,14 +3,14 @@ kind: Gateway
 metadata:
   name: istio-ingressgateway
   namespace: istio-system
-  # labels:
-  #   app_label: istio-ingressgateway
-  #   version: 1.16.2
-  #   app.kubernetes.io/version: 1.16.2
-  #   app: istio-ingressgateway
+  labels:
+    app_label: istio-ingressgateway
+    version: 1.16.2
+    app.kubernetes.io/version: 1.16.2
+    app: istio-ingressgateway
 spec:
   selector:
-    app_label: istio-ingressgateway
+    app: istio-ingressgateway
   servers:
     - hosts:
         - "*.diegoluisi.eti.br"
