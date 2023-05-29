@@ -22,15 +22,15 @@ helmCharts:
       storage:
         type: memory
         # type: cassandra
-      # agent:
-      #   enabled: true
+      agent:
+        enabled: false
       collector:
         enabled: true
         service:
           zipkin:
             port: 9411
-      # query:
-      #   enabled: true
+      query:
+        enabled: true
       # oAuthSidecar:
       #   enabled: false
       #   image: quay.io/oauth2-proxy/oauth2-proxy:v7.3.0
