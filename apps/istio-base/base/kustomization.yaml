@@ -55,7 +55,10 @@ helmCharts:
             memory: 2048Mi
       meshConfig:
         trustDomain: "lgsk8sp1.grupologos.local"
+        enableTracing: true
         defaultConfig:
+          tracing:
+            sampling: 10
           discoveryAddress: istiod.istio-system.svc:15012
           # holdApplicationUntilProxyStarts: true
           gatewayTopology:
