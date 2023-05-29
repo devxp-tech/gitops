@@ -8,12 +8,8 @@ helmCharts:
     repo: https://jaegertracing.github.io/helm-charts
     namespace: istio-system
     valuesInline:
-      jaeger:
-        labels:
-          app: jaeger
-          version: 1.45.0
       allInOne:
-        enabled: true
+        enabled: false
       provisionDataStore:
         cassandra: false
       # cassandra:
@@ -25,12 +21,12 @@ helmCharts:
       agent:
         enabled: false
       collector:
-        enabled: false
-        # service:
-        #   zipkin:
-        #     port: 9411
+        enabled: true
+        service:
+          zipkin:
+            port: 9411
       query:
-        enabled: false
+        enabled: true
       # oAuthSidecar:
       #   enabled: false
       #   image: quay.io/oauth2-proxy/oauth2-proxy:v7.3.0
