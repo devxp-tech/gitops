@@ -3,7 +3,7 @@ apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
   name: jaeger
-  namespace: observability
+  namespace: istio-system
   annotations:
     link.argocd.argoproj.io/external-link: https://jaeger.devxp-tech.io
 spec:
@@ -19,4 +19,4 @@ spec:
         - destination:
             port:
               number: 80 #80 or 16686
-            host: jaeger-query.observability.svc.lgsk8sp1.grupologos.local
+            host: jaeger-query.istio-system.svc.lgsk8sp1.grupologos.local
