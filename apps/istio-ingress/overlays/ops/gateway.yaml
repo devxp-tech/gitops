@@ -5,10 +5,10 @@ metadata:
   namespace: istio-system
   labels:
     app: istio-ingressgateway
-    istio: ingressgateway
+    # istio: ingressgateway
 spec:
   selector:
-    istio: ingressgateway
+    app: istio-ingressgateway
   servers:
     - hosts:
         - "*.diegoluisi.eti.br"
