@@ -24,7 +24,7 @@ helmCharts:
         type: memory
         # type: cassandra
       agent:
-        enabled: true
+        enabled: false
       collector:
         enabled: true
         service:
