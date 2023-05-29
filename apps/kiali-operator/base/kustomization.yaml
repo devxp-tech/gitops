@@ -50,7 +50,7 @@ helmCharts:
             tracing:
               enabled: true
               in_cluster_url: "http://jaeger-query.istio-system:16686/jaeger"
-              use_grpc: true
+              use_grpc: false
               # Public facing URL of Jaeger
               url: "https://jaeger.devxp-tech.io/jaeger"
           auth:
