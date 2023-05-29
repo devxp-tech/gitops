@@ -3,11 +3,11 @@ kind: Gateway
 metadata:
   name: istio-ingressgateway
   namespace: istio-system
-  labels:
-    app: istio-ingressgateway
+  # labels:
+  #   app: istio-ingressgateway
 spec:
   selector:
-    app: istio-ingressgateway
+    istio: ingressgateway
   servers:
     - hosts:
         - "*.diegoluisi.eti.br"
