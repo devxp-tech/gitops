@@ -12,8 +12,8 @@ helmCharts:
         labels:
           app: jaeger
           version: 0.71.2
-      # allInOne:
-      #   enabled: false
+      allInOne:
+        enabled: true
       provisionDataStore:
         cassandra: false
       # cassandra:
@@ -23,14 +23,14 @@ helmCharts:
         type: memory
         # type: cassandra
       agent:
-        enabled: true
+        enabled: false
       collector:
-        enabled: true
+        enabled: false
         service:
           zipkin:
             port: 9411
       query:
-        enabled: true
+        enabled: false
         oAuthSidecar:
           enabled: false
           image: quay.io/oauth2-proxy/oauth2-proxy:v7.3.0
