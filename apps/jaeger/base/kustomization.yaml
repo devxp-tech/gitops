@@ -30,8 +30,10 @@ helmCharts:
             port: 9411
       query:
         enabled: true
+        service:
+          targetPort: 4180
         oAuthSidecar:
-          enabled: false
+          enabled: true
           image: quay.io/oauth2-proxy/oauth2-proxy:v7.3.0
           pullPolicy: IfNotPresent
           containerPort: 4180
