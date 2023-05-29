@@ -4,18 +4,18 @@ namespace: istio-system
 helmCharts:
   - name: gateway
     releaseName: gateway
-    version: 1.18.0-rc.0
+    version: 1.17.1
     repo: https://istio-release.storage.googleapis.com/charts
     valuesInline:
       name: istio-ingressgateway
       labels:
         app_label: istio-ingressgateway
-        version: 1.18.0-rc.0
+        version: 1.17.1
       podAnnotations:
         proxy.istio.io/config: '{"discoveryAddress" : "istiod.istio-system.svc:15012" }'
       autoscaling:
         enabled: false
-      replicaCount: 2
+      replicaCount: 1
       service:
         annotations:
           service.beta.kubernetes.io/aws-load-balancer-type: nlb
