@@ -60,4 +60,4 @@ helmCharts:
             oidc_groups_claim = "groups"
             user_id_claim = "preferred_username"
             skip_provider_button = "true"
-            cookie_secret = "OSolRRYb1Tt5xFV3Xopa4ReHG9x7v4c"
+            cookie_secret = "7LidSn5cK8Lxj9l4LEWc8A=="
