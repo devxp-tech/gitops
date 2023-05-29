@@ -10,12 +10,11 @@ helmCharts:
       name: istio-ingressgateway
       labels:
         app_label: istio-ingressgateway
-        version: 1.16.2
       podAnnotations:
         proxy.istio.io/config: '{"discoveryAddress" : "istiod.istio-system.svc:15012" }'
       autoscaling:
         enabled: false
-      replicaCount: 2
+      replicaCount: 1
       service:
         annotations:
           service.beta.kubernetes.io/aws-load-balancer-type: nlb
