@@ -49,8 +49,8 @@ helmCharts:
               url: https://grafana.devxp-tech.io
             tracing:
               enabled: true
-              in_cluster_url: "http://jaeger-query.istio-system:16685/jaeger"
-              use_grpc: false
+              in_cluster_url: "http://jaeger-query.istio-system:16685"
+              use_grpc: true
               # Public facing URL of Jaeger
               url: "https://jaeger.devxp-tech.io/jaeger"
           auth:
