@@ -5,7 +5,7 @@ metadata:
   namespace: istio-system
   labels:
     app: istio-ingressgateway
-    # istio: ingressgateway
+    istio: ingressgateway
 spec:
   selector:
     app: istio-ingressgateway
