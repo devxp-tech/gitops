@@ -1,0 +1,295 @@
+apiVersion: v1
+automountServiceAccountToken: false
+kind: ServiceAccount
+metadata:
+  labels:
+    app: jaeger
+    app.kubernetes.io/component: collector
+    app.kubernetes.io/instance: jaeger
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: jaeger
+    app.kubernetes.io/version: 1.45.0
+    helm.sh/chart: jaeger-0.71.2
+    version: 1.45.0
+  name: jaeger-collector
+  namespace: observability
+---
+apiVersion: v1
+automountServiceAccountToken: false
+kind: ServiceAccount
+metadata:
+  labels:
+    app: jaeger
+    app.kubernetes.io/component: query
+    app.kubernetes.io/instance: jaeger
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: jaeger
+    app.kubernetes.io/version: 1.45.0
+    helm.sh/chart: jaeger-0.71.2
+    version: 1.45.0
+  name: jaeger-query
+  namespace: observability
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: jaeger
+    app.kubernetes.io/component: collector
+    app.kubernetes.io/instance: jaeger
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: jaeger
+    app.kubernetes.io/version: 1.45.0
+    helm.sh/chart: jaeger-0.71.2
+    version: 1.45.0
+  name: jaeger-collector
+  namespace: observability
+spec:
+  ports:
+  - name: grpc
+    port: 14250
+    protocol: TCP
+    targetPort: grpc
+  - name: http
+    port: 14268
+    protocol: TCP
+    targetPort: http
+  - name: zipkin
+    port: 9411
+    protocol: TCP
+    targetPort: zipkin
+  - name: admin
+    port: 14269
+    targetPort: admin
+  selector:
+    app: jaeger
+    app.kubernetes.io/component: collector
+    app.kubernetes.io/instance: jaeger
+    app.kubernetes.io/name: jaeger
+    version: 1.45.0
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: jaeger
+    app.kubernetes.io/component: query
+    app.kubernetes.io/instance: jaeger
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: jaeger
+    app.kubernetes.io/version: 1.45.0
+    helm.sh/chart: jaeger-0.71.2
+    version: 1.45.0
+  name: jaeger-query
+  namespace: observability
+spec:
+  ports:
+  - name: query
+    port: 80
+    protocol: TCP
+    targetPort: query
+  - name: grpc
+    port: 16685
+    protocol: TCP
+    targetPort: grpc
+  - name: admin
+    port: 16687
+    protocol: TCP
+    targetPort: admin
+  selector:
+    app: jaeger
+    app.kubernetes.io/component: query
+    app.kubernetes.io/instance: jaeger
+    app.kubernetes.io/name: jaeger
+    version: 1.45.0
+  type: ClusterIP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: jaeger
+    app.kubernetes.io/component: collector
+    app.kubernetes.io/instance: jaeger
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: jaeger
+    app.kubernetes.io/version: 1.45.0
+    helm.sh/chart: jaeger-0.71.2
+    version: 1.45.0
+  name: jaeger-collector
+  namespace: observability
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jaeger
+      app.kubernetes.io/component: collector
+      app.kubernetes.io/instance: jaeger
+      app.kubernetes.io/name: jaeger
+      version: 1.45.0
+  template:
+    metadata:
+      annotations:
+        checksum/config-env: 75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070
+      labels:
+        app: jaeger
+        app.kubernetes.io/component: collector
+        app.kubernetes.io/instance: jaeger
+        app.kubernetes.io/name: jaeger
+        version: 1.45.0
+    spec:
+      containers:
+      - args: null
+        env:
+        - name: COLLECTOR_ZIPKIN_HOST_PORT
+          value: "9411"
+        - name: SPAN_STORAGE_TYPE
+          value: memory
+        image: jaegertracing/jaeger-collector:1.45.0
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          httpGet:
+            path: /
+            port: admin
+        name: jaeger-collector
+        ports:
+        - containerPort: 14250
+          name: grpc
+          protocol: TCP
+        - containerPort: 14268
+          name: http
+          protocol: TCP
+        - containerPort: 14269
+          name: admin
+          protocol: TCP
+        - containerPort: 9411
+          name: zipkin
+          protocol: TCP
+        readinessProbe:
+          httpGet:
+            path: /
+            port: admin
+        resources: {}
+        securityContext: {}
+        volumeMounts: null
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      securityContext: {}
+      serviceAccountName: jaeger-collector
+      volumes: null
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: jaeger
+    app.kubernetes.io/component: query
+    app.kubernetes.io/instance: jaeger
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: jaeger
+    app.kubernetes.io/version: 1.45.0
+    helm.sh/chart: jaeger-0.71.2
+    version: 1.45.0
+  name: jaeger-query
+  namespace: observability
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jaeger
+      app.kubernetes.io/component: query
+      app.kubernetes.io/instance: jaeger
+      app.kubernetes.io/name: jaeger
+      version: 1.45.0
+  template:
+    metadata:
+      labels:
+        app: jaeger
+        app.kubernetes.io/component: query
+        app.kubernetes.io/instance: jaeger
+        app.kubernetes.io/name: jaeger
+        version: 1.45.0
+    spec:
+      containers:
+      - args: null
+        env:
+        - name: SPAN_STORAGE_TYPE
+          value: memory
+        - name: QUERY_BASE_PATH
+          value: /
+        - name: JAEGER_AGENT_PORT
+          value: "6831"
+        image: jaegertracing/jaeger-query:1.45.0
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          httpGet:
+            path: /
+            port: admin
+        name: jaeger-query
+        ports:
+        - containerPort: 16686
+          name: query
+          protocol: TCP
+        - containerPort: 16685
+          name: grpc
+          protocol: TCP
+        - containerPort: 16687
+          name: admin
+          protocol: TCP
+        readinessProbe:
+          httpGet:
+            path: /
+            port: admin
+        resources: {}
+        securityContext: {}
+        volumeMounts: null
+      - args: null
+        env:
+        - name: REPORTER_GRPC_HOST_PORT
+          value: jaeger-collector:14250
+        image: jaegertracing/jaeger-agent:1.45.0
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          httpGet:
+            path: /
+            port: admin
+        name: jaeger-agent-sidecar
+        ports:
+        - containerPort: 14271
+          name: admin
+          protocol: TCP
+        readinessProbe:
+          httpGet:
+            path: /
+            port: admin
+        resources: null
+        securityContext: {}
+        volumeMounts: null
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      securityContext: {}
+      serviceAccountName: jaeger-query
+      volumes: null
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  annotations:
+    link.argocd.argoproj.io/external-link: https://jaeger.devxp-tech.io
+  name: jaeger
+  namespace: observability
+spec:
+  gateways:
+  - istio-system/istio-ingressgateway
+  hosts:
+  - jaeger.devxp-tech.io
+  http:
+  - match:
+    - uri:
+        prefix: /
+    route:
+    - destination:
+        host: jaeger-query.observability.svc.lgsk8sp1.grupologos.local
+        port:
+          number: 80
