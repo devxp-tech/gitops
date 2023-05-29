@@ -31,7 +31,7 @@ helmCharts:
             memory: 128Mi
         # tracer:
         #   zipkin:
-        #     address: jaeger-collector.istio-system.svc:9411
+        #     address: jaeger-collector.observability.svc.lgsk8sp1.grupologos.local:9411
         proxy:
           clusterDomain: "lgsk8sp1.grupologos.local"
           # Resources for the sidecar.
@@ -44,7 +44,7 @@ helmCharts:
               memory: 128Mi
         autoscalingv2API: false
       pilot:
-        # traceSampling: 25.0
+        traceSampling: 25.0
         replicaCount: 2
         resources:
           limits:
@@ -55,11 +55,8 @@ helmCharts:
             memory: 2048Mi
       meshConfig:
         trustDomain: "lgsk8sp1.grupologos.local"
-        # enableTracing: true
         defaultConfig:
           discoveryAddress: istiod.istio-system.svc:15012
-          # tracing:
-          #   sampling: 50
           # holdApplicationUntilProxyStarts: true
           gatewayTopology:
             numTrustedProxies: 2
