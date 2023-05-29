@@ -14,7 +14,7 @@ helmCharts:
     namespace: istio-system
     valuesInline:
       allInOne:
-        enabled: false
+        enabled: true
       provisionDataStore:
         cassandra: false
       # cassandra:
@@ -26,12 +26,12 @@ helmCharts:
       agent:
         enabled: false
       collector:
-        enabled: true
-        service:
-          zipkin:
-            port: "9411"
+        enabled: false
+        # service:
+        #   zipkin:
+        #     port: "9411"
       query:
-        enabled: true
+        enabled: false
         # service:
         #   targetPort: 4180
         # oAuthSidecar:
