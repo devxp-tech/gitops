@@ -10,6 +10,7 @@ helmCharts:
       name: istio-ingressgateway
       labels:
         app_label: istio-ingressgateway
+        istio: ingressgateway
         version: 1.16.2
       podAnnotations:
         proxy.istio.io/config: '{"discoveryAddress" : "istiod.istio-system.svc:15012" }'
