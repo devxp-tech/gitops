@@ -58,7 +58,7 @@ helmCharts:
         enableTracing: true
         defaultConfig:
           tracing:
-            sampling: 25
+            sampling: 10
           discoveryAddress: istiod.istio-system.svc:15012
           # holdApplicationUntilProxyStarts: true
           gatewayTopology:
