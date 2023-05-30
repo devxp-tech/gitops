@@ -4,8 +4,8 @@ namespace: observability
 commonLabels:
   app: jaeger
   version: 1.45.0
-# resources:
-#   - ns.yaml
+resources:
+  - ns.yaml
 helmCharts:
   - name: jaeger
     releaseName: jaeger
