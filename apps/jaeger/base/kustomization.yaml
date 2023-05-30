@@ -16,3 +16,6 @@ helmCharts:
       commonLabels:
         app: jaeger
         version: 1.45.0
+      cassandra:
+        config:
+          cluster_domain: lgsk8sp1.grupologos.local
