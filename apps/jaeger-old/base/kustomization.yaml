@@ -1,0 +1,67 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: istio-system
+commonLabels:
+  app: jaeger
+  version: 1.45.0
+# resources:
+#   - ns.yaml
+helmCharts:
+  - name: jaeger
+    releaseName: jaeger
+    version: 0.71.2
+    repo: https://jaegertracing.github.io/helm-charts
+    namespace: istio-system
+    valuesInline:
+      allInOne:
+        enabled: true
+      provisionDataStore:
+        cassandra: false
+      # cassandra:
+      #   config:
+      #     cluster_domain: lgsk8sp1.grupologos.local
+      storage:
+        type: memory
+        # type: cassandra
+      agent:
+        enabled: false
+      collector:
+        enabled: false
+        # service:
+        #   zipkin:
+        #     port: "9411"
+      query:
+        enabled: false
+        # service:
+        #   targetPort: 4180
+        # oAuthSidecar:
+        #   enabled: false
+        #   image: quay.io/oauth2-proxy/oauth2-proxy:v7.3.0
+        #   pullPolicy: IfNotPresent
+        #   containerPort: 4180
+        #   args:
+        #     - --config
+        #     - /etc/oauth2-proxy/oauth2-proxy.cfg
+        #     - --client-secret
+        #     - "$(client-secret)"
+        #   extraEnv:
+        #     - name: client-secret
+        #       valueFrom:
+        #         secretKeyRef:
+        #           name: jaeger-secrets
+        #           key: client-secret-key
+        #   extraConfigmapMounts: []
+        #   extraSecretMounts: []
+        #   config: |-
+        #     provider = "oidc"
+        #     https_address = ":4180"
+        #     upstreams = ["http://localhost:16686"]
+        #     redirect_url = "https://jaeger.devxp-tech.io/oauth2/callback"
+        #     client_id = "jaeger-query"
+        #     oidc_issuer_url = "https://dex.devxp-tech.io"
+        #     cookie_secure = "true"
+        #     email_domains = "*"
+        #     oidc_groups_claim = "groups"
+        #     user_id_claim = "preferred_username"
+        #     skip_provider_button = "true"
+        #     cookie_secret = "7LidSn5cK8Lxj9l4LEWc8A=="
