@@ -17,12 +17,16 @@ helmCharts:
       wordpressFirstName: Diego
       wordpressLastName: Luisi
       wordpressBlogName: "www.diegoluisi.eti.br"
+      wordpressExtraConfigContent: |
+        @ini_set( 'upload_max_filesize' , '512M' );
+        @ini_set( 'post_max_size', '512M');
+        @ini_set( 'memory_limit', '1024M' );
       # allowEmptyPassword: false
       existingSecret: wordpress-secrets
+      serviceAccount:
+        create: true
       service:
         type: ClusterIP
       commonLabels:
         app: wordpress
         version: 6.2.2
-      serviceAccount:
-        create: true
