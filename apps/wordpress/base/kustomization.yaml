@@ -21,6 +21,18 @@ helmCharts:
         @ini_set( 'upload_max_filesize' , '512M' );
         @ini_set( 'post_max_size', '512M');
         @ini_set( 'memory_limit', '1024M' );
+        # Make sure to sync with php.ini
+        define('WP_UPLOAD_MAX_FILESIZE', '8192M');
+        define('WP_POST_MAX_SIZE', '8192M');
+        define('WP_MEMORY_LIMIT', '512M');
+        define('WP_MAX_EXECUTION_TIME', '900');
+        define('WP_MAX_INPUT_TIME', '900');
+
+      uploadMaxFilesize: 8192M
+      postMaxSize: 8192M
+      memoryLimit: 512M
+      maxExecutionTime: 900
+      maxInputTime: 900
       wordpressConfigureCache: true
       # allowEmptyPassword: false
       existingSecret: wordpress-secrets
