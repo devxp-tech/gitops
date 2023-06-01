@@ -5,6 +5,7 @@ resources:
   - ../../base
 commonLabels:
   app: microsim
+  version: latest
 helmCharts:
   - name: devxp-app
     releaseName: devxp-app
