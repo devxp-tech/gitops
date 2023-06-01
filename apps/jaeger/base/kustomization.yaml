@@ -18,3 +18,6 @@ helmCharts:
         version: 1.45.0
       cassandra:
         clusterDomain: lgsk8sp1.grupologos.local
+      query:
+        extraEnvVars:
+          METRICS_STORAGE_TYPE: prometheus
