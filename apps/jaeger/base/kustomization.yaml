@@ -20,5 +20,7 @@ helmCharts:
         clusterDomain: lgsk8sp1.grupologos.local
       query:
         extraEnvVars:
-          METRICS_STORAGE_TYPE: prometheus
-          PROMETHEUS_SERVER_URL: http://prometheus-server.monitoring
+          - name: METRICS_STORAGE_TYPE
+            value: prometheus
+          - name: PROMETHEUS_SERVER_URL
+            value: http://prometheus-server.monitoring
