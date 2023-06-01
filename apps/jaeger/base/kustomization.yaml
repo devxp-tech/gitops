@@ -21,3 +21,4 @@ helmCharts:
       query:
         extraEnvVars:
           METRICS_STORAGE_TYPE: prometheus
+          PROMETHEUS_SERVER_URL: http://prometheus-server.monitoring
