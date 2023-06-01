@@ -1794,3 +1794,9 @@ helmCharts:
               static_configs:
                 - targets:
                     - teste-loki.teste-loki.svc.lgsk8sp1.grupologos.local
+
+            - job_name: "jaeger"
+              scrape_interval: 15s
+              static_configs:
+                - targets:
+                    - jaeger-query.observability.svc.lgsk8sp1.grupologos.local:16687
