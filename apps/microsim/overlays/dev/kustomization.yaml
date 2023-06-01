@@ -20,8 +20,10 @@ helmCharts:
         domain: devxp-tech.io
         # gateways: istio-system/private
       env:
-        JAEGER_AGENT_HOST: jaeger--agent.observability.svc.lgsk8sp1.grupologos.local
-        JAEGER_AGENT_PORT: 6831
+        - name: JAEGER_AGENT_HOST
+          value: jaeger--agent.observability.svc.lgsk8sp1.grupologos.local
+        - name: JAEGER_AGENT_PORT
+          value: 6831
       quota:
         enabled: false
       autoscaling:
