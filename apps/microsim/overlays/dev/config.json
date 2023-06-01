@@ -1,0 +1,11 @@
+{
+  "appName": "microsim",
+  "userGivenName": "microsim",
+  "destNamespace": "microsim",
+  "destServer": "https://kubernetes.default.svc",
+  "srcPath": "apps/microsim/overlays/dev",
+  "srcRepoURL": "https://github.com/devxp-tech/gitops.git",
+  "srcTargetRevision": "",
+  "CreateNamespace": true,
+  "labels": null
+}
