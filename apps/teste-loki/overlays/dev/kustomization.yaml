@@ -4,6 +4,8 @@ namespace: teste-loki
 resources:
   - ../../base
   - postgres-secrets-sealed.yaml
+commonLabels:
+  app: teste-loki
 helmCharts:
   - name: devxp-app
     releaseName: devxp-app
