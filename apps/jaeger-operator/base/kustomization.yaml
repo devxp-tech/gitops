@@ -9,7 +9,7 @@ resources:
 helmCharts:
   - name: jaegertracing
     releaseName: jaeger-operator
-    version: 1.2.3
+    version: 2.45.0
     repo: https://jaegertracing.github.io/helm-charts
     namespace: jaeger-operator
     valuesInline:
