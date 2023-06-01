@@ -7,8 +7,8 @@ commonLabels:
 resources:
   - ns.yaml
 helmCharts:
-  - name: jaegertracing
-    releaseName: jaeger-operator
+  - name: jaeger-operator
+    releaseName: jaegertracing
     version: 2.45.0
     repo: https://jaegertracing.github.io/helm-charts
     namespace: jaeger-operator
