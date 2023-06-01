@@ -24,6 +24,8 @@ helmCharts:
           value: "jaeger--agent.observability.svc.lgsk8sp1.grupologos.local"
         - name: OTEL_EXPORTER_JAEGER_AGENT_PORT
           value: "6831"
+        - name: OTEL_EXPORTER_JAEGER_ENDPOINT
+          value: "http://jaeger-collector.observability.svc.lgsk8sp1.grupologos.local:14268/api/traces"
       quota:
         enabled: false
       autoscaling:
