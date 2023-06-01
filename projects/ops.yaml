@@ -114,6 +114,41 @@ spec:
           kind: ClusterPolicy
           jqPathExpressions:
             - .spec.rules[] | select(.name|test("autogen-."))
+        - group: apiextensions.k8s.io
+          jsonPointers:
+            - /status
+          kind: CustomResourceDefinition
+          name: certificaterequests.cert-manager.io
+        - group: apiextensions.k8s.io
+          jsonPointers:
+            - /status
+          kind: CustomResourceDefinition
+          name: certificates.cert-manager.io
+        - group: apiextensions.k8s.io
+          jsonPointers:
+            - /status
+          kind: CustomResourceDefinition
+          name: challenges.cert-manager.io
+        - group: apiextensions.k8s.io
+          jsonPointers:
+            - /status
+          kind: CustomResourceDefinition
+          name: challenges.acme.cert-manager.io
+        - group: apiextensions.k8s.io
+          jsonPointers:
+            - /status
+          kind: CustomResourceDefinition
+          name: clusterissuers.cert-manager.io
+        - group: apiextensions.k8s.io
+          jsonPointers:
+            - /status
+          kind: CustomResourceDefinition
+          name: issuers.cert-manager.io
+        - group: apiextensions.k8s.io
+          jsonPointers:
+            - /status
+          kind: CustomResourceDefinition
+          name: orders.acme.cert-manager.io
       project: ops
       source:
         path: "{{ srcPath }}"
