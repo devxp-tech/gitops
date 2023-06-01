@@ -8,7 +8,7 @@ helmCharts:
     version: v1.11.0
     repo: https://charts.jetstack.io
     valuesInline:
-      installCRDs: false
+      installCRDs: true
       namespace: "cert-manager"
       fullnameOverride: "cert-manager"
       global:
@@ -21,21 +21,3 @@ helmCharts:
         limits:
           cpu: 20m
           memory: 64Mi
-      # webhook:
-      #   replicaCount: 2
-      #   resources:
-      #     requests:
-      #       cpu: 10m
-      #       memory: 32Mi
-      #     limits:
-      #       cpu: 20m
-      #       memory: 64Mi
-      # cainjector:
-      #   replicaCount: 2
-      #   resources:
-      #     requests:
-      #       cpu: 10m
-      #       memory: 32Mi
-      #     limits:
-      #       cpu: 20m
-      #       memory: 64Mi
