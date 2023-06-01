@@ -14,7 +14,7 @@ helmCharts:
     valuesInline:
       name: microsim
       image:
-        repository: kellybrazil/microsimserver
+        repository: jaegertracing/example-hotrod
         tag: latest
       network:
         domain: devxp-tech.io
