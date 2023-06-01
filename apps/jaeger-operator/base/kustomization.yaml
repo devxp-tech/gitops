@@ -4,8 +4,6 @@ namespace: jaeger-operator
 commonLabels:
   app: jaeger-operator
   version: 2.45.0
-resources:
-  - ns.yaml
 helmCharts:
   - name: jaeger-operator
     releaseName: jaegertracing
