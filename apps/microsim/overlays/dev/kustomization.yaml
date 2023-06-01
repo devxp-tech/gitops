@@ -21,9 +21,9 @@ helmCharts:
         # gateways: istio-system/private
       env:
         - name: JAEGER_AGENT_HOST
-          value: jaeger--agent.observability.svc.lgsk8sp1.grupologos.local
+          value: "jaeger--agent.observability.svc.lgsk8sp1.grupologos.local"
         - name: JAEGER_AGENT_PORT
-          value: 6831
+          value: "6831"
       quota:
         enabled: false
       autoscaling:
