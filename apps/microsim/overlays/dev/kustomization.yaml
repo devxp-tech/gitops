@@ -20,9 +20,9 @@ helmCharts:
         domain: devxp-tech.io
         # gateways: istio-system/private
       env:
-        - name: JAEGER_AGENT_HOST
+        - name: OTEL_EXPORTER_JAEGER_AGENT_HOST
           value: "jaeger--agent.observability.svc.lgsk8sp1.grupologos.local"
-        - name: JAEGER_AGENT_PORT
+        - name: OTEL_EXPORTER_JAEGER_AGENT_PORT
           value: "6831"
       quota:
         enabled: false
