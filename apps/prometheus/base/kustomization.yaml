@@ -1799,4 +1799,6 @@ helmCharts:
               scrape_interval: 15s
               static_configs:
                 - targets:
+                    - jaeger-agent.observability.svc.lgsk8sp1.grupologos.local:14271
+                    - jaeger-collector.observability.svc.lgsk8sp1.grupologos.local:14269
                     - jaeger-query.observability.svc.lgsk8sp1.grupologos.local:16687
