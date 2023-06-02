@@ -10,7 +10,7 @@ commonLabels:
 helmCharts:
   - name: devxp-app
     releaseName: devxp-app
-    version: 0.1.87
+    version: 0.1.88
     repo: https://devxp-tech.github.io/helm-charts
     valuesInline:
       name: teste-loki
