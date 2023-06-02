@@ -1,6 +1,6 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: jaeger-operator
+namespace: observability
 commonLabels:
   app: jaeger-operator
   version: 2.45.0
@@ -9,7 +9,9 @@ helmCharts:
     releaseName: jaegertracing
     version: 2.45.0
     repo: https://jaegertracing.github.io/helm-charts
-    namespace: jaeger-operator
+    namespace: observability
     valuesInline:
+      nameOverride: jaeger-operator
       rbac:
         create: true
+        clusterRole: true
