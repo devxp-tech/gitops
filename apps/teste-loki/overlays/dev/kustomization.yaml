@@ -20,7 +20,7 @@ helmCharts:
         - secretRef:
             name: postgres-secrets
       podAnnotations:
-        sidecar.jaegertracing.io/inject: true
+        sidecar.jaegertracing.io/inject: "true"
       network:
         domain: devxp-tech.io
         # gateways: istio-system/private
