@@ -12,7 +12,7 @@ helmCharts:
     name: teste-bruno
     image:
       repository: ghcr.io/devxp-tech/teste-bruno
-      tag: latest
+      tag: 94caaa03
     autoscaling:
       enabled: true
       minReplicas: 1
