@@ -1,0 +1,13 @@
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: jaeger-operator-in-teste-loki
+  namespace: teste-loki
+subjects:
+  - kind: ServiceAccount
+    name: jaegertracing-jaeger-operator
+    namespace: jaeger-operator
+roleRef:
+  kind: Role
+  name: jaegertracing-jaeger-operator
+  apiGroup: rbac.authorization.k8s.io
