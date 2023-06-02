@@ -10,7 +10,7 @@ commonLabels:
 helmCharts:
   - name: devxp-app
     releaseName: devxp-app
-    version: 0.1.86
+    version: 0.1.87
     repo: https://devxp-tech.github.io/helm-charts
     valuesInline:
       name: teste-loki
@@ -20,7 +20,7 @@ helmCharts:
       envFrom:
         - secretRef:
             name: postgres-secrets
-      podAnnotations:
+      nsAnnotations:
         sidecar.jaegertracing.io/inject: "true"
       network:
         domain: devxp-tech.io
