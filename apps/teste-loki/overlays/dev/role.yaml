@@ -5,9 +5,9 @@ metadata:
   namespace: teste-loki
 subjects:
   - kind: ServiceAccount
-    name: jaegertracing-jaeger-operator
-    namespace: jaeger-operator
+    name: jaeger-operator
+    namespace: observability
 roleRef:
   kind: Role
-  name: jaegertracing-jaeger-operator
+  name: jaeger-operator
   apiGroup: rbac.authorization.k8s.io
