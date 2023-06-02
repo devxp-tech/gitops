@@ -11,7 +11,7 @@ helmCharts:
     repo: https://jaegertracing.github.io/helm-charts
     namespace: observability
     valuesInline:
-      nameOverride: jaeger-operator
+      fullnameOverride: jaeger-operator
       rbac:
         create: true
         clusterRole: true
