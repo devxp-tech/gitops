@@ -1,9 +1,9 @@
 {
-  "appName": "microsim",
-  "userGivenName": "microsim",
-  "destNamespace": "microsim",
+  "appName": "hotrod",
+  "userGivenName": "hotrod",
+  "destNamespace": "hotrod",
   "destServer": "https://kubernetes.default.svc",
-  "srcPath": "apps/microsim/overlays/dev",
+  "srcPath": "apps/hotrod/overlays/dev",
   "srcRepoURL": "https://github.com/devxp-tech/gitops.git",
   "srcTargetRevision": "",
   "CreateNamespace": true,
