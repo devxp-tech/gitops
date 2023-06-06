@@ -12,15 +12,15 @@ resources:
 patchesStrategicMerge:
   - argocd-server.yaml
   - argocd-notifications-cm.yaml
-patches:
-  - patch: |-
-      apiVersion: v1
-      kind: Secret
-      type: Opaque
-      metadata:
-        name: argocd-notifications-secret
-        annotations:
-          sealedsecrets.bitnami.com/managed: "true"
+# patches:
+#   - patch: |-
+#       apiVersion: v1
+#       kind: Secret
+#       type: Opaque
+#       metadata:
+#         name: argocd-notifications-secret
+#         annotations:
+#           sealedsecrets.bitnami.com/managed: "true"
 configMapGenerator:
   - name: argocd-cmd-params-cm
     behavior: merge
