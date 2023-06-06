@@ -32,7 +32,7 @@ configMapGenerator:
       labels:
         app.kubernetes.io/part-of: argocd
     files:
-      - files/dex.config
+      # - files/dex.config
       - files/repositories
       - files/repository.credentials
       - files/resource.customizations
@@ -42,7 +42,7 @@ configMapGenerator:
       - kustomize.buildOptions="--enable-alpha-plugins --enable-helm --load-restrictor LoadRestrictionsNone"
       - statusbadge.enabled=true
       # - url=https://argocd.devxp-tech.io
-      - accounts.backstage="apiKey, login"
+      # - accounts.backstage="apiKey, login"
   - name: argocd-rbac-cm
     behavior: merge
     options:
