@@ -5,22 +5,22 @@ resources:
   - github.com/argoproj-labs/argocd-autopilot/manifests/base?ref=v0.4.15
   # - argo-grafana-secret-sealed.yaml
   - https://raw.githubusercontent.com/argoproj-labs/rollout-extension/v0.3.0/manifests/install.yaml
-  # - argocd-notifications-secret-sealed.yaml
-  # - github-secrets-sealed.yaml
-  # - sso-sealed.yaml
-  # - virtual-service.yaml
+  - argocd-notifications-secret-sealed.yaml
+  - github-secrets-sealed.yaml
+  - sso-sealed.yaml
+  - virtual-service.yaml
 patchesStrategicMerge:
   - argocd-server.yaml
   - argocd-notifications-cm.yaml
-# patches:
-#   - patch: |-
-#       apiVersion: v1
-#       kind: Secret
-#       type: Opaque
-#       metadata:
-#         name: argocd-notifications-secret
-#         annotations:
-#           sealedsecrets.bitnami.com/managed: "true"
+patches:
+  - patch: |-
+      apiVersion: v1
+      kind: Secret
+      type: Opaque
+      metadata:
+        name: argocd-notifications-secret
+        annotations:
+          sealedsecrets.bitnami.com/managed: "true"
 configMapGenerator:
   - name: argocd-cmd-params-cm
     behavior: merge
