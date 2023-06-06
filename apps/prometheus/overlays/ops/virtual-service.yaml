@@ -19,4 +19,4 @@ spec:
         - destination:
             port:
               number: 80
-            host: prometheus-server.monitoring.svc.lgsk8sp1.grupologos.local
+            host: prometheus-server.monitoring.svc.cluster.local

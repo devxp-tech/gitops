@@ -19,4 +19,4 @@ spec:
         - destination:
             port:
               number: 16686 #80 or 16686
-            host: jaeger-query.observability.svc.lgsk8sp1.grupologos.local
+            host: jaeger-query.observability.svc.cluster.local

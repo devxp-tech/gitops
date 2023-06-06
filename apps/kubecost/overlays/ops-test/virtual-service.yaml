@@ -8,15 +8,15 @@ metadata:
     link.argocd.argoproj.io/external-link: https://kubecost.devxp-tech.io
 spec:
   hosts:
-  - "kubecost.devxp-tech.io"
+    - "kubecost.devxp-tech.io"
   gateways:
-  - istio-system/istio-ingressgateway
+    - istio-system/istio-ingressgateway
   http:
-  - match:
-    - uri:
-        prefix: /
-    route:
-    - destination:
-        port:
-          number: 9090
-        host: kubecost-cost-analyzer.kubecost.svc.lgsk8sp1.grupologos.local
+    - match:
+        - uri:
+            prefix: /
+      route:
+        - destination:
+            port:
+              number: 9090
+            host: kubecost-cost-analyzer.kubecost.svc.cluster.local

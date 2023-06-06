@@ -17,7 +17,7 @@ helmCharts:
         app: jaeger
         version: 1.45.0
       cassandra:
-        clusterDomain: lgsk8sp1.grupologos.local
+        clusterDomain: cluster.local
       query:
         extraEnvVars:
           - name: METRICS_STORAGE_TYPE

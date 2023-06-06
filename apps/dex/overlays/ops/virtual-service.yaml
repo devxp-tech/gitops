@@ -18,7 +18,7 @@ spec:
         - destination:
             port:
               number: 5556
-            host: dex.dex.svc.lgsk8sp1.grupologos.local
+            host: dex.dex.svc.cluster.local
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
@@ -39,4 +39,4 @@ spec:
         - destination:
             port:
               number: 80
-            host: dex-k8s-authenticator.dex.svc.lgsk8sp1.grupologos.local
+            host: dex-k8s-authenticator.dex.svc.cluster.local

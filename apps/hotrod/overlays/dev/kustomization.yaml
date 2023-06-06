@@ -21,11 +21,11 @@ helmCharts:
         # gateways: istio-system/private
       env:
         - name: OTEL_EXPORTER_JAEGER_AGENT_HOST
-          value: "jaeger--agent.observability.svc.lgsk8sp1.grupologos.local"
+          value: "jaeger--agent.observability.svc.cluster.local"
         - name: OTEL_EXPORTER_JAEGER_AGENT_PORT
           value: "6831"
         - name: OTEL_EXPORTER_JAEGER_ENDPOINT
-          value: "http://jaeger-collector.observability.svc.lgsk8sp1.grupologos.local:14268/api/traces"
+          value: "http://jaeger-collector.observability.svc.cluster.local:14268/api/traces"
       quota:
         enabled: false
       autoscaling:

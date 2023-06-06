@@ -50,7 +50,7 @@ helmCharts:
             tracing:
               enabled: true
               # Private facing URL of Jaeger
-              in_cluster_url: "http://jaeger-query.observability.svc.lgsk8sp1.grupologos.local:16686"
+              in_cluster_url: "http://jaeger-query.observability.svc.cluster.local:16686"
               use_grpc: false
               # Public facing URL of Jaeger
               url: "https://jaeger.devxp-tech.io/jaeger"

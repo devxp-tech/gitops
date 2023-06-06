@@ -1793,12 +1793,12 @@ helmCharts:
               scrape_interval: 10s
               static_configs:
                 - targets:
-                    - teste-loki.teste-loki.svc.lgsk8sp1.grupologos.local
+                    - teste-loki.teste-loki.svc.cluster.local
 
             - job_name: "jaeger"
               scrape_interval: 15s
               static_configs:
                 - targets:
-                    - jaeger--agent.observability.svc.lgsk8sp1.grupologos.local:14271
-                    - jaeger-collector.observability.svc.lgsk8sp1.grupologos.local:14269
-                    - jaeger-query.observability.svc.lgsk8sp1.grupologos.local:16687
+                    - jaeger--agent.observability.svc.cluster.local:14271
+                    - jaeger-collector.observability.svc.cluster.local:14269
+                    - jaeger-query.observability.svc.cluster.local:16687

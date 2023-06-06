@@ -8,7 +8,7 @@ helmCharts:
     version: 6.16.0
     repo: https://charts.bitnami.com/bitnami
     valuesInline:
-      clusterDomain: "lgsk8sp1.grupologos.local"
+      clusterDomain: "cluster.local"
       sources:
         - istio-virtualservice
       domainFilters:
