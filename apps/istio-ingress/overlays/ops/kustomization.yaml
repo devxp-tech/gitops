@@ -4,4 +4,5 @@ resources:
   - ../../base
   # - auth-policy.yaml
   - certificate.yaml
+  - clusterissuer.yaml
   - gateway.yaml
