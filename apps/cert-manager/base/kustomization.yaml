@@ -16,9 +16,12 @@ helmCharts:
     version: 1.12.1 #v1.11.0
     repo: https://charts.jetstack.io
     valuesInline:
-      installCRDs: false
+      installCRDs: true
       namespace: "cert-manager"
       fullnameOverride: "cert-manager"
+      serviceAccount:
+        annotations:
+          eks.amazonaws.com/role-arn: arn:aws:iam::aws:policy/aws-service-role/CertificateManagerServiceRolePolicy
       global:
         leaderElection:
           namespace: "cert-manager"
@@ -31,7 +34,3 @@ helmCharts:
           memory: 64Mi
       # webhook:
       #   securePort: 10260
-      extraArgs:
-        - --enable-certificate-owner-ref=true
-        - --dns01-recursive-nameservers-only
-        - --dns01-recursive-nameservers=8.8.8.8:53,1.1.1.1:53
