@@ -17,6 +17,7 @@ spec:
         dns01:
           route53:
             region: us-east-1
+            hostedZoneID: Z07160292VS2VLMB673B1
 ---
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
@@ -37,3 +38,4 @@ spec:
         dns01:
           route53:
             region: us-east-1
+            hostedZoneID: Z05586311URHI9OHAOA6E
