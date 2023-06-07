@@ -12,12 +12,11 @@ namespace: cert-manager
 #           istio-injection: enabled
 helmCharts:
   - name: cert-manager
-    includeCRDs: true
     releaseName: cert-manager
     version: 1.12.1 #v1.11.0
     repo: https://charts.jetstack.io
     valuesInline:
-      installCRDs: true
+      installCRDs: false
       namespace: "cert-manager"
       fullnameOverride: "cert-manager"
       global:
