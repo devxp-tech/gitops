@@ -8,7 +8,7 @@ spec:
   acme:
     email: contato@diegoluisi.eti.br
     privateKeySecretRef:
-      name: diegoluisi.eti.br
+      name: issuer-key
     server: https://acme-v02.api.letsencrypt.org/directory
     solvers:
       - selector:
@@ -29,7 +29,7 @@ spec:
   acme:
     email: contato@diegoluisi.eti.br
     privateKeySecretRef:
-      name: devxp-tech.io
+      name: issuer-key
     server: https://acme-v02.api.letsencrypt.org/directory
     solvers:
       - selector:
