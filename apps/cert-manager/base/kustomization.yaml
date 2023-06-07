@@ -19,9 +19,9 @@ helmCharts:
       installCRDs: true
       namespace: "cert-manager"
       fullnameOverride: "cert-manager"
-      serviceAccount:
-        annotations:
-          eks.amazonaws.com/role-arn: arn:aws:iam::aws:policy/aws-service-role/CertificateManagerServiceRolePolicy
+      # serviceAccount:
+      #   annotations:
+      #     eks.amazonaws.com/role-arn: arn:aws:iam::aws:policy/aws-service-role/CertificateManagerServiceRolePolicy
       global:
         leaderElection:
           namespace: "cert-manager"
