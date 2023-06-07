@@ -23,15 +23,15 @@ helmCharts:
       #   enabled: "true"
       serviceAccount:
         annotations:
-          eks.amazonaws.com/role-arn: arn:aws:iam::239468932737:role/eks-dev-cluster-20230606172522741600000003
+          eks.amazonaws.com/role-arn: arn:aws:iam::239468932737:role/eks-node-cert-manager
       webhook:
         serviceAccount:
           annotations:
-            eks.amazonaws.com/role-arn: arn:aws:iam::239468932737:role/eks-dev-cluster-20230606172522741600000003
+            eks.amazonaws.com/role-arn: arn:aws:iam::239468932737:role/eks-node-cert-manager
       cainjector:
         serviceAccount:
           annotations:
-            eks.amazonaws.com/role-arn: arn:aws:iam::239468932737:role/eks-dev-cluster-20230606172522741600000003
+            eks.amazonaws.com/role-arn: arn:aws:iam::239468932737:role/eks-node-cert-manager
       global:
         leaderElection:
           namespace: "cert-manager"
