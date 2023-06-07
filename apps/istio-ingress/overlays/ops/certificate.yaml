@@ -1,16 +1,16 @@
-# apiVersion: cert-manager.io/v1
-# kind: Certificate
-# metadata:
-#   name: diegoluisi.eti.br
-# spec:
-#   commonName: diegoluisi.eti.br
-#   dnsNames:
-#     - diegoluisi.eti.br
-#     - "*.diegoluisi.eti.br"
-#   issuerRef:
-#     kind: ClusterIssuer
-#     name: diegoluisi.eti.br
-#   secretName: diegoluisi.eti.br
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: diegoluisi.eti.br
+spec:
+  commonName: diegoluisi.eti.br
+  dnsNames:
+    - diegoluisi.eti.br
+    - "*.diegoluisi.eti.br"
+  issuerRef:
+    kind: ClusterIssuer
+    name: diegoluisi.eti.br
+  secretName: diegoluisi.eti.br
 ---
 apiVersion: cert-manager.io/v1
 kind: Certificate

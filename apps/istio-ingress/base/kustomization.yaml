@@ -13,8 +13,8 @@ helmCharts:
       podAnnotations:
         proxy.istio.io/config: '{"discoveryAddress" : "istiod.istio-system.svc:15012" }'
       autoscaling:
-        enabled: false
-      replicaCount: 2
+        enabled: true
+      # replicaCount: 2
       service:
         annotations:
           service.beta.kubernetes.io/aws-load-balancer-type: nlb
