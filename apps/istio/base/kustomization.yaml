@@ -42,7 +42,7 @@ helmCharts:
             limits:
               cpu: 50m
               memory: 128Mi
-        autoscalingv2API: false
+        autoscalingv2API: true
       pilot:
         traceSampling: 25.0
         replicaCount: 2
