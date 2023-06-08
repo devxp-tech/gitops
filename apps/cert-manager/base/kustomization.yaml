@@ -21,17 +21,17 @@ helmCharts:
       # fullnameOverride: "cert-manager"
       # securityContext:
       #   enabled: "true"
-      # serviceAccount:
-      #   annotations:
-      #     eks.amazonaws.com/role-arn: arn:aws:iam::239468932737:role/lgseksd1-cluster-20230608121959323200000003
-      # webhook:
-      #   serviceAccount:
-      #     annotations:
-      #       eks.amazonaws.com/role-arn: arn:aws:iam::239468932737:role/lgseksd1-cluster-20230608121959323200000003
-      # cainjector:
-      #   serviceAccount:
-      #     annotations:
-      #       eks.amazonaws.com/role-arn: arn:aws:iam::239468932737:role/lgseksd1-cluster-20230608121959323200000003
+      serviceAccount:
+        annotations:
+          eks.amazonaws.com/role-arn: arn:aws:iam::239468932737:role/eks-managed-node-group-spot
+      webhook:
+        serviceAccount:
+          annotations:
+            eks.amazonaws.com/role-arn: arn:aws:iam::239468932737:role/eks-managed-node-group-spot
+      cainjector:
+        serviceAccount:
+          annotations:
+            eks.amazonaws.com/role-arn: arn:aws:iam::239468932737:role/eks-managed-node-group-spot
       global:
         leaderElection:
           namespace: "cert-manager"
