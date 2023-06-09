@@ -4,6 +4,8 @@ kind: VirtualService
 metadata:
   name: argocd
   namespace: argocd
+  annotations:
+    link.argocd.argoproj.io/external-link: https://argocd.devxp-tech.io
 spec:
   hosts:
     - "argocd.devxp-tech.io"
