@@ -4,7 +4,6 @@ namespace: argocd
 resources:
   - github.com/argoproj-labs/argocd-autopilot/manifests/base?ref=v0.4.15
   - https://raw.githubusercontent.com/argoproj-labs/rollout-extension/v0.3.0/manifests/install.yaml
-  - argo-grafana-secret-sealed.yaml
   - argocd-notifications-secret-sealed.yaml
   - github-secrets-sealed.yaml
   - sso-sealed.yaml
