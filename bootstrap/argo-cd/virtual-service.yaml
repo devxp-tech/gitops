@@ -4,6 +4,8 @@ kind: VirtualService
 metadata:
   name: argocd
   namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "50"
 spec:
   hosts:
     - "argocd.devxp-tech.io"
