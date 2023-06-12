@@ -15,3 +15,23 @@ helmCharts:
       rbac:
         create: true
         clusterRole: true
+
+  - name: jaeger
+    releaseName: jaeger
+    version: 1.2.4
+    repo: https://charts.bitnami.com/bitnami
+    namespace: observability
+    valuesInline:
+      commonLabels:
+        app: jaeger
+        version: 1.45.0
+      cassandra:
+        clusterDomain: cluster.local
+        dbUser:
+          existingSecret: jaeger-operator-secrets
+      query:
+        extraEnvVars:
+          - name: METRICS_STORAGE_TYPE
+            value: prometheus
+          - name: PROMETHEUS_SERVER_URL
+            value: http://prometheus-server.monitoring
