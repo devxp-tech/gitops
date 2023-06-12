@@ -43,3 +43,6 @@ helmCharts:
       commonLabels:
         app: wordpress
         version: 6.2.2
+      mariadb:
+        auth:
+          existingSecret: wordpress-secrets #mariadb-password
