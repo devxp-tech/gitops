@@ -112,8 +112,8 @@ helmCharts:
         debug: true
         clusters:
           - name: lgseksd1
-            short_description: "Cluster AWS - K8S lgseksd1"
-            description: "Cluster K8S lgseksd1"
+            short_description: "AWS EKS Cluster - lgseksd1"
+            description: "AWS EKS Cluster - lgseksd1"
             client_id: lgseksd1
             client_secret: ${DEX_K8S_AUTH_SECRET}
             issuer: https://dex.devxp-tech.io
