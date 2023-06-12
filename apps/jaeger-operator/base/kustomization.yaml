@@ -15,7 +15,6 @@ helmCharts:
       rbac:
         create: true
         clusterRole: true
-
   - name: jaeger
     releaseName: jaeger
     version: 1.2.4
@@ -26,9 +25,9 @@ helmCharts:
         app: jaeger
         version: 1.45.0
       cassandra:
-        clusterDomain: cluster.local
+        # clusterDomain: cluster.local # Just need if cluster is different of cluster.local
         dbUser:
-          existingSecret: jaeger-operator-secrets
+          existingSecret: jaeger-cassandra
       query:
         extraEnvVars:
           - name: METRICS_STORAGE_TYPE
