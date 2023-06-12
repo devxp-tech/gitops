@@ -111,13 +111,13 @@ helmCharts:
         web_path_prefix: /
         debug: true
         clusters:
-          - name: lgsk8sp1
-            short_description: "Cluster AWS - K8S lgsk8sp1"
-            description: "Cluster K8S lgsk8sp1"
-            client_id: dex-k8s-authenticator
+          - name: lgseksd1
+            short_description: "Cluster AWS - K8S lgseksd1"
+            description: "Cluster K8S lgseksd1"
+            client_id: lgseksd1
             client_secret: ${DEX_K8S_AUTH_SECRET}
             issuer: https://dex.devxp-tech.io
-            k8s_master_uri: https://kubernetes-elb-lgsk8sp1-1949553965.us-east-1.elb.amazonaws.com:6443
+            k8s_master_uri: https://8673475BD214DFD1169339A996680AE1.gr7.us-east-1.eks.amazonaws.com
             redirect_uri: https://kube-login.devxp-tech.io/callback/
             k8s_ca_pem: |
               -----BEGIN CERTIFICATE-----
