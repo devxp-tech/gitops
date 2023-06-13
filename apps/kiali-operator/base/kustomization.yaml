@@ -43,7 +43,7 @@ helmCharts:
             grafana:
               auth:
                 type: bearer
-                token: secret:kiali-secrets:grafanaToken
+                token: secret:kiali:grafanaToken
               enabled: true
               in_cluster_url: http://grafana.monitoring
               url: https://grafana.devxp-tech.io
