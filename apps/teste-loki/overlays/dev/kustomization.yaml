@@ -14,6 +14,8 @@ helmCharts:
     repo: https://devxp-tech.github.io/helm-charts
     valuesInline:
       name: teste-loki
+      network:
+        domain: cluster.local
       image:
         repository: ghcr.io/devxp-tech/teste-loki
         tag: 13cdbef3
