@@ -184,6 +184,14 @@ helmCharts:
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/loki
+            - name: "jaeger"
+              orgId: 1
+              folder: "Jaeger Dashboards"
+              type: file
+              disableDeletion: false
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/jaeger
       dashboards:
         default:
           # GoLang dashboards
@@ -280,3 +288,8 @@ helmCharts:
           loki-container-log:
             datasource: Loki
             gnetId: 16966
+        jaeger:
+          # Loki dashboards
+          jaeger:
+            datasource: Prometheus
+            gnetId: 10001
