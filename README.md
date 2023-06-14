@@ -1,5 +1,5 @@
 [![main](https://github.com/devxp-tech/gitops/actions/workflows/main.yaml/badge.svg)](https://github.com/devxp-tech/gitops/actions/workflows/main.yaml)
-[![Quality Gate Status](https://sonar.devxp-tech.io/api/project_badges/measure?project=gitops&metric=alert_status&token=sqb_a0a10eb1070c347d4fea82aeb0e5c62c19b6b576)](https://sonar.devxp-tech.io/dashboard?id=gitops)
+[![Quality Gate Status](https://sonar.devxp-tech.io/api/project_badges/measure?project=gitops&metric=alert_status&token=sqb_5e06c70989931b4867d43f5edc1440b11ba9d7cd)](https://sonar.devxp-tech.io/dashboard?id=gitops)
 [![App Status](https://argocd.devxp-tech.io/api/badge?name=argo-cd&revision=true)](https://argocd.diegoluisi.eti.br/applications/argo-cd)
 # ⚙️ GitOps
 
