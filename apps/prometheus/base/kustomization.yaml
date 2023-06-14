@@ -1790,7 +1790,7 @@ helmCharts:
                 - targets: ["prometheus-prometheus-node-exporter:9100"]
 
             - job_name: "teste-loki"
-              scrape_interval: 10s
+              scrape_interval: 60s
               static_configs:
                 - targets:
                     - teste-loki.teste-loki.svc.cluster.local
@@ -1802,3 +1802,9 @@ helmCharts:
                     - jaeger--agent.observability.svc.cluster.local:14271
                     - jaeger-collector.observability.svc.cluster.local:14269
                     - jaeger-query.observability.svc.cluster.local:16687
+
+            - job_name: "sonarqube"
+              scrape_interval: 60s
+              static_configs:
+                - targets:
+                    - sonarqube-jmx-metrics.sonarqube.svc.cluster.local:10443
