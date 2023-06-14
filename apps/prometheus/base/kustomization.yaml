@@ -1796,6 +1796,7 @@ helmCharts:
                     - teste-loki.teste-loki.svc.cluster.local
 
             - job_name: "jaeger"
+              metrics_path: /metrics
               scrape_interval: 15s
               static_configs:
                 - targets:
@@ -1804,6 +1805,7 @@ helmCharts:
                     - jaeger-query.observability.svc.cluster.local:16687
 
             - job_name: "sonarqube"
+              metrics_path: /metrics
               scrape_interval: 60s
               static_configs:
                 - targets:
