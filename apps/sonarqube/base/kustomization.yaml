@@ -45,6 +45,6 @@ helmCharts:
             requests:
               cpu: 50m
               memory: 128Mi
-      # metrics:
-      #   jmx:
-      #     enabled: true
+      metrics:
+        jmx:
+          enabled: true
