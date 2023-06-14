@@ -89,6 +89,12 @@ helmCharts:
               jsonData:
                 manageAlerts: true
                 alertmanagerUid: alertmanager
+            - name: Jaeger
+              uid: jaeger
+              type: jaeger
+              access: proxy
+              url: http://jaeger-query.observability:16686
+              version: 1
       notifiers:
         notifiers.yaml:
           notifiers:
