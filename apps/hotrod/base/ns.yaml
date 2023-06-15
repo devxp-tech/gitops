@@ -1,0 +1,12 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  labels:
+    kubernetes.io/metadata.name: hotrod
+    backstage.io/kubernetes-id: hotrod
+    istio-injection: enabled
+  name: hotrod
+spec:
+  finalizers:
+    - kubernetes
