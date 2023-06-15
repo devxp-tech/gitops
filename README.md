@@ -3,7 +3,6 @@
 [![App Status](https://argocd.devxp-tech.io/api/badge?name=argo-cd&revision=true)](https://argocd.diegoluisi.eti.br/applications/argo-cd)
 ![GitHub last commit](https://img.shields.io/github/last-commit/devxp-tech/gitops)
 ![GitHub top language](https://img.shields.io/github/languages/top/devxp-tech/gitops)
-![GitHub all releases](https://img.shields.io/github/downloads/devxp-tech/gitops/total)
 ![GitHub issues](https://img.shields.io/github/issues-raw/devxp-tech/gitops)
 ![GitHub](https://img.shields.io/github/license/devxp-tech/gitops)
 ![Twitter Follow](https://img.shields.io/twitter/follow/devxp_tech?style=social)
