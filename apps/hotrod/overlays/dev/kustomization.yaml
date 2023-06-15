@@ -9,12 +9,14 @@ commonLabels:
 helmCharts:
   - name: devxp-app
     releaseName: devxp-app
-    version: 0.1.95
+    version: 0.2.7
     repo: https://devxp-tech.github.io/helm-charts
     valuesInline:
       global:
         cluster: cluster.local
       name: hotrod
+      deployment:
+        enabled: true
       image:
         repository: jaegertracing/example-hotrod
         tag: latest
