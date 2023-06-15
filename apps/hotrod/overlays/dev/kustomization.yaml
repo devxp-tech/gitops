@@ -17,6 +17,8 @@ helmCharts:
       name: hotrod
       deployment:
         enabled: true
+        annotations:
+          "sidecar.jaegertracing.io/inject": "true"
       argoRollouts:
         enabled: false
       image:
