@@ -1,6 +1,12 @@
 [![main](https://github.com/devxp-tech/gitops/actions/workflows/main.yaml/badge.svg)](https://github.com/devxp-tech/gitops/actions/workflows/main.yaml)
 [![Quality Gate Status](https://sonar.devxp-tech.io/api/project_badges/measure?project=gitops&metric=alert_status&token=sqb_5e06c70989931b4867d43f5edc1440b11ba9d7cd)](https://sonar.devxp-tech.io/dashboard?id=gitops)
 [![App Status](https://argocd.devxp-tech.io/api/badge?name=argo-cd&revision=true)](https://argocd.diegoluisi.eti.br/applications/argo-cd)
+![GitHub last commit](https://img.shields.io/github/last-commit/devxp-tech/gitops)
+![GitHub top language](https://img.shields.io/github/languages/top/devxp-tech/gitops)
+![GitHub all releases](https://img.shields.io/github/downloads/devxp-tech/gitops/total)
+![GitHub issues](https://img.shields.io/github/issues-raw/devxp-tech/gitops)
+![GitHub](https://img.shields.io/github/license/devxp-tech/gitops)
+![Twitter Follow](https://img.shields.io/twitter/follow/devxp_tech?style=social)
 # ⚙️ GitOps
 
 GitOps is a set of best practices where the entire code delivery process is controlled via Git, including infrastructure and application definition as code and automation to complete updates and rollbacks.
