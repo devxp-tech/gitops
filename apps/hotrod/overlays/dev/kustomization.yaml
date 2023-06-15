@@ -17,6 +17,8 @@ helmCharts:
       name: hotrod
       deployment:
         enabled: true
+      argoRollouts:
+        enabled: false
       image:
         repository: jaegertracing/example-hotrod
         tag: latest
