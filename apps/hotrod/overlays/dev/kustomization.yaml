@@ -5,7 +5,6 @@ resources:
   - ../../base
 commonLabels:
   app: hotrod
-  version: latest
 helmCharts:
   - name: devxp-app
     releaseName: devxp-app
