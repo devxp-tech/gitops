@@ -18,7 +18,7 @@ helmCharts:
         tag: latest
       network:
         domain: devxp-tech.io
-      env:
+      envs:
         - name: OTEL_EXPORTER_JAEGER_AGENT_HOST
           value: "jaeger--agent.observability.svc.cluster.local"
         - name: OTEL_EXPORTER_JAEGER_AGENT_PORT
