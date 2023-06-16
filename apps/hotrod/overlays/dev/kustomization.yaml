@@ -9,24 +9,15 @@ commonLabels:
 helmCharts:
   - name: devxp-app
     releaseName: devxp-app
-    version: 0.2.12
+    version: 0.2.13
     repo: https://devxp-tech.github.io/helm-charts
     valuesInline:
-      global:
-        cluster: cluster.local
       name: hotrod
-      deployment:
-        enabled: true
-        annotations:
-          "sidecar.jaegertracing.io/inject": "true"
-      argoRollouts:
-        enabled: false
       image:
         repository: jaegertracing/example-hotrod
         tag: latest
       network:
         domain: devxp-tech.io
-        # gateways: istio-system/private
       env:
         - name: OTEL_EXPORTER_JAEGER_AGENT_HOST
           value: "jaeger--agent.observability.svc.cluster.local"
