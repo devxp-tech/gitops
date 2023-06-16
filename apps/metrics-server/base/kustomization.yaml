@@ -11,8 +11,8 @@ helmCharts:
       #   create: true
       metrics:
         enabled: true
-      hostNetwork:
-        enabled: true
+      # hostNetwork:
+      #   enabled: true
       args:
         - --cert-dir=/tmp
         - --kubelet-use-node-status-port
