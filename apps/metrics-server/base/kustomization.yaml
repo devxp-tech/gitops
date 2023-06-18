@@ -9,6 +9,7 @@ helmCharts:
     valuesInline:
       metrics:
         enabled: true
+      containerPort: "4443"
       # hostNetwork:
       #   enabled: true
       args:
