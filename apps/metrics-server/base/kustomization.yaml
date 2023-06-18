@@ -21,3 +21,4 @@ helmCharts:
         - "--authorization-always-allow-paths=/metrics,/livez,/readyz"
         - "--kubelet-insecure-tls"
         - "--secure-port=4443"
+        - --kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname
