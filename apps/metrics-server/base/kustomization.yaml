@@ -14,9 +14,10 @@ helmCharts:
       hostNetwork:
         enabled: true
       args:
-        - --cert-dir=/tmp
-        - --kubelet-use-node-status-port
-        - --kubelet-insecure-tls
-        - --kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname
-        # - --metric-resolution=30s
-        # - --secure-port=10250
+        # - --cert-dir=/tmp
+        # - --kubelet-use-node-status-port
+        # - --kubelet-insecure-tls
+        # - --kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname
+        - "--authorization-always-allow-paths=/metrics,/livez,/readyz"
+        - "--kubelet-insecure-tls"
+        - "--secure-port=4443"
