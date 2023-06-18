@@ -9,14 +9,7 @@ helmCharts:
     valuesInline:
       metrics:
         enabled: true
-      # containerPort: "4443"
-      # hostNetwork:
-      #   enabled: true
       args:
-        # - --cert-dir=/tmp
-        # - --kubelet-use-node-status-port
-        # - --kubelet-insecure-tls
-        # - --kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname
         - --kubelet-insecure-tls
         - --kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname
         - --kubelet-use-node-status-port

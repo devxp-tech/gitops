@@ -36,5 +36,5 @@ helmCharts:
             value: prometheus
           - name: PROMETHEUS_SERVER_URL
             value: http://prometheus-server.monitoring
-          # - name: PROMETHEUS_QUERY_SUPPORT_SPANMETRICS_CONNECTOR
-          #   value: "true"
+          - name: PROMETHEUS_QUERY_SUPPORT_SPANMETRICS_CONNECTOR
+            value: "true"
