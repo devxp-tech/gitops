@@ -7,12 +7,10 @@ helmCharts:
     version: 3.10.0
     repo: https://kubernetes-sigs.github.io/metrics-server/
     valuesInline:
-      # apiService:
-      #   create: true
       metrics:
         enabled: true
-      hostNetwork:
-        enabled: true
+      # hostNetwork:
+      #   enabled: true
       args:
         # - --cert-dir=/tmp
         # - --kubelet-use-node-status-port
