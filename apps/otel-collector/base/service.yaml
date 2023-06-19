@@ -7,6 +7,9 @@ metadata:
     app: opentelemetry
     component: otel-collector
 spec:
+  type: ClusterIP
+  selector:
+    component: otel-collector
   ports:
     - name: otlp # Default endpoint for otlp receiver.
       port: 4317
@@ -17,6 +20,3 @@ spec:
       port: 8889
       protocol: TCP
       targetPort: 8889
-  selector:
-    component: otel-collector
-  type: NodePort
