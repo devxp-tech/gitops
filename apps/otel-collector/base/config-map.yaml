@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: otel-collector-conf
+  namespace: observability
+  labels:
+    app: opentelemetry
+    component: otel-collector-conf
+data:
+  otel-collector-config: |
+    receivers:
+      # Make sure to add the otlp receiver.
+      # This will open up the receiver on port 4317
+      otlp:
+        protocols:
+          grpc:
+            endpoint: "0.0.0.0:4317"
+    processors:
+    extensions:
+      health_check: {}
+    exporters:
+      jaeger:
+        endpoint: "jaeger-collector.observability.svc.cluster.local:14250"
+        insecure: true
+      prometheus:
+        endpoint: 0.0.0.0:8889
+        namespace: "testapp"
+      logging:
+
+    service:
+      extensions: [health_check]
+      pipelines:
+        traces:
+          receivers: [otlp]
+          processors: []
+          exporters: [jaeger]
+
+        metrics:
+          receivers: [otlp]
+          processors: []
+          exporters: [prometheus, logging]
