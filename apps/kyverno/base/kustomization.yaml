@@ -15,7 +15,7 @@ helmCharts:
     version: 3.0.1
     repo: https://kyverno.github.io/kyverno
     valuesInline:
-      nameOverride: kyverno
+      fullnameOverride: kyverno
       crds:
         install: true
 
