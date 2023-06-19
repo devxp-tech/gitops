@@ -1809,3 +1809,8 @@ helmCharts:
             #   static_configs:
             #     - targets:
             #         - sonarqube-jmx-metrics.sonarqube.svc.cluster.local:10443
+
+            - job_name: "otel-collector"
+              scrape_interval: 10s
+              static_configs:
+                - targets: ["otel-collector:8889"]
