@@ -15,9 +15,10 @@ helmCharts:
     version: 3.0.1
     repo: https://kyverno.github.io/kyverno
     valuesInline:
-      networkPolicy:
-        enabled: true
-      namespace: kyverno
+      nameOverride: kyverno
+      # networkPolicy:
+      #   enabled: true
+      # namespace: kyverno
       # cleanupController:
       #   enabled: true
       # replicaCount: 1
