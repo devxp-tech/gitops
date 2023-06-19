@@ -16,16 +16,16 @@ helmCharts:
       network:
         domain: devxp-tech.io
       envs:
-        - name: JAEGER_AGENT_HOST
-          value: "jaeger--agent.observability.svc.cluster.local"
-        - name: JAEGER_AGENT_PORT
-          value: "6831"
+        # - name: OTEL_EXPORTER_JAEGER_AGENT_HOST
+        #   value: "jaeger--agent.observability.svc.cluster.local"
+        # - name: OTEL_EXPORTER_JAEGER_AGENT_PORT
+        #   value: "6831"
+        # - name: OTEL_EXPORTER_JAEGER_ENDPOINT
+        #   value: "http://jaeger-collector.observability.svc.cluster.local:14268/api/traces"
         - name: OTEL_EXPORTER_JAEGER_AGENT_HOST
-          value: "jaeger--agent.observability.svc.cluster.local"
+          value: "otel-collector.observability.svc.cluster.local"
         - name: OTEL_EXPORTER_JAEGER_AGENT_PORT
-          value: "6831"
-        - name: OTEL_EXPORTER_JAEGER_ENDPOINT
-          value: "http://jaeger-collector.observability.svc.cluster.local:14268/api/traces"
+          value: "4317"
       quota:
         enabled: false
       autoscaling:
