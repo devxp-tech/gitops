@@ -18,17 +18,6 @@ helmCharts:
     valuesInline:
       installCRDs: true
       namespace: "cert-manager"
-      # serviceAccount:
-      #   annotations:
-      #     eks.amazonaws.com/role-arn: arn:aws:iam::239468932737:role/lgseksd1-cluster-20230608121959323200000003
-      # webhook:
-      #   serviceAccount:
-      #     annotations:
-      #       eks.amazonaws.com/role-arn: arn:aws:iam::239468932737:role/lgseksd1-cluster-20230608121959323200000003
-      # cainjector:
-      #   serviceAccount:
-      #     annotations:
-      #       eks.amazonaws.com/role-arn: arn:aws:iam::239468932737:role/lgseksd1-cluster-20230608121959323200000003
       global:
         leaderElection:
           namespace: "cert-manager"
@@ -39,5 +28,8 @@ helmCharts:
         limits:
           cpu: 20m
           memory: 64Mi
-      # webhook:
-      #   securePort: 10260
+      prometheus:
+        enabled: true
+        servicemonitor:
+          enabled: true
+          prometheusInstance: prometheus.monitoring
