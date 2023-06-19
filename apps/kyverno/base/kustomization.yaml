@@ -17,7 +17,6 @@ helmCharts:
     valuesInline:
       networkPolicy:
         enabled: true
-      version: 1.7.0
       namespace: kyverno
       # cleanupController:
       #   enabled: true
