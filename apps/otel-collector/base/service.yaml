@@ -15,8 +15,6 @@ spec:
       port: 4317
       protocol: TCP
       targetPort: 4317
-      nodePort: 30080
     - name: metrics # Default endpoint for metrics.
       port: 8889
       protocol: TCP
-      targetPort: 8889
