@@ -14,17 +14,24 @@ data:
       otlp:
         protocols:
           grpc:
-            endpoint: "0.0.0.0:4317"
+          http:
+          # grpc:
+          #   endpoint: "0.0.0.0:4317"
+
     processors:
+      batch:
+      spanmetrics:
+        metrics_exporter: prometheus
+
     extensions:
       health_check: {}
+
     exporters:
       jaeger:
         endpoint: "jaeger-collector.observability.svc.cluster.local:14250"
         insecure: true
       prometheus:
         endpoint: 0.0.0.0:8889
-        namespace: "testapp"
       logging:
 
     service:
@@ -32,10 +39,8 @@ data:
       pipelines:
         traces:
           receivers: [otlp]
-          processors: []
-          exporters: [jaeger]
-
+          processors: [spanmetrics, batch]
         metrics:
-          receivers: [otlp]
-          processors: []
-          exporters: [prometheus, logging]
+          receivers: [otlp/spanmetrics]
+          exporters: [prometheus]
+          processors: [batch]
