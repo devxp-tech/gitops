@@ -192,6 +192,14 @@ helmCharts:
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/jaeger
+            - name: "cert-manager"
+              orgId: 1
+              folder: "Cert-Manager Dashboards"
+              type: file
+              disableDeletion: false
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/jaeger
       dashboards:
         default:
           # GoLang dashboards
@@ -293,3 +301,7 @@ helmCharts:
           jaeger:
             datasource: Prometheus
             gnetId: 10001
+        cert-manager:
+          cert-manager:
+            datasource: Prometheus
+            url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/cert-manager/cert-manager.json"
