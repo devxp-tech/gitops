@@ -1813,4 +1813,5 @@ helmCharts:
             - job_name: "otel-collector"
               scrape_interval: 10s
               static_configs:
-                - targets: ["otel-collector:8889"]
+                - targets:
+                    ["otel-collector.observability.svc.cluster.local:8889"]
