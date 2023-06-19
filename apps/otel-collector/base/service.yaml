@@ -18,3 +18,4 @@ spec:
     - name: metrics # Default endpoint for metrics.
       port: 8889
       protocol: TCP
+      targetPort: 8888
