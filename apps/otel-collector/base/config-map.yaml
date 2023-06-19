@@ -41,6 +41,6 @@ data:
           receivers: [otlp]
           processors: [spanmetrics, batch]
         metrics:
-          receivers: [otlp/spanmetrics]
+          receivers: [otlp]
           exporters: [prometheus]
           processors: [batch]
