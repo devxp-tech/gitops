@@ -9,39 +9,36 @@ metadata:
 data:
   otel-collector-config: |
     receivers:
-      # Make sure to add the otlp receiver.
-      # This will open up the receiver on port 4317
       otlp:
         protocols:
           grpc:
-          http:
-          # grpc:
-          #   endpoint: "0.0.0.0:4317"
-
-    processors:
-      batch:
-      # spanmetrics:
-      #   metrics_exporter: prometheus
-
-    extensions:
-      health_check: {}
 
     exporters:
+      prometheus:
+        endpoint: "0.0.0.0:8889"
+        # namespace: promexample
+        # const_labels:
+        #   label1: value1
+      logging:
+
       jaeger:
         endpoint: "jaeger-collector.observability.svc.cluster.local:14250"
         insecure: true
-      prometheus:
-        endpoint: 0.0.0.0:8889
-      logging:
+
+    processors:
+      batch:
+
+    extensions:
+      health_check:
 
     service:
       extensions: [health_check]
       pipelines:
         traces:
           receivers: [otlp]
-          processors: [spanmetrics, batch]
-          exporters: [jaeger]
+          processors: [batch]
+          exporters: [logging, jaeger]
         metrics:
           receivers: [otlp]
-          exporters: [prometheus]
           processors: [batch]
+          exporters: [logging, prometheus]
