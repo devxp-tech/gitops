@@ -9,7 +9,7 @@ commonLabels:
 helmCharts:
   - name: wordpress
     releaseName: wordpress
-    version: 16.1.8
+    version: 16.1.21
     repo: https://charts.bitnami.com/bitnami
     valuesInline:
       wordpressUsername: dluisi
@@ -43,6 +43,15 @@ helmCharts:
       commonLabels:
         app: wordpress
         version: 6.2.2
+      extraEnvVars:
+        - name: PHP_UPLOAD_MAX_FILESIZE
+          value: 1024M
+        - name: PHP_POST_MAX_SIZE
+          value: 1024M
+        - name: PHP_MAX_EXECUTION_TIME
+          value: "0"
+        - name: PHP_MEMORY_LIMIT
+          value: 2048M
       mariadb:
         auth:
           existingSecret: wordpress-secrets #mariadb-password
