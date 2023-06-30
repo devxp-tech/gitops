@@ -40,6 +40,8 @@ helmCharts:
         create: true
       service:
         type: ClusterIP
+      persistence:
+        enabled: true
       commonLabels:
         app: wordpress
         version: 6.2.2
