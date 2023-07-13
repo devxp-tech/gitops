@@ -20,6 +20,7 @@ helmCharts:
       virtualServices:
         custom:
           hosts:
+            - devxp-tech.io
             - www.devxp-tech.io
       ResourceQuota:
         enabled: false
