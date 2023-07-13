@@ -12,7 +12,7 @@ helmCharts:
       name: homepage
       image:
         repository: ghcr.io/devxp-tech/homepage
-        tag: 0.0.1
+        tag: e513d6e9
       container:
         port: 80
       network:
