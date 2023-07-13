@@ -1,0 +1,43 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: homepage
+resources:
+  - ../../base
+  - role.yaml
+  - postgres-secrets-sealed.yaml
+commonLabels:
+  app: homepage
+helmCharts:
+  - name: devxp-app
+    releaseName: devxp-app
+    version: 0.2.17
+    repo: https://devxp-tech.github.io/helm-charts
+    valuesInline:
+      name: homepage
+      image:
+        repository: ghcr.io/devxp-tech/homepage
+        tag: d9ab7875
+      envFrom:
+        - secretRef:
+            name: postgres-secrets
+      network:
+        domain: devxp-tech.io
+      quota:
+        enabled: true
+      autoscaling:
+        enabled: true
+        minReplicas: 3
+        maxReplicas: 5
+        targetCPUUtilizationPercentage: 80
+      livenessProbe:
+        httpGet:
+          path: /health-check/liveness
+          port: 8080
+        initialDelaySeconds: 15
+        periodSeconds: 10
+      readinessProbe:
+        httpGet:
+          path: /health-check/readiness
+          port: 8080
+        initialDelaySeconds: 15
+        periodSeconds: 10
