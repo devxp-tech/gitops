@@ -27,4 +27,5 @@ spec:
               - "dex.devxp-tech.io" # Need for kube-login
               - "grafana.devxp-tech.io" # Need for Backstage
               - "sonar.devxp-tech.io" # Need for GitHub pipelines
+              - "homepage.devxp-tech.io" # Need for GitHub pipelines
               - "*.diegoluisi.eti.br" # Allow wordpress for everyone
