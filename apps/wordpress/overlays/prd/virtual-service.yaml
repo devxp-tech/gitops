@@ -9,7 +9,6 @@ metadata:
 spec:
   hosts:
     - "www.diegoluisi.eti.br"
-    - "www.devxp-tech.io"
   gateways:
     - istio-system/istio-ingressgateway
   http:
