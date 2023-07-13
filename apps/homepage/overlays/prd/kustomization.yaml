@@ -3,6 +3,7 @@ kind: Kustomization
 namespace: homepage
 resources:
   - ../../base
+  - virtual-service.yaml
 helmCharts:
   - name: devxp-app
     releaseName: devxp-app
@@ -17,11 +18,6 @@ helmCharts:
         port: 80
       network:
         domain: devxp-tech.io
-      virtualServices:
-        custom:
-          hosts:
-            - devxp-tech.io
-            - www.devxp-tech.io
       ResourceQuota:
         enabled: false
       migration:
