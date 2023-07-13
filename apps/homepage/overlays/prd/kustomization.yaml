@@ -18,6 +18,10 @@ helmCharts:
         port: 80
       network:
         domain: devxp-tech.io
+      virtualServices:
+        custom:
+          hosts:
+            - www.devxp-tech.io
       ResourceQuota:
         enabled: false
       migration:
