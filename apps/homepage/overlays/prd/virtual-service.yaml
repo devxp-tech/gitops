@@ -14,6 +14,11 @@ spec:
     - istio-system/istio-ingressgateway
   http:
     - match:
+        - authority:
+            exact: devxp-tech.io
+      redirect:
+        authority: www.devxp-tech.io
+    - match:
         - uri:
             prefix: /
       route:
