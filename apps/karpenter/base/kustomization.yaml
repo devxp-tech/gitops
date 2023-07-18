@@ -9,6 +9,8 @@ helmCharts:
     includeCRDs: true
     valuesInline:
       nameOverride: karpenter
+      clusterName: lgseksd1
+      clusterEndpoint: lgseksd1
       # serviceAccount:
       #   annotations:
       #     eks.amazonaws.comrole-arn: "${KARPENTER_IAM_ROLE_ARN}"
