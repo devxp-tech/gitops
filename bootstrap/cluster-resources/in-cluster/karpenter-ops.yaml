@@ -20,7 +20,7 @@ spec:
       jsonPointers:
         - /data
   destination:
-    namespace: default
+    namespace: karpenter
     server: "https://kubernetes.default.svc"
   source:
     repoURL: public.ecr.aws/karpenter
