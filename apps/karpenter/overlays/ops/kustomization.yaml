@@ -13,9 +13,9 @@ helmCharts:
       nameOverride: karpenter
       clusterName: lgseksd1
       clusterEndpoint: https://8673475BD214DFD1169339A996680AE1.gr7.us-east-1.eks.amazonaws.com
-      # serviceAccount:
-      #   annotations:
-      #     eks.amazonaws.comrole-arn: "${KARPENTER_IAM_ROLE_ARN}"
+      serviceAccount:
+        annotations:
+          eks.amazonaws.comrole-arn: "arn:aws:iam::239468932737:role/KarpenterControllerRole-lgseksd1"
       #   settings:
       #     aws:
       #       clusterName: ${CLUSTER_NAME}
