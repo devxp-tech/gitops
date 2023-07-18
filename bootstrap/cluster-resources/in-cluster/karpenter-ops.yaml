@@ -39,7 +39,6 @@ spec:
             clusterName: lgseksd1
             clusterEndpoint:  https://8673475BD214DFD1169339A996680AE1.gr7.us-east-1.eks.amazonaws.com
             defaultInstanceProfile: KarpenterNodeInstanceProfile-lgseksd1
-            interruptionQueueName: lgseksd1
   project: ops
   syncPolicy:
     automated:
