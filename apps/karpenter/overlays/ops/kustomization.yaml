@@ -6,8 +6,8 @@ resources:
 helmCharts:
   - name: karpenter
     releaseName: karpenter
-    version: v0.23.0 #0.16.3
-    repo: public.ecr.aws/karpenter #https://charts.karpenter.sh/
+    version: 0.16.3
+    repo: https://charts.karpenter.sh/
     includeCRDs: true
     valuesInline:
       nameOverride: karpenter
