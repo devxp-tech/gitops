@@ -4,21 +4,21 @@ metadata:
   name: karpenter-ops
   namespace: argocd
 spec:
-  # ignoreDifferences:
-  #   - kind: ValidatingWebhookConfiguration
-  #     group: admissionregistration.k8s.io
-  #     name: validation.webhook.karpenter.k8s.aws
-  #     jqPathExpressions:
-  #       - .webhooks[].clientConfig.caBundle
-  #   - kind: MutatingWebhookConfiguration
-  #     group: admissionregistration.k8s.io
-  #     name: defaulting.webhook.karpenter.k8s.aws
-  #     jqPathExpressions:
-  #       - .webhooks[].clientConfig.caBundle
-  #   - kind: Secret
-  #     name: karpenter-cert
-  #     jsonPointers:
-  #       - /data
+  ignoreDifferences:
+    - kind: ValidatingWebhookConfiguration
+      group: admissionregistration.k8s.io
+      name: validation.webhook.karpenter.k8s.aws
+      jqPathExpressions:
+        - .webhooks[].clientConfig.caBundle
+    - kind: MutatingWebhookConfiguration
+      group: admissionregistration.k8s.io
+      name: defaulting.webhook.karpenter.k8s.aws
+      jqPathExpressions:
+        - .webhooks[].clientConfig.caBundle
+    - kind: Secret
+      name: karpenter-cert
+      jsonPointers:
+        - /data
   destination:
     namespace: karpenter
     server: "https://kubernetes.default.svc"
