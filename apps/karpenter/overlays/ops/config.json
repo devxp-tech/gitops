@@ -1,0 +1,11 @@
+{
+  "appName": "karpenter",
+  "userGivenName": "karpenter",
+  "destNamespace": "karpenter",
+  "destServer": "https://kubernetes.default.svc",
+  "srcPath": "apps/karpenter/overlays/ops",
+  "srcRepoURL": "https://github.com/devxp-tech/gitops.git",
+  "srcTargetRevision": "",
+  "CreateNamespace": true,
+  "labels": null
+}
