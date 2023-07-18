@@ -1,0 +1,51 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: karpenter-ops
+  namespace: argocd
+spec:
+  ignoreDifferences:
+    - kind: ValidatingWebhookConfiguration
+      group: admissionregistration.k8s.io
+      name: validation.webhook.karpenter.k8s.aws
+      jqPathExpressions:
+        - .webhooks[].clientConfig.caBundle
+    - kind: MutatingWebhookConfiguration
+      group: admissionregistration.k8s.io
+      name: defaulting.webhook.karpenter.k8s.aws
+      jqPathExpressions:
+        - .webhooks[].clientConfig.caBundle
+    - kind: Secret
+      name: karpenter-cert
+      jsonPointers:
+        - /data
+  destination:
+    namespace: karpenter
+    server: "https://kubernetes.default.svc"
+  source:
+    repoURL: public.ecr.aws/karpenter
+    # targetRevision: v0.27.5
+    targetRevision: v0.23.0
+    chart: karpenter
+    helm:
+      valueFiles: [values.yaml]
+      values: |
+        fullnameOverride: karpenter
+        serviceAccount:
+          annotations:
+            eks.amazonaws.com/role-arn: arn:aws:iam::556684128444:role/karpenter-lgseksd1
+        settings:
+          aws:
+            clusterName: lgseksd1
+            clusterEndpoint:  https://8673475BD214DFD1169339A996680AE1.gr7.us-east-1.eks.amazonaws.com
+            defaultInstanceProfile: KarpenterNodeInstanceProfile-lgseksd1
+            interruptionQueueName: lgseksd1
+  project: ops
+  syncPolicy:
+    automated:
+      # allowEmpty: true
+      prune: false
+      selfHeal: false
+    syncOptions:
+      - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true

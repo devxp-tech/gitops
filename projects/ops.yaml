@@ -149,20 +149,6 @@ spec:
             - /status
           kind: CustomResourceDefinition
           name: orders.acme.cert-manager.io
-        - kind: ValidatingWebhookConfiguration
-          group: admissionregistration.k8s.io
-          name: validation.webhook.karpenter.k8s.aws
-          jqPathExpressions:
-            - .webhooks[].clientConfig.caBundle
-        - kind: MutatingWebhookConfiguration
-          group: admissionregistration.k8s.io
-          name: defaulting.webhook.karpenter.k8s.aws
-          jqPathExpressions:
-            - .webhooks[].clientConfig.caBundle
-        - kind: Secret
-          name: karpenter-cert
-          jsonPointers:
-            - /data
       project: ops
       source:
         path: "{{ srcPath }}"
