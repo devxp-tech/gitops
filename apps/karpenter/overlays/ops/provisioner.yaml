@@ -1,0 +1,43 @@
+apiVersion: karpenter.sh/v1alpha5
+kind: Provisioner
+metadata:
+  name: default
+spec:
+  consolidation:
+    enabled: true
+  requirements:
+    - key: "node.kubernetes.io/instance-type"
+      operator: In
+      values: ["t3a.small", "t3a.medium", "t3a.large"]
+    - key: "topology.kubernetes.io/zone"
+      operator: In
+      values: ["us-east-1a", "us-east-1b", "us-east-1c"]
+    - key: "karpenter.sh/capacity-type"
+      operator: In
+      values: ["spot", "on-demand"]
+  provider:
+    blockDeviceMappings:
+      - deviceName: /dev/xvda
+        ebs:
+          volumeSize: 40Gi
+          volumeType: gp3
+    instanceProfile: KarpenterNodeInstanceProfile-lgseksd1
+    subnetSelector:
+      karpenter.sh/discovery: "lgseksd1"
+    securityGroupSelector:
+      karpenter.sh/discovery: "lgseksd1"
+  ttlSecondsUntilExpired: 2592000 # 30 days
+  kubeletConfiguration:
+    evictionHard:
+      memory.available: 5%
+      nodefs.available: 10%
+      nodefs.inodesFree: 10%
+    evictionSoft:
+      memory.available: 500Mi
+      nodefs.available: 15%
+      nodefs.inodesFree: 15%
+    evictionSoftGracePeriod:
+      memory.available: 1m
+      nodefs.available: 1m30s
+      nodefs.inodesFree: 2m
+    evictionMaxPodGracePeriod: 60
