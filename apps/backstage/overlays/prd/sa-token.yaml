@@ -1,7 +1,16 @@
-apiVersion: v1
-kind: Secret
-type: kubernetes.io/service-account-token
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
 metadata:
+  creationTimestamp: null
   name: backstage-token
-  annotations:
-    kubernetes.io/service-account.name: backstage
+  namespace: backstage
+spec:
+  encryptedData: {}
+  template:
+    metadata:
+      annotations:
+        kubernetes.io/service-account.name: backstage
+      creationTimestamp: null
+      name: backstage-token
+      namespace: backstage
+    type: kubernetes.io/service-account-token

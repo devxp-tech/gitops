@@ -3,10 +3,9 @@ kind: Kustomization
 namespace: backstage
 resources:
   - ../../base
+  - cluster-role.yaml
   - postgres-secrets.yaml
   - postgres-config.yaml
-  - role.yaml
-  - rolebinding.yaml
   - sa-token.yaml
   - secrets.yaml
 helmCharts:
