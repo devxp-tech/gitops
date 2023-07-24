@@ -10,6 +10,7 @@ helmCharts:
     valuesInline:
       kubecostToken: aGVsbUBrdWJlY29zdC5jb20=xm343yadf98
       prometheus:
+        enabled: false
         fqdn: kubecost-prometheus-server.kubecost.svc
         nodeExporter:
           enabled: false
