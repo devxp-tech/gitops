@@ -11,7 +11,8 @@ helmCharts:
       kubecostToken: aGVsbUBrdWJlY29zdC5jb20=xm343yadf98
       prometheus:
         enabled: false
-        fqdn: kubecost-prometheus-server.kubecost.svc
+        fqdn: prometheus-server.monitoring
+        # fqdn: kubecost-prometheus-server.kubecost.svc
         nodeExporter:
           enabled: false
         serviceAccounts:
