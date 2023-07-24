@@ -6,7 +6,7 @@ helmCharts:
     releaseName: kubecost
     namespace: kubecost
     repo: https://kubecost.github.io/cost-analyzer
-    version: 1.102.2
+    version: 1.105.0
     valuesInline:
       kubecostToken: aGVsbUBrdWJlY29zdC5jb20=xm343yadf98
       prometheus:
