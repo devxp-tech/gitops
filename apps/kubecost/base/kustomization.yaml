@@ -10,7 +10,7 @@ helmCharts:
     valuesInline:
       kubecostToken: aGVsbUBrdWJlY29zdC5jb20=xm343yadf98
       persistentVolume:
-        storageClass: gp2
+        storageClass: efs-sc
       global:
         prometheus:
           enabled: false
