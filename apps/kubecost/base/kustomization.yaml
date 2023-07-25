@@ -27,8 +27,8 @@ helmCharts:
             global:
               external_labels:
                 cluster_id: ops-cluster # Each cluster should have a unique ID
-          persistentVolume:
-            dbStorageClass: gp2
+        persistentVolume:
+          dbStorageClass: gp2
       # oidc:
       #   enabled: true
       #   clientID: "kubecost-client" #"client_id" # application/client client_id paramter obtained from provider, used to make requests to server
