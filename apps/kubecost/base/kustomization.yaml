@@ -8,6 +8,8 @@ helmCharts:
     repo: https://kubecost.github.io/cost-analyzer
     version: 1.105.0
     valuesInline:
+      kubecostProductConfigs:
+        clusterName: lgseksd1
       kubecostToken: aGVsbUBrdWJlY29zdC5jb20=xm343yadf98
       persistentVolume:
         storageClass: gp2
@@ -41,7 +43,7 @@ helmCharts:
           # additionalLabels:
           #   label-key: label-value
       oidc:
-        enabled: true
+        enabled: false
         clientID: kubecost-client #"client_id" # application/client client_id paramter obtained from provider, used to make requests to server
         clientSecret: clientSecret # application/client client_secret paramter obtained from provider, used to make requests to server
         secretName: "kubecost-secrets" # k8s secret where clientsecret will be stored
