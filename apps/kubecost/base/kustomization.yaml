@@ -43,7 +43,7 @@ helmCharts:
           # additionalLabels:
           #   label-key: label-value
       oidc:
-        enabled: true
+        enabled: false
         clientID: "" # client_id # application/client client_id paramter obtained from provider, used to make requests to server
         clientSecret: "" # clientSecret # application/client client_secret paramter obtained from provider, used to make requests to server
         secretName: "kubecost-secrets" # k8s secret where clientsecret will be stored
