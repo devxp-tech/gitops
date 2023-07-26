@@ -199,7 +199,15 @@ helmCharts:
               disableDeletion: false
               editable: true
               options:
-                path: /var/lib/grafana/dashboards/jaeger
+                path: /var/lib/grafana/dashboards/cert-manager
+            - name: "kubecost"
+              orgId: 1
+              folder: "KubeCost Dashboards"
+              type: file
+              disableDeletion: false
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/kubecost
       dashboards:
         default:
           # GoLang dashboards
@@ -305,3 +313,11 @@ helmCharts:
           cert-manager:
             datasource: Prometheus
             url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/cert-manager/cert-manager.json"
+        kubecost:
+          # KubeCost dashboards
+          kubecost:
+            datasource: Prometheus
+            gnetId: 11270
+          kubecost-gcloud:
+            datasource: Prometheus
+            gnetId: 15714
