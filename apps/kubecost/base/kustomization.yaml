@@ -12,12 +12,12 @@ helmCharts:
       persistentVolume:
         storageClass: gp2
       global:
+        grafana:
+          enabled: false
         prometheus:
           enabled: false
           fqdn: http://prometheus-server.monitoring
           # fqdn: kubecost-prometheus-server.kubecost.svc
-          grafana:
-            enabled: false
           nodeExporter:
             enabled: false
           serviceAccounts:
