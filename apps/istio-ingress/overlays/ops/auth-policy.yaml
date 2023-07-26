@@ -20,6 +20,7 @@ spec:
             - "189.19.124.114" # Gritzko
             - "179.191.119.178" # DiOculos
             - "85.244.177.235" # Office
+            - "191.19.210.111" #Cayke
     - to:
         - operation:
             hosts:
