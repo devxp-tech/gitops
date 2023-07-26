@@ -1822,3 +1822,15 @@ helmCharts:
               static_configs:
                 - targets:
                     - cert-manager.cert-manager.svc.cluster.local:9402
+
+            - job_name: kubecost
+              honor_labels: true
+              scrape_interval: 1m
+              scrape_timeout: 10s
+              metrics_path: /metrics
+              scheme: http
+              dns_sd_configs:
+                - names:
+                    - kubecost-cost-analyzer.kubecost
+                  type: "A"
+                  port: 9003
