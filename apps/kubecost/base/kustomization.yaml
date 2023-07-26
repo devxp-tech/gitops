@@ -16,7 +16,7 @@ helmCharts:
       global:
         grafana:
           enabled: false
-          # domainName: "https://grafana.devxp-tech.io"
+          domainName: "grafana.monitoring.svc"
         prometheus:
           enabled: false
           fqdn: http://prometheus-server.monitoring
