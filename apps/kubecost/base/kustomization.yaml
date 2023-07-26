@@ -11,6 +11,8 @@ helmCharts:
       kubecostToken: aGVsbUBrdWJlY29zdC5jb20=xm343yadf98
       persistentVolume:
         storageClass: gp2
+      prometheusRule:
+        enabled: false
       global:
         grafana:
           enabled: false
