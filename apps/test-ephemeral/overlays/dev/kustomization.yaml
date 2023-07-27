@@ -13,8 +13,8 @@ helmCharts:
     valuesInline:
       name: test-ephemeral
       image:
-        repository: hayd/distroless-deno
-        tag: 1.10.2
+        repository: spkane/scratch-helloworld
+        tag: latest
       network:
         domain: devxp-tech.io
       quota:
