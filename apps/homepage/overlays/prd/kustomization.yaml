@@ -24,6 +24,13 @@ helmCharts:
             - www.devxp-tech.io
       ResourceQuota:
         enabled: false
+      resources:
+        requests:
+          cpu: "10m"
+          memory: "20Mi"
+        limits:
+          cpu: "100m"
+          memory: "128Mi"
       migration:
         enabled: false
       PeerAuthentication:
@@ -31,7 +38,7 @@ helmCharts:
       autoscaling:
         enabled: false
         minReplicas: 1
-        maxReplicas: 1
+        maxReplicas: 2
         targetCPUUtilizationPercentage: 80
       # livenessProbe:
       #   httpGet:
