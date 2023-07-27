@@ -19,8 +19,8 @@ helmCharts:
         domain: devxp-tech.io
       quota:
         enabled: true
-      container:
-        port: 1993
+      # container:
+      #   port: 1993
       autoscaling:
         enabled: false
         minReplicas: 1
