@@ -25,7 +25,7 @@ helmCharts:
       quota:
         enabled: true
       autoscaling:
-        enabled: false
+        enabled: true
         minReplicas: 1
         maxReplicas: 3
         targetCPUUtilizationPercentage: 80
