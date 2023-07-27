@@ -1,0 +1,44 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: teste-loki
+resources:
+  - ../../base
+  - postgres-secrets-sealed.yaml
+helmCharts:
+  - name: devxp-app
+    releaseName: devxp-app
+    version: 0.1.62
+    repo: https://devxp-tech.github.io/helm-charts
+    valuesInline:
+      name: teste-loki
+      envFrom:
+        - secretRef:
+            name: postgres-secrets
+      image:
+        repository: ghcr.io/devxp-tech/teste-loki
+        tag: d9ab7875
+      network:
+        domain: devxp-tech.io
+      ResourceQuota:
+        enabled: false
+      migration:
+        enabled: false
+      PeerAuthentication:
+        enabled: true
+      autoscaling:
+        enabled: true
+        minReplicas: 1
+        maxReplicas: 1
+        targetCPUUtilizationPercentage: 80
+      livenessProbe:
+        httpGet:
+          path: /health-check/liveness
+          port: 8080
+        initialDelaySeconds: 15
+        periodSeconds: 10
+      readinessProbe:
+        httpGet:
+          path: /health-check/readiness
+          port: 8080
+        initialDelaySeconds: 15
+        periodSeconds: 10

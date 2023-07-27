@@ -318,6 +318,3 @@ helmCharts:
           kubecost:
             datasource: Prometheus
             gnetId: 11270
-          kubecost-gcloud:
-            datasource: Prometheus
-            gnetId: 15714
