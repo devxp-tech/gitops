@@ -38,10 +38,10 @@ helmCharts:
         domain: devxp-tech.io
       resources:
         requests:
-          memory: 1024Mi
-          cpu: 100m
+          memory: 400Mi
+          cpu: 10m
         limits:
-          memory: 2048Mi
+          memory: 1024Mi
           cpu: 200m
       readinessProbe:
         initialDelaySeconds: 15
