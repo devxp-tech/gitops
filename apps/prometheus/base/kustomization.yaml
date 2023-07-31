@@ -1731,6 +1731,9 @@ helmCharts:
               kubernetes_sd_configs:
                 - role: endpoints
               relabel_configs:
+                - source_labels: [__meta_kubernetes_pod_node_name]
+                  action: replace
+                  target_label: kubernetes_node
                 - source_labels:
                     [__meta_kubernetes_service_annotation_prometheus_io_scrape]
                   action: keep
@@ -1836,11 +1839,3 @@ helmCharts:
                     - kubecost-cost-analyzer.kubecost
                   type: "A"
                   port: 9003
-
-            - job_name: "kubernetes-service-endpoints"
-              kubernetes_sd_configs:
-                - role: endpoints
-              relabel_configs:
-                - source_labels: [__meta_kubernetes_pod_node_name]
-                  action: replace
-                  target_label: kubernetes_node
