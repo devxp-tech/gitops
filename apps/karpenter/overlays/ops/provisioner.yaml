@@ -77,4 +77,5 @@ spec:
   detailedMonitoring: true
   tags:
     karpenter.sh/discovery: lgseksd1
+    karpenter.sh/cluster_name: lgseksd1
     KarpenerProvisionerName: "default"
