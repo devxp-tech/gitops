@@ -34,6 +34,18 @@ spec:
         serviceAccount:
           annotations:
             eks.amazonaws.com/role-arn: arn:aws:iam::239468932737:role/KarpenterControllerRole-lgseksd1
+        affinity:
+          nodeAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+              nodeSelectorTerms:
+              - matchExpressions:
+                - key: karpenter.sh/provisioner-name
+                  operator: DoesNotExist
+              - matchExpressions:
+                - key: eks.amazonaws.com/nodegroup
+                  operator: In
+                  values:
+                  - default-a-20230724181857649400000001
         controller:
           resources:
             requests:
