@@ -27,10 +27,10 @@ spec:
     - key: node.kubernetes.io/instance-type
       operator: In
       values:
-        - t4g.small
-        - t4g.medium
-        - t4g.large
-        - t4g.xlarge
+        - t3a.small
+        - t3a.medium
+        - t3a.large
+        - t3a.xlarge
     - key: topology.kubernetes.io/zone
       operator: In
       values:
@@ -75,7 +75,7 @@ spec:
         volumeType: gp3
         encrypted: true
   detailedMonitoring: true
-  tags:
-    karpenter.sh/discovery: lgseksd1
-    karpenter.sh/cluster_name: lgseksd1
-    KarpenerProvisionerName: "default"
+  # tags:
+  #   karpenter.sh/discovery: lgseksd1
+  #   karpenter.sh/cluster_name: lgseksd1
+  #   KarpenerProvisionerName: "default"
