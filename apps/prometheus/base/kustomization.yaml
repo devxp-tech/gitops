@@ -21,8 +21,6 @@ helmCharts:
           global:
             resolve_timeout: 5m
             slack_api_url_file: "/etc/secrets/SLACK-TOKEN"
-            external_labels:
-              cluster_id: lgseksd1 # Each cluster should have a unique ID
           route:
             # When a new group of alerts is created by an incoming alert, wait at
             # least 'group_wait' to send the initial notification.
