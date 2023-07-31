@@ -28,7 +28,7 @@ spec:
       values:
         - t3a.small
         - t3a.medium
-        - t3a.large
+        - t4g.xlarge
     - key: topology.kubernetes.io/zone
       operator: In
       values:

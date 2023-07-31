@@ -47,10 +47,10 @@ helmCharts:
         traceSampling: 25.0
         replicaCount: 2
         resources:
-          limits:
-            cpu: 500m
-            memory: 2048Mi
           requests:
+            cpu: 10m
+            memory: 100Mi
+          limits:
             cpu: 500m
             memory: 2048Mi
       meshConfig:

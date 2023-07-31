@@ -34,6 +34,14 @@ spec:
         serviceAccount:
           annotations:
             eks.amazonaws.com/role-arn: arn:aws:iam::239468932737:role/KarpenterControllerRole-lgseksd1
+        controller:
+          resources:
+            requests:
+              cpu: 10m
+              memory: 300Mi
+            limits:
+              cpu: 1
+              memory: 1Gi
         settings:
           aws:
             clusterName: lgseksd1
