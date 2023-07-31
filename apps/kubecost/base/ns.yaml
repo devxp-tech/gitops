@@ -1,0 +1,12 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  labels:
+    kubernetes.io/metadata.name: kubecost
+    backstage.io/kubernetes-id: kubecost
+    istio-injection: enabled
+  name: kubecost
+spec:
+  finalizers:
+    - kubernetes
