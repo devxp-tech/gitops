@@ -26,8 +26,9 @@ spec:
     - key: node.kubernetes.io/instance-type
       operator: In
       values:
-        - t3a.small
-        - t3a.medium
+        - t4g.small
+        - t4g.medium
+        - t4g.large
         - t4g.xlarge
     - key: topology.kubernetes.io/zone
       operator: In
