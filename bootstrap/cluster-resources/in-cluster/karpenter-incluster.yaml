@@ -45,7 +45,7 @@ spec:
                 - key: eks.amazonaws.com/nodegroup
                   operator: In
                   values:
-                  - default-a-20230724181857649400000001
+                  - unused-20230724200603247700000001
         controller:
           resources:
             requests:
