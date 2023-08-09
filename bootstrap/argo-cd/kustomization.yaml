@@ -3,11 +3,11 @@ kind: Kustomization
 namespace: argocd
 resources:
   - github.com/argoproj-labs/argocd-autopilot/manifests/ha?ref=v0.4.15
-  # - https://raw.githubusercontent.com/argoproj-labs/rollout-extension/v0.3.0/manifests/install.yaml  # On Disaster Recovery comment this lines
-  # - argocd-notifications-secret-sealed.yaml  # On Disaster Recovery comment this lines
-  # - github-secrets-sealed.yaml  # On Disaster Recovery comment this lines
-  # - sso-sealed.yaml  # On Disaster Recovery comment this lines
-  # - virtual-service.yaml  # On Disaster Recovery comment this lines
+  - https://raw.githubusercontent.com/argoproj-labs/rollout-extension/v0.3.0/manifests/install.yaml # On Disaster Recovery comment this lines
+  - argocd-notifications-secret-sealed.yaml # On Disaster Recovery comment this lines
+  - github-secrets-sealed.yaml # On Disaster Recovery comment this lines
+  - sso-sealed.yaml # On Disaster Recovery comment this lines
+  - virtual-service.yaml # On Disaster Recovery comment this lines
 patches:
   - patch: |-
       apiVersion: v1
