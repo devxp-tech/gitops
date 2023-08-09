@@ -18,7 +18,7 @@ spec:
         ebs:
           volumeSize: 40Gi
           volumeType: gp3
-    instanceProfile: KarpenterNodeInstanceProfile-lgseksd1
+    instanceProfile: Karpenter-lgseksd1-20230809131800238100000002
     securityGroupSelector:
       karpenter.sh/discovery: lgseksd1
     subnetSelector:
