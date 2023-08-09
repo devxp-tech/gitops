@@ -24,8 +24,8 @@ spec:
     server: "https://kubernetes.default.svc"
   source:
     repoURL: public.ecr.aws/karpenter
-    # targetRevision: v0.27.5
-    targetRevision: v0.23.0
+    # targetRevision: v0.23.0
+    targetRevision: v0.29.2
     chart: karpenter
     helm:
       valueFiles: [values.yaml]
