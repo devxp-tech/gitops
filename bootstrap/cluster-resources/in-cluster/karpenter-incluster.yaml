@@ -33,7 +33,7 @@ spec:
         fullnameOverride: karpenter
         serviceAccount:
           annotations:
-            eks.amazonaws.com/role-arn: arn:aws:iam::239468932737:role/KarpenterControllerRole-lgseksd1
+            eks.amazonaws.com/role-arn: arn:aws:iam::239468932737:role/Karpenter-lgseksd1-20230809131800238100000002
         affinity:
           nodeAffinity:
             requiredDuringSchedulingIgnoredDuringExecution:
