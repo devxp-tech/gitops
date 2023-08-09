@@ -57,7 +57,7 @@ spec:
         settings:
           aws:
             clusterName: lgseksd1
-            clusterEndpoint: https://8673475BD214DFD1169339A996680AE1.gr7.us-east-1.eks.amazonaws.com
+            clusterEndpoint: https://7947638F25F34C5F3CAFEF8286994CB3.gr7.us-east-1.eks.amazonaws.com
             defaultInstanceProfile: KarpenterNodeInstanceProfile-lgseksd1
   project: ops
   syncPolicy:
