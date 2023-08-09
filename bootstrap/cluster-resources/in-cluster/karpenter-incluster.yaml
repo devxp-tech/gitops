@@ -45,7 +45,7 @@ spec:
                 - key: eks.amazonaws.com/nodegroup
                   operator: In
                   values:
-                  - unused-20230724200603247700000001
+                  - unused-2023080911132422120000002a
         controller:
           resources:
             requests:
