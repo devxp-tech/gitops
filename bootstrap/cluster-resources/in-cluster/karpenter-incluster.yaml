@@ -30,7 +30,7 @@ spec:
     helm:
       valueFiles: [values.yaml]
       values: |
-        nameOverride: karpenter
+        fullnameOverride: karpenter
         webhook:
           port: 8443
         serviceAccount:
