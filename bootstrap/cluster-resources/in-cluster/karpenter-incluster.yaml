@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: karpenter-incluster
+  name: karpenter
   namespace: argocd
 spec:
   # ignoreDifferences:
@@ -30,7 +30,7 @@ spec:
     helm:
       valueFiles: [values.yaml]
       values: |
-        fullnameOverride: karpenter
+        nameOverride: karpenter
         webhook:
           port: 8443
         serviceAccount:
