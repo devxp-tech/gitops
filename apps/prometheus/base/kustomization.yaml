@@ -2,6 +2,11 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: monitoring
 helmCharts:
+  - name: prometheus-operator-crds
+    releaseName: prometheus-operator-crds
+    version: 5.1.0
+    repo: https://prometheus-community.github.io/helm-charts
+    includeCRDs: true
   - name: prometheus
     releaseName: prometheus
     version: 22.6.6
