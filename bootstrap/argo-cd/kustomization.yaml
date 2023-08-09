@@ -2,12 +2,12 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: argocd
 resources:
-  - github.com/argoproj-labs/argocd-autopilot/manifests/base?ref=v0.4.15
-  - https://raw.githubusercontent.com/argoproj-labs/rollout-extension/v0.3.0/manifests/install.yaml
-  - argocd-notifications-secret-sealed.yaml
-  - github-secrets-sealed.yaml
-  - sso-sealed.yaml
-  - virtual-service.yaml
+  - github.com/argoproj-labs/argocd-autopilot/manifests/ha?ref=v0.4.15
+  # - https://raw.githubusercontent.com/argoproj-labs/rollout-extension/v0.3.0/manifests/install.yaml  # On Disaster Recovery comment this lines
+  # - argocd-notifications-secret-sealed.yaml  # On Disaster Recovery comment this lines
+  # - github-secrets-sealed.yaml  # On Disaster Recovery comment this lines
+  # - sso-sealed.yaml  # On Disaster Recovery comment this lines
+  # - virtual-service.yaml  # On Disaster Recovery comment this lines
 patches:
   - patch: |-
       apiVersion: v1
