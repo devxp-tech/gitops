@@ -4,6 +4,9 @@ kind: Provisioner
 metadata:
   name: default
 spec:
+  labels:
+    intent: worker
+    role: worker
   consolidation:
     enabled: true
   kubeletConfiguration:
@@ -23,6 +26,10 @@ spec:
       karpenter.sh/discovery: lgseksd1
     subnetSelector:
       karpenter.sh/discovery: lgseksd1
+    tags:
+      Name: karpenter.sh/worker
+      aws-node-termination-handler/managed: "true"
+      karpenter.sh/nodegroup: "worker"
   requirements:
     - key: node.kubernetes.io/instance-type
       operator: In
