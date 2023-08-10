@@ -8,21 +8,21 @@ spec:
     karpenter.sh/discovery: lgseksd1
   securityGroupSelector:
     karpenter.sh/discovery: lgseksd1
-  # blockDeviceMappings:
-  #   # Root device
-  #   - deviceName: /dev/xvda
-  #     ebs:
-  #       volumeSize: 4Gi
-  #       volumeType: gp3
-  #       encrypted: true
-  #   # Data device: Container resources such as images and logs
-  #   - deviceName: /dev/xvdb
-  #     ebs:
-  #       volumeSize: 20Gi
-  #       volumeType: gp3
-  #       encrypted: true
-  # detailedMonitoring: true
-  # tags:
-  #   karpenter.sh/discovery: lgseksd1
-  #   karpenter.sh/cluster_name: lgseksd1
-  #   KarpenerProvisionerName: "default"
+  blockDeviceMappings:
+    # Root device
+    - deviceName: /dev/xvda
+      ebs:
+        volumeSize: 30Gi
+        volumeType: gp3
+        encrypted: true
+    # Data device: Container resources such as images and logs
+    - deviceName: /dev/xvdb
+      ebs:
+        volumeSize: 30Gi
+        volumeType: gp3
+        encrypted: true
+  detailedMonitoring: true
+  tags:
+    karpenter.sh/discovery: lgseksd1
+    karpenter.sh/cluster_name: lgseksd1
+    KarpenerProvisionerName: "default"
