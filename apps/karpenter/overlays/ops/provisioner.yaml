@@ -6,7 +6,7 @@ metadata:
 spec:
   labels:
     intent: default
-    role: default
+    Role: default
   consolidation:
     enabled: true
   kubeletConfiguration:
