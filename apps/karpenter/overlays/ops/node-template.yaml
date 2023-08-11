@@ -14,17 +14,17 @@ spec:
     karpenter.sh/cluster_name: lgseksd1
     KarpenerProvisionerName: "default"
     managed-by: "karpenter"
-    intent: "apps"
+    Role: "default"
   blockDeviceMappings:
     - deviceName: /dev/xvda # root Volume to store OS Binaries
       ebs:
         volumeType: gp3 # EBS Volume Type
-        volumeSize: 20Gi # Size of the disk
+        volumeSize: 4Gi # Size of the disk
         deleteOnTermination: true # Disk Retention Policy
     - deviceName: /dev/xvdb # Data Volume to store Images, Logs etc
       ebs:
         volumeType: gp3 # EBS Volume Type
-        volumeSize: 100Gi # Size of the disk
+        volumeSize: 20Gi # Size of the disk
         deleteOnTermination: true # Disk Retention Policy
   userData: |
     #!/bin/bash
