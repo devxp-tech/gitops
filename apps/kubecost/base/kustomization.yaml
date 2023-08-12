@@ -28,6 +28,7 @@ helmCharts:
           nodeExporter:
             enabled: false
           serviceAccounts:
+            annotaions: "arn:aws:iam::239468932737:role/kubecost"
             nodeExporter:
               enabled: false
           kubeStateMetrics:
