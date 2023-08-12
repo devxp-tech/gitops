@@ -10,8 +10,9 @@ helmCharts:
     repo: https://kubecost.github.io/cost-analyzer
     version: 1.105.0
     valuesInline:
-      serviceAccounts:
-        annotaions: "arn:aws:iam::239468932737:role/kubecost"
+      serviceAccount:
+        annotations:
+          eks.amazonaws.com/role-arn: "arn:aws:iam::239468932737:role/kubecost"
       kubecostProductConfigs:
         clusterName: lgseksd1
       kubecostToken: aGVsbUBrdWJlY29zdC5jb20=xm343yadf98
