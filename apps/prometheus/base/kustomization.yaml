@@ -1157,14 +1157,14 @@ helmCharts:
                     summary: Istio high total request rate (instance {{ $labels.instance }})
                     description: "Global request rate in the service mesh is unusually high.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 
-                - alert: IstioLowTotalRequestRate
-                  expr: 'sum(rate(istio_requests_total{reporter="destination"}[5m])) < 100'
-                  for: 2m
-                  labels:
-                    severity: warning
-                  annotations:
-                    summary: Istio low total request rate (instance {{ $labels.instance }})
-                    description: "Global request rate in the service mesh is unusually low.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+                # - alert: IstioLowTotalRequestRate
+                #   expr: 'sum(rate(istio_requests_total{reporter="destination"}[5m])) < 100'
+                #   for: 2m
+                #   labels:
+                #     severity: warning
+                #   annotations:
+                #     summary: Istio low total request rate (instance {{ $labels.instance }})
+                #     description: "Global request rate in the service mesh is unusually low.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 
                 - alert: IstioHigh4xxErrorRate
                   expr: 'sum(rate(istio_requests_total{reporter="destination", response_code=~"4.*"}[5m])) / sum(rate(istio_requests_total{reporter="destination"}[5m])) * 100 > 5'
