@@ -189,7 +189,7 @@ helmCharts:
                   - "prometheus-alertmanager.monitoring:9093"
         resources:
           requests:
-            cpu: 100m
+            cpu: 500m
             memory: 4049Mi
           limits:
             cpu: 1
