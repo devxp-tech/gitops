@@ -27,6 +27,10 @@ helmCharts:
         prometheus:
           enabled: false
           fqdn: http://prometheus-server.monitoring
+          server:
+            global:
+              external_labels:
+                cluster_id: lgseksd1
           # fqdn: kubecost-prometheus-server.kubecost.svc
           nodeExporter:
             enabled: false
