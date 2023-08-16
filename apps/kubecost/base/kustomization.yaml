@@ -41,8 +41,8 @@ helmCharts:
             enabled: false
       serviceMonitor:
         enabled: true
-        # networkCosts:
-        #   enabled: true
+        networkCosts:
+          enabled: true
         #   config:
         #     services:
         #       amazon-web-services: true
