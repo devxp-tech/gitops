@@ -182,7 +182,9 @@ helmCharts:
             {{- end }}
 
       server:
-        # global:
+        global:
+          external_labels:
+            cluster_id: lgseksd1
         alertmanagers:
           - scheme: http
             static_configs:
