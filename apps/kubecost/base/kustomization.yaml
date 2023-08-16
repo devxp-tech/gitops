@@ -41,11 +41,11 @@ helmCharts:
             enabled: false
       serviceMonitor:
         enabled: true
-        networkCosts:
-          enabled: true
-          # config:
-          #   services:
-          #     amazon-web-services: true
+        # networkCosts:
+        #   enabled: true
+        # config:
+        #   services:
+        #     amazon-web-services: true
       oidc:
         enabled: false
         clientID: "" # client_id # application/client client_id paramter obtained from provider, used to make requests to server
