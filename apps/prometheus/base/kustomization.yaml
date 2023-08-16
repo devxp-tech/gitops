@@ -190,10 +190,10 @@ helmCharts:
         resources:
           requests:
             cpu: 500m
-            memory: 4049Mi
+            memory: 5120Mi
           limits:
             cpu: 1
-            memory: 5120Mi
+            memory: 6144Mi
         persistentVolume:
           size: "30Gi"
         retention: "7d"

@@ -39,10 +39,6 @@ helmCharts:
               enabled: false
           kubeStateMetrics:
             enabled: false
-          server:
-            global:
-              external_labels:
-                cluster_id: ops-cluster # Each cluster should have a unique ID
       serviceMonitor:
         enabled: true
         # additionalLabels:
