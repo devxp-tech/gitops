@@ -182,6 +182,7 @@ helmCharts:
             {{- end }}
 
       server:
+        # global:
         alertmanagers:
           - scheme: http
             static_configs:
