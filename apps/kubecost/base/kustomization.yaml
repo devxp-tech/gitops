@@ -10,28 +10,13 @@ helmCharts:
     repo: https://kubecost.github.io/cost-analyzer
     version: 1.105.0
     valuesInline:
-      serviceAccount:
-        annotations:
-          eks.amazonaws.com/role-arn: "arn:aws:iam::239468932737:role/kubecost"
-      kubecostProductConfigs:
-        clusterName: lgseksd1
-      kubecostToken: aGVsbUBrdWJlY29zdC5jb20=xm343yadf98
-      persistentVolume:
-        storageClass: gp2
-      prometheusRule:
-        enabled: false
       global:
-        grafana:
-          enabled: false
-          domainName: "grafana.monitoring.svc"
         prometheus:
           enabled: false
           fqdn: http://prometheus-server.monitoring
-          server:
-            global:
-              external_labels:
-                cluster_id: lgseksd1
-          # fqdn: kubecost-prometheus-server.kubecost.svc
+        grafana:
+          enabled: false
+          domainName: "grafana.monitoring.svc"
           nodeExporter:
             enabled: false
           serviceAccounts:
@@ -46,6 +31,21 @@ helmCharts:
         # config:
         #   services:
         #     amazon-web-services: true
+      prometheus:
+        server:
+          global:
+            external_labels:
+              cluster_id: lgseksd1
+      serviceAccount:
+        annotations:
+          eks.amazonaws.com/role-arn: "arn:aws:iam::239468932737:role/kubecost"
+      kubecostProductConfigs:
+        clusterName: "lgseksd1"
+      kubecostToken: aGVsbUBrdWJlY29zdC5jb20=xm343yadf98
+      persistentVolume:
+        storageClass: gp2
+      prometheusRule:
+        enabled: false
       oidc:
         enabled: false
         clientID: "" # client_id # application/client client_id paramter obtained from provider, used to make requests to server
