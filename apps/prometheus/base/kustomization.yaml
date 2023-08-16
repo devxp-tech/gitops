@@ -1121,17 +1121,17 @@ helmCharts:
                     summary: Kubernetes API server latency (instance {{ $labels.instance }})
                     description: "Kubernetes API server has a 99th percentile latency of {{ $value }} seconds for {{ $labels.verb }} {{ $labels.resource }}.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 
-            #### Istio Alerts
-            - name: Istio
-              rules:
-                - alert: IstioKubernetesGatewayAvailabilityDrop
-                  expr: 'min(kube_deployment_status_replicas_available{deployment="istio-ingressgateway", namespace="istio-system"}) without (instance, pod) < 2'
-                  for: 1m
-                  labels:
-                    severity: warning
-                  annotations:
-                    summary: Istio Kubernetes gateway availability drop (instance {{ $labels.instance }})
-                    description: "Gateway pods have dropped. Inbound traffic will likely be affected.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+                #### Istio Alerts
+                # - name: Istio
+                #   rules:
+                #     - alert: IstioKubernetesGatewayAvailabilityDrop
+                #       expr: 'min(kube_deployment_status_replicas_available{deployment="istio-ingressgateway", namespace="istio-system"}) without (instance, pod) < 2'
+                #       for: 1m
+                #       labels:
+                #         severity: warning
+                #       annotations:
+                #         summary: Istio Kubernetes gateway availability drop (instance {{ $labels.instance }})
+                #         description: "Gateway pods have dropped. Inbound traffic will likely be affected.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 
                 - alert: IstioPilotHighTotalRequestRate
                   expr: "sum(rate(pilot_xds_push_errors[1m])) / sum(rate(pilot_xds_pushes[1m])) * 100 > 5"
