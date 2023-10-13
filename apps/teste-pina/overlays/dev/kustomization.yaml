@@ -12,7 +12,7 @@ helmCharts:
     name: teste-pina
     image:
       repository: ghcr.io/devxp-tech/teste-pina
-      tag: latest
+      tag: 54561633
     autoscaling:
       enabled: true
       minReplicas: 1
