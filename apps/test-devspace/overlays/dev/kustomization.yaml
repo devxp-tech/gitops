@@ -12,7 +12,7 @@ helmCharts:
     name: test-devspace
     image:
       repository: ghcr.io/devxp-tech/test-devspace
-      tag: latest
+      tag: 2e682cde
     autoscaling:
       enabled: true
       minReplicas: 1
