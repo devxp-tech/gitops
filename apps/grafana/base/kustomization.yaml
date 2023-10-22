@@ -10,6 +10,8 @@ helmCharts:
     valuesInline:
       fullnameOverride: grafana
       useStatefulSet: true
+      persistence:
+        size: 20Gi
       resources:
         requests:
           cpu: 100m
