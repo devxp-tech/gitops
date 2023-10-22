@@ -5,10 +5,11 @@ helmCharts:
   - name: grafana
     includeCRDs: true
     releaseName: grafana
-    version: 6.57.2
+    version: 6.61.1
     repo: https://grafana.github.io/helm-charts
     valuesInline:
       fullnameOverride: grafana
+      useStatefulSet: true
       resources:
         requests:
           cpu: 100m
