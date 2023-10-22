@@ -12,6 +12,7 @@ helmCharts:
       useStatefulSet: true
       persistence:
         enabled: true
+        type: pvc
         size: 20Gi
       resources:
         requests:
@@ -28,9 +29,6 @@ helmCharts:
         existingSecret: "grafana-secrets"
         userKey: GF_SECURITY_ADMIN_USER
         passwordKey: GF_SECURITY_ADMIN_PASSWORD
-      persistence:
-        type: pvc
-        enabled: true
       envValueFrom:
         GF_AUTH_GITHUB_CLIENT_ID:
           secretKeyRef:
