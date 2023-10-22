@@ -17,6 +17,6 @@ spec:
             prefix: /
       route:
         - destination:
+            host: grafana.monitoring.svc.cluster.local
             port:
               number: 80
-            host: grafana.monitoring.svc.cluster.local
