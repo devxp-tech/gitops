@@ -129,7 +129,7 @@ helmCharts:
           labelValue: "1"
 
       plugins:
-        - grafana-github-datasource
+        # - grafana-github-datasource
         - grafana-piechart-panel
 
       dashboardProviders:
