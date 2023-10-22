@@ -75,7 +75,7 @@ helmCharts:
               uid: loki
               type: loki
               access: proxy
-              url: http://loki-query-frontend:3100
+              url: http://loki-stack:3100
               version: 1
               jsonData:
                 alertmanagerUid: alertmanager
