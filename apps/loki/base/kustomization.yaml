@@ -29,7 +29,7 @@ helmCharts:
               ruler: devxp-dev-loki-ruler
               admin: devxp-dev-loki-admin
             s3:
-              # s3: null
+              s3: null
               endpoint: null
               region: us-east-1
               secretAccessKey: null
