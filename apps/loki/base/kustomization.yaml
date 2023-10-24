@@ -2,11 +2,11 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: monitoring
 helmCharts:
-  - name: loki
+  - name: loki-stack
     includeCRDs: true
-    releaseName: loki
+    releaseName: loki-stack
     namespace: monitoring
-    version: 5.35.0
+    version: 2.9.11
     repo: https://grafana.github.io/helm-charts
     valuesInline:
       # nameOverride: loki-stack
@@ -15,23 +15,24 @@ helmCharts:
       #   clusterDomain: cluster.local
       labels:
         app: loki
-      distributorLabels:
-        app: loki
-      serviceAccount:
-        annotations:
-          "eks.amazonaws.com/role-arn": "arn:aws:iam::239468932737:role/devxp-dev-loki-role"
       loki:
-        storage:
-          type: s3
-          bucketNames:
-            chunks: devxp-dev-loki-chunks
-            ruler: devxp-dev-loki-ruler
-            admin: devxp-dev-loki-admin
-          s3:
-            # s3: null
-            endpoint: null
-            region: us-east-1
-            secretAccessKey: null
-            accessKeyId: null
-            s3ForcePathStyle: false
-            insecure: false
+        distributorLabels:
+          app: loki
+        serviceAccount:
+          annotations:
+            "eks.amazonaws.com/role-arn": "arn:aws:iam::239468932737:role/devxp-dev-loki-role"
+        loki:
+          storage:
+            type: s3
+            bucketNames:
+              chunks: devxp-dev-loki-chunks
+              ruler: devxp-dev-loki-ruler
+              admin: devxp-dev-loki-admin
+            s3:
+              # s3: null
+              endpoint: null
+              region: us-east-1
+              secretAccessKey: null
+              accessKeyId: null
+              s3ForcePathStyle: false
+              insecure: false
