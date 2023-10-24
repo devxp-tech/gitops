@@ -21,3 +21,17 @@ helmCharts:
         serviceAccount:
           annotations:
             "eks.amazonaws.com/role-arn": "arn:aws:iam::239468932737:role/devxp-dev-loki-role"
+        storage:
+          bucketNames:
+            chunks: devxp-dev-loki-chunks
+            ruler: devxp-dev-loki-ruler
+            admin: devxp-dev-loki-admin
+          type: s3
+          s3:
+            # s3: null
+            endpoint: null
+            region: us-east-1
+            secretAccessKey: null
+            accessKeyId: null
+            s3ForcePathStyle: false
+            insecure: false
