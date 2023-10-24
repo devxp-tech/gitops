@@ -12,7 +12,7 @@ helmCharts:
     name: test-luccas
     image:
       repository: ghcr.io/devxp-tech/test-luccas
-      tag: latest
+      tag: c4384330
     autoscaling:
       enabled: true
       minReplicas: 1
