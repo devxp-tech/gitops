@@ -12,7 +12,7 @@ helmCharts:
     name: test-helmgo
     image:
       repository: ghcr.io/devxp-tech/test-helmgo
-      tag: latest
+      tag: e85d4139
     autoscaling:
       enabled: true
       minReplicas: 1
