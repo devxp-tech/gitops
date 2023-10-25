@@ -13,7 +13,7 @@ helmCharts:
       name: homepage
       image:
         repository: ghcr.io/devxp-tech/homepage
-        tag: 7ffdc065
+        tag: 508486de
       argoRollouts:
         enabled: false
       deployment:
