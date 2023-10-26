@@ -12,7 +12,7 @@ helmCharts:
     name: test-dima
     image:
       repository: ghcr.io/devxp-tech/test-dima
-      tag: latest
+      tag: 3d90071d
     autoscaling:
       enabled: true
       minReplicas: 1
