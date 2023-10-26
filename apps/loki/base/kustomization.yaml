@@ -34,62 +34,62 @@ helmCharts:
             chunk_target_size: 1536000
             max_chunk_age: 1h
 
-          # Doc: https://github.com/grafana/loki/blob/main/docs/sources/configuration/examples.md#aws-basic-config-no-credsyaml
-          # Doc: https://grafana.com/docs/loki/latest/operations/storage/boltdb-shipper/#example-configuration
-          # Using S3 for chunk storage
-          schema_config:
-            configs:
-              - from: "2020-09-07"
-                store: boltdb-shipper
-                object_store: aws
-                schema: v11
-                index:
-                  prefix: index_
-                  period: 24h
-          storage_config:
-            aws:
-              s3: s3://us-east-1/devxp-dev-loki-logs
-            boltdb_shipper:
-              active_index_directory: /loki/index
-              shared_store: s3
-              cache_location: /loki/boltdb-cache
+        # Doc: https://github.com/grafana/loki/blob/main/docs/sources/configuration/examples.md#aws-basic-config-no-credsyaml
+        # Doc: https://grafana.com/docs/loki/latest/operations/storage/boltdb-shipper/#example-configuration
+        # Using S3 for chunk storage
+        schema_config:
+          configs:
+            - from: "2020-09-07"
+              store: boltdb-shipper
+              object_store: aws
+              schema: v11
+              index:
+                prefix: index_
+                period: 24h
+        storage_config:
+          aws:
+            s3: s3://us-east-1/devxp-dev-loki-logs
+          boltdb_shipper:
+            active_index_directory: /loki/index
+            shared_store: s3
+            cache_location: /loki/boltdb-cache
 
-      distributor:
-        autoscaling:
-          enabled: true
-          maxReplicas: 1
-          minReplicas: 1
+    # distributor:
+    #   autoscaling:
+    #     enabled: true
+    #     maxReplicas: 1
+    #     minReplicas: 1
 
-      ingester:
-        autoscaling:
-          enabled: true
-          maxReplicas: 1
-          minReplicas: 1
-        # Extra emtpyDir for the Loki's boltdb_shipper usage
-        # Source: https://github.com/grafana/loki/issues/4466#issuecomment-1078960849
-        extraVolumes:
-          - name: boltdb-shipper
-            emptyDir: {}
-        extraVolumeMounts:
-          - name: boltdb-shipper
-            mountPath: /loki
+    # ingester:
+    #   autoscaling:
+    #     enabled: true
+    #     maxReplicas: 1
+    #     minReplicas: 1
+    #   # Extra emtpyDir for the Loki's boltdb_shipper usage
+    #   # Source: https://github.com/grafana/loki/issues/4466#issuecomment-1078960849
+    #   extraVolumes:
+    #     - name: boltdb-shipper
+    #       emptyDir: {}
+    #   extraVolumeMounts:
+    #     - name: boltdb-shipper
+    #       mountPath: /loki
 
-      querier:
-        autoscaling:
-          enabled: true
-          maxReplicas: 1
-          minReplicas: 1
-        # Extra emtpyDir for the Loki's boltdb_shipper usage
-        # Source: https://github.com/grafana/loki/issues/4466#issuecomment-1078960849
-        extraVolumes:
-          - name: boltdb-shipper
-            emptyDir: {}
-        extraVolumeMounts:
-          - name: boltdb-shipper
-            mountPath: /loki
+    # querier:
+    #   autoscaling:
+    #     enabled: true
+    #     maxReplicas: 1
+    #     minReplicas: 1
+    #   # Extra emtpyDir for the Loki's boltdb_shipper usage
+    #   # Source: https://github.com/grafana/loki/issues/4466#issuecomment-1078960849
+    #   extraVolumes:
+    #     - name: boltdb-shipper
+    #       emptyDir: {}
+    #   extraVolumeMounts:
+    #     - name: boltdb-shipper
+    #       mountPath: /loki
 
-      queryFrontend:
-        autoscaling:
-          enabled: true
-          maxReplicas: 1
-          minReplicas: 1
+    # queryFrontend:
+    #   autoscaling:
+    #     enabled: true
+    #     maxReplicas: 1
+    #     minReplicas: 1
