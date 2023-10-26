@@ -51,11 +51,6 @@ helmCharts:
               boltdb_shipper:
                 shared_store: s3
                 cache_ttl: 24h
-          serviceAccount:
-            create: true
-            name: loki
-            annotations:
-              eks.amazonaws.com/role-arn: "arn:aws:iam::239468932737:role/loki-lgseksd1-sa"
           write:
             replicas: 2
           read:
