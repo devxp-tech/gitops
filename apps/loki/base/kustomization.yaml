@@ -20,7 +20,7 @@ helmCharts:
           app: loki
         serviceAccount:
           annotations:
-            eks.amazonaws.com/role-arn: "arn:aws:iam::239468932737:role/loki-lgseksd1-sa"
+            eks.amazonaws.com/role-arn: "arn:aws:iam::239468932737:role/loki-stack-lgseksd1-sa"
           automountServiceAccountToken: true
         auth_enabled: false
         commonConfig:
