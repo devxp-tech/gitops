@@ -32,9 +32,9 @@ helmCharts:
             cache_ttl: 24h # Can be increased for faster performance over longer query periods, uses more disk space
             shared_store: s3
           aws:
-            # s3: s3://<access_key>:<uri-encoded-secret-access-key>@<region>
+            s3: s3://us-east-1
             bucketnames: devxp-dev-loki-logs
-            region: us-east-1
+            # region: us-east-1
         schema_config:
           configs:
             - from: 2020-07-01
