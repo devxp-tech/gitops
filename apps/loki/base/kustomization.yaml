@@ -22,37 +22,37 @@ helmCharts:
           annotations:
             eks.amazonaws.com/role-arn: "arn:aws:iam::239468932737:role/loki-lgseksd1-sa"
 
-      auth_enabled: false
-      commonConfig:
-        path_prefix: /var/loki
-        replication_factor: 1
-      compactor:
-        apply_retention_interval: 1h
-        compaction_interval: 5m
-        retention_delete_worker_count: 500
-        retention_enabled: true
-        shared_store: s3
-        working_directory: /data/compactor
-      config:
-        schema_config:
-          configs:
-            - from: 2020-05-15
-              store: boltdb-shipper
-              object_store: s3
-              schema: v11
-              index:
-                period: 24h
-                prefix: loki_index_
-        storage_config:
-          aws:
-            region: us-east-1
-            bucketnames: devxp-dev-loki-loki
-            s3forcepathstyle: false
-            #s3forcepathstyle: true  <-- This is the main culprit; comment it out ? -? https://github.com/grafana/loki/issues/7024
-          boltdb_shipper:
-            shared_store: s3
-            cache_ttl: 24h
-      write:
-        replicas: 2
-      read:
-        replicas: 1
+        auth_enabled: false
+        commonConfig:
+          path_prefix: /var/loki
+          replication_factor: 1
+        compactor:
+          apply_retention_interval: 1h
+          compaction_interval: 5m
+          retention_delete_worker_count: 500
+          retention_enabled: true
+          shared_store: s3
+          working_directory: /data/compactor
+        config:
+          schema_config:
+            configs:
+              - from: 2020-05-15
+                store: boltdb-shipper
+                object_store: s3
+                schema: v11
+                index:
+                  period: 24h
+                  prefix: loki_index_
+          storage_config:
+            aws:
+              region: us-east-1
+              bucketnames: devxp-dev-loki-loki
+              s3forcepathstyle: false
+              #s3forcepathstyle: true  <-- This is the main culprit; comment it out ? -? https://github.com/grafana/loki/issues/7024
+            boltdb_shipper:
+              shared_store: s3
+              cache_ttl: 24h
+        write:
+          replicas: 2
+        read:
+          replicas: 1
