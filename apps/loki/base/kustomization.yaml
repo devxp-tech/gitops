@@ -46,7 +46,7 @@ helmCharts:
           storage_config:
             aws:
               region: us-east-1
-              bucketnames: devxp-dev-loki-loki
+              bucketnames: s3://devxp-dev-loki-loki/
               s3forcepathstyle: false
               #s3forcepathstyle: true  <-- This is the main culprit; comment it out ? -? https://github.com/grafana/loki/issues/7024
             boltdb_shipper:
