@@ -22,7 +22,7 @@ helmCharts:
         tag: 9606d4df
       serviceAccount:
         annotations:
-          "eks.amazonaws.com/role-arn": "arn:aws:iam::239468932737:policy/lgseksd1-backstage-sa"
+          "eks.amazonaws.com/role-arn": "arn:aws:iam::239468932737:role/backstage-lgseksd1-sa"
       quota:
         enabled: false
       container:
