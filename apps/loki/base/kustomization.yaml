@@ -19,7 +19,8 @@ helmCharts:
         distributorLabels:
           app: loki
         serviceAccount:
-          annotations: "arn:aws:iam::239468932737:role/loki-lgseksd1-sa"
+          annotations:
+            eks.amazonaws.com/role-arn: "arn:aws:iam::239468932737:role/loki-lgseksd1-sa"
 
         auth_enabled: false
         commonConfig:
