@@ -20,6 +20,9 @@ helmCharts:
       image:
         repository: ghcr.io/devxp-tech/backstage
         tag: 9606d4df
+      serviceAccount:
+        annotations:
+          "eks.amazonaws.com/role-arn": "arn:aws:iam::239468932737:role/devxp-dev-loki-role"
       quota:
         enabled: false
       container:
