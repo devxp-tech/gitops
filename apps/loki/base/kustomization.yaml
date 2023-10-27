@@ -15,6 +15,15 @@ helmCharts:
       #   clusterDomain: cluster.local
       labels:
         app: loki
+      monitoring:
+        lokiCanary:
+          enabled: false
+        selfMonitoring:
+          enabled: false
+          grafanaAgent:
+            installOperator: false
+      persistence:
+        enabled: true
       loki:
         distributorLabels:
           app: loki
@@ -25,71 +34,30 @@ helmCharts:
 
         auth_enabled: false
 
-        structuredConfig:
-          ingester:
-            # Disable chunk transfer which is not possible with statefulsets
-            # and unnecessary for boltdb-shipper
-            max_transfer_retries: 0
-            chunk_idle_period: 1h
-            chunk_target_size: 1536000
-            max_chunk_age: 1h
-
-        # Doc: https://github.com/grafana/loki/blob/main/docs/sources/configuration/examples.md#aws-basic-config-no-credsyaml
-        # Doc: https://grafana.com/docs/loki/latest/operations/storage/boltdb-shipper/#example-configuration
-        # Using S3 for chunk storage
+        compactor:
+          shared_store: aws
+        storage:
+          bucketNames:
+            chunks: "devxp-dev-loki-logs"
+            ruler: "devxp-dev-loki-logs"
+            admin: "devxp-dev-loki-logs"
+          s3:
+            region: us-east-1
         schemaConfig:
           configs:
-            - from: "2020-09-07"
+            - from: 2020-10-24
               store: boltdb-shipper
               object_store: aws
-              schema: v11
+              schema: v12
               index:
-                prefix: index_
+                prefix: loki_index_
                 period: 24h
         storage_config:
           aws:
-            s3: s3://us-east-1/devxp-dev-loki-logs
+            bucketnames: devxp-dev-loki-logs
+            endpoint: s3.us-east-1.scw.cloud
+            region: us-east-1
+            # access_key_id: ${local.scaleway["scw_access_key"]}
+            # secret_access_key: ${local.scaleway["scw_secret_key"]}
           boltdb_shipper:
-            active_index_directory: /loki/index
-            shared_store: s3
-            cache_location: /loki/boltdb-cache
-
-        distributor:
-          autoscaling:
-            enabled: true
-            maxReplicas: 1
-            minReplicas: 1
-
-        ingester:
-          autoscaling:
-            enabled: true
-            maxReplicas: 1
-            minReplicas: 1
-          # Extra emtpyDir for the Loki's boltdb_shipper usage
-          # Source: https://github.com/grafana/loki/issues/4466#issuecomment-1078960849
-          extraVolumes:
-            - name: boltdb-shipper
-              emptyDir: {}
-          extraVolumeMounts:
-            - name: boltdb-shipper
-              mountPath: /loki
-
-        querier:
-          autoscaling:
-            enabled: true
-            maxReplicas: 1
-            minReplicas: 1
-          # Extra emtpyDir for the Loki's boltdb_shipper usage
-          # Source: https://github.com/grafana/loki/issues/4466#issuecomment-1078960849
-          extraVolumes:
-            - name: boltdb-shipper
-              emptyDir: {}
-          extraVolumeMounts:
-            - name: boltdb-shipper
-              mountPath: /loki
-
-        queryFrontend:
-          autoscaling:
-            enabled: true
-            maxReplicas: 1
-            minReplicas: 1
+            shared_store: aws
