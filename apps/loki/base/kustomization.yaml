@@ -42,7 +42,7 @@ helmCharts:
         auth_enabled: false
       backend:
         persistence:
-          enableStatefulSetAutoDeletePVC: false
+          # enableStatefulSetAutoDeletePVC: false
           volumeClaimsEnabled: false
         extraArgs:
           - -config.expand-env=true
