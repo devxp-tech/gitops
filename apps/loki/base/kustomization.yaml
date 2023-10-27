@@ -16,21 +16,37 @@ helmCharts:
       labels:
         app: loki
       monitoring:
-        lokiCanary:
-          enabled: true
         selfMonitoring:
-          enabled: true
+          enabled: false
           grafanaAgent:
             installOperator: false
+        lokiCanary:
+          enabled: false
+        serviceMonitor:
+          metricsInstance:
+            enabled: false
+          labels:
+            release: monitor
+        rules:
+          labels:
+            release: monitor
+        alerts:
+          labels:
+            release: monitor
+        dashboards:
+          namespace: observability
+          labels:
+            release: monitor
+            grafana_dashboard: "1"
       # persistence:
       #   enabled: true
       distributorLabels:
         app: loki
       serviceAccount:
+        name: loki
         annotations:
           eks.amazonaws.com/role-arn: "arn:aws:iam::239468932737:role/loki-stack-lgseksd1-sa"
         automountServiceAccountToken: true
-        name: loki
       gateway:
         enabled: false
       test:
