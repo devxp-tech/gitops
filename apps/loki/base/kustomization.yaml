@@ -13,82 +13,57 @@ helmCharts:
         app: loki
       minio:
         enabled: true
+      loki:
+        storage:
+          bucketNames:
+            chunks: loki-chunks
+            ruler: loki-ruler
+            admin: loki-admin
+          type: s3
+          s3:
+            endpoint: loki-minio.monitoring.svc:9000
+            region: us-east-1
+            s3ForcePathStyle: true
+            insecure: false
+        server:
+          log_level: warn
+        # TODO auth? technically don't need it, but would be cool
+        auth_enabled: false
+      backend:
+        extraArgs:
+          - -config.expand-env=true
+        affinity: {}
+        extraEnvFrom:
+          - secretRef:
+              name: loki-minio
+      read:
+        extraArgs:
+          - -config.expand-env=true
+        affinity: {}
+        extraEnvFrom:
+          - secretRef:
+              name: loki-minio
+      write:
+        extraArgs:
+          - -config.expand-env=true
+        affinity: {}
+        extraEnvFrom:
+          - secretRef:
+              name: loki-minio
+      tableManager:
+        enabled: true
+        extraArgs:
+          - -config.expand-env=true
+        affinity: {}
+        extraEnvFrom:
+          - secretRef:
+              name: loki-minio
+        retention_deletes_enabled: true
+        retention_period: 168h
       monitoring:
         selfMonitoring:
           enabled: false
           grafanaAgent:
             installOperator: false
-        lokiCanary:
-          enabled: false
-        serviceMonitor:
-          metricsInstance:
-            enabled: false
-          labels:
-            release: monitor
-        rules:
-          labels:
-            release: monitor
-        alerts:
-          labels:
-            release: monitor
-        dashboards:
-          namespace: observability
-          labels:
-            release: monitor
-            grafana_dashboard: "1"
-      # persistence:
-      #   enabled: true
-      distributorLabels:
-        app: loki
-      serviceAccount:
-        name: loki
-        annotations:
-          eks.amazonaws.com/role-arn: "arn:aws:iam::239468932737:role/loki-stack-lgseksd1-sa"
-        automountServiceAccountToken: true
-      gateway:
-        enabled: false
       test:
         enabled: false
-      loki:
-        auth_enabled: false
-
-        # storage:
-        #   type: s3
-        # commonConfig: null
-        # structuredConfig:
-        #   ruler:
-        #     alertmanager_url: http://prometheus-alertmanager:9093
-        #     enable_sharding: true
-        #     storage:
-        #       type: s3
-        #       s3:
-        #         bucketnames: devxp-dev-loki-logs
-        #         insecure: true
-        #         s3forcepathstyle: true
-        #   common:
-        #     path_prefix: /var/loki
-        #     storage:
-        #       s3:
-        #         # endpoint: minio.storage.svc:9000
-        #         bucketnames: devxp-dev-loki-logs
-        #         # access_key_id: remote_user
-        #         # secret_access_key: R3m0t3us3r
-        #         insecure: true
-        #         s3forcepathstyle: true
-        # limits_config:
-        #   ingestion_rate_mb: 10
-        # storage_config:
-        #   tsdb_shipper:
-        #     active_index_directory: /var/loki/tsdb-shipper-active
-        #     cache_location: /var/loki/tsdb-shipper-cache
-        #     cache_ttl: 24h
-        #     shared_store: s3
-        # schemaConfig:
-        #   configs:
-        #     - from: "2023-04-01"
-        #       store: tsdb
-        #       object_store: s3
-        #       schema: v12
-        #       index:
-        #         period: 24h
-        #         prefix: loki_index_
