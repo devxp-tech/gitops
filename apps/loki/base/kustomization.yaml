@@ -37,6 +37,14 @@ helmCharts:
         compactor:
           shared_store: aws
 
+        storage:
+          bucketNames:
+            chunks: "devxp-dev-loki-logs"
+            ruler: "devxp-dev-loki-logs"
+            admin: "devxp-dev-loki-logs"
+          s3:
+            region: us-east-1
+
         schema_config:
           configs:
             - from: 2020-10-24
