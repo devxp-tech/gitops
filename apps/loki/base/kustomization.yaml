@@ -26,16 +26,16 @@ helmCharts:
                 prefix: index_
                 period: 24h
         storage:
-          bucketNames:
-            admin: admin
-            chunks: chunks
-            ruler: ruler
-          type: s3
+          # type: s3
           s3:
             endpoint: loki-minio.monitoring.svc:9000
             region: us-east-1
             s3ForcePathStyle: true
             insecure: false
+          bucketNames:
+            admin: admin
+            chunks: chunks
+            ruler: ruler
         server:
           log_level: warn
         # TODO auth? technically don't need it, but would be cool
