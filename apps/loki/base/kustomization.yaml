@@ -16,15 +16,18 @@ helmCharts:
       tracing:
         jaegerAgentHost: jaeger-collector.observability.svc.cluster.local:9411
       loki:
-        schema_config:
+        # TODO auth? technically don't need it, but would be cool
+        auth_enabled: false
+        schemaConfig:
           configs:
-            - from: "2020-07-30"
-              index:
-                period: 24h
-                prefix: loki_boltdb_shipper_index_
-              object_store: s3
-              schema: v11
+            - from: 2020-10-24
               store: boltdb-shipper
+              object_store: filesystem
+              schema: v11
+              index:
+                prefix: index_
+                period: 24h
+
         storage:
           # type: s3
           s3:
@@ -38,8 +41,6 @@ helmCharts:
             ruler: ruler
         server:
           log_level: warn
-        # TODO auth? technically don't need it, but would be cool
-        auth_enabled: false
       backend:
         # persistence:
         # enableStatefulSetAutoDeletePVC: false
