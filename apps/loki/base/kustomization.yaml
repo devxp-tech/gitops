@@ -62,6 +62,15 @@ helmCharts:
             cache_ttl: 24h
             shared_store: s3
 
+        chunk_store_config:
+          max_look_back_period: 720h
+        table_manager:
+          retention_deletes_enabled: true
+          retention_period: 720h
+        compactor:
+          working_directory: /data/loki/boltdb-shipper-compactor
+          shared_store: s3
+
         # storage:
         #   # type: s3
         #   s3:
