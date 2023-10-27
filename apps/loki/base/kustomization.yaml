@@ -33,17 +33,25 @@ helmCharts:
         auth_enabled: false
         schema_config:
           configs:
-            - from: 2020-10-24
+            - from: 2020-11-13
               store: boltdb-shipper
-              object_store: filesystem
+              object_store: aws
               schema: v11
               index:
-                prefix: index_
+                prefix: loki_index_
                 period: 24h
+
         storage_config:
           aws:
-            bucketnames: s3://devxp-dev-loki-logs
+            bucketnames: devxp-dev-loki-logs
+            region: us-east-1
+            access_key_id: PLACEHOLDER
+            secret_access_key: PLACEHOLDER
             s3forcepathstyle: true
+          boltdb_shipper:
+            active_index_directory: /loki/index
+            shared_store: s3
+            cache_location: /loki/boltdb-cache
             # endpoint: loki-minio.monitoring.svc:9000
             # insecure: true
             # bucketnames: data
