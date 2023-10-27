@@ -42,7 +42,7 @@ helmCharts:
                 period: 24h
         storage_config:
           aws:
-            bucketnames: devxp-dev-loki-logs
+            bucketnames: s3://devxp-dev-loki-logs
             region: us-east-1
             insecure: false
             sse_encryption: false
