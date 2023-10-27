@@ -55,7 +55,7 @@ helmCharts:
         storage_config:
           aws:
             bucketnames: devxp-dev-loki-logs
-            endpoint: s3.us-east-1.scw.cloud
+            # endpoint: s3.us-east-1.scw.cloud
             region: us-east-1
             # access_key_id: ${local.scaleway["scw_access_key"]}
             # secret_access_key: ${local.scaleway["scw_secret_key"]}
