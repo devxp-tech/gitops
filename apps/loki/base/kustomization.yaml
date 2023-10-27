@@ -9,10 +9,6 @@ helmCharts:
     version: 5.35.0 #2.9.11
     repo: https://grafana.github.io/helm-charts
     valuesInline:
-      # nameOverride: loki-stack
-      # global:
-      #   dnsService: coredns
-      #   clusterDomain: cluster.local
       labels:
         app: loki
       monitoring:
@@ -54,43 +50,43 @@ helmCharts:
       loki:
         auth_enabled: false
 
-        storage:
-          type: s3
-        commonConfig: null
-        structuredConfig:
-          ruler:
-            alertmanager_url: http://prometheus-alertmanager:9093
-            enable_sharding: true
-            storage:
-              type: s3
-              s3:
-                bucketnames: devxp-dev-loki-logs
-                insecure: true
-                s3forcepathstyle: true
-          common:
-            path_prefix: /var/loki
-            storage:
-              s3:
-                # endpoint: minio.storage.svc:9000
-                bucketnames: devxp-dev-loki-logs
-                # access_key_id: remote_user
-                # secret_access_key: R3m0t3us3r
-                insecure: true
-                s3forcepathstyle: true
-        limits_config:
-          ingestion_rate_mb: 10
-        storage_config:
-          tsdb_shipper:
-            active_index_directory: /var/loki/tsdb-shipper-active
-            cache_location: /var/loki/tsdb-shipper-cache
-            cache_ttl: 24h
-            shared_store: s3
-        schemaConfig:
-          configs:
-            - from: "2023-04-01"
-              store: tsdb
-              object_store: s3
-              schema: v12
-              index:
-                period: 24h
-                prefix: loki_index_
+        # storage:
+        #   type: s3
+        # commonConfig: null
+        # structuredConfig:
+        #   ruler:
+        #     alertmanager_url: http://prometheus-alertmanager:9093
+        #     enable_sharding: true
+        #     storage:
+        #       type: s3
+        #       s3:
+        #         bucketnames: devxp-dev-loki-logs
+        #         insecure: true
+        #         s3forcepathstyle: true
+        #   common:
+        #     path_prefix: /var/loki
+        #     storage:
+        #       s3:
+        #         # endpoint: minio.storage.svc:9000
+        #         bucketnames: devxp-dev-loki-logs
+        #         # access_key_id: remote_user
+        #         # secret_access_key: R3m0t3us3r
+        #         insecure: true
+        #         s3forcepathstyle: true
+        # limits_config:
+        #   ingestion_rate_mb: 10
+        # storage_config:
+        #   tsdb_shipper:
+        #     active_index_directory: /var/loki/tsdb-shipper-active
+        #     cache_location: /var/loki/tsdb-shipper-cache
+        #     cache_ttl: 24h
+        #     shared_store: s3
+        # schemaConfig:
+        #   configs:
+        #     - from: "2023-04-01"
+        #       store: tsdb
+        #       object_store: s3
+        #       schema: v12
+        #       index:
+        #         period: 24h
+        #         prefix: loki_index_
