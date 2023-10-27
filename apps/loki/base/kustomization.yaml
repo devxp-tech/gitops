@@ -45,7 +45,7 @@ helmCharts:
             region: us-east-1
         schemaConfig:
           configs:
-            - from: "2022-01-11"
+            - from: "2022-01-20"
               store: boltdb-shipper
               object_store: aws
               schema: v12
