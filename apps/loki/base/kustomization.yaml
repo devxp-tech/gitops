@@ -28,6 +28,8 @@ helmCharts:
       #       purge: false
       tracing:
         jaegerAgentHost: jaeger-collector.observability.svc.cluster.local:9411
+      persistence:
+        enabled: true
       loki:
         # TODO auth? technically don't need it, but would be cool
         auth_enabled: false
@@ -46,10 +48,10 @@ helmCharts:
                 period: 24h
 
         storage_config:
-            aws:
-              s3: "s3://us-east-1/devxp-dev-loki-logs"
-            boltdb_shipper:
-              shared_store: aws
+          aws:
+            s3: "s3://us-east-1/devxp-dev-loki-logs"
+          boltdb_shipper:
+            shared_store: aws
 
           # boltdb_shipper:
           #   active_index_directory: /loki/index
@@ -59,21 +61,6 @@ helmCharts:
           # insecure: true
           # bucketnames: data
           # s3forcepathstyle: true
-
-          boltdb_shipper:
-            shared_store: aws
-            active_index_directory: /var/loki/index
-            cache_location: /var/loki/cache
-            cache_ttl: 168h
-
-        chunk_store_config:
-          max_look_back_period: 720h
-        table_manager:
-          retention_deletes_enabled: true
-          retention_period: 720h
-        compactor:
-          working_directory: /data/loki/boltdb-shipper-compactor
-          shared_store: s3
 
         # storage:
         #   # type: s3
