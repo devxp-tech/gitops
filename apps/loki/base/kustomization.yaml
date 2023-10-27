@@ -13,6 +13,19 @@ helmCharts:
         app: loki
       minio:
         enabled: true
+        buckets:
+          - name: admin
+            policy: none
+            purge: false
+          - name: chunks
+            policy: none
+            purge: false
+          - name: data
+            policy: none
+            purge: false
+          - name: ruler
+            policy: none
+            purge: false
       tracing:
         jaegerAgentHost: jaeger-collector.observability.svc.cluster.local:9411
       loki:
@@ -47,7 +60,6 @@ helmCharts:
             admin: admin
             chunks: chunks
             ruler: ruler
-            data: data
         server:
           log_level: warn
       backend:
