@@ -11,6 +11,8 @@ helmCharts:
     valuesInline:
       labels:
         app: loki
+      minio:
+        enabled: true
       monitoring:
         selfMonitoring:
           enabled: false
