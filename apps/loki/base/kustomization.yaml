@@ -22,8 +22,8 @@ helmCharts:
           enabled: true
           grafanaAgent:
             installOperator: false
-      persistence:
-        enabled: true
+      # persistence:
+      #   enabled: true
       loki:
         distributorLabels:
           app: loki
