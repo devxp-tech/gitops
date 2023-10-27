@@ -18,7 +18,7 @@ helmCharts:
       loki:
         # TODO auth? technically don't need it, but would be cool
         auth_enabled: false
-        schemaConfig:
+        storage_config:
           configs:
             - from: 2020-10-24
               store: boltdb-shipper
