@@ -48,14 +48,14 @@ helmCharts:
             access_key_id: PLACEHOLDER
             secret_access_key: PLACEHOLDER
             s3forcepathstyle: true
-          boltdb_shipper:
-            active_index_directory: /loki/index
-            shared_store: s3
-            cache_location: /loki/boltdb-cache
-            # endpoint: loki-minio.monitoring.svc:9000
-            # insecure: true
-            # bucketnames: data
-            # s3forcepathstyle: true
+          # boltdb_shipper:
+          #   active_index_directory: /loki/index
+          #   shared_store: s3
+          #   cache_location: /loki/boltdb-cache
+          # endpoint: loki-minio.monitoring.svc:9000
+          # insecure: true
+          # bucketnames: data
+          # s3forcepathstyle: true
 
           boltdb_shipper:
             active_index_directory: /data/loki/boltdb-shipper-active
