@@ -1,0 +1,14 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: monitoring
+helmCharts:
+  - name: promtail
+    includeCRDs: true
+    releaseName: promtail
+    version: 6.7.4
+    repo: https://grafana.github.io/helm-charts
+    valuesInline:
+      fullnameOverride: promtail
+      config:
+        clients:
+          - url: http://loki-gateway.monitoring/loki/api/v1/push
