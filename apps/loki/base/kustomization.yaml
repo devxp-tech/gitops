@@ -41,9 +41,9 @@ helmCharts:
         # TODO auth? technically don't need it, but would be cool
         auth_enabled: false
       backend:
-        persistence:
-          # enableStatefulSetAutoDeletePVC: false
-          volumeClaimsEnabled: false
+        # persistence:
+        # enableStatefulSetAutoDeletePVC: false
+        # volumeClaimsEnabled: false
         extraArgs:
           - -config.expand-env=true
         affinity: {}
