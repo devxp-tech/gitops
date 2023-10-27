@@ -31,6 +31,13 @@ helmCharts:
       loki:
         # TODO auth? technically don't need it, but would be cool
         auth_enabled: false
+        white:
+          extraVolumes:
+            - name: data
+              emptyDir: {}
+          extraVolumeMounts:
+            - name: data
+              mountPath: /data
         schema_config:
           configs:
             - from: 2020-11-13
