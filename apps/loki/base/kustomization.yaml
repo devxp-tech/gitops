@@ -12,11 +12,21 @@ helmCharts:
       labels:
         app: loki
       serviceAccount:
-        create: true
         name: loki
         annotations:
           "eks.amazonaws.com/role-arn": "arn:aws:iam::239468932737:role/loki-lgseksd1-sa"
         automountServiceAccountToken: true
+
+      monitoring:
+        lokiCanary:
+          enabled: false
+        selfMonitoring:
+          enabled: false
+          grafanaAgent:
+            installOperator: false
+      test:
+        enabled: false
+
       # minio:
       #   enabled: true
       #   buckets:
@@ -34,24 +44,21 @@ helmCharts:
       #       purge: false
       tracing:
         jaegerAgentHost: jaeger-collector.observability.svc.cluster.local:9411
+
       persistence:
         enabled: true
       loki:
-        # TODO auth? technically don't need it, but would be cool
         auth_enabled: false
-
         compactor:
           shared_store: aws
-
         storage:
           bucketNames:
             chunks: "devxp-dev-loki-logs"
             ruler: "devxp-dev-loki-logs"
-            admin: "devxp-dev-loki-logs"
+            admin: "$devxp-dev-loki-logs"
           s3:
             region: us-east-1
-
-        schema_config:
+        schemaConfig:
           configs:
             - from: 2020-10-24
               store: boltdb-shipper
@@ -60,7 +67,6 @@ helmCharts:
               index:
                 prefix: loki_index_
                 period: 24h
-
         storage_config:
           aws:
             s3: "s3://us-east-1/devxp-dev-loki-logs"
@@ -123,10 +129,3 @@ helmCharts:
       #         name: loki-minio
       #   retention_deletes_enabled: true
       #   retention_period: 168h
-      monitoring:
-        selfMonitoring:
-          enabled: false
-          grafanaAgent:
-            installOperator: false
-      test:
-        enabled: false
