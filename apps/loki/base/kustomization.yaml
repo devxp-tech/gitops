@@ -13,11 +13,6 @@ helmCharts:
         app: loki
       minio:
         enabled: true
-      backend:
-        persistence:
-          enableStatefulSetAutoDeletePVC: false
-          volumeClaimsEnabled: false
-
       tracing:
         jaegerAgentHost: jaeger-collector.observability.svc.cluster.local:9411
       loki:
@@ -37,6 +32,9 @@ helmCharts:
         # TODO auth? technically don't need it, but would be cool
         auth_enabled: false
       backend:
+        persistence:
+          enableStatefulSetAutoDeletePVC: false
+          volumeClaimsEnabled: false
         extraArgs:
           - -config.expand-env=true
         affinity: {}
