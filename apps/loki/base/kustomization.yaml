@@ -16,6 +16,15 @@ helmCharts:
       tracing:
         jaegerAgentHost: jaeger-collector.observability.svc.cluster.local:9411
       loki:
+        schema_config:
+          configs:
+            - from: 2021-08-01
+              store: tsdb
+              object_store: s3
+              schema: v12
+              index:
+                prefix: index_
+                period: 24h
         storage:
           bucketNames:
             admin: admin
