@@ -17,7 +17,7 @@ helmCharts:
         app: loki
       monitoring:
         lokiCanary:
-          enabled: false
+          enabled: true
         selfMonitoring:
           enabled: true
           grafanaAgent:
