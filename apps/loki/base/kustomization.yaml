@@ -31,30 +31,26 @@ helmCharts:
       loki:
         # TODO auth? technically don't need it, but would be cool
         auth_enabled: false
-        white:
-          extraVolumes:
-            - name: data
-              emptyDir: {}
-          extraVolumeMounts:
-            - name: data
-              mountPath: /data
+
+        compactor:
+          shared_store: aws
+
         schema_config:
           configs:
-            - from: 2020-11-13
+            - from: 2020-10-24
               store: boltdb-shipper
               object_store: aws
-              schema: v11
+              schema: v12
               index:
                 prefix: loki_index_
                 period: 24h
 
         storage_config:
-          aws:
-            bucketnames: devxp-dev-loki-logs
-            region: us-east-1
-            access_key_id: PLACEHOLDER
-            secret_access_key: PLACEHOLDER
-            s3forcepathstyle: true
+            aws:
+              s3: "s3://us-east-1/devxp-dev-loki-logs"
+            boltdb_shipper:
+              shared_store: aws
+
           # boltdb_shipper:
           #   active_index_directory: /loki/index
           #   shared_store: s3
@@ -65,10 +61,10 @@ helmCharts:
           # s3forcepathstyle: true
 
           boltdb_shipper:
-            active_index_directory: /data/loki/boltdb-shipper-active
-            cache_location: /data/loki/boltdb-shipper-cache
-            cache_ttl: 24h
-            shared_store: s3
+            shared_store: aws
+            active_index_directory: /var/loki/index
+            cache_location: /var/loki/cache
+            cache_ttl: 168h
 
         chunk_store_config:
           max_look_back_period: 720h
