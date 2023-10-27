@@ -18,13 +18,13 @@ helmCharts:
       loki:
         schema_config:
           configs:
-            - from: 2021-08-01
-              store: tsdb
-              object_store: s3
-              schema: v12
+            - from: "2020-07-30"
               index:
-                prefix: index_
                 period: 24h
+                prefix: loki_boltdb_shipper_index_
+              object_store: s3
+              schema: v11
+              store: boltdb-shipper
         storage:
           # type: s3
           s3:
