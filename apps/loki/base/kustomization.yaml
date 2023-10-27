@@ -13,6 +13,10 @@ helmCharts:
         app: loki
       minio:
         enabled: true
+      backend:
+        persistence:
+          enableStatefulSetAutoDeletePVC: false
+
       loki:
         storage:
           bucketNames:
