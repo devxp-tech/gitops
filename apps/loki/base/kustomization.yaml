@@ -16,7 +16,8 @@ helmCharts:
       backend:
         persistence:
           enableStatefulSetAutoDeletePVC: false
-
+      tracing:
+        jaegerAgentHost: jaeger-collector.observability.svc.cluster.local:9411
       loki:
         storage:
           bucketNames:
