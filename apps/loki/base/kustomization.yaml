@@ -16,9 +16,9 @@ helmCharts:
       loki:
         storage:
           bucketNames:
-            chunks: loki-chunks
-            ruler: loki-ruler
-            admin: loki-admin
+            admin: admin
+            chunks: chunks
+            ruler: ruler
           type: s3
           s3:
             endpoint: loki-minio.monitoring.svc:9000
