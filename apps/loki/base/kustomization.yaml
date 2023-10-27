@@ -10,9 +10,9 @@ helmCharts:
     repo: https://grafana.github.io/helm-charts
     valuesInline:
       # nameOverride: loki-stack
-      # global:
-      #   dnsService: coredns
-      #   clusterDomain: cluster.local
+      global:
+        dnsService: coredns
+        clusterDomain: cluster.local
       labels:
         app: loki
       monitoring:
