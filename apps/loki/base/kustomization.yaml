@@ -11,21 +11,21 @@ helmCharts:
     valuesInline:
       labels:
         app: loki
-      minio:
-        enabled: true
-        buckets:
-          - name: admin
-            policy: none
-            purge: false
-          - name: chunks
-            policy: none
-            purge: false
-          - name: data
-            policy: none
-            purge: false
-          - name: ruler
-            policy: none
-            purge: false
+      # minio:
+      #   enabled: true
+      #   buckets:
+      #     - name: admin
+      #       policy: none
+      #       purge: false
+      #     - name: chunks
+      #       policy: none
+      #       purge: false
+      #     - name: data
+      #       policy: none
+      #       purge: false
+      #     - name: ruler
+      #       policy: none
+      #       purge: false
       tracing:
         jaegerAgentHost: jaeger-collector.observability.svc.cluster.local:9411
       loki:
@@ -42,60 +42,73 @@ helmCharts:
                 period: 24h
         storage_config:
           aws:
-            endpoint: loki-minio.monitoring.svc:9000
-            insecure: true
-            bucketnames: data
+            bucketnames: devxp-dev-loki-logs
+            region: us-east-1
+            insecure: false
+            sse_encryption: false
+            http_config:
+              idle_conn_timeout: 90s
+              response_header_timeout: 0s
+              insecure_skip_verify: false
             s3forcepathstyle: true
+            # endpoint: loki-minio.monitoring.svc:9000
+            # insecure: true
+            # bucketnames: data
+            # s3forcepathstyle: true
+
           boltdb_shipper:
+            active_index_directory: /data/loki/boltdb-shipper-active
+            cache_location: /data/loki/boltdb-shipper-cache
+            cache_ttl: 24h
             shared_store: s3
 
-        storage:
-          # type: s3
-          s3:
-            endpoint: loki-minio.monitoring.svc:9000
-            region: us-east-1
-            s3ForcePathStyle: true
-            insecure: false
-          bucketNames:
-            admin: admin
-            chunks: chunks
-            ruler: ruler
-        server:
-          log_level: warn
-      backend:
-        # persistence:
-        # enableStatefulSetAutoDeletePVC: false
-        # volumeClaimsEnabled: false
-        extraArgs:
-          - -config.expand-env=true
-        affinity: {}
-        extraEnvFrom:
-          - secretRef:
-              name: loki-minio
-      read:
-        extraArgs:
-          - -config.expand-env=true
-        affinity: {}
-        extraEnvFrom:
-          - secretRef:
-              name: loki-minio
-      write:
-        extraArgs:
-          - -config.expand-env=true
-        affinity: {}
-        extraEnvFrom:
-          - secretRef:
-              name: loki-minio
-      tableManager:
-        enabled: true
-        extraArgs:
-          - -config.expand-env=true
-        affinity: {}
-        extraEnvFrom:
-          - secretRef:
-              name: loki-minio
-        retention_deletes_enabled: true
-        retention_period: 168h
+        # storage:
+        #   # type: s3
+        #   s3:
+        #     endpoint: loki-minio.monitoring.svc:9000
+        #     region: us-east-1
+        #     s3ForcePathStyle: true
+        #     insecure: false
+        #   bucketNames:
+        #     admin: admin
+        #     chunks: chunks
+        #     ruler: ruler
+        # server:
+        #   log_level: warn
+      # backend:
+      #   # persistence:
+      #   # enableStatefulSetAutoDeletePVC: false
+      #   # volumeClaimsEnabled: false
+      #   extraArgs:
+      #     - -config.expand-env=true
+      #   affinity: {}
+      #   extraEnvFrom:
+      #     - secretRef:
+      #         name: loki-minio
+      # read:
+      #   extraArgs:
+      #     - -config.expand-env=true
+      #   affinity: {}
+      #   extraEnvFrom:
+      #     - secretRef:
+      #         name: loki-minio
+      # write:
+      #   extraArgs:
+      #     - -config.expand-env=true
+      #   affinity: {}
+      #   extraEnvFrom:
+      #     - secretRef:
+      #         name: loki-minio
+      # tableManager:
+      #   enabled: true
+      #   extraArgs:
+      #     - -config.expand-env=true
+      #   affinity: {}
+      #   extraEnvFrom:
+      #     - secretRef:
+      #         name: loki-minio
+      #   retention_deletes_enabled: true
+      #   retention_period: 168h
       monitoring:
         selfMonitoring:
           enabled: false
