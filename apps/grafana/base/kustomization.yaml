@@ -69,6 +69,12 @@ helmCharts:
                 alertmanagerUid: alertmanager
                 maxLines: 5000
                 timeout: "60"
+                derivedFields:
+                  - datasourceName: Tempo
+                    matcherRegex: "traceID=(\\w+)"
+                    name: TraceID
+                    url: "$${__value.raw}"
+                    datasourceUid: tempo
             - name: Prometheus
               type: prometheus
               url: http://prometheus-server
@@ -83,6 +89,14 @@ helmCharts:
               access: proxy
               url: http://jaeger-query.observability:16686
               version: 1
+            - name: Tempo
+              type: tempo
+              access: browser
+              orgId: 1
+              uid: tempo
+              url: http://tempo.monitoring.svc:3100
+              isDefault: true
+              editable: true
       notifiers:
         notifiers.yaml:
           notifiers:
