@@ -19,7 +19,7 @@ helmCharts:
 
   - name: jaeger
     releaseName: jaegertracing
-    version: 1.3.5
+    version: 0.71.17
     repo: https://jaegertracing.github.io/helm-charts
     namespace: observability
     valuesInline:
