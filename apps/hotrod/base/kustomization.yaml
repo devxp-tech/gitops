@@ -23,6 +23,8 @@ helmCharts:
           value: "jaeger-agent.observability.svc.cluster.local"
         - name: JAEGER_AGENT_PORT
           value: "6831"
+        - name: OTEL_EXPORTER_OTLP_TRACES_ENDPOINT
+          value: http://jaeger-collector.observability.svc.cluster.local:4318
       quota:
         enabled: false
       autoscaling:
