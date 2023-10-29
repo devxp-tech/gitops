@@ -64,6 +64,8 @@ helmCharts:
         enableTracing: true
         defaultConfig:
           tracing:
+            zipkin:
+              address: jaegertracing-collector.observability.svc:9411
             sampling: 10
           discoveryAddress: istiod.istio-system.svc:15012
           # holdApplicationUntilProxyStarts: true
