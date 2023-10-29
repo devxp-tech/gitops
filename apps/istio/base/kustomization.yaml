@@ -31,7 +31,8 @@ helmCharts:
             memory: 128Mi
         tracer:
           zipkin:
-            address: jaegertracing-collector.observability.svc.cluster.local:14250
+            address: opentelemetry-collector.tracing.svc.cluster.local
+            # address: jaegertracing-collector.observability.svc.cluster.local:14250
         proxy:
           clusterDomain: "cluster.local"
           # Resources for the sidecar.
