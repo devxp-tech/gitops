@@ -93,7 +93,7 @@ helmCharts:
               access: browser
               orgId: 1
               uid: tempo
-              url: http://tempo.monitoring.svc:3100
+              url: http://tempo.monitoring.svc:16686
               editable: true
       notifiers:
         notifiers.yaml:
