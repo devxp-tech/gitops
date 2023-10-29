@@ -19,7 +19,7 @@ helmCharts:
           release: prometheus
 
       pipelineStages:
-        - docker: {}
+        - cri: {}
         - match:
             selector: '{app="hotrod"}'
             stages:
