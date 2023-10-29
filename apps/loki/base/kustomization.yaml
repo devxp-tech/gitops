@@ -28,7 +28,8 @@ helmCharts:
         enabled: false
 
       tracing:
-        jaegerAgentHost: jaeger-collector.observability.svc.cluster.local:9411
+        # jaegerAgentHost: jaeger-collector.observability.svc.cluster.local:9411
+        jaegerAgentHost: opentelemetry-collector.tracing.svc.cluster.local:9411
 
       persistence:
         enabled: true
