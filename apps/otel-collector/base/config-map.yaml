@@ -22,7 +22,7 @@ data:
       logging:
 
       jaeger:
-        endpoint: "jaeger-collector.observability.svc.cluster.local:14250"
+        endpoint: "jaegertracing-collector.observability.svc.cluster.local:14250"
         insecure: true
 
     processors:
