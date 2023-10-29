@@ -70,7 +70,7 @@ helmCharts:
                 maxLines: 5000
                 timeout: "60"
                 derivedFields:
-                  - datasourceUid: my-jaeger
+                  - datasourceUid: jaeger
                     matcherRegex: ((\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+))
                     url: "$${__value.raw}"
                     name: TraceID
