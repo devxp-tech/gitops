@@ -9,3 +9,21 @@ helmCharts:
     repo: https://open-telemetry.github.io/opentelemetry-helm-charts
     valuesInline:
       mode: deployment
+      nameOverride: opentelemetry-collector
+      config:
+        receivers:
+          jaeger: null
+          prometheus: null
+          zipkin:
+            endpoint: 0.0.0.0:9411
+        exporters:
+          otlp:
+            endpoint: tempo.monitoring.svc.cluster.local:55680
+            insecure: true
+        service:
+          pipelines:
+            traces:
+              receivers:
+                - otlp
+            metrics: null
+            logs: null
