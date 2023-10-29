@@ -17,7 +17,7 @@ helmCharts:
         domain: devxp-tech.io
       envs:
         - name: OTEL_EXPORTER_JAEGER_AGENT_HOST
-          value: "jaegertracing-agent.observability.svc.cluster.local"
+          value: "jaeger-agent.observability.svc.cluster.local"
         - name: OTEL_EXPORTER_JAEGER_AGENT_PORT
           value: "6831"
         - name: OTEL_EXPORTER_JAEGER_ENDPOINT
