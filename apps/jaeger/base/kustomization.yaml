@@ -31,6 +31,10 @@ helmCharts:
         elasticsearch: true
       storage:
         type: elasticsearch
+      collector:
+        service:
+          zipkin:
+            port: 9411
       # cassandra:
       # clusterDomain: cluster.local # Just need if cluster is different of cluster.local
       # dbUser:
