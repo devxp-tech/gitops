@@ -37,9 +37,12 @@ helmCharts:
           zipkin:
             port: 9411
           otlp:
+            grpc:
+              name: otlp-http
+              port: 4317
             http:
               name: otlp-http
-          #     port: 4318
+              port: 4318
       # cassandra:
       # clusterDomain: cluster.local # Just need if cluster is different of cluster.local
       # dbUser:
