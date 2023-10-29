@@ -31,8 +31,8 @@ helmCharts:
             memory: 128Mi
         tracer:
           zipkin:
-            address: opentelemetry-collector.tracing.svc:9411
-            # address: jaegertracing-collector.observability.svc.cluster.local:14250
+            # address: opentelemetry-collector.tracing.svc:9411
+            address: jaegertracing-collector.observability.svc.cluster.local:14250
         extensionProviders:
           - name: otel
             envoyOtelAls:
