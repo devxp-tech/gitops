@@ -12,3 +12,19 @@ helmCharts:
       config:
         clients:
           - url: http://loki-gateway.monitoring/loki/api/v1/push
+      serviceMonitor:
+        enabled: true
+        additionalLabels:
+          app: prometheus-operator
+          release: prometheus
+
+      pipelineStages:
+        - docker: {}
+        - match:
+            selector: '{app="hotrod"}'
+            stages:
+              - regex:
+                  expression: ".*(?P<trace>trace_id\"\\S)\\s\"(?P<traceID>[a-zA-Z\\d]+).*"
+                  traceID: traceID
+              - labels:
+                  traceID:
