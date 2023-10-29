@@ -66,7 +66,7 @@ helmCharts:
           tracing:
             zipkin:
               address: jaegertracing-collector.observability.svc:9411
-            sampling: 10
+            sampling: 25
           discoveryAddress: istiod.istio-system.svc:15012
           # holdApplicationUntilProxyStarts: true
           gatewayTopology:
