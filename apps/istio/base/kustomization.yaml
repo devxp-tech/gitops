@@ -32,12 +32,7 @@ helmCharts:
         tracer:
           zipkin:
             # address: opentelemetry-collector.tracing.svc:9411
-            address: jaegertracing-collector.observability.svc.cluster.local:9411
-        # extensionProviders:
-        #   - name: otel
-        #     envoyOtelAls:
-        #       service: opentelemetry-collector.tracing.svc.cluster.local
-        #       port: 4317
+            address: jaegertracing-collector.observability.svc.cluster.local:14250
         proxy:
           clusterDomain: "cluster.local"
           # Resources for the sidecar.
