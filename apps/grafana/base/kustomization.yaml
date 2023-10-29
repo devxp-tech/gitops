@@ -86,7 +86,7 @@ helmCharts:
               uid: jaeger
               type: jaeger
               access: proxy
-              url: http://jaeger-query.observability:16686
+              url: http://jaegertracing-query.observability:16685
               version: 1
             - name: Tempo
               type: tempo

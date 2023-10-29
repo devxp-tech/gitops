@@ -1811,9 +1811,9 @@ helmCharts:
               scrape_interval: 15s
               static_configs:
                 - targets:
-                    - jaeger--agent.observability.svc.cluster.local:14271
-                    - jaeger-collector.observability.svc.cluster.local:14269
-                    - jaeger-query.observability.svc.cluster.local:16687
+                    - jaegertracing-agent.observability.svc.cluster.local:14271
+                    - jaegertracing-collector.observability.svc.cluster.local:14269
+                    - jaegertracing-query.observability.svc.cluster.local:16687
 
             # - job_name: "sonarqube"
             #   scrape_interval: 60s

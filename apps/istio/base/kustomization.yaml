@@ -31,7 +31,7 @@ helmCharts:
             memory: 128Mi
         tracer:
           zipkin:
-            address: jaeger-collector.observability.svc.cluster.local:9411
+            address: jaegertracing-collector.observability.svc.cluster.local:14250
         proxy:
           clusterDomain: "cluster.local"
           # Resources for the sidecar.
