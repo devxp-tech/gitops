@@ -18,5 +18,5 @@ spec:
       route:
         - destination:
             port:
-              number: 16686 #80 or 16686
-            host: jaeger-query.observability.svc.cluster.local
+              number: 80 #80 or 16686
+            host: jaegertracing-query.observability.svc.cluster.local
