@@ -70,11 +70,10 @@ helmCharts:
                 maxLines: 5000
                 timeout: "60"
                 derivedFields:
-                  - datasourceName: Tempo
-                    matcherRegex: "traceID=(\\w+)"
-                    name: TraceID
+                  - datasourceUid: my-jaeger
+                    matcherRegex: ((\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+))
                     url: "$${__value.raw}"
-                    datasourceUid: tempo
+                    name: TraceID
             - name: Prometheus
               type: prometheus
               url: http://prometheus-server
