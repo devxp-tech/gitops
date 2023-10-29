@@ -21,9 +21,8 @@ helmCharts:
             endpoint: tempo.monitoring.svc.cluster.local:55680
             # insecure: true
         service:
-          pipelines:
-            traces:
-              receivers:
-                - otlp
-            metrics: null
-            logs: null
+        pipelines:
+          traces:
+            receivers: [jaeger]
+            processors: [batch]
+            exporters: [otlp]
