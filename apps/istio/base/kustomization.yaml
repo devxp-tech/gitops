@@ -31,8 +31,7 @@ helmCharts:
             memory: 128Mi
         tracer:
           zipkin:
-            # address: opentelemetry-collector.tracing.svc:9411
-            address: jaegertracing-collector.observability.svc.cluster.local:14250
+            address: jaegertracing-collector.observability.svc.cluster.local:9411
         proxy:
           clusterDomain: "cluster.local"
           # Resources for the sidecar.
@@ -59,9 +58,9 @@ helmCharts:
         enableTracing: true
         defaultConfig:
           tracing:
-            zipkin:
-              address: jaegertracing-collector.observability.svc:9411
-            sampling: 75
+            # zipkin:
+            #   address: jaegertracing-collector.observability.svc:9411
+            sampling: 10
           discoveryAddress: istiod.istio-system.svc:15012
           # holdApplicationUntilProxyStarts: true
           gatewayTopology:
