@@ -5,21 +5,21 @@ commonLabels:
   app: jaeger-operator
   version: 2.45.0
 helmCharts:
-  - name: jaeger-operator
-    releaseName: jaegertracing
-    version: 2.45.0
-    repo: https://jaegertracing.github.io/helm-charts
-    includeCRDs: true
-    namespace: observability
-    valuesInline:
-      fullnameOverride: jaeger-operator
-      rbac:
-        create: true
-        clusterRole: true
+  # - name: jaeger-operator
+  #   releaseName: jaegertracing
+  #   version: 2.45.0
+  #   repo: https://jaegertracing.github.io/helm-charts
+  #   includeCRDs: true
+  #   namespace: observability
+  #   valuesInline:
+  #     fullnameOverride: jaeger-operator
+  #     rbac:
+  #       create: true
+  #       clusterRole: true
 
   - name: jaeger
     releaseName: jaeger
-    version: 1.2.4
+    version: 1.3.5
     repo: https://charts.bitnami.com/bitnami
     namespace: observability
     valuesInline:
