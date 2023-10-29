@@ -22,7 +22,7 @@ helmCharts:
         - name: JAEGER_AGENT_HOST
           value: "jaeger-agent.observability.svc.cluster.local"
         - name: JAEGER_AGENT_PORT
-          value: 6831
+          value: "6831"
         - name: OTEL_EXPORTER_JAEGER_AGENT_HOST
           value: "jaeger-agent.observability.svc.cluster.local"
         - name: OTEL_EXPORTER_JAEGER_AGENT_PORT
