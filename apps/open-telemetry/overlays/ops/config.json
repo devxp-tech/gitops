@@ -1,9 +1,9 @@
 {
-  "appName": "otel-collector",
-  "userGivenName": "otel-collector",
-  "destNamespace": "observability",
+  "appName": "open-telemetry",
+  "userGivenName": "open-telemetry",
+  "destNamespace": "tracing",
   "destServer": "https://kubernetes.default.svc",
-  "srcPath": "apps/otel-collector/overlays/ops",
+  "srcPath": "apps/open-telemetry/overlays/ops",
   "srcRepoURL": "https://github.com/devxp-tech/gitops.git",
   "srcTargetRevision": "",
   "CreateNamespace": true,

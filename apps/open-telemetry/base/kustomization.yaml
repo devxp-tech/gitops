@@ -1,0 +1,11 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: tracing
+helmCharts:
+  - name: opentelemetry-collector
+    includeCRDs: true
+    releaseName: open-telemetry
+    version: 0.73.1
+    repo: https://open-telemetry.github.io/opentelemetry-helm-charts
+    valuesInline:
+      nameOverride: opentelemetry-collector
