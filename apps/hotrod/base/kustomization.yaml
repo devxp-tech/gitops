@@ -10,6 +10,9 @@ helmCharts:
     repo: https://devxp-tech.github.io/helm-charts
     valuesInline:
       name: hotrod
+      commonLabels:
+        app: hotrod
+        version: 0.2.22
       image:
         repository: jaegertracing/example-hotrod
         tag: latest
