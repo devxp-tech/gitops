@@ -26,10 +26,15 @@ helmCharts:
       commonLabels:
         app: jaeger
         version: 0.71.17
-      cassandra:
-        # clusterDomain: cluster.local # Just need if cluster is different of cluster.local
-        dbUser:
-          existingSecret: jaeger-cassandra
+      provisionDataStore:
+        cassandra: false
+        elasticsearch: true
+      storage:
+        type: elasticsearch
+      # cassandra:
+      # clusterDomain: cluster.local # Just need if cluster is different of cluster.local
+      # dbUser:
+      #   existingSecret: jaeger-cassandra
       query:
         extraEnvVars:
           - name: METRICS_STORAGE_TYPE
