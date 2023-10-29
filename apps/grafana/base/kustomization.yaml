@@ -95,7 +95,6 @@ helmCharts:
               orgId: 1
               uid: tempo
               url: http://tempo.monitoring.svc:3100
-              isDefault: true
               editable: true
       notifiers:
         notifiers.yaml:
