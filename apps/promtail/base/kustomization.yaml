@@ -28,3 +28,11 @@ helmCharts:
                   traceID: traceID
               - labels:
                   traceID:
+        - logfmt:
+            mapping:
+              time:
+              level:
+              particle_id:
+        - timestamp:
+            source: time
+            format: "RFC3339Nano"
