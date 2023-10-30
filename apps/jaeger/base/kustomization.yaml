@@ -48,6 +48,7 @@ helmCharts:
       # dbUser:
       #   existingSecret: jaeger-cassandra
       query:
+        support-spanmetrics-connector: true
         extraEnvVars:
           - name: METRICS_STORAGE_TYPE
             value: prometheus
