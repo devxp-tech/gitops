@@ -50,11 +50,11 @@ helmCharts:
       # dbUser:
       #   existingSecret: jaeger-cassandra
       query:
-        cmdlineParams:
-          - "--metrics-backend=prometheus"
-          # - "--prometheus.query.support-spanmetrics-connector=true"
-          # - "--prometheus.query.normalize-calls=true"
-          # - "--prometheus.query.normalize-duration=true"
+        # cmdlineParams:
+        #   - "--metrics-backend=prometheus"
+        # - "--prometheus.query.support-spanmetrics-connector=true"
+        # - "--prometheus.query.normalize-calls=true"
+        # - "--prometheus.query.normalize-duration=true"
         support-spanmetrics-connector: true
         extraEnvVars:
           - name: METRICS_STORAGE_TYPE
