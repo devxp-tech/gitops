@@ -54,10 +54,9 @@ helmCharts:
           # query.ui-config: /etc/jaeger/jaeger-ui.json
           # log-level: debug
           metrics-backend: prometheus
-          metrics-http-route: metrics
-          support-spanmetrics-connector: true
-          # sampling.strategies-file: /etc/jaeger/sampling_strategies.json
         support-spanmetrics-connector: true
+        serviceMonitor:
+          enabled: true
         extraEnvVars:
           - name: METRICS_STORAGE_TYPE
             value: prometheus
