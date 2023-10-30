@@ -55,6 +55,8 @@ helmCharts:
           # log-level: debug
           metrics-backend: prometheus
           metrics-http-route: metrics
+          prometheus.server-url: http://prometheus-server.monitoring.svc
+          support-spanmetrics-connector: true
           # sampling.strategies-file: /etc/jaeger/sampling_strategies.json
         support-spanmetrics-connector: true
         extraEnvVars:
