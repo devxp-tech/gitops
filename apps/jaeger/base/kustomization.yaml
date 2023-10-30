@@ -24,8 +24,8 @@ helmCharts:
     namespace: observability
     valuesInline:
       fullnameOverride: jaeger
-      hotrod:
-        enabled: true
+      # hotrod:
+      #   enabled: true
       commonLabels:
         app: jaeger
         version: 0.71.17
@@ -50,6 +50,10 @@ helmCharts:
       # dbUser:
       #   existingSecret: jaeger-cassandra
       query:
+        cmdlineParams:
+          - "--prometheus.query.support-spanmetrics-connector=true"
+          - "--prometheus.query.normalize-calls=true"
+          - "--prometheus.query.normalize-duration=true"
         support-spanmetrics-connector: true
         extraEnvVars:
           - name: METRICS_STORAGE_TYPE
