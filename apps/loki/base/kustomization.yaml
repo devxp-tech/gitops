@@ -58,3 +58,92 @@ helmCharts:
             s3: "s3://us-east-1/devxp-dev-loki-logs"
           boltdb_shipper:
             shared_store: aws
+
+        ruler:
+          storage:
+            type: local
+            local:
+              directory: /home/loki_data/loki/rules
+          rule_path: /home/loki_data/loki/rules-temp
+
+          alertmanager_url: http://localhost:9093
+
+        limits_config:
+          ingestion_rate_strategy: global
+          #ingestion_rate_mb: 500
+          ingestion_rate_mb: 1024
+          #ingestion_burst_size_mb: 2000
+          ingestion_burst_size_mb: 5000
+          max_label_name_length: 1024
+          #max_label_value_length: 2048
+          max_label_value_length: 4096
+          #max_label_names_per_series: 30
+          max_label_names_per_series: 100
+          reject_old_samples: true
+          reject_old_samples_max_age: 168h
+          creation_grace_period: 10m
+          enforce_metric_name: true
+          max_line_size: 0
+          max_line_size_truncate: false
+          increment_duplicate_timestamp: false
+          max_entries_limit_per_query: 50000
+          #max_streams_per_user: 0
+          max_streams_per_user: 500000
+          #max_global_streams_per_user: 50000
+          max_global_streams_per_user: 500000
+          unordered_writes: true
+          #max_chunks_per_query: 2000000
+          max_chunks_per_query: 4000000
+          max_query_length: 721h
+          max_query_parallelism: 3500
+          #max_query_series: 500
+          max_query_series: 1000
+          cardinality_limit: 100000
+          max_streams_matchers_per_query: 10000
+          #max_concurrent_tail_requests: 100
+          max_concurrent_tail_requests: 200
+          ruler_evaluation_delay_duration: 0s
+          ruler_max_rules_per_rule_group: 0
+          ruler_max_rule_groups_per_tenant: 0
+          per_stream_rate_limit: 512MB
+          per_stream_rate_limit_burst: 1024MB
+          max_cache_freshness_per_query: "10m"
+          #split_queries_by_interval: 24h
+          #split_queries_by_interval: 15m
+          #split_queries_by_interval: 120m
+          split_queries_by_interval: 1d
+          #tsdb_max_query_parallelism: 1024
+          #max_queriers_per_tenant: 128
+        chunk_store_config:
+          max_look_back_period: 336h
+        table_manager:
+          retention_deletes_enabled: true
+          #retention_period: 2190h
+          retention_period: 336h
+        ingester:
+          #chunk_idle_period: 15m
+          #chunk_idle_period: 1h
+          chunk_idle_period: 30m
+          chunk_retain_period: 30s
+          chunk_target_size: 1572864
+
+          lifecycler:
+            address: 127.0.0.1
+            ring:
+              kvstore:
+                #store: inmemory
+                store: memberlist
+              replication_factor: 1
+            #final_sleep: 0s
+            final_sleep: 30s
+          chunk_encoding: snappy
+
+        query_scheduler:
+          max_outstanding_requests_per_tenant: 10000
+
+        frontend_worker:
+          grpc_client_config:
+            grpc_compression: snappy
+            max_recv_msg_size: 1048576000
+            max_send_msg_size: 1048576000
+          parallelism: 24
