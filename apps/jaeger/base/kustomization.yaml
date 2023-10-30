@@ -51,8 +51,8 @@ helmCharts:
       #   existingSecret: jaeger-cassandra
       query:
         cmdlineParams:
-          query.ui-config: /etc/jaeger/jaeger-ui.json
-          log-level: debug
+          # query.ui-config: /etc/jaeger/jaeger-ui.json
+          # log-level: debug
           metrics-backend: prometheus
           metrics-http-route: metrics
           # sampling.strategies-file: /etc/jaeger/sampling_strategies.json
