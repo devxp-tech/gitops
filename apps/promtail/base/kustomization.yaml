@@ -21,9 +21,9 @@ helmCharts:
         snippets:
           pipelineStages:
             - cri: {}
-            - match:
-                selector: '{logs="container"} !~ ".*istio-proxy.*"'
-                action: drop
+            - drop:
+                source: "container"
+                expression: "istio-proxy"
             - match:
                 selector: '{app="hotrod"}'
                 stages:
