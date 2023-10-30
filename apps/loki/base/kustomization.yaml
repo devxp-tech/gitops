@@ -59,6 +59,18 @@ helmCharts:
           boltdb_shipper:
             shared_store: aws
 
+        commonConfig:
+          path_prefix: /home/loki_data/loki
+          storage:
+            filesystem:
+              chunks_directory: /home/loki_data/loki/chunks
+              rules_directory: /home/loki_data/loki/rules
+          #replication_factor: 1
+          ring:
+            instance_addr: 127.0.0.1
+            kvstore:
+              store: inmemory
+
         query_range:
           parallelise_shardable_queries: true
           cache_results: true
@@ -68,14 +80,14 @@ helmCharts:
                 enabled: true
                 max_size_mb: 100
 
-        ruler:
-          storage:
-            type: local
-            local:
-              directory: /home/loki_data/loki/rules
-          rule_path: /home/loki_data/loki/rules-temp
+        # ruler:
+        #   storage:
+        #     type: local
+        #     local:
+        #       directory: /home/loki_data/loki/rules
+        #   rule_path: /home/loki_data/loki/rules-temp
 
-          alertmanager_url: http://localhost:9093
+        #   alertmanager_url: http://localhost:9093
 
         limits_config:
           ingestion_rate_strategy: global
