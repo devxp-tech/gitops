@@ -59,6 +59,15 @@ helmCharts:
           boltdb_shipper:
             shared_store: aws
 
+        query_range:
+          parallelise_shardable_queries: true
+          cache_results: true
+          results_cache:
+            cache:
+              embedded_cache:
+                enabled: true
+                max_size_mb: 100
+
         ruler:
           storage:
             type: local
