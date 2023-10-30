@@ -24,6 +24,8 @@ helmCharts:
     namespace: observability
     valuesInline:
       fullnameOverride: jaeger
+      hotrod:
+        enabled: true
       commonLabels:
         app: jaeger
         version: 0.71.17
@@ -53,6 +55,6 @@ helmCharts:
           - name: METRICS_STORAGE_TYPE
             value: prometheus
           - name: PROMETHEUS_SERVER_URL
-            value: http://prometheus-server.monitoring
+            value: http://prometheus-server.monitoring.svc
           - name: PROMETHEUS_QUERY_SUPPORT_SPANMETRICS_CONNECTOR
             value: "true"
