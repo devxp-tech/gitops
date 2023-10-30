@@ -34,22 +34,6 @@ helmCharts:
                   time:
                   level:
                   particle_id:
-            - json:
-                expressions:
-                  time: '"@timestamp"'
-                  level: level
-                  message: message
-                  service: service
-                  type: type
-                  trace_id: traceId
-                  span_id: spanId
-            - labels:
-                level: level
-                trace_id: trace_id
-            - timestamp:
-                format: RFC3339
-                source: "time"
-            - output:
                 source: message
           common:
             - action: replace
