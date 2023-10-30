@@ -35,6 +35,24 @@ helmCharts:
                   level:
                   particle_id:
                 source: message
+            - json:
+                expressions:
+                  time: '"@timestamp"'
+                  message: message
+                  level: level
+                  service: service
+                  type: type
+                  plugin: plugin
+            - labels:
+                level: level
+                service: service
+                type: type
+                plugin: plugin
+            - timestamp:
+                format: RFC3339
+                source: "time"
+            - output:
+                source: message
           common:
             - action: replace
               source_labels:
