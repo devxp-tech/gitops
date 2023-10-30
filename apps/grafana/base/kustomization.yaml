@@ -72,7 +72,7 @@ helmCharts:
                 derivedFields:
                   - datasourceUid: jaeger
                     datasourceName: Jaeger
-                    matcherRegex: '"traceID":"(\w+)'
+                    matcherRegex: '"trace_id":"(\w+)'
                     url: $${__value.raw}
                     name: traceID
             - name: Prometheus
