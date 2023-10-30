@@ -129,30 +129,30 @@ helmCharts:
           retention_deletes_enabled: true
           #retention_period: 2190h
           retention_period: 336h
-        ingester:
-          #chunk_idle_period: 15m
-          #chunk_idle_period: 1h
-          chunk_idle_period: 30m
-          chunk_retain_period: 30s
-          chunk_target_size: 1572864
+        # ingester:
+        #   #chunk_idle_period: 15m
+        #   #chunk_idle_period: 1h
+        #   chunk_idle_period: 30m
+        #   chunk_retain_period: 30s
+        #   chunk_target_size: 1572864
 
-          lifecycler:
-            address: 127.0.0.1
-            ring:
-              kvstore:
-                #store: inmemory
-                store: memberlist
-              replication_factor: 1
-            #final_sleep: 0s
-            final_sleep: 30s
-          chunk_encoding: snappy
+        #   lifecycler:
+        #     address: 127.0.0.1
+        #     ring:
+        #       kvstore:
+        #         #store: inmemory
+        #         store: memberlist
+        #       replication_factor: 1
+        #     #final_sleep: 0s
+        #     final_sleep: 30s
+        #   chunk_encoding: snappy
 
-        query_scheduler:
-          max_outstanding_requests_per_tenant: 10000
+        # query_scheduler:
+        #   max_outstanding_requests_per_tenant: 10000
 
-        frontend_worker:
-          grpc_client_config:
-            grpc_compression: snappy
-            max_recv_msg_size: 1048576000
-            max_send_msg_size: 1048576000
-          parallelism: 24
+        # frontend_worker:
+        #   grpc_client_config:
+        #     grpc_compression: snappy
+        #     max_recv_msg_size: 1048576000
+        #     max_send_msg_size: 1048576000
+        #   parallelism: 24
