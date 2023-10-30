@@ -5,55 +5,56 @@ helmCharts:
   - name: promtail
     includeCRDs: true
     releaseName: promtail
-    version: 6.7.4
+    version: 6.15.3
     repo: https://grafana.github.io/helm-charts
     valuesInline:
       fullnameOverride: promtail
-      config:
-        clients:
-          - url: http://loki-gateway.monitoring/loki/api/v1/push
       serviceMonitor:
         enabled: true
         additionalLabels:
           app: prometheus-operator
           release: prometheus
+      config:
+        clients:
+          - url: http://loki-gateway.monitoring/loki/api/v1/push
 
-      pipelineStages:
-        - cri: {}
-        - match:
-            selector: '{app="hotrod"}'
-            stages:
-              - regex:
-                  expression: ".*(?P<trace>trace_id\"\\S)\\s\"(?P<traceID>[a-zA-Z\\d]+).*"
-                  traceID: traceID
-              - labels:
-                  traceID:
-        - logfmt:
-            mapping:
-              time:
-              level:
-              particle_id:
-        - json:
-            expressions:
-              output: log
-              stream: stream
-              attrs:
-        - json:
-            expressions:
-              tag:
-            source: attrs
-        - regex:
-            expression: (?P<image_name>(?:[^|]*[^|])).(?P<container_name>(?:[^|]*[^|])).(?P<image_id>(?:[^|]*[^|])).(?P<container_id>(?:[^|]*[^|]))
-            source: tag
-        - timestamp:
-            format: RFC3339Nano
-            source: time
-        - labels:
-            tag:
-            stream:
-            image_name:
-            container_name:
-            image_id:
-            container_id:
-        - output:
-            source: output
+        snippets:
+          pipelineStages:
+            - cri: {}
+            - match:
+                selector: '{app="hotrod"}'
+                stages:
+                  - regex:
+                      expression: ".*(?P<trace>trace_id\"\\S)\\s\"(?P<traceID>[a-zA-Z\\d]+).*"
+                      traceID: traceID
+                  - labels:
+                      traceID:
+            - logfmt:
+                mapping:
+                  time:
+                  level:
+                  particle_id:
+            - json:
+                expressions:
+                  output: log
+                  stream: stream
+                  attrs:
+            - json:
+                expressions:
+                  tag:
+                source: attrs
+            - regex:
+                expression: (?P<image_name>(?:[^|]*[^|])).(?P<container_name>(?:[^|]*[^|])).(?P<image_id>(?:[^|]*[^|])).(?P<container_id>(?:[^|]*[^|]))
+                source: tag
+            - timestamp:
+                format: RFC3339Nano
+                source: time
+            - labels:
+                tag:
+                stream:
+                image_name:
+                container_name:
+                image_id:
+                container_id:
+            - output:
+                source: output
