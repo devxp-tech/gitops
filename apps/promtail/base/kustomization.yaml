@@ -36,25 +36,18 @@ helmCharts:
                   particle_id:
             - json:
                 expressions:
-                  output: log
-                  stream: stream
-                  attrs:
-            - json:
-                expressions:
-                  tag:
-                source: attrs
-            - regex:
-                expression: (?P<image_name>(?:[^|]*[^|])).(?P<container_name>(?:[^|]*[^|])).(?P<image_id>(?:[^|]*[^|])).(?P<container_id>(?:[^|]*[^|]))
-                source: tag
-            - timestamp:
-                format: RFC3339Nano
-                source: time
+                  time: '"@timestamp"'
+                  level: level
+                  message: message
+                  service: service
+                  type: type
+                  trace_id: traceId
+                  span_id: spanId
             - labels:
-                tag:
-                stream:
-                image_name:
-                container_name:
-                image_id:
-                container_id:
+                level: level
+                trace_id: trace_id
+            - timestamp:
+                format: RFC3339
+                source: "time"
             - output:
-                source: output
+                source: message
