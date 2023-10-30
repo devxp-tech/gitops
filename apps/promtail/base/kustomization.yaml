@@ -33,6 +33,27 @@ helmCharts:
               time:
               level:
               particle_id:
+        - json:
+            expressions:
+              output: log
+              stream: stream
+              attrs:
+        - json:
+            expressions:
+              tag:
+            source: attrs
+        - regex:
+            expression: (?P<image_name>(?:[^|]*[^|])).(?P<container_name>(?:[^|]*[^|])).(?P<image_id>(?:[^|]*[^|])).(?P<container_id>(?:[^|]*[^|]))
+            source: tag
         - timestamp:
+            format: RFC3339Nano
             source: time
-            format: "RFC3339Nano"
+        - labels:
+            tag:
+            stream:
+            image_name:
+            container_name:
+            image_id:
+            container_id:
+        - output:
+            source: output
