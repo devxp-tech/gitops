@@ -12,17 +12,32 @@ helmCharts:
       fullnameOverride: opentelemetry-collector
       config:
         receivers:
-          jaeger: null
-          prometheus: null
-          zipkin:
-            endpoint: 0.0.0.0:9411
-        exporters:
           otlp:
-            endpoint: tempo.monitoring.svc.cluster.local:55680
-            # insecure: true
+            protocols:
+              http:
+                endpoint: 0.0.0.0:4319
+              grpc:
+                endpoint: 0.0.0.0:4320
+
+        exporters:
+          # prometheus:
+          #   endpoint: "0.0.0.0:8889"
+          jaeger:
+            endpoint: "jaeger-collector.observability.svc:4318"
+
+        connectors:
+          spanmetrics:
+
+        processors:
+          batch:
+
         service:
-        pipelines:
-          traces:
-            receivers: [jaeger]
-            processors: [batch]
-            exporters: [otlp]
+          pipelines:
+            traces:
+              receivers: [otlp]
+              processors: [batch]
+              exporters: [jaeger]
+            # metrics:
+            #   receivers: [otlp]
+            #   processors: [batch]
+            #   exporters: [logging, prometheus]
