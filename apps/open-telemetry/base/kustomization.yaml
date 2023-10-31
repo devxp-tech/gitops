@@ -22,7 +22,7 @@ helmCharts:
         exporters:
           # prometheus:
           #   endpoint: "0.0.0.0:8889"
-          jaeger:
+          otlp:
             endpoint: "jaeger-collector.observability.svc:4318"
 
         connectors:
@@ -36,7 +36,7 @@ helmCharts:
             traces:
               receivers: [otlp]
               processors: [batch]
-              exporters: [jaeger]
+              exporters: [otlp]
             # metrics:
             #   receivers: [otlp]
             #   processors: [batch]
