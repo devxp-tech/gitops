@@ -63,6 +63,7 @@ helmCharts:
               uid: loki
               type: loki
               access: proxy
+              orgId: 1
               url: http://loki-read:3100
               version: 1
               jsonData:
@@ -72,9 +73,9 @@ helmCharts:
                 derivedFields:
                   - datasourceUid: jaeger
                     datasourceName: Jaeger
-                    matcherRegex: '"(?:traceID|trace_id)\":"(\w+)"'
+                    matcherRegex: ((\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+))
                     url: "$${__value.raw}"
-                    name: TraceID
+                    name: traceID
             - name: Prometheus
               type: prometheus
               url: http://prometheus-server

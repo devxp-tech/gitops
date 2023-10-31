@@ -26,11 +26,8 @@ helmCharts:
             installOperator: false
       test:
         enabled: false
-
       tracing:
-        # jaegerAgentHost: jaeger-collector.observability.svc.cluster.local:9411
-        jaegerAgentHost: opentelemetry-collector.tracing.svc.cluster.local:9411
-
+        jaegerAgentHost: jaeger-agent.observability.svc.cluster.local:6831
       persistence:
         enabled: true
       loki:
