@@ -28,9 +28,9 @@ helmCharts:
         #   value: http://jaeger-collector.observability.svc.cluster.local:4318/v1/traces
         # - name: OTEL_EXPORTER_OTLP_ENDPOINT
         #   value: http://opentelemetry-collector.tracing.svc.cluster.local:4318
-        - name: JAEGER_AGENT_HOST
+        - name: OTEL_EXPORTER_JAEGER_AGENT_HOST
           value: "opentelemetry-collector.tracing.svc.cluster.local"
-        - name: JAEGER_AGENT_PORT
+        - name: OTEL_EXPORTER_JAEGER_AGENT_PORT
           value: "6831"
         - name: OTEL_EXPORTER_OTLP_ENDPOINT
           value: http://opentelemetry-collector.tracing.svc.cluster.local:4318
