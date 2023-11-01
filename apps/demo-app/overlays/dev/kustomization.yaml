@@ -31,6 +31,17 @@ helmCharts:
         service:
           type: ClusterIP
           port: 80
+      envs:
+        - name: OTEL_EXPORTER_JAEGER_AGENT_HOST
+          value: "opentelemetry-collector.tracing.svc.cluster.local"
+        - name: OTEL_EXPORTER_JAEGER_AGENT_PORT
+          value: "6831"
+        - name: OTEL_EXPORTER_OTLP_ENDPOINT
+          value: http://opentelemetry-collector.tracing.svc.cluster.local:4318
+        - name: OTEL_EXPORTER_OTLP_TRACES_ENDPOINT
+          value: http://opentelemetry-collector.tracing.svc.cluster.local:4318/v1/traces
+        - name: OTEL_EXPORTER_JAEGER_ENDPOINT
+          value: http://opentelemetry-collector.tracing.svc.cluster.local:14268/api/traces
       probe:
         enabled: true
         livenessProbe:
