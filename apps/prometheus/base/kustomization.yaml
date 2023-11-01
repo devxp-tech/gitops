@@ -1826,7 +1826,7 @@ helmCharts:
               static_configs:
                 - targets:
                     - opentelemetry-collector.tracing.svc.cluster.local:8888
-                    - opentelemetry-collector.tracing.svc.cluster.local:8889
+                    # - opentelemetry-collector.tracing.svc.cluster.local:8889
 
             - job_name: "cert-manager"
               metrics_path: /metrics
