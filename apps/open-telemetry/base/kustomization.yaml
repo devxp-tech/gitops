@@ -55,8 +55,21 @@ helmCharts:
             tls:
               insecure: true
 
-          # prometheus:
-          #   endpoint: "${env:MY_POD_IP}:8889"
+        connectors:
+          spanmetrics:
+            histogram:
+              explicit:
+                buckets: [100us, 1ms, 2ms, 6ms, 10ms, 100ms, 250ms]
+            dimensions:
+              - name: http.method
+                default: GET
+              - name: http.status_code
+            exemplars:
+              enabled: true
+            exclude_dimensions: ["status.code"]
+            dimensions_cache_size: 1000
+            aggregation_temporality: "AGGREGATION_TEMPORALITY_CUMULATIVE"
+            metrics_flush_interval: 15s
 
           prometheusremotewrite:
             endpoint: "https://prometheus-server.monitoring.svc:9009/api/v1/push"
@@ -77,11 +90,11 @@ helmCharts:
             metrics:
               receivers: [otlp, prometheus]
               processors: [batch]
-              exporters: [logging, prometheusremotewrite]
+              exporters: [logging, prometheusremotewrite, spanmetrics]
             traces:
               receivers: [jaeger, otlp]
               processors: [batch]
-              exporters: [logging, otlp]
+              exporters: [logging, otlp, spanmetrics]
             logs:
               receivers: [otlp]
               exporters: [loki]
