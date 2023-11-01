@@ -45,7 +45,7 @@ helmCharts:
             target_allocator:
               endpoint: http://otelcol-targetallocator
               interval: 30s
-              collector_id: ${POD_NAME}
+              collector_id: ${env:POD_NAME}
 
         processors:
           batch:
