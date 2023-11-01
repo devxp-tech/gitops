@@ -10,6 +10,9 @@ helmCharts:
     valuesInline:
       mode: deployment
       fullnameOverride: opentelemetry-collector
+      presets:
+        hostMetrics:
+          enabled: true
       config:
         receivers:
           otlp:
