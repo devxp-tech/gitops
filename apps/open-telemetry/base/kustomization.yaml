@@ -34,42 +34,32 @@ helmCharts:
                 endpoint: ${env:MY_POD_IP}:4317
               http:
                 endpoint: ${env:MY_POD_IP}:4318
-          otlp/spanmetrics:
-            protocols:
-              grpc:
-                endpoint: 0.0.0.0:12346
+          prometheus:
+            config:
+              scrape_configs:
+                - job_name: "otel-collector"
+                  scrape_interval: 30s
+                  static_configs:
+                    - targets: ["0.0.0.0:8888"]
+            target_allocator:
+              endpoint: http://otelcol-targetallocator
+              interval: 30s
+              collector_id: "${POD_NAME}"
 
         processors:
           batch:
-          spanmetrics:
-            metrics_exporter: prometheus
-            latency_histogram_buckets:
-              [
-                200ms,
-                400ms,
-                800ms,
-                1s,
-                1200ms,
-                1400ms,
-                1600ms,
-                1800ms,
-                2s,
-                5s,
-                7s,
-              ]
 
         extensions:
           health_check: {}
           memory_ballast: {}
 
         exporters:
+          logging:
+            verbosity: detailed
           otlp:
             endpoint: "jaeger-collector.observability.svc:4317"
             tls:
               insecure: true
-          prometheus:
-            endpoint: 0.0.0.0:8889
-            metric_expiration: 1440m
 
         service:
           # telemetry:
@@ -82,9 +72,9 @@ helmCharts:
               processors: [spanmetrics, batch]
               exporters: [otlp]
             metrics:
-              receivers: [otlp, otlp/spanmetrics]
+              receivers: [otlp, prometheus]
               processors: [batch]
-              exporters: [prometheus]
+              exporters: [logging]
             # logs:
             #   receivers: [otlp]
             #   exporters: [loki]
