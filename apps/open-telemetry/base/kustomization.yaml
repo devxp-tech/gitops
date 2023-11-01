@@ -34,6 +34,9 @@ helmCharts:
             tls:
               insecure: true
 
+          prometheus:
+            endpoint: "0.0.0.0:9464"
+
           prometheusremotewrite:
             endpoint: "http://prometheus-server.monitoring.svc.cluster.local/api/v1/write"
             external_labels:
