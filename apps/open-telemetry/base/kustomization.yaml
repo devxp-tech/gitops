@@ -48,7 +48,7 @@ helmCharts:
               insecure: true
 
           prometheus:
-            endpoint: "${env:MY_POD_IP}:8888"
+            endpoint: "${env:MY_POD_IP}:8889"
 
           otlp:
             endpoint: "jaeger-collector.observability.svc:4317"
