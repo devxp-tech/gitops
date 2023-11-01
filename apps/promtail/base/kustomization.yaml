@@ -24,6 +24,9 @@ helmCharts:
             - drop:
                 source: "container"
                 expression: "istio-proxy"
+            - drop:
+                source: "container"
+                expression: "istio-init"
             - match:
                 selector: '{app="hotrod"}'
                 stages:
