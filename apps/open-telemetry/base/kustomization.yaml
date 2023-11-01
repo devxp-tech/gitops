@@ -48,7 +48,7 @@ helmCharts:
               exporters: [logging, prometheus]
             traces:
               receivers: [otlp]
-              processors: [spanmetrics, batch]
+              processors: [batch]
               exporters: [logging, otlp]
             logs:
               receivers: [otlp]
