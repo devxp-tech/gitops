@@ -20,7 +20,10 @@ helmCharts:
                 endpoint: 0.0.0.0:4317
 
         exporters:
-          logging:
+          loki:
+            endpoint: http://loki-gateway.monitoring/loki/api/v1/push
+            tls:
+              insecure: true
 
           prometheus:
             endpoint: "0.0.0.0:8889"
@@ -46,3 +49,6 @@ helmCharts:
               receivers: [otlp]
               processors: [batch]
               exporters: [logging, otlp]
+            logs:
+              receivers: [otlp]
+              exporters: [loki]
