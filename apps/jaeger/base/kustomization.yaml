@@ -62,10 +62,10 @@ helmCharts:
             value: prometheus
           - name: PROMETHEUS_SERVER_URL
             value: http://prometheus-server.monitoring.svc
-          - name: SPAN_STORAGE_TYPE
-            value: memory
-          - name: JAEGER_DISABLED
-            value: "false"
+          # - name: SPAN_STORAGE_TYPE
+          #   value: memory
+          # - name: JAEGER_DISABLED
+          #   value: "false"
           - name: COLLECTOR_OTLP_ENABLED
             value: "true"
           - name: PROMETHEUS_QUERY_SUPPORT_SPANMETRICS_CONNECTOR
