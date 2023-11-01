@@ -18,18 +18,9 @@ helmCharts:
                 endpoint: 0.0.0.0:4317
               http:
                 endpoint: 0.0.0.0:4318
-          otlp/spanmetrics:
-            protocols:
-              grpc:
-                endpoint: 0.0.0.0:12346
-
-        # connectors:
-        #   spanmetrics:
 
         processors:
           batch:
-          spanmetrics:
-            metrics_exporter: prometheus
 
         extensions:
           health_check: {}
@@ -41,7 +32,7 @@ helmCharts:
               insecure: true
 
           prometheus:
-            endpoint: "0.0.0.0:9464"
+            endpoint: "0.0.0.0:8889"
 
           otlp:
             endpoint: "jaeger-collector.observability.svc:4317"
@@ -52,7 +43,7 @@ helmCharts:
           extensions: [health_check]
           pipelines:
             metrics:
-              receivers: [otlp/spanmetrics]
+              receivers: [otlp]
               processors: [batch]
               exporters: [logging, prometheus]
             traces:
