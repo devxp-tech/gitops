@@ -42,6 +42,10 @@ helmCharts:
                   static_configs:
                     - targets:
                         - ${env:MY_POD_IP}:8888
+            target_allocator:
+              endpoint: http://otelcol-targetallocator
+              interval: 30s
+              collector_id: "${POD_NAME}"
 
         processors:
           batch:
