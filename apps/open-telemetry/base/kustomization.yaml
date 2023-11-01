@@ -79,7 +79,7 @@ helmCharts:
               processors: [batch]
               exporters: [logging, prometheusremotewrite]
             traces:
-              receivers: [jaeger, otlp, prometheus]
+              receivers: [jaeger, otlp]
               processors: [batch]
               exporters: [logging, otlp]
             logs:
