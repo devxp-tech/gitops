@@ -54,8 +54,6 @@ helmCharts:
           memory_ballast: {}
 
         exporters:
-          logging:
-            verbosity: detailed
           otlp:
             endpoint: "jaeger-collector.observability.svc:4317"
             tls:
