@@ -54,11 +54,14 @@ helmCharts:
             endpoint: http://loki-gateway.monitoring/loki/api/v1/push
             tls:
               insecure: true
-
           otlp:
             endpoint: "jaeger-collector.observability.svc:4317"
             tls:
               insecure: true
+          prometheusremotewrite:
+            endpoint: "https://prometheus-server.monitoring.svc:9009/api/v1/push"
+            external_labels:
+              foo: bar
 
         connectors:
           spanmetrics:
@@ -75,11 +78,6 @@ helmCharts:
             dimensions_cache_size: 1000
             aggregation_temporality: "AGGREGATION_TEMPORALITY_CUMULATIVE"
             metrics_flush_interval: 15s
-
-          prometheusremotewrite:
-            endpoint: "https://prometheus-server.monitoring.svc:9009/api/v1/push"
-            external_labels:
-              foo: bar
 
         service:
           telemetry:
