@@ -18,12 +18,18 @@ helmCharts:
                 endpoint: 0.0.0.0:4317
               http:
                 endpoint: 0.0.0.0:4318
+          otlp/spanmetrics:
+            protocols:
+              grpc:
+                endpoint: 0.0.0.0:12346
 
         # connectors:
         #   spanmetrics:
 
         processors:
           batch:
+          spanmetrics:
+            metrics_exporter: prometheus
 
         extensions:
           health_check: {}
@@ -37,11 +43,6 @@ helmCharts:
           prometheus:
             endpoint: "0.0.0.0:9464"
 
-          prometheusremotewrite:
-            endpoint: "http://prometheus-server.monitoring.svc.cluster.local/api/v1/write"
-            external_labels:
-              cluster: prod
-
           otlp:
             endpoint: "jaeger-collector.observability.svc:4317"
             tls:
@@ -51,12 +52,12 @@ helmCharts:
           extensions: [health_check]
           pipelines:
             metrics:
-              receivers: [otlp]
+              receivers: [otlp/spanmetrics]
               processors: [batch]
-              exporters: [logging, prometheusremotewrite]
+              exporters: [logging, prometheus]
             traces:
               receivers: [otlp]
-              processors: [batch]
+              processors: [spanmetrics, batch]
               exporters: [logging, otlp]
             logs:
               receivers: [otlp]
