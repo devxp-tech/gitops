@@ -17,11 +17,14 @@ helmCharts:
               http:
                 endpoint: 0.0.0.0:4318
               grpc:
-                endpoint: 0.0.0.0:4320
+                endpoint: 0.0.0.0:4317
 
         exporters:
-          # prometheus:
-          #   endpoint: "0.0.0.0:8889"
+          logging:
+
+          prometheus:
+            endpoint: "0.0.0.0:8889"
+
           otlp:
             endpoint: "jaeger-collector.observability.svc:4317"
             tls:
@@ -35,11 +38,11 @@ helmCharts:
 
         service:
           pipelines:
+            metrics:
+              receivers: [otlp]
+              processors: [batch]
+              exporters: [logging, prometheus]
             traces:
               receivers: [otlp]
               processors: [batch]
-              exporters: [otlp]
-            # metrics:
-            #   receivers: [otlp]
-            #   processors: [batch]
-            #   exporters: [logging, prometheus]
+              exporters: [logging, otlp]
