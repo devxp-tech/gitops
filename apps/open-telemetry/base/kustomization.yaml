@@ -52,6 +52,9 @@ helmCharts:
               insecure: true
 
         service:
+          telemetry:
+            metrics:
+              address: ${env:MY_POD_IP}:8888
           extensions: [health_check]
           pipelines:
             metrics:
