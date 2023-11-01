@@ -55,6 +55,11 @@ helmCharts:
             tls:
               insecure: true
 
+          otlp:
+            endpoint: "jaeger-collector.observability.svc:4317"
+            tls:
+              insecure: true
+
         connectors:
           spanmetrics:
             histogram:
@@ -75,11 +80,6 @@ helmCharts:
             endpoint: "https://prometheus-server.monitoring.svc:9009/api/v1/push"
             external_labels:
               foo: bar
-
-          otlp:
-            endpoint: "jaeger-collector.observability.svc:4317"
-            tls:
-              insecure: true
 
         service:
           telemetry:
