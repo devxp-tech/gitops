@@ -59,7 +59,7 @@ helmCharts:
             tls:
               insecure: true
           prometheusremotewrite:
-            endpoint: "https://prometheus-server.monitoring.svc:9009/api/v1/push"
+            endpoint: "https://prometheus-server.monitoring.svc/api/v1/push"
             external_labels:
               foo: bar
 
