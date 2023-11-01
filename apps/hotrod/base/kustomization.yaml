@@ -30,6 +30,8 @@ helmCharts:
           value: http://opentelemetry-collector.tracing.svc.cluster.local:4318
         - name: OTEL_EXPORTER_OTLP_TRACES_ENDPOINT
           value: http://opentelemetry-collector.tracing.svc.cluster.local:4318/v1/traces
+        - name: OTEL_EXPORTER_JAEGER_ENDPOINT
+          value: http://opentelemetry-collector.tracing.svc.cluster.local:14268/api/traces
 
       quota:
         enabled: false
