@@ -13,6 +13,8 @@ helmCharts:
       presets:
         hostMetrics:
           enabled: true
+      serviceMonitor:
+        enabled: true
       config:
         receivers:
           otlp:
