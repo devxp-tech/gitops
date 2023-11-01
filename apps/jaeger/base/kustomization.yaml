@@ -61,7 +61,7 @@ helmCharts:
           - name: METRICS_STORAGE_TYPE
             value: prometheus
           - name: PROMETHEUS_SERVER_URL
-            value: http://prometheus-server.monitoring.svc
+            value: http://prometheus-server.monitoring.svc.cluster.local
           # - name: SPAN_STORAGE_TYPE
           #   value: memory
           # - name: JAEGER_DISABLED
