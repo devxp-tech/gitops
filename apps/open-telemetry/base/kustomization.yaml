@@ -36,6 +36,7 @@ helmCharts:
 
         extensions:
           health_check: {}
+          memory_ballast: {}
 
         exporters:
           loki:
@@ -55,7 +56,7 @@ helmCharts:
           telemetry:
             metrics:
               address: ${env:MY_POD_IP}:8888
-          extensions: [health_check]
+          extensions: [health_check, memory_ballast]
           pipelines:
             metrics:
               receivers: [otlp]
