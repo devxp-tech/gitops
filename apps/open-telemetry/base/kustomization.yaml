@@ -15,6 +15,9 @@ helmCharts:
           enabled: true
       serviceMonitor:
         enabled: true
+      ports:
+        metrics:
+          enabled: true
       config:
         receivers:
           otlp:
