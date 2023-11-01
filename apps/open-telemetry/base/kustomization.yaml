@@ -34,14 +34,17 @@ helmCharts:
                 endpoint: ${env:MY_POD_IP}:4317
               http:
                 endpoint: ${env:MY_POD_IP}:4318
-          prometheus:
-            config:
-              scrape_configs:
-                - job_name: opentelemetry-collector
-                  scrape_interval: 10s
-                  static_configs:
-                    - targets:
-                        - ${env:MY_POD_IP}:8888
+          # prometheus:
+          #   config:
+          #     scrape_configs:
+          #       - job_name: opentelemetry-collector
+          #         scrape_interval: 10s
+          #         static_configs:
+          #           - targets:
+          #               - ${env:MY_POD_IP}:8888
+
+        connectors:
+          spanmetrics:
 
         processors:
           batch:
@@ -57,6 +60,9 @@ helmCharts:
             endpoint: "jaeger-collector.observability.svc:4317"
             tls:
               insecure: true
+          exporters:
+            prometheus:
+              endpoint: "0.0.0.0:8889"
 
         service:
           # telemetry:
@@ -69,9 +75,9 @@ helmCharts:
               processors: [batch]
               exporters: [otlp]
             metrics:
-              receivers: [otlp, prometheus]
+              receivers: [otlp]
               processors: [batch]
-              exporters: [logging]
+              exporters: [logging, prometheus]
             # logs:
             #   receivers: [otlp]
             #   exporters: [loki]
