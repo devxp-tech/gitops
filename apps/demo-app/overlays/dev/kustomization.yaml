@@ -32,6 +32,10 @@ helmCharts:
           type: ClusterIP
           port: 80
       envs:
+        - name: SERVICE_NAME
+          value: "demo-app"
+        - name: INSECURE_MODE
+          value: "true"
         - name: OTEL_EXPORTER_JAEGER_AGENT_HOST
           value: "opentelemetry-collector.tracing.svc.cluster.local"
         - name: OTEL_EXPORTER_JAEGER_AGENT_PORT
