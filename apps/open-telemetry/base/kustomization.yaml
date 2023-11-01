@@ -20,9 +20,9 @@ helmCharts:
           otlp:
             protocols:
               grpc:
-                endpoint: 0.0.0.0:4317
+                endpoint: ${env:MY_POD_IP}:4317
               http:
-                endpoint: 0.0.0.0:4318
+                endpoint: ${env:MY_POD_IP}:4318
           prometheus:
             config:
               scrape_configs:
@@ -30,7 +30,7 @@ helmCharts:
                   scrape_interval: 10s
                   static_configs:
                     - targets:
-                        - 0.0.0.0:8888
+                        - ${env:MY_POD_IP}:8888
         processors:
           batch:
 
@@ -45,7 +45,7 @@ helmCharts:
               insecure: true
 
           prometheus:
-            endpoint: "0.0.0.0:8889"
+            endpoint: "${env:MY_POD_IP}:8889"
 
           otlp:
             endpoint: "jaeger-collector.observability.svc:4317"
@@ -59,7 +59,7 @@ helmCharts:
           extensions: [health_check, memory_ballast]
           pipelines:
             metrics:
-              receivers: [otlp]
+              receivers: [otlp, prometheus]
               processors: [batch]
               exporters: [logging, prometheus]
             traces:
