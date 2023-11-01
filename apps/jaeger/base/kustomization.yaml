@@ -57,7 +57,7 @@ helmCharts:
         support-spanmetrics-connector: true
         serviceMonitor:
           enabled: true
-        extraEnvVars:
+        extraEnv:
           - name: METRICS_STORAGE_TYPE
             value: prometheus
           - name: PROMETHEUS_SERVER_URL
