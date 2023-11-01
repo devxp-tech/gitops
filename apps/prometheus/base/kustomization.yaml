@@ -1825,8 +1825,8 @@ helmCharts:
               scrape_interval: 10s
               static_configs:
                 - targets:
-                    - otel-collector.tracing.svc.cluster.local:8888
-                    - otel-collector.tracing.svc.cluster.local:8889
+                    - opentelemetry-collector.tracing.svc.cluster.local:8888
+                    - opentelemetry-collector.tracing.svc.cluster.local:8889
 
             - job_name: "cert-manager"
               metrics_path: /metrics
