@@ -10,6 +10,8 @@ helmCharts:
     valuesInline:
       mode: daemonset #deployment
       fullnameOverride: opentelemetry-collector
+      opentelemetry-collector:
+        serviceEnabled: true
       presets:
         hostMetrics:
           enabled: true
