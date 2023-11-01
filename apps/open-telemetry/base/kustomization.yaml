@@ -8,7 +8,7 @@ helmCharts:
     version: 0.73.1
     repo: https://open-telemetry.github.io/opentelemetry-helm-charts
     valuesInline:
-      mode: statefulset #deployment
+      mode: deployment
       fullnameOverride: opentelemetry-collector
       presets:
         hostMetrics:
