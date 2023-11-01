@@ -12,7 +12,7 @@ helmCharts:
       name: demo-app
       image:
         repository: ghcr.io/devxp-tech/demo-app
-        tag: latest
+        tag: 9241cdde
       autoscaling:
         enabled: true
         minReplicas: 1
