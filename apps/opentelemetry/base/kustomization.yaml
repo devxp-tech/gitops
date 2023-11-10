@@ -31,17 +31,17 @@ helmCharts:
           otlp:
             protocols:
               grpc:
-                endpoint: 0.0.0.0:4317
+                endpoint: ${env:MY_POD_IP}:4317
               http:
                 endpoint: ${env:MY_POD_IP}:4318
           otlp/spanmetrics:
             protocols:
               grpc:
-                endpoint: "0.0.0.0:12345"
+                endpoint: ${env:MY_POD_IP}:12345
           prometheus:
             config:
               scrape_configs:
-                - job_name: opentelemetry-collector
+                - job_name: otel-collector
                   scrape_interval: 10s
                   static_configs:
                     - targets:
@@ -69,10 +69,6 @@ helmCharts:
             endpoint: "jaeger-collector.observability.svc:4317"
             tls:
               insecure: true
-          otlp/spanmetrics:
-            endpoint: "localhost:4317"
-            tls:
-              insecure: true
           prometheusremotewrite:
             endpoint: http://prometheus-prometheus-pushgateway.monitoring.svc.cluster.local:9091/api/v1/write
             external_labels:
@@ -91,7 +87,7 @@ helmCharts:
               exporters: [otlp/jaeger]
             metrics/spanmetrics:
               receivers: [otlp/spanmetrics]
-              exporters: [otlp/spanmetrics]
+              exporters: [otlp/jaeger]
             metrics:
               receivers: [otlp, prometheus]
               processors: [filter/spanmetrics]
