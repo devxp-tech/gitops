@@ -46,17 +46,7 @@ helmCharts:
         processors:
           batch: {}
           spanmetrics:
-            metrics_exporter: otlp/jaeger
-            dimensions:
-              - name: http.method
-              - name: http.status_code
-          filter/spanmetrics:
-            metrics:
-              exclude:
-                match_type: expr
-                expressions:
-                  - MetricName == "latency" && Label("span.kind") != "SPAN_KIND_SERVER"
-                  - MetricName == "calls_total" && Label("span.kind") != "SPAN_KIND_SERVER"
+            metrics_exporter: prometheus
         extensions:
           health_check: {}
 
@@ -86,5 +76,4 @@ helmCharts:
               exporters: [otlp/jaeger]
             metrics:
               receivers: [otlp, prometheus]
-              processors: [filter/spanmetrics]
               exporters: [prometheusremotewrite]
