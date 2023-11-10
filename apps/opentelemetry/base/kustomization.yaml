@@ -45,6 +45,10 @@ helmCharts:
 
         processors:
           batch: {}
+          memory_limiter:
+            check_interval: 5s
+            limit_percentage: 80
+            spike_limit_percentage: 25
           spanmetrics:
             metrics_exporter: prometheus
 
@@ -68,9 +72,9 @@ helmCharts:
           extensions: [health_check]
           pipelines:
             traces:
-              receivers: [otlp]
-              processors: [spanmetrics]
+              receivers: [otlp, jaeger, zipkin]
+              processors: [batch, spanmetrics]
               exporters: [otlp/jaeger]
             metrics:
-              receivers: [otlp, prometheus]
+              receivers: [otlp, prometheus, memory_limiter]
               exporters: [prometheus]
