@@ -22,6 +22,9 @@ helmCharts:
         extensions:
           health_check: {}
 
+        connectors:
+          spanmetrics: {}
+
         receivers:
           otlp:
             protocols:
