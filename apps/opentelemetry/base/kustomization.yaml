@@ -55,9 +55,10 @@ helmCharts:
             tls:
               insecure: true
           prometheusremotewrite:
-            endpoint: http://prometheus-prometheus-pushgateway.monitoring.svc.cluster.local:9091/api/v1/write
+            endpoint: http://prometheus-server.monitoring.svc.cluster.local/api/v1/write
             external_labels:
               job: opentelemetry-collectors
+              cluster: dev
 
           # prometheus:
           #   endpoint: "0.0.0.0:8889"
