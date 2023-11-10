@@ -10,6 +10,15 @@ helmCharts:
     valuesInline:
       mode: deployment
       fullnameOverride: opentelemetry-collector
+      prometheus:
+        enabled: true
+        containerPort: 9464
+        servicePort: 9464
+        protocol: TCP
+      podAnnotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "9464"
+        opentelemetry_community_demo: "true"
       presets:
         hostMetrics:
           enabled: true
