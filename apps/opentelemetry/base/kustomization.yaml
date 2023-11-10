@@ -36,7 +36,6 @@ helmCharts:
             metrics_exporter: prometheusremotewrite
 
         exporters:
-          logging: {}
           jaeger:
             endpoint: "jaeger-collector.observability.svc:4317"
             tls:
@@ -56,7 +55,7 @@ helmCharts:
             traces:
               receivers: [otlp]
               processors: [spanmetrics]
-              exporters: [logging, jaeger]
+              exporters: [jaeger]
             metrics:
               receivers: [otlp]
               exporters: [prometheusremotewrite]
