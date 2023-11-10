@@ -39,6 +39,8 @@ helmCharts:
                   static_configs:
                     - targets:
                         - ${env:MY_POD_IP}:8888
+                      labels:
+                        job_name: opentelemetry-collector
           zipkin:
             endpoint: ${MY_POD_IP}:9411
 
