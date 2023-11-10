@@ -31,7 +31,7 @@ helmCharts:
           otlp:
             protocols:
               grpc:
-                endpoint: ${env:MY_POD_IP}:4317
+                endpoint: 0.0.0.0:4317
               http:
                 endpoint: ${env:MY_POD_IP}:4318
           otlp/spanmetrics:
