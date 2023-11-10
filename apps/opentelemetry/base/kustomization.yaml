@@ -34,10 +34,6 @@ helmCharts:
                 endpoint: ${env:MY_POD_IP}:4317
               http:
                 endpoint: ${env:MY_POD_IP}:4318
-          otlp/spanmetrics:
-            protocols:
-              grpc:
-                endpoint: ${env:MY_POD_IP}:12345
           prometheus:
             config:
               scrape_configs:
@@ -50,7 +46,7 @@ helmCharts:
         processors:
           batch: {}
           spanmetrics:
-            metrics_exporter: otlp/spanmetrics
+            metrics_exporter: otlp/jaeger
             dimensions:
               - name: http.method
               - name: http.status_code
@@ -86,7 +82,7 @@ helmCharts:
               processors: [spanmetrics]
               exporters: [otlp/jaeger]
             metrics/spanmetrics:
-              receivers: [otlp/spanmetrics]
+              receivers: [otlp]
               exporters: [otlp/jaeger]
             metrics:
               receivers: [otlp, prometheus]
