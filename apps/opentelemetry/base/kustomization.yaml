@@ -77,6 +77,3 @@ helmCharts:
             metrics:
               receivers: [otlp, prometheus]
               exporters: [prometheus, prometheusremotewrite]
-            metrics/spanmetrics:
-              receivers: [otlp/spanmetrics]
-              exporters: [prometheusremotewrite]
