@@ -54,16 +54,16 @@ helmCharts:
             endpoint: "jaeger-collector.observability.svc:4317"
             tls:
               insecure: true
-          prometheus:
-            enable_open_metrics: true
-            endpoint: 0.0.0.0:9464
-            resource_to_telemetry_conversion:
-              enabled: true
-          # prometheusremotewrite:
-          #   endpoint: http://prometheus-prometheus-pushgateway.monitoring.svc.cluster.local:9091/api/v1/write
-          #   external_labels:
-          #     job: opentelemetry-collectors
-          #     cluster: dev
+          # prometheus:
+          #   enable_open_metrics: true
+          #   endpoint: 0.0.0.0:9464
+          #   resource_to_telemetry_conversion:
+          #     enabled: true
+          prometheusremotewrite:
+            endpoint: http://prometheus-prometheus-pushgateway.monitoring.svc.cluster.local:9091/api/v1/write
+            external_labels:
+              job: opentelemetry-collectors
+              cluster: dev
 
         service:
           extensions: [health_check]
@@ -77,4 +77,4 @@ helmCharts:
               exporters: [otlp/jaeger]
             metrics:
               receivers: [otlp, prometheus]
-              exporters: [prometheus]
+              exporters: [prometheusremotewrite]
