@@ -52,8 +52,6 @@ helmCharts:
           batch:
 
         exporters:
-          logging:
-            logLevel: debug
           otlp:
             endpoint: "jaeger-collector.observability.svc:4317"
             tls:
@@ -70,4 +68,4 @@ helmCharts:
             metrics:
               receivers: [otlp, prometheus]
               processors: [batch]
-              exporters: [logging, prometheus]
+              exporters: [prometheus]
