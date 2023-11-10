@@ -19,6 +19,13 @@ helmCharts:
         metrics:
           enabled: true
       config:
+        extensions:
+          health_check:
+          pprof:
+            endpoint: 0.0.0.0:1777
+          zpages:
+            endpoint: 0.0.0.0:55679
+
         receivers:
           jaeger:
             protocols:
@@ -43,19 +50,12 @@ helmCharts:
                     - targets:
                         - ${env:MY_POD_IP}:8888
 
-        connectors:
-          spanmetrics:
-
         processors:
           batch:
-          spanmetrics:
-            metrics_exporter: prometheus
-
-        extensions:
-          health_check: {}
-          memory_ballast: {}
 
         exporters:
+          logging:
+            logLevel: debug
           otlp:
             endpoint: "jaeger-collector.observability.svc:4317"
             tls:
@@ -64,19 +64,13 @@ helmCharts:
             endpoint: "0.0.0.0:8889"
 
         service:
-          # telemetry:
-          #   metrics:
-          #     address: ${env:MY_POD_IP}:8888
-          # extensions: [health_check, memory_ballast]
           pipelines:
             traces:
               receivers: [jaeger, otlp]
-              processors: [batch, spanmetrics]
-              exporters: [otlp]
+              processors: [batch]
+              exporters: [otlp, logging]
             metrics:
               receivers: [otlp, prometheus]
               processors: [batch]
               exporters: [logging, prometheus]
-            # logs:
-            #   receivers: [otlp]
-            #   exporters: [loki]
+            extensions: [health_check, pprof, zpages]
