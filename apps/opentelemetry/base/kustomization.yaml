@@ -47,7 +47,7 @@ helmCharts:
           batch: {}
 
         extensions:
-          health_check:
+          health_check: {}
 
         exporters:
           otlp:
