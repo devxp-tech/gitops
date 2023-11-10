@@ -73,4 +73,4 @@ helmCharts:
             metrics:
               receivers: [otlp, prometheus]
               processors: [batch]
-              exporters: [prometheus]
+              exporters: [prometheusremotewrite]
