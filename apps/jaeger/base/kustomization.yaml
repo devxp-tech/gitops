@@ -63,6 +63,6 @@ helmCharts:
           - name: PROMETHEUS_SERVER_URL
             value: http://prometheus-server.monitoring.svc.cluster.local
           - name: COLLECTOR_OTLP_ENABLED
-            value: "true"
+            value: "false"
           - name: PROMETHEUS_QUERY_SUPPORT_SPANMETRICS_CONNECTOR
             value: "true"
