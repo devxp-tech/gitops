@@ -46,7 +46,10 @@ helmCharts:
                 - job_name: "otelcol"
                   scrape_interval: 10s
                   static_configs:
-                    - targets: ["localhost:8888"]
+                    - targets:
+                        [
+                          "opentelemetry-collector.tracing.svc.cluster.local:8888",
+                        ]
                   metric_relabel_configs:
                     - source_labels: [__name__]
                       regex: ".*grpc_io.*"
