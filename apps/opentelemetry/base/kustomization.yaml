@@ -25,7 +25,6 @@ helmCharts:
             endpoint: 0.0.0.0:1777
           zpages:
             endpoint: 0.0.0.0:55679
-
         receivers:
           jaeger:
             protocols:
@@ -49,7 +48,6 @@ helmCharts:
                   static_configs:
                     - targets:
                         - ${env:MY_POD_IP}:8888
-
         processors:
           batch:
 
@@ -68,9 +66,8 @@ helmCharts:
             traces:
               receivers: [jaeger, otlp]
               processors: [batch]
-              exporters: [otlp, logging]
+              exporters: [otlp]
             metrics:
               receivers: [otlp, prometheus]
               processors: [batch]
-              exporters: [logging, prometheus]
-            extensions: [health_check, pprof, zpages]
+              exporters: [prometheus]
