@@ -58,7 +58,6 @@ helmCharts:
             endpoint: http://prometheus-prometheus-pushgateway.monitoring.svc.cluster.local:9091/api/v1/write
             external_labels:
               job: opentelemetry-collectors
-              instance: ${env:$POD_NAME}
 
           # prometheus:
           #   endpoint: "0.0.0.0:8889"
