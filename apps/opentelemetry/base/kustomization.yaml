@@ -21,7 +21,8 @@ helmCharts:
       config:
         extensions:
           health_check: {}
-
+          memory_ballast:
+            size_in_percentage: 40
         connectors:
           spanmetrics: {}
 
@@ -69,11 +70,11 @@ helmCharts:
           #     cluster: dev
 
         service:
-          extensions: [health_check]
+          extensions: [health_check, memory_ballast]
           pipelines:
             traces:
               receivers: [otlp, jaeger, zipkin]
-              processors: [batch, spanmetrics]
+              processors: [batch, spanmetrics, memory_limiter]
               exporters: [otlp/jaeger]
             metrics:
               receivers: [otlp, prometheus, memory_limiter]
