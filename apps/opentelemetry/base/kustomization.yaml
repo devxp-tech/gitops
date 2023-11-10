@@ -42,11 +42,11 @@ helmCharts:
                 - job_name: "span_job"
                   scrape_interval: 10s
                   static_configs:
-                    - targets: ["0.0.0.0:8889"]
+                    - targets: ${env:MY_POD_IP}:8889
                 - job_name: "otelcol"
                   scrape_interval: 10s
                   static_configs:
-                    - targets: ["0.0.0.0:8888"]
+                    - targets: ${env:MY_POD_IP}:8888
                   metric_relabel_configs:
                     - source_labels: [__name__]
                       regex: ".*grpc_io.*"
