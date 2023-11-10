@@ -36,7 +36,7 @@ helmCharts:
             metrics_exporter: prometheusremotewrite
 
         exporters:
-          jaeger:
+          otel/jaeger:
             endpoint: "jaeger-collector.observability.svc:4317"
             tls:
               insecure: true
@@ -55,7 +55,7 @@ helmCharts:
             traces:
               receivers: [otlp]
               processors: [spanmetrics]
-              exporters: [jaeger]
+              exporters: [otel/jaeger]
             metrics:
               receivers: [otlp]
               exporters: [prometheusremotewrite]
