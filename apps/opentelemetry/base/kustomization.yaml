@@ -59,8 +59,6 @@ helmCharts:
             external_labels:
               job: opentelemetry-collectors
               cluster: dev
-          logging:
-            verbosity: detailed
 
           # prometheus:
           #   endpoint: "0.0.0.0:8889"
@@ -75,4 +73,4 @@ helmCharts:
             metrics:
               receivers: [otlp, prometheus]
               processors: [batch]
-              exporters: [logging, prometheusremotewrite]
+              exporters: [prometheusremotewrite]
