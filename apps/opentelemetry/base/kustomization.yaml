@@ -21,8 +21,8 @@ helmCharts:
       config:
         extensions:
           health_check: {}
-        connectors:
-          spanmetrics: {}
+          pprof: {}
+          zpages: {}
 
         receivers:
           otlp:
@@ -31,23 +31,41 @@ helmCharts:
                 endpoint: ${env:MY_POD_IP}:4317
               http:
                 endpoint: ${env:MY_POD_IP}:4318
+          # Dummy receiver that's never used, because a pipeline is required to have one.
+          otlp/spanmetrics:
+            protocols:
+              grpc:
+                endpoint: "localhost:12345"
           prometheus:
             config:
               scrape_configs:
-                - job_name: opentelemetry-collector
+                - job_name: "span_job"
                   scrape_interval: 10s
                   static_configs:
-                    - targets:
-                        - ${env:MY_POD_IP}:8888
-                      labels:
-                        job_name: otel-collector-metrics
+                    - targets: ["0.0.0.0:8889"]
+                - job_name: "otelcol"
+                  scrape_interval: 10s
+                  static_configs:
+                    - targets: ["0.0.0.0:8888"]
+                  metric_relabel_configs:
+                    - source_labels: [__name__]
+                      regex: ".*grpc_io.*"
+                      action: drop
+
           zipkin:
             endpoint: ${MY_POD_IP}:9411
 
         processors:
           batch: {}
           spanmetrics:
-            metrics_exporter: prometheusremotewrite
+            metrics_exporter: prometheus
+            latency_histogram_buckets:
+              [100us, 1ms, 2ms, 6ms, 10ms, 100ms, 250ms]
+            dimensions:
+              - name: http.method
+                default: GET
+              - name: http.status_code
+            dimensions_cache_size: 1000
 
         exporters:
           otlp/jaeger:
@@ -66,10 +84,7 @@ helmCharts:
               cluster: dev
 
         service:
-          extensions: [health_check]
-          telemetry:
-            metrics:
-              address: 0.0.0.0:8888
+          extensions: [pprof, zpages, health_check]
           pipelines:
             traces:
               receivers: [otlp, jaeger, zipkin]
@@ -78,3 +93,6 @@ helmCharts:
             metrics:
               receivers: [otlp, prometheus]
               exporters: [prometheusremotewrite]
+            metrics/spanmetrics:
+              receivers: [otlp/spanmetrics]
+              exporters: [prometheus]
