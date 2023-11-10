@@ -34,6 +34,10 @@ helmCharts:
                 endpoint: ${env:MY_POD_IP}:4317
               http:
                 endpoint: ${env:MY_POD_IP}:4318
+          otlp/spanmetrics:
+            protocols:
+              grpc:
+                endpoint: "0.0.0.0:12345"
           prometheus:
             config:
               scrape_configs:
@@ -45,17 +49,32 @@ helmCharts:
 
         processors:
           batch: {}
-
+          spanmetrics:
+            metrics_exporter: otlp/spanmetrics
+            dimensions:
+              - name: http.method
+              - name: http.status_code
+          filter/spanmetrics:
+            metrics:
+              exclude:
+                match_type: expr
+                expressions:
+                  - MetricName == "latency" && Label("span.kind") != "SPAN_KIND_SERVER"
+                  - MetricName == "calls_total" && Label("span.kind") != "SPAN_KIND_SERVER"
         extensions:
           health_check: {}
 
         exporters:
-          otlp:
+          otlp/jaeger:
             endpoint: "jaeger-collector.observability.svc:4317"
             tls:
               insecure: true
+          otlp/spanmetrics:
+            endpoint: "localhost:4317"
+            tls:
+              insecure: true
           prometheusremotewrite:
-            endpoint: http://prometheus-server.monitoring.svc.cluster.local/api/v1/write
+            endpoint: http://prometheus-prometheus-pushgateway.monitoring.svc.cluster.local:9091/api/v1/write
             external_labels:
               job: opentelemetry-collectors
               cluster: dev
@@ -68,9 +87,12 @@ helmCharts:
           pipelines:
             traces:
               receivers: [jaeger, otlp]
-              processors: [batch]
-              exporters: [otlp]
+              processors: [spanmetrics]
+              exporters: [otlp/jaeger]
+            metrics/spanmetrics:
+              receivers: [otlp/spanmetrics]
+              exporters: [otlp/spanmetrics]
             metrics:
               receivers: [otlp, prometheus]
-              processors: [batch]
+              processors: [filter/spanmetrics]
               exporters: [prometheusremotewrite]
