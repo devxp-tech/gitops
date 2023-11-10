@@ -82,6 +82,9 @@ helmCharts:
               cluster: dev
 
         service:
+          telemetry:
+            metrics:
+              address: ":8888"
           extensions: [pprof, zpages, health_check]
           pipelines:
             traces:
