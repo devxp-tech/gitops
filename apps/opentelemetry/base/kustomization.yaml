@@ -44,7 +44,10 @@ helmCharts:
                         - ${env:MY_POD_IP}:8888
 
         processors:
-          batch:
+          batch: {}
+
+        extensions:
+          health_check:
 
         exporters:
           otlp:
@@ -55,6 +58,7 @@ helmCharts:
             endpoint: "0.0.0.0:8889"
 
         service:
+          extensions: [health_check]
           pipelines:
             traces:
               receivers: [jaeger, otlp]
