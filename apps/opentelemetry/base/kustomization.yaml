@@ -42,6 +42,7 @@ helmCharts:
                   static_configs:
                     - targets:
                         - ${env:MY_POD_IP}:8888
+
         processors:
           batch:
 
