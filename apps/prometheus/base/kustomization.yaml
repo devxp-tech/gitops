@@ -1826,8 +1826,8 @@ helmCharts:
 
               static_configs:
                 - targets:
-                    - opentelemetry-collector.tracing.svc.cluster.local:8888
-                    - opentelemetry-metrics.tracing.svc.cluster.local:8889
+                    - otel-collector.observability.svc.cluster.local:8888
+                    - opentelemetry-metrics.observability.svc.cluster.local:8889
 
             - job_name: "hotrod"
               scrape_interval: 30s
@@ -1835,7 +1835,7 @@ helmCharts:
               static_configs:
                 - targets:
                     - hotrod.hotrod.svc.cluster.local:80
-                    # - opentelemetry-collector.tracing.svc.cluster.local:8889
+                    # - otel-collector.observability.svc.cluster.local:8889
 
             - job_name: "cert-manager"
               metrics_path: /metrics

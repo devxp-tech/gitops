@@ -1,15 +1,15 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: tracing
+namespace: observability
 helmCharts:
-  - name: opentelemetry-collector
+  - name: otel-collector
     includeCRDs: true
     releaseName: open-telemetry
     version: 0.73.1
     repo: https://open-telemetry.github.io/opentelemetry-helm-charts
     valuesInline:
       mode: deployment
-      fullnameOverride: opentelemetry-collector
+      fullnameOverride: otel-collector
       presets:
         hostMetrics:
           enabled: true
@@ -18,6 +18,12 @@ helmCharts:
       ports:
         metrics:
           enabled: true
+        prometheus:
+          enabled: true
+          containerPort: 8889
+          servicePort: 8889
+          hostPort: 8889
+          protocol: TCP
       config:
         extensions:
           health_check: {}
@@ -47,9 +53,7 @@ helmCharts:
                   scrape_interval: 10s
                   static_configs:
                     - targets:
-                        [
-                          "opentelemetry-collector.tracing.svc.cluster.local:8888",
-                        ]
+                        ["otel-collector.observability.svc.cluster.local:8888"]
                   metric_relabel_configs:
                     - source_labels: [__name__]
                       regex: ".*grpc_io.*"
@@ -81,7 +85,7 @@ helmCharts:
           prometheusremotewrite:
             endpoint: http://prometheus-server.monitoring.svc.cluster.local/api/v1/write
             external_labels:
-              job: opentelemetry-collectors
+              job: otel-collectors
               cluster: dev
 
         service:

@@ -21,13 +21,13 @@ helmCharts:
         domain: devxp-tech.io
       envs:
         # - name: OTEL_EXPORTER_JAEGER_AGENT_HOST
-        #   value: "opentelemetry-collector.tracing.svc.cluster.local"
+        #   value: "otel-collector.observability.svc.cluster.local"
         # - name: OTEL_EXPORTER_JAEGER_AGENT_PORT
         #   value: "6831"
         - name: OTEL_EXPORTER_OTLP_ENDPOINT
-          value: http://opentelemetry-collector.tracing.svc.cluster.local:4318
+          value: http://otel-collector.observability.svc.cluster.local:4318
         - name: OTEL_EXPORTER_JAEGER_ENDPOINT
-          value: http://opentelemetry-collector.tracing.svc.cluster.local:14268/api/traces
+          value: http://otel-collector.observability.svc.cluster.local:14268/api/traces
 
       quota:
         enabled: false

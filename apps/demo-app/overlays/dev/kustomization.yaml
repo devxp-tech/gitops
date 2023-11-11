@@ -37,7 +37,7 @@ helmCharts:
         - name: INSECURE_MODE
           value: "true"
         - name: OTEL_EXPORTER_OTLP_ENDPOINT
-          value: opentelemetry-collector.tracing.svc.cluster.local:4317
+          value: otel-collector.observability.svc.cluster.local:4317
       probe:
         enabled: true
         livenessProbe:
