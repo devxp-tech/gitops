@@ -66,5 +66,5 @@ helmCharts:
             value: "false"
           - name: PROMETHEUS_QUERY_SUPPORT_SPANMETRICS_CONNECTOR
             value: "true"
-      # spark:
-      #   enabled: true
+      spark:
+        enabled: true
