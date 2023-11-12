@@ -68,3 +68,14 @@ helmCharts:
             value: "true"
       spark:
         enabled: true
+      resources:
+        # Give this job enough amount of resources plz!
+        limits:
+          cpu: 800m
+          memory: 4Gi
+        requests:
+          cpu: 400m
+          memory: 2Gi
+      agent:
+        # if you are using otel-agent, then you don't need to deploy the jaeger agent
+        enabled: false
