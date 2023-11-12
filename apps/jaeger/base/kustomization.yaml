@@ -19,7 +19,7 @@ helmCharts:
 
   - name: jaeger
     releaseName: jaegertracing
-    version: 0.71.17
+    version: 0.72.0
     repo: https://jaegertracing.github.io/helm-charts
     namespace: observability
     valuesInline:
@@ -28,7 +28,7 @@ helmCharts:
       #   enabled: true
       commonLabels:
         app: jaeger
-        version: 0.71.17
+        version: 0.72.0
       provisionDataStore:
         cassandra: false
         elasticsearch: true
