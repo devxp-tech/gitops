@@ -76,6 +76,11 @@ helmCharts:
                     matcherRegex: ((\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+))
                     url: "$${__value.raw}"
                     name: traceID
+                  - datasourceUid: tempo
+                    datasourceName: Tempo
+                    matcherRegex: traceId=(\w*)
+                    name: traceID
+                    url: ${__value.raw}
             - name: Prometheus
               type: prometheus
               url: http://prometheus-server
@@ -92,11 +97,21 @@ helmCharts:
               version: 1
             - name: Tempo
               type: tempo
-              access: browser
-              orgId: 1
               uid: tempo
-              url: http://tempo.monitoring.svc:16686
+              url: http://tempo.observability:3100
               editable: true
+              jsonData:
+                httpMethod: GET
+                tracesToLogsV2:
+                  datasourceUid: loki
+                serviceMap:
+                  datasourceUid: prometheus
+                nodeGraph:
+                  enabled: true
+                search:
+                  hide: false
+                lokiSearch:
+                  datasourceUid: loki
       notifiers:
         notifiers.yaml:
           notifiers:
