@@ -16,4 +16,4 @@ helmCharts:
           otlp:
             protocols:
               http:
-              grpc:
+              # grpc:
