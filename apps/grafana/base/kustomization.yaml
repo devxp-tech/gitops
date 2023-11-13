@@ -79,7 +79,7 @@ helmCharts:
                   - name: Tempo
                     datasourceUid: tempo
                     datasourceName: Tempo
-                    matcherRegex: "traceID=(\\w+)"
+                    matcherRegex: ((\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+))
                     url: "$${__value.raw}"
             - name: Prometheus
               type: prometheus
