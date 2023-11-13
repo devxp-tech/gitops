@@ -13,6 +13,13 @@ helmCharts:
       presets:
         hostMetrics:
           enabled: true
+        kubernetesAttributes:
+          enabled: true
+        kubeletMetrics:
+          enabled: true
+        clusterMetrics:
+          enabled: true
+
       serviceMonitor:
         enabled: true
       ports:
