@@ -47,7 +47,7 @@ helmCharts:
         GF_AUTH_GITHUB_SCOPES: "user:email,read:org"
         GF_AUTH_GITHUB_ALLOWED_ORGANIZATIONS: devxp-tech
         GF_AUTO_ASSIGN_ORG_ROLE: Admin
-        GF_FEATURE_TOGGLES_ENABLE: "tempoServiceGraph tempoSearch tempoBackendSearch"
+        GF_FEATURE_TOGGLES_ENABLE: "tempoServiceGraph, tempoSearch, tempoBackendSearch"
 
       datasources:
         datasources.yaml:
