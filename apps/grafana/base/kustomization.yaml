@@ -82,13 +82,15 @@ helmCharts:
                     matcherRegex: ((\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+))
                     url: "$${__value.raw}"
             - name: Prometheus
+              uid: prometheus
               type: prometheus
               url: http://prometheus-server
-              access: proxy
+              # access: proxy
               isDefault: true
               jsonData:
                 manageAlerts: true
                 alertmanagerUid: alertmanager
+                httpMethod: GET
             # - name: Jaeger
             #   uid: jaeger
             #   type: jaeger
