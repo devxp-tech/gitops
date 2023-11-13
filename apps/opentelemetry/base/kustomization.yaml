@@ -80,7 +80,7 @@ helmCharts:
             tls:
               insecure: true
           otlp/tempo:
-            endpoint: "http://tempo.observability.svc:4318"
+            endpoint: "tempo.observability.svc:14268"
             tls:
               insecure: true
           prometheus:
