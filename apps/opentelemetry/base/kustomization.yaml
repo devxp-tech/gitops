@@ -75,10 +75,10 @@ helmCharts:
             dimensions_cache_size: 1000
 
         exporters:
-          otlp/jaeger:
-            endpoint: "jaeger-collector.observability.svc:4317"
-            tls:
-              insecure: true
+          # otlp/jaeger:
+          #   endpoint: "jaeger-collector.observability.svc:4317"
+          #   tls:
+          #     insecure: true
           otlp/tempo:
             endpoint: "tempo.observability.svc:4317"
             tls:
@@ -93,9 +93,9 @@ helmCharts:
           extensions: [pprof, zpages, health_check]
           pipelines:
             traces:
-              receivers: [otlp, jaeger, zipkin]
+              receivers: [otlp, zipkin]
               processors: [batch, spanmetrics]
-              exporters: [otlp/jaeger, otlp/tempo]
+              exporters: [otlp/tempo]
             metrics:
               receivers: [otlp, prometheus]
               exporters: [prometheus]
