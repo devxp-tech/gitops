@@ -78,7 +78,7 @@ helmCharts:
                     name: traceID
                   - datasourceUid: tempo
                     datasourceName: Tempo
-                    matcherRegex: traceId=(\w*)
+                    matcherRegex: "traceID=(\\w+)"
                     name: traceID
                     url: ${__value.raw}
             - name: Prometheus
