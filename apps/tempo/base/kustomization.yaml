@@ -9,11 +9,11 @@ helmCharts:
     repo: https://grafana.github.io/helm-charts
     valuesInline:
       tempo:
-      extraArgs:
-        "distributor.log-received-traces": true
-      receivers:
-        zipkin:
-        otlp:
-          protocols:
-            http:
-            grpc:
+        extraArgs:
+          "distributor.log-received-traces": true
+        receivers:
+          zipkin:
+          otlp:
+            protocols:
+              http:
+              grpc:
