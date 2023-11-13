@@ -79,14 +79,12 @@ helmCharts:
             endpoint: "jaeger-collector.observability.svc:4317"
             tls:
               insecure: true
+          otlp/tempo:
+            endpoint: "tempo.observability.svc:4317"
+            tls:
+              insecure: true
           prometheus:
             endpoint: "0.0.0.0:8889"
-
-          prometheusremotewrite:
-            endpoint: http://prometheus-server.monitoring.svc.cluster.local/api/v1/write
-            external_labels:
-              job: otel-collectors
-              cluster: dev
 
         service:
           telemetry:
@@ -97,10 +95,10 @@ helmCharts:
             traces:
               receivers: [otlp, jaeger, zipkin]
               processors: [batch, spanmetrics]
-              exporters: [otlp/jaeger]
+              exporters: [otlp/jaeger, otlp/tempo]
             metrics:
               receivers: [otlp, prometheus]
-              exporters: [prometheusremotewrite]
+              exporters: [prometheus]
             metrics/spanmetrics:
               receivers: [otlp/spanmetrics]
               exporters: [prometheus]
