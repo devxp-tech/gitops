@@ -8,6 +8,8 @@ helmCharts:
     version: 1.7.0
     repo: https://grafana.github.io/helm-charts
     valuesInline:
+      gateway:
+        enabled: true
       tempo:
         # extraArgs:
         #   "distributor.log-received-traces": true
