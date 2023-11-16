@@ -42,6 +42,14 @@ helmCharts:
           zpages: {}
 
         receivers:
+          jaeger:
+            protocols:
+              grpc:
+                endpoint: ${env:MY_POD_IP}:14250
+              thrift_compact:
+                endpoint: ${env:MY_POD_IP}:6831
+              thrift_http:
+                endpoint: ${env:MY_POD_IP}:14268
           otlp:
             protocols:
               grpc:
@@ -104,7 +112,7 @@ helmCharts:
           extensions: [pprof, zpages, health_check]
           pipelines:
             traces:
-              receivers: [otlp, zipkin]
+              receivers: [jaeger, otlp, zipkin]
               processors: [batch, spanmetrics]
               exporters: [otlp/tempo]
             metrics:
