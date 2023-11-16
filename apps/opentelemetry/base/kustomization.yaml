@@ -10,15 +10,18 @@ helmCharts:
     valuesInline:
       mode: deployment
       fullnameOverride: otel-collector
+      autoscaling:
+        enabled: true
+
       presets:
         hostMetrics:
-          enabled: true
+          enabled: false
         kubernetesAttributes:
-          enabled: true
+          enabled: false
         kubeletMetrics:
-          enabled: true
+          enabled: false
         clusterMetrics:
-          enabled: true
+          enabled: false
 
       serviceMonitor:
         enabled: true
