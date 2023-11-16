@@ -12,6 +12,7 @@ helmCharts:
       fullnameOverride: otel-collector
       autoscaling:
         enabled: true
+        minReplicas: 2
 
       presets:
         hostMetrics:
