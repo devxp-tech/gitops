@@ -12,7 +12,7 @@ helmCharts:
       name: demo-app
       image:
         repository: ghcr.io/devxp-tech/demo-app
-        tag: e726b78b
+        tag: 7df51a75
       autoscaling:
         enabled: true
         minReplicas: 1
@@ -37,7 +37,7 @@ helmCharts:
         - name: INSECURE_MODE
           value: "true"
         - name: OTEL_EXPORTER_OTLP_ENDPOINT
-          value: otel-collector.observability.svc.cluster.local:14268
+          value: otel-collector.observability.svc.cluster.local:4317
       probe:
         enabled: true
         livenessProbe:
