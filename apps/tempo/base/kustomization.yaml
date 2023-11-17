@@ -10,6 +10,8 @@ helmCharts:
     valuesInline:
       gateway:
         enabled: true
+      tempoQuery:
+        enabled: true
       tempo:
         # extraArgs:
         #   "distributor.log-received-traces": true
