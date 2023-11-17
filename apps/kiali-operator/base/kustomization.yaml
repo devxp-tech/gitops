@@ -51,7 +51,7 @@ helmCharts:
               enabled: true
               # Private facing URL of Jaeger
               # in_cluster_url: "http://jaeger-query.observability.svc.cluster.local:80"
-              in_cluster_url: "http://tempo.observability:3100"
+              in_cluster_url: "http://tempo.observability:16686"
               use_grpc: false
               # Public facing URL of Jaeger
               # url: "https://jaeger.devxp-tech.io/jaeger"
