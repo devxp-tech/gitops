@@ -9,6 +9,9 @@ spec:
       app: istio-ingressgateway
   action: ALLOW
   rules:
+    - from:
+        - source:
+            namespaces: ["kiali-operator"]
     - to:
         - operation:
             hosts:
@@ -33,4 +36,3 @@ spec:
               - "devxp-tech.io" # Need for Homepage
               - "www.devxp-tech.io" # Need for Homepage
               - "*.diegoluisi.eti.br" # Allow wordpress for everyone
-              - "10.100.0.1"
