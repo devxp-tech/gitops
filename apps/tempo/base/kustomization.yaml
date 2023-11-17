@@ -25,7 +25,7 @@ helmCharts:
             backend: s3 # we're using minio anyway!
             s3:
               bucket: devxp-dev-tempo-traces
-              endpoint: s3.dualstack.us-east-1.amazonaws.com
+              endpoint: s3.us-east-1.amazonaws.com
               region: us-east-1
         receivers:
           zipkin:
