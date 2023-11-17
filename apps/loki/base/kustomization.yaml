@@ -27,7 +27,7 @@ helmCharts:
       test:
         enabled: false
       tracing:
-        jaegerAgentHost: jaeger-agent.observability.svc.cluster.local:6831
+        jaegerAgentHost: tempo.observability.svc.cluster.local:6831
       persistence:
         enabled: true
       loki:

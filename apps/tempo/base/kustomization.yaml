@@ -8,13 +8,24 @@ helmCharts:
     version: 1.7.0
     repo: https://grafana.github.io/helm-charts
     valuesInline:
+      labels:
+        app: tempo
+      serviceAccount:
+        name: tempo
+        annotations:
+          "eks.amazonaws.com/role-arn": "arn:aws:iam::239468932737:role/tempo-lgseksd1-sa"
+        automountServiceAccountToken: true
       gateway:
         enabled: true
       tempoQuery:
         enabled: true
       tempo:
-        # extraArgs:
-        #   "distributor.log-received-traces": true
+        storage:
+          trace:
+            backend: s3 # we're using minio anyway!
+            s3:
+              bucket: devxp-dev-tempo-traces
+              region: us-east-1
         receivers:
           zipkin:
           otlp:
