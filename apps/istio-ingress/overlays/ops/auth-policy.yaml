@@ -33,3 +33,4 @@ spec:
               - "devxp-tech.io" # Need for Homepage
               - "www.devxp-tech.io" # Need for Homepage
               - "*.diegoluisi.eti.br" # Allow wordpress for everyone
+              - "10.100.0.1"
