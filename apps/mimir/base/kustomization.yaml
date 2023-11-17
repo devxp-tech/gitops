@@ -9,6 +9,7 @@ helmCharts:
     version: 5.2.0-weekly.264
     repo: https://grafana.github.io/helm-charts
     valuesInline:
+      nameOverride: mimir
       labels:
         app: mimir
       serviceAccount:
