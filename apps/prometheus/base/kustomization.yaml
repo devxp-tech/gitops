@@ -1806,14 +1806,20 @@ helmCharts:
                 - targets:
                     - teste-loki.teste-loki.svc.cluster.local
 
-            - job_name: "jaeger"
-              metrics_path: /metrics
-              scrape_interval: 15s
+            - job_name: "demo-app"
+              scrape_interval: 60s
               static_configs:
                 - targets:
-                    - jaeger-agent.observability.svc.cluster.local:14271
-                    - jaeger-collector.observability.svc.cluster.local:14269
-                    - jaeger-query.observability.svc.cluster.local:16687
+                    - demo-app.demo-app.svc.cluster.local
+
+            # - job_name: "jaeger"
+            #   metrics_path: /metrics
+            #   scrape_interval: 15s
+            #   static_configs:
+            #     - targets:
+            #         - jaeger-agent.observability.svc.cluster.local:14271
+            #         - jaeger-collector.observability.svc.cluster.local:14269
+            #         - jaeger-query.observability.svc.cluster.local:16687
 
             # - job_name: "sonarqube"
             #   scrape_interval: 60s
@@ -1834,7 +1840,6 @@ helmCharts:
               static_configs:
                 - targets:
                     - hotrod.hotrod.svc.cluster.local:80
-                    # - otel-collector.observability.svc.cluster.local:8889
 
             - job_name: "cert-manager"
               metrics_path: /metrics
