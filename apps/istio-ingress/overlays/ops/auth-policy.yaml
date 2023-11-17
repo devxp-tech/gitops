@@ -11,7 +11,10 @@ spec:
   rules:
     - from:
         - source:
-            namespaces: ["kiali-operator"]
+            principals: ["cluster.local/*"]
+      to:
+        - operation:
+            methods: ["GET", "POST", "OPTIONS", "DELETE", "PATCH"]
     - to:
         - operation:
             hosts:
