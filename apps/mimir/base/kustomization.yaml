@@ -1,0 +1,18 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: monitoring
+helmCharts:
+  - name: mimir-distributed
+    includeCRDs: true
+    releaseName: mimir-distributed
+    namespace: monitoring
+    version: 5.2.0-weekly.264
+    repo: https://grafana.github.io/helm-charts
+    valuesInline:
+      labels:
+        app: mimir
+      serviceAccount:
+        name: mimir
+        annotations:
+          "eks.amazonaws.com/role-arn": "arn:aws:iam::239468932737:role/mimir-lgseksd1-sa"
+        automountServiceAccountToken: true
