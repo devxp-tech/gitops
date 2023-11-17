@@ -20,14 +20,14 @@ helmCharts:
       network:
         domain: devxp-tech.io
       envs:
-        # - name: OTEL_EXPORTER_JAEGER_AGENT_HOST
-        #   value: "otel-collector.observability.svc.cluster.local"
-        # - name: OTEL_EXPORTER_JAEGER_AGENT_PORT
-        #   value: "6831"
+        # - name: OTEL_EXPORTER_OTLP_ENDPOINT
+        #   value: http://otel-collector.observability.svc.cluster.local:4318
+        # - name: OTEL_EXPORTER_JAEGER_ENDPOINT
+        #   value: http://otel-collector.observability.svc.cluster.local:14268/api/traces
         - name: OTEL_EXPORTER_OTLP_ENDPOINT
-          value: http://otel-collector.observability.svc.cluster.local:4318
+          value: http://tempo.observability.svc.cluster.local:4318
         - name: OTEL_EXPORTER_JAEGER_ENDPOINT
-          value: http://otel-collector.observability.svc.cluster.local:14268/api/traces
+          value: http://tempo.observability.svc.cluster.local:14268/api/traces
 
       quota:
         enabled: false

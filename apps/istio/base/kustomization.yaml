@@ -30,7 +30,7 @@ helmCharts:
             memory: 128Mi
         tracer:
           zipkin:
-            address: otel-collector.observability.svc.cluster.local:9411
+            address: tempo.observability.svc.cluster.local:9411
             # address: jaeger-collector.observability.svc.cluster.local:9411
         proxy:
           clusterDomain: "cluster.local"
