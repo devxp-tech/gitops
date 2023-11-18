@@ -181,6 +181,9 @@ helmCharts:
 
             {{- end }}
 
+      prometheus-pushgateway:
+        enabled: false
+
       server:
         global:
           external_labels:
