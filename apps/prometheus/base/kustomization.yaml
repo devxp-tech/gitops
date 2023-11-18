@@ -190,7 +190,7 @@ helmCharts:
       server:
         podAnnotations:
           # traffic.sidecar.istio.io/includeInboundPorts: "" # do not intercept any inbound ports
-          traffic.sidecar.istio.io/includeOutboundIPRanges: "10.100.0.1" # do not intercept any outbound
+          traffic.sidecar.istio.io/includeOutboundIPRanges: "10.100.0.0/24" # do not intercept any outbound
 
         global:
           external_labels:
