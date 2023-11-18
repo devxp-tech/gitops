@@ -28,6 +28,14 @@ helmCharts:
           limits:
             cpu: 100m
             memory: 128Mi
+          mtls:
+            # Default setting for service-to-service mtls. Can be set explicitly using
+            # destination rules or service annotations.
+            enabled: false
+            # List of fully qualified services to exclude from mtls
+            # TODO: add the templating.
+            mtlsExcludedServices:
+              - "kubernetes.default.svc.cluster.local"
         tracer:
           zipkin:
             address: tempo.observability.svc.cluster.local:9411
