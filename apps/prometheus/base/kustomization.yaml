@@ -188,6 +188,10 @@ helmCharts:
         enabled: false
 
       server:
+        podAnnotations:
+          # traffic.sidecar.istio.io/includeInboundPorts: "" # do not intercept any inbound ports
+          traffic.sidecar.istio.io/includeOutboundIPRanges: "10.100.0.1" # do not intercept any outbound
+
         global:
           external_labels:
             cluster_id: lgseksd1
