@@ -1311,7 +1311,7 @@ helmCharts:
           scrape_configs:
             - job_name: serviceMonitor/argocd/argocd-metrics/0
               honor_timestamps: true
-              scrape_interval: 30s
+              scrape_interval: 120s
               scrape_timeout: 10s
               metrics_path: /metrics
               scheme: http
@@ -1411,7 +1411,7 @@ helmCharts:
 
             - job_name: serviceMonitor/argocd/argocd-repo-server-metrics/0
               honor_timestamps: true
-              scrape_interval: 30s
+              scrape_interval: 120s
               scrape_timeout: 10s
               metrics_path: /metrics
               scheme: http
@@ -1510,7 +1510,7 @@ helmCharts:
                       - argocd
             - job_name: serviceMonitor/argocd/argocd-server-metrics/0
               honor_timestamps: true
-              scrape_interval: 30s
+              scrape_interval: 120s
               scrape_timeout: 10s
               metrics_path: /metrics
               scheme: http
@@ -1609,19 +1609,19 @@ helmCharts:
                       - argocd
 
             - job_name: "prometheus"
-              scrape_interval: 5s
+              scrape_interval: 30s
               static_configs:
                 - targets:
                     - prometheus-server:80
 
             - job_name: "alertmanager"
-              scrape_interval: 10s
+              scrape_interval: 30s
               honor_labels: true
               static_configs:
                 - targets: ["prometheus-alertmanager:9093"]
 
             - job_name: "grafana"
-              scrape_interval: 10s
+              scrape_interval: 60s
               honor_labels: true
               static_configs:
                 - targets: ["grafana:80"]
@@ -1835,7 +1835,7 @@ helmCharts:
             #         - otel-collector.observability.svc.cluster.local:8889
 
             - job_name: "hotrod"
-              scrape_interval: 30s
+              scrape_interval: 60s
               metrics_path: /metrics
               static_configs:
                 - targets:
@@ -1843,14 +1843,14 @@ helmCharts:
 
             - job_name: "cert-manager"
               metrics_path: /metrics
-              scrape_interval: 15s
+              scrape_interval: 60s
               static_configs:
                 - targets:
                     - cert-manager.cert-manager.svc.cluster.local:9402
 
             - job_name: kubecost
               honor_labels: true
-              scrape_interval: 1m
+              scrape_interval: 2m
               scrape_timeout: 10s
               metrics_path: /metrics
               scheme: http
