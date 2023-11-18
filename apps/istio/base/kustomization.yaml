@@ -36,6 +36,7 @@ helmCharts:
             # TODO: add the templating.
             mtlsExcludedServices:
               - "kubernetes.default.svc.cluster.local"
+              - "10.100.0.1"
         tracer:
           zipkin:
             address: tempo.observability.svc.cluster.local:9411
