@@ -9,7 +9,7 @@ commonLabels:
 helmCharts:
   - name: sonarqube
     releaseName: sonarqube
-    version: 3.3.0
+    version: 3.3.3
     repo: https://charts.bitnami.com/bitnami
     valuesInline:
       sonarqubeEmail: noreply@devxp-tech.io
