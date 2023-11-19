@@ -1843,6 +1843,12 @@ helmCharts:
                 - targets:
                     - sonarqube-jmx-metrics.sonarqube.svc.cluster.local:10443
 
+            - job_name: "karpenter"
+              scrape_interval: 60s
+              static_configs:
+                - targets:
+                    - karpenter.karpenter.svc.cluster.local:8000
+
             # - job_name: "otel-collector"
             #   scrape_interval: 30s
             #   static_configs:
