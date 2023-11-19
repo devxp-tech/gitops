@@ -27,13 +27,13 @@ helmCharts:
       #     memory: 512Mi
       #     cpu: 100m
       #   limits:
-      #     memory: 1024Mi
+      #     memory: 2048Mi
       #     cpu: 200m
       extraEnvVars:
         - name: SONAR_CE_JAVAOPTS
-          value: "-Xmx1024m -Xmx1024m"
+          value: "-Xmx2048m -Xmx2048m"
         - name: JAVA_OPTS
-          value: "-Duser.timezone=America/Sao_Paulo -Xmx1024m"
+          value: "-Duser.timezone=America/Sao_Paulo -Xmx2048m"
       postgresql:
         auth:
           existingSecret: sonarqube-postgresql-secret
