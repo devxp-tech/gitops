@@ -38,6 +38,8 @@ helmCharts:
       existingSecret: wordpress-secrets
       serviceAccount:
         create: true
+      metrics:
+        enabled: true
       service:
         type: ClusterIP
       persistence:
