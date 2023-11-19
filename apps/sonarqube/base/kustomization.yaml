@@ -5,11 +5,11 @@ resources:
   - ns.yaml
 commonLabels:
   app: sonarqube
-  version: 10.0.0
+  version: 10.3.0
 helmCharts:
   - name: sonarqube
     releaseName: sonarqube
-    version: 3.2.8
+    version: 4.1.2
     repo: https://charts.bitnami.com/bitnami
     valuesInline:
       sonarqubeEmail: noreply@devxp-tech.io
@@ -45,6 +45,6 @@ helmCharts:
             requests:
               cpu: 50m
               memory: 128Mi
-      # metrics:
-      #   jmx:
-      #     enabled: true
+      metrics:
+        jmx:
+          enabled: true
