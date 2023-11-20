@@ -48,6 +48,8 @@ helmCharts:
         app: wordpress
         version: 6.2.2
       extraEnvVars:
+        - name: WP_AUTO_UPDATE_CORE
+          value: true
         - name: PHP_UPLOAD_MAX_FILESIZE
           value: 1024M
         - name: PHP_POST_MAX_SIZE
