@@ -5,7 +5,7 @@ resources:
   - ns.yaml
 commonLabels:
   app: wordpress
-  version: 6.2.2
+  version: 6.3.2
 helmCharts:
   - name: wordpress
     releaseName: wordpress
