@@ -27,6 +27,7 @@ helmCharts:
         define('WP_MEMORY_LIMIT', '512M');
         define('WP_MAX_EXECUTION_TIME', '900');
         define('WP_MAX_INPUT_TIME', '900');
+        define('WP_AUTO_UPDATE_CORE', 'true');
 
       uploadMaxFilesize: 8192M
       postMaxSize: 8192M
@@ -48,8 +49,6 @@ helmCharts:
         app: wordpress
         version: 6.2.2
       extraEnvVars:
-        - name: WP_AUTO_UPDATE_CORE
-          value: true
         - name: PHP_UPLOAD_MAX_FILESIZE
           value: 1024M
         - name: PHP_POST_MAX_SIZE
