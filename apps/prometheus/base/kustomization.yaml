@@ -1854,7 +1854,7 @@ helmCharts:
               metrics_path: /actuator/metrics
               static_configs:
                 - targets:
-                    - template-java.template-java.svc.cluster.local:8080
+                    - template-java.template-java.svc.cluster.local
 
             # - job_name: "otel-collector"
             #   scrape_interval: 30s
