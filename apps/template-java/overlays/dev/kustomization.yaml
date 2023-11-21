@@ -41,10 +41,10 @@ helmCharts:
       probe:
         enabled: true
         livenessProbe:
-          path: /actuator/health
+          path: /actuator/health/liveness
           port: 8080
         readinessProbe:
-          path: /actuator/health
+          path: /actuator/health/readiness
           port: 8080
       deploy:
         enabled: true
