@@ -1851,7 +1851,7 @@ helmCharts:
 
             - job_name: "template-java"
               scrape_interval: 60s
-              metrics_path: /actuator/metrics
+              metrics_path: /actuator/prometheus
               static_configs:
                 - targets:
                     - template-java.template-java.svc.cluster.local
