@@ -1849,6 +1849,13 @@ helmCharts:
                 - targets:
                     - karpenter.karpenter.svc.cluster.local:8000
 
+            - job_name: "template-java"
+              scrape_interval: 60s
+              metrics_path: /actuator/metrics
+              static_configs:
+                - targets:
+                    - template-java.template-java.svc.cluster.local:8080
+
             # - job_name: "otel-collector"
             #   scrape_interval: 30s
             #   static_configs:
