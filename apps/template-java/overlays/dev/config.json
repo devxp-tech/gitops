@@ -1,0 +1,11 @@
+{
+  "appName": "template-java",
+  "userGivenName": "template-java",
+  "destNamespace": "template-java",
+  "destServer": "https://kubernetes.default.svc",
+  "srcPath": "apps/template-java/overlays/dev",
+  "srcRepoURL": "https://github.com/devxp-tech/gitops.git",
+  "srcTargetRevision": "",
+  "CreateNamespace": true,
+  "labels": null
+}
