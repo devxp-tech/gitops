@@ -12,7 +12,7 @@ helmCharts:
       name: template-java
       image:
         repository: ghcr.io/devxp-tech/template-java
-        tag: abd278b5
+        tag: 718f0f96
       autoscaling:
         enabled: true
         minReplicas: 1
