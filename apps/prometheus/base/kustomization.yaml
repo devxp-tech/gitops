@@ -1851,6 +1851,7 @@ helmCharts:
 
             - job_name: "template-java"
               scrape_interval: 60s
+              scrape_timeout: 10s
               metrics_path: /actuator/prometheus
               static_configs:
                 - targets:
