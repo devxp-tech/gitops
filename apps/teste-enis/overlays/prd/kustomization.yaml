@@ -12,7 +12,7 @@ helmCharts:
     name: teste-enis
     image:
       repository: ghcr.io/devxp-tech/teste-enis
-      tag: latest
+      tag: 05b78747
     autoscaling:
       enabled: true
       minReplicas: 1
