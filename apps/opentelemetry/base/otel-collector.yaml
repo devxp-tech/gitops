@@ -3,7 +3,6 @@ kind: OpenTelemetryCollector
 metadata:
   name: otel-collector
 spec:
-  mode: deployment # This configuration is omittable.
   config: |
     receivers:
       otlp:

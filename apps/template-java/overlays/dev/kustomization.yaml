@@ -10,6 +10,9 @@ helmCharts:
     repo: https://devxp-tech.github.io/helm-charts
     valuesInline:
       name: template-java
+      deployment:
+        annotations:
+          instrumentation.opentelemetry.io/inject-python: java-instrumentation
       image:
         repository: ghcr.io/devxp-tech/template-java
         tag: 31521284
