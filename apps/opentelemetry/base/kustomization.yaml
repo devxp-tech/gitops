@@ -4,36 +4,38 @@ namespace: opentelemetry-operator-system
 resources:
   - collector.yaml
   - instrumentaion.yaml
+  - https://github.com/open-telemetry/opentelemetry-operator/releases/latest/download/opentelemetry-operator.yaml
+
   # - go-instrumentaion.yaml
   # - java-instrumentation.yaml
-helmCharts:
-  - name: opentelemetry-operator
-    includeCRDs: true
-    releaseName: opentelemetry-operator
-    version: 0.43.0
-    repo: https://open-telemetry.github.io/opentelemetry-helm-charts
-    valuesInline:
-      manager:
-        serviceMonitor:
-          enabled: true
-        prometheusRule:
-          enabled: true
-          defaultRules:
-            enabled: true
-      kubeRBACProxy:
-        enabled: false
-      admissionWebhooks:
-        pods:
-          failurePolicy: Ignore
-        certManager:
-          enabled: true
-          create: true
-        autoGenerateCert:
-          enabled: false
+# helmCharts:
+#   - name: opentelemetry-operator
+#     includeCRDs: true
+#     releaseName: opentelemetry-operator
+#     version: 0.43.0
+#     repo: https://open-telemetry.github.io/opentelemetry-helm-charts
+#     valuesInline:
+#       manager:
+#         serviceMonitor:
+#           enabled: true
+#         prometheusRule:
+#           enabled: true
+#           defaultRules:
+#             enabled: true
+#       kubeRBACProxy:
+#         enabled: false
+#       admissionWebhooks:
+#         pods:
+#           failurePolicy: Ignore
+#         certManager:
+#           enabled: true
+#           create: true
+#         autoGenerateCert:
+#           enabled: false
 
-      # working...
-      # admissionWebhooks:
-      #   create: false
-      # manager:
-      #   env:
-      #     ENABLE_WEBHOOKS: "false"
+# working...
+# admissionWebhooks:
+#   create: false
+# manager:
+#   env:
+#     ENABLE_WEBHOOKS: "false"
