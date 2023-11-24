@@ -34,13 +34,6 @@ helmCharts:
         service:
           type: ClusterIP
           port: 80
-      envs:
-        - name: SERVICE_NAME
-          value: "template-java"
-        - name: INSECURE_MODE
-          value: "true"
-        - name: OTEL_EXPORTER_OTLP_ENDPOINT
-          value: tempo.observability.svc.cluster.local:4317
       probe:
         enabled: true
         livenessProbe:
