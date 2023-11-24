@@ -6,20 +6,10 @@ spec:
   mode: deployment # This configuration is omittable.
   config: |
     receivers:
-      jaeger:
-        protocols:
-          grpc:
-            endpoint: ${env:MY_POD_IP}:14250
-          thrift_compact:
-            endpoint: ${env:MY_POD_IP}:6831
-          thrift_http:
-            endpoint: ${env:MY_POD_IP}:14268
       otlp:
         protocols:
           grpc:
-            endpoint: ${env:MY_POD_IP}:4317
           http:
-            endpoint: ${env:MY_POD_IP}:4318
       zipkin:
         endpoint: ${MY_POD_IP}:9411
 
@@ -40,13 +30,10 @@ spec:
           insecure: true
 
     service:
-      telemetry:
-        metrics:
-          address: ":8888"
       extensions: [pprof, zpages, health_check]
       pipelines:
         traces:
-          receivers: [jaeger, otlp, zipkin]
+          receivers: [otlp, zipkin]
           processors: [memory_limiter, batch]
           exporters: [logging, otlp/tempo]
         metrics:
