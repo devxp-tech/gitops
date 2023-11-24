@@ -12,10 +12,8 @@ helmCharts:
     valuesInline:
       admissionWebhooks:
         certManager:
-          create: true
-
-    #     enabled: true
-    # autoGenerateCert: true
+          enabled: false
+        autoGenerateCert: true
 
   # - name: opentelemetry-collector
   #   includeCRDs: true
