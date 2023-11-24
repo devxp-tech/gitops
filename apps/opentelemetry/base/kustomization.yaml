@@ -19,6 +19,9 @@ helmCharts:
           enabled: true
         autoGenerateCert:
           enabled: false
+      manager:
+        env:
+          ENABLE_WEBHOOKS: "false"
 # working...
 # admissionWebhooks:
 #   create: false
