@@ -16,6 +16,8 @@ helmCharts:
       admissionWebhooks:
         certManager:
           enabled: true
+        autoGenerateCert:
+          enabled: false
 # working...
 # admissionWebhooks:
 #   create: false
