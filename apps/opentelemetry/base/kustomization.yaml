@@ -3,8 +3,9 @@ kind: Kustomization
 namespace: opentelemetry-operator-system
 resources:
   - collector.yaml
+  - instrumentaion.yaml
   # - go-instrumentaion.yaml
-  - java-instrumentation.yaml
+  # - java-instrumentation.yaml
 helmCharts:
   - name: opentelemetry-operator
     includeCRDs: true
