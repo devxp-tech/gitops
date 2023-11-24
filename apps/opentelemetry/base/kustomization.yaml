@@ -13,7 +13,7 @@ helmCharts:
       # fullnameOverride: opentelemetry-operator
       admissionWebhooks:
         certManager:
-          enabled: true
+          enabled: false
           autoGenerateCert: true
 
   # - name: opentelemetry-collector
