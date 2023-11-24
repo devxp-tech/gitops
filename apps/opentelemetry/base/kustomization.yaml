@@ -11,9 +11,10 @@ helmCharts:
     repo: https://open-telemetry.github.io/opentelemetry-helm-charts
     valuesInline:
       admissionWebhooks:
+        autoGenerateCert:
+          enabled: true
         certManager:
           enabled: false
-        # autoGenerateCert: true
 
   # - name: opentelemetry-collector
   #   includeCRDs: true
