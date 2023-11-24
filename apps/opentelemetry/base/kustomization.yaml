@@ -15,7 +15,7 @@ helmCharts:
     valuesInline:
       admissionWebhooks:
         certManager:
-          create: true
+          enabled: true
 # working...
 # admissionWebhooks:
 #   create: false
