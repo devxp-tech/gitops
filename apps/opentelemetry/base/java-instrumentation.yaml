@@ -11,4 +11,4 @@ spec:
   java:
     env:
       - name: OTEL_EXPORTER_OTLP_ENDPOINT
-        value: http://otel-collector-collector.opentelemetry-operator-system.svc.cluster.local:4317
+        value: http://default-collector.opentelemetry-operator-system.svc.cluster.local:4317
