@@ -4,8 +4,6 @@ namespace: opentelemetry-operator-system
 resources:
   - collector.yaml
   - instrumentaion.yaml
-  - https://github.com/open-telemetry/opentelemetry-operator/releases/latest/download/opentelemetry-operator.yaml
-
   # - go-instrumentaion.yaml
   # - java-instrumentation.yaml
 helmCharts:
