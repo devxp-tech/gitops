@@ -44,6 +44,8 @@ helmCharts:
           port: 8080
       deploy:
         enabled: true
+      argoRollouts:
+        enabled: false
       sa:
         enabled: true
       quota:
