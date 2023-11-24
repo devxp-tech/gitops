@@ -9,10 +9,11 @@ helmCharts:
     releaseName: opentelemetry-operator
     version: 0.43.0
     repo: https://open-telemetry.github.io/opentelemetry-helm-charts
-    # valuesInline:
-    # fullnameOverride: opentelemetry-operator
-    # admissionWebhooks:
-    #   certManager:
+    valuesInline:
+      admissionWebhooks:
+        certManager:
+          create: true
+
     #     enabled: true
     # autoGenerateCert: true
 
