@@ -1857,11 +1857,11 @@ helmCharts:
                 - targets:
                     - template-java.template-java.svc.cluster.local:80
 
-            # - job_name: "otel-collector"
-            #   scrape_interval: 30s
-            #   static_configs:
-            #     - targets:
-            #         - otel-collector.observability.svc.cluster.local:8888
+            - job_name: "default-collector"
+              scrape_interval: 30s
+              static_configs:
+                - targets:
+                    - default-collector-monitoring.opentelemetry-operator-system.svc.cluster.local:8888
             #         - otel-collector.observability.svc.cluster.local:8889
 
             - job_name: "hotrod"
