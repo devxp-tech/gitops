@@ -13,7 +13,7 @@ helmCharts:
       admissionWebhooks:
         certManager:
           enabled: false
-        autoGenerateCert: true
+        # autoGenerateCert: true
 
   # - name: opentelemetry-collector
   #   includeCRDs: true
