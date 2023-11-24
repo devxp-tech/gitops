@@ -6,6 +6,11 @@ spec:
   mode: deployment
   config: |
     receivers:
+      jaeger:
+        protocols:
+          grpc:
+          thrift_compact:
+          thrift_http:
       otlp:
         protocols:
           grpc:
@@ -32,7 +37,7 @@ spec:
     service:
       pipelines:
         traces:
-          receivers: [otlp, zipkin]
+          receivers: [jaeger, otlp, zipkin]
           processors: [memory_limiter, batch]
           exporters: [logging, otlp/tempo]
         metrics:
