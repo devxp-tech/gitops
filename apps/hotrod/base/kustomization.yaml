@@ -25,9 +25,9 @@ helmCharts:
         # - name: OTEL_EXPORTER_JAEGER_ENDPOINT
         #   value: http://otel-collector.observability.svc.cluster.local:14268/api/traces
         - name: OTEL_EXPORTER_OTLP_ENDPOINT
-          value: http://tempo.observability.svc.cluster.local:4318
-        - name: OTEL_EXPORTER_JAEGER_ENDPOINT
-          value: http://tempo.observability.svc.cluster.local:14268/api/traces
+          value: http://otel-collector-collector.opentelemetry-operator-system.svc.cluster.local:4318
+        # - name: OTEL_EXPORTER_JAEGER_ENDPOINT
+        #   value: http://tempo.observability.svc.cluster.local:14268/api/traces
 
       quota:
         enabled: false
