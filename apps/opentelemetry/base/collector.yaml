@@ -3,6 +3,7 @@ kind: OpenTelemetryCollector
 metadata:
   name: default
 spec:
+  mode: deployment
   config: |
     receivers:
       otlp:
