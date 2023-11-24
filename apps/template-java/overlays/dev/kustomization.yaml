@@ -10,9 +10,12 @@ helmCharts:
     repo: https://devxp-tech.github.io/helm-charts
     valuesInline:
       name: template-java
+      deployment:
+        annotations:
+          instrumentation.opentelemetry.io/inject-java: "true"
       podAnnotations:
         instrumentation.opentelemetry.io/inject-java: "true"
-        sidecar.opentelemetry.io/inject: "otel-sidecar"
+        # sidecar.opentelemetry.io/inject: "otel-sidecar"
       image:
         repository: ghcr.io/devxp-tech/template-java
         tag: c03f6e6a
