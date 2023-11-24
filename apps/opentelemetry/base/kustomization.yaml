@@ -13,132 +13,26 @@ helmCharts:
     version: 0.43.0
     repo: https://open-telemetry.github.io/opentelemetry-helm-charts
     valuesInline:
-      admissionWebhooks:
-        create: false
       manager:
-        env:
-          ENABLE_WEBHOOKS: "false"
-        # autoGenerateCert:
-        #   enabled: true
-        # certManager:
-        #   enabled: false
+        serviceMonitor:
+          enabled: true
+        prometheusRule:
+          enabled: true
+          defaultRules:
+            enabled: true
+      kubeRBACProxy:
+        enabled: false
+      admissionWebhooks:
+        pods:
+          failurePolicy: Ignore
+        certManager:
+          enabled: true
+          create: true
+        autoGenerateCert: false
 
-  # - name: opentelemetry-collector
-  #   includeCRDs: true
-  #   releaseName: open-telemetry
-  #   version: 0.73.1
-  #   repo: https://open-telemetry.github.io/opentelemetry-helm-charts
-  #   valuesInline:
-  #     mode: deployment
-  #     fullnameOverride: otel-collector
-  #     autoscaling:
-  #       enabled: true
-  #       minReplicas: 2
-
-  #     presets:
-  #       hostMetrics:
-  #         enabled: false
-  #       kubernetesAttributes:
-  #         enabled: false
-  #       kubeletMetrics:
-  #         enabled: false
-  #       clusterMetrics:
-  #         enabled: false
-
-  #     serviceMonitor:
-  #       enabled: true
-  #     ports:
-  #       metrics:
-  #         enabled: true
-  #       prometheus:
-  #         enabled: true
-  #         containerPort: 8889
-  #         servicePort: 8889
-  #         hostPort: 8889
-  #         protocol: TCP
-  #     config:
-  #       extensions:
-  #         health_check: {}
-  #         pprof: {}
-  #         zpages: {}
-
-  #       receivers:
-  #         jaeger:
-  #           protocols:
-  #             grpc:
-  #               endpoint: ${env:MY_POD_IP}:14250
-  #             thrift_compact:
-  #               endpoint: ${env:MY_POD_IP}:6831
-  #             thrift_http:
-  #               endpoint: ${env:MY_POD_IP}:14268
-  #         otlp:
-  #           protocols:
-  #             grpc:
-  #               endpoint: ${env:MY_POD_IP}:4317
-  #             http:
-  #               endpoint: ${env:MY_POD_IP}:4318
-  #         # Dummy receiver that's never used, because a pipeline is required to have one.
-  #         otlp/spanmetrics:
-  #           protocols:
-  #             grpc:
-  #               endpoint: "localhost:12345"
-  #         prometheus:
-  #           config:
-  #             scrape_configs:
-  #               - job_name: "span_job"
-  #                 scrape_interval: 10s
-  #                 static_configs:
-  #                   - targets: ["0.0.0.0:8889"]
-  #               - job_name: "otelcol"
-  #                 scrape_interval: 10s
-  #                 static_configs:
-  #                   - targets:
-  #                       ["otel-collector.observability.svc.cluster.local:8888"]
-  #                 metric_relabel_configs:
-  #                   - source_labels: [__name__]
-  #                     regex: ".*grpc_io.*"
-  #                     action: drop
-
-  #         zipkin:
-  #           endpoint: ${MY_POD_IP}:9411
-
-  #       processors:
-  #         batch: {}
-  #         spanmetrics:
-  #           metrics_exporter: prometheus
-  #           latency_histogram_buckets:
-  #             [100us, 1ms, 2ms, 6ms, 10ms, 100ms, 250ms]
-  #           dimensions:
-  #             - name: http.method
-  #               default: GET
-  #             - name: http.status_code
-  #           dimensions_cache_size: 1000
-
-  #       exporters:
-  #         # otlp/jaeger:
-  #         #   endpoint: "jaeger-collector.observability.svc:4317"
-  #         #   tls:
-  #         #     insecure: true
-  #         otlp/tempo:
-  #           endpoint: "tempo.observability.svc:4317"
-  #           tls:
-  #             insecure: true
-  #         prometheus:
-  #           endpoint: "0.0.0.0:8889"
-
-  #       service:
-  #         telemetry:
-  #           metrics:
-  #             address: ":8888"
-  #         extensions: [pprof, zpages, health_check]
-  #         pipelines:
-  #           traces:
-  #             receivers: [jaeger, otlp, zipkin]
-  #             processors: [batch, spanmetrics]
-  #             exporters: [otlp/tempo]
-  #           metrics:
-  #             receivers: [otlp, prometheus]
-  #             exporters: [prometheus]
-  #           metrics/spanmetrics:
-  #             receivers: [otlp/spanmetrics]
-  #             exporters: [prometheus]
+      # working...
+      # admissionWebhooks:
+      #   create: false
+      # manager:
+      #   env:
+      #     ENABLE_WEBHOOKS: "false"
