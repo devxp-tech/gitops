@@ -12,7 +12,7 @@ helmCharts:
       name: template-java
       deployment:
         annotations:
-          instrumentation.opentelemetry.io/inject-python: java-instrumentation
+          instrumentation.opentelemetry.io/inject-java: java-instrumentation
       image:
         repository: ghcr.io/devxp-tech/template-java
         tag: 742f377e
