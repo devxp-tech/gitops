@@ -30,7 +30,6 @@ spec:
           insecure: true
 
     service:
-      extensions: [zpages, health_check]
       pipelines:
         traces:
           receivers: [otlp, zipkin]
