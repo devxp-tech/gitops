@@ -3,12 +3,11 @@ kind: Instrumentation
 metadata:
   name: java-instrumentation
 spec:
+  exporter:
+    endpoint: http://default-collector:4317
   propagators:
     - tracecontext
     - baggage
   sampler:
-    type: always_on
-  java:
-    env:
-      - name: OTEL_EXPORTER_OTLP_ENDPOINT
-        value: http://default-collector.opentelemetry-operator-system.svc.cluster.local:4317
+    type: parentbased_traceidratio
+    argument: "1"
