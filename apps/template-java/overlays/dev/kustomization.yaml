@@ -15,7 +15,7 @@ helmCharts:
       argoRollouts:
         enabled: false
       podAnnotations:
-        instrumentation.opentelemetry.io/inject-java: true
+        instrumentation.opentelemetry.io/inject-java: "true"
       image:
         repository: ghcr.io/devxp-tech/template-java
         tag: c03f6e6a
