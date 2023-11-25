@@ -3,7 +3,7 @@ kind: OpenTelemetryCollector
 metadata:
   name: default
 spec:
-  mode: deployment #sidecar
+  mode: sidecar #deployment
   config: |
     receivers:
       jaeger:
