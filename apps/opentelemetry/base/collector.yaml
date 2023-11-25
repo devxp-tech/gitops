@@ -18,7 +18,11 @@ spec:
       otlp:
         protocols:
           grpc:
+            tls:
+              insecure: true
           http:
+            tls:
+              insecure: true
       zipkin:
         endpoint: ${MY_POD_IP}:9411
 
