@@ -5,7 +5,7 @@ helmCharts:
   - name: tempo
     includeCRDs: true
     releaseName: tempo
-    version: 1.7.0
+    version: 1.7.1
     repo: https://grafana.github.io/helm-charts
     valuesInline:
       labels:
@@ -28,8 +28,20 @@ helmCharts:
               endpoint: s3.us-east-1.amazonaws.com
               region: us-east-1
         receivers:
-          zipkin:
+          jaeger:
+            protocols:
+              grpc:
+                endpoint: 0.0.0.0:14250
+              thrift_binary:
+                endpoint: 0.0.0.0:6832
+              thrift_compact:
+                endpoint: 0.0.0.0:6831
+              thrift_http:
+                endpoint: 0.0.0.0:14268
           otlp:
             protocols:
+              grpc:
+                endpoint: "0.0.0.0:4317"
               http:
-              # grpc:
+                endpoint: "0.0.0.0:4318"
+          zipkin:
