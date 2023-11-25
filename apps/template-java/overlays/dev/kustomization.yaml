@@ -11,7 +11,7 @@ helmCharts:
     valuesInline:
       name: template-java
       podAnnotations:
-        # sidecar.opentelemetry.io/inject: "true"
+        sidecar.opentelemetry.io/inject: "true"
         instrumentation.opentelemetry.io/inject-java: "true"
       image:
         repository: ghcr.io/devxp-tech/template-java
