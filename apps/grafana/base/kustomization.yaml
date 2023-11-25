@@ -108,11 +108,7 @@ helmCharts:
                 tracesToLogsV2:
                   datasourceUid: loki
                 serviceMap:
-                  datasourceUid: prometheus
-                nodeGraph:
-                  enabled: true
-                search:
-                  hide: false
+                  datasourceUid: "prometheus"
                 lokiSearch:
                   datasourceUid: loki
       notifiers:
