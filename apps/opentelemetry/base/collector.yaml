@@ -5,6 +5,10 @@ metadata:
 spec:
   mode: deployment
   config: |
+    extensions:
+      health_check:
+      pprof:
+      zpages:
     receivers:
       jaeger:
         protocols:
@@ -35,6 +39,7 @@ spec:
           insecure: true
 
     service:
+      extensions: [health_check, pprof, zpages]
       pipelines:
         traces:
           receivers: [jaeger, otlp, zipkin]
