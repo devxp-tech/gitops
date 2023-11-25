@@ -45,7 +45,7 @@ helmCharts:
       sa:
         enabled: true
       quota:
-        enabled: true
+        enabled: false
         requests:
           memory: 1Gi
           cpu: 1
