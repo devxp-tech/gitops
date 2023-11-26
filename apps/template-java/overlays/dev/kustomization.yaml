@@ -52,3 +52,5 @@ helmCharts:
         limits:
           memory: 2Gi
           cpu: 2
+      peerAuthentication:
+        enabled: false
