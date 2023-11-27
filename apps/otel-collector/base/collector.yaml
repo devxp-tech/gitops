@@ -34,10 +34,12 @@ spec:
 
     exporters:
       logging:
-      otlp/tempo:
-        endpoint: "tempo.observability.svc:4317"
-        tls:
-          insecure: true
+      otlphttp:
+        endpoint: http://tempo.observability.svc.cluster.local:4318
+      # otlp/tempo:
+      #   endpoint: "tempo.observability.svc:4317"
+      #   tls:
+      #     insecure: true
 
     service:
       extensions: [health_check, pprof, zpages]
@@ -45,7 +47,7 @@ spec:
         traces:
           receivers: [jaeger, otlp, zipkin]
           processors: [memory_limiter, batch]
-          exporters: [logging, otlp/tempo]
+          exporters: [logging, otlphttp]
         metrics:
           receivers: [otlp]
           processors: [memory_limiter, batch]
