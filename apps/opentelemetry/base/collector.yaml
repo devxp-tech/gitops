@@ -35,7 +35,7 @@ spec:
       logging:
       otlp/tempo:
         # endpoint: "tempo.observability.svc:4317"
-        endpoint: "tempo.observability.svc:4318"
+        endpoint: "tempo.observability.svc:14268"
         tls:
           insecure: true
 
