@@ -35,8 +35,8 @@ spec:
       logging:
       otlp/tempo:
         endpoint: "tempo.observability.svc:4317"
-        tls:
-          insecure: true
+        # tls:
+        #   insecure: true
 
     service:
       extensions: [health_check, pprof, zpages]
