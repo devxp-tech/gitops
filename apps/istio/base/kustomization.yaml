@@ -40,7 +40,7 @@ helmCharts:
               - "10.100.0.1"
         tracer:
           zipkin:
-            address: default-collector.opentelemetry-operator-system.svc.cluster.local:9411
+            address: otel-collector.observability.svc.cluster.local:9411
             # address: tempo.observability.svc.cluster.local:9411
             # address: jaeger-collector.observability.svc.cluster.local:9411
         proxy:

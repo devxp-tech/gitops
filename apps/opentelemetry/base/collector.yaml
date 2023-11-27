@@ -1,7 +1,8 @@
 apiVersion: opentelemetry.io/v1alpha1
 kind: OpenTelemetryCollector
 metadata:
-  name: default
+  name: otel
+  namespace: observability
 spec:
   mode: deployment
   config: |
