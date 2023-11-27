@@ -34,8 +34,7 @@ spec:
     exporters:
       logging:
       otlp/tempo:
-        # endpoint: "tempo.observability.svc:4317"
-        endpoint: "tempo.observability.svc:14268"
+        endpoint: "tempo.observability.svc:4317"
         tls:
           insecure: true
 
