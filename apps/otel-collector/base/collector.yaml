@@ -36,6 +36,8 @@ spec:
       logging:
       otlphttp:
         endpoint: http://tempo.observability.svc.cluster.local:4318
+        tls:
+          insecure: true
       # otlp/tempo:
       #   endpoint: "tempo.observability.svc:4317"
       #   tls:
