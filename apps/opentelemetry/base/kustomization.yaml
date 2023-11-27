@@ -3,10 +3,7 @@ kind: Kustomization
 namespace: opentelemetry-operator-system
 resources:
   - https://github.com/open-telemetry/opentelemetry-operator/releases/latest/download/opentelemetry-operator.yaml
-  - collector.yaml
-  - instrumentaion.yaml
-  # - go-instrumentaion.yaml
-  # - java-instrumentation.yaml
+###### OLD
 # helmCharts:
 #   - name: opentelemetry-operator
 #     includeCRDs: true
