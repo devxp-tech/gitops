@@ -12,10 +12,14 @@ resources:
 #     repo: https://open-telemetry.github.io/opentelemetry-helm-charts
 #     valuesInline:
 #       admissionWebhooks:
-#         create: true
-#         certManager:
+#         create: false
+
+#       manager:
+#         serviceMonitor:
 #           enabled: true
-# working...
+#         env:
+#           ENABLE_WEBHOOKS: "false"
+### working...
 # admissionWebhooks:
 #   create: false
 # manager:

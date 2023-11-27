@@ -28,7 +28,7 @@ spec:
     exporters:
       logging:
       otlp:
-        endpoint: "http://otel-collector.observability.svc.cluster.local:4318"
+        endpoint: "otel-collector.observability.svc.cluster.local:4318"
         tls:
           insecure: true
 
