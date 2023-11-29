@@ -6,6 +6,46 @@ prometheusOperator:
       enabled: true
 
 grafana:
+  fullnameOverride: grafana
+  useStatefulSet: true
+  persistence:
+    enabled: true
+    type: pvc
+    size: 20Gi
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 200m
+      memory: 256Mi
+  grafana.ini:
+    server:
+      domain: grafana.devxp-tech.io
+  admin:
+    ## Name of the secret. Can be templated.
+    existingSecret: "grafana-secrets"
+    userKey: GF_SECURITY_ADMIN_USER
+    passwordKey: GF_SECURITY_ADMIN_PASSWORD
+  envValueFrom:
+    GF_AUTH_GITHUB_CLIENT_ID:
+      secretKeyRef:
+        name: grafana-secrets
+        key: GF_AUTH_GITHUB_CLIENT_ID
+    GF_AUTH_GITHUB_CLIENT_SECRET:
+      secretKeyRef:
+        name: grafana-secrets
+        key: GF_AUTH_GITHUB_CLIENT_SECRET
+  env:
+    # GF_INSTALL_PLUGINS: grafana-simple-json-datasource,alexanderzobnin-zabbix-app
+    GF_SERVER_DOMAIN: grafana.devxp-tech.io
+    GF_SERVER_ROOT_URL: "https://grafana.devxp-tech.io"
+    GF_AUTH_GITHUB_ENABLED: true
+    GF_AUTH_GITHUB_ALLOW_SIGN_UP: true
+    GF_AUTH_GITHUB_SCOPES: "user:email,read:org"
+    GF_AUTH_GITHUB_ALLOWED_ORGANIZATIONS: devxp-tech
+    GF_AUTO_ASSIGN_ORG_ROLE: Admin
+    GF_FEATURE_TOGGLES_ENABLE: "traceqlEditor tempoSearch tempoServiceGraph"
   skipTlsVerify: true
   sidecar:
     datasources:
