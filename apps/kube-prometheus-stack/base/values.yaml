@@ -591,7 +591,7 @@ prometheus:
           - targets:
               - sonarqube-jmx-metrics.sonarqube.svc.cluster.local:10443
             labels:
-              application: "template-java"
+              application: "sonarqube"
 
       - job_name: "karpenter"
         scrape_interval: 60s
@@ -606,6 +606,8 @@ prometheus:
         static_configs:
           - targets:
               - template-java.template-java.svc.cluster.local:80
+            labels:
+              application: "template-java"
 
       - job_name: "default-collector"
         scrape_interval: 30s
