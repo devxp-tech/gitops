@@ -218,3 +218,39 @@ grafana:
           datasourceUid: "prometheus"
         lokiSearch:
           datasourceUid: loki
+
+prometheus-node-exporter:
+  resources:
+    requests:
+      cpu: 200m
+      memory: 105M
+    limits:
+      cpu: 400m
+      memory: 279M
+  fullnameOverride: node-exporter
+  prometheus:
+    monitor:
+      enabled: true
+      relabelings:
+        - action: replace
+          regex: (.*)
+          replacement: $1
+          sourceLabels:
+            - __meta_kubernetes_pod_node_name
+          targetLabel: kubernetes_node
+        - action: replace
+          regex: (.*)
+          replacement: $1
+          sourceLabels:
+            - __meta_kubernetes_pod_node_name
+          targetLabel: instance
+
+kubeStateMetrics:
+  enabled: true
+  resources:
+    requests:
+      cpu: 15m
+      memory: 105M
+    limits:
+      cpu: 90m
+      memory: 407M
