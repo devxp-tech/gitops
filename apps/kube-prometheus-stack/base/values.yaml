@@ -68,11 +68,12 @@ prometheus:
       objectStorageConfig:
         name: thanos-objstore-secret
         key: objstore.yml
-    # additionalScrapeConfigs:
-    #   - job_name: "node-exporter"
-    #     honor_timestamps: true
-    #     scrape_interval: 1m
-    #     scrape_timeout: 10s
+    additionalScrapeConfigs:
+        - job_name: node
+          static_configs:
+            - targets: ["node-exporter:9100"]
+          scrape_interval: 1m
+          scrape_timeout: 10s
 
 alertmanager:
   extraSecretMounts:
