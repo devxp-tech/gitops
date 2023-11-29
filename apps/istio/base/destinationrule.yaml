@@ -4,7 +4,7 @@ metadata:
   name: api-server
   namespace: istio-system
 spec:
-  host: "kubernetes.default.svc" #Disabling it for Kube API Server communication
+  host: "kubernetes.default.svc.cluster.local" #Disabling it for Kube API Server communication
   trafficPolicy:
     tls:
       mode: DISABLE
