@@ -1,0 +1,11 @@
+{
+  "appName": "kube-prometheus-stack",
+  "userGivenName": "kube-prometheus-stack",
+  "destNamespace": "monitoring",
+  "destServer": "https://kubernetes.default.svc",
+  "srcPath": "apps/kube-prometheus-stack/overlays/ops",
+  "srcRepoURL": "https://github.com/devxp-tech/gitops.git",
+  "srcTargetRevision": "",
+  "CreateNamespace": true,
+  "labels": null
+}
