@@ -4,5 +4,5 @@ metadata:
   name: kube-state-metrics
 spec:
   staticConfigs:
-    - targets: ["kube-state-metrics.kube-system:8080"]
+    - targets: ["prometheus-community-kube-state-metrics.monitoring.svc:8080"]
   metricsPath: /metrics
