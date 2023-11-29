@@ -1,4 +1,40 @@
-nameOverride: prometheus
+prometheus:
+  thanosService:
+    enabled: true
+  thanosServiceMonitor:
+    enabled: true
+  prometheusSpec:
+    resources:
+      requests:
+        cpu: 850m
+        memory: 2800Mi
+      limits:
+        cpu: 2000m
+        memory: 4000Mi
+    replicas: 3
+    replicaExternalLabelName: "__replica__"
+    externalLabels:
+      cluster: lgseksd1
+    podAntiAffinity: hard
+    ruleSelectorNilUsesHelmValues: false
+    serviceMonitorSelectorNilUsesHelmValues: false
+    podMonitorSelectorNilUsesHelmValues: false
+    probeSelectorNilUsesHelmValues: false
+    retentionSize: "6GB"
+    retention: 2d
+    walCompression: true
+    enableAdminAPI: true
+    thanos:
+      image: quay.io/thanos/thanos:v0.32.0
+      version: "v0.31.0"
+      objectStorageConfig:
+        name: thanos-objstore-secret
+        key: objstore.yml
+    # additionalScrapeConfigs:
+    #   - job_name: "node-exporter"
+    #     honor_timestamps: true
+    #     scrape_interval: 1m
+    #     scrape_timeout: 10s
 
 alertmanager:
   extraSecretMounts:
