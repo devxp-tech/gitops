@@ -87,7 +87,6 @@ prometheusOperator:
       enabled: true
 
 grafana:
-  fullnameOverride: grafana
   useStatefulSet: true
   persistence:
     enabled: true
