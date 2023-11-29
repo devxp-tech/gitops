@@ -32,19 +32,16 @@ prometheusOperator:
         memory: 50Mi
 
 prometheus:
-  global:
-    external_labels:
-      cluster_id: lgseksd1
-  alertmanagers:
-    - scheme: http
-      static_configs:
-        - targets:
-            - "prometheus-alertmanager.monitoring:9093"
   thanosService:
     enabled: true
   thanosServiceMonitor:
     enabled: true
   prometheusSpec:
+    alertingEndpoints:
+      - namespace: monitoring
+        name: prometheus-alertmanager
+        port: 9093
+        apiVersion: v2
     resources:
       requests:
         cpu: 850m
