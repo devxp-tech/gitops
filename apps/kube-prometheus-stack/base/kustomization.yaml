@@ -10,5 +10,5 @@ helmCharts:
     releaseName: prometheus-community
     version: 54.2.2
     repo: https://prometheus-community.github.io/helm-charts
-    includeCRDs: true
+    # includeCRDs: true
     valuesFile: values.yaml

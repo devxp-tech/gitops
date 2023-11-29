@@ -1,4 +1,7 @@
 fullnameOverride: prometheus
+
+grafana:
+  enabled: false
 kubeEtcd:
   enabled: true
 kubeControllerManager:
@@ -10,6 +13,7 @@ kubeProxy:
 defaultRules:
   rules:
     time: false
+
 prometheusOperator:
   resources:
     requests:
@@ -26,9 +30,6 @@ prometheusOperator:
       limits:
         cpu: 400m
         memory: 50Mi
-
-grafana:
-  enabled: false
 
 prometheus:
   thanosService:
