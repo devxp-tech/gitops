@@ -1,3 +1,6 @@
+grafana:
+  enabled: false
+
 prometheus:
   thanosService:
     enabled: true
@@ -131,93 +134,6 @@ prometheusOperator:
   tlsProxy:
     enabled: false
   createCustomResource: false
-
-grafana:
-  fullnameOverride: grafana
-  useStatefulSet: true
-  persistence:
-    enabled: true
-    type: pvc
-    size: 20Gi
-  resources:
-    requests:
-      cpu: 100m
-      memory: 128Mi
-    limits:
-      cpu: 200m
-      memory: 256Mi
-  grafana.ini:
-    server:
-      domain: grafana.devxp-tech.io
-  admin:
-    ## Name of the secret. Can be templated.
-    existingSecret: "grafana-secrets"
-    userKey: GF_SECURITY_ADMIN_USER
-    passwordKey: GF_SECURITY_ADMIN_PASSWORD
-  envValueFrom:
-    GF_AUTH_GITHUB_CLIENT_ID:
-      secretKeyRef:
-        name: grafana-secrets
-        key: GF_AUTH_GITHUB_CLIENT_ID
-    GF_AUTH_GITHUB_CLIENT_SECRET:
-      secretKeyRef:
-        name: grafana-secrets
-        key: GF_AUTH_GITHUB_CLIENT_SECRET
-  env:
-    # GF_INSTALL_PLUGINS: grafana-simple-json-datasource,alexanderzobnin-zabbix-app
-    GF_SERVER_DOMAIN: grafana.devxp-tech.io
-    GF_SERVER_ROOT_URL: "https://grafana.devxp-tech.io"
-    GF_AUTH_GITHUB_ENABLED: true
-    GF_AUTH_GITHUB_ALLOW_SIGN_UP: true
-    GF_AUTH_GITHUB_SCOPES: "user:email,read:org"
-    GF_AUTH_GITHUB_ALLOWED_ORGANIZATIONS: devxp-tech
-    GF_AUTO_ASSIGN_ORG_ROLE: Admin
-    GF_FEATURE_TOGGLES_ENABLE: "traceqlEditor tempoSearch tempoServiceGraph"
-  skipTlsVerify: true
-  sidecar:
-    datasources:
-      enabled: true
-      defaultDatasourceEnabled: false
-  additionalDataSources:
-    - name: Prometheus
-      type: prometheus
-      url: http://prometheus-community-kube-prometheus:9090
-      access: proxy
-      isDefault: true
-      jsonData:
-        manageAlerts: true
-        alertmanagerUid: alertmanager
-    - name: Alertmanager
-      type: alertmanager
-      url: http://prometheus-community-kube-alertmanager:9093
-      uid: alertmanager
-      access: proxy
-      jsonData:
-        implementation: prometheus
-    - name: Loki
-      uid: loki
-      type: loki
-      access: proxy
-      orgId: 1
-      url: http://loki-read:3100
-      version: 1
-      jsonData:
-        alertmanagerUid: alertmanager
-        maxLines: 5000
-        timeout: "60"
-    - name: Tempo
-      type: tempo
-      uid: tempo
-      url: http://tempo.observability:3100
-      editable: true
-      jsonData:
-        httpMethod: GET
-        tracesToLogsV2:
-          datasourceUid: loki
-        serviceMap:
-          datasourceUid: "prometheus"
-        lokiSearch:
-          datasourceUid: loki
 
 prometheus-node-exporter:
   resources:

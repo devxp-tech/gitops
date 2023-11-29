@@ -25,28 +25,6 @@ spec:
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: grafana
-  namespace: monitoring
-  annotations:
-    link.argocd.argoproj.io/external-link: https://grafana.devxp-tech.io
-spec:
-  hosts:
-    - "grafana.devxp-tech.io"
-  gateways:
-    - istio-system/istio-ingressgateway
-  http:
-    - match:
-        - uri:
-            prefix: /
-      route:
-        - destination:
-            host: grafana.monitoring.svc.cluster.local
-            port:
-              number: 80
----
-apiVersion: networking.istio.io/v1alpha3
-kind: VirtualService
-metadata:
   name: alertmanager
   namespace: monitoring
   annotations:
