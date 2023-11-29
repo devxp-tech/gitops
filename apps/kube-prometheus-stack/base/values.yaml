@@ -3,7 +3,6 @@ alertmanager:
   extraSecretMounts:
     - name: slack-api-url
       mountPath: /etc/secrets/
-      # subPath: "slack_api_url_file.txt"
       secretName: alertmanager-secret
       readOnly: true
   config:
