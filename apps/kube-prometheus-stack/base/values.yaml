@@ -167,3 +167,16 @@ grafana:
         alertmanagerUid: alertmanager
         maxLines: 5000
         timeout: "60"
+    - name: Tempo
+      type: tempo
+      uid: tempo
+      url: http://tempo.observability:3100
+      editable: true
+      jsonData:
+        httpMethod: GET
+        tracesToLogsV2:
+          datasourceUid: loki
+        serviceMap:
+          datasourceUid: "prometheus"
+        lokiSearch:
+          datasourceUid: loki
