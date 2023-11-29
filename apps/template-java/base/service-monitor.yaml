@@ -3,6 +3,7 @@ kind: ServiceMonitor
 metadata:
   labels:
     app: template-java
+    application: template-java
   name: template-java
 spec:
   selector:
