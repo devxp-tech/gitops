@@ -18,5 +18,5 @@ spec:
       route:
         - destination:
             port:
-              number: 80
-            host: prometheus-server.monitoring.svc.cluster.local
+              number: 9090
+            host: prometheus-community-kube-prometheus.monitoring.svc.cluster.local
