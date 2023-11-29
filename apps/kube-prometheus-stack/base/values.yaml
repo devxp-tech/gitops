@@ -1,0 +1,40 @@
+prometheusOperator:
+  admissionWebhooks:
+    certManager:
+      enabled: true
+    patch:
+      enabled: true
+
+grafana:
+  skipTlsVerify: true
+  sidecar:
+    datasources:
+      enabled: true
+      defaultDatasourceEnabled: false
+  additionalDataSources:
+    - name: Prometheus
+      type: prometheus
+      url: http://prometheus-community-kube-prometheus:9090
+      access: proxy
+      isDefault: true
+      jsonData:
+        manageAlerts: true
+        alertmanagerUid: alertmanager
+    - name: Alertmanager
+      type: alertmanager
+      url: http://prometheus-community-kube-alertmanager:9093
+      uid: alertmanager
+      access: proxy
+      jsonData:
+        implementation: prometheus
+    - name: Loki
+      uid: loki
+      type: loki
+      access: proxy
+      orgId: 1
+      url: http://loki-read:3100
+      version: 1
+      jsonData:
+        alertmanagerUid: alertmanager
+        maxLines: 5000
+        timeout: "60"
