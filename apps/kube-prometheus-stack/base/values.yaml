@@ -1,4 +1,5 @@
 alertmanager:
+  fullnameOverride: alertmanager
   extraSecretMounts:
     - name: slack-api-url
       mountPath: /etc/secrets/
