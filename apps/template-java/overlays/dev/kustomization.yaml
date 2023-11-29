@@ -15,7 +15,7 @@ helmCharts:
         # instrumentation.opentelemetry.io/inject-java: "teste"
       image:
         repository: ghcr.io/devxp-tech/template-java
-        tag: c03f6e6a
+        tag: d1ea4b6c
       autoscaling:
         enabled: true
         minReplicas: 1
