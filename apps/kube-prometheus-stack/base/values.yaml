@@ -79,12 +79,21 @@ alertmanager:
           {{- end }}
       {{- end }}
 
+# prometheusOperator:
+#   admissionWebhooks:
+# certManager:
+#   enabled: true
+# patch:
+#   enabled: true
+
 prometheusOperator:
   admissionWebhooks:
-    # certManager:
-    #   enabled: true
-    patch:
-      enabled: true
+    enabled: false
+  tls:
+    enabled: false
+  tlsProxy:
+    enabled: false
+  createCustomResource: false
 
 grafana:
   useStatefulSet: true
