@@ -3,3 +3,4 @@ kind: Kustomization
 namespace: template-java
 resources:
   - collector.yaml
+  - service-monitor.yaml
