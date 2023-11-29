@@ -590,6 +590,8 @@ prometheus:
         static_configs:
           - targets:
               - sonarqube-jmx-metrics.sonarqube.svc.cluster.local:10443
+            labels:
+              application: "template-java"
 
       - job_name: "karpenter"
         scrape_interval: 60s
