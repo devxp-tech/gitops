@@ -1,0 +1,40 @@
+apiVersion: monitoring.coreos.com/v1alpha1
+kind: AlertmanagerConfig
+metadata:
+  name: alert-config
+  namespace: monitoring
+  labels:
+    resource: prometheus
+spec:
+  route:
+    groupBy: ["alertname", "cluster", "service"]
+    groupWait: 30s
+    groupInterval: 5m
+    repeatInterval: 8h
+    receiver: "slack"
+    routes:
+      - match:
+          severity: "critical"
+        continue: true
+        receiver: "slack"
+  receivers:
+    - name: "slack"
+      slackConfigs:
+        - channel: "#prometheus-notifications"
+          color: '{{ template "slack.color" . }}'
+          title: '{{ template "slack.title" . }}'
+          text: '{{ template "slack.text" . }}'
+          sendResolved: true
+          actions:
+            - type: button
+              text: "Runbook :green_book:"
+              url: "{{ (index .Alerts 0).Annotations.runbook_url }}"
+            - type: button
+              text: "Query :mag:"
+              url: "{{ (index .Alerts 0).GeneratorURL }}"
+            - type: button
+              text: "Dashboard :chart_with_upwards_trend:"
+              url: "{{ (index .Alerts 0).Annotations.dashboard_url }}"
+            - type: button
+              text: "Silence :no_bell:"
+              url: '{{ template "__alert_silence_link" . }}'
