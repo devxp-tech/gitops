@@ -76,7 +76,7 @@ prometheus:
         name: thanos-objstore-secret
         key: objstore.yml
     additionalScrapeConfigs:
-      - job_name: node-exporter
+      - job_name: node
         static_configs:
           - targets: ["node-exporter:9100"]
         scrape_interval: 1m
@@ -399,24 +399,21 @@ prometheus:
         static_configs:
           - targets: ["grafana:80"]
 
-      # - job_name: "node-exporter"
-      #   kubernetes_sd_configs:
-      #     - role: endpoints
-      #   relabel_configs:
-      #     - source_labels: [__meta_kubernetes_endpoints_name]
-      #       regex: "node-exporter"
-      #       action: keep
+      - job_name: "node-exporter"
+        kubernetes_sd_configs:
+          - role: endpoints
+        relabel_configs:
+          - source_labels: [__meta_kubernetes_endpoints_name]
+            regex: "node-exporter"
+            action: keep
 
       - job_name: "kubernetes-apiservers"
-
         kubernetes_sd_configs:
           - role: endpoints
         scheme: https
-
         tls_config:
           ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
         bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
-
         relabel_configs:
           - source_labels:
               [
@@ -428,13 +425,10 @@ prometheus:
             regex: default;kubernetes;https
 
       - job_name: "kubernetes-nodes"
-
         scheme: https
-
         tls_config:
           ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
         bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
-
         kubernetes_sd_configs:
           - role: node
         relabel_configs:
@@ -450,7 +444,6 @@ prometheus:
       - job_name: "kubernetes-pods"
         kubernetes_sd_configs:
           - role: pod
-
         relabel_configs:
           - source_labels:
               [__meta_kubernetes_pod_annotation_prometheus_io_scrape]
