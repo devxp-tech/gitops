@@ -564,11 +564,11 @@ prometheus:
           - targets:
               - teste-loki.teste-loki.svc.cluster.local
 
-      - job_name: "demo-app"
-        scrape_interval: 60s
-        static_configs:
-          - targets:
-              - demo-app.demo-app.svc.cluster.local
+      # - job_name: "demo-app"
+      #   scrape_interval: 60s
+      #   static_configs:
+      #     - targets:
+      #         - demo-app.demo-app.svc.cluster.local
 
       - job_name: "wordpress"
         scrape_interval: 60s
