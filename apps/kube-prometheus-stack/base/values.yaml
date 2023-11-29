@@ -1,5 +1,4 @@
-nameOverride: prometheus-operator
-kubeTargetVersionOverride: 1.26.0
+nameOverride: prometheus
 
 alertmanager:
   extraSecretMounts:
