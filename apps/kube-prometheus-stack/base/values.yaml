@@ -32,6 +32,14 @@ prometheusOperator:
         memory: 50Mi
 
 prometheus:
+  global:
+    external_labels:
+      cluster_id: lgseksd1
+  alertmanagers:
+    - scheme: http
+      static_configs:
+        - targets:
+            - "prometheus-alertmanager.monitoring:9093"
   thanosService:
     enabled: true
   thanosServiceMonitor:
