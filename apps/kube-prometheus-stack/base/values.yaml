@@ -76,11 +76,11 @@ prometheus:
         name: thanos-objstore-secret
         key: objstore.yml
     additionalScrapeConfigs:
-      - job_name: node
-        static_configs:
-          - targets: ["node-exporter:9100"]
-        scrape_interval: 1m
-        scrape_timeout: 10s
+      # - job_name: node
+      #   static_configs:
+      #     - targets: ["node-exporter:9100"]
+      #   scrape_interval: 1m
+      #   scrape_timeout: 10s
 
       - job_name: serviceMonitor/argocd/argocd-metrics/0
         honor_timestamps: true
@@ -468,15 +468,15 @@ prometheus:
             action: replace
             target_label: kubernetes_pod_name
 
-      # - job_name: kube-state-metrics
-      #   honor_timestamps: true
-      #   scrape_interval: 1m
-      #   scrape_timeout: 1m
-      #   metrics_path: /metrics
-      #   scheme: http
-      #   static_configs:
-      #     - targets:
-      #         - kube-state-metrics.kube-system:8080
+      - job_name: kube-state-metrics
+        honor_timestamps: true
+        scrape_interval: 1m
+        scrape_timeout: 1m
+        metrics_path: /metrics
+        scheme: http
+        static_configs:
+          - targets:
+              - prometheus-community-kube-state-metrics.monitoring:8080
 
       - job_name: "kubernetes-cadvisor"
         scheme: https
