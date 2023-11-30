@@ -626,7 +626,7 @@ prometheus:
         scrape_interval: 30s
         static_configs:
           - targets:
-              - otel-collector.observability.svc.cluster.local:8888
+              - otel-collector-monitoring.observability.svc.cluster.local:8888
       #         - otel-collector.observability.svc.cluster.local:8889
 
       - job_name: "cert-manager"
