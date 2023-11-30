@@ -644,7 +644,8 @@ prometheus:
 
 alertmanager:
   alertmanagerSpec:
-    secrets: alertmanager-secret
+    secrets:
+      - alertmanager-secret
   config:
     global:
       resolve_timeout: 5m
