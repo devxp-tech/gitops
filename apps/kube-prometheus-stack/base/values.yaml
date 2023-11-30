@@ -652,7 +652,43 @@ alertmanager:
     global:
       resolve_timeout: 5m
       slack_api_url_file: "/etc/secrets/SLACK-TOKEN"
-  templates:
+    route:
+      group_wait: 30s
+      group_interval: 5m
+      repeat_interval: 8h
+      group_by: ["alertname", "cluster", "service"]
+      # A default receiver
+      receiver: "slack-notifications"
+      routes:
+        # capture All Critical to the 'slack-notifications'
+        - match:
+            severity: "critical"
+          continue: true
+          receiver: "slack-notifications"
+
+    receivers:
+      - name: "slack-notifications"
+        slack_configs:
+          - channel: "#prometheus-notifications"
+            color: '{{ template "slack.color" . }}'
+            title: '{{ template "slack.title" . }}'
+            text: '{{ template "slack.text" . }}'
+            send_resolved: true
+            actions:
+              - type: button
+                text: "Runbook :green_book:"
+                url: "{{ (index .Alerts 0).Annotations.runbook_url }}"
+              - type: button
+                text: "Query :mag:"
+                url: "{{ (index .Alerts 0).GeneratorURL }}"
+              - type: button
+                text: "Dashboard :chart_with_upwards_trend:"
+                url: "{{ (index .Alerts 0).Annotations.dashboard_url }}"
+              - type: button
+                text: "Silence :no_bell:"
+                url: '{{ template "__alert_silence_link" . }}'
+
+  templateFiles:
     alertmanager.tmpl: |-
       {{/* Alertmanager Silence link */}}
       {{ define "__alert_silence_link" -}}
@@ -664,6 +700,7 @@ alertmanager:
           {{- end -}}
           alertname%3D"{{- .CommonLabels.alertname -}}"%7D
       {{- end }}
+
       {{/* Severity of the alert */}}
       {{ define "__alert_severity" -}}
           {{- if eq .CommonLabels.severity "critical" -}}
@@ -676,17 +713,21 @@ alertmanager:
           *Severity:* :question: {{ .CommonLabels.severity }}
           {{- end }}
       {{- end }}
+
       {{/* Title of the Slack Team */}}
       {{ define "slack.team" -}}
         [{{ .Status | toUpper -}}
         ] {{ .CommonLabels.team }}
       {{- end }}
+
       {{/* Title of the Slack alert */}}
       {{ define "slack.title" -}}
         [{{ .Status | toUpper -}}
         {{ if eq .Status "firing" }}:{{ .Alerts.Firing | len }}{{- end -}}
         ] {{ .CommonLabels.alertname }}
       {{- end }}
+
+
       {{/* Color of Slack attachment (appears as line next to alert )*/}}
       {{ define "slack.color" -}}
           {{ if eq .Status "firing" -}}
@@ -701,14 +742,18 @@ alertmanager:
           good
           {{- end }}
       {{- end }}
+
       {{/* The text to display in the alert */}}
       {{ define "slack.text" -}}
+
           {{ template "__alert_severity" . }}
           {{- if (index .Alerts 0).Annotations.summary }}
           {{- "\n" -}}
           *Summary:* {{ (index .Alerts 0).Annotations.summary }}
           {{- end }}
+
           {{ range .Alerts }}
+
               {{- if .Annotations.description }}
               {{- "\n" -}}
               {{ .Annotations.description }}

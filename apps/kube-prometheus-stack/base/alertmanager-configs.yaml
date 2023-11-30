@@ -21,9 +21,20 @@ spec:
     - name: "slack"
       slackConfigs:
         - channel: "#prometheus-notifications"
-          color: '{{ template "slack.color" . }}'
-          title: '{{ template "slack.title" . }}'
-          text: '{{ template "slack.text" . }}'
+          apiURL:
+            name: slack-webhook-alertmanager
+            key: webhook
+          iconEmoji: ":warning:"
+          title: |-
+            [{{ .CommonLabels.severity }}] {{ .GroupLabels.alertname }} ({{ .Alerts.Firing | len }}) - {{ .CommonAnnotations.summary }}
+          text: |-
+            {{ .CommonAnnotations.description }}
+            {{ range .Alerts }}
+            *{{.Labels.alertname}}* ({{ .Fingerprint }}): <{{ .GeneratorURL }}|:chart_with_upwards_trend:>
+            {{.Annotations.description}}
+
+            {{ end }}
+
           sendResolved: true
           actions:
             - type: button
