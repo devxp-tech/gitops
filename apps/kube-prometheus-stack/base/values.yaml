@@ -40,6 +40,24 @@ prometheusOperator:
 
 prometheus:
   additionalRulesForClusterRole:
+    - apiGroups: [""]
+      resources:
+        - nodes/proxy
+      verbs: ["get", "list", "watch"]
+    - apiGroups:
+        - "extensions"
+        - "networking.k8s.io"
+      resources:
+        - ingresses/status
+        - ingresses
+      verbs:
+        - get
+        - list
+        - watch
+    - nonResourceURLs:
+        - "/metrics"
+      verbs:
+        - get
   thanosService:
     enabled: true
   thanosServiceMonitor:
