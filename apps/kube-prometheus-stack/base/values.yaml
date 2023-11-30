@@ -599,15 +599,15 @@ prometheus:
           - targets:
               - karpenter.karpenter.svc.cluster.local:8000
 
-      - job_name: "template-java"
-        scrape_interval: 60s
-        scrape_timeout: 10s
-        metrics_path: /actuator/prometheus
-        static_configs:
-          - targets:
-              - template-java.template-java.svc.cluster.local:80
-            labels:
-              application: "template-java"
+      # - job_name: "template-java"
+      #   scrape_interval: 60s
+      #   scrape_timeout: 10s
+      #   metrics_path: /actuator/prometheus
+      #   static_configs:
+      #     - targets:
+      #         - template-java.template-java.svc.cluster.local:80
+      #       labels:
+      #         application: "template-java"
 
       - job_name: "default-collector"
         scrape_interval: 30s
