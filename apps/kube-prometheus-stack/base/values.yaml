@@ -39,6 +39,7 @@ prometheusOperator:
         memory: 50Mi
 
 prometheus:
+  additionalRulesForClusterRole:
   thanosService:
     enabled: true
   thanosServiceMonitor:
@@ -46,7 +47,7 @@ prometheus:
   prometheusSpec:
     alertingEndpoints:
       - namespace: monitoring
-        name: prometheus-alertmanager
+        name: prometheus-alertmanager.monitoring.svc
         port: 9093
         apiVersion: v2
     resources:
@@ -557,12 +558,6 @@ prometheus:
           - source_labels: [__meta_kubernetes_pod_container_port_name]
             action: keep
             regex: ".*-envoy-prom"
-
-      - job_name: "teste-loki"
-        scrape_interval: 60s
-        static_configs:
-          - targets:
-              - teste-loki.teste-loki.svc.cluster.local
 
       # - job_name: "demo-app"
       #   scrape_interval: 60s
