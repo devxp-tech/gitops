@@ -613,15 +613,8 @@ prometheus:
         scrape_interval: 30s
         static_configs:
           - targets:
-              - default-collector-monitoring.opentelemetry-operator-system.svc.cluster.local:8888
+              - otel-collector.observability.svc.cluster.local:8888
       #         - otel-collector.observability.svc.cluster.local:8889
-
-      - job_name: "hotrod"
-        scrape_interval: 60s
-        metrics_path: /metrics
-        static_configs:
-          - targets:
-              - hotrod.hotrod.svc.cluster.local:80
 
       - job_name: "cert-manager"
         metrics_path: /metrics
