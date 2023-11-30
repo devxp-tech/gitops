@@ -6,10 +6,13 @@ resources:
 helmCharts:
   - name: devxp-app
     releaseName: devxp-app
-    version: 0.2.28
+    version: 0.2.29
     repo: https://devxp-tech.github.io/helm-charts
     valuesInline:
       name: template-java
+      global:
+        network:
+          domain: devxp-tech.io
       podAnnotations:
         sidecar.opentelemetry.io/inject: "true"
         # instrumentation.opentelemetry.io/inject-java: "teste"
@@ -28,9 +31,6 @@ helmCharts:
         limits:
           memory: 128Mi
           cpu: 100m
-      network:
-        enabled: true
-        domain: devxp-tech.io
       probe:
         enabled: true
         livenessProbe:
