@@ -7,14 +7,14 @@ metadata:
     app: demo-app
     application: demo-app
 spec:
-  endpoints:
-    - path: /metrics
-      port: http
-      scheme: http
-      interval: 60s
-  selector:
-    matchLabels:
-      app: demo-app
   namespaceSelector:
     matchNames:
       - demo-app
+  selector:
+    matchLabels:
+      app: demo-app
+  endpoints:
+    - port: tcp-node
+      path: /metrics
+      scheme: http
+      interval: 60s
