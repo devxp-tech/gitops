@@ -634,14 +634,14 @@ spec:
             summary: Kubernetes Node ready (instance {{ $labels.instance }})
             description: "Node {{ $labels.node }} has been unready for a long time\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 
-        - alert: KubernetesMemoryPressure
-          expr: 'kube_node_status_condition{condition="MemoryPressure",status="true"} == 1'
-          for: 2m
-          labels:
-            severity: critical
-          annotations:
-            summary: Kubernetes memory pressure (instance {{ $labels.instance }})
-            description: "{{ $labels.node }} has MemoryPressure condition\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+        # - alert: KubernetesMemoryPressure
+        #   expr: 'kube_node_status_condition{condition="MemoryPressure",status="true"} == 1'
+        #   for: 2m
+        #   labels:
+        #     severity: critical
+        #   annotations:
+        #     summary: Kubernetes memory pressure (instance {{ $labels.instance }})
+        #     description: "{{ $labels.node }} has MemoryPressure condition\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 
         - alert: KubernetesDiskPressure
           expr: 'kube_node_status_condition{condition="DiskPressure",status="true"} == 1'
@@ -979,14 +979,14 @@ spec:
             summary: Istio high 4xx error rate (instance {{ $labels.instance }})
             description: "High percentage of HTTP 5xx responses in Istio (> 5%).\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 
-        - alert: IstioHigh5xxErrorRate
-          expr: 'sum(rate(istio_requests_total{reporter="destination", response_code=~"5.*"}[5m])) / sum(rate(istio_requests_total{reporter="destination"}[5m])) * 100 > 5'
-          for: 1m
-          labels:
-            severity: warning
-          annotations:
-            summary: Istio high 5xx error rate (instance {{ $labels.instance }})
-            description: "High percentage of HTTP 5xx responses in Istio (> 5%).\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+        # - alert: IstioHigh5xxErrorRate
+        #   expr: 'sum(rate(istio_requests_total{reporter="destination", response_code=~"5.*"}[5m])) / sum(rate(istio_requests_total{reporter="destination"}[5m])) * 100 > 5'
+        #   for: 1m
+        #   labels:
+        #     severity: warning
+        #   annotations:
+        #     summary: Istio high 5xx error rate (instance {{ $labels.instance }})
+        #     description: "High percentage of HTTP 5xx responses in Istio (> 5%).\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 
         - alert: IstioHighRequestLatency
           expr: 'rate(istio_request_duration_milliseconds_sum{reporter="destination"}[1m]) / rate(istio_request_duration_milliseconds_count{reporter="destination"}[1m]) > 100'
@@ -997,14 +997,14 @@ spec:
             summary: Istio high request latency (instance {{ $labels.instance }})
             description: "Istio average requests execution is longer than 100ms.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 
-        - alert: IstioLatency99Percentile
-          expr: "histogram_quantile(0.99, sum(rate(istio_request_duration_milliseconds_bucket[1m])) by (destination_canonical_service, destination_workload_namespace, source_canonical_service, source_workload_namespace, le)) > 1"
-          for: 1m
-          labels:
-            severity: warning
-          annotations:
-            summary: Istio latency 99 percentile (instance {{ $labels.instance }})
-            description: "Istio 1% slowest requests are longer than 1s.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+        # - alert: IstioLatency99Percentile
+        #   expr: "histogram_quantile(0.99, sum(rate(istio_request_duration_milliseconds_bucket[1m])) by (destination_canonical_service, destination_workload_namespace, source_canonical_service, source_workload_namespace, le)) > 1"
+        #   for: 1m
+        #   labels:
+        #     severity: warning
+        #   annotations:
+        #     summary: Istio latency 99 percentile (instance {{ $labels.instance }})
+        #     description: "Istio 1% slowest requests are longer than 1s.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 
         - alert: IstioPilotDuplicateEntry
           expr: "sum(rate(pilot_duplicate_envoy_clusters{}[5m])) > 0"
