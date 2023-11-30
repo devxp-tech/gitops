@@ -643,21 +643,12 @@ prometheus:
             port: 9003
 
 alertmanager:
-  # extraSecretMounts:
-  #   - name: slack-api-url
-  #     mountPath: /etc/secrets/
-  #     secretName: alertmanager-secret
-  #     readOnly: true
-  env:
-    - name: SLACK_WEB_HOOK
-      valueFrom:
-        secretKeyRef:
-          name: alertmanager-secret
-          key: SLACK-TOKEN
+  alertmanagerSpec:
+    secrets: alertmanager-secret
   config:
     global:
       resolve_timeout: 5m
-      slack_api_url_file: "/etc/secrets/SLACK-TOKEN"
+      slack_api_url_file: "/etc/alertmanager/secrets/SLACK-TOKEN"
     route:
       group_wait: 30s
       group_interval: 5m
@@ -675,12 +666,11 @@ alertmanager:
     receivers:
       - name: "slack-notifications"
         slack_configs:
-          - api_url: $SLACK_WEB_HOOK
-            channel: "#prometheus-notifications"
+          - channel: "#prometheus-notifications"
             color: '{{ template "slack.color" . }}'
             title: '{{ template "slack.title" . }}'
             text: '{{ template "slack.text" . }}'
-            send_resolved: false
+            send_resolved: true
             actions:
               - type: button
                 text: "Runbook :green_book:"
