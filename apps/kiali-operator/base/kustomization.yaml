@@ -39,13 +39,13 @@ helmCharts:
               envoy_admin_local_port: 15000
               gateway_api_class_name: ""
             prometheus:
-              url: http://prometheus-server.monitoring
+              url: http://prometheus-prometheus.monitoring.svc.cluster.local:9090
             grafana:
               auth:
                 type: bearer
                 token: secret:kiali:grafanaToken
               enabled: true
-              in_cluster_url: http://grafana.monitoring
+              in_cluster_url: http://grafana.monitoring.svc.cluster.local
               url: https://grafana.devxp-tech.io
             tracing:
               enabled: true

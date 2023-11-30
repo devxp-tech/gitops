@@ -13,10 +13,10 @@ helmCharts:
       global:
         prometheus:
           enabled: false
-          fqdn: http://prometheus-server.monitoring
+          fqdn: http://prometheus-prometheus.monitoring.svc.cluster.local:9090
         grafana:
           enabled: false
-          domainName: "grafana.monitoring.svc"
+          domainName: "grafana.monitoring.svc.cluster.local"
           nodeExporter:
             enabled: false
           serviceAccounts:
