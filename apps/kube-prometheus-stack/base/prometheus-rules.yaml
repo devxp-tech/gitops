@@ -1107,3 +1107,12 @@ spec:
           annotations:
             summary: Promtail request latency (instance {{ $labels.instance }})
             description: "The {{ $labels.job }} {{ $labels.route }} is experiencing {{ printf \"%.2f\" $value }}s 99th percentile latency.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+
+        - alert: JvmMemoryFillingUp
+          expr: (sum by (instance)(jvm_memory_used_bytes{area="heap"}) / sum by (instance)(jvm_memory_max_bytes{area="heap"})) * 100 > 80
+          for: 2m
+          labels:
+            severity: warning
+          annotations:
+            summary: JVM memory filling up (instance {{ $labels.instance }})
+            description: "JVM memory is filling up (> 80%)\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
