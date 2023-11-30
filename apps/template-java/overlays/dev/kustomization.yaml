@@ -45,7 +45,7 @@ helmCharts:
         enabled: true
         scheme: http
         path: /actuator/prometheus
-        interval: 60s
+        interval: 30s
       quota:
         enabled: false
         requests:
