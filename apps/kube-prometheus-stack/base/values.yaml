@@ -646,41 +646,6 @@ alertmanager:
     global:
       resolve_timeout: 5m
       slack_api_url_file: "/etc/alertmanager/secrets/alertmanager-secret/SLACK-TOKEN"
-    route:
-      group_wait: 30s
-      group_interval: 5m
-      repeat_interval: 8h
-      group_by: ["alertname", "cluster", "service"]
-      # A default receiver
-      receiver: "slack-notifications"
-      routes:
-        # capture All Critical to the 'slack-notifications'
-        - match:
-            severity: "critical"
-          continue: true
-          receiver: "slack-notifications"
-
-    receivers:
-      - name: "slack-notifications"
-        slack_configs:
-          - channel: "#prometheus-notifications"
-            color: '{{ template "slack.color" . }}'
-            title: '{{ template "slack.title" . }}'
-            text: '{{ template "slack.text" . }}'
-            send_resolved: true
-            actions:
-              - type: button
-                text: "Runbook :green_book:"
-                url: "{{ (index .Alerts 0).Annotations.runbook_url }}"
-              - type: button
-                text: "Query :mag:"
-                url: "{{ (index .Alerts 0).GeneratorURL }}"
-              - type: button
-                text: "Dashboard :chart_with_upwards_trend:"
-                url: "{{ (index .Alerts 0).Annotations.dashboard_url }}"
-              - type: button
-                text: "Silence :no_bell:"
-                url: '{{ template "__alert_silence_link" . }}'
 
   templateFiles:
     alertmanager.tmpl: |-

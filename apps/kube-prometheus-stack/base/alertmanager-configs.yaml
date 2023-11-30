@@ -1,7 +1,7 @@
 apiVersion: monitoring.coreos.com/v1alpha1
 kind: AlertmanagerConfig
 metadata:
-  name: alert-config
+  name: alertmanager-config
   namespace: monitoring
   labels:
     resource: prometheus
@@ -32,9 +32,7 @@ spec:
             {{ range .Alerts }}
             *{{.Labels.alertname}}* ({{ .Fingerprint }}): <{{ .GeneratorURL }}|:chart_with_upwards_trend:>
             {{.Annotations.description}}
-
             {{ end }}
-
           sendResolved: true
           actions:
             - type: button
