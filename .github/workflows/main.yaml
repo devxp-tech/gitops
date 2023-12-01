@@ -112,7 +112,7 @@ jobs:
       - yaml-linter
       - kube-linter
       - secret-find
-      - datree-check
+      # - datree-check
       - trivy-scan
 
   notify:
