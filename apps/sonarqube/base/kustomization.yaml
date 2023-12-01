@@ -9,42 +9,48 @@ commonLabels:
 helmCharts:
   - name: sonarqube
     releaseName: sonarqube
-    version: 3.3.3
-    repo: oci://registry-1.docker.io/bitnamicharts #https://charts.bitnami.com/bitnami
+    version: "10.3.0+2009"
+    repo: https://SonarSource.github.io/helm-chart-sonarqube
     valuesInline:
-      sonarqubeEmail: noreply@devxp-tech.io
-      sonarqubeUsername: admin
-      existingSecret: sonarqube-postgresql-secret
-      # podAnnotations:
-      #   proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
-      # sonarqubeSkipInstall: true
-      persistence:
-        enabled: false
-      service:
-        type: ClusterIP
-      resources:
-        requests:
-          memory: 512Mi
-          cpu: 100m
-        limits:
-          memory: 2048Mi
-          cpu: 200m
-      extraEnvVars:
-        - name: SONAR_CE_JAVAOPTS
-          value: "-Xmx2048m -Xmx2048m"
-        - name: JAVA_OPTS
-          value: "-Duser.timezone=America/Sao_Paulo -Xmx2048m"
-      postgresql:
-        auth:
-          existingSecret: sonarqube-postgresql-secret
-        primary:
-          resources:
-            limits:
-              cpu: 100m
-              memory: 256Mi
-            requests:
-              cpu: 50m
-              memory: 128Mi
-      # metrics:
-      #   jmx:
-      #     enabled: true
+      prometheusExporter:
+        enabled: true
+
+    # version: 3.3.3
+    # repo: oci://registry-1.docker.io/bitnamicharts #https://charts.bitnami.com/bitnami
+    # valuesInline:
+    #   sonarqubeEmail: noreply@devxp-tech.io
+    #   sonarqubeUsername: admin
+    #   existingSecret: sonarqube-postgresql-secret
+    #   # podAnnotations:
+    #   #   proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
+    #   # sonarqubeSkipInstall: true
+    #   persistence:
+    #     enabled: false
+    #   service:
+    #     type: ClusterIP
+    #   resources:
+    #     requests:
+    #       memory: 512Mi
+    #       cpu: 100m
+    #     limits:
+    #       memory: 2048Mi
+    #       cpu: 200m
+    #   extraEnvVars:
+    #     - name: SONAR_CE_JAVAOPTS
+    #       value: "-Xmx2048m -Xmx2048m"
+    #     - name: JAVA_OPTS
+    #       value: "-Duser.timezone=America/Sao_Paulo -Xmx2048m"
+    #   postgresql:
+    #     auth:
+    #       existingSecret: sonarqube-postgresql-secret
+    #     primary:
+    #       resources:
+    #         limits:
+    #           cpu: 100m
+    #           memory: 256Mi
+    #         requests:
+    #           cpu: 50m
+    #           memory: 128Mi
+    #   # metrics:
+    #   #   jmx:
+    #   #     enabled: true
