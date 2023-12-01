@@ -18,4 +18,4 @@ spec:
         - destination:
             port:
               number: 80
-            host: sonarqube.sonarqube.svc.cluster.local
+            host: sonarqube-sonarqube.sonarqube.svc.cluster.local
