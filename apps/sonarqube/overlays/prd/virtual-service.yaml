@@ -17,5 +17,5 @@ spec:
       route:
         - destination:
             port:
-              number: 80
+              number: 9000
             host: sonarqube-sonarqube.sonarqube.svc.cluster.local
