@@ -14,6 +14,9 @@ helmCharts:
       serviceAccount:
         annotations:
           eks.amazonaws.com/role-arn: arn:aws:iam::239468932737:role/KarpenterIRSA-lgseksd1-20230809132301233100000001
+      serviceMonitor:
+        enabled: true
+      replicas: 1
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
