@@ -31,19 +31,28 @@ spec:
       aws-node-termination-handler/managed: "true"
       karpenter.sh/nodegroup: "default"
   requirements:
-    - key: node.kubernetes.io/instance-type
+    - key: "karpenter.k8s.aws/instance-category"
       operator: In
-      values:
-        - t3a.small
-        - t3a.medium
-        - t3a.large
-        - t3a.xlarge
+      values: ["c", "m", "r"]
+    - key: "karpenter.k8s.aws/instance-cpu"
+      operator: Gt
+      values: ["1"]
+    # - key: node.kubernetes.io/instance-type
+    #   operator: In
+    #   values:
+    #     - c5.large
+    #     - c5.xlarge
+    #     - c5.2xlarge
+    #     - r5.large
+    #     - r5.xlarge
+    #     - r5.2xlarge
+    #     - t3a.small
+    #     - t3a.medium
+    #     - t3a.large
+    #     - t3a.xlarge
     - key: topology.kubernetes.io/zone
       operator: In
-      values:
-        - us-east-1a
-        - us-east-1b
-        - us-east-1c
+      values: ["us-east-1a", "us-east-1b", "us-east-1c"]
     - key: karpenter.sh/capacity-type
       operator: In
       values:
@@ -57,4 +66,11 @@ spec:
       operator: In
       values:
         - linux
+  limits:
+    resources:
+      cpu: 50
+      memory: 200Gi
+  providerRef:
+    name: default
+  ttlSecondsAfterEmpty: 30
   ttlSecondsUntilExpired: 2592000
