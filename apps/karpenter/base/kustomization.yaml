@@ -25,7 +25,7 @@ helmCharts:
                   - key: eks.amazonaws.com/nodegroup
                     operator: In
                     values:
-                      - unused-20230811101628629400000003
+                      - unused-20230811185420453100000001
       controller:
         resources:
           requests:
