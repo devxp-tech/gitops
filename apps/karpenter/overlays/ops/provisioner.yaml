@@ -70,6 +70,4 @@ spec:
     resources:
       cpu: 50
       memory: 200Gi
-  providerRef:
-    name: default
   ttlSecondsUntilExpired: 2592000
