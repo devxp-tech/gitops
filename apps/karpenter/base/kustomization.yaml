@@ -1,3 +1,41 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: karpenter
+helmCharts:
+  - name: karpenter
+    includeCRDs: true
+    releaseName: karpenter
+    version: v0.29.2
+    repo: oci://public.ecr.aws/karpenter
+    valuesInline:
+      nameOverride: karpenter
+      webhook:
+        port: 8443
+      serviceAccount:
+        annotations:
+          eks.amazonaws.com/role-arn: arn:aws:iam::239468932737:role/KarpenterIRSA-lgseksd1-20230809132301233100000001
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: karpenter.sh/provisioner-name
+                    operator: DoesNotExist
+              - matchExpressions:
+                  - key: eks.amazonaws.com/nodegroup
+                    operator: In
+                    values:
+                      - unused-20230811101628629400000003
+      controller:
+        resources:
+          requests:
+            cpu: 10m
+            memory: 300Mi
+          limits:
+            cpu: 1
+            memory: 1Gi
+      settings:
+        aws:
+          clusterName: lgseksd1
+          clusterEndpoint: https://7947638F25F34C5F3CAFEF8286994CB3.gr7.us-east-1.eks.amazonaws.com
+          defaultInstanceProfile: KarpenterNodeInstanceProfile-lgseksd1
