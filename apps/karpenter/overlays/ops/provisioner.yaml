@@ -72,5 +72,4 @@ spec:
       memory: 200Gi
   providerRef:
     name: default
-  ttlSecondsAfterEmpty: 30
   ttlSecondsUntilExpired: 2592000
