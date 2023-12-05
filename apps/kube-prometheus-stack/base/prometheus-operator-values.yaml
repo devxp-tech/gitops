@@ -1,0 +1,23 @@
+prometheusOperator:
+  admissionWebhooks:
+    enabled: false
+  tls:
+    enabled: false
+  tlsProxy:
+    enabled: false
+  createCustomResource: false
+  resources:
+    requests:
+      cpu: 50m
+      memory: 143M
+    limits:
+      cpu: 150m
+      memory: 1192M
+  prometheusConfigReloader:
+    resources:
+      requests:
+        cpu: 200m
+        memory: 50Mi
+      limits:
+        cpu: 400m
+        memory: 50Mi

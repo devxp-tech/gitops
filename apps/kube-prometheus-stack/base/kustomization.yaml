@@ -11,4 +11,23 @@ helmCharts:
     version: 54.2.2
     repo: https://prometheus-community.github.io/helm-charts
     # includeCRDs: true
-    valuesFile: values.yaml
+    valuesInline:
+      fullnameOverride: prometheus
+      grafana:
+        enabled: false
+      kubeEtcd:
+        enabled: true
+      kubeControllerManager:
+        enabled: true
+      kubeScheduler:
+        enabled: true
+      kubeProxy:
+        enabled: false
+      defaultRules:
+        rules:
+          time: false
+    additionalValuesFiles:
+      - alertmanager-values.yaml
+      - kube-state-metrics-values.yaml
+      - prometheus-operator-values.yaml
+      - prometheus-values.yaml
