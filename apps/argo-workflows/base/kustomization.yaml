@@ -28,6 +28,7 @@ helmCharts:
           - --auth-mode=sso
           - --insecure-skip-verify=true
         sso:
+          enabled: true
           issuer: https://argocd-dex-server.argocd.svc:5556/api/dex
           clientId:
             name: argo-workflows-sso
