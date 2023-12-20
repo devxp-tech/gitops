@@ -9,6 +9,7 @@ helmCharts:
     includeCRDs: true
     repo: https://argoproj.github.io/argo-helm
     valuesInline:
+      fullnameOverride: argo-workflows
       controller:
         metrics:
           enabled: true
