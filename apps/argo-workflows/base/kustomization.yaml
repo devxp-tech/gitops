@@ -24,9 +24,9 @@ helmCharts:
           enabled: true
         logging:
           level: debug
-        extraArgs:
-          - --auth-mode=sso
-          - --insecure-skip-verify=true
+        # extraArgs:
+        #   - --auth-mode=sso
+        #   - --insecure-skip-verify=true
         sso:
           enabled: true
           issuer: https://dex.devxp-tech.io
