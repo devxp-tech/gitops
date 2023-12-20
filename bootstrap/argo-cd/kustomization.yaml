@@ -23,6 +23,7 @@ configMapGenerator:
   - behavior: merge
     literals:
       - server.insecure="true"
+      - dexserver.disable.tls="false"
     name: argocd-cmd-params-cm
   - behavior: merge
     files:
@@ -32,12 +33,10 @@ configMapGenerator:
       - files/resource.customizations
     literals:
       - admin.enabled=true
-      - kustomize.buildOptions="--enable-alpha-plugins --enable-helm --load-restrictor
-        LoadRestrictionsNone"
+      - kustomize.buildOptions="--enable-alpha-plugins --enable-helm --load-restrictor LoadRestrictionsNone"
       - statusbadge.enabled=true
       - url=https://argocd.devxp-tech.io
       - accounts.backstage="apiKey, login"
-      - dexserver.disable.tls=false
     name: argocd-cm
     options:
       labels:
