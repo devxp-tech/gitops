@@ -2,7 +2,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: argocd
 resources:
-  - github.com/argoproj-labs/argocd-autopilot/manifests/base?ref=v0.4.15
+  - github.com/argoproj-labs/argocd-autopilot/manifests/base?ref=v0.4.17
   - https://raw.githubusercontent.com/argoproj-labs/rollout-extension/v0.3.0/manifests/install.yaml # On Disaster Recovery comment this lines
   - argocd-notifications-secret-sealed.yaml # On Disaster Recovery comment this lines
   - github-secrets-sealed.yaml # On Disaster Recovery comment this lines
@@ -37,6 +37,7 @@ configMapGenerator:
       - statusbadge.enabled=true
       - url=https://argocd.devxp-tech.io
       - accounts.backstage="apiKey, login"
+      - dexserver.disable.tls=false
     name: argocd-cm
     options:
       labels:
