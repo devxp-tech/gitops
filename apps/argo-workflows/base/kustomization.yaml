@@ -31,11 +31,11 @@ helmCharts:
           enabled: true
           issuer: https://argocd.devxp-tech.io/oauth2/callback
           clientId:
-            name: github-secrets
-            key: GITHUB_CLIENT_ID
+            name: argo-workflows-sso
+            key: client-id
           clientSecret:
-            name: github-secrets
-            key: GITHUB_CLIENT_SECRET
+            name: argo-workflows-sso
+            key: client-secret
           redirectUrl: https://argowf.devxp-tech.io/oauth2/callback
           scopes:
             - openid
