@@ -18,6 +18,7 @@ patches:
         annotations:
           sealedsecrets.bitnami.com/managed: "true"
   - path: argocd-server.yaml
+  - path: argocd-dex-server.yaml
   - path: argocd-notifications-cm.yaml
 configMapGenerator:
   - behavior: merge
