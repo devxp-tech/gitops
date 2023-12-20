@@ -14,7 +14,7 @@ spec:
   http:
     - match:
         - uri:
-            prefix: "/v1"
+            prefix: "/api/dex/"
       route:
         - destination:
             host: argocd-dex-server.argocd.svc.cluster.local

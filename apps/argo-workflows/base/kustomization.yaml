@@ -29,7 +29,7 @@ helmCharts:
           - --insecure-skip-verify=true
         sso:
           enabled: true
-          issuer: http://argocd-dex-server.argocd.svc:5556/api/dex
+          issuer: https://argocd.devxp-tech.io/api/dex
           clientId:
             name: argo-workflows-sso
             key: client-id
