@@ -26,10 +26,9 @@ helmCharts:
           level: debug
         extraArgs:
           - --auth-mode=sso
-          # - --insecure-skip-verify=true
+          - --insecure-skip-verify=true
         sso:
-          enabled: true
-          issuer: https://argocd.devxp-tech.io/api/dex
+          issuer: https://argocd-dex-server.argocd.svc:5556/api/dex
           clientId:
             name: argo-workflows-sso
             key: client-id
