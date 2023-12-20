@@ -12,6 +12,14 @@ spec:
   gateways:
     - istio-system/istio-ingressgateway
   http:
+    - match:
+        - uri:
+            prefix: "/v1"
+      route:
+        - destination:
+            host: argocd-dex-server.argocd.svc.cluster.local
+            port:
+              number: 5556
     - route:
         - destination:
             host: argocd-server.argocd.svc.cluster.local
