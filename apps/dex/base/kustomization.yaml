@@ -102,7 +102,7 @@ helmCharts:
           - id: argo-workflows
             name: argo-workflows
             redirectURIs:
-              - https://argowf.devxp-tech.io/oauth2/callback/
+              - https://argowf.devxp-tech.io/oauth2/callback
             SecretEnv: ARGO-WORKFLOWS
 
   - name: dex-k8s-authenticator
