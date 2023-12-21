@@ -1,8 +1,7 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace:
-  argocd
-  # - sso-sealed.yaml # On Disaster Recovery comment this lines
+namespace: argocd
+  - sso-sealed.yaml # On Disaster Recovery comment this lines
 resources:
   - github.com/argoproj-labs/argocd-autopilot/manifests/base?ref=v0.4.17
   - https://raw.githubusercontent.com/argoproj-labs/rollout-extension/v0.3.0/manifests/install.yaml
