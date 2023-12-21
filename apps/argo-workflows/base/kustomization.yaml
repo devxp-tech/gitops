@@ -3,6 +3,7 @@ kind: Kustomization
 namespace: argowf
 resources:
   - https://raw.githubusercontent.com/argoproj-labs/argo-workflows-slack-executor-plugin/main/slack-executor-plugin-configmap.yaml
+  - plugin-cm.yaml
 helmCharts:
   - name: argo-workflows
     releaseName: argo-workflows
