@@ -99,6 +99,12 @@ helmCharts:
               - https://kube-login.devxp-tech.io/callback/
             SecretEnv: DEX_K8S_AUTH_SECRET
 
+          - id: argo-workflows
+            name: argo-workflows
+            redirectURIs:
+              - https://argowf.devxp-tech.io/oauth2/callback/
+            SecretEnv: ARGO-WORKFLOWS
+
   - name: dex-k8s-authenticator
     releaseName: dex-k8s-authenticator
     version: 0.0.2

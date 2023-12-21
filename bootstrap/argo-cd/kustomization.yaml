@@ -1,14 +1,24 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: argocd
+namespace:
+  argocd
+  # - sso-sealed.yaml # On Disaster Recovery comment this lines
 resources:
   - github.com/argoproj-labs/argocd-autopilot/manifests/base?ref=v0.4.17
-  - https://raw.githubusercontent.com/argoproj-labs/rollout-extension/v0.3.0/manifests/install.yaml # On Disaster Recovery comment this lines
-  - argocd-notifications-secret-sealed.yaml # On Disaster Recovery comment this lines
-  - github-secrets-sealed.yaml # On Disaster Recovery comment this lines
-  # - sso-sealed.yaml # On Disaster Recovery comment this lines
-  - virtual-service.yaml # On Disaster Recovery comment this lines
+  - https://raw.githubusercontent.com/argoproj-labs/rollout-extension/v0.3.0/manifests/install.yaml
+  - argocd-notifications-secret-sealed.yaml
+  - github-secrets-sealed.yaml
+  - virtual-service.yaml
 patches:
+  - target:
+      kind: Deployment
+      name: argocd-dex-server
+    patch: |-
+      - op: add
+        path: /spec/template/spec/containers/0/env
+        value:
+          - name: MY_ENV2
+            value: "2"
   - patch: |-
       apiVersion: v1
       kind: Secret
@@ -18,7 +28,6 @@ patches:
         annotations:
           sealedsecrets.bitnami.com/managed: "true"
   - path: argocd-server.yaml
-  - path: argocd-dex-server.yaml
   - path: argocd-notifications-cm.yaml
 configMapGenerator:
   - behavior: merge
@@ -34,7 +43,8 @@ configMapGenerator:
       - files/resource.customizations
     literals:
       - admin.enabled=true
-      - kustomize.buildOptions="--enable-alpha-plugins --enable-helm --load-restrictor LoadRestrictionsNone"
+      - kustomize.buildOptions="--enable-alpha-plugins --enable-helm --load-restrictor
+        LoadRestrictionsNone"
       - statusbadge.enabled=true
       - url=https://argocd.devxp-tech.io
       - accounts.backstage="apiKey, login"
@@ -51,6 +61,6 @@ configMapGenerator:
     options:
       labels:
         app.kubernetes.io/part-of: argocd
-    # extensions controller component
+      # extensions controller component
 components:
   - https://github.com/argoproj-labs/argocd-extensions/manifests
