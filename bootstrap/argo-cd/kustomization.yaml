@@ -40,7 +40,7 @@ configMapGenerator:
   - behavior: merge
     literals:
       - server.insecure="true"
-      - dexserver.disable.tls="true"
+      # - dexserver.disable.tls="true"
     name: argocd-cmd-params-cm
   - behavior: merge
     files:
