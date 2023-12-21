@@ -1,11 +1,14 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: argocd - sso-sealed.yaml
+namespace: argocd
+components:
+  - https://github.com/argoproj-labs/argocd-extensions/manifests
 resources:
   - github.com/argoproj-labs/argocd-autopilot/manifests/base?ref=v0.4.17
   - https://raw.githubusercontent.com/argoproj-labs/rollout-extension/v0.3.0/manifests/install.yaml
   # - argocd-notifications-secret-sealed.yaml
   # - github-secrets-sealed.yaml
+  - sso-sealed.yaml
   - virtual-service.yaml
 patches:
   - patch: |-
@@ -65,5 +68,3 @@ configMapGenerator:
       labels:
         app.kubernetes.io/part-of: argocd
         # extensions controller component
-components:
-  - https://github.com/argoproj-labs/argocd-extensions/manifests
