@@ -4,7 +4,7 @@ namespace: argowf
 helmCharts:
   - name: argo-workflows
     releaseName: argo-workflows
-    namespace: argowf
+    # namespace: argowf
     version: 0.40.1
     includeCRDs: true
     repo: https://argoproj.github.io/argo-helm
@@ -28,7 +28,7 @@ helmCharts:
           level: debug
         workflowNamespaces:
           - argowf
-          - default
+          # - default
       server:
         metrics:
           enabled: true
@@ -48,8 +48,8 @@ helmCharts:
           redirectUrl: https://argowf.devxp-tech.io/oauth2/callback
           rbac:
             enabled: false
-          # scopes:
-          #   - openid
-          #   - email
-          #   - profile
-          #   - groups
+          scopes:
+            - openid
+            - email
+            - profile
+            - groups
