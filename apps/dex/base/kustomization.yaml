@@ -38,6 +38,11 @@ helmCharts:
             secretKeyRef:
               name: github-client
               key: jaeger-secret
+        - name: ARGO-WORKFLOWS
+          valueFrom:
+            secretKeyRef:
+              name: github-client
+              key: argo-workflows
         - name: DEX_K8S_AUTH_SECRET
           valueFrom:
             secretKeyRef:
