@@ -22,6 +22,8 @@ patches:
               secretKeyRef:
                 name: argo-workflows-sso
                 key: client-secret
+          - name: ARGOCD_DEX_SERVER_DISABLE_TLS
+            value: "true"
   - patch: |-
       apiVersion: v1
       kind: Secret
