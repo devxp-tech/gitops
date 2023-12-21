@@ -21,6 +21,9 @@ helmCharts:
         rbac:
           create: true
       controller:
+        extraEnv:
+          - name: ARGO_EXECUTOR_PLUGINS
+            value: "true"
         workflowDefaults:
           spec:
             serviceAccountName: argo-workflow

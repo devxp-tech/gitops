@@ -16,3 +16,7 @@ spec:
         image: docker/whalesay
         command: [cowsay]
         args: ["{{inputs.parameters.message}}"]
+    - name: slack-notification
+      plugin:
+        slack:
+          text: "{{workflow.name}} finished!"
