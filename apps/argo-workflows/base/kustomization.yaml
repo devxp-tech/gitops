@@ -4,7 +4,7 @@ namespace: argowf
 helmCharts:
   - name: argo-workflows
     releaseName: argo-workflows
-    # namespace: argowf
+    namespace: argowf
     version: 0.40.1
     includeCRDs: true
     repo: https://argoproj.github.io/argo-helm
