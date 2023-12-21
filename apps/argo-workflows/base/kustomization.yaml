@@ -36,6 +36,8 @@ helmCharts:
             name: argo-workflows-sso
             key: client-secret
           redirectUrl: https://argowf.devxp-tech.io/oauth2/callback
+          rbac:
+            enabled: false
           # scopes:
           #   - openid
           #   - email
