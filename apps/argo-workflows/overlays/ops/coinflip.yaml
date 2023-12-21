@@ -8,6 +8,7 @@ metadata:
       This is an example of coin flip defined as a sequence of conditional steps.\
 spec:
   entrypoint: coinflip
+  serviceAccountName: argo-workflow
   templates:
     - name: coinflip
       steps:

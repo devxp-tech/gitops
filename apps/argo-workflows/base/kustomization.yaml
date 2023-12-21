@@ -15,6 +15,9 @@ helmCharts:
       workflow:
         serviceAccount:
           create: true
+          name: "argo-workflow"
+        rbac:
+          create: true
       controller:
         metrics:
           enabled: true
@@ -22,6 +25,7 @@ helmCharts:
           level: debug
         workflowNamespaces:
           - argowf
+          - default
       server:
         metrics:
           enabled: true
