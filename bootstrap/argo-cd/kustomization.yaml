@@ -20,8 +20,9 @@ patches:
               secretKeyRef:
                 name: argo-workflows-sso
                 key: client-secret
-          - name: ARGOCD_DEX_SERVER_DISABLE_TLS
-            value: "true"
+
+          # - name: ARGOCD_DEX_SERVER_DISABLE_TLS
+          #   value: "true"
     target:
       kind: Deployment
       name: argocd-dex-server
