@@ -2,68 +2,68 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: argocd - sso-sealed.yaml
 resources:
-- github.com/argoproj-labs/argocd-autopilot/manifests/base?ref=v0.4.17
-- https://raw.githubusercontent.com/argoproj-labs/rollout-extension/v0.3.0/manifests/install.yaml
-- argocd-notifications-secret-sealed.yaml
-- github-secrets-sealed.yaml
-- virtual-service.yaml
+  - github.com/argoproj-labs/argocd-autopilot/manifests/base?ref=v0.4.17
+  - https://raw.githubusercontent.com/argoproj-labs/rollout-extension/v0.3.0/manifests/install.yaml
+  # - argocd-notifications-secret-sealed.yaml
+  # - github-secrets-sealed.yaml
+  - virtual-service.yaml
 patches:
-- patch: |-
-    - op: add
-      path: /spec/template/spec/containers/0/env
-      value:
-        - name: ARGO_WORKFLOWS_SSO_CLIENT_SECRET
-          valueFrom:
-            secretKeyRef:
-              name: argo-workflows-sso
-              key: client-secret
-        - name: ARGOCD_DEX_SERVER_DISABLE_TLS
-          value: "true"
-  target:
-    kind: Deployment
-    name: argocd-dex-server
-- patch: |-
-    apiVersion: v1
-    kind: Secret
-    type: Opaque
-    metadata:
-      name: argocd-notifications-secret
-      annotations:
-        sealedsecrets.bitnami.com/managed: "true"
-- path: argocd-server.yaml
-- path: argocd-notifications-cm.yaml
+  - patch: |-
+      - op: add
+        path: /spec/template/spec/containers/0/env
+        value:
+          - name: ARGO_WORKFLOWS_SSO_CLIENT_SECRET
+            valueFrom:
+              secretKeyRef:
+                name: argo-workflows-sso
+                key: client-secret
+          - name: ARGOCD_DEX_SERVER_DISABLE_TLS
+            value: "true"
+    target:
+      kind: Deployment
+      name: argocd-dex-server
+  - patch: |-
+      apiVersion: v1
+      kind: Secret
+      type: Opaque
+      metadata:
+        name: argocd-notifications-secret
+        annotations:
+          sealedsecrets.bitnami.com/managed: "true"
+  - path: argocd-server.yaml
+  - path: argocd-notifications-cm.yaml
 configMapGenerator:
-- behavior: merge
-  literals:
-  - server.insecure="true"
-  - dexserver.disable.tls="true"
-  name: argocd-cmd-params-cm
-- behavior: merge
-  files:
-  - files/dex.config
-  - files/repositories
-  - files/repository.credentials
-  - files/resource.customizations
-  literals:
-  - admin.enabled=true
-  - kustomize.buildOptions="--enable-alpha-plugins --enable-helm --load-restrictor
-    LoadRestrictionsNone"
-  - statusbadge.enabled=true
-  - url=https://argocd.devxp-tech.io
-  - accounts.backstage="apiKey, login"
-  name: argocd-cm
-  options:
-    labels:
-      app.kubernetes.io/part-of: argocd
-- behavior: merge
-  files:
-  - files/policy.csv
-  literals:
-  - policy.default="role:readonly"
-  name: argocd-rbac-cm
-  options:
-    labels:
-      app.kubernetes.io/part-of: argocd
-      # extensions controller component
+  - behavior: merge
+    literals:
+      - server.insecure="true"
+      - dexserver.disable.tls="true"
+    name: argocd-cmd-params-cm
+  - behavior: merge
+    files:
+      - files/dex.config
+      - files/repositories
+      - files/repository.credentials
+      - files/resource.customizations
+    literals:
+      - admin.enabled=true
+      - kustomize.buildOptions="--enable-alpha-plugins --enable-helm --load-restrictor
+        LoadRestrictionsNone"
+      - statusbadge.enabled=true
+      - url=https://argocd.devxp-tech.io
+      - accounts.backstage="apiKey, login"
+    name: argocd-cm
+    options:
+      labels:
+        app.kubernetes.io/part-of: argocd
+  - behavior: merge
+    files:
+      - files/policy.csv
+    literals:
+      - policy.default="role:readonly"
+    name: argocd-rbac-cm
+    options:
+      labels:
+        app.kubernetes.io/part-of: argocd
+        # extensions controller component
 components:
-- https://github.com/argoproj-labs/argocd-extensions/manifests
+  - https://github.com/argoproj-labs/argocd-extensions/manifests
