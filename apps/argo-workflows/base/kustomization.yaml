@@ -1,6 +1,8 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: argowf
+resources:
+  - https://raw.githubusercontent.com/argoproj-labs/argo-workflows-slack-executor-plugin/main/plugin.yaml
 helmCharts:
   - name: argo-workflows
     releaseName: argo-workflows
