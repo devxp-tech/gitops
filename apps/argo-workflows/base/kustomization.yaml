@@ -12,6 +12,9 @@ helmCharts:
       fullnameOverride: argo-workflows
       crds:
         install: true
+      workflow:
+        serviceAccount:
+          create: true
       controller:
         metrics:
           enabled: true
