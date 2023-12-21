@@ -28,7 +28,7 @@ helmCharts:
           - --auth-mode=sso
         sso:
           enabled: true
-          issuer: https://argocd-dex-server:5556/api/dex
+          issuer: https://dex.devxp-tech.io
           clientId:
             name: argo-workflows-sso
             key: client-id
@@ -36,8 +36,8 @@ helmCharts:
             name: argo-workflows-sso
             key: client-secret
           redirectUrl: https://argowf.devxp-tech.io/oauth2/callback
-          scopes:
-            - openid
-            - email
-            - profile
-            - groups
+          # scopes:
+          #   - openid
+          #   - email
+          #   - profile
+          #   - groups
