@@ -1,17 +1,18 @@
 apiVersion: argoproj.io/v1alpha1
-kind: Workflow
+kind: WorkflowTemplate
 metadata:
-  generateName: workflow-template-hello-world-
+  name: workflow-template-submittable
 spec:
-  entrypoint: whalesay
+  arguments:
+    parameters:
+      - name: message
+        value: hello world
   templates:
-    - name: whalesay
-      steps:
-        - - name: call-whalesay-template
-            templateRef:
-              name: workflow-template-whalesay-template
-              template: whalesay-template
-            arguments:
-              parameters:
-                - name: message
-                  value: "hello world"
+    - name: whalesay-template
+      inputs:
+        parameters:
+          - name: message
+      container:
+        image: docker/whalesay
+        command: [cowsay]
+        args: ["{{inputs.parameters.message}}"]
