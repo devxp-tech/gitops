@@ -1,7 +1,7 @@
 {
   "appName": "argo-workflows",
   "userGivenName": "argo-workflows",
-  "destNamespace": "argocd",
+  "destNamespace": "argowf",
   "destServer": "https://kubernetes.default.svc",
   "srcPath": "apps/argo-workflows/overlays/ops",
   "srcRepoURL": "https://github.com/devxp-tech/gitops.git",
