@@ -24,7 +24,9 @@ configMapGenerator:
   - behavior: merge
     literals:
       - server.insecure="true"
-      # - dexserver.disable.tls="true"
+      - dexserver.disable.tls="true"
+      - server.dex.server="http://argocd-dex-server:5556"
+      - server.dex.server.strict.tls="false"
     name: argocd-cmd-params-cm
   - behavior: merge
     files:
