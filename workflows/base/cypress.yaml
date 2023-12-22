@@ -12,7 +12,7 @@ spec:
         value: "sucesso!"
     tasks:
       - name: A
-        template: echo
+        template: cypress-template
         arguments:
           parameters: [{ name: message, value: A }]
   templates:
