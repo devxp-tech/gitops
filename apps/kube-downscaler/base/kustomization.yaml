@@ -9,3 +9,5 @@ helmCharts:
     repo: https://charts.deliveryhero.io/
     valuesInline:
       fullnameOverride: kube-downscaler
+      debug:
+        enabled: true
