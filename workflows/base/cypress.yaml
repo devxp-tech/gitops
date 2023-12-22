@@ -3,12 +3,18 @@ kind: WorkflowTemplate
 metadata:
   name: cypress
 spec:
+  entrypoint: cypress-template
   arguments:
     parameters:
       - name: image
         value: ghcr.io/devxp-tech/backstage:f8172400
       - name: message
         value: "sucesso!"
+    tasks:
+      - name: A
+        template: echo
+        arguments:
+          parameters: [{ name: message, value: A }]
   templates:
     - name: cypress-template
       inputs:
