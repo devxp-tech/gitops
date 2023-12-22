@@ -11,8 +11,8 @@ spec:
         value: backstage
       - name: version
         value: f8172400
-      - name: command
-        value: "npx cypress run"
+      - name: arg
+        value: "sucesso!"
   templates:
     - name: cypress-template
       inputs:
@@ -20,8 +20,8 @@ spec:
           - name: registry
           - name: image
           - name: version
-          - name: command
+          - name: arg
       container:
         image: "{{inputs.parameters.registry}}/{{inputs.parameters.image}}:{{inputs.parameters.version}}"
-        command: ["{{inputs.parameters.command}}"]
-        # args: ["{{inputs.parameters.image}}"]
+        command: [echo]
+        args: ["{{inputs.parameters.arg}}"]
