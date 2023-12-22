@@ -15,7 +15,7 @@ helmCharts:
       prometheusExporter:
         enabled: true
       annotations:
-      downscaler/uptime: "Mon-Fri 09:00-17:00 Europe/Lisbon"
+        downscaler/uptime: "Mon-Fri 09:00-17:00 Europe/Lisbon"
 
     # version: 3.3.3
     # repo: oci://registry-1.docker.io/bitnamicharts #https://charts.bitnami.com/bitnami
