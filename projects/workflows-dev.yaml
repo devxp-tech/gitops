@@ -1,0 +1,109 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  annotations:
+    argocd-autopilot.argoproj-labs.io/default-dest-server: https://kubernetes.default.svc
+    argocd.argoproj.io/sync-options: PruneLast=true
+    argocd.argoproj.io/sync-wave: "-2"
+  creationTimestamp: null
+  name: workflows-dev
+  namespace: argocd
+spec:
+  clusterResourceWhitelist:
+    - group: "*"
+      kind: "*"
+  description: "Dev Workflow Project"
+  destinations:
+    - namespace: "*"
+      server: "*"
+  namespaceResourceWhitelist:
+    - group: "*"
+      kind: "*"
+  sourceRepos:
+    - "*"
+status: {}
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+  creationTimestamp: null
+  name: workflows-dev
+  namespace: argocd
+spec:
+  generators:
+    - git:
+        files:
+          - path: workflows/overlays/dev/config.json
+        repoURL: https://github.com/devxp-tech/gitops.git
+        requeueAfterSeconds: 20
+        revision: ""
+        template:
+          metadata: {}
+          spec:
+            destination: {}
+            project: ""
+            source:
+              repoURL: ""
+    - git:
+        files:
+          - path: workflows/**/dev/config_dir.json
+        repoURL: https://github.com/devxp-tech/gitops.git
+        requeueAfterSeconds: 20
+        revision: ""
+        template:
+          metadata: {}
+          spec:
+            destination: {}
+            project: ""
+            source:
+              directory:
+                exclude: "{{ exclude }}"
+                include: "{{ include }}"
+                jsonnet: {}
+                recurse: true
+              repoURL: ""
+  # syncPolicy:
+  #   preserveResourcesOnDeletion: true
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/managed-by: argocd-autopilot
+        app.kubernetes.io/name: "{{ appName }}"
+      annotations:
+        # notifications.argoproj.io/subscribe.on-sync-succeeded.slack: argocd-notifications
+        notifications.argoproj.io/subscribe.on-sync-failed.slack: argocd-notifications
+        notifications.argoproj.io/subscribe.on-sync-status-unknown.slack: argocd-notifications
+        notifications.argoproj.io/subscribe.on-health-degraded.slack: argocd-notifications
+        # notifications.argoproj.io/subscribe.on-deployed.slack.slack: argocd-notifications
+        notifications.argoproj.io/subscribe.on-sync-succeeded.grafana: argocd-notifications
+      name: "{{ userGivenName }}-dev"
+      namespace: argocd
+    spec:
+      destination:
+        namespace: "{{ destNamespace }}"
+        server: "{{ destServer }}"
+      ignoreDifferences:
+        - group: argoproj.io
+          kind: Application
+          jsonPointers:
+            - /status
+        - group: networking.istio.io
+          kind: VirtualService
+          jsonPointers:
+            - /spec/http/0
+      project: dev
+      source:
+        path: "{{ srcPath }}"
+        repoURL: "{{ srcRepoURL }}"
+        targetRevision: "{{ srcTargetRevision }}"
+      syncPolicy:
+        automated:
+          allowEmpty: true
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
+status: {}

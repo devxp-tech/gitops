@@ -1,0 +1,11 @@
+{
+  "appName": "workflows",
+  "userGivenName": "workflows",
+  "destNamespace": "workflows",
+  "destServer": "https://kubernetes.default.svc",
+  "srcPath": "workflows/overlays/dev",
+  "srcRepoURL": "https://github.com/devxp-tech/gitops.git",
+  "srcTargetRevision": "",
+  "CreateNamespace": true,
+  "labels": null
+}
