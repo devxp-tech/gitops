@@ -38,6 +38,7 @@ configMapGenerator:
         LoadRestrictionsNone"
       - statusbadge.enabled=true
       - url=https://argocd.devxp-tech.io
+      - dexserver.disable.tls=true
       - accounts.backstage="apiKey, login"
     name: argocd-cm
     options:
