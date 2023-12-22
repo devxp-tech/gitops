@@ -2,11 +2,13 @@
 apiVersion: v1
 kind: Namespace
 metadata:
+  name: sonarqube
+  annotations:
+    downscaler/downtime: Mon-Sun 16:30-09:00 UTC
   labels:
     kubernetes.io/metadata.name: sonarqube
     backstage.io/kubernetes-id: sonarqube
     istio-injection: enabled
-  name: sonarqube
 spec:
   finalizers:
-  - kubernetes
+    - kubernetes
