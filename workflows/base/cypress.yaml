@@ -5,23 +5,16 @@ metadata:
 spec:
   arguments:
     parameters:
-      - name: registry
-        value: ghcr.io/devxp-tech
       - name: image
-        value: backstage
-      - name: version
-        value: f8172400
-      - name: arg
+        value: ghcr.io/devxp-tech/backstage:f8172400
+      - name: message
         value: "sucesso!"
   templates:
     - name: cypress-template
       inputs:
         parameters:
-          - name: registry
           - name: image
-          - name: version
-          - name: arg
+          - name: message
       container:
-        image: "{{inputs.parameters.registry}}/{{inputs.parameters.image}}:{{inputs.parameters.version}}"
-        command: [echo]
-        args: ["{{inputs.parameters.arg}}"]
+        image: "{{inputs.parameters.image}}"
+        command: [echo, "{{inputs.parameters.message}}"]
