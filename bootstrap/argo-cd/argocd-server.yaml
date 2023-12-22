@@ -13,9 +13,9 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: github-secrets
-                  key: clientID
+                  key: dex.github.clientID
             - name: GITHUB_CLIENT_SECRET
               valueFrom:
                 secretKeyRef:
                   name: github-secrets
-                  key: clientSecret
+                  key: dex.github.clientSecret
