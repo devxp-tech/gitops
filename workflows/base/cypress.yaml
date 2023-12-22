@@ -5,14 +5,23 @@ metadata:
 spec:
   arguments:
     parameters:
+      - name: registry
+        value: ghcr.io/devxp-tech
       - name: image
-        value: ghcr.io/devxp-tech/backstage:f8172400
+        value: backstage
+      - name: version
+        value: f8172400
+      - name: command
+        value: "npx cypress run"
   templates:
     - name: cypress-template
       inputs:
         parameters:
+          - name: registry
           - name: image
+          - name: version
+          - name: command
       container:
-        image: "{{inputs.parameters.image}}"
-        command: [npx cypress run]
+        image: "{{inputs.parameters.registry}}/{{inputs.parameters.image}}:{{inputs.parameters.version}}"
+        command: ["{{inputs.parameters.command}}"]
         # args: ["{{inputs.parameters.image}}"]
