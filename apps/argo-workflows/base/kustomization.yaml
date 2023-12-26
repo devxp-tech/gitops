@@ -40,22 +40,22 @@ helmCharts:
           enabled: true
         logging:
           level: debug
-        extraArgs:
-          - --auth-mode=sso
-        sso:
-          enabled: true
-          issuer: https://dex.devxp-tech.io
-          clientId:
-            name: argo-workflows-sso
-            key: client-id
-          clientSecret:
-            name: argo-workflows-sso
-            key: client-secret
-          redirectUrl: https://argowf.devxp-tech.io/oauth2/callback
-          rbac:
-            enabled: false
-          scopes:
-            - openid
-            - email
-            - profile
-            - groups
+        # extraArgs:
+        #   - --auth-mode=sso
+        # sso:
+        #   enabled: true
+        #   issuer: https://dex.devxp-tech.io
+        #   clientId:
+        #     name: argo-workflows-sso
+        #     key: client-id
+        #   clientSecret:
+        #     name: argo-workflows-sso
+        #     key: client-secret
+        #   redirectUrl: https://argowf.devxp-tech.io/oauth2/callback
+        #   rbac:
+        #     enabled: false
+        #   scopes:
+        #     - openid
+        #     - email
+        #     - profile
+        #     - groups
