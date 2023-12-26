@@ -91,12 +91,12 @@ helmCharts:
         username: backstage
         database: backstage
         existingSecret: postgres-secrets
-      # global:
-      #   postgresql:
-      #     auth:
-      #       database: backstage
-      #       username: backstage
-      #       existingSecret: postgres-secrets
+      global:
+        postgresql:
+          auth:
+            database: backstage
+            username: backstage
+            existingSecret: postgres-secrets
       primary:
         resources:
           limits:
