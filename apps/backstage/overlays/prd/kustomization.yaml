@@ -14,9 +14,10 @@ helmCharts:
     version: 0.2.31
     repo: https://devxp-tech.github.io/helm-charts
     valuesInline:
-      global:
-        cluster: cluster.local
       name: "backstage"
+      global:
+        network:
+          domain: devxp-tech.io
       image:
         repository: ghcr.io/devxp-tech/backstage
         tag: 55117432
@@ -37,8 +38,6 @@ helmCharts:
             name: postgres-secrets
         - secretRef:
             name: backstage-secrets
-      network:
-        domain: devxp-tech.io
       resources:
         requests:
           memory: 400Mi
