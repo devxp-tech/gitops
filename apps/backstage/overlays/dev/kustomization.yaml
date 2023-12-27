@@ -15,7 +15,7 @@ helmCharts:
       name: "backstage"
       image:
         repository: ghcr.io/devxp-tech/backstage
-        tag: fb2baddb
+        tag: 55117432
       ResourceQuota:
         enabled: false
       container:
