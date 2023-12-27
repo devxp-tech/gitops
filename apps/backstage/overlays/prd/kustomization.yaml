@@ -19,7 +19,7 @@ helmCharts:
       name: "backstage"
       image:
         repository: ghcr.io/devxp-tech/backstage
-        tag: fb2baddb
+        tag: 55117432
       serviceAccount:
         annotations:
           "eks.amazonaws.com/role-arn": "arn:aws:iam::239468932737:role/backstage-lgseksd1-sa"
