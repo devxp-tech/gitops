@@ -42,15 +42,8 @@
     "enabled": true,
     "fileMatch": [
       "apps/**/overlays/dev/kustomization.yaml"
-    ]
-  },
-  "kustomize": {
-    "groupName": "kustomize",
-    "description": "Kustomization Files",
-    "enabled": true,
-    "fileMatch": [
-      "(^|/)kustomization\\.ya?ml$"
-    ]
+    ],
+    "automerge": true
   },
   "pinDigests": true
 }
