@@ -29,7 +29,7 @@
   "argocd": {
     "enabled": true,
     "fileMatch": [
-      "apps/argocd/.+\\.yaml$"
+      "bootstrap/argo-cd/.+\\.yaml$"
     ]
   },
   "kustomize": {
