@@ -15,15 +15,9 @@
     },
     {
       "paths": [
-        "apps/networking/unifi/**",
-        "apps/argocd/base/services/mlops/localai.yaml",
-        "apps/argocd/kustomization.yaml",
-        "apps/argocd/base/core/argocd.yaml",
-        "apps/argocd/Dockerfile",
-        "apps/argocd/base/services/gitea.yaml",
-        "apps/data/redis/kustomization.yaml"
+        "apps/**/overlays/dev/kustomization.yaml"
       ],
-      "enabled": false
+      "enabled": true
     }
   ],
   "argocd": {
