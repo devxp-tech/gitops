@@ -29,12 +29,16 @@
     }
   ],
   "argocd": {
+    "groupName": "argocd",
+    "description": "ArgoCD",
     "enabled": true,
     "fileMatch": [
       "bootstrap/argo-cd/.+\\.yaml$"
     ]
   },
   "kustomize": {
+    "groupName": "kustomize",
+    "description": "Kustomization Files",
     "enabled": true,
     "fileMatch": [
       "(^|/)kustomization\\.ya?ml$"
