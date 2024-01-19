@@ -30,10 +30,18 @@
   ],
   "argocd": {
     "groupName": "argocd",
-    "description": "ArgoCD",
+    "description": "ArgoCD Autopilot",
     "enabled": true,
     "fileMatch": [
       "bootstrap/argo-cd/.+\\.yaml$"
+    ]
+  },
+  "kustomize-dev": {
+    "groupName": "kustomize-dev",
+    "description": "Kustomization Development",
+    "enabled": true,
+    "fileMatch": [
+      "apps/**/overlays/dev/kustomization.yaml"
     ]
   },
   "kustomize": {
