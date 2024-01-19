@@ -9,7 +9,7 @@
       "description": "GitHub Actions Dependencies",
       "enabled": true,
       "matchPaths": [
-        ".github/workflows/*.yml"
+        ".github/workflows/*.yaml"
       ]
     },
     {
