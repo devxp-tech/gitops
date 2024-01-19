@@ -1,0 +1,26 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "dependencyDashboard": true,
+  "reviewers": [
+    "@diegoluisi",
+  ],
+  "extends": [
+    "config:base",
+    // https://docs.renovatebot.com/presets-default/
+    // ":timezone(Asia/Tokyo)",
+    ":prHourlyLimitNone",
+    ":prConcurrentLimitNone",
+    // https://github.com/aquaproj/aqua-renovate-config
+    "github>aquaproj/aqua-renovate-config#1.5.2",
+  ],
+  "argocd": {
+    "fileMatch": [
+      "argocd-config/base/.*\\.yaml",
+    ],
+  },
+  "kubernetes": {
+    "fileMatch": [
+      "cloudflared/base/.*\\.yaml",
+    ],
+  },
+}
