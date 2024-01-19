@@ -36,14 +36,14 @@
       "bootstrap/argo-cd/.+\\.yaml$"
     ]
   },
-  "kustomize-dev": {
-    "groupName": "kustomize-dev",
-    "description": "Kustomization Development",
+  "kustomize": {
+    "groupName": "kustomize",
+    "description": "Kustomization Files",
     "enabled": true,
+    "automerge": true,
     "fileMatch": [
-      "apps/**/overlays/dev/kustomization.yaml"
-    ],
-    "automerge": true
+      "apps/**/overlays/dev/(^|/)kustomization\\.ya?ml$"
+    ]
   },
   "pinDigests": true
 }
