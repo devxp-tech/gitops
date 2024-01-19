@@ -5,7 +5,9 @@
   ],
   "packageRules": [
     {
-      "groupName": "GitHub Actions Dependencies",
+      "groupName": "github-actions",
+      "description": "GitHub Actions Dependencies",
+      "enabled": true,
       "matchPaths": [
         ".github/workflows/*.yml"
       ]
@@ -33,10 +35,10 @@
     ]
   },
   "kustomize": {
+    "enabled": true,
     "fileMatch": [
       "(^|/)kustomization\\.ya?ml$"
-    ],
-    "enabled": true
+    ]
   },
   "pinDigests": true
 }
