@@ -1,26 +1,42 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "dependencyDashboard": true,
-  "reviewers": [
-    "@diegoluisi",
-  ],
   "extends": [
-    "config:base",
-    // https://docs.renovatebot.com/presets-default/
-    // ":timezone(Asia/Tokyo)",
-    ":prHourlyLimitNone",
-    ":prConcurrentLimitNone",
-    // https://github.com/aquaproj/aqua-renovate-config
-    "github>aquaproj/aqua-renovate-config#1.5.2",
+    "config:base"
+  ],
+  "packageRules": [
+    {
+      "matchUpdateTypes": [
+        "minor",
+        "patch",
+        "pin",
+        "digest"
+      ],
+      "automerge": true
+    },
+    {
+      "paths": [
+        "apps/networking/unifi/**",
+        "apps/argocd/base/services/mlops/localai.yaml",
+        "apps/argocd/kustomization.yaml",
+        "apps/argocd/base/core/argocd.yaml",
+        "apps/argocd/Dockerfile",
+        "apps/argocd/base/services/gitea.yaml",
+        "apps/data/redis/kustomization.yaml"
+      ],
+      "enabled": false
+    }
   ],
   "argocd": {
+    "enabled": true,
     "fileMatch": [
-      "apps/**/base/.*\\.yaml",
-    ],
+      "apps/argocd/.+\\.yaml$"
+    ]
   },
-  "kubernetes": {
+  "kustomize": {
     "fileMatch": [
-      "cloudflared/base/.*\\.yaml",
+      "(^|/)kustomization\\.ya?ml$"
     ],
+    "enabled": true
   },
+  "pinDigests": true
 }
