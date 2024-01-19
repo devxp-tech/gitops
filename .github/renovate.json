@@ -5,6 +5,12 @@
   ],
   "packageRules": [
     {
+      "groupName": "GitHub Actions Dependencies",
+      "matchPaths": [
+        ".github/workflows/*.yml"
+      ]
+    },
+    {
       "matchUpdateTypes": [
         "minor",
         "patch",
