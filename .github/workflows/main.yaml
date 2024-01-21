@@ -82,7 +82,7 @@ jobs:
     name: Trivy Vulnerability Scanner 🔒
     needs:
       - env
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
       - name: Checkout code 🛎️
         uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # v3
