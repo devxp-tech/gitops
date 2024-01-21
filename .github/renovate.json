@@ -24,12 +24,6 @@
         "digest"
       ],
       "automerge": true
-    },
-    {
-      "paths": [
-        "apps/**/overlays/dev/kustomization.yaml"
-      ],
-      "enabled": true
     }
   ],
   "argocd": {
