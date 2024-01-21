@@ -5,17 +5,10 @@
     ":reviewer(diegoluisi)"
   ],
   "ignorePaths": [
+    "apps/**/base/kustomization.yaml",
     "apps/**/overlays/prd/kustomization.yaml"
   ],
   "packageRules": [
-    {
-      "groupName": "github-actions",
-      "description": "GitHub Actions Dependencies",
-      "enabled": true,
-      "matchPaths": [
-        ".github/workflows/*.yaml"
-      ]
-    },
     {
       "matchUpdateTypes": [
         "minor",
@@ -26,21 +19,13 @@
       "automerge": true
     }
   ],
-  "argocd": {
-    "groupName": "argocd",
-    "description": "ArgoCD Bootstrap",
-    "enabled": true,
-    "fileMatch": [
-      "bootstrap/argo-cd/.+\\.yaml$"
-    ]
-  },
   "kustomize": {
     "groupName": "kustomize",
     "description": "Kustomization Files",
     "enabled": true,
     "automerge": true,
     "fileMatch": [
-      "^kustomization/.*\\.yaml$"
+      "(^|/)kustomization\\.ya?ml$"
     ]
   },
   "pinDigests": true
