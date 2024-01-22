@@ -4,29 +4,28 @@
     "config:base",
     ":reviewer(diegoluisi)"
   ],
-  "ignorePaths": [
-    "apps/**/base/kustomization.yaml",
-    "apps/**/overlays/prd/kustomization.yaml"
-  ],
   "packageRules": [
     {
-      "matchUpdateTypes": [
+      "matchPaths": [
+        "apps/**/overlays/dev/"
+      ],
+      "updateTypes": [
         "minor",
-        "patch",
-        "pin",
-        "digest"
+        "patch"
       ],
       "automerge": true
+    },
+    {
+      "matchPaths": [
+        "apps/**/base/",
+        "apps/**/overlays/prd/"
+      ],
+      "updateTypes": [
+        "minor",
+        "patch"
+      ],
+      "automerge": false
     }
   ],
-  "kustomize": {
-    "groupName": "kustomize",
-    "description": "Kustomization Files",
-    "enabled": true,
-    "automerge": true,
-    "fileMatch": [
-      "(^|/)kustomization\\.ya?ml$"
-    ]
-  },
   "pinDigests": true
 }
