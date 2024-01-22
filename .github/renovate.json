@@ -6,7 +6,7 @@
   ],
   "packageRules": [
     {
-      "matchPaths": [
+      "matchFileNames": [
         "apps/**/overlays/dev/kustomization.yaml"
       ],
       "updateTypes": [
@@ -16,7 +16,7 @@
       "automerge": true
     },
     {
-      "matchPaths": [
+      "matchFileNames": [
         "apps/**/base/kustomization.yaml",
         "apps/**/overlays/prd/kustomization.yaml"
       ],
