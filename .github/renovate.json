@@ -7,7 +7,7 @@
   "packageRules": [
     {
       "matchPaths": [
-        "apps/**/overlays/dev/"
+        "apps/**/overlays/dev/kustomization.yaml"
       ],
       "updateTypes": [
         "minor",
@@ -17,8 +17,8 @@
     },
     {
       "matchPaths": [
-        "apps/**/base/",
-        "apps/**/overlays/prd/"
+        "apps/**/base/kustomization.yaml",
+        "apps/**/overlays/prd/kustomization.yaml"
       ],
       "updateTypes": [
         "minor",
