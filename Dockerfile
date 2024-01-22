@@ -14,3 +14,5 @@ RUN VERSION=$(curl --silent "https://api.github.com/repos/argoproj-labs/argocd-a
 # INSTALL argocd cli
 RUN curl -sSL -o /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64 \
   && chmod +x /usr/local/bin/argocd
+
+HEALTHCHECK NONE
