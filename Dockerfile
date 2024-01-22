@@ -16,3 +16,6 @@ RUN curl -sSL -o /usr/local/bin/argocd https://github.com/argoproj/argo-cd/relea
   && chmod +x /usr/local/bin/argocd
 
 HEALTHCHECK NONE
+
+# Set the non-root user as the default user
+USER nonroot
