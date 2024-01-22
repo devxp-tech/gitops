@@ -7,7 +7,8 @@
   "packageRules": [
     {
       "matchFileNames": [
-        "apps/**/overlays/dev/kustomization.yaml"
+        "apps/**/overlays/dev/kustomization.yaml",
+        "apps/**/overlays/ops/kustomization.yaml"
       ],
       "updateTypes": [
         "minor",
