@@ -166,5 +166,5 @@ spec:
         syncOptions:
           - CreateNamespace={{ CreateNamespace }}
           # - ServerSideApply=true
-          - Replace=true
+          # - Replace=true
 status: {}
