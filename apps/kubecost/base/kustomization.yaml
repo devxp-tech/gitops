@@ -57,3 +57,6 @@ helmCharts:
       # Kubecost Cluster Controller for Right Sizing and Cluster Turndown
       clusterController:
         enabled: true
+        namespaceTurndown:
+          rbac:
+            enabled: true
