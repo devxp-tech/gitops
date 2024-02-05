@@ -54,3 +54,6 @@ helmCharts:
         authURL: "https://dex.devxp-tech.io/auth" # endpoint for login to auth server
         loginRedirectURL: "https://kubecost.devxp-tech.io/model/oidc/authorize" # Kubecost url configured in provider for redirect after authentication
         discoveryURL: "https://dex.devxp-tech.io/.well-known/openid-configuration" # url for OIDC endpoint discovery
+      # Kubecost Cluster Controller for Right Sizing and Cluster Turndown
+      clusterController:
+        enabled: true
