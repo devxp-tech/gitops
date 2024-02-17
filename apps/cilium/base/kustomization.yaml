@@ -17,6 +17,9 @@ helmCharts:
       hubble:
         relay:
           enabled: true
+          tls:
+            server:
+              enabled: false
         ui:
           enabled: true
           frontend:
