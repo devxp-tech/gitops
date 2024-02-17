@@ -31,7 +31,7 @@ helmCharts:
             - icmp
             - http
         peerService:
-          clusterDomain: k8s.core.example.net
+          clusterDomain: cluster.local
         relay:
           enabled: true
         ui:
