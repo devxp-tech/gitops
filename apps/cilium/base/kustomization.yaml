@@ -23,8 +23,8 @@ helmCharts:
             server:
               ipv6:
                 enabled: false
-        peerService:
-          clusterDomain: cluster.local
+        # peerService:
+        #   clusterDomain: cluster.local
         tls:
           enabled: false
           # auto:
