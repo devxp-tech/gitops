@@ -16,10 +16,10 @@ helmCharts:
         enabled: true
       hubble:
         relay:
-          enabled: true
-          tls:
-            server:
-              enabled: false
+          enabled: false
+          # tls:
+          #   server:
+          #     enabled: false
         ui:
           enabled: true
           frontend:
