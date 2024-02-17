@@ -9,7 +9,7 @@ commonLabels:
 helmCharts:
   - name: wordpress
     releaseName: wordpress
-    version: 18.1.4
+    version: 18.1.30
     repo: https://charts.bitnami.com/bitnami
     valuesInline:
       wordpressUsername: dluisi
