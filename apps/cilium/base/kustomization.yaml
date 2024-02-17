@@ -31,7 +31,8 @@ helmCharts:
             - icmp
             - http
         peerService:
-          clusterDomain: cluster.local
+          # clusterDomain: cluster.local
+          servicePort: 8080
         relay:
           enabled: true
         ui:
