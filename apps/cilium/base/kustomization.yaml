@@ -15,22 +15,21 @@ helmCharts:
       endpointRoutes:
         enabled: true
       hubble:
+        enabled: true
+        metrics:
+          enabled:
+            - dns:query;ignoreAAAA
+            - drop
+            - tcp
+            - flow
+            - port-distribution
+            - icmp
+            - http
+        peerService:
+          clusterDomain: k8s.core.example.net
         relay:
-          enabled: false
-          # tls:
-          #   server:
-          #     enabled: false
+          enabled: true
         ui:
           enabled: true
-          frontend:
-            server:
-              ipv6:
-                enabled: false
-        # peerService:
-        #   clusterDomain: cluster.local
         tls:
           enabled: false
-          # auto:
-          #   enabled: true
-          # method: helm
-          # certValidityDuration: 1095
