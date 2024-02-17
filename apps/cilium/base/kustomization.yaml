@@ -14,3 +14,8 @@ helmCharts:
       routingMode: native
       endpointRoutes:
         enabled: true
+      hubble:
+        relay:
+          enabled: true
+        ui:
+          enabled: true
