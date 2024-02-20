@@ -1,0 +1,33 @@
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  annotations:
+    meta.helm.sh/release-name: jobs-app
+    meta.helm.sh/release-namespace: tenant-jobs
+  creationTimestamp: "2024-02-19T09:34:52Z"
+  generation: 1
+  labels:
+    app.kubernetes.io/managed-by: Helm
+  name: dns-visibility
+  namespace: tenant-jobs
+  resourceVersion: "2813"
+  uid: 518da187-9077-4463-aea4-8cf882ef2f26
+spec:
+  egress:
+    - toEndpoints:
+        - matchLabels:
+            k8s:io.kubernetes.pod.namespace: kube-system
+            k8s:k8s-app: kube-dns
+      toPorts:
+        - ports:
+            - port: "53"
+              protocol: ANY
+          rules:
+            dns:
+              - matchPattern: "*"
+    - toFQDNs:
+        - matchPattern: "*"
+    - toEntities:
+        - all
+  endpointSelector:
+    matchLabels: {}
