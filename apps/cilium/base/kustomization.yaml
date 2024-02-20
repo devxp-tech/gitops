@@ -9,7 +9,7 @@ helmCharts:
     releaseName: cilium
     version: 1.15.1
     repo: https://helm.cilium.io
-    # namespace: kube-system
+    namespace: kube-system
     includeCRDs: true
     valuesInline:
       cni:
@@ -20,9 +20,9 @@ helmCharts:
       endpointRoutes:
         enabled: true
       kubeProxyReplacement: strict
-      ingressController:
-        enabled: true
       gatewayAPI:
+        enabled: true
+      ingressController:
         enabled: true
       hubble:
         enabled: true
