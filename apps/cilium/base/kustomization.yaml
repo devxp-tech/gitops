@@ -22,8 +22,8 @@ helmCharts:
       kubeProxyReplacement: strict
       gatewayAPI:
         enabled: true
-      ingressController:
-        enabled: true
+      # ingressController:
+      #   enabled: true
       hubble:
         enabled: true
         metrics:
