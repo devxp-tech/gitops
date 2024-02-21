@@ -24,6 +24,10 @@ helmCharts:
         enabled: true
       # ingressController:
       #   enabled: true
+      # prometheus:
+      #   enabled: false
+      #   serviceMonitor:
+      #     enabled: true
       hubble:
         enabled: true
         metrics:
@@ -47,12 +51,10 @@ helmCharts:
         peerService:
           # clusterDomain: cluster.local
           servicePort: 8080
-        prometheus:
-          enabled: false
-          serviceMonitor:
-            enabled: true
         relay:
           enabled: true
+          serviceMonitor:
+            enabled: true
         ui:
           enabled: true
         tls:
