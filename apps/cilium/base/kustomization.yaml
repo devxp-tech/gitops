@@ -47,6 +47,10 @@ helmCharts:
         peerService:
           # clusterDomain: cluster.local
           servicePort: 8080
+        prometheus:
+          enabled: false
+          serviceMonitor:
+            enabled: true
         relay:
           enabled: true
         ui:
