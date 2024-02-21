@@ -5,7 +5,7 @@ helmCharts:
   - name: promtail
     includeCRDs: true
     releaseName: promtail
-    version: 6.15.3
+    version: 6.15.5
     repo: https://grafana.github.io/helm-charts
     valuesInline:
       fullnameOverride: promtail
