@@ -15,19 +15,27 @@ helmCharts:
       cni:
         chainingMode: aws-cni
         exclusive: false
+      dashboards:
+        enabled: true
+        namespace: monitoring
       enableIPv4Masquerade: false
-      routingMode: native
       endpointRoutes:
         enabled: true
-      kubeProxyReplacement: strict
       gatewayAPI:
         enabled: true
+      kubeProxyReplacement: strict
+      routingMode: native
       # ingressController:
       #   enabled: true
-      # prometheus:
-      #   enabled: false
-      #   serviceMonitor:
-      #     enabled: true
+      prometheus:
+        enabled: true
+        serviceMonitor:
+          enabled: true
+          trustCRDsExist: true
+      operator:
+        dashboards:
+          enabled: true
+          namespace: monitoring
       hubble:
         enabled: true
         metrics:
@@ -53,8 +61,9 @@ helmCharts:
           servicePort: 8080
         relay:
           enabled: true
-          serviceMonitor:
-            enabled: true
+          prometheus:
+            serviceMonitor:
+              enabled: true
         ui:
           enabled: true
         tls:
