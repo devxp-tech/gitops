@@ -56,5 +56,5 @@ spec:
   limits:
     resources:
       cpu: "100"
-      memory: 400Gi
+      memory: 600Gi
   ttlSecondsUntilExpired: 2592000
