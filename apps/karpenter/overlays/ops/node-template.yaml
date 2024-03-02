@@ -13,6 +13,7 @@ spec:
     karpenter.sh/discovery: lgseksd1
     karpenter.sh/cluster_name: lgseksd1
     KarpenerProvisionerName: "default"
+    node-role.kubernetes.io/worker: worker
     managed-by: "karpenter"
     Role: "default"
   blockDeviceMappings:

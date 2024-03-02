@@ -30,6 +30,7 @@ spec:
       Name: karpenter.sh/default
       aws-node-termination-handler/managed: "true"
       karpenter.sh/nodegroup: "default"
+      node-role.kubernetes.io/worker: "worker"
   requirements:
     - key: "karpenter.k8s.aws/instance-category"
       operator: In
