@@ -1,0 +1,56 @@
+# cni:
+#   chainingMode: aws-cni
+#   exclusive: false
+dashboards:
+  enabled: true
+  namespace: monitoring
+enableIPv4Masquerade: false
+endpointRoutes:
+  enabled: true
+gatewayAPI:
+  enabled: true
+kubeProxyReplacement: strict
+routingMode: native
+# ingressController:
+#   enabled: true
+prometheus:
+  enabled: true
+  serviceMonitor:
+    enabled: true
+    trustCRDsExist: true
+operator:
+  dashboards:
+    enabled: true
+    namespace: monitoring
+hubble:
+  enabled: true
+  metrics:
+    dashboards:
+      enabled: true
+      namespace: monitoring
+    serviceMonitor:
+      enabled: true
+    enableOpenMetrics: true
+    enabled:
+      - dns:query;ignoreAAAA
+      - drop
+      - tcp
+      - flow
+      - port-distribution
+      - icmp
+      - http
+      - "flow:sourceContext=workload-name|reserved-identity;destinationContext=workload-name|reserved-identity"
+      # - "kafka:labelsContext=source_namespace,source_workload,destination_namespace,destination_workload,traffic_direction;sourceContext=workload-name|reserved-identity;destinationContext=workload-name|reserved-identity"
+      - "httpV2:exemplars=true;labelsContext=source_ip,source_namespace,source_workload,destination_ip,destination_namespace,destination_workload,traffic_direction;sourceContext=workload-name|reserved-identity;destinationContext=workload-name|reserved-identity"
+  peerService:
+    # clusterDomain: cluster.local
+    servicePort: 8080
+  relay:
+    enabled: true
+    prometheus:
+      serviceMonitor:
+        enabled: true
+  ui:
+    enabled: true
+  tls:
+    enabled: false
