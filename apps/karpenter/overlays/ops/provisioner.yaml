@@ -11,6 +11,7 @@ spec:
   annotations:
     node-role.kubernetes.io/worker: "worker"
   labels:
+    environment: dev
     intent: default
     Role: default
   consolidation:
