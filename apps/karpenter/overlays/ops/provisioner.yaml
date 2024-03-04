@@ -8,6 +8,8 @@ spec:
     - key: node.cilium.io/agent-not-ready
       value: "true"
       effect: NoSchedule
+  annotations:
+    node-role.kubernetes.io/worker: "worker"
   labels:
     intent: default
     Role: default
