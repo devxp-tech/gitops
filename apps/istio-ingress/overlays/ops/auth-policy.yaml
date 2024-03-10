@@ -32,6 +32,7 @@ spec:
         - operation:
             hosts:
               - "argocd.devxp-tech.io" # Need for GitHub repository badge
+              - "atlantis.devxp-tech.io" # Need for GitHub Webhook
               - "dex.devxp-tech.io" # Need for kube-login
               - "grafana.devxp-tech.io" # Need for Backstage
               - "sonar.devxp-tech.io" # Need for GitHub pipelines
