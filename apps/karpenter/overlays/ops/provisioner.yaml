@@ -63,6 +63,6 @@ spec:
         - linux
   limits:
     resources:
-      cpu: "100"
-      memory: 300Gi
+      cpu: "50"
+      memory: 150Gi
   ttlSecondsUntilExpired: 2592000
