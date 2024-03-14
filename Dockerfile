@@ -1,4 +1,4 @@
-FROM golang:1.21-alpine@sha256:0ff68fa7b2177e8d68b4555621c2321c804bcff839fd512c2681de49026573b7
+FROM golang:1.21-alpine@sha256:cd5189337d797eac9e2299dc07096c598cd4f4f73f068a033402f3ded7a51714
 # INSTALL kubeseal cli
 RUN go install github.com/bitnami-labs/sealed-secrets/cmd/kubeseal@main
 RUN apk update && apk upgrade && apk add curl make gcc bash git openssl openssh
