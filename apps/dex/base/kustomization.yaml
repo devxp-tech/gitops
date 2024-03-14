@@ -112,7 +112,7 @@ helmCharts:
 
   - name: dex-k8s-authenticator
     releaseName: dex-k8s-authenticator
-    version: 0.0.2
+    version: 0.0.3
     repo: https://charts.sagikazarmark.dev
     valuesInline:
       envFrom:
