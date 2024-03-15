@@ -1,0 +1,6 @@
+repo_name: devxp-tech/gitops
+version: 0.1
+repo_type: Public
+provider: github
+branch: main
+tools:
