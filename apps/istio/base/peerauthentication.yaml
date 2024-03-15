@@ -4,4 +4,4 @@ metadata:
   name: "default"
 spec:
   mtls:
-    mode: DISABLE #PERMISSIVE # TEST CILIUM
+    mode: PERMISSIVE # TEST CILIUM
