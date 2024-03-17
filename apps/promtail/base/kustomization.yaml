@@ -14,6 +14,12 @@ helmCharts:
         additionalLabels:
           app: prometheus-operator
           release: prometheus
+      affinity:
+        - matchExpressions:
+            - key: eks.amazonaws.com/compute-type
+              operator: NotIn
+              values:
+                - fargate
       config:
         clients:
           - url: http://loki-gateway.monitoring/loki/api/v1/push
