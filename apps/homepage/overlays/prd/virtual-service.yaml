@@ -19,3 +19,5 @@ spec:
       route:
         - destination:
             host: homepage.homepage.svc.cluster.local
+            port:
+              number: 80 #80 or 16686
