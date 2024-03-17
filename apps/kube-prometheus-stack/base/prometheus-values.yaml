@@ -599,6 +599,15 @@ prometheus:
             port: 9003
 
 prometheus-node-exporter:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+          - matchExpressions:
+              - key: eks.amazonaws.com/compute-type
+                operator: NotIn
+                values:
+                  - fargate
   resources:
     requests:
       cpu: 200m
