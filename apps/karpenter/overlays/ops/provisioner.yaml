@@ -65,5 +65,5 @@ spec:
     resources:
       cpu: "50"
       memory: 150Gi
-  ttlSecondsAfterEmpty: 900 # 15 minutes
+  # ttlSecondsAfterEmpty: 900 # 15 minutes
   ttlSecondsUntilExpired: 36000 # 10 hours
