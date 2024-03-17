@@ -16,6 +16,6 @@ spec:
     - match:
         - uri:
             prefix: "/"
-      redirect:
-        authority: homepage.homepage.svc.cluster.local
-        uri: "/"
+      route:
+        - destination:
+            host: homepage.homepage.svc.cluster.local
