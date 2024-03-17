@@ -10,6 +10,7 @@ spec:
   gateways:
     - istio-system/istio-ingressgateway
   hosts:
+    - devxp-tech.io
     - www.devxp-tech.io
   http:
     - name: www
