@@ -3,4 +3,4 @@ kind: Kustomization
 namespace: demo-app
 resources:
   - collector.yaml
-  - service-monitor.yaml
+  # - service-monitor.yaml
