@@ -11,10 +11,8 @@ spec:
     - istio-system/istio-ingressgateway
   hosts:
     - www.devxp-tech.io
-    - devxp-tech.io
   http:
-    - match:
-        - uri:
-            prefix: /
-      redirect:
-        authority: www.devxp-tech.io
+    - name: www
+      route:
+        - destination:
+            host: homepage.homepage.svc.cluster.local
