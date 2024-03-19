@@ -34,6 +34,8 @@ helmCharts:
         auth_enabled: false
         compactor:
           shared_store: aws
+        ingester:
+          autoforget_unhealthy: true
         storage:
           bucketNames:
             chunks: "vex-dev-loki-logs"
