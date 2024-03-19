@@ -36,9 +36,9 @@ helmCharts:
           shared_store: aws
         storage:
           bucketNames:
-            chunks: "devxp-dev-loki-logs"
-            ruler: "devxp-dev-loki-logs"
-            admin: "devxp-dev-loki-logs"
+            chunks: "vex-dev-loki-logs"
+            ruler: "vex-dev-loki-logs"
+            admin: "vex-dev-loki-logs"
           s3:
             region: us-east-1
         schemaConfig:
@@ -52,7 +52,7 @@ helmCharts:
                 period: 24h
         storage_config:
           aws:
-            s3: "s3://us-east-1/devxp-dev-loki-logs"
+            s3: "s3://us-east-1/vex-dev-loki-logs"
           boltdb_shipper:
             shared_store: aws
 
