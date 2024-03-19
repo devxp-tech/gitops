@@ -5,7 +5,7 @@ helmCharts:
   - name: external-dns
     includeCRDs: true
     releaseName: external-dns
-    version: 6.36.1
+    version: 6.38.0
     repo: https://charts.bitnami.com/bitnami
     valuesInline:
       clusterDomain: "cluster.local"
