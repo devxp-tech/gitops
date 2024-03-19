@@ -66,4 +66,4 @@ spec:
       cpu: "50"
       memory: 150Gi
   # ttlSecondsAfterEmpty: 900 # 15 minutes
-  ttlSecondsUntilExpired: 3600 # 1 hour
+  ttlSecondsUntilExpired: 1296000 # 15 days
