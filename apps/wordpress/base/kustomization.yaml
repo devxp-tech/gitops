@@ -61,6 +61,17 @@ helmCharts:
           value: "0"
         - name: PHP_MEMORY_LIMIT
           value: 2048M
+        - name: WORDPRESS_DATABASE_HOST
+          value: wordpress-mariadb
+        - name: WORDPRESS_DATABASE_NAME
+          value: wordpress
+        - name: WORDPRESS_DATABASE_USER
+          value: wordpress
+      extraEnvVarsSecret:
+        WORDPRESS_DATABASE_PASSWORD:
+          secretKeyRef:
+            name: wordpress-secrets
+            key: mariadb-password
       mariadb:
         auth:
           existingSecret: wordpress-secrets #mariadb-password
