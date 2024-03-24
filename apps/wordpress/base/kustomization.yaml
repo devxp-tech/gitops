@@ -67,11 +67,6 @@ helmCharts:
           value: wordpress
         - name: WORDPRESS_DATABASE_USER
           value: wordpress
-      extraEnvVarsSecret:
-        WORDPRESS_DATABASE_PASSWORD:
-          secretKeyRef:
-            name: wordpress-secrets
-            key: mariadb-password
       mariadb:
         auth:
           existingSecret: wordpress-secrets #mariadb-password
