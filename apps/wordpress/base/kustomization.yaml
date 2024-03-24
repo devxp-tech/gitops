@@ -35,7 +35,7 @@ helmCharts:
       maxInputTime: 900
       wordpressConfigureCache: true
       # allowEmptyPassword: true
-      existingSecret: wordpress-secrets
+      # existingSecret: wordpress-secrets
       serviceAccount:
         create: true
       metrics:
