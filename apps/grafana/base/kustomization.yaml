@@ -24,6 +24,19 @@ helmCharts:
       grafana.ini:
         server:
           domain: grafana.devxp-tech.io
+        auth.github:
+          enabled: true
+          client_id: '${GF_AUTH_GITHUB_CLIENT_ID}'
+          client_secret: '${GF_AUTH_GITHUB_CLIENT_SECRET}'
+          scopes: user:email,read:org
+          auth_url: https://github.com/login/oauth/authorize
+          token_url: https://github.com/login/oauth/access_token
+          api_url: https://api.github.com/user
+          allow_sign_up: true
+          allowed_organizations: ["devxp-tech"]
+          role_attribute_path: >-
+                contains(groups[*], '@org/sre-team') && 'Admin' ||
+                contains(groups[*], '@org/dev-team') && 'Editor' || 'Viewer'
       admin:
         ## Name of the secret. Can be templated.
         existingSecret: "grafana-secrets"
@@ -42,12 +55,12 @@ helmCharts:
         # GF_INSTALL_PLUGINS: grafana-simple-json-datasource,alexanderzobnin-zabbix-app
         GF_SERVER_DOMAIN: grafana.devxp-tech.io
         GF_SERVER_ROOT_URL: "https://grafana.devxp-tech.io"
-        GF_AUTH_GITHUB_ENABLED: true
-        GF_AUTH_GITHUB_ALLOW_SIGN_UP: true
-        GF_AUTH_GITHUB_SCOPES: "user:email,read:org"
-        GF_AUTH_GITHUB_ALLOWED_ORGANIZATIONS: devxp-tech
-        GF_AUTO_ASSIGN_ORG_ROLE: Admin
-        GF_AUTH_GITHUB_ROLE_ATTRIBUTE_PATH: Admin
+        # GF_AUTH_GITHUB_ENABLED: true
+        # GF_AUTH_GITHUB_ALLOW_SIGN_UP: true
+        # GF_AUTH_GITHUB_SCOPES: "user:email,read:org"
+        # GF_AUTH_GITHUB_ALLOWED_ORGANIZATIONS: devxp-tech
+        # GF_AUTO_ASSIGN_ORG_ROLE: Admin
+        # GF_AUTH_GITHUB_ROLE_ATTRIBUTE_PATH: Admin
         GF_FEATURE_TOGGLES_ENABLE: "traceqlEditor tempoSearch tempoServiceGraph"
 
       datasources:
