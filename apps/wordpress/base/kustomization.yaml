@@ -43,6 +43,8 @@ helmCharts:
         create: true
       metrics:
         enabled: false
+      networkPolicy:
+        enabled: false
       service:
         type: ClusterIP
       persistence:
