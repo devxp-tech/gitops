@@ -5,13 +5,15 @@ resources:
   - ns.yaml
 commonLabels:
   app: wordpress
-  version: 6.2.2
+  version: 6.4.3
 helmCharts:
   - name: wordpress
     releaseName: wordpress
-    version: 18.1.30
+    version: 21.0.6
     repo: https://charts.bitnami.com/bitnami
     valuesInline:
+      nodeSelector:
+        topology.kubernetes.io/zone: "us-east-1c"
       wordpressUsername: dluisi
       wordpressEmail: contato@diegoluisi.eti.br
       wordpressFirstName: Diego
@@ -47,7 +49,7 @@ helmCharts:
         enabled: true
       commonLabels:
         app: wordpress
-        version: 6.2.2
+        version: 6.4.3
       extraEnvVars:
         - name: PHP_UPLOAD_MAX_FILESIZE
           value: 1024M
@@ -60,3 +62,5 @@ helmCharts:
       mariadb:
         auth:
           existingSecret: wordpress-secrets #mariadb-password
+        nodeSelector:
+          topology.kubernetes.io/zone: "us-east-1c"
