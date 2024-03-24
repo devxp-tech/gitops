@@ -42,7 +42,7 @@ helmCharts:
       serviceAccount:
         create: true
       metrics:
-        enabled: true
+        enabled: false
       service:
         type: ClusterIP
       persistence:
