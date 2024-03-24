@@ -35,8 +35,8 @@ helmCharts:
           allow_sign_up: true
           allowed_organizations: ["devxp-tech"]
           role_attribute_path: >-
-                contains(groups[*], '@org/sre-team') && 'Admin' ||
-                contains(groups[*], '@org/dev-team') && 'Editor' || 'Viewer'
+                contains(groups[*], '@devxp-tech/sre-team') && 'Admin' ||
+                contains(groups[*], '@devxp-tech/dev-team') && 'Editor' || 'Viewer'
       admin:
         ## Name of the secret. Can be templated.
         existingSecret: "grafana-secrets"
