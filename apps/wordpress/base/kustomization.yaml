@@ -60,7 +60,7 @@ helmCharts:
         - name: PHP_MEMORY_LIMIT
           value: 2048M
       mariadb:
-        # auth:
-        #   existingSecret: wordpress-secrets #mariadb-password
+        auth:
+          existingSecret: wordpress-secrets #mariadb-password
         nodeSelector:
           topology.kubernetes.io/zone: "us-east-1c"
