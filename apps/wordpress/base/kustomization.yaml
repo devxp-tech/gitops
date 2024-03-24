@@ -3,9 +3,6 @@ kind: Kustomization
 namespace: wordpress
 resources:
   - ns.yaml
-commonLabels:
-  app: wordpress
-  version: 6.4.3
 helmCharts:
   - name: wordpress
     releaseName: wordpress
@@ -49,9 +46,6 @@ helmCharts:
         type: ClusterIP
       persistence:
         enabled: true
-      commonLabels:
-        app: wordpress
-        version: 6.4.3
       extraEnvVars:
         - name: PHP_UPLOAD_MAX_FILESIZE
           value: 1024M
