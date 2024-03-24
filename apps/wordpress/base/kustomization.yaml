@@ -39,9 +39,9 @@ helmCharts:
       serviceAccount:
         create: true
       metrics:
-        enabled: false
+        enabled: true
       networkPolicy:
-        enabled: false
+        enabled: true
       service:
         type: ClusterIP
       persistence:
