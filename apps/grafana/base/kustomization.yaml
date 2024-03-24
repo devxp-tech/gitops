@@ -10,6 +10,10 @@ helmCharts:
     valuesInline:
       fullnameOverride: grafana
       useStatefulSet: true
+      nodeSelector:
+        topology.kubernetes.io/zone: "us-east-1c"
+      serviceMonitor:
+        enabled: true
       persistence:
         enabled: true
         type: pvc
