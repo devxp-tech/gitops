@@ -14,10 +14,6 @@ helmCharts:
         topology.kubernetes.io/zone: "us-east-1c"
       serviceMonitor:
         enabled: true
-      # persistence:
-      #   enabled: true
-      #   type: pvc
-      #   size: 20Gi
       resources:
         requests:
           cpu: 100m
@@ -28,6 +24,19 @@ helmCharts:
       grafana.ini:
         server:
           domain: grafana.devxp-tech.io
+      auth.github:
+        enabled: true
+        allow_sign_up: true
+        scopes: user:email,read:org
+        auth_url: https://github.com/login/oauth/authorize
+        token_url: https://github.com/login/oauth/access_token
+        api_url: https://api.github.com/user
+        allowed_organizations: devxp-tech
+        client_id: '${GF_AUTH_GITHUB_CLIENT_ID}'
+        client_secret: '${GF_AUTH_GITHUB_CLIENT_SECRET}'
+        role_attribute_path: >-
+              contains(groups[*], '@org/sre-team') && 'Admin' ||
+              contains(groups[*], '@org/dev-team') && 'Editor' || 'Viewer'
       admin:
         ## Name of the secret. Can be templated.
         existingSecret: "grafana-secrets"
