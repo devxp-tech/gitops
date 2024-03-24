@@ -9,8 +9,8 @@ helmCharts:
     version: 21.0.6
     repo: https://charts.bitnami.com/bitnami
     valuesInline:
-      nodeSelector:
-        topology.kubernetes.io/zone: "us-east-1c"
+      # nodeSelector:
+      #   topology.kubernetes.io/zone: "us-east-1c"
       wordpressUsername: dluisi
       wordpressEmail: contato@diegoluisi.eti.br
       wordpressFirstName: Diego
