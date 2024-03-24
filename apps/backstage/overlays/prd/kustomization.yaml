@@ -80,7 +80,7 @@ helmCharts:
 
   - name: postgresql
     releaseName: postgresql
-    version: 12.2.1
+    version: 12.12.10
     repo: https://charts.bitnami.com/bitnami
     valuesInline:
       commonLabels:
