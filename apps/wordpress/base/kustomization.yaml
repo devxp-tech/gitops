@@ -40,8 +40,8 @@ helmCharts:
       #   create: true
       # metrics:
       #   enabled: true
-      # networkPolicy:
-      #   enabled: true
+      networkPolicy:
+        enabled: false
       service:
         type: ClusterIP
       persistence:
@@ -60,3 +60,5 @@ helmCharts:
           existingSecret: wordpress-secrets #mariadb-password
         nodeSelector:
           topology.kubernetes.io/zone: "us-east-1c"
+        networkPolicy:
+          enabled: false
