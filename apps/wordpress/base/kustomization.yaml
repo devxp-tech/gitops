@@ -16,47 +16,47 @@ helmCharts:
       wordpressFirstName: Diego
       wordpressLastName: Luisi
       wordpressBlogName: "www.diegoluisi.eti.br"
-      wordpressExtraConfigContent: |
-        @ini_set( 'upload_max_filesize' , '512M' );
-        @ini_set( 'post_max_size', '512M');
-        @ini_set( 'memory_limit', '1024M' );
-        # Make sure to sync with php.ini
-        define('WP_UPLOAD_MAX_FILESIZE', '8192M');
-        define('WP_POST_MAX_SIZE', '8192M');
-        define('WP_MEMORY_LIMIT', '512M');
-        define('WP_MAX_EXECUTION_TIME', '900');
-        define('WP_MAX_INPUT_TIME', '900');
-        define('WP_AUTO_UPDATE_CORE', 'true');
+      # wordpressExtraConfigContent: |
+      #   @ini_set( 'upload_max_filesize' , '512M' );
+      #   @ini_set( 'post_max_size', '512M');
+      #   @ini_set( 'memory_limit', '1024M' );
+      #   # Make sure to sync with php.ini
+      #   define('WP_UPLOAD_MAX_FILESIZE', '8192M');
+      #   define('WP_POST_MAX_SIZE', '8192M');
+      #   define('WP_MEMORY_LIMIT', '512M');
+      #   define('WP_MAX_EXECUTION_TIME', '900');
+      #   define('WP_MAX_INPUT_TIME', '900');
+      #   define('WP_AUTO_UPDATE_CORE', 'true');
 
-      uploadMaxFilesize: 8192M
-      postMaxSize: 8192M
-      memoryLimit: 512M
-      maxExecutionTime: 900
-      maxInputTime: 900
-      wordpressConfigureCache: true
+      # uploadMaxFilesize: 8192M
+      # postMaxSize: 8192M
+      # memoryLimit: 512M
+      # maxExecutionTime: 900
+      # maxInputTime: 900
+      # wordpressConfigureCache: true
       # allowEmptyPassword: true
-      # existingSecret: wordpress-secrets
-      serviceAccount:
-        create: true
-      metrics:
-        enabled: true
-      networkPolicy:
-        enabled: true
+      existingSecret: wordpress-secrets
+      # serviceAccount:
+      #   create: true
+      # metrics:
+      #   enabled: true
+      # networkPolicy:
+      #   enabled: true
       service:
         type: ClusterIP
       persistence:
         enabled: true
-      extraEnvVars:
-        - name: PHP_UPLOAD_MAX_FILESIZE
-          value: 1024M
-        - name: PHP_POST_MAX_SIZE
-          value: 1024M
-        - name: PHP_MAX_EXECUTION_TIME
-          value: "0"
-        - name: PHP_MEMORY_LIMIT
-          value: 2048M
+      # extraEnvVars:
+      #   - name: PHP_UPLOAD_MAX_FILESIZE
+      #     value: 1024M
+      #   - name: PHP_POST_MAX_SIZE
+      #     value: 1024M
+      #   - name: PHP_MAX_EXECUTION_TIME
+      #     value: "0"
+      #   - name: PHP_MEMORY_LIMIT
+      #     value: 2048M
       mariadb:
-        # auth:
-        #   existingSecret: wordpress-secrets #mariadb-password
+        auth:
+          existingSecret: wordpress-secrets #mariadb-password
         nodeSelector:
           topology.kubernetes.io/zone: "us-east-1c"
