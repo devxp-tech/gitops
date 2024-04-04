@@ -113,12 +113,13 @@ helmCharts:
               editable: true
               jsonData:
                 httpMethod: GET
+                serviceMap:
+                  datasourceUid: 'prometheus'
                 tracesToLogsV2:
                   datasourceUid: loki
-                serviceMap:
-                  datasourceUid: "prometheus"
                 lokiSearch:
                   datasourceUid: loki
+              version: 1
       notifiers:
         notifiers.yaml:
           notifiers:
