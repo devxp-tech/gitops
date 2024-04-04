@@ -31,6 +31,15 @@ spec:
       batch:
         send_batch_size: 10000
         timeout: 10s
+      spanmetrics:
+        metrics_exporter: prometheus
+      servicegraph:
+        metrics_exporter: prometheus # Exporter to send metrics to
+        latency_histogram_buckets: [100us, 1ms, 2ms, 6ms, 10ms, 100ms, 250ms] # Buckets for latency histogram
+        dimensions: [cluster, namespace, operation,service_name] # Additional dimensions (labels) to be added to the metrics extracted from the resource and span attributes
+        store: # Configuration for the in-memory store
+          ttl: 2s # Value to wait for an edge to be completed
+          max_items: 200 # Amount of edges that will be stored in the storeMap
 
     exporters:
       logging:
@@ -48,7 +57,7 @@ spec:
       pipelines:
         traces:
           receivers: [jaeger, otlp, zipkin]
-          processors: [memory_limiter, batch]
+          processors: [servicegraph , spanmetrics, memory_limiter, batch]
           exporters: [logging, otlp/tempo]
         metrics:
           receivers: [otlp]
