@@ -20,6 +20,10 @@ spec:
         protocols:
           grpc:
           http:
+      otlp/spanmetrics:
+        protocols:
+          grpc:
+            endpoint: "localhost:65535"
       zipkin:
 
     processors:
@@ -32,13 +36,6 @@ spec:
         timeout: 10s
       spanmetrics:
         metrics_exporter: prometheus
-        latency_histogram_buckets: [10ms, 100ms, 250ms, 1s, 30s, 1m, 5m]
-        dimensions:
-          - name: http.method
-          - name: http.status_code
-          - name: http.host
-        dimensions_cache_size: 1000
-        aggregation_temporality: 'AGGREGATION_TEMPORALITY_CUMULATIVE'
 
     exporters:
       logging:
@@ -46,10 +43,10 @@ spec:
         endpoint: "tempo.observability.svc:4317"
         tls:
           insecure: true
-      prometheusremotewrite:
-        endpoint: http://prometheus-prometheus.monitoring.svc:9090/api/v1/write
-        target_info:
-          enabled: true
+      prometheus:
+        endpoint: "0.0.0.0:8889"
+
+
 
     service:
       extensions: [health_check, pprof, zpages]
@@ -66,3 +63,6 @@ spec:
           receivers: [otlp]
           processors: [memory_limiter, batch]
           exporters: [logging]
+        metrics/spanmetrics:
+          receivers: [otlp/spanmetrics]
+          exporters: [prometheus]
