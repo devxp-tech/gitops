@@ -30,18 +30,15 @@ spec:
       batch:
         send_batch_size: 10000
         timeout: 10s
-
-    # connectors:
-    #   spanmetrics:
-    #     histogram:
-    #       explicit:
-    #         buckets: [100us, 1ms, 2ms, 6ms, 10ms, 100ms, 250ms]
-    #     dimensions:
-    #       - name: http.method
-    #         default: GET
-    #       - name: http.status_code
-    #     dimensions_cache_size: 1000
-    #     aggregation_temporality: 'AGGREGATION_TEMPORALITY_CUMULATIVE'
+      spanmetrics:
+        metrics_exporter: prometheus
+        latency_histogram_buckets: [10ms, 100ms, 250ms, 1s, 30s, 1m, 5m]
+        dimensions:
+          - name: http.method
+          - name: http.status_code
+          - name: http.host
+        dimensions_cache_size: 1000
+        aggregation_temporality: 'AGGREGATION_TEMPORALITY_CUMULATIVE'
 
     exporters:
       logging:
@@ -59,7 +56,7 @@ spec:
       pipelines:
         traces:
           receivers: [jaeger, otlp, zipkin]
-          processors: [memory_limiter, batch]
+          processors: [memory_limiter, batch, spanmetrics]
           exporters: [logging, otlp/tempo]
         metrics:
           receivers: [otlp]
