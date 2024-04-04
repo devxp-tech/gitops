@@ -22,16 +22,6 @@ spec:
           http:
       zipkin:
 
-    connectors:
-      servicegraph:
-        latency_histogram_buckets: [100ms, 250ms, 1s, 5s, 10s]
-        dimensions:
-          - dimension-1
-          - dimension-2
-        store:
-          ttl: 1s
-          max_items: 10
-
     processors:
       memory_limiter:
         check_interval: 1s
@@ -52,9 +42,6 @@ spec:
         endpoint: "tempo.observability.svc:4317"
         tls:
           insecure: true
-      prometheus/servicegraph:
-        endpoint: prometheus-prometheus.monitoring.svc:9090
-        namespace: servicegraph
 
     service:
       extensions: [health_check, pprof, zpages]
@@ -62,14 +49,11 @@ spec:
         traces:
           receivers: [jaeger, otlp, zipkin]
           processors: [memory_limiter, batch]
-          exporters: [servicegraph, logging, otlp/tempo]
+          exporters: [logging, otlp/tempo]
         metrics:
           receivers: [otlp]
           processors: [memory_limiter, batch]
           exporters: [logging]
-        metrics/servicegraph:
-          receivers: [servicegraph]
-          exporters: [prometheus/servicegraph]
         logs:
           receivers: [otlp]
           processors: [memory_limiter, batch]
