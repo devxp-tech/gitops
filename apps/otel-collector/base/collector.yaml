@@ -33,7 +33,15 @@ spec:
 
     connectors:
       spanmetrics:
-        namespace: span.metrics
+        histogram:
+          explicit:
+            buckets: [100us, 1ms, 2ms, 6ms, 10ms, 100ms, 250ms]
+        dimensions:
+          - name: http.method
+            default: GET
+          - name: http.status_code
+        dimensions_cache_size: 1000
+        aggregation_temporality: 'AGGREGATION_TEMPORALITY_CUMULATIVE'
 
     exporters:
       logging:
