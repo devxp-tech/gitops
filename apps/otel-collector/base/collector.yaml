@@ -21,10 +21,6 @@ spec:
           grpc:
           http:
       zipkin:
-      otlp/spanmetrics:
-        protocols:
-          grpc:
-            endpoint: "localhost:65535"
 
       otlp/servicegraph: # Dummy receiver for the metrics pipeline
         protocols:
@@ -47,9 +43,6 @@ spec:
           ttl: 2s # Value to wait for an edge to be completed
           max_items: 200 # Amount of edges that will be stored in the storeMap
 
-      spanmetrics:
-        metrics_exporter: prometheus
-
     exporters:
       logging:
       otlp/tempo:
@@ -68,20 +61,13 @@ spec:
       pipelines:
         traces:
           receivers: [jaeger, otlp, zipkin]
-          processors: [memory_limiter, batch, k8sattributes, spanmetrics, servicegraph]
+          processors: [memory_limiter, batch]
           exporters: [logging, otlp/tempo]
         metrics:
           receivers: [otlp]
           processors: [memory_limiter, batch]
-          exporters: [logging, prometheusremotewrite]
+          exporters: [logging, prometheus]
         logs:
           receivers: [otlp]
           processors: [memory_limiter, batch]
           exporters: [logging]
-        metrics/spanmetrics:
-          receivers: [otlp/spanmetrics]
-          exporters: [otlp/spanmetrics]
-        metrics/servicegraph:
-          receivers: [otlp/servicegraph]
-          processors: []
-          exporters: [prometheus]
