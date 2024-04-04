@@ -42,7 +42,7 @@ spec:
         tls:
           insecure: true
       prometheusremotewrite:
-        endpoint: http://localhost:9090/api/v1/write
+        endpoint: http://prometheus-prometheus.monitoring.svc:9090/api/v1/write
         target_info:
           enabled: true
 
