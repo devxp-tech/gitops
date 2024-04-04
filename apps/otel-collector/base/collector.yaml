@@ -22,6 +22,15 @@ spec:
           http:
       zipkin:
 
+    connectors:
+      servicegraph:
+        latency_histogram_buckets: [100ms, 250ms, 1s, 5s, 10s]
+        dimensions:
+          - dimension-1
+          - dimension-2
+        store:
+          ttl: 1s
+          max_items: 10
 
     processors:
       memory_limiter:
@@ -31,15 +40,7 @@ spec:
       batch:
         send_batch_size: 10000
         timeout: 10s
-      spanmetrics:
-        metrics_exporter: prometheus
-      servicegraph:
-        metrics_exporter: prometheus # Exporter to send metrics to
-        latency_histogram_buckets: [100us, 1ms, 2ms, 6ms, 10ms, 100ms, 250ms] # Buckets for latency histogram
-        dimensions: [cluster, namespace, operation,service_name] # Additional dimensions (labels) to be added to the metrics extracted from the resource and span attributes
-        store: # Configuration for the in-memory store
-          ttl: 2s # Value to wait for an edge to be completed
-          max_items: 200 # Amount of edges that will be stored in the storeMap
+
 
     exporters:
       logging:
@@ -51,18 +52,24 @@ spec:
         endpoint: "tempo.observability.svc:4317"
         tls:
           insecure: true
+      prometheus/servicegraph:
+        endpoint: prometheus-prometheus.monitoring.svc:9090
+        namespace: servicegraph
 
     service:
       extensions: [health_check, pprof, zpages]
       pipelines:
         traces:
           receivers: [jaeger, otlp, zipkin]
-          processors: [servicegraph, spanmetrics, memory_limiter, batch]
-          exporters: [logging, otlp/tempo]
+          processors: [memory_limiter, batch]
+          exporters: [servicegraph, logging, otlp/tempo]
         metrics:
           receivers: [otlp]
           processors: [memory_limiter, batch]
           exporters: [logging]
+        metrics/servicegraph:
+          receivers: [servicegraph]
+          exporters: [prometheus/servicegraph]
         logs:
           receivers: [otlp]
           processors: [memory_limiter, batch]
