@@ -20,11 +20,16 @@ spec:
         protocols:
           grpc:
           http:
+      zipkin:
       otlp/spanmetrics:
         protocols:
           grpc:
             endpoint: "localhost:65535"
-      zipkin:
+
+      otlp/servicegraph: # Dummy receiver for the metrics pipeline
+        protocols:
+          grpc:
+            endpoint: localhost:12345
 
     processors:
       memory_limiter:
@@ -34,6 +39,14 @@ spec:
       batch:
         send_batch_size: 10000
         timeout: 10s
+      servicegraph:
+        metrics_exporter: prometheus # Exporter to send metrics to
+        latency_histogram_buckets: [100us, 1ms, 2ms, 6ms, 10ms, 100ms, 250ms] # Buckets for latency histogram
+        dimensions: [cluster, namespace] # Additional dimensions (labels) to be added to the metrics extracted from the resource and span attributes
+        store: # Configuration for the in-memory store
+          ttl: 2s # Value to wait for an edge to be completed
+          max_items: 200 # Amount of edges that will be stored in the storeMap
+
       spanmetrics:
         metrics_exporter: prometheus
 
@@ -45,13 +58,17 @@ spec:
           insecure: true
       prometheus:
         endpoint: "0.0.0.0:8889"
+      otlp/spanmetrics:
+          endpoint: "localhost:55677"
+          tls:
+            insecure: true
 
     service:
       extensions: [health_check, pprof, zpages]
       pipelines:
         traces:
           receivers: [jaeger, otlp, zipkin]
-          processors: [memory_limiter, batch, spanmetrics]
+          processors: [memory_limiter, batch, k8sattributes, spanmetrics, servicegraph]
           exporters: [logging, otlp/tempo]
         metrics:
           receivers: [otlp]
@@ -63,4 +80,8 @@ spec:
           exporters: [logging]
         metrics/spanmetrics:
           receivers: [otlp/spanmetrics]
+          exporters: [otlp/spanmetrics]
+        metrics/servicegraph:
+          receivers: [otlp/servicegraph]
+          processors: []
           exporters: [prometheus]
