@@ -46,8 +46,6 @@ spec:
       prometheus:
         endpoint: "0.0.0.0:8889"
 
-
-
     service:
       extensions: [health_check, pprof, zpages]
       pipelines:
