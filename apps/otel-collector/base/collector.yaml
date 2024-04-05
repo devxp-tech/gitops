@@ -53,8 +53,10 @@ spec:
         endpoint: "tempo.observability.svc:4317"
         tls:
           insecure: true
-      prometheus:
-        endpoint: "0.0.0.0:8889"
+      prometheusremotewrite:
+        endpoint: http://prometheus-prometheus.monitoring.svc:9090/api/v1/write
+        target_info:
+          enabled: true
       otlp/spanmetrics:
           endpoint: "localhost:55677"
           tls:
@@ -66,11 +68,11 @@ spec:
         traces:
           receivers: [jaeger, otlp, zipkin]
           processors: [memory_limiter, batch]
-          exporters: [logging, otlp/tempo]
+          exporters: [logging, otlp/tempo, spanmetrics]
         metrics:
           receivers: [otlp, otlp/spanmetrics]
           processors: [memory_limiter, batch]
-          exporters: [logging, prometheus]
+          exporters: [logging, prometheusremotewrite]
         logs:
           receivers: [otlp]
           processors: [memory_limiter, batch]
