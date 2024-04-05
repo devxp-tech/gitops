@@ -5,7 +5,7 @@ helmCharts:
   - name: argo-rollouts
     includeCRDs: true
     releaseName: argo-rollouts
-    version: 2.34.3
+    version: 2.35.1
     repo: https://argoproj.github.io/argo-helm
     valuesInline:
       fullnameOverride: argo-rollouts
