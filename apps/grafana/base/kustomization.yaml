@@ -57,7 +57,7 @@ helmCharts:
         # GF_INSTALL_PLUGINS: grafana-simple-json-datasource,alexanderzobnin-zabbix-app
         GF_SERVER_DOMAIN: grafana.devxp-tech.io
         GF_SERVER_ROOT_URL: "https://grafana.devxp-tech.io"
-        GF_FEATURE_TOGGLES_ENABLE: "traceqlEditor tempoSearch tempoServiceGraph"
+        GF_FEATURE_TOGGLES_ENABLE: "traceqlEditor tempoSearch tempoServiceGraph tempoApmTable"
 
       datasources:
         datasources.yaml:
@@ -82,16 +82,16 @@ helmCharts:
                 maxLines: 5000
                 timeout: "60"
                 derivedFields:
-                  # - name: Jaeger
-                  #   datasourceUid: jaeger
-                  #   datasourceName: Jaeger
-                  #   matcherRegex: ((\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+))
-                  #   url: "$${__value.raw}"
                   - name: Tempo
                     datasourceUid: tempo
                     datasourceName: Tempo
                     matcherRegex: '"trace[^"]*": "([^"]+)"'
                     url: "$${__value.raw}"
+                  # - name: Jaeger
+                  #   datasourceUid: jaeger
+                  #   datasourceName: Jaeger
+                  #   matcherRegex: ((\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+))
+                  #   url: "$${__value.raw}"
             - name: Prometheus
               uid: prometheus
               type: prometheus
@@ -102,12 +102,6 @@ helmCharts:
                 manageAlerts: true
                 alertmanagerUid: alertmanager
                 httpMethod: GET
-            # - name: Jaeger
-            #   uid: jaeger
-            #   type: jaeger
-            #   access: proxy
-            #   url: http://jaeger-query.observability:80
-            #   version: 1
             - name: Tempo
               type: tempo
               uid: tempo
@@ -121,7 +115,16 @@ helmCharts:
                   datasourceUid: loki
                 lokiSearch:
                   datasourceUid: loki
+                nodeGraph:
+                  enabled: true
               version: 1
+
+            # - name: Jaeger
+            #   uid: jaeger
+            #   type: jaeger
+            #   access: proxy
+            #   url: http://jaeger-query.observability:80
+            #   version: 1
       notifiers:
         notifiers.yaml:
           notifiers:
