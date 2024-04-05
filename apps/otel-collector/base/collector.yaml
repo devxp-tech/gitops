@@ -67,7 +67,7 @@ spec:
         target_info:
           enabled: true
       prometheus/servicegraph:
-        endpoint: localhost:8888
+        endpoint: localhost:9090
         namespace: servicegraph
 
     service:
