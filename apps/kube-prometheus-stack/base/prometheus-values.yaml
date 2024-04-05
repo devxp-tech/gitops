@@ -598,6 +598,13 @@ prometheus:
             type: "A"
             port: 9003
 
+      - job_name: kiali
+        metrics_path: /metrics
+        scrape_interval: 60s
+        static_configs:
+          - targets:
+              - kiali.kiali-operator.svc.cluster.local:9090
+
 prometheus-node-exporter:
   affinity:
     nodeAffinity:
