@@ -55,7 +55,7 @@ spec:
       pipelines:
         traces:
           receivers: [jaeger, otlp, zipkin]
-          processors: [memory_limiter, batch, spanmetrics]
+          processors: [memory_limiter, batch]
           exporters: [logging, otlp/tempo]
         metrics:
           receivers: [otlp, otlp/spanmetrics]
