@@ -6,7 +6,7 @@ resources:
 helmCharts:
   - name: wordpress
     releaseName: wordpress
-    version: 21.0.9
+    version: 21.0.10
     repo: https://charts.bitnami.com/bitnami
     valuesInline:
       # nodeSelector:
