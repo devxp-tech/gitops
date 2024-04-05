@@ -1,27 +1,21 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: opentelemetry-operator-system
-resources:
-  - https://github.com/open-telemetry/opentelemetry-operator/releases/latest/download/opentelemetry-operator.yaml
+# resources:
+#   - https://github.com/open-telemetry/opentelemetry-operator/releases/latest/download/opentelemetry-operator.yaml
 ###### OLD
-# helmCharts:
-#   - name: opentelemetry-operator
-#     includeCRDs: true
-#     releaseName: opentelemetry-operator
-#     version: 0.43.0
-#     repo: https://open-telemetry.github.io/opentelemetry-helm-charts
-#     valuesInline:
-#       admissionWebhooks:
-#         create: false
+helmCharts:
+  - name: opentelemetry-operator
+    includeCRDs: true
+    releaseName: opentelemetry-operator
+    version: 0.53.0
+    repo: https://open-telemetry.github.io/opentelemetry-helm-charts
+    valuesInline:
+      admissionWebhooks:
+        create: false
 
 #       manager:
 #         serviceMonitor:
 #           enabled: true
 #         env:
 #           ENABLE_WEBHOOKS: "false"
-### working...
-# admissionWebhooks:
-#   create: false
-# manager:
-#   env:
-#     ENABLE_WEBHOOKS: "false"
