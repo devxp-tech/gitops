@@ -11,11 +11,11 @@ helmCharts:
     version: 0.53.0
     repo: https://open-telemetry.github.io/opentelemetry-helm-charts
     valuesInline:
-      admissionWebhooks:
-        create: false
-
-#       manager:
-#         serviceMonitor:
-#           enabled: true
-#         env:
-#           ENABLE_WEBHOOKS: "false"
+      nameOverride: opentelemetry-operator
+      # admissionWebhooks:
+      #   create: false
+      # manager:
+      #   serviceMonitor:
+      #     enabled: true
+      #   env:
+      #     ENABLE_WEBHOOKS: "false"
