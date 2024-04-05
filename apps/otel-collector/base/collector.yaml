@@ -26,6 +26,18 @@ spec:
           grpc:
             endpoint: 0.0.0.0:12346
 
+    connectors:
+      spanmetrics:
+        histogram:
+          explicit:
+            buckets: [100us, 1ms, 2ms, 6ms, 10ms, 100ms, 250ms]
+        dimensions:
+          - name: http.method
+            default: GET
+          - name: http.status_code
+        dimensions_cache_size: 1000
+        aggregation_temporality: 'AGGREGATION_TEMPORALITY_CUMULATIVE'
+
     processors:
       memory_limiter:
         check_interval: 1s
