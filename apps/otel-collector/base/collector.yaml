@@ -37,6 +37,15 @@ spec:
           - name: http.status_code
         dimensions_cache_size: 1000
         aggregation_temporality: 'AGGREGATION_TEMPORALITY_CUMULATIVE'
+      servicegraph:
+        latency_histogram_buckets: [100ms, 250ms, 1s, 5s, 10s]
+        dimensions:
+          - dimension-1
+          - dimension-2
+        store:
+          ttl: 1s
+          max_items: 10
+
 
     processors:
       memory_limiter:
@@ -57,6 +66,9 @@ spec:
         endpoint: http://prometheus-prometheus.monitoring.svc:9090/api/v1/write
         target_info:
           enabled: true
+      prometheus/servicegraph:
+        endpoint: localhost:8888
+        namespace: servicegraph
 
     service:
       extensions: [health_check, pprof, zpages]
@@ -64,7 +76,7 @@ spec:
         traces:
           receivers: [jaeger, otlp, zipkin]
           processors: [memory_limiter, batch]
-          exporters: [logging, otlp/tempo, spanmetrics]
+          exporters: [logging, otlp/tempo, spanmetrics, servicegraph]
         metrics:
           receivers: [otlp, spanmetrics]
           processors: [memory_limiter, batch]
@@ -73,3 +85,6 @@ spec:
           receivers: [otlp]
           processors: [memory_limiter, batch]
           exporters: [logging]
+        metrics/servicegraph:
+          receivers: [servicegraph]
+          exporters: [prometheus/servicegraph]
