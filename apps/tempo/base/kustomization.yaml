@@ -20,6 +20,7 @@ helmCharts:
       tempoQuery:
         enabled: true
       tempo:
+        searchEnabled: true
         storage:
           trace:
             backend: s3 # we're using minio anyway!
