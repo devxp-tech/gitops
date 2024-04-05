@@ -1,4 +1,5 @@
 alertmanager:
+  nameOverride: prometheus-alertmanager
   alertmanagerSpec:
     secrets:
       - alertmanager-secret
