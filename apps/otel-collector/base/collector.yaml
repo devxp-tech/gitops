@@ -57,10 +57,6 @@ spec:
         endpoint: http://prometheus-prometheus.monitoring.svc:9090/api/v1/write
         target_info:
           enabled: true
-      otlp/spanmetrics:
-          endpoint: "localhost:55677"
-          tls:
-            insecure: true
 
     service:
       extensions: [health_check, pprof, zpages]
@@ -70,7 +66,7 @@ spec:
           processors: [memory_limiter, batch]
           exporters: [logging, otlp/tempo, spanmetrics]
         metrics:
-          receivers: [otlp, otlp/spanmetrics]
+          receivers: [otlp, spanmetrics]
           processors: [memory_limiter, batch]
           exporters: [logging, prometheusremotewrite]
         logs:
