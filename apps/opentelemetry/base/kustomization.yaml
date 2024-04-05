@@ -12,16 +12,15 @@ helmCharts:
     repo: https://open-telemetry.github.io/opentelemetry-helm-charts
     valuesInline:
       nameOverride: opentelemetry-operator
-      admissionWebhooks:
-        certManager:
-          enabled: false
-        autoGenerateCert:
-          enabled: true
-
       # admissionWebhooks:
-      #   create: false
-      # manager:
-      #   serviceMonitor:
+      #   certManager:
+      #     enabled: false
+      #   autoGenerateCert:
       #     enabled: true
-      #   env:
-      #     ENABLE_WEBHOOKS: "false"
+      admissionWebhooks:
+        create: false
+      manager:
+        serviceMonitor:
+          enabled: true
+        env:
+          ENABLE_WEBHOOKS: "false"
