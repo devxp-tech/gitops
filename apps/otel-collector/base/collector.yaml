@@ -53,12 +53,15 @@ spec:
         endpoint: http://prometheus-prometheus.monitoring.svc:9090/api/v1/write
         tls:
           insecure: true
+      prometheus/servicegraph:
+        endpoint: localhost:9090
+        namespace: servicegraph
 
     service:
       extensions: [health_check, pprof, zpages]
       pipelines:
         metrics:
-          receivers: [otlp, servicegraph]
+          receivers: [otlp]
           processors: [memory_limiter, batch]
           exporters: [logging, prometheusremotewrite]
         traces:
@@ -69,4 +72,6 @@ spec:
           receivers: [otlp]
           processors: [memory_limiter, batch]
           exporters: [logging]
-
+        metrics/servicegraph:
+          receivers: [servicegraph]
+          exporters: [prometheus/servicegraph]
