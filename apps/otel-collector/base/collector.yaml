@@ -32,15 +32,15 @@ spec:
         send_batch_size: 10000
         timeout: 10s
 
-    # connectors:
-    #   servicegraph:
-    #     latency_histogram_buckets: [100ms, 250ms, 1s, 5s, 10s]
-    #     dimensions:
-    #       - dimension-1
-    #       - dimension-2
-    #     store:
-    #       ttl: 1s
-    #       max_items: 10
+    connectors:
+      servicegraph:
+        latency_histogram_buckets: [100ms, 250ms, 1s, 5s, 10s]
+        dimensions:
+          - dimension-1
+          - dimension-2
+        store:
+          ttl: 1s
+          max_items: 10
 
     exporters:
       logging:
@@ -58,13 +58,13 @@ spec:
       extensions: [health_check, pprof, zpages]
       pipelines:
         metrics:
-          receivers: [otlp]
+          receivers: [otlp, servicegraph]
           processors: [memory_limiter, batch]
           exporters: [logging, prometheusremotewrite]
         traces:
           receivers: [jaeger, otlp, zipkin]
           processors: [memory_limiter, batch]
-          exporters: [logging, otlp/tempo]
+          exporters: [logging, otlp/tempo, servicegraph]
         logs:
           receivers: [otlp]
           processors: [memory_limiter, batch]
