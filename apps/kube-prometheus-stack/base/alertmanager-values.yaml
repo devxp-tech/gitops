@@ -1,4 +1,5 @@
 alertmanager:
+  fullnameOverride: alertmanager
   alertmanagerSpec:
     secrets:
       - alertmanager-secret
