@@ -572,19 +572,19 @@ prometheus:
           - targets:
               - karpenter.karpenter.svc.cluster.local:8000
 
-      - job_name: "default-collector"
+      - job_name: "dotel-collector"
         metrics_path: /metrics
         scrape_interval: 60s
         static_configs:
           - targets:
               - otel-collector-monitoring.observability.svc.cluster.local:8888
 
-      - job_name: "servicegraph-traces"
-        metrics_path: /metrics
-        scrape_interval: 30s
-        static_configs:
-          - targets:
-              - otel-collector.observability.svc.cluster.local:9090
+      # - job_name: "servicegraph-traces"
+      #   metrics_path: /metrics
+      #   scrape_interval: 30s
+      #   static_configs:
+      #     - targets:
+      #         - otel-collector.observability.svc.cluster.local:9090
 
       - job_name: "cert-manager"
         metrics_path: /metrics

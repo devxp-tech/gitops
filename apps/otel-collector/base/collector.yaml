@@ -6,6 +6,16 @@ metadata:
 spec:
   mode: statefulset
   replicas: 3
+  presets:
+    # enables the k8sattributesprocessor and adds it to the traces, metrics, and logs pipelines
+    kubernetesAttributes:
+      enabled: true
+    # enables the kubeletstatsreceiver and adds it to the metrics pipelines
+    kubeletMetrics:
+      enabled: true
+    # Enables the filelogreceiver and adds it to the logs pipelines
+    logsCollection:
+      enabled: true
   config: |
     extensions:
       health_check:
@@ -22,10 +32,6 @@ spec:
           grpc:
           http:
       zipkin:
-      otlp/spanmetrics:
-        protocols:
-          grpc:
-            endpoint: 0.0.0.0:12346
       prometheus:
         config:
           scrape_configs:
@@ -39,27 +45,6 @@ spec:
             - action: labelmap
               regex: label_(.+)
               replacement: $$1
-
-    # connectors:
-    #   spanmetrics:
-    #     histogram:
-    #       explicit:
-    #         buckets: [100us, 1ms, 2ms, 6ms, 10ms, 100ms, 250ms]
-    #     dimensions:
-    #       - name: http.method
-    #         default: GET
-    #       - name: http.status_code
-    #     dimensions_cache_size: 1000
-    #     aggregation_temporality: 'AGGREGATION_TEMPORALITY_CUMULATIVE'
-    #   servicegraph:
-    #     latency_histogram_buckets: [100ms, 250ms, 1s, 5s, 10s]
-    #     dimensions:
-    #       - dimension-1
-    #       - dimension-2
-    #     store:
-    #       ttl: 1s
-    #       max_items: 10
-
 
     processors:
       memory_limiter:
@@ -81,9 +66,6 @@ spec:
         endpoint: http://prometheus-prometheus.monitoring.svc:9090/api/v1/write
         target_info:
           enabled: true
-      prometheus:
-        endpoint: localhost:9090
-        metric_expiration: 10m
 
     service:
       extensions: [health_check, pprof, zpages]
