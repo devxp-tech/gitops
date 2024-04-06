@@ -1,8 +1,4 @@
 prometheus:
-  prometheusSpec:
-    enableRemoteWriteReceiver: true
-    enableFeatures:
-    - remote-write-receiver
   additionalRulesForClusterRole:
     - apiGroups: [""]
       resources:
@@ -27,6 +23,9 @@ prometheus:
   thanosServiceMonitor:
     enabled: true
   prometheusSpec:
+    enableRemoteWriteReceiver: true
+    enableFeatures:
+    - remote-write-receiver
     alertingEndpoints:
       - namespace: monitoring
         name: prometheus-alertmanager.monitoring.svc
