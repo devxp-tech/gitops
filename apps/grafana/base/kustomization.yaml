@@ -113,8 +113,6 @@ helmCharts:
                   datasourceUid: 'prometheus'
                 tracesToLogsV2:
                   datasourceUid: loki
-                lokiSearch:
-                  datasourceUid: loki
                 nodeGraph:
                   enabled: true
               version: 1
