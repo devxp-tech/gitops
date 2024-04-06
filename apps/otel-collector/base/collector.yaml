@@ -53,7 +53,7 @@ spec:
         tls:
           insecure: true
       prometheusremotewrite:
-        endpoint: http://prometheus-prometheus.monitoring.svc:9090/api/v1/push
+        endpoint: http://prometheus-prometheus.monitoring.svc:9090/api/v1/receive
 
     service:
       extensions: [health_check, pprof, zpages]
