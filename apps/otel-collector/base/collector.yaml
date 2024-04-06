@@ -47,15 +47,13 @@ spec:
 
     exporters:
       logging:
-        loglevel: debug
+        loglevel: info
       otlp/tempo:
         endpoint: "tempo.observability.svc:4317"
         tls:
           insecure: true
       prometheusremotewrite:
-        endpoint: http://prometheus-pushgateway.monitoring.svc:9091/
-        target_info:
-          enabled: true
+        endpoint: http://prometheus-prometheus.monitoring.svc:9090/api/v1/push
 
     service:
       extensions: [health_check, pprof, zpages]
