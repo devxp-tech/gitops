@@ -53,7 +53,7 @@ spec:
         tls:
           insecure: true
       prometheusremotewrite:
-        endpoint: http://prometheus-pushgateway.monitoring.svc:9091/api/v1/write
+        endpoint: http://prometheus-pushgateway.monitoring.svc:9091/
         target_info:
           enabled: true
 
