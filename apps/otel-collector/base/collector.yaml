@@ -33,14 +33,8 @@ spec:
         timeout: 10s
 
     connectors:
-      servicegraph:
-        latency_histogram_buckets: [100ms, 250ms, 1s, 5s, 10s]
-        dimensions:
-          - dimension-1
-          - dimension-2
-        store:
-          ttl: 1s
-          max_items: 10
+      spanmetrics:
+        namespace: span.metrics
 
     exporters:
       logging:
@@ -53,25 +47,22 @@ spec:
         endpoint: http://prometheus-prometheus.monitoring.svc:9090/api/v1/write
         tls:
           insecure: true
-      prometheus/servicegraph:
-        endpoint: localhost:9090
-        namespace: servicegraph
+        target_info:
+          enabled: true
 
     service:
       extensions: [health_check, pprof, zpages]
       pipelines:
         metrics:
-          receivers: [otlp]
+          receivers: [otlp, spanmetrics]
           processors: [memory_limiter, batch]
           exporters: [logging, prometheusremotewrite]
         traces:
           receivers: [jaeger, otlp, zipkin]
           processors: [memory_limiter, batch]
-          exporters: [logging, otlp/tempo, servicegraph]
+          exporters: [logging, otlp/tempo, spanmetrics]
         logs:
           receivers: [otlp]
           processors: [memory_limiter, batch]
           exporters: [logging]
-        metrics/servicegraph:
-          receivers: [servicegraph]
-          exporters: [prometheus/servicegraph]
+
