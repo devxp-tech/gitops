@@ -1,4 +1,8 @@
 prometheus:
+  prometheusSpec:
+    enableRemoteWriteReceiver: true
+    enableFeatures:
+    - remote-write-receiver
   additionalRulesForClusterRole:
     - apiGroups: [""]
       resources:

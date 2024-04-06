@@ -26,11 +26,6 @@ helmCharts:
       defaultRules:
         rules:
           time: false
-      prometheus:
-        prometheusSpec:
-          enableRemoteWriteReceiver: true
-          enableFeatures:
-          - remote-write-receiver
     additionalValuesFiles:
       - alertmanager-values.yaml
       - kube-state-metrics-values.yaml
