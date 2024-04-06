@@ -36,3 +36,10 @@ helmCharts:
       - kube-state-metrics-values.yaml
       - prometheus-operator-values.yaml
       - prometheus-values.yaml
+  - name: prometheus-pushgateway
+    releaseName: prometheus-community
+    version: 2.8.0
+    repo: https://prometheus-community.github.io/helm-charts
+    # includeCRDs: true
+    valuesInline:
+      nameOverride: prometheus-pushgateway
