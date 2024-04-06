@@ -6,16 +6,6 @@ metadata:
 spec:
   mode: statefulset
   replicas: 3
-  presets:
-    # enables the k8sattributesprocessor and adds it to the traces, metrics, and logs pipelines
-    kubernetesAttributes:
-      enabled: true
-    # enables the kubeletstatsreceiver and adds it to the metrics pipelines
-    kubeletMetrics:
-      enabled: true
-    # Enables the filelogreceiver and adds it to the logs pipelines
-    logsCollection:
-      enabled: true
   config: |
     extensions:
       health_check:
