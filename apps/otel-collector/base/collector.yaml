@@ -54,6 +54,8 @@ spec:
           insecure: true
       prometheusremotewrite:
         endpoint: http://prometheus-prometheus.monitoring.svc:9090/api/v1/write
+        tls:
+          insecure: true
 
     service:
       extensions: [health_check, pprof, zpages]
