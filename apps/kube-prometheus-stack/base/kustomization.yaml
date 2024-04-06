@@ -43,3 +43,5 @@ helmCharts:
     # includeCRDs: true
     valuesInline:
       nameOverride: prometheus-pushgateway
+      serviceMonitor:
+        enabled: true
