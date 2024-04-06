@@ -32,9 +32,33 @@ spec:
         send_batch_size: 10000
         timeout: 10s
 
+    # See https://opentelemetry.io/docs/collector/configuration/#connectors
     connectors:
+      # The spanmetrics connector is used to output span metrics based on received trace spans.
       spanmetrics:
-        namespace: span.metrics
+        namespace: traces.spanmetrics   # Prefix all metrics with `traces.spanmetrics` (this becomes `traces_spanmetrics`).
+        # Determine the type of histogram to use for span metrics.
+        histogram:
+          explicit:                     # Explicit histograms have pre-defined bucket sizes (use default here).
+        # Defines additional label dimensions of the metrics from trace span attributes present.
+        dimensions:
+          - name: http.method
+          - name: http.target
+          - name: http.status_code
+          - name: service.version
+        exemplars:
+          enabled: true
+
+      # The servicegraph connector is used to output service node metrics based on received trace spans.
+      servicegraph:
+          metrics_exporter: prometheusremotewrite
+          store:                      # Configuration for the in-memory store.
+            ttl: 2s                   # Time to wait for an edge to be completed.
+            max_items: 200            # Number of edges that will be stored in the storeMap.
+          cache_loop: 2m              # The timeout used to clean the cache periodically.
+          store_expiration_loop: 10s  # The timeout used to expire old entries from the store periodically.
+          virtual_node_peer_attributes:
+            - db.name
 
     exporters:
       logging:
