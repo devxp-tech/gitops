@@ -1,3 +1,5 @@
+kube-state-metrics:
+  namespaceOverride: kube-state-metrics
 kubeStateMetrics:
   enabled: true
   resources:
