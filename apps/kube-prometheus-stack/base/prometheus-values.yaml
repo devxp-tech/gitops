@@ -25,7 +25,7 @@ prometheus:
   prometheusSpec:
     enableRemoteWriteReceiver: true
     enableFeatures:
-    - remote-write-receiver
+      - remote-write-receiver
     alertingEndpoints:
       - namespace: monitoring
         name: prometheus-alertmanager.monitoring.svc
