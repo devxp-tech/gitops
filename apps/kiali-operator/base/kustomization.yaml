@@ -47,16 +47,16 @@ helmCharts:
               enabled: true
               in_cluster_url: http://grafana.monitoring.svc.cluster.local
               url: https://grafana.devxp-tech.io
-            # tracing:
-            #   enabled: true
-            #   provider: "tempo"
-            #   # Private facing URL of Jaeger
-            #   # in_cluster_url: "http://jaeger-query.observability.svc.cluster.local:80"
-            #   in_cluster_url: "http://tempo.observability.svc.cluster.local:3100"
-            #   use_grpc: true # default false, test
-            #   # Public facing URL
-            #   # url: "https://jaeger.devxp-tech.io/jaeger"
-            #   url: "https://grafana.devxp-tech.io/goto/NGVi4JSSR?orgId=1"
+            tracing:
+              enabled: true
+              provider: "tempo"
+              # Private facing URL of Jaeger
+              # in_cluster_url: "http://jaeger-query.observability.svc.cluster.local:80"
+              in_cluster_url: "http://tempo.observability.svc.cluster.local:3100"
+              use_grpc: true # default false, test
+              # Public facing URL
+              # url: "https://jaeger.devxp-tech.io/jaeger"
+              url: "https://grafana.devxp-tech.io/goto/NGVi4JSSR?orgId=1"
           auth:
             strategy: openid
             openid:
