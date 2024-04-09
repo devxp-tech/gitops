@@ -16,6 +16,8 @@ helmCharts:
         annotations:
           "eks.amazonaws.com/role-arn": "arn:aws:iam::239468932737:role/tempo-lgseksd1-sa"
         automountServiceAccountToken: true
+      serviceMonitor:
+        enabled: true
       gateway:
         enabled: true
       tempoQuery:
