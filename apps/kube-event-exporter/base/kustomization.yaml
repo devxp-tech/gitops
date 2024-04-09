@@ -6,7 +6,7 @@ helmCharts:
     includeCRDs: true
     releaseName: kubernetes-event-exporter
     version: 3.0.2
-    repo: oci://registry-1.docker.io/bitnamicharts/kubernetes-event-exporter
+    repo: https://charts.bitnami.com/bitnami
     valuesInline:
       config: |
         logLevel: debug
