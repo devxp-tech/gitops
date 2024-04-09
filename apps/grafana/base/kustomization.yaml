@@ -344,6 +344,9 @@ helmCharts:
           loki-container-log:
             datasource: Loki
             gnetId: 16966
+          kubernetes-events-exporter:
+            datasource: Loki
+            gnetId: 17882
         jaeger:
           # Loki dashboards
           jaeger:
