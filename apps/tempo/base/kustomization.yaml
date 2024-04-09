@@ -11,6 +11,7 @@ helmCharts:
       labels:
         app: tempo
       replicas: 3
+
       serviceAccount:
         name: tempo
         annotations:
@@ -23,6 +24,9 @@ helmCharts:
       tempoQuery:
         enabled: true
       tempo:
+        queryFrontend:
+          jaegerQuery:
+            enabled: true
         searchEnabled: true
         storage:
           trace:
