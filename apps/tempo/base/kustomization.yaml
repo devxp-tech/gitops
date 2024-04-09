@@ -25,10 +25,10 @@ helmCharts:
         enabled: true
         service:
           port: 16685
-      tempo:
-        queryFrontend:
-          jaegerQuery:
-            enabled: true
+      # tempo:
+      #   queryFrontend:
+      #     jaegerQuery:
+      #       enabled: true
         searchEnabled: true
         storage:
           trace:
