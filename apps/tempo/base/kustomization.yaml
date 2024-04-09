@@ -23,6 +23,8 @@ helmCharts:
         enabled: true
       tempoQuery:
         enabled: true
+        service:
+          port: 16685
       tempo:
         queryFrontend:
           jaegerQuery:
