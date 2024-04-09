@@ -34,10 +34,10 @@ spec:
 
     connectors:
       spanmetrics:
-        histogram:
-          unit: s
-        namespace: traces.spanmetrics
-        metrics_flush_interval: 60s
+        # histogram:
+        #   unit: s
+        # namespace: traces.spanmetrics
+        # metrics_flush_interval: 60s
       servicegraph:
         store:
           ttl: 30s
@@ -72,3 +72,6 @@ spec:
           receivers: [otlp]
           processors: [memory_limiter, batch]
           exporters: [logging]
+        metrics/spanmetrics:
+          receivers: [spanmetrics]
+          exporters: [prometheusremotewrite]
