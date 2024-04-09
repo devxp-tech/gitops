@@ -292,6 +292,17 @@ helmCharts:
           argocd-default:
             datasource: Prometheus
             url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/argocd/dashboard.json"
+          argo-applications:
+            datasource: Prometheus
+            gnetId: 19974
+          # ArgoCD Notifications
+          argo-notifications:
+            datasource: Prometheus
+            gnetId: 19975
+          # ArgoRollouts dashboards
+          argo-rollouts:
+            datasource: Prometheus
+            gnetId: 15386
         github:
           # GitHub dashboards
           github-default:
