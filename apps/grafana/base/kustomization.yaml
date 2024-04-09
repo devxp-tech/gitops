@@ -289,9 +289,10 @@ helmCharts:
             gnetId: 9578
         argocd:
           # ArgoCD dashboards
-          argocd-default:
+          argocd-cd:
             datasource: Prometheus
-            url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/argocd/dashboard.json"
+            gnetId: 14584
+            # url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/argocd/dashboard.json"
           argo-applications:
             datasource: Prometheus
             gnetId: 19974
