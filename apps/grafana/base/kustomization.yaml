@@ -354,7 +354,7 @@ helmCharts:
         cert-manager:
           cert-manager:
             datasource: Prometheus
-            url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/cert-manager/cert-manager.json"
+            gnetId: 11001
         kubecost:
           # KubeCost dashboards
           kubecost:

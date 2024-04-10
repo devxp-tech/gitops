@@ -578,7 +578,7 @@ prometheus:
       - job_name: "otel-collector"
         honor_labels: true
         metrics_path: /metrics
-        scrape_interval: 60s
+        scrape_interval: 30s
         static_configs:
           - targets:
               - otel-collector.observability.svc.cluster.local:8889 # Traces
