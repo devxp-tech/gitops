@@ -2,18 +2,22 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: tracegen
+  namespace: hotrod
+  annotations:
+    sidecar.istio.io/inject: "false"
 spec:
   template:
+    metadata:
+      labels:
+        app: tracegen
+      annotations:
+        sidecar.istio.io/inject: "false"
     spec:
       containers:
         - name: tracegen
           image: ghcr.io/open-telemetry/opentelemetry-collector-contrib/tracegen:latest
           command:
             - "./tracegen"
-          args:
-            - -otlp-endpoint=otel-collector.observability.svc.cluster.local:4317
-            - -otlp-insecure
-            - -duration=30s
-            - -workers=1
+          args: ["-otlp-insecure", "-rate", "1000", "-otlp-endpoint", "otel-collector.observability.svc.cluster.local:4317", "-duration", "10000s"]
       restartPolicy: Never
   backoffLimit: 4
