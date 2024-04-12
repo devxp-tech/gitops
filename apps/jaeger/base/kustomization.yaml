@@ -61,7 +61,7 @@ helmCharts:
           - name: METRICS_STORAGE_TYPE
             value: prometheus
           - name: PROMETHEUS_SERVER_URL
-            value: http://prometheus-prometheus.monitoring.svc.cluster.local:9090
+            value: http://prometheus-community-kube-prometheus.monitoring.svc.cluster.local:9090
           - name: COLLECTOR_OTLP_ENABLED
             value: "false"
           - name: PROMETHEUS_QUERY_SUPPORT_SPANMETRICS_CONNECTOR

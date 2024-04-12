@@ -23,14 +23,15 @@ prometheus:
   thanosServiceMonitor:
     enabled: true
   prometheusSpec:
-    enableRemoteWriteReceiver: true
-    enableFeatures:
-      - remote-write-receiver
+    # enableRemoteWriteReceiver: true
+    # enableFeatures:
+    #   - remote-write-receiver
     # alertingEndpoints:
     #   - namespace: monitoring
-    #     name: prometheus-alertmanager.monitoring.svc
+    #     name: prometheus-community-kube-alertmanager.monitoring.svc
     #     port: 9093
     #     apiVersion: v2
+    serviceMonitorSelectorNilUsesHelmValues: false
     resources:
       requests:
         cpu: 850m

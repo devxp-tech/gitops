@@ -13,7 +13,7 @@ helmCharts:
       global:
         prometheus:
           enabled: false
-          fqdn: http://prometheus-prometheus.monitoring.svc.cluster.local:9090
+          fqdn: http://prometheus-community-kube-prometheus.monitoring.svc.cluster.local:9090
         grafana:
           enabled: false
           domainName: "grafana.monitoring.svc.cluster.local"

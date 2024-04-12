@@ -19,7 +19,7 @@ spec:
         - destination:
             port:
               number: 9090
-            host: prometheus-prometheus.monitoring.svc.cluster.local
+            host: prometheus-community-kube-prometheus.monitoring.svc.cluster.local
 
 ---
 apiVersion: networking.istio.io/v1alpha3

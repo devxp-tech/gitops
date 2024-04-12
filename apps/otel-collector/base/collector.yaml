@@ -54,7 +54,7 @@ spec:
         endpoint: "0.0.0.0:8889"
 
       # prometheusremotewrite:
-      #   endpoint: http://prometheus-prometheus.monitoring.svc:9090/api/v1/write
+      #   endpoint: http://prometheus-community-kube-prometheus.monitoring.svc:9090/api/v1/write
       #   tls:
       #     insecure: true
       #   target_info:
