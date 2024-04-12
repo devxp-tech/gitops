@@ -28,7 +28,7 @@ prometheus:
     #   - remote-write-receiver
     alertingEndpoints:
       - name: prometheus-community-kube-alertmanager
-        namespace: alertmanager
+        namespace: monitoring
         port: http-web
         pathPrefix: /
     serviceMonitorSelectorNilUsesHelmValues: false
