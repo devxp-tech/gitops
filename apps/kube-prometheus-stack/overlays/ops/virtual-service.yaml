@@ -40,6 +40,6 @@ spec:
             prefix: /
       route:
         - destination:
-            host: prometheus-alertmanager.monitoring.svc.cluster.local
+            host: prometheus-community-kube-alertmanager.monitoring.svc.cluster.local
             port:
               number: 9093
