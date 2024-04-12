@@ -26,11 +26,11 @@ prometheus:
     # enableRemoteWriteReceiver: true
     # enableFeatures:
     #   - remote-write-receiver
-    # alertingEndpoints:
-    #   - namespace: monitoring
-    #     name: prometheus-community-kube-alertmanager.monitoring.svc
-    #     port: 9093
-    #     apiVersion: v2
+    alertingEndpoints:
+      - name: prometheus-community-kube-alertmanager
+        namespace: alertmanager
+        port: http-web
+        pathPrefix: /
     serviceMonitorSelectorNilUsesHelmValues: false
     resources:
       requests:
