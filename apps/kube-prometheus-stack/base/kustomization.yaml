@@ -12,7 +12,7 @@ helmCharts:
     repo: https://prometheus-community.github.io/helm-charts
     # includeCRDs: true
     valuesInline:
-      fullnameOverride: prometheus
+      # fullnameOverride: prometheus
       grafana:
         enabled: false
       kubeEtcd:
