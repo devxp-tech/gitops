@@ -5,6 +5,8 @@ prometheusOperator:
     enabled: false
   tlsProxy:
     enabled: false
+  kubeletService:
+    enabled: false
   createCustomResource: false
   resources:
     requests:
