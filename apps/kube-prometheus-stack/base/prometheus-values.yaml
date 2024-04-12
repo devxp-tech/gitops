@@ -45,7 +45,6 @@ prometheus:
       cluster: lgseksd1
     podAntiAffinity: hard
     ruleSelectorNilUsesHelmValues: false
-    serviceMonitorSelectorNilUsesHelmValues: false
     podMonitorSelectorNilUsesHelmValues: false
     probeSelectorNilUsesHelmValues: false
     retentionSize: "6GB"
