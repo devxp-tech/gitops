@@ -1,5 +1,6 @@
 alertmanager:
   alertmanagerSpec:
+    replicas: 2
     secrets:
       - alertmanager-secret
   config:
