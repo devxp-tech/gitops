@@ -10,7 +10,7 @@ helmCharts:
     releaseName: prometheus-community
     version: 58.1.0
     repo: https://prometheus-community.github.io/helm-charts
-    # includeCRDs: true
+    includeCRDs: true
     valuesInline:
       fullnameOverride: prometheus
       grafana:
