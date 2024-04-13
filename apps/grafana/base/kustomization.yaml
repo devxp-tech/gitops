@@ -65,7 +65,7 @@ helmCharts:
           datasources:
             - name: Alertmanager
               type: alertmanager
-              url: http://prometheus-alertmanager:9093
+              url: http://prometheus-community-kube-alertmanager:9093
               uid: alertmanager
               access: proxy
               jsonData:
@@ -132,7 +132,7 @@ helmCharts:
               org_id: 1
               is_default: true
               settings:
-                url: http://prometheus-alertmanager
+                url: http://prometheus-community-kube-alertmanager:9093
           delete_notifiers: []
 
       sidecar:

@@ -373,7 +373,7 @@ prometheus:
         scrape_interval: 30s
         honor_labels: true
         static_configs:
-          - targets: ["prometheus-alertmanager:9093"]
+          - targets: ["prometheus-community-kube-alertmanager:9093"]
 
       - job_name: "grafana"
         scrape_interval: 60s
