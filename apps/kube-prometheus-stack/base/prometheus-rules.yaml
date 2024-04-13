@@ -425,7 +425,7 @@ spec:
 
         - alert: HostCpuHighIowait
           expr: 'avg by (instance) (rate(node_cpu_seconds_total{mode="iowait"}[5m])) * 100 > 5'
-          for: 0m
+          for: 10m
           labels:
             severity: warning
             team: sre-team
