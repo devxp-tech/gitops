@@ -458,7 +458,7 @@ prometheus:
         scheme: http
         static_configs:
           - targets:
-              - prometheus-community-kube-state-metrics.monitoring:8080
+              - prometheus-community-kube-state-metrics.monitoring.svc:8080
 
       - job_name: "kubernetes-cadvisor"
         scheme: https
