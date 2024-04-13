@@ -41,8 +41,15 @@ alertmanager:
                 text: "Dashboard :chart_with_upwards_trend:"
                 url: "{{ (index .Alerts 0).Annotations.dashboard_url }}"
               - type: button
-                text: "Silence :no_bell:"
-                url: '{{ template "__alert_silence_link" . }}'
+                name: mutebutton
+                text: 'Mute :prometheus:'
+                value: 'text'
+                url: "https://{{ (index .Alerts 0).Labels.alertManagerUrl }}"
+              - type: button
+                name: grafana
+                text: 'Grafana :grafana:'
+                value: 'text'
+                url: 'https://{{ (index .Alerts 0).Labels.grafanaAlertUrl }}' # same as first button
 
   templateFiles:
     alertmanager.tmpl: |-
