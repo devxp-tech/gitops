@@ -9,7 +9,6 @@ helmCharts:
     repo: oci://public.ecr.aws/karpenter
     valuesInline:
       nameOverride: karpenter
-      clusterName: lgseksd1
       webhook:
         enabled: true
         port: 8443
@@ -42,6 +41,7 @@ helmCharts:
         metrics:
           port: 8000
       settings:
+        clusterName: lgseksd1
         aws:
           clusterName: lgseksd1
           clusterEndpoint: https://7947638F25F34C5F3CAFEF8286994CB3.gr7.us-east-1.eks.amazonaws.com
