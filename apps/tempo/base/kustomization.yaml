@@ -10,7 +10,7 @@ helmCharts:
     valuesInline:
       labels:
         app: tempo
-      replicas: 3
+      replicas: 2
       serviceAccount:
         name: tempo
         annotations:

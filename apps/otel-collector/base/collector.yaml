@@ -5,7 +5,7 @@ metadata:
   namespace: observability
 spec:
   mode: statefulset
-  replicas: 3
+  replicas: 2
   config: |
     extensions:
       health_check:

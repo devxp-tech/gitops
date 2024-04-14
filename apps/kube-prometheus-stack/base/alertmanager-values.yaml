@@ -1,6 +1,5 @@
 alertmanager:
   alertmanagerSpec:
-    # replicas: 2
     forceEnableClusterMode: true
     secrets:
       - alertmanager-secret
