@@ -8,11 +8,32 @@ alertmanager:
     global:
       resolve_timeout: 5m
       slack_api_url_file: "/etc/alertmanager/secrets/alertmanager-secret/SLACK-TOKEN"
+      inhibit_rules:
+        - source_matchers:
+            - 'severity = critical'
+          target_matchers:
+            - 'severity =~ warning|info'
+          equal:
+            - 'namespace'
+            - 'alertname'
+        - source_matchers:
+            - 'severity = warning'
+          target_matchers:
+            - 'severity = info'
+          equal:
+            - 'namespace'
+            - 'alertname'
+        - source_matchers:
+            - 'alertname = InfoInhibitor'
+          target_matchers:
+            - 'severity = info'
+          equal:
+            - 'namespace'
     route:
       group_wait: 30s
       group_interval: 5m
-      repeat_interval: 8h
-      group_by: ["alertname", "cluster", "service"]
+      repeat_interval: 12h
+      group_by: ['namespace', 'alertname', 'pod'] #["alertname", "cluster", "service"]
       # A default receiver
       receiver: "slack-notifications"
       routes:
