@@ -5,8 +5,7 @@ alertmanager:
     secrets:
       - alertmanager-secret
   extraArgs:
-    web:
-      external-url: "https://alertmanager.devxp-tech.io/"
+    web.external-url: "https://alertmanager.devxp-tech.io/"
   config:
     global:
       resolve_timeout: 5m
