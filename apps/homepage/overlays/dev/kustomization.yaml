@@ -26,8 +26,8 @@ helmCharts:
         enabled: true
       autoscaling:
         enabled: true
-        minReplicas: 3
-        maxReplicas: 5
+        minReplicas: 1
+        maxReplicas: 3
         targetCPUUtilizationPercentage: 80
       livenessProbe:
         httpGet:
