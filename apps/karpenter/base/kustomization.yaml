@@ -30,12 +30,6 @@ helmCharts:
               - matchExpressions:
                   - key: karpenter.sh/provisioner-name
                     operator: DoesNotExist
-              # - matchExpressions:
-              #     - key: eks.amazonaws.com/nodegroup
-              #       operator: In
-              #       values:
-              #         - unused-20230811185420453100000001
-              #         - default-a-20230809111324220500000024
       controller:
         resources:
           requests:
@@ -44,6 +38,8 @@ helmCharts:
           limits:
             cpu: 1
             memory: 1Gi
+        metrics:
+          port: 8000
       settings:
         aws:
           clusterName: lgseksd1
