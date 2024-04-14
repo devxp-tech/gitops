@@ -367,7 +367,7 @@ prometheus:
         scrape_interval: 30s
         static_configs:
           - targets:
-              - prometheus-prometheus:9090
+              - http://prometheus-community-kube-prometheus.monitoring.svc.cluster.local:9090
 
       - job_name: "alertmanager"
         scrape_interval: 30s

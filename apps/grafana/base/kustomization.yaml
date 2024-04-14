@@ -95,7 +95,7 @@ helmCharts:
             - name: Prometheus
               uid: prometheus
               type: prometheus
-              url: http://prometheus-prometheus:9090
+              url: http://prometheus-community-kube-prometheus.monitoring.svc.cluster.local:9090
               # access: proxy
               isDefault: true
               jsonData:
