@@ -991,7 +991,7 @@ spec:
 
         - alert: IstioHighRequestLatency
           expr: 'rate(istio_request_duration_milliseconds_sum{reporter="destination"}[1m]) / rate(istio_request_duration_milliseconds_count{reporter="destination"}[1m]) > 100'
-          for: 1m
+          for: 5m
           labels:
             severity: warning
           annotations:
