@@ -9,6 +9,7 @@ helmCharts:
     repo: oci://public.ecr.aws/karpenter
     valuesInline:
       nameOverride: karpenter
+      clusterName: lgseksd1
       webhook:
         enabled: true
         port: 8443
