@@ -9,6 +9,8 @@ helmCharts:
     repo: oci://public.ecr.aws/karpenter
     valuesInline:
       nameOverride: karpenter
+      logConfig:
+        enabled: true
       webhook:
         enabled: true
         port: 8443
