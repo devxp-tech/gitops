@@ -20,7 +20,7 @@ helmCharts:
           domain: devxp-tech.io
       image:
         repository: ghcr.io/devxp-tech/backstage
-        tag: 521e0641
+        tag: d0e654bc
       serviceAccount:
         annotations:
           "eks.amazonaws.com/role-arn": "arn:aws:iam::239468932737:role/backstage-lgseksd1-sa"
