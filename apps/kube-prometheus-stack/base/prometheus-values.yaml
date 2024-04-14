@@ -366,8 +366,7 @@ prometheus:
       - job_name: "prometheus"
         scrape_interval: 30s
         static_configs:
-          - targets:
-              - http://prometheus-community-kube-prometheus:9090
+          - targets: ["prometheus-community-kube-prometheus:9090"]
 
       - job_name: "alertmanager"
         scrape_interval: 30s
