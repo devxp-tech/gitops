@@ -39,13 +39,20 @@ alertmanager:
       # A default receiver
       receiver: "slack-notifications"
       routes:
-        # capture All Critical to the 'slack-notifications'
-        - match:
-            severity: "critical"
+        - receiver: 'null'
           continue: true
-          receiver: "slack-notifications"
+          matchers:
+            - alertname = "Watchdog"
+        # capture All Critical to the 'slack-notifications'
+        - receiver: "slack-notifications"
+          continue: true
+          match:
+            severity: "critical"
+
+
 
     receivers:
+      - name: 'null'
       - name: "slack-notifications"
         slack_configs:
           - channel: "#prometheus-notifications"
