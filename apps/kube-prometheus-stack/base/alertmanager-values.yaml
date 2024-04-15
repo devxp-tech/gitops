@@ -49,8 +49,6 @@ alertmanager:
           match:
             severity: "critical"
 
-
-
     receivers:
       - name: 'null'
       - name: "slack-notifications"
