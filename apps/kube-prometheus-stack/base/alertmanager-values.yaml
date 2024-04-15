@@ -37,12 +37,11 @@ alertmanager:
       repeat_interval: 12h
       group_by: ['namespace', 'alertname', 'pod'] #["alertname", "cluster", "service"]
       # A default receiver
-      receiver: "slack-notifications"
+      receiver: 'null'
       routes:
         - receiver: 'null'
-          continue: true
           matchers:
-            - alertname = "Watchdog"
+            - alertname =~ "InfoInhibitor|Watchdog"
         # capture All Critical to the 'slack-notifications'
         - receiver: "slack-notifications"
           continue: true
