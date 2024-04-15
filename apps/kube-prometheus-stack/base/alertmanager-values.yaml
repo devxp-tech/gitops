@@ -45,8 +45,8 @@ alertmanager:
         # capture All Critical to the 'slack-notifications'
         - receiver: "slack-notifications"
           continue: true
-          match:
-            severity: "critical"
+          matchers:
+            - severity = critical
 
     receivers:
       - name: 'null'
