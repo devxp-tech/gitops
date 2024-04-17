@@ -6,11 +6,16 @@ resources:
 helmCharts:
   - name: wordpress
     releaseName: wordpress
-    version: 22.1.7
+    version: 22.2.0
     repo: https://charts.bitnami.com/bitnami
     valuesInline:
-      # nodeSelector:
-      #   topology.kubernetes.io/zone: "us-east-1c"
+      existingSecret: wordpress-secrets
+      metrics:
+        enabled: true
+      service:
+        type: ClusterIP
+      persistence:
+        enabled: true
       wordpressUsername: dluisi
       wordpressEmail: contato@diegoluisi.eti.br
       wordpressFirstName: Diego
@@ -35,17 +40,10 @@ helmCharts:
       # maxInputTime: 900
       # wordpressConfigureCache: true
       # allowEmptyPassword: true
-      existingSecret: wordpress-secrets
+
       # serviceAccount:
       #   create: true
-      # metrics:
-      #   enabled: true
-      networkPolicy:
-        enabled: false
-      service:
-        type: ClusterIP
-      persistence:
-        enabled: true
+
       # extraEnvVars:
       #   - name: PHP_UPLOAD_MAX_FILESIZE
       #     value: 1024M
