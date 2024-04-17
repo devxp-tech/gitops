@@ -562,11 +562,12 @@ prometheus:
             labels:
               application: "sonarqube"
 
-      - job_name: "karpenter"
-        scrape_interval: 60s
-        static_configs:
-          - targets:
-              - karpenter.karpenter.svc.cluster.local:8000
+      # Using ServiceMonitor
+      # - job_name: "karpenter"
+      #   scrape_interval: 60s
+      #   static_configs:
+      #     - targets:
+      #         - karpenter.karpenter.svc.cluster.local:8000
 
       - job_name: "otel-collector"
         honor_labels: true
