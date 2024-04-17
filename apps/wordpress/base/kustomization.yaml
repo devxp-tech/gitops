@@ -12,6 +12,8 @@ helmCharts:
       existingSecret: wordpress-secrets
       metrics:
         enabled: true
+        serviceMonitor:
+          enabled: true
       service:
         type: ClusterIP
       persistence:

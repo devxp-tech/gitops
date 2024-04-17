@@ -509,12 +509,6 @@ prometheus:
             action: replace
             target_label: kubernetes_namespace
 
-      - job_name: "wordpress"
-        scrape_interval: 60s
-        static_configs:
-          - targets:
-              - wordpress-metrics.wordpress.svc.cluster.local:9150
-
       - job_name: "otel-collector"
         honor_labels: true
         metrics_path: /metrics
