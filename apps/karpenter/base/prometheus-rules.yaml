@@ -1,0 +1,38 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  labels:
+    app: karpenter
+    heritage: Helm
+    release: prometheus
+  name: karpenter
+spec:
+  groups:
+  - name: karpenter
+    rules:
+    - alert: KarpenterCanNotRegisterNewNodes
+      annotations:
+        description: |
+          Karpenter in the nodepool {{`{{ $labels.nodeppol }}`}} launched new nodes, but some of nodes did not registerd in the cluster during 15 min
+        summary: Problem with registering new nodes in the cluster.
+      expr: sum by (nodepool) (karpenter_nodeclaims_launched) - sum by (nodepool)(karpenter_nodeclaims_registered) != 0
+      for: 15m
+      labels:
+        severity: warning
+    - alert: KarpenterNodepoolAlmostFull
+      annotations:
+        description: |
+          Nodepool {{`{{ $labels.nodeppol }}`}} launched {{`{{ $value }}`}}% {{`{{ $labels.resource_type }}`}} resources of the limit.
+        summary: Nodepool almost full, you should increase limits.
+      expr: sum by (nodepool,resource_type) (karpenter_nodepool_usage) / sum by (nodepool,resource_type) (karpenter_nodepool_limit) * 100 > 80
+      for: 15m
+      labels:
+        severity: warning
+    - alert: KarpenterCloudproviderErrors
+      annotations:
+        description: |
+          Karpenter received an error during an api call to the cloud provider.
+      expr: increase(karpenter_cloudprovider_errors_total[10m]) > 0
+      for: 1m
+      labels:
+        severity: warning
