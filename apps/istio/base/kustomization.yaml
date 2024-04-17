@@ -4,6 +4,8 @@ namespace: istio-system
 resources:
   - destinationrule.yaml
   - peerauthentication.yaml
+  - prometheus-rules.yaml
+  - service-monitor.yaml
 helmCharts:
   - name: base
     releaseName: base
