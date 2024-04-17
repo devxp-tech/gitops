@@ -9,13 +9,15 @@ commonLabels:
 helmCharts:
   - name: sonarqube
     releaseName: sonarqube
-    version: "10.4.1+2389"
+    version: "10.5.0+2748"
     repo: https://SonarSource.github.io/helm-chart-sonarqube
     valuesInline:
       prometheusExporter:
         enabled: true
-      annotations:
-        downscaler/uptime: "Mon-Fri 09:00-17:00 Europe/Lisbon"
+      prometheusMonitoring:
+        podMonitor:
+          enabled: true
+
 
     # version: 3.3.3
     # repo: oci://registry-1.docker.io/bitnamicharts #https://charts.bitnami.com/bitnami

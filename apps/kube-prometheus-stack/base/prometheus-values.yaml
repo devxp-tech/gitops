@@ -554,13 +554,14 @@ prometheus:
       #         - jaeger-collector.observability.svc.cluster.local:14269
       #         - jaeger-query.observability.svc.cluster.local:16687
 
-      - job_name: "sonarqube"
-        scrape_interval: 60s
-        static_configs:
-          - targets:
-              - sonarqube-jmx-metrics.sonarqube.svc.cluster.local:10443
-            labels:
-              application: "sonarqube"
+      # Using ServiceMonitor
+      # - job_name: "sonarqube"
+      #   scrape_interval: 60s
+      #   static_configs:
+      #     - targets:
+      #         - sonarqube-jmx-metrics.sonarqube.svc.cluster.local:10443
+      #       labels:
+      #         application: "sonarqube"
 
       # Using ServiceMonitor
       # - job_name: "karpenter"
