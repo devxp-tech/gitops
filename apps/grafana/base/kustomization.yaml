@@ -236,6 +236,14 @@ helmCharts:
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/kubecost
+            - name: "karpenter"
+              orgId: 1
+              folder: "Karpenter Dashboards"
+              type: file
+              disableDeletion: false
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/karpenter
       dashboards:
         default:
           # GoLang dashboards
@@ -346,8 +354,8 @@ helmCharts:
           kubernetes-events-exporter:
             datasource: Loki
             gnetId: 17882
+        # Jaeger dashboards
         jaeger:
-          # Loki dashboards
           jaeger:
             datasource: Prometheus
             gnetId: 10001
@@ -355,8 +363,13 @@ helmCharts:
           cert-manager:
             datasource: Prometheus
             gnetId: 11001
+        # KubeCost dashboards
         kubecost:
-          # KubeCost dashboards
           kubecost:
             datasource: Prometheus
             gnetId: 11270
+        # Karpenter dashboards
+        karpenter:
+          karpenter:
+            datasource: Prometheus
+            gnetId: 20398
