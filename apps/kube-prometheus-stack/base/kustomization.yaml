@@ -22,9 +22,12 @@ helmCharts:
         enabled: true
       kubeProxy:
         enabled: false
+      kubelet:
+        enabled: false
       defaultRules:
         rules:
           time: false
+          kubelet: false
     additionalValuesFiles:
       - alertmanager-values.yaml
       - kube-state-metrics-values.yaml
