@@ -11,9 +11,8 @@ helmCharts:
       fullnameOverride: promtail
       serviceMonitor:
         enabled: true
-        additionalLabels:
-          app: prometheus-operator
-          release: prometheus
+      prometheusRule:
+        enabled: true
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
