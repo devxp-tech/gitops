@@ -9,7 +9,7 @@ helmCharts:
     version: 22.2.0
     repo: https://charts.bitnami.com/bitnami
     valuesInline:
-      existingSecret: wordpress-secrets
+      # existingSecret: wordpress-secrets
       metrics:
         enabled: true
         serviceMonitor:
@@ -56,8 +56,8 @@ helmCharts:
       #   - name: PHP_MEMORY_LIMIT
       #     value: 2048M
       mariadb:
-        auth:
-          existingSecret: wordpress-secrets #mariadb-password
+        # auth:
+        #   existingSecret: wordpress-secrets #mariadb-password
         nodeSelector:
           topology.kubernetes.io/zone: "us-east-1c"
         networkPolicy:
