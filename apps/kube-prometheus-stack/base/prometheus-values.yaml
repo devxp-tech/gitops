@@ -368,12 +368,6 @@ prometheus:
         static_configs:
           - targets: ["prometheus-community-kube-prometheus:9090"]
 
-      - job_name: "alertmanager"
-        scrape_interval: 30s
-        honor_labels: true
-        static_configs:
-          - targets: ["prometheus-community-kube-alertmanager:9093"]
-
       - job_name: "grafana"
         scrape_interval: 60s
         honor_labels: true
@@ -545,31 +539,6 @@ prometheus:
           - targets:
               - wordpress-metrics.wordpress.svc.cluster.local:9150
 
-      # - job_name: "jaeger"
-      #   metrics_path: /metrics
-      #   scrape_interval: 15s
-      #   static_configs:
-      #     - targets:
-      #         - jaeger-agent.observability.svc.cluster.local:14271
-      #         - jaeger-collector.observability.svc.cluster.local:14269
-      #         - jaeger-query.observability.svc.cluster.local:16687
-
-      # Using ServiceMonitor
-      # - job_name: "sonarqube"
-      #   scrape_interval: 60s
-      #   static_configs:
-      #     - targets:
-      #         - sonarqube-jmx-metrics.sonarqube.svc.cluster.local:10443
-      #       labels:
-      #         application: "sonarqube"
-
-      # Using ServiceMonitor
-      # - job_name: "karpenter"
-      #   scrape_interval: 60s
-      #   static_configs:
-      #     - targets:
-      #         - karpenter.karpenter.svc.cluster.local:8000
-
       - job_name: "otel-collector"
         honor_labels: true
         metrics_path: /metrics
@@ -578,14 +547,6 @@ prometheus:
           - targets:
               - otel-collector.observability.svc.cluster.local:8889 # Traces
               - otel-collector-monitoring.observability.svc.cluster.local:8888 # Service Monitor
-
-
-      - job_name: "cert-manager"
-        metrics_path: /metrics
-        scrape_interval: 60s
-        static_configs:
-          - targets:
-              - cert-manager.cert-manager.svc.cluster.local:9402
 
       - job_name: kubecost
         honor_labels: true
@@ -605,6 +566,46 @@ prometheus:
         static_configs:
           - targets:
               - kiali.kiali-operator.svc.cluster.local:9090
+
+
+      # - job_name: "jaeger"
+      #   metrics_path: /metrics
+      #   scrape_interval: 15s
+      #   static_configs:
+      #     - targets:
+      #         - jaeger-agent.observability.svc.cluster.local:14271
+      #         - jaeger-collector.observability.svc.cluster.local:14269
+      #         - jaeger-query.observability.svc.cluster.local:16687
+
+      # Using ServiceMonitor
+      # - job_name: "alertmanager"
+      #   scrape_interval: 30s
+      #   honor_labels: true
+      #   static_configs:
+      #     - targets: ["prometheus-community-kube-alertmanager:9093"]
+
+      # Using ServiceMonitor
+      # - job_name: "sonarqube"
+      #   scrape_interval: 60s
+      #   static_configs:
+      #     - targets:
+      #         - sonarqube-jmx-metrics.sonarqube.svc.cluster.local:10443
+      #       labels:
+      #         application: "sonarqube"
+
+      # Using ServiceMonitor
+      # - job_name: "karpenter"
+      #   scrape_interval: 60s
+      #   static_configs:
+      #     - targets:
+      #         - karpenter.karpenter.svc.cluster.local:8000
+
+      # - job_name: "cert-manager"
+      #   metrics_path: /metrics
+      #   scrape_interval: 60s
+      #   static_configs:
+      #     - targets:
+      #         - cert-manager.cert-manager.svc.cluster.local:9402
 
 prometheus-node-exporter:
   affinity:

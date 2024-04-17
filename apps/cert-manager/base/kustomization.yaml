@@ -33,3 +33,4 @@ helmCharts:
         servicemonitor:
           enabled: true
           prometheusInstance: prometheus.monitoring
+
