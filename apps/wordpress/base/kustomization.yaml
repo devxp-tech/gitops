@@ -18,8 +18,8 @@ helmCharts:
         type: ClusterIP
       persistence:
         enabled: true
-      wordpressUsername: dluisi
-      # wordpressEmail: contato@diegoluisi.eti.br
+      wordpressUsername: "dluisi"
+      wordpressEmail: "contato@diegoluisi.eti.br"
       # wordpressFirstName: Diego
       # wordpressLastName: Luisi
       # wordpressBlogName: "www.diegoluisi.eti.br"
