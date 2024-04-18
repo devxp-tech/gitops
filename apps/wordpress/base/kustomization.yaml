@@ -20,6 +20,17 @@ helmCharts:
         enabled: true
       wordpressUsername: "dluisi"
       wordpressEmail: "contato@diegoluisi.eti.br"
+      serviceAccount:
+        create: true
+      extraEnvVars:
+        - name: PHP_UPLOAD_MAX_FILESIZE
+          value: 1024M
+        - name: PHP_POST_MAX_SIZE
+          value: 1024M
+        - name: PHP_MAX_EXECUTION_TIME
+          value: "0"
+        - name: PHP_MEMORY_LIMIT
+          value: 2048M
       # wordpressFirstName: Diego
       # wordpressLastName: Luisi
       # wordpressBlogName: "www.diegoluisi.eti.br"
@@ -42,19 +53,6 @@ helmCharts:
       # maxInputTime: 900
       # wordpressConfigureCache: true
       # allowEmptyPassword: true
-
-      # serviceAccount:
-      #   create: true
-
-      # extraEnvVars:
-      #   - name: PHP_UPLOAD_MAX_FILESIZE
-      #     value: 1024M
-      #   - name: PHP_POST_MAX_SIZE
-      #     value: 1024M
-      #   - name: PHP_MAX_EXECUTION_TIME
-      #     value: "0"
-      #   - name: PHP_MEMORY_LIMIT
-      #     value: 2048M
       mariadb:
         auth:
           existingSecret: wordpress-secrets #mariadb-password
