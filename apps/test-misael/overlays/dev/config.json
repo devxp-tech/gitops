@@ -1,0 +1,11 @@
+{
+  "appName": "test-misael",
+  "userGivenName": "test-misael",
+  "destNamespace": "test-misael",
+  "destServer": "https://kubernetes.default.svc",
+  "srcPath": "apps/test-misael/overlays/dev",
+  "srcRepoURL": "https://github.com/devxp-tech/gitops.git",
+  "srcTargetRevision": "",
+  "CreateNamespace": true,
+  "labels": null
+}
