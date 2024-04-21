@@ -36,32 +36,31 @@ helmCharts:
           frontend:
             align_queries_with_step: true
             log_queries_longer_than: 10s
-          # ingester:
-          #   instance_limits:
-          #     max_ingestion_rate: 0
-          #   ring:
-          #     final_sleep: 0s
-          #     num_tokens: 512
-          # ingester_client:
-          #   grpc_client_config:
-          #     max_recv_msg_size: 104857600
-          #     max_send_msg_size: 104857600
-          # server:
-          #   log_level: debug
-          #   grpc_server_max_concurrent_streams: 1000
-          #   grpc_server_max_recv_msg_size: 104857600
-          #   grpc_server_max_send_msg_size: 104857600
-          # limits:
-          #   ingestion_rate: 80000
-          #   max_global_series_per_metric: 0
-          #   # max_global_series_per_user: 0
-          #   max_global_series_per_user: 1000000
-          #   max_label_names_per_series: 40
-          # memberlist:
-          #   abort_if_cluster_join_fails: false
-          #   compression_enabled: false
-          # runtime_config:
-          #   file: /var/mimir/runtime.yaml
+          ingester:
+            instance_limits:
+              max_ingestion_rate: 0
+            ring:
+              final_sleep: 0s
+              num_tokens: 512
+          ingester_client:
+            grpc_client_config:
+              max_recv_msg_size: 104857600
+              max_send_msg_size: 104857600
+          server:
+            log_level: debug
+            grpc_server_max_concurrent_streams: 1000
+            grpc_server_max_recv_msg_size: 104857600
+            grpc_server_max_send_msg_size: 104857600
+          limits:
+            ingestion_rate: 80000
+            max_global_series_per_metric: 0
+            max_global_series_per_user: 0
+            max_label_names_per_series: 40
+          memberlist:
+            abort_if_cluster_join_fails: false
+            compression_enabled: false
+          runtime_config:
+            file: /var/mimir/runtime.yaml
       minio:
         enabled: false
       querier:
