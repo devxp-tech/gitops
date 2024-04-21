@@ -17,8 +17,6 @@ helmCharts:
           eks.amazonaws.com/role-arn: "arn:aws:iam::239468932737:role/mimir-lgseksd1-sa"
       mimir:
         structuredConfig:
-          limits:
-            max_global_series_per_user: 1000000
           usage_stats:
             enabled: false
             installation_mode: helm
@@ -56,7 +54,8 @@ helmCharts:
           limits:
             ingestion_rate: 80000
             max_global_series_per_metric: 0
-            max_global_series_per_user: 0
+            # max_global_series_per_user: 0
+            max_global_series_per_user: 1000000
             max_label_names_per_series: 40
           memberlist:
             abort_if_cluster_join_fails: false
