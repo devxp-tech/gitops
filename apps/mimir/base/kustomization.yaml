@@ -17,3 +17,4 @@ helmCharts:
         annotations:
           "eks.amazonaws.com/role-arn": "arn:aws:iam::239468932737:role/mimir-lgseksd1-sa"
         automountServiceAccountToken: true
+#vex-dev-mimir-metrics
