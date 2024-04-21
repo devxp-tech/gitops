@@ -21,9 +21,10 @@ helmCharts:
             backend: s3
             s3:
               bucket_name: vex-dev-mimir-metrics
-              endpoint: s3.amazonaws.com
+              endpoint: s3.us-east-1.amazonaws.com
               region: us-east-1
               insecure: true
+              signature_version: v4
           ruler_storage:
             s3:
               bucket_name: vex-dev-mimir-metrics

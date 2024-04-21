@@ -57,7 +57,7 @@ helmCharts:
         # GF_INSTALL_PLUGINS: grafana-simple-json-datasource,alexanderzobnin-zabbix-app
         GF_SERVER_DOMAIN: grafana.devxp-tech.io
         GF_SERVER_ROOT_URL: "https://grafana.devxp-tech.io"
-        GF_FEATURE_TOGGLES_ENABLE: "traceqlEditor tempoSearch tempoServiceGraph tempoApmTable"
+        GF_FEATURE_TOGGLES_ENABLE: "tempoSearch,tempoServiceGraph,tempoApmTable,traceqlEditor"
 
       datasources:
         datasources.yaml:
