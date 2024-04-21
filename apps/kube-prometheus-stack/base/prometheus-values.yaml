@@ -18,10 +18,10 @@ prometheus:
         - "/metrics"
       verbs:
         - get
-  # thanosService:
-  #   enabled: true
-  # thanosServiceMonitor:
-  #   enabled: true
+  thanosService:
+    enabled: false # Enable Mimir
+  thanosServiceMonitor:
+    enabled: false # Enable Mimir
   prometheusSpec:
     remoteWrite:
       - url: http://mimir-nginx.monitoring.svc:80/api/v1/push
