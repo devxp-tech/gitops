@@ -17,4 +17,22 @@ helmCharts:
         annotations:
           "eks.amazonaws.com/role-arn": "arn:aws:iam::239468932737:role/mimir-lgseksd1-sa"
         automountServiceAccountToken: true
+      common:
+        storage:
+          backend: s3
+          s3:
+            endpoint: s3.us-east-1.amazonaws.com
+            region: us-east-1
+      blocks_storage:
+        s3:
+          bucket_name: vex-dev-mimir-metrics
+      alertmanager_storage:
+        s3:
+          bucket_name: vex-dev-mimir-metrics
+      ruler_storage:
+        s3:
+          bucket_name: vex-dev-mimir-metrics
+
+
+
 #vex-dev-mimir-metrics
