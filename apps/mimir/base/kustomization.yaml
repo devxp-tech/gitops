@@ -64,7 +64,7 @@ helmCharts:
       minio:
         enabled: false
       querier:
-        replicas: 1
+        replicas: 2
       alertmanager:
         enabled: false
       ruler:
