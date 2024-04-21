@@ -23,6 +23,8 @@ prometheus:
   thanosServiceMonitor:
     enabled: false # Enable Mimir
   prometheusSpec:
+    externalLabels:
+      cluster: lgseksd1
     remoteWrite:
       - url: http://mimir-nginx.monitoring.svc:80/api/v1/push
         queueConfig:
@@ -44,8 +46,6 @@ prometheus:
         memory: 4000Mi
     replicas: 1 # 3 to 1 enabled Mimir
     replicaExternalLabelName: "__replica__"
-    externalLabels:
-      cluster: lgseksd1
     podAntiAffinity: hard
     ruleSelectorNilUsesHelmValues: false
     podMonitorSelectorNilUsesHelmValues: false
