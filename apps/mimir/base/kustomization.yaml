@@ -69,6 +69,9 @@ helmCharts:
         enabled: false
       ruler:
         enabled: false
+      compactor:
+        nodeSelector:
+          topology.kubernetes.io/zone: "us-east-1b"
       ingester:
         zoneAwareReplication:
           enabled: false
