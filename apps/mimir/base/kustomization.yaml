@@ -28,6 +28,8 @@ helmCharts:
             backend: s3
             s3:
               bucket_name: vex-dev-mimir-metrics
+              endpoint: s3.dualstack.us-east-1.amazonaws.com
+              # region: us-east-1
           ruler_storage:
             backend: s3
             s3:
