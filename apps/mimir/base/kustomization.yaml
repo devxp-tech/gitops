@@ -10,29 +10,74 @@ helmCharts:
     repo: https://grafana.github.io/helm-charts
     valuesInline:
       fullnameOverride: mimir
-      labels:
-        app: mimir
       serviceAccount:
-        name: mimir
+        create: true
+        name:
         annotations:
-          "eks.amazonaws.com/role-arn": "arn:aws:iam::239468932737:role/mimir-lgseksd1-sa"
-        automountServiceAccountToken: true
-      common:
-        storage:
-          backend: s3
-          s3:
-            endpoint: s3.us-east-1.amazonaws.com
-            region: us-east-1
-      blocks_storage:
-        s3:
-          bucket_name: vex-dev-mimir-metrics
-      alertmanager_storage:
-        s3:
-          bucket_name: vex-dev-mimir-metrics
-      ruler_storage:
-        s3:
-          bucket_name: vex-dev-mimir-metrics
-
-
-
-#vex-dev-mimir-metrics
+          eks.amazonaws.com/role-arn: "arn:aws:iam::239468932737:role/mimir-lgseksd1-sa"
+      mimir:
+        structuredConfig:
+          usage_stats:
+            enabled: false
+            installation_mode: helm
+          blocks_storage:
+            backend: s3
+            bucket_store:
+              sync_dir: /data/tsdb-sync
+            s3:
+              bucket_name: vex-dev-mimir-metrics
+              endpoint: s3.us-east-1.amazonaws.com
+              insecure: false
+            tsdb:
+              dir: /data/tsdb
+          compactor:
+            data_dir: /data
+          multitenancy_enabled: false
+          frontend:
+            align_queries_with_step: true
+            log_queries_longer_than: 10s
+          ingester:
+            instance_limits:
+              max_ingestion_rate: 0
+            ring:
+              final_sleep: 0s
+              num_tokens: 512
+          ingester_client:
+            grpc_client_config:
+              max_recv_msg_size: 104857600
+              max_send_msg_size: 104857600
+          server:
+            log_level: debug
+            grpc_server_max_concurrent_streams: 1000
+            grpc_server_max_recv_msg_size: 104857600
+            grpc_server_max_send_msg_size: 104857600
+          limits:
+            ingestion_rate: 80000
+            max_global_series_per_metric: 0
+            max_global_series_per_user: 0
+            max_label_names_per_series: 40
+          memberlist:
+            abort_if_cluster_join_fails: false
+            compression_enabled: false
+          # runtime_config:
+          #   file: /var/{{ include "mimir.name" . }}/runtime.yaml
+      minio:
+        enabled: false
+      querier:
+        replicas: 2
+      alertmanager:
+        enabled: false
+      ruler:
+        enabled: false
+      ingester:
+        zoneAwareReplication:
+          enabled: false
+        persistentVolume:
+          enabled: true
+          annotations: {}
+          accessModes:
+            - ReadWriteOnce
+          size: 5Gi
+      store_gateway:
+      zoneAwareReplication:
+        enabled: false
