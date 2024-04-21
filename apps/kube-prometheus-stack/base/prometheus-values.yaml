@@ -23,6 +23,8 @@ prometheus:
   thanosServiceMonitor:
     enabled: true
   prometheusSpec:
+    remoteWrite:
+      - url: http://mimir-nginx.monitoring.svc:80/api/v1/push
     # enableRemoteWriteReceiver: true
     # enableFeatures:
     #   - remote-write-receiver
