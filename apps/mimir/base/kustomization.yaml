@@ -17,13 +17,6 @@ helmCharts:
           eks.amazonaws.com/role-arn: "arn:aws:iam::239468932737:role/mimir-lgseksd1-sa"
       mimir:
         structuredConfig:
-          common:
-            storage:
-              backend: s3
-              s3:
-                endpoint: s3.us-east-1.amazonaws.com
-                region: us-east-1
-                insecure: false
           blocks_storage:
             backend: s3
             s3:
@@ -32,9 +25,19 @@ helmCharts:
               region: us-east-1
               insecure: true
           ruler_storage:
-            backend: local
-            local:
-              directory: /tmp/mimir/rules
+            s3:
+              bucket_name: vex-dev-mimir-metrics
+              endpoint: s3.amazonaws.com
+              region: us-east-1
+              insecure: true
+          # common:
+          #   storage:
+          #     backend: s3
+          #     s3:
+          #       endpoint: s3.us-east-1.amazonaws.com
+          #       region: us-east-1
+          #       insecure: false
+
           usage_stats:
             enabled: false
             installation_mode: helm
