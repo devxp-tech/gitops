@@ -103,7 +103,7 @@ helmCharts:
                 alertmanagerUid: alertmanager
                 httpMethod: GET
             - name: Mimir
-              uid: prometheus
+              uid: mimir
               type: prometheus
               url: http://mimir-nginx.monitoring.svc:80/prometheus
               # access: proxy
