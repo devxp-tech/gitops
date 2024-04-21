@@ -59,8 +59,8 @@ helmCharts:
           memberlist:
             abort_if_cluster_join_fails: false
             compression_enabled: false
-          # runtime_config:
-          #   file: /var/{{ include "mimir.name" . }}/runtime.yaml
+          runtime_config:
+            file: /var/mimir/runtime.yaml
       minio:
         enabled: false
       querier:
