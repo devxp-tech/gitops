@@ -41,7 +41,7 @@ prometheus:
       limits:
         cpu: 2000m
         memory: 4000Mi
-    replicas: 3
+    replicas: 1 # 3 to 1 enabled Mimir
     replicaExternalLabelName: "__replica__"
     externalLabels:
       cluster: lgseksd1
