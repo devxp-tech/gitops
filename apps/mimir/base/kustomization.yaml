@@ -17,23 +17,18 @@ helmCharts:
           eks.amazonaws.com/role-arn: "arn:aws:iam::239468932737:role/mimir-lgseksd1-sa"
       mimir:
         structuredConfig:
-          common:
-            storage:
-              backend: s3
-              s3:
-                bucket_name: vex-dev-mimir-metrics
-                endpoint: s3.us-east-1.amazonaws.com
-                insecure: false
           usage_stats:
             enabled: false
             installation_mode: helm
+          distributor:
+            remote_timeout: 4s
           blocks_storage:
             backend: s3
             bucket_store:
               sync_dir: /data/tsdb-sync
             s3:
               bucket_name: vex-dev-mimir-metrics
-              endpoint: s3.us-east-1.amazonaws.com
+              endpoint: s3.amazonaws.com
               insecure: false
             tsdb:
               dir: /data/tsdb
