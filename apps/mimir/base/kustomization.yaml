@@ -6,7 +6,7 @@ helmCharts:
     includeCRDs: true
     releaseName: mimir-distributed
     namespace: monitoring
-    version: 5.3.0
+    version: "5.4.0-weekly.285"
     repo: https://grafana.github.io/helm-charts
     valuesInline:
       fullnameOverride: mimir
@@ -79,5 +79,5 @@ helmCharts:
             - ReadWriteOnce
           size: 5Gi
       store_gateway:
-      zoneAwareReplication:
-        enabled: false
+        zoneAwareReplication:
+          enabled: false
