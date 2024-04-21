@@ -81,3 +81,5 @@ helmCharts:
       store_gateway:
         zoneAwareReplication:
           enabled: false
+        nodeSelector:
+          topology.kubernetes.io/zone: "us-east-1b"
