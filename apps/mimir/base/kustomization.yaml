@@ -34,14 +34,6 @@ helmCharts:
             s3:
               bucket_name: vex-dev-mimir-metrics
               insecure: true
-          # common:
-          #   storage:
-          #     backend: s3
-          #     s3:
-          #       endpoint: s3.us-east-1.amazonaws.com
-          #       region: us-east-1
-          #       insecure: false
-
           usage_stats:
             enabled: false
             installation_mode: helm
@@ -64,7 +56,7 @@ helmCharts:
               max_recv_msg_size: 104857600
               max_send_msg_size: 104857600
           server:
-            log_level: debug
+            log_level: info
             grpc_server_max_concurrent_streams: 1000
             grpc_server_max_recv_msg_size: 104857600
             grpc_server_max_send_msg_size: 104857600
