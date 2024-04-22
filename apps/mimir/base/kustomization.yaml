@@ -29,6 +29,7 @@ helmCharts:
               bucket_name: vex-dev-mimir-metrics
               insecure: true
           ruler_storage:
+            alertmanager_url: "http://kube-prometheus-stack-alertmanager.monitoring.svc:9093"
             storage_prefix: ruler
             s3:
               bucket_name: vex-dev-mimir-metrics
