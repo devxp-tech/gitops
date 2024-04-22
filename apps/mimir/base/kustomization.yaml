@@ -21,8 +21,8 @@ helmCharts:
             storage:
               backend: s3
               s3:
+                bucket_name: vex-dev-mimir-metrics
                 endpoint: s3.us-east-1.amazonaws.com
-                region: us-east-1
           blocks_storage:
             storage_prefix: blocks
             s3:
