@@ -25,12 +25,12 @@ prometheus:
   prometheusSpec:
     externalLabels:
       cluster: lgseksd1
-    remoteWrite:
-      - url: http://mimir-nginx.monitoring.svc:80/api/v1/push
-        queueConfig:
-          capacity: 500
-          maxShards: 100
-          maxSamplesPerSend: 100
+    # remoteWrite:
+    #   - url: http://mimir-nginx.monitoring.svc:80/api/v1/push
+    #     queueConfig:
+    #       capacity: 500
+    #       maxShards: 100
+    #       maxSamplesPerSend: 100
     alertingEndpoints:
       - name: prometheus-community-kube-alertmanager
         namespace: monitoring
