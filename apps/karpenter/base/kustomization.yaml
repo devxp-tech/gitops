@@ -18,7 +18,7 @@ helmCharts:
         annotations:
           eks.amazonaws.com/role-arn: arn:aws:iam::239468932737:role/KarpenterIRSA-lgseksd1-20230809132301233100000001
       additionalClusterRoleRules:
-        - apiGroups: ["leases.coordination.k8s.io"]
+        - apiGroups: ["coordination.k8s.io"]
           resources: ["leases"]
           verbs: ["get", "list", "watch", "update", "patch"]
       # Failed to watch *v1.Lease: failed to list *v1.Lease: leases.coordination.k8s.io is forbidden: User "system:serviceaccount:karpenter:karpenter" cannot list resource "leases" in API group "coordination.k8s.io" in the namespace "kube-node-lease"
