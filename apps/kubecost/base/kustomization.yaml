@@ -45,15 +45,16 @@ helmCharts:
       persistentVolume:
         storageClass: gp2
       prometheusRule:
-        enabled: false
+        enabled: true
       oidc:
-        enabled: false
-        clientID: "" # client_id # application/client client_id paramter obtained from provider, used to make requests to server
-        clientSecret: "" # clientSecret # application/client client_secret paramter obtained from provider, used to make requests to server
-        secretName: "kubecost-secrets" # k8s secret where clientsecret will be stored
+        enabled: true
         authURL: "https://dex.devxp-tech.io/auth" # endpoint for login to auth server
         loginRedirectURL: "https://kubecost.devxp-tech.io/model/oidc/authorize" # Kubecost url configured in provider for redirect after authentication
         discoveryURL: "https://dex.devxp-tech.io/.well-known/openid-configuration" # url for OIDC endpoint discovery
+        existingCustomSecret:
+          enabled: true
+          name: "kubecost-secrets"  # name of the secret containing the client secret
+
       # Kubecost Cluster Controller for Right Sizing and Cluster Turndown
       clusterController:
         enabled: true
