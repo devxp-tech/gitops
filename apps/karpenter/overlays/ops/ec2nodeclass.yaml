@@ -13,7 +13,7 @@ spec:
   - deviceName: /dev/xvdb
     ebs:
       deleteOnTermination: true
-      volumeSize: 20Gi
+      volumeSize: 30Gi
       volumeType: gp3
   detailedMonitoring: true
   role: Karpenter-lgseksd1-20230809131800238100000002 #KarpenterNodeRole-lgseksd1
