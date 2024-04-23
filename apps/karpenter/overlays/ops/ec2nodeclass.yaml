@@ -1,0 +1,54 @@
+apiVersion: karpenter.k8s.aws/v1beta1
+kind: EC2NodeClass
+metadata:
+  name: default
+spec:
+  amiFamily: AL2
+  blockDeviceMappings:
+  - deviceName: /dev/xvda
+    ebs:
+      deleteOnTermination: true
+      volumeSize: 4Gi
+      volumeType: gp3
+  - deviceName: /dev/xvdb
+    ebs:
+      deleteOnTermination: true
+      volumeSize: 20Gi
+      volumeType: gp3
+  detailedMonitoring: true
+  role: KarpenterNodeRole-lgseksd1
+  securityGroupSelectorTerms:
+  - tags:
+      karpenter.sh/discovery: lgseksd1
+  subnetSelectorTerms:
+  - tags:
+      karpenter.sh/discovery: lgseksd1
+  tags:
+    KarpenerProvisionerName: default
+    Role: default
+    karpenter.sh/cluster_name: lgseksd1
+    karpenter.sh/discovery: lgseksd1
+    managed-by: karpenter
+    node-role.kubernetes.io/worker: worker
+  userData: |
+    #!/bin/bash
+
+    # Mount data volumes to /data directory on a Amazon Linux Worker Node (excluding OS volume)
+
+    # Identify the device name of the root volume
+    root_device=$(mount | awk '$3 == "/" {print $1}')
+
+    # Identify the device names of all attached block devices (excluding root volume)
+    device_names=$(lsblk -d -n -o NAME | grep -v "")
+
+    # Loop through each device name and mount the corresponding volume to a directory named /data
+    i=1
+    for device_name in ; do
+      if ! grep -qs "/dev/" /proc/mounts; then
+        sudo mkfs.xfs "/dev/"
+        sudo mkdir -p "/data"
+        sudo mount "/dev/" "/data"
+        echo "Mounted /dev/ to /data"
+        ((i++))
+      fi
+    done
