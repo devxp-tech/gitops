@@ -56,27 +56,27 @@ spec:
         operator: In
         values:
         - linux
----
-apiVersion: karpenter.k8s.aws/v1beta1
-kind: EC2NodeClass
-metadata:
-  name: default
-spec:
-  amiFamily: AL2
-  blockDeviceMappings:
-  - deviceName: /dev/xvda
-    ebs:
-      volumeSize: 40Gi
-      volumeType: gp3
-  role: Karpenter-lgseksd1-20230809131800238100000002 #$KARPENTER_NODE_ROLE
-  securityGroupSelectorTerms:
-  - tags:
-      karpenter.sh/discovery: lgseksd1
-  subnetSelectorTerms:
-  - tags:
-      karpenter.sh/discovery: lgseksd1
-  tags:
-    Name: karpenter.sh/default
-    aws-node-termination-handler/managed: "true"
-    karpenter.sh/nodegroup: default
-    node-role.kubernetes.io/worker: worker
+# ---
+# apiVersion: karpenter.k8s.aws/v1beta1
+# kind: EC2NodeClass
+# metadata:
+#   name: default
+# spec:
+#   amiFamily: AL2
+#   blockDeviceMappings:
+#   - deviceName: /dev/xvda
+#     ebs:
+#       volumeSize: 40Gi
+#       volumeType: gp3
+#   role: Karpenter-lgseksd1-20230809131800238100000002 #$KARPENTER_NODE_ROLE
+#   securityGroupSelectorTerms:
+#   - tags:
+#       karpenter.sh/discovery: lgseksd1
+#   subnetSelectorTerms:
+#   - tags:
+#       karpenter.sh/discovery: lgseksd1
+#   tags:
+#     Name: karpenter.sh/default
+#     aws-node-termination-handler/managed: "true"
+#     karpenter.sh/nodegroup: default
+#     node-role.kubernetes.io/worker: worker
