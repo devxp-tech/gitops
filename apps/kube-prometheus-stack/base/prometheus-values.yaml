@@ -19,9 +19,9 @@ prometheus:
       verbs:
         - get
   thanosService:
-    enabled: false # Enable Mimir
+    enabled: true # Enable Mimir
   thanosServiceMonitor:
-    enabled: false # Enable Mimir
+    enabled: true # Enable Mimir
   prometheusSpec:
     externalLabels:
       cluster: lgseksd1
@@ -54,12 +54,12 @@ prometheus:
     retention: 2d
     walCompression: true
     enableAdminAPI: true
-    # thanos:
-    #   image: quay.io/thanos/thanos:v0.32.0
-    #   version: "v0.31.0"
-    #   objectStorageConfig:
-    #     name: thanos-objstore-secret
-    #     key: objstore.yml
+    thanos:
+      image: quay.io/thanos/thanos:v0.32.0
+      version: "v0.31.0"
+      objectStorageConfig:
+        name: thanos-objstore-secret
+        key: objstore.yml
     additionalScrapeConfigs:
       # - job_name: node
       #   static_configs:
