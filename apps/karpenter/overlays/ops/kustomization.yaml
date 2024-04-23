@@ -3,5 +3,6 @@ kind: Kustomization
 resources:
   - ../../base
   - ec2nodeclass.yaml
-  - provisioner.yaml
-  # - node-template.yaml #OLD
+  - nodepool.yaml
+  # - provisioner.yaml # OLD
+  # - node-template.yaml # OLD
