@@ -68,7 +68,7 @@ spec:
     ebs:
       volumeSize: 40Gi
       volumeType: gp3
-  role: $KARPENTER_NODE_ROLE
+  role: Karpenter-lgseksd1-20230809131800238100000002 #$KARPENTER_NODE_ROLE
   securityGroupSelectorTerms:
   - tags:
       karpenter.sh/discovery: lgseksd1
