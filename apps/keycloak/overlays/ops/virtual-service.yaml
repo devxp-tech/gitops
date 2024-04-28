@@ -20,25 +20,3 @@ spec:
             port:
               number: 80
             host: keycloak.keycloak.svc.cluster.local
----
-apiVersion: networking.istio.io/v1alpha3
-kind: VirtualService
-metadata:
-  name: keycloak-admin
-  namespace: keycloak
-  annotations:
-    link.argocd.argoproj.io/external-link: https://keycloak-admin.devxp-tech.io
-spec:
-  hosts:
-    - "keycloak-admin.devxp-tech.io"
-  gateways:
-    - istio-system/istio-ingressgateway
-  http:
-    - match:
-        - uri:
-            prefix: /
-      route:
-        - destination:
-            port:
-              number: 80
-            host: keycloak.keycloak.svc.cluster.local
