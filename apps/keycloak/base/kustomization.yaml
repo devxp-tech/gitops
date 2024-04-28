@@ -7,7 +7,8 @@ helmCharts:
     version: 21.0.3
     includeCRDs: true
     repo: https://charts.bitnami.com/bitnami
-    # valuesInline:
+    valuesInline:
+      namespaceOverride: keycloak
     #   extraEnvVars:
     #     - name: KC_HTTP_RELATIVE_PATH
     #       value: "/auth"
