@@ -16,6 +16,7 @@ helmCharts:
         enabled: true
         serviceMonitor:
           enabled: true
+      proxyAddressForwarding: true
       extraEnvVars:
         - name: KEYCLOAK_ADMIN
           value: "admin"
@@ -23,10 +24,10 @@ helmCharts:
         #   value: https://keycloak.devxp-tech.io/
         # - name: KC_HOSTNAME_ADMIN_URL
         #   value: https://keycloak.devxp-tech.io/
-        - name: KC_PROXY
-          value: "edge"
-        - name: KC_HOSTNAME_STRICT_HTTPS
-          value: "false"
+        # - name: KC_PROXY
+        #   value: "edge"
+        # - name: KC_HOSTNAME_STRICT_HTTPS
+        #   value: "false"
         # - name: KC_HTTP_RELATIVE_PATH
         #   value: "/auth"
       postgresql:
