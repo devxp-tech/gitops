@@ -18,8 +18,8 @@ spec:
       route:
         - destination:
             port:
-              number: 8080
-            host: keycloak-headless.keycloak.svc.cluster.local
+              number: 80
+            host: keycloak.keycloak.svc.cluster.local
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
@@ -40,5 +40,5 @@ spec:
       route:
         - destination:
             port:
-              number: 8080
-            host: keycloak-headless.keycloak.svc.cluster.local
+              number: 80
+            host: keycloak.keycloak.svc.cluster.local
