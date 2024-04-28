@@ -36,7 +36,7 @@ spec:
   http:
     - match:
         - uri:
-            prefix: /admin
+            prefix: /
       route:
         - destination:
             port:
