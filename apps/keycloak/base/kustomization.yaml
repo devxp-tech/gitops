@@ -1,0 +1,11 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: keycloak
+helmCharts:
+  - name: keycloak
+    releaseName: keycloak
+    version: 21.0.3
+    includeCRDs: true
+    repo: https://bitnami-labs.github.io/keycloak
+    # valuesInline:
+    #   fullnameOverride: keycloak-controller

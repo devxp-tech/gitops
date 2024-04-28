@@ -1,0 +1,29 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: otel-collector
+  namespace: observability
+  labels:
+    app: otel-collector
+    application: otel-collector
+spec:
+  namespaceSelector:
+    matchNames:
+      - otel-collector
+  selector:
+    matchLabels:
+      app: otel-collector
+  endpoints:
+    - port: tcp-node
+      path: /metrics
+      scheme: http
+      interval: 30s
+
+      # - job_name: "otel-collector"
+      #   honor_labels: true
+      #   metrics_path: /metrics
+      #   scrape_interval: 30s
+      #   static_configs:
+      #     - targets:
+      #         - otel-collector.observability.svc.cluster.local:8889 # Traces
+      #         - otel-collector-monitoring.observability.svc.cluster.local:8888 # Service Monitor
