@@ -23,4 +23,5 @@ spec:
       headers:
         request:
           set:
-            x-forwarded-proto: https
+            X-Forwarded-Port: "443"
+            # x-forwarded-proto: https
