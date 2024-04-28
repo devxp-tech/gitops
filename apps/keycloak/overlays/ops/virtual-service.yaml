@@ -12,16 +12,22 @@ spec:
   gateways:
     - istio-system/istio-ingressgateway
   http:
-    - match:
-        - uri:
-            prefix: /
-      route:
-        - destination:
-            port:
-              number: 80
-            host: keycloak.keycloak.svc.cluster.local
-          headers:
-            request:
-              set:
-                X-Forwarded-Port: "443"
-                # x-forwarded-proto: https
+  - match:
+    - uri:
+        prefix: /
+    rewrite:
+      uri: "/"
+    route:
+    - destination:
+        host: keycloak.keycloak.svc.cluster.local
+        port:
+          number: 80
+      headers:
+        request:
+          set:
+            x-forwarded-proto: https
+    corsPolicy:
+      allowOrigins:
+      - exact: "*"
+      allowCredentials: true
+      allowHeaders: ["*"]
