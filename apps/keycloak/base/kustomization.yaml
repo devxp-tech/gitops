@@ -19,10 +19,10 @@ helmCharts:
       extraEnvVars:
         - name: KEYCLOAK_ADMIN
           value: "admin"
-        - name: KC_HOSTNAME_URL
-          value: https://keycloak.devxp-tech.io/
-        - name: KC_HOSTNAME_ADMIN_URL
-          value: https://keycloak.devxp-tech.io/
+        # - name: KC_HOSTNAME_URL
+        #   value: https://keycloak.devxp-tech.io/
+        # - name: KC_HOSTNAME_ADMIN_URL
+        #   value: https://keycloak.devxp-tech.io/
         - name: KC_PROXY
           value: "edge"
         - name: KC_HOSTNAME_STRICT_HTTPS
