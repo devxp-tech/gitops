@@ -6,6 +6,6 @@ helmCharts:
     releaseName: keycloak
     version: 21.0.3
     includeCRDs: true
-    repo: https://bitnami-labs.github.io/keycloak
+    repo: https://charts.bitnami.com/bitnami
     # valuesInline:
     #   fullnameOverride: keycloak-controller
