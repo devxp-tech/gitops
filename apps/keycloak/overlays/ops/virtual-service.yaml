@@ -20,8 +20,8 @@ spec:
             port:
               number: 80
             host: keycloak.keycloak.svc.cluster.local
-      headers:
-        request:
-          set:
-            X-Forwarded-Port: "443"
-            # x-forwarded-proto: https
+          headers:
+            request:
+              set:
+                X-Forwarded-Port: "443"
+                # x-forwarded-proto: https
