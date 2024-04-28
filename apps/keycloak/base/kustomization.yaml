@@ -9,13 +9,17 @@ helmCharts:
     repo: https://charts.bitnami.com/bitnami
     valuesInline:
       namespaceOverride: keycloak
+      metrics:
+        enabled: true
+        serviceMonitor:
+          enabled: true
       extraEnvVars:
-        - name: KC_HTTP_RELATIVE_PATH
-          value: "/auth"
+        # - name: KC_HTTP_RELATIVE_PATH
+        #   value: "/auth"
         - name: KC_HOSTNAME_URL
           value: https://keycloak.devxp-tech.io
         - name: KC_HOSTNAME_ADMIN_URL
-          value: https://keycloak.devxp-tech.io
+          value: https://keycloak.devxp-tech.io/admin
       postgresql:
         auth:
           existingSecret: keycloak-postgresql
