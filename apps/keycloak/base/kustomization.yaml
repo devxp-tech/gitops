@@ -25,8 +25,6 @@ helmCharts:
           value: "admin"
         - name: KC_HOSTNAME_STRICT
           value: "false"
-        - name: KC_SPI_STICKY_SESSION_ENCODER_INFINISPAN_SHOULD_ATTACH_ROUTE
-          value: "false"
         - name: KC_HTTP_ENABLED
           value: "true"
         - name: KC_HOSTNAME_STRICT_HTTPS
@@ -35,10 +33,6 @@ helmCharts:
           value: "https://keycloak.devxp-tech.io"
         - name: KC_HOSTNAME_ADMIN_URL
           value: "https://keycloak-admin.devxp-tech.io"
-        - name: KC_HEALTH_ENABLED
-          value: "true"   # /auth/health
-        - name: KC_METRICS_ENABLED
-          value: "true"  # /auth/metrics
         # - name: KC_HTTP_RELATIVE_PATH
         #   value: "/auth"
         # - name: PROXY_ADDRESS_FORWARDING
