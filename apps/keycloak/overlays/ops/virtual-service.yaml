@@ -43,5 +43,5 @@ spec:
       route:
         - destination:
             port:
-              number: 8080
-            host: keycloak-headless.keycloak.svc.cluster.local
+              number: 80
+            host: keycloak.keycloak.svc.cluster.local
