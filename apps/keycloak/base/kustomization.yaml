@@ -19,7 +19,7 @@ helmCharts:
         serviceMonitor:
           enabled: true
       proxyAddressForwarding: true
-      proxy: proxy-headers
+      proxy: passthrough
       extraEnvVars:
         - name: PROXY_ADDRESS_FORWARDING
           value: 'true'
