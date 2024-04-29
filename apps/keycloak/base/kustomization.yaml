@@ -19,7 +19,6 @@ helmCharts:
         serviceMonitor:
           enabled: true
       proxyAddressForwarding: true
-      production: true
       proxy: reencrypt
       extraEnvVars:
         - name: PROXY_ADDRESS_FORWARDING
