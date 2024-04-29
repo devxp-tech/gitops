@@ -22,7 +22,7 @@ helmCharts:
           {
             "realm" : "master",
             "attributes": {
-              "frontendUrl": "https://keycloak-admin.devxp-tech.io"
+              "frontendUrl": "https://keycloak.devxp-tech.io"
             }
           }
       proxy: edge
@@ -34,7 +34,7 @@ helmCharts:
         - name: KC_HOSTNAME_URL
           value: "https://keycloak.devxp-tech.io/"
         - name: KC_HOSTNAME_ADMIN_URL
-          value: "https://keycloak-admin.devxp-tech.io/"
+          value: "https://keycloak.devxp-tech.io/"
         # - name: KC_HTTP_RELATIVE_PATH
         #   value: "/auth/"
 
