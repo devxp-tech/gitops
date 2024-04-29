@@ -17,25 +17,34 @@ helmCharts:
         serviceMonitor:
           enabled: true
       proxyAddressForwarding: true
+      keycloakConfigCli:
+        configuration: |
+          {
+            "realm" : "master",
+            "attributes": {
+              "frontendUrl": "https://keycloak-admin.devxp-tech.io"
+            }
+          }
       proxy: edge
       extraEnvVars:
         - name: KEYCLOAK_LOG_LEVEL
           value: INFO
         - name: KEYCLOAK_ADMIN
           value: "admin"
+        - name: KC_HOSTNAME_URL
+          value: "https://keycloak.devxp-tech.io/"
+        - name: KC_HOSTNAME_ADMIN_URL
+          value: "https://keycloak-admin.devxp-tech.io/"
+        - name: KC_HTTP_RELATIVE_PATH
+          value: "/auth/"
+
         # - name: KC_HOSTNAME_STRICT
         #   value: "false"
         # - name: KC_HTTP_ENABLED
         #   value: "true"
         # - name: KC_HOSTNAME_STRICT_HTTPS
         #   value: "false"
-        # - name: KC_HOSTNAME_URL
-        #   value: "https://keycloak.devxp-tech.io"
-        # - name: KC_HOSTNAME_ADMIN_URL
-        #   value: "https://keycloak-admin.devxp-tech.io"
 
-        # - name: KC_HTTP_RELATIVE_PATH
-        #   value: "/auth"
         # - name: PROXY_ADDRESS_FORWARDING
         #   value: "true"
         # - name: KC_TRANSACTION_XA_ENABLED
