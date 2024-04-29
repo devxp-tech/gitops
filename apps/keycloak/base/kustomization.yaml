@@ -17,6 +17,9 @@ helmCharts:
         serviceMonitor:
           enabled: true
       proxyAddressForwarding: true
+      hostAliases:
+        - https://keycload.devxp-tech.io
+        - https://keycload-admin.devxp-tech.io
       keycloakConfigCli:
         configuration: |
           {
