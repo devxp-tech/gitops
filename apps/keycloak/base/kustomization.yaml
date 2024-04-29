@@ -21,8 +21,8 @@ helmCharts:
       proxyAddressForwarding: true
       proxy: edge
       extraEnvVars:
-        - name: KEYCLOAK_ADMIN
-          value: "admin"
+        # - name: KEYCLOAK_ADMIN
+        #   value: "admin"
         - name: KC_HOSTNAME_STRICT
           value: "false"
         - name: KC_HTTP_ENABLED
