@@ -12,15 +12,15 @@ helmCharts:
       auth:
         adminUser: admin
         existingSecret: keycloak
-      logging:
-        level: INFO
       metrics:
         enabled: true
         serviceMonitor:
           enabled: true
       proxyAddressForwarding: true
       proxy: edge
-      # extraEnvVars:
+      extraEnvVars:
+        - name: KEYCLOAK_LOG_LEVEL
+          value: DEBUG
         # - name: KEYCLOAK_ADMIN
         #   value: "admin"
         # - name: KC_HOSTNAME_STRICT
