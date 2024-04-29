@@ -20,14 +20,6 @@ helmCharts:
       hostAliases:
         - https://keycload.devxp-tech.io
         - https://keycload-admin.devxp-tech.io
-      keycloakConfigCli:
-        configuration: |
-          {
-            "realm" : "master",
-            "attributes": {
-              "frontendUrl": "https://keycloak.devxp-tech.io"
-            }
-          }
       proxy: edge
       extraEnvVars:
         - name: KEYCLOAK_LOG_LEVEL
