@@ -39,8 +39,8 @@ helmCharts:
           value: "true"
         - name: KC_HOSTNAME_STRICT_HTTPS
           value: "false"
-        - name: KC_HTTP_RELATIVE_PATH
-          value: "/auth"
+        # - name: KC_HTTP_RELATIVE_PATH
+        #   value: "/auth"
         # - name: KEYCLOAK_ENABLE_HTTPS
         #   value: 'true'
         # - name: KC_PROXY
