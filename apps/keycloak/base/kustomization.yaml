@@ -20,19 +20,20 @@ helmCharts:
           enabled: true
       proxyAddressForwarding: true
       proxy: edge
-      extraEnvVars:
+      # extraEnvVars:
         # - name: KEYCLOAK_ADMIN
         #   value: "admin"
-        - name: KC_HOSTNAME_STRICT
-          value: "false"
-        - name: KC_HTTP_ENABLED
-          value: "true"
-        - name: KC_HOSTNAME_STRICT_HTTPS
-          value: "false"
-        - name: KC_HOSTNAME_URL
-          value: "https://keycloak.devxp-tech.io"
-        - name: KC_HOSTNAME_ADMIN_URL
-          value: "https://keycloak-admin.devxp-tech.io"
+        # - name: KC_HOSTNAME_STRICT
+        #   value: "false"
+        # - name: KC_HTTP_ENABLED
+        #   value: "true"
+        # - name: KC_HOSTNAME_STRICT_HTTPS
+        #   value: "false"
+        # - name: KC_HOSTNAME_URL
+        #   value: "https://keycloak.devxp-tech.io"
+        # - name: KC_HOSTNAME_ADMIN_URL
+        #   value: "https://keycloak-admin.devxp-tech.io"
+
         # - name: KC_HTTP_RELATIVE_PATH
         #   value: "/auth"
         # - name: PROXY_ADDRESS_FORWARDING
