@@ -18,13 +18,13 @@ helmCharts:
         enabled: true
         serviceMonitor:
           enabled: true
-      # proxyAddressForwarding: true
-      # proxy: reencrypt
+      proxyAddressForwarding: true
+      proxy: reencrypt
       extraEnvVars:
         - name: PROXY_ADDRESS_FORWARDING
           value: 'true'
-        - name: KEYCLOAK_ENABLE_HTTPS
-          value: 'true'
+        # - name: KEYCLOAK_ENABLE_HTTPS
+        #   value: 'true'
         - name: KEYCLOAK_ADMIN
           value: "admin"
         - name: KC_TRANSACTION_XA_ENABLED
