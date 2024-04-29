@@ -19,7 +19,7 @@ helmCharts:
         serviceMonitor:
           enabled: true
       proxyAddressForwarding: true
-      proxy: passthrough
+      proxy: edge
       extraEnvVars:
         - name: PROXY_ADDRESS_FORWARDING
           value: 'true'
@@ -31,6 +31,14 @@ helmCharts:
           value: https://keycloak.devxp-tech.io/
         - name: KC_HOSTNAME_ADMIN_URL
           value: https://keycloak.devxp-tech.io/
+        - name: "KC_HOSTNAME_STRICT"
+          value: "false"
+        - name: "KC_SPI_STICKY_SESSION_ENCODER_INFINISPAN_SHOULD_ATTACH_ROUTE"
+          value: "false"
+        - name: "KC_HTTP_ENABLED"
+          value: "true"
+        - name: "KC_HOSTNAME_STRICT_HTTPS"
+          value: "false"
         # - name: KEYCLOAK_ENABLE_HTTPS
         #   value: 'true'
         # - name: KC_PROXY
