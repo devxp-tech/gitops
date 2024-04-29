@@ -16,10 +16,7 @@ helmCharts:
         enabled: true
         serviceMonitor:
           enabled: true
-      proxyAddressForwarding: true
-      hostAliases:
-        - https://keycload.devxp-tech.io
-        - https://keycload-admin.devxp-tech.io
+      # proxyAddressForwarding: true
       proxy: edge
       extraEnvVars:
         - name: KEYCLOAK_LOG_LEVEL
