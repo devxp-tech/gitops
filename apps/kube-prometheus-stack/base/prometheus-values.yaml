@@ -568,8 +568,8 @@ prometheus:
 
       # Using ServiceMonitor
       - job_name: "karpenter"
-        scrape_interval: 120s
-        scrape_timeout: 45s
+        scrape_interval: 600s
+        scrape_timeout: 300s
         honor_labels: true
         static_configs:
           - targets:
