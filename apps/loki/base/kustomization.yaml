@@ -53,17 +53,13 @@ helmCharts:
           enable_sharding: true
           wal:
             dir: /loki/ruler-wal
-          evaluation:
-            mode: remote
-            query_frontend:
-              address: dns:///loki-read:9095
           alertmanager_url: http://kube-prometheus-stack-alertmanager.monitoring.svc:9093
           enable_alertmanager_v2: true
           remote_write:
             enabled: true
             clients:
               local:
-                url: http://prometheus:9090/api/v1/write
+                url: http://prometheus-community-kube-prometheus.monitoring.svc:9090/api/v1/write
                 queue_config:
                   # send immediately as soon as a sample is generated
                   capacity: 1
