@@ -36,8 +36,8 @@ helmCharts:
         enabled: true
       loki:
         auth_enabled: false
-        # compactor:
-        #   shared_store: aws
+        compactor:
+          shared_store: aws
         ingester:
           autoforget_unhealthy: true
         storage:
@@ -51,28 +51,28 @@ helmCharts:
           alertmanager_url: "http://kube-prometheus-stack-alertmanager.monitoring.svc:9093"
         schemaConfig:
           configs:
-            - from: 2020-05-15
-              store: tsdb
-              object_store: s3
-              schema: v13
-              index:
-                prefix: index_
-                period: 24h
-            # - from: 2020-10-24
-            #   store: boltdb-shipper
-            #   object_store: aws
-            #   schema: v12
+            # - from: 2020-05-15
+            #   store: tsdb
+            #   object_store: s3
+            #   schema: v13
             #   index:
-            #     prefix: loki_index_
+            #     prefix: index_
             #     period: 24h
+            - from: 2020-10-24
+              store: boltdb-shipper
+              object_store: aws
+              schema: v12
+              index:
+                prefix: loki_index_
+                period: 24h
         storage_config:
           aws:
             s3: "s3://us-east-1/vex-dev-loki-logs"
           tsdb_shipper:
             active_index_directory: /loki/index
             cache_location: /loki/index_cache
-          # boltdb_shipper:
-          #   shared_store: aws
+          boltdb_shipper:
+            shared_store: aws
 
         # query_scheduler:
         #   max_outstanding_requests_per_tenant: 4096
