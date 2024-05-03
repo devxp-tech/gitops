@@ -36,8 +36,8 @@ helmCharts:
         enabled: true
       loki:
         auth_enabled: false
-        compactor:
-          shared_store: aws
+        # compactor:
+        #   shared_store: aws
         ingester:
           autoforget_unhealthy: true
         storage:
