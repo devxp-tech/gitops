@@ -24,6 +24,9 @@ helmCharts:
           verbs: ["*"]
       serviceMonitor:
         enabled: true
+        endpointConfig:
+          interval: 120s
+          scrapeTimeout: 30s
       replicas: 1
       affinity:
         nodeAffinity:
