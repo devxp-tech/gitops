@@ -34,16 +34,17 @@ helmCharts:
         jaegerAgentHost: tempo.observability.svc.cluster.local:6831
       persistence:
         enabled: true
-      write:
+      backend:
         replicas: 2
       read:
         replicas: 2
-      backend:
+      write:
         replicas: 2
       loki:
         auth_enabled: false
         storage:
           type: s3
+          s3ForcePathStyle: true
           s3:
             region: us-east-1
           bucketNames:
