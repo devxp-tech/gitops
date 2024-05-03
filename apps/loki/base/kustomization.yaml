@@ -98,3 +98,13 @@ helmCharts:
         # table_manager:
         #   retention_deletes_enabled: false
         #   retention_period: 0s
+
+      tableManager:
+        enabled: true
+        resources: {}
+        extraVolumes:
+          - name: data
+            emptyDir: {}
+        extraVolumeMounts:
+          - name: data
+            mountPath: /var/loki
