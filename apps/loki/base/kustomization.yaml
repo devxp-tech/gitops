@@ -41,14 +41,33 @@ helmCharts:
         ingester:
           autoforget_unhealthy: true
         storage:
+          s3:
+            region: us-east-1
           bucketNames:
             chunks: "vex-dev-loki-logs"
             ruler: "vex-dev-loki-logs"
             admin: "vex-dev-loki-logs"
-          s3:
-            region: us-east-1
-        ruler:
-          alertmanager_url: "http://kube-prometheus-stack-alertmanager.monitoring.svc:9093"
+        rulerConfig:
+          enable_api: true
+          enable_sharding: true
+          wal:
+            dir: /loki/ruler-wal
+          evaluation:
+            mode: remote
+            query_frontend:
+              address: dns:///loki-read:9095
+          alertmanager_url: http://kube-prometheus-stack-alertmanager.monitoring.svc:9093
+          enable_alertmanager_v2: true
+          remote_write:
+            enabled: true
+            clients:
+              local:
+                url: http://prometheus:9090/api/v1/write
+                queue_config:
+                  # send immediately as soon as a sample is generated
+                  capacity: 1
+                  batch_send_deadline: 0s
+
         schemaConfig:
           configs:
           - from: "2024-04-01"
