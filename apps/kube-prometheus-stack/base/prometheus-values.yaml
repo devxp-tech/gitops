@@ -44,7 +44,7 @@ prometheus:
       limits:
         cpu: 2000m
         memory: 4000Mi
-    replicas: 1 # 3 to 1 enabled Mimir
+    replicas: 2 # 3 to 1 enabled Mimir
     replicaExternalLabelName: "__replica__"
     podAntiAffinity: hard
     ruleSelectorNilUsesHelmValues: false
