@@ -36,8 +36,8 @@ helmCharts:
         enabled: true
       loki:
         auth_enabled: false
-        compactor:
-          shared_store: aws
+        # compactor:
+        #   shared_store: aws
         ingester:
           autoforget_unhealthy: true
         storage:
@@ -71,8 +71,8 @@ helmCharts:
           tsdb_shipper:
             active_index_directory: /loki/index
             cache_location: /loki/index_cache
-          boltdb_shipper:
-            shared_store: aws
+          # boltdb_shipper:
+          #   shared_store: aws
 
         # query_scheduler:
         #   max_outstanding_requests_per_tenant: 4096
