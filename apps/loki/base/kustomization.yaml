@@ -34,6 +34,12 @@ helmCharts:
         jaegerAgentHost: tempo.observability.svc.cluster.local:6831
       persistence:
         enabled: true
+      write:
+        replicas: 2
+      read:
+        replicas: 2
+      backend:
+        replicas: 2
       loki:
         auth_enabled: false
         storage:
@@ -44,8 +50,6 @@ helmCharts:
             chunks: "vex-dev-loki-logs"
             ruler: "vex-dev-loki-logs"
             admin: "vex-dev-loki-logs"
-        # compactor:
-        #   shared_store: aws
         ingester:
           autoforget_unhealthy: true
         rulerConfig:
@@ -74,26 +78,12 @@ helmCharts:
             object_store: s3
             schema: v13
             store: tsdb
-            # - from: 2020-10-24
-            #   store: boltdb-shipper
-            #   object_store: aws
-            #   schema: v12
-            #   index:
-            #     prefix: loki_index_
-            #     period: 24h
-        # storage_config:
-        #   aws:
-        #     s3: "s3://us-east-1/vex-dev-loki-logs"
         limits_config:
           split_queries_by_interval: 1h
         query_scheduler:
           max_outstanding_requests_per_tenant: 2048
         querier:
           max_concurrent: 20
-
-        # chunk_store_config:
-        #   max_look_back_period: 0s
-
       tableManager:
         enabled: true
         resources: {}
