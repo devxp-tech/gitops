@@ -36,17 +36,18 @@ helmCharts:
         enabled: true
       loki:
         auth_enabled: false
-        # compactor:
-        #   shared_store: aws
-        ingester:
-          autoforget_unhealthy: true
         storage:
+          type: s3
           s3:
             region: us-east-1
           bucketNames:
             chunks: "vex-dev-loki-logs"
             ruler: "vex-dev-loki-logs"
             admin: "vex-dev-loki-logs"
+        # compactor:
+        #   shared_store: aws
+        ingester:
+          autoforget_unhealthy: true
         rulerConfig:
           enable_api: true
           enable_sharding: true
@@ -84,36 +85,15 @@ helmCharts:
             #   index:
             #     prefix: loki_index_
             #     period: 24h
-        storage_config:
-          aws:
-            s3: "s3://us-east-1/vex-dev-loki-logs"
-          tsdb_shipper:
-            active_index_directory: /loki/index
-            cache_location: /loki/index_cache
-          # boltdb_shipper:
-          #   shared_store: aws
-
-        # query_scheduler:
-        #   max_outstanding_requests_per_tenant: 4096
-        # frontend:
-        #   max_outstanding_per_tenant: 4096
-        # query_range:
-        #   parallelise_shardable_queries: true
-
+        # storage_config:
+        #   aws:
+        #     s3: "s3://us-east-1/vex-dev-loki-logs"
         limits_config:
-          ingestion_rate_strategy: local # Default: global
-          max_global_streams_per_user: 5000
-          max_query_length: 0h # Default: 721h
-          max_query_parallelism: 32 # Old Default: 14
-          max_entries_limit_per_query: 1000000
-          max_streams_per_user: 0 # Old Default: 10000
-          reject_old_samples: true
-          reject_old_samples_max_age: 168h
-          retention_period: "360h" # 15 days
-
-        table_manager:
-          retention_deletes_enabled: true
-          retention_period: 336h
+          split_queries_by_interval: 1h
+        query_scheduler:
+          max_outstanding_requests_per_tenant: 2048
+        querier:
+          max_concurrent: 20
 
         # chunk_store_config:
         #   max_look_back_period: 0s
