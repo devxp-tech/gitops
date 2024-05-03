@@ -567,11 +567,11 @@ prometheus:
       #         application: "sonarqube"
 
       # Using ServiceMonitor
-      # - job_name: "karpenter"
-      #   scrape_interval: 60s
-      #   static_configs:
-      #     - targets:
-      #         - karpenter.karpenter.svc.cluster.local:8000
+      - job_name: "karpenter"
+        scrape_interval: 60s
+        static_configs:
+          - targets:
+              - karpenter.karpenter.svc.cluster.local:8000
 
       # - job_name: "cert-manager"
       #   metrics_path: /metrics
