@@ -8,7 +8,7 @@ helmCharts:
   - name: opentelemetry-operator
     includeCRDs: true
     releaseName: opentelemetry-operator
-    version: 0.53.2
+    version: 0.56.0
     repo: https://open-telemetry.github.io/opentelemetry-helm-charts
     valuesInline:
       nameOverride: opentelemetry-operator
