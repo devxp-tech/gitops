@@ -569,7 +569,7 @@ prometheus:
       # Using ServiceMonitor
       - job_name: "karpenter"
         scrape_interval: 60s
-        scrape_timeout: 15s
+        scrape_timeout: 30s
         static_configs:
           - targets:
               - karpenter.karpenter.svc.cluster.local:8000
