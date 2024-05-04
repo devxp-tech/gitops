@@ -24,6 +24,8 @@ helmCharts:
           verbs: ["*"]
       serviceMonitor:
         enabled: true
+        additionalLabels:
+          release: kube-prometheus-stack
         endpointConfig:
           interval: 120s
           scrapeTimeout: 30s
