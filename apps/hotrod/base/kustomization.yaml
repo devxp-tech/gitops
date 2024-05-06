@@ -15,12 +15,12 @@ helmCharts:
           app: hotrod
           version: 0.2.22
       image:
-        repository: kong/httpbin #jaegertracing/example-hotrod
+        repository: jaegertracing/example-hotrod #kong/httpbin
         # tag: latest
       network:
         domain: devxp-tech.io
-      container:
-        port: 80
+      # container:
+      #   port: 80
       envs:
         # - name: OTEL_EXPORTER_OTLP_ENDPOINT
         #   value: http://otel-collector.observability.svc.cluster.local:4318
