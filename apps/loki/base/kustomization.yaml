@@ -72,13 +72,13 @@ helmCharts:
 
         schemaConfig:
           configs:
-          - from: "2024-04-01"
-            index:
-              period: 24h
-              prefix: index_
-            object_store: s3
-            schema: v13
-            store: tsdb
+            - from: "2024-04-01"
+              index:
+                period: 24h
+                prefix: index_
+              object_store: s3
+              schema: v13
+              store: tsdb
         limits_config:
           split_queries_by_interval: 15m
           retention_period: 7d
