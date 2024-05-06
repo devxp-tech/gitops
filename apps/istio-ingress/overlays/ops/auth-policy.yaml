@@ -23,11 +23,7 @@ spec:
         - key: request.headers[x-envoy-external-address]
           values:
             - "94.62.74.120" # Diego
-            - "189.19.124.114" # Gritzko
-            - "179.191.119.178" # DiOculos
-            - "85.244.177.235" # Office
-            - "5.28.168.205" # Office 2
-            - "191.19.210.111" #Cayke
+            - "104.28.88.106" # Diego
     - to:
         - operation:
             hosts:
