@@ -19,6 +19,8 @@ helmCharts:
         # tag: latest
       network:
         domain: devxp-tech.io
+      container:
+        port: 80
       envs:
         # - name: OTEL_EXPORTER_OTLP_ENDPOINT
         #   value: http://otel-collector.observability.svc.cluster.local:4318
