@@ -81,12 +81,15 @@ helmCharts:
             store: tsdb
         limits_config:
           split_queries_by_interval: 1h
+
         query_scheduler:
           max_outstanding_requests_per_tenant: 2048
         querier:
           max_concurrent: 20
       tableManager:
         enabled: true
+        retention_deletes_enabled: true
+        retention_period: 720h
         resources: {}
         extraVolumes:
           - name: data
