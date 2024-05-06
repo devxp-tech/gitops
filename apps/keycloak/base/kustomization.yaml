@@ -29,6 +29,8 @@ helmCharts:
         #   value: "https://keycloak.devxp-tech.io/"
         - name: KC_HOSTNAME_ADMIN_URL
           value: "https://keycloak.devxp-tech.io/"
+        - name: KC_HOSTNAME_DEBUG
+          value: "true"
         # - name: KC_HTTP_RELATIVE_PATH
         #   value: "/auth/"
 
