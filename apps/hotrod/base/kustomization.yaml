@@ -15,8 +15,8 @@ helmCharts:
           app: hotrod
           version: 0.2.22
       image:
-        repository: jaegertracing/example-hotrod
-        tag: latest
+        repository: kong/httpbin #jaegertracing/example-hotrod
+        # tag: latest
       network:
         domain: devxp-tech.io
       envs:

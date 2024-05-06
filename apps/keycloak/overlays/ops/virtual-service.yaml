@@ -15,7 +15,7 @@ spec:
     - headers:
         request:
           set:
-            X-Forwarded-Port: "443"
+            X-Forwarded-Proto: "https"
       route:
         - destination:
             port:
