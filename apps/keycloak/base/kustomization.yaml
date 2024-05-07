@@ -14,6 +14,10 @@ helmCharts:
           value: admin
         - name: KEYCLOAK_ADMIN_PASSWORD
           value: admin
+        - name: KC_HOSTNAME_URL
+          value: "https://keycloak.devxp-tech.io/"
+        - name: KC_HOSTNAME_ADMIN_URL
+          value: "https://keycloak-admin.devxp-tech.io/"
       postgresql:
         auth:
           existingSecret: keycloak-postgresql
