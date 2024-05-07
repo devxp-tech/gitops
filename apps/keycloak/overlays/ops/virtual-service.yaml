@@ -20,7 +20,7 @@ spec:
         - destination:
             port:
               number: 80
-            host: keycloak.keycloak.svc.cluster.local
+            host: keycloak-http.keycloak.svc.cluster.local
 
 # ---
 # apiVersion: networking.istio.io/v1alpha3
