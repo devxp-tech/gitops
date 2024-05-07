@@ -6,49 +6,35 @@ helmCharts:
     releaseName: keycloak
     version: 21.0.3
     includeCRDs: true
-    repo: https://charts.bitnami.com/bitnami
+    repo: https://codecentric.github.io/helm-charts #https://charts.bitnami.com/bitnami
     valuesInline:
       namespaceOverride: keycloak
-      auth:
-        adminUser: admin
-        existingSecret: keycloak
-      metrics:
-        enabled: true
-        serviceMonitor:
-          enabled: true
-      # proxyAddressForwarding: true
-      proxy: edge
-      extraEnvVars:
-        - name: KEYCLOAK_LOG_LEVEL
-          value: INFO
-        - name: KEYCLOAK_ADMIN
-          value: "admin"
-        # - name: KC_HOSTNAME
-        #   value: keycloak.devxp-tech.io
-        # - name: KC_HOSTNAME_URL
-        #   value: "https://keycloak.devxp-tech.io/"
-        # - name: KC_HOSTNAME_ADMIN_URL
-        #   value: "https://keycloak.devxp-tech.io/"
-        - name: KC_HOSTNAME_DEBUG
-          value: "true"
-        # - name: KC_HTTP_RELATIVE_PATH
-        #   value: "/auth/"
-
-        # - name: KC_HOSTNAME_STRICT
-        #   value: "false"
-        # - name: KC_HTTP_ENABLED
-        #   value: "true"
-        # - name: KC_HOSTNAME_STRICT_HTTPS
-        #   value: "false"
-
-        # - name: PROXY_ADDRESS_FORWARDING
-        #   value: "true"
-        # - name: KC_TRANSACTION_XA_ENABLED
-        #   value: "false"
-        # - name: KEYCLOAK_ENABLE_HTTPS
-        #   value: 'true'
-        # - name: KC_PROXY
-        #   value: "edge"
       postgresql:
         auth:
           existingSecret: keycloak-postgresql
+
+      # auth:
+      #   adminUser: admin
+      #   existingSecret: keycloak
+      # metrics:
+      #   enabled: true
+      #   serviceMonitor:
+      #     enabled: true
+      # # proxyAddressForwarding: true
+      # proxy: edge
+      # extraEnvVars:
+      #   - name: KEYCLOAK_LOG_LEVEL
+      #     value: INFO
+      #   - name: KEYCLOAK_ADMIN
+      #     value: "admin"
+      #   # - name: KC_HOSTNAME
+      #   #   value: keycloak.devxp-tech.io
+      #   # - name: KC_HOSTNAME_URL
+      #   #   value: "https://keycloak.devxp-tech.io/"
+      #   # - name: KC_HOSTNAME_ADMIN_URL
+      #   #   value: "https://keycloak.devxp-tech.io/"
+      #   - name: KC_HOSTNAME_DEBUG
+      #     value: "true"
+      # postgresql:
+      #   auth:
+      #     existingSecret: keycloak-postgresql
