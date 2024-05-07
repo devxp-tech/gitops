@@ -9,7 +9,7 @@ helmCharts:
     repo: https://codecentric.github.io/helm-charts #https://charts.bitnami.com/bitnami
     valuesInline:
       namespaceOverride: keycloak
-      extraEnv:
+      extraEnv: |
         - name: KEYCLOAK_ADMIN
           value: admin
         - name: KEYCLOAK_ADMIN_PASSWORD
