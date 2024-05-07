@@ -4,7 +4,7 @@ namespace: keycloak
 helmCharts:
   - name: keycloak
     releaseName: keycloak
-    version: 21.0.3
+    version: 18.4.4 #21.0.3
     includeCRDs: true
     repo: https://codecentric.github.io/helm-charts #https://charts.bitnami.com/bitnami
     valuesInline:
