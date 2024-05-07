@@ -6,7 +6,7 @@ resources:
   - peerauthentication.yaml
   - prometheus-rules.yaml
   - service-monitor.yaml
-  - telemetry.yaml
+  # - telemetry.yaml
 helmCharts:
   - name: base
     releaseName: base
