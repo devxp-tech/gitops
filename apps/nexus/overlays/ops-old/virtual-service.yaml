@@ -8,7 +8,7 @@ spec:
   hosts:
     - "nexus.devxp-tech.io"
   gateways:
-    - istio-system/istio-ingressgateway
+    - istio-ingress/istio-ingressgateway
   http:
     - match:
         - uri:

@@ -10,7 +10,7 @@ spec:
   hosts:
     - "keycloak.devxp-tech.io"
   gateways:
-    - istio-system/istio-ingressgateway
+    - istio-ingress/istio-ingressgateway
   http:
     - match:
         - uri:
@@ -41,7 +41,7 @@ spec:
 #   hosts:
 #     - "keycloak-admin.devxp-tech.io"
 #   gateways:
-#     - istio-system/istio-ingressgateway
+#     - istio-ingress/istio-ingressgateway
 #   http:
 #     - match:
 #         - uri:

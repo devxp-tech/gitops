@@ -8,7 +8,7 @@ spec:
   hosts:
     - "dex.devxp-tech.io"
   gateways:
-    - istio-system/istio-ingressgateway
+    - istio-ingress/istio-ingressgateway
   http:
     - headers:
         request:
@@ -29,7 +29,7 @@ spec:
   hosts:
     - "kube-login.devxp-tech.io"
   gateways:
-    - istio-system/istio-ingressgateway
+    - istio-ingress/istio-ingressgateway
   http:
     - headers:
         request:

@@ -8,7 +8,7 @@ metadata:
     link.argocd.argoproj.io/external-link: https://www.devxp-tech.io
 spec:
   gateways:
-    - istio-system/istio-ingressgateway
+    - istio-ingress/istio-ingressgateway
   hosts:
     - devxp-tech.io
     - www.devxp-tech.io

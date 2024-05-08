@@ -10,7 +10,7 @@ metadata:
     link.argocd.argoproj.io/external-link: https://kiali.devxp-tech.io
 spec:
   gateways:
-    - istio-system/istio-ingressgateway
+    - istio-ingress/istio-ingressgateway
   hosts:
     - "kiali.devxp-tech.io"
   http:
