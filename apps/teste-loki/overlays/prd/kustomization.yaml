@@ -7,7 +7,7 @@ resources:
 helmCharts:
   - name: devxp-app
     releaseName: devxp-app
-    version: 0.2.38
+    version: 0.2.39
     repo: https://devxp-tech.github.io/helm-charts
     valuesInline:
       name: teste-loki
