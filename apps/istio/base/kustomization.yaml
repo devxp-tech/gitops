@@ -5,6 +5,7 @@ resources:
   - destinationrule.yaml
   - peerauthentication.yaml
   - prometheus-rules.yaml
+  - service-entry.yaml
   - service-monitor.yaml
   # - telemetry.yaml
 helmCharts:

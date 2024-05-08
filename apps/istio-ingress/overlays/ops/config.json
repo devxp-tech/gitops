@@ -1,11 +1,11 @@
 {
   "appName": "istio-ingress",
   "userGivenName": "istio-ingress",
-  "destNamespace": "istio-system",
+  "destNamespace": "istio-ingress",
   "destServer": "https://kubernetes.default.svc",
   "srcPath": "apps/istio-ingress/overlays/ops",
   "srcRepoURL": "https://github.com/devxp-tech/gitops.git",
   "srcTargetRevision": "",
-  "CreateNamespace": false,
+  "CreateNamespace": true,
   "labels": null
 }

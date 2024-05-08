@@ -1,0 +1,17 @@
+# Define a service entry for the Kubernetes API service,
+# to improve visualization of operator traffic.
+apiVersion: networking.istio.io/v1alpha3
+kind: ServiceEntry
+metadata:
+  name: kubernetes
+  namespace: default
+spec:
+  hosts:
+  - "kubernetes"
+  - "kubernetes.default.svc.cluster.local"
+  ports:
+  - number: 443
+    name: https-port
+    protocol: HTTPS
+  resolution: DNS
+  location: MESH_EXTERNAL
