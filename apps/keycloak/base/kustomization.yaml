@@ -9,13 +9,16 @@ helmCharts:
     repo: https://codecentric.github.io/helm-charts #https://charts.bitnami.com/bitnami
     valuesInline:
       namespaceOverride: keycloak
+      image:
+        tag: 24.0.1
+      args: ["start-dev"]
       extraEnv: |
         - name: KEYCLOAK_ADMIN
-          value: admin
+          value: "admin"
         - name: KEYCLOAK_ADMIN_PASSWORD
-          value: admin
-        - name: KEYCLOAK_PROXY
-          value: passthrough
+          value: "admin"
+        - name: KC_PROXY
+          value: "edge"
       postgresql:
         auth:
           existingSecret: keycloak-postgresql
