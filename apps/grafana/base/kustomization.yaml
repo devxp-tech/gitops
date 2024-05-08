@@ -334,22 +334,28 @@ helmCharts:
           # Istio dashboards
           istio-control-plane-dashboard:
             datasource: Prometheus
-            url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/istio/istio-control-plane-dashboard.json"
+            gnetId: 7645
+            # url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/istio/istio-control-plane-dashboard.json"
           istio-mesh-dashboard:
             datasource: Prometheus
-            url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/istio/istio-mesh-dashboard.json"
-          istio-service-dashboard:
-            datasource: Prometheus
-            url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/istio/istio-service-dashboard.json"
-          istio-wasm-extension-dashboard:
-            datasource: Prometheus
-            url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/istio/istio-wasm-extension-dashboard.json"
-          istio-workload-dashboard:
-            datasource: Prometheus
-            url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/istio/istio-workload-dashboard.json"
+            gnetId: 7639
+            #url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/istio/istio-mesh-dashboard.json"
           istio-performance-dashboard:
             datasource: Prometheus
             gnetId: 12153
+          istio-service-dashboard:
+            datasource: Prometheus
+            gnetId: 7636
+            #url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/istio/istio-service-dashboard.json"
+          istio-wasm-extension-dashboard:
+            datasource: Prometheus
+            gnetId: 13277
+            #url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/istio/istio-wasm-extension-dashboard.json"
+          istio-workload-dashboard:
+            datasource: Prometheus
+            gnetId: 7630
+            # url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/istio/istio-workload-dashboard.json"
+
         loki:
           # Loki dashboards
           loki-stack-monitoring:
