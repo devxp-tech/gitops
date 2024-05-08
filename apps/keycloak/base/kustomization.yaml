@@ -9,9 +9,9 @@ helmCharts:
     repo: https://codecentric.github.io/helm-charts #https://charts.bitnami.com/bitnami
     valuesInline:
       namespaceOverride: keycloak
-      image:
-        tag: 24.0.1
-      args: ["start-dev"]
+      # image:
+      #   tag: 24.0.1
+      # args: ["start-dev"]
       extraEnv: |
         - name: KEYCLOAK_ADMIN
           value: "admin"
@@ -19,25 +19,6 @@ helmCharts:
           value: "admin"
         - name: KC_PROXY
           value: "edge"
-      livenessProbe:
-        failureThreshold: 3
-        httpGet:
-          path: /realms/master
-          port: http
-          scheme: HTTP
-        periodSeconds: 10
-        successThreshold: 1
-        timeoutSeconds: 5
-      readinessProbe:
-        failureThreshold: 3
-        httpGet:
-          path: /realms/master
-          port: http
-          scheme: HTTP
-        initialDelaySeconds: 30
-        periodSeconds: 10
-        successThreshold: 1
-        timeoutSeconds: 1
       postgresql:
         auth:
           existingSecret: keycloak-postgresql
