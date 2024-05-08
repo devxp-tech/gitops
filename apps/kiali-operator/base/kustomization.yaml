@@ -8,7 +8,7 @@ helmCharts:
   - name: kiali-operator
     includeCRDs: true
     releaseName: kiali-operator
-    version: 1.82.0
+    version: 1.84.0
     repo: https://kiali.org/helm-charts
     valuesInline:
       clusterRoleCreator: true
