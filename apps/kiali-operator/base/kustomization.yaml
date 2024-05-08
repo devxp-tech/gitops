@@ -33,7 +33,7 @@ helmCharts:
                     is_core: true
                     is_proxy: true
                     # default: namespace is undefined
-                    namespace: istio-system
+                    namespace: istio-ingress
                 enabled: true
               config_map_name: "istio"
               envoy_admin_local_port: 15000
