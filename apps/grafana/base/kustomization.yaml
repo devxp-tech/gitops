@@ -355,15 +355,14 @@ helmCharts:
             datasource: Prometheus
             gnetId: 7630
             # url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/istio/istio-workload-dashboard.json"
-
+          loki-istio-service:
+            datasource: Loki
+            gnetId: 14876
         loki:
           # Loki dashboards
           loki-stack-monitoring:
             datasource: Loki
             gnetId: 14055
-          loki-istio-service:
-            datasource: Loki
-            gnetId: 14876
           loki-container-log:
             datasource: Loki
             gnetId: 16966
