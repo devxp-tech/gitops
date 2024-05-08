@@ -65,6 +65,7 @@ helmCharts:
             memory: 2048Mi
       meshConfig:
         trustDomain: "cluster.local"
+        accessLogFile: "/dev/stdout"
         enableTracing: true
         defaultConfig:
           tracing:
