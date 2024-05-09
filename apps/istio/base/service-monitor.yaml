@@ -1,28 +1,50 @@
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  name: istio-federation
+  name: istio-controlplane
   labels:
-    app.kubernetes.io/name: istio-prometheus
+    release: prometheus
 spec:
-  namespaceSelector:
-    matchNames:
-    - istio-system
+  jobLabel: istio
   selector:
-    matchLabels:
-      app: prometheus
+    matchExpressions:
+      - {key: istio, operator: In, values: [mixer,pilot,galley,citadel,sidecar-injector]}
+  namespaceSelector:
+    any: true
   endpoints:
-  - interval: 30s
-    scrapeTimeout: 30s
-    params:
-      'match[]':
-      - '{__name__=~"workload:(.*)"}'
-      - '{__name__=~"pilot(.*)"}'
-    path: /federate
-    targetPort: 9090
-    honorLabels: true
-    metricRelabelings:
-    - sourceLabels: ["__name__"]
-      regex: 'workload:(.*)'
-      targetLabel: "__name__"
+  - port: http-monitoring
+    interval: 15s
+  - port: http-policy-monitoring
+    interval: 15s
+
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: istio-dataplane
+  labels:
+    monitoring: istio-dataplane
+    release: prometheus
+spec:
+  selector:
+    matchExpressions:
+      - {key: istio-prometheus-ignore, operator: DoesNotExist}
+  namespaceSelector:
+    any: true
+  jobLabel: envoy-stats
+  endpoints:
+  - path: /stats/prometheus
+    targetPort: http-envoy-prom
+    interval: 15s
+    relabelings:
+    - sourceLabels: [__meta_kubernetes_pod_container_port_name]
+      action: keep
+      regex: '.*-envoy-prom'
+    - action: labelmap
+      regex: "__meta_kubernetes_pod_label_(.+)"
+    - sourceLabels: [__meta_kubernetes_namespace]
       action: replace
+      targetLabel: namespace
+    - sourceLabels: [__meta_kubernetes_pod_name]
+      action: replace
+      targetLabel: pod_name
