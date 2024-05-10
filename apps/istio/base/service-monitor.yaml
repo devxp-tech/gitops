@@ -38,14 +38,14 @@ spec:
       targetPort: http-envoy-prom
       interval: 15s
       relabelings:
-      - sourceLabels: [__meta_kubernetes_pod_container_port_name]
-        action: keep
-        regex: '.*-envoy-prom'
-      - action: labelmap
-        regex: "__meta_kubernetes_pod_label_(.+)"
-      - sourceLabels: [__meta_kubernetes_namespace]
-        action: replace
-        targetLabel: namespace
-      - sourceLabels: [__meta_kubernetes_pod_name]
-        action: replace
-        targetLabel: pod_name
+        - sourceLabels: [__meta_kubernetes_pod_container_port_name]
+          action: keep
+          regex: '.*-envoy-prom'
+        - action: labelmap
+          regex: "__meta_kubernetes_pod_label_(.+)"
+        - sourceLabels: [__meta_kubernetes_namespace]
+          action: replace
+          targetLabel: namespace
+        - sourceLabels: [__meta_kubernetes_pod_name]
+          action: replace
+          targetLabel: pod_name
