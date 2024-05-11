@@ -8,7 +8,7 @@ helmCharts:
   - name: opentelemetry-operator
     includeCRDs: true
     releaseName: opentelemetry-operator
-    version: 0.56.0
+    version: 0.57.0
     repo: https://open-telemetry.github.io/opentelemetry-helm-charts
     valuesInline:
       nameOverride: opentelemetry-operator
@@ -20,6 +20,8 @@ helmCharts:
       admissionWebhooks:
         create: false
       manager:
+        collectorImage:
+          repository: "otel/opentelemetry-collector-k8s"
         serviceMonitor:
           enabled: true
         env:
