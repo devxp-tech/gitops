@@ -5,7 +5,7 @@ helmCharts:
   - name: tempo
     includeCRDs: true
     releaseName: tempo
-    version: 1.7.2
+    version: 1.7.3
     repo: https://grafana.github.io/helm-charts
     valuesInline:
       labels:
