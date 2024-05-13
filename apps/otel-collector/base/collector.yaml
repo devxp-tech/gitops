@@ -50,8 +50,8 @@ spec:
         endpoint: "tempo.observability.svc:4317"
         tls:
           insecure: true
-      prometheus:
-        endpoint: "0.0.0.0:8889"
+      # prometheus:
+      #   endpoint: "0.0.0.0:8889"
 
       # prometheusremotewrite:
       #   endpoint: http://prometheus-community-kube-prometheus.monitoring.svc:9090/api/v1/write
@@ -66,7 +66,7 @@ spec:
         metrics:
           receivers: [otlp, servicegraph]
           processors: [memory_limiter, batch]
-          exporters: [logging, prometheus]
+          exporters: [logging] #prometheus
         traces:
           receivers: [jaeger, otlp, zipkin]
           processors: [memory_limiter, batch]
@@ -77,4 +77,4 @@ spec:
           exporters: [logging]
         metrics/spanmetrics:
           receivers: [spanmetrics]
-          exporters: [prometheus]
+          #exporters: [prometheus]
