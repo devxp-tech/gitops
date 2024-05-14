@@ -17,8 +17,8 @@ helmCharts:
         create: false
         certManager:
           enabled: true
-        autoGenerateCert:
-          enabled: false
+        # autoGenerateCert:
+        #   enabled: false
       manager:
         collectorImage:
           repository: "otel/opentelemetry-collector-k8s"
