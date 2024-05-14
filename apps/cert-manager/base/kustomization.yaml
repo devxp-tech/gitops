@@ -9,9 +9,9 @@ helmCharts:
     repo: https://charts.jetstack.io
     valuesInline:
       # installCRDs: true
-      # global:
-      #   leaderElection:
-      #     namespace: "cert-manager"
+      global:
+        leaderElection:
+          namespace: "cert-manager"
       namespace: "cert-manager"
       resources:
         requests:
