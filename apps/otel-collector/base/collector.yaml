@@ -4,7 +4,7 @@ metadata:
   name: otel
   namespace: observability
 spec:
-  mode: statefulset
+  mode: statefulset #test
   replicas: 1
   config:
     receivers:
