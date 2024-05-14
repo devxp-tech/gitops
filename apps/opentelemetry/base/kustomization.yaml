@@ -19,7 +19,7 @@ helmCharts:
           enabled: true
         autoGenerateCert:
           enabled: true
-        servicePort: 9443
+        servicePort: 8443
       manager:
         collectorImage:
           repository: "otel/opentelemetry-collector-k8s"
