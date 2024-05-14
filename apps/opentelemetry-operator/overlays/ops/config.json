@@ -1,6 +1,6 @@
 {
-  "appName": "opentelemetry",
-  "userGivenName": "opentelemetry",
+  "appName": "opentelemetry-operator",
+  "userGivenName": "opentelemetry-operator",
   "destNamespace": "opentelemetry-operator",
   "destServer": "https://kubernetes.default.svc",
   "srcPath": "apps/opentelemetry-operator/overlays/ops",
