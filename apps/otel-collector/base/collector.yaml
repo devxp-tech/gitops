@@ -1,4 +1,4 @@
-apiVersion: opentelemetry.io/v1alpha1
+apiVersion: opentelemetry.io/v1beta1
 kind: OpenTelemetryCollector
 metadata:
   name: otel
@@ -6,7 +6,7 @@ metadata:
 spec:
   mode: statefulset
   replicas: 1
-  config: |
+  config:
     receivers:
       jaeger:
         protocols:
@@ -29,6 +29,7 @@ spec:
         timeout: 10s
 
     exporters:
+      debug:
       otlp/tempo:
         endpoint: "tempo.observability.svc:4317"
         tls:
@@ -54,7 +55,7 @@ spec:
         metrics:
           receivers: [otlp, servicegraph]
           processors: [memory_limiter, batch]
-          exporters: [prometheus]
+          exporters: [debug, prometheus]
         traces:
           receivers: [jaeger, otlp, zipkin]
           processors: [memory_limiter, batch]
@@ -62,7 +63,7 @@ spec:
         logs:
           receivers: [otlp]
           processors: [memory_limiter, batch]
-          # exporters: [logging]
+          exporters: [debug]
         metrics/spanmetrics:
           receivers: [spanmetrics]
           exporters: [prometheus]
