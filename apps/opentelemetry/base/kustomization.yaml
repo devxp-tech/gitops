@@ -12,11 +12,11 @@ helmCharts:
     repo: https://open-telemetry.github.io/opentelemetry-helm-charts
     valuesInline:
       nameOverride: opentelemetry-operator
-      # admissionWebhooks:
-      #   certManager:
-      #     enabled: false
-      #   autoGenerateCert:
-      #     enabled: true
+      admissionWebhooks:
+        certManager:
+          enabled: true
+        autoGenerateCert:
+          enabled: true
       manager:
         collectorImage:
           repository: "otel/opentelemetry-collector-k8s"
