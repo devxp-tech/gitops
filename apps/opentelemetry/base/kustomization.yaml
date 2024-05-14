@@ -14,10 +14,11 @@ helmCharts:
     valuesInline:
       nameOverride: opentelemetry-operator
       admissionWebhooks:
+        create: false
         certManager:
-          enabled: true
-        autoGenerateCert:
           enabled: false
+        autoGenerateCert:
+          enabled: true
       manager:
         collectorImage:
           repository: "otel/opentelemetry-collector-k8s"
@@ -25,5 +26,3 @@ helmCharts:
           enabled: true
       #   env:
       #     ENABLE_WEBHOOKS: "false"
-      # admissionWebhooks:
-      #   create: false
