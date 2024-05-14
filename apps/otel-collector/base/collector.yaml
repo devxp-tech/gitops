@@ -7,10 +7,6 @@ spec:
   mode: statefulset
   replicas: 1
   config: |
-    extensions:
-      health_check:
-      pprof:
-      zpages:
     receivers:
       jaeger:
         protocols:
@@ -32,33 +28,27 @@ spec:
         send_batch_size: 5000
         timeout: 10s
 
+    exporters:
+      logging:
+        loglevel: info
+      otlp/tempo:
+        endpoint: "tempo.observability.svc:4317"
+        tls:
+          insecure: true
+      prometheus:
+        endpoint: "0.0.0.0:8889"
+
     connectors:
       spanmetrics:
-        # histogram:
-        #   unit: s
-        # namespace: traces.spanmetrics
-        # metrics_flush_interval: 60s
       servicegraph:
         store:
           ttl: 30s
           max_items: 50
 
-    exporters:
-      # logging:
-      #   loglevel: info
-      otlp/tempo:
-        endpoint: "tempo.observability.svc:4317"
-        tls:
-          insecure: true
-      # prometheus:
-      #   endpoint: "0.0.0.0:8889"
-
-      # prometheusremotewrite:
-      #   endpoint: http://prometheus-community-kube-prometheus.monitoring.svc:9090/api/v1/write
-      #   tls:
-      #     insecure: true
-      #   target_info:
-      #     enabled: true
+    extensions:
+      health_check:
+      pprof:
+      zpages:
 
     service:
       extensions: [health_check, pprof, zpages]
@@ -66,7 +56,7 @@ spec:
         metrics:
           receivers: [otlp, servicegraph]
           processors: [memory_limiter, batch]
-          #exporters: [logging, prometheus]
+          exporters: [logging, prometheus]
         traces:
           receivers: [jaeger, otlp, zipkin]
           processors: [memory_limiter, batch]
@@ -74,7 +64,7 @@ spec:
         logs:
           receivers: [otlp]
           processors: [memory_limiter, batch]
-          # exporters: [logging]
+          exporters: [logging]
         metrics/spanmetrics:
           receivers: [spanmetrics]
-          #exporters: [prometheus]
+          exporters: [prometheus]
