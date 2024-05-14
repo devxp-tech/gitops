@@ -16,7 +16,7 @@ helmCharts:
       admissionWebhooks:
         # create: false
         certManager:
-          enabled: true
+          enabled: false
         autoGenerateCert:
           enabled: true
         servicePort: 443
