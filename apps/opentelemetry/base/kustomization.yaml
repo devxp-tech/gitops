@@ -29,5 +29,5 @@ helmCharts:
           enabled: true
         # env:
         #   ENABLE_WEBHOOKS: "false"
-      crds:
-        create: true
+      # crds:
+      #   create: true
