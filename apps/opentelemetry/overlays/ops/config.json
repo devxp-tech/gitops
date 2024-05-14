@@ -1,7 +1,7 @@
 {
   "appName": "opentelemetry",
   "userGivenName": "opentelemetry",
-  "destNamespace": "opentelemetry-operator-system",
+  "destNamespace": "opentelemetry-operator",
   "destServer": "https://kubernetes.default.svc",
   "srcPath": "apps/opentelemetry/overlays/ops",
   "srcRepoURL": "https://github.com/devxp-tech/gitops.git",

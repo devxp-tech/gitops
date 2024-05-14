@@ -81,7 +81,7 @@ helmCharts:
                 - kube-system
                 - monitoring
                 - observability
-                - opentelemetry-operator-system
+                - opentelemetry-operator
               keepLabels:
                 turndown: ignore
               params:
