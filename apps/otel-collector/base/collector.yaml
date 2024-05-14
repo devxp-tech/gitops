@@ -29,8 +29,6 @@ spec:
         timeout: 10s
 
     exporters:
-      logging:
-        loglevel: info
       otlp/tempo:
         endpoint: "tempo.observability.svc:4317"
         tls:
@@ -60,11 +58,10 @@ spec:
         traces:
           receivers: [jaeger, otlp, zipkin]
           processors: [memory_limiter, batch]
-          exporters: [otlp/tempo, spanmetrics, servicegraph] #logging
+          exporters: [otlp/tempo, spanmetrics, servicegraph]
         logs:
           receivers: [otlp]
           processors: [memory_limiter, batch]
-          exporters: [logging]
         metrics/spanmetrics:
           receivers: [spanmetrics]
           exporters: [prometheus]
