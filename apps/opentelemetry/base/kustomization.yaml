@@ -16,13 +16,13 @@ helmCharts:
       admissionWebhooks:
         create: false
         certManager:
-          enabled: false
-        autoGenerateCert:
           enabled: true
+        autoGenerateCert:
+          enabled: false
       manager:
         collectorImage:
           repository: "otel/opentelemetry-collector-k8s"
         serviceMonitor:
           enabled: true
-      #   env:
-      #     ENABLE_WEBHOOKS: "false"
+        env:
+          ENABLE_WEBHOOKS: "false"
