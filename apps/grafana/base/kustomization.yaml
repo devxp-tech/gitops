@@ -254,6 +254,14 @@ helmCharts:
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/karpenter
+            - name: "opentelemetry"
+              orgId: 1
+              folder: "OpenTelemetry Dashboards"
+              type: file
+              disableDeletion: false
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/opentelemetry
       dashboards:
         default:
           # GoLang dashboards
@@ -388,3 +396,8 @@ helmCharts:
           karpenter:
             datasource: Prometheus
             gnetId: 20398
+        opentelemetry:
+          # OpenTelemetry dashboards
+          opentelemetry-apm:
+            datasource: Prometheus
+            gnetId: 19419
