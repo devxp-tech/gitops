@@ -97,7 +97,7 @@ helmCharts:
               type: prometheus
               url: http://prometheus-community-kube-prometheus.monitoring.svc.cluster.local:9090
               # access: proxy
-              isDefault: false
+              isDefault: true
               jsonData:
                 manageAlerts: true
                 alertmanagerUid: alertmanager
@@ -107,7 +107,6 @@ helmCharts:
               type: prometheus
               url: http://mimir-nginx.monitoring.svc:80/prometheus
               # access: proxy
-              isDefault: true
               jsonData:
                 manageAlerts: true
                 alertmanagerUid: alertmanager
