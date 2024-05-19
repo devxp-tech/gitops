@@ -59,7 +59,7 @@ spec:
         traces:
           receivers: [jaeger, otlp, zipkin]
           processors: [memory_limiter, batch]
-          exporters: [otlp/tempo, spanmetrics, servicegraph]
+          exporters: [otlp/tempo, servicegraph] #spanmetrics
         logs:
           receivers: [otlp]
           processors: [memory_limiter, batch]
