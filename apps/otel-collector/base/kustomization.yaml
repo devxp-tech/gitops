@@ -4,3 +4,4 @@ namespace: observability
 resources:
   - collector.yaml
   - instrumentaion.yaml
+  - service-monitor.yaml
