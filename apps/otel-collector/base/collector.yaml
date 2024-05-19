@@ -34,8 +34,8 @@ spec:
         endpoint: "tempo.observability.svc:4317"
         tls:
           insecure: true
-      prometheus:
-        endpoint: "0.0.0.0:8889"
+      # prometheus:
+      #   endpoint: "0.0.0.0:8889"
 
     connectors:
       spanmetrics:
@@ -55,7 +55,7 @@ spec:
         metrics:
           receivers: [otlp, servicegraph]
           processors: [memory_limiter, batch]
-          exporters: [debug, prometheus]
+          exporters: [debug] #prometheus
         traces:
           receivers: [jaeger, otlp, zipkin]
           processors: [memory_limiter, batch]
