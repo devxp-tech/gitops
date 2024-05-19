@@ -6,13 +6,14 @@ metadata:
   labels:
     app: otel-collector
     application: otel-collector
+    app.kubernetes.io/name: otel-collector
 spec:
   namespaceSelector:
     matchNames:
     - default
   selector:
     matchLabels:
-      app: otel-collector
+      app.kubernetes.io/name: otel-collector
   endpoints:
     - port: prometheus #tcp-node
       path: /metrics
@@ -27,13 +28,14 @@ metadata:
   labels:
     app: otel-collector-monitoring
     application: otel-collector
+    app.kubernetes.io/name: otel-collector-monitoring
 spec:
   namespaceSelector:
     matchNames:
     - default
   selector:
     matchLabels:
-      app: otel-collector
+      app.kubernetes.io/name: otel-collector-monitoring
   endpoints:
     - port: monitoring
       path: /metrics
