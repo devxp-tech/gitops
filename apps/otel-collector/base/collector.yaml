@@ -28,7 +28,7 @@ spec:
       batch:
         send_batch_size: 5000
         timeout: 10s
-      spanmetrics:
+      span:
         metrics_exporter: prometheus
         dimensions:
           - name: http.method
@@ -85,6 +85,11 @@ spec:
         #   receivers: [spanmetrics]
         #   processors: [memory_limiter, batch]
         #   exporters: [prometheus]
+        ### Test
+        traces/servicegraph:
+          receivers: [otlp]
+          processors: [span, servicegraph]
+          exporters: [otlp/dummy-exporter] # dummy
         metrics/spanmetrics:
             receivers: [otlp/dummy-receiver]
             processors: [memory_limiter, batch]
