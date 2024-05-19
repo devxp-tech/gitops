@@ -65,8 +65,8 @@ spec:
           receivers: [otlp]
           processors: [memory_limiter, batch]
           exporters: [debug]
-        metrics/spanmetrics:
-          receivers: [spanmetrics]
-          processors: [memory_limiter, batch]
-          exporters: [prometheus]
+        # metrics/spanmetrics:
+        #   receivers: [spanmetrics]
+        #   processors: [memory_limiter, batch]
+        #   exporters: [prometheus]
 
