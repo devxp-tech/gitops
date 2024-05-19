@@ -53,13 +53,13 @@ spec:
       extensions: [health_check, pprof, zpages]
       pipelines:
         metrics:
-          receivers: [otlp, servicegraph]
+          receivers: [otlp] #servicegraph
           processors: [memory_limiter, batch]
           exporters: [debug] #prometheus
         traces:
           receivers: [jaeger, otlp, zipkin]
           processors: [memory_limiter, batch]
-          exporters: [otlp/tempo, servicegraph] #spanmetrics
+          exporters: [otlp/tempo] #spanmetrics #servicegraph
         logs:
           receivers: [otlp]
           processors: [memory_limiter, batch]
