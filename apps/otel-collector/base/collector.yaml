@@ -56,15 +56,17 @@ spec:
         metrics:
           receivers: [otlp, servicegraph]
           processors: [memory_limiter, batch]
-          exporters: [debug, prometheus]
+          exporters: [logging, prometheus]
         traces:
           receivers: [jaeger, otlp, zipkin]
           processors: [memory_limiter, batch]
-          exporters: [otlp/tempo, servicegraph, spanmetrics]
+          exporters: [logging, otlp/tempo, spanmetrics, servicegraph]
         logs:
           receivers: [otlp]
           processors: [memory_limiter, batch]
-          exporters: [debug]
+          exporters: [logging]
         metrics/spanmetrics:
           receivers: [spanmetrics]
+          processors: [memory_limiter, batch]
           exporters: [prometheus]
+
