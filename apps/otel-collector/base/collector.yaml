@@ -28,6 +28,8 @@ spec:
       batch:
         send_batch_size: 5000
         timeout: 10s
+      spanmetrics:
+        metrics_exporter: prometheus
 
     exporters:
       debug:
@@ -39,7 +41,7 @@ spec:
         endpoint: "0.0.0.0:8889"
 
     connectors:
-      spanmetrics:
+      # spanmetrics:
       servicegraph:
         store:
           ttl: 30s
@@ -59,7 +61,7 @@ spec:
           exporters: [debug, prometheus]
         traces:
           receivers: [jaeger, otlp, zipkin]
-          processors: [memory_limiter, batch]
+          processors: [memory_limiter, batch, spanmetrics]
           exporters: [otlp/tempo, servicegraph] #spanmetrics
         logs:
           receivers: [otlp]
