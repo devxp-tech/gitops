@@ -10,7 +10,7 @@ metadata:
 spec:
   namespaceSelector:
     matchNames:
-    - default
+    - observability
   selector:
     matchLabels:
       app.kubernetes.io/name: otel-collector
@@ -34,7 +34,7 @@ metadata:
 spec:
   namespaceSelector:
     matchNames:
-    - default
+    - observability
   selector:
     matchLabels:
       app.kubernetes.io/name: otel-collector-monitoring
