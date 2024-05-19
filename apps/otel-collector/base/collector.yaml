@@ -37,12 +37,12 @@ spec:
       # prometheus:
       #   endpoint: "0.0.0.0:8889"
 
-    connectors:
-      spanmetrics:
-      servicegraph:
-        store:
-          ttl: 30s
-          max_items: 50
+    # connectors:
+    #   spanmetrics:
+    #   servicegraph:
+    #     store:
+    #       ttl: 30s
+    #       max_items: 50
 
     extensions:
       health_check:
