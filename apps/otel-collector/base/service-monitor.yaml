@@ -14,7 +14,7 @@ spec:
     matchLabels:
       app: otel-collector
   endpoints:
-    - port: tcp-node
+    - port: prometheus #tcp-node
       path: /metrics
       scheme: http
       interval: 30s
