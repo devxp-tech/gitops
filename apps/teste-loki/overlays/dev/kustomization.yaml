@@ -15,6 +15,10 @@ helmCharts:
     repo: https://devxp-tech.github.io/helm-charts
     valuesInline:
       name: teste-loki
+      argoRollouts:
+        enabled: false
+      deployment:
+        enabled: true
       image:
         repository: ghcr.io/devxp-tech/teste-loki
         tag: cd6fc9c0
