@@ -3,6 +3,7 @@ kind: Kustomization
 namespace: teste-loki
 resources:
   - ../../base
+  - instrumentation.yaml
   - role.yaml
   - postgres-secrets-sealed.yaml
 commonLabels:
