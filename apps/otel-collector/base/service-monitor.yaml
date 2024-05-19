@@ -9,7 +9,7 @@ metadata:
 spec:
   namespaceSelector:
     matchNames:
-      - otel-collector
+    - default
   selector:
     matchLabels:
       app: otel-collector
@@ -18,6 +18,28 @@ spec:
       path: /metrics
       scheme: http
       interval: 30s
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: otel-collector-monitoring
+  namespace: observability
+  labels:
+    app: otel-collector-monitoring
+    application: otel-collector
+spec:
+  namespaceSelector:
+    matchNames:
+    - default
+  selector:
+    matchLabels:
+      app: otel-collector
+  endpoints:
+    - port: monitoring
+      path: /metrics
+      scheme: http
+      interval: 60s
+
 
       # - job_name: "otel-collector"
       #   honor_labels: true
