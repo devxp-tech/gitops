@@ -5,6 +5,7 @@ metadata:
   namespace: observability
 spec:
   mode: statefulset #test
+  # image: otel/opentelemetry-collector-contrib:0.90.1
   replicas: 1
   config:
     receivers:
