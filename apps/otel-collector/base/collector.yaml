@@ -40,9 +40,6 @@ spec:
 
     connectors:
       servicegraph:
-        store:
-          ttl: 30s
-          max_items: 50
         dimensions:
           - http.method
         latency_histogram_buckets:
