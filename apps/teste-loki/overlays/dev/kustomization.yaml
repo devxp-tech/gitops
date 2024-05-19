@@ -17,6 +17,8 @@ helmCharts:
       image:
         repository: ghcr.io/devxp-tech/teste-loki
         tag: cd6fc9c0
+      podAnnotations:
+        instrumentation.opentelemetry.io/inject-go: "true"
       envFrom:
         - secretRef:
             name: postgres-secrets
