@@ -20,7 +20,7 @@ helmCharts:
           enableAnalysis: true
   - name: istiod
     releaseName: istiod
-    version: 1.21.0
+    version: 1.22.0
     repo: https://istio-release.storage.googleapis.com/charts
     valuesInline:
       fullnameOverride: istiod
