@@ -55,14 +55,14 @@ Argo Workflows is an open source container-native workflow engine for orchestrat
 | :----------------------: | :---------: | :--------------------------------------------------------: | :----: |
 |      argo-rollouts       |   2.35.1    |            https://argoproj.github.io/argo-helm            |   ✅    |
 |      argo-workflows      |   0.41.1    |            https://argoproj.github.io/argo-helm            |   ✅    |
-|           base           |   1.21.0    |    https://istio-release.storage.googleapis.com/charts     |   ✅    |
+|           base           |   1.22.0    |    https://istio-release.storage.googleapis.com/charts     |   ✅    |
 |       cert-manager       |   v1.14.4   |                 https://charts.jetstack.io                 |   ✅    |
 |          cilium          |   1.15.4    |                   https://helm.cilium.io                   |   ✅    |
 |      cost-analyzer       |    2.2.1    |          https://kubecost.github.io/cost-analyzer          |   ✅    |
 |        devxp-app         |   0.2.38    |          https://devxp-tech.github.io/helm-charts          |   ✅    |
 |           dex            |   0.17.1    |                  https://charts.dexidp.io                  |   ✅    |
 |       external-dns       |    7.1.2    |             https://charts.bitnami.com/bitnami             |   ✅    |
-|         gateway          |   1.21.0    |    https://istio-release.storage.googleapis.com/charts     |   ✅    |
+|         gateway          |   1.22.0    |    https://istio-release.storage.googleapis.com/charts     |   ✅    |
 |         grafana          |    7.3.8    |           https://grafana.github.io/helm-charts            |   ✅    |
 |          jaeger          |    2.1.0    |        https://jaegertracing.github.io/helm-charts         |   ✅    |
 |        karpenter         |   v0.33.4   |               oci://public.ecr.aws/karpenter               |   ✅    |
