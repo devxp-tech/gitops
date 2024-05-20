@@ -12,6 +12,8 @@ helmCharts:
     repo: https://kiali.org/helm-charts
     valuesInline:
       clusterRoleCreator: true
+      image:
+        pullPolicy: IfNotPresent
       cr:
         create: true
         namespace: istio-system
