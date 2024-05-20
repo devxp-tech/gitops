@@ -48,6 +48,7 @@ helmCharts:
             # address: jaeger-collector.observability.svc.cluster.local:9411
         proxy:
           clusterDomain: "cluster.local"
+          imagePullPolicy: IfNotPresent # test
           # Resources for the sidecar.
           resources:
             requests:
