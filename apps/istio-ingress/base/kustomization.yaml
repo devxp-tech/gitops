@@ -12,6 +12,8 @@ helmCharts:
     repo: https://istio-release.storage.googleapis.com/charts
     valuesInline:
       name: istio-ingressgateway
+      defaults:
+        imagePullPolicy: IfNotPresent
       labels:
         app_label: istio-ingressgateway
       podAnnotations:
