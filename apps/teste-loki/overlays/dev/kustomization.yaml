@@ -24,7 +24,7 @@ helmCharts:
         tag: cd6fc9c0
       podAnnotations:
         sidecar.opentelemetry.io/inject: "true"
-        instrumentation.opentelemetry.io/inject-go: "true"
+        instrumentation.opentelemetry.io/inject-go: "teste-loki"
       envFrom:
         - secretRef:
             name: postgres-secrets
