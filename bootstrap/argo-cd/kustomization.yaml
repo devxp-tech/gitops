@@ -26,6 +26,13 @@ patches:
         value: IfNotPresent
   - target:
       kind: Deployment
+      name: argocd-redis
+    patch: |-
+      - op: replace
+        path: /spec/template/spec/containers/0/imagePullPolicy
+        value: IfNotPresent
+  - target:
+      kind: Deployment
       name: argocd-dex-server
     patch: |-
       - op: replace
