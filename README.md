@@ -136,6 +136,7 @@ Argo Workflows is an open source container-native workflow engine for orchestrat
 ### 🖊️ Code of Conduct
 
 See [CODE-OF-CONDUCT.md](.github/CODE-OF-CONDUCT.md).
+
 ### 🔒 Security
 
 See [SECURITY.md](.github/SECURITY.md).
@@ -144,7 +145,7 @@ See [SECURITY.md](.github/SECURITY.md).
 
 We ❤️ contributions big or small. [See our guide](contributing.md) on how to get started.
 
-### Thanks to all our contributors!
+### Thanks to all our contributors
 
 <a href="https://github.com/devxp-tech/gitops/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=devxp-tech/gitops" />
