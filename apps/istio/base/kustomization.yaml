@@ -24,8 +24,12 @@ helmCharts:
     repo: https://istio-release.storage.googleapis.com/charts
     valuesInline:
       fullnameOverride: istiod
+      defaults:
+        global:
+          imagePullPolicy: IfNotPresent
       trustDomain: "cluster.local"
       global:
+        imagePullPolicy: IfNotPresent
         defaultResources:
           requests:
             cpu: 10m
