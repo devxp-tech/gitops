@@ -6,13 +6,18 @@ resources:
 helmCharts:
   - name: devxp-app
     releaseName: devxp-app
-    version: 0.2.42
+    version: 0.2.43
     repo: https://devxp-tech.github.io/helm-charts
     valuesInline:
       name: template-java
       global:
         network:
           domain: devxp-tech.io
+      monitoring:
+        actuator:
+          enabled: true
+        serviceMonitor:
+          enabled: true
       podAnnotations:
         instrumentation.opentelemetry.io/inject-java: "true"
         # sidecar.opentelemetry.io/inject: "true"
