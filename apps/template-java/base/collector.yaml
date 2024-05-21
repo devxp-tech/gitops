@@ -1,0 +1,45 @@
+apiVersion: opentelemetry.io/v1alpha1
+kind: OpenTelemetryCollector
+metadata:
+  name: template-java
+spec:
+  mode: sidecar
+  config: |
+    receivers:
+      jaeger:
+        protocols:
+          grpc:
+          thrift_compact:
+          thrift_http:
+      otlp:
+        protocols:
+          grpc:
+          http:
+
+    processors:
+      memory_limiter:
+        check_interval: 1s
+        limit_percentage: 75
+        spike_limit_percentage: 15
+      batch:
+        send_batch_size: 10000
+        timeout: 10s
+
+    exporters:
+      logging:
+      otlphttp:
+        endpoint: http://tempo.observability.svc.cluster.local:4318
+        tls:
+          insecure: true
+
+      # otlp:
+      #   endpoint: "otel-collector.observability.svc.cluster.local:4318"
+      #   tls:
+      #     insecure: true
+
+    service:
+      pipelines:
+        traces:
+          receivers: [jaeger, otlp]
+          processors: [memory_limiter, batch]
+          exporters: [otlphttp, logging]
