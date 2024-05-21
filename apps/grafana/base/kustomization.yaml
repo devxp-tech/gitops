@@ -261,6 +261,14 @@ helmCharts:
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/opentelemetry
+            - name: "java"
+              orgId: 1
+              folder: "Java Dashboards"
+              type: file
+              disableDeletion: false
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/java
       dashboards:
         default:
           # GoLang dashboards
@@ -400,3 +408,8 @@ helmCharts:
           opentelemetry-apm:
             datasource: Prometheus
             gnetId: 19419
+        java:
+          # Sprintboot dashboards
+          springboot-observability:
+            datasource: Prometheus
+            gnetId: 17175
