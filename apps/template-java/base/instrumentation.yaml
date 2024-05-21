@@ -4,10 +4,13 @@ metadata:
   name: template-java
 spec:
   exporter:
-    endpoint: http://otel-collector.observability.svc.cluster.local:4318
+    endpoint: http://otel-collector.observability.svc.cluster.local:4317 #4318
   propagators:
     - tracecontext
     - baggage
+    - b3
   sampler:
     type: parentbased_traceidratio
-    argument: "1"
+    argument: "0.25"
+  java:
+    image: ghcr.io/open-telemetry/opentelemetry-operator/autoinstrumentation-java:latest
