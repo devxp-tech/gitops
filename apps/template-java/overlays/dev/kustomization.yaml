@@ -16,8 +16,6 @@ helmCharts:
       monitoring:
         actuator:
           enabled: true
-        serviceMonitor:
-          enabled: true
       podAnnotations:
         instrumentation.opentelemetry.io/inject-java: "true"
         # sidecar.opentelemetry.io/inject: "true"
