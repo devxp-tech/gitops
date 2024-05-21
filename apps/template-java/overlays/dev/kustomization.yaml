@@ -14,8 +14,8 @@ helmCharts:
         network:
           domain: devxp-tech.io
       podAnnotations:
-        sidecar.opentelemetry.io/inject: "true"
-        # instrumentation.opentelemetry.io/inject-java: "teste"
+        # sidecar.opentelemetry.io/inject: "true"
+        instrumentation.opentelemetry.io/inject-java: "true"
       image:
         repository: ghcr.io/devxp-tech/template-java
         tag: d1ea4b6c
