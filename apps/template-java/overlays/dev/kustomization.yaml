@@ -16,6 +16,10 @@ helmCharts:
       monitoring:
         actuator:
           enabled: true
+          port:
+            name: tcp-metrics
+            port: 9090
+            targetPort: 9090
       podAnnotations:
         instrumentation.opentelemetry.io/inject-java: "true"
         # sidecar.opentelemetry.io/inject: "true"
@@ -38,10 +42,10 @@ helmCharts:
         enabled: true
         livenessProbe:
           path: /actuator/health/liveness
-          port: 8080
+          port: 9090
         readinessProbe:
           path: /actuator/health/readiness
-          port: 8080
+          port: 9090
       sa:
         enabled: true
       serviceMonitor:
