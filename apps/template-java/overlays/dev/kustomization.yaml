@@ -6,7 +6,7 @@ resources:
 helmCharts:
   - name: devxp-app
     releaseName: devxp-app
-    version: 0.2.47
+    version: 0.2.48
     repo: https://devxp-tech.github.io/helm-charts
     valuesInline:
       name: template-java
@@ -36,12 +36,6 @@ helmCharts:
           cpu: 100m
       probe:
         enabled: true
-        livenessProbe:
-          path: /actuator/health/liveness
-          port: 9090
-        readinessProbe:
-          path: /actuator/health/readiness
-          port: 9090
       sa:
         enabled: true
       serviceMonitor:
