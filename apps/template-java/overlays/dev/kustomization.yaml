@@ -13,6 +13,10 @@ helmCharts:
       global:
         network:
           domain: devxp-tech.io
+      argoRollouts:
+        enabled: false
+      deployment:
+        enabled: true
       monitoring:
         actuator:
           enabled: true
