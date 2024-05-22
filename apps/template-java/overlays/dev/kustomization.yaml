@@ -6,7 +6,7 @@ resources:
 helmCharts:
   - name: devxp-app
     releaseName: devxp-app
-    version: 0.2.43
+    version: 0.2.44
     repo: https://devxp-tech.github.io/helm-charts
     valuesInline:
       name: template-java
@@ -16,16 +16,16 @@ helmCharts:
       monitoring:
         actuator:
           enabled: true
-          port:
-            name: tcp-metrics
-            port: 9090
-            targetPort: 9090
+          # port:
+          #   name: tcp-metrics
+          #   port: 9090
+          #   targetPort: 9090
       # podAnnotations:
       #   instrumentation.opentelemetry.io/inject-java: "true"
         # sidecar.opentelemetry.io/inject: "true"
       image:
         repository: ghcr.io/devxp-tech/template-java
-        tag: 79eb6133
+        tag: 7bbea543
       autoscaling:
         enabled: true
         minReplicas: 1
@@ -50,9 +50,9 @@ helmCharts:
         enabled: true
       serviceMonitor:
         enabled: true
-        scheme: http
-        path: /actuator/prometheus
-        interval: 30s
+        # scheme: http
+        # path: /actuator/prometheus
+        # interval: 30s
       quota:
         enabled: false
         requests:
