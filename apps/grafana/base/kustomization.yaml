@@ -269,12 +269,16 @@ helmCharts:
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/java
+            - name: "golamg"
+              orgId: 1
+              folder: "Golang Dashboards"
+              type: file
+              disableDeletion: false
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/golang
       dashboards:
         default:
-          # GoLang dashboards
-          golang-metrics:
-            datasource: Prometheus
-            gnetId: 13240
           # Kubernetes dashboards
           core-dns:
             datasource: Prometheus
@@ -418,3 +422,7 @@ helmCharts:
           go-processes:
             datasource: Prometheus
             gnetId: 6671
+          # GoLang dashboards
+          golang-metrics:
+            datasource: Prometheus
+            gnetId: 13240
