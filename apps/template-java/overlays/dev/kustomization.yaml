@@ -6,7 +6,7 @@ resources:
 helmCharts:
   - name: devxp-app
     releaseName: devxp-app
-    version: 0.2.53
+    version: 0.2.54
     repo: https://devxp-tech.github.io/helm-charts
     valuesInline:
       name: template-java
@@ -35,17 +35,15 @@ helmCharts:
         limits:
           memory: 256Mi
           cpu: 100m
-      # probe:
-      #   enabled: true
       sa:
         enabled: true
       monitoring:
         serviceMonitor:
           enabled: true
-      livenessProbe:
-        enabled: false
-      readinessProbe:
-        enabled: false
+      # livenessProbe:
+      #   enabled: false
+      # readinessProbe:
+      #   enabled: false
       quota:
         enabled: false
         requests:
