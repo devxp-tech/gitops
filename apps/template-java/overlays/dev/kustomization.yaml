@@ -22,7 +22,7 @@ helmCharts:
       #   proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
       image:
         repository: ghcr.io/devxp-tech/template-java
-        tag: e15b3e09
+        tag: e8b9cab9
       autoscaling:
         enabled: true
         minReplicas: 1
