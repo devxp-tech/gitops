@@ -15,11 +15,10 @@ helmCharts:
           domain: devxp-tech.io
       actuator:
         enabled: true
-      podAnnotations:
-        sidecar.istio.io/rewriteAppHTTPProbers: "false"
-      #   instrumentation.opentelemetry.io/inject-java: "true"
-        # sidecar.opentelemetry.io/inject: "true"
       # podAnnotations:
+      #   sidecar.istio.io/rewriteAppHTTPProbers: "false"
+      #   instrumentation.opentelemetry.io/inject-java: "true"
+      #   sidecar.opentelemetry.io/inject: "true"
       #   proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
       image:
         repository: ghcr.io/devxp-tech/template-java
