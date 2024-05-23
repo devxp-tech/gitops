@@ -269,7 +269,7 @@ helmCharts:
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/java
-            - name: "golamg"
+            - name: "golang"
               orgId: 1
               folder: "Golang Dashboards"
               type: file
