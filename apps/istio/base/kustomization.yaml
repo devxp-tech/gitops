@@ -82,5 +82,7 @@ helmCharts:
           # List of fully qualified services to exclude from mtls
           # TODO: add the templating.
           mtlsExcludedServices:
+            - "kubernetes"
+            - "kubernetes.default.svc"
             - "kubernetes.default.svc.cluster.local"
             - "10.100.0.1"
