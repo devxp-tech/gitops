@@ -7,7 +7,7 @@ resources:
   - prometheus-rules.yaml
   - service-entry.yaml
   - service-monitor.yaml
-  # - telemetry.yaml
+  - telemetry.yaml
 helmCharts:
   - name: base
     releaseName: base
