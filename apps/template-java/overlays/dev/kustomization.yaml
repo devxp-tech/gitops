@@ -6,7 +6,7 @@ resources:
 helmCharts:
   - name: devxp-app
     releaseName: devxp-app
-    version: 0.2.48
+    version: 0.2.49
     repo: https://devxp-tech.github.io/helm-charts
     valuesInline:
       name: template-java
