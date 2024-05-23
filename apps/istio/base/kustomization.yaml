@@ -76,7 +76,7 @@ helmCharts:
           tracing:
             sampling: 10
           discoveryAddress: istiod.istio-system.svc:15012
-          # holdApplicationUntilProxyStarts: true
+          holdApplicationUntilProxyStarts: true
           gatewayTopology:
             numTrustedProxies: 2
           # List of fully qualified services to exclude from mtls
