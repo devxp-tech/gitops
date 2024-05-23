@@ -11,14 +11,10 @@ commonLabels:
 helmCharts:
   - name: devxp-app
     releaseName: devxp-app
-    version: 0.2.42
+    version: 0.2.51
     repo: https://devxp-tech.github.io/helm-charts
     valuesInline:
       name: teste-loki
-      argoRollouts:
-        enabled: false
-      deployment:
-        enabled: true
       image:
         repository: ghcr.io/devxp-tech/teste-loki
         tag: cd6fc9c0
@@ -49,6 +45,7 @@ helmCharts:
           port: 8080
         initialDelaySeconds: 15
         periodSeconds: 10
+
 # - name: postgresql
 #   releaseName: postgresql
 #   version: 12.1.5
