@@ -418,11 +418,18 @@ helmCharts:
             datasource: Prometheus
             gnetId: 17175
         golang:
-          # Sprintboot dashboards
+          # GoLang dashboards
           go-processes:
             datasource: Prometheus
             gnetId: 6671
-          # GoLang dashboards
+          go-processes-status:
+            datasource: Prometheus
+            gnetId: 10617
           golang-metrics:
             datasource: Prometheus
             gnetId: 13240
+          golang-metrics2:
+            datasource: Prometheus
+            gnetId: 10826
+
+
