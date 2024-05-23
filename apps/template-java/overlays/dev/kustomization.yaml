@@ -18,7 +18,7 @@ helmCharts:
       podAnnotations:
         proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
         instrumentation.opentelemetry.io/inject-java: "true"
-        sidecar.opentelemetry.io/inject: "true"
+        # sidecar.opentelemetry.io/inject: "true"
       #   sidecar.istio.io/rewriteAppHTTPProbers: "false"
       image:
         repository: ghcr.io/devxp-tech/template-java
