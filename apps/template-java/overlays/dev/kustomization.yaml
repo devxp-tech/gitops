@@ -21,7 +21,7 @@ helmCharts:
         # sidecar.opentelemetry.io/inject: "true"
       image:
         repository: ghcr.io/devxp-tech/template-java
-        tag: c97b06f5
+        tag: e15b3e09
       autoscaling:
         enabled: true
         minReplicas: 1
