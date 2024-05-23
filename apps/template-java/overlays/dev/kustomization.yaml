@@ -13,9 +13,8 @@ helmCharts:
       global:
         network:
           domain: devxp-tech.io
-      monitoring:
-        actuator:
-          enabled: true
+      actuator:
+        enabled: true
       podAnnotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
       #   instrumentation.opentelemetry.io/inject-java: "true"
@@ -37,15 +36,13 @@ helmCharts:
         limits:
           memory: 256Mi
           cpu: 100m
-      probe:
-        enabled: true
+      # probe:
+      #   enabled: true
       sa:
         enabled: true
-      serviceMonitor:
-        enabled: true
-        # scheme: http
-        # path: /actuator/prometheus
-        # interval: 30s
+      monitoring:
+        serviceMonitor:
+          enabled: true
       quota:
         enabled: false
         requests:
