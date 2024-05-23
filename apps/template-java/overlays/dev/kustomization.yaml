@@ -15,11 +15,11 @@ helmCharts:
           domain: devxp-tech.io
       actuator:
         enabled: true
-      # podAnnotations:
-      #   proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
+      podAnnotations:
+        proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
+        instrumentation.opentelemetry.io/inject-java: "true"
+        sidecar.opentelemetry.io/inject: "true"
       #   sidecar.istio.io/rewriteAppHTTPProbers: "false"
-      #   instrumentation.opentelemetry.io/inject-java: "true"
-      #   sidecar.opentelemetry.io/inject: "true"
       image:
         repository: ghcr.io/devxp-tech/template-java
         tag: e8b9cab9
@@ -40,10 +40,10 @@ helmCharts:
       monitoring:
         serviceMonitor:
           enabled: true
-      # livenessProbe:
-      #   enabled: false
-      # readinessProbe:
-      #   enabled: false
+      livenessProbe:
+        enabled: false
+      readinessProbe:
+        enabled: false
       quota:
         enabled: false
         requests:
