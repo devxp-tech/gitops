@@ -413,3 +413,8 @@ helmCharts:
           springboot-observability:
             datasource: Prometheus
             gnetId: 17175
+        golang:
+          # Sprintboot dashboards
+          go-processes:
+            datasource: Prometheus
+            gnetId: 6671
