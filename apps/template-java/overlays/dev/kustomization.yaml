@@ -6,7 +6,7 @@ resources:
 helmCharts:
   - name: devxp-app
     releaseName: devxp-app
-    version: 0.2.51
+    version: 0.2.53
     repo: https://devxp-tech.github.io/helm-charts
     valuesInline:
       name: template-java
@@ -16,10 +16,10 @@ helmCharts:
       actuator:
         enabled: true
       # podAnnotations:
+      #   proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
       #   sidecar.istio.io/rewriteAppHTTPProbers: "false"
       #   instrumentation.opentelemetry.io/inject-java: "true"
       #   sidecar.opentelemetry.io/inject: "true"
-      #   proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
       image:
         repository: ghcr.io/devxp-tech/template-java
         tag: e8b9cab9
