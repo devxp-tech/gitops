@@ -30,11 +30,11 @@ helmCharts:
         targetCPUUtilizationPercentage: 80
       resources:
         requests:
-          memory: 256Mi
-          cpu: 50m
+          memory: 512Mi
+          cpu: 100m
         limits:
           memory: 1Gi
-          cpu: 100m
+          cpu: 200m
       monitoring:
         serviceMonitor:
           enabled: true
