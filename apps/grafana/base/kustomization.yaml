@@ -417,6 +417,9 @@ helmCharts:
           springboot-observability:
             datasource: Prometheus
             gnetId: 17175
+          jvm-micrometer:
+            datasource: Prometheus
+            gnetId: 11955
         golang:
           # GoLang dashboards
           go-processes:
