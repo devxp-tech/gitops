@@ -38,6 +38,10 @@ helmCharts:
       monitoring:
         serviceMonitor:
           enabled: true
+      livenessProbe:
+        enabled: false
+      readinessProbe:
+        enabled: false
       quota:
         enabled: false
         requests:
