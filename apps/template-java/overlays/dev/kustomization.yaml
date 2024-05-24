@@ -22,7 +22,7 @@ helmCharts:
         #   sidecar.istio.io/rewriteAppHTTPProbers: "false"
       image:
         repository: ghcr.io/devxp-tech/template-java
-        tag: b47e81bb
+        tag: 6949a849
       autoscaling:
         enabled: true
         minReplicas: 1
