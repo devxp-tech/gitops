@@ -33,7 +33,7 @@ helmCharts:
           memory: 256Mi
           cpu: 50m
         limits:
-          memory: 512Mi
+          memory: 1Gi
           cpu: 100m
       monitoring:
         serviceMonitor:
