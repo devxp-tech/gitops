@@ -11,7 +11,7 @@ resources:
 helmCharts:
   - name: devxp-app
     releaseName: devxp-app
-    version: 0.2.58
+    version: 0.2.59
     repo: https://devxp-tech.github.io/helm-charts
     valuesInline:
       name: "backstage"
@@ -51,21 +51,18 @@ helmCharts:
       readinessProbe:
         initialDelaySeconds: 15
         periodSeconds: 10
-        httpGet:
-          port: http
-          path: "/healthcheck"
-          httpHeaders:
-            - name: Host
-              value: backstage.devxp-tech.io
+        path: "/healthcheck"
+        httpHeaders:
+          - name: Host
+            value: backstage.devxp-tech.io
       livenessProbe:
         initialDelaySeconds: 15
         periodSeconds: 10
-        httpGet:
-          port: http
-          path: "/healthcheck"
-          httpHeaders:
-            - name: Host
-              value: backstage.devxp-tech.io
+        port: http
+        path: "/healthcheck"
+        httpHeaders:
+          - name: Host
+            value: backstage.devxp-tech.io
       autoscaling:
         enabled: true
         minReplicas: 1
