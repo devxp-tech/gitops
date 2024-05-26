@@ -52,14 +52,14 @@ helmCharts:
         serviceMonitor:
           enabled: true
       livenessProbe:
-        initialDelaySeconds: 45
+        initialDelaySeconds: 60
         periodSeconds: 15
         path: "/healthcheck"
         httpHeaders:
           - name: Host
             value: backstage.devxp-tech.io
       readinessProbe:
-        initialDelaySeconds: 45
+        initialDelaySeconds: 60
         periodSeconds: 15
         path: "/healthcheck"
         httpHeaders:
