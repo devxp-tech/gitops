@@ -38,8 +38,8 @@ helmCharts:
           memory: 512Mi
           cpu: 100m
       readinessProbe:
-        initialDelaySeconds: 15
-        periodSeconds: 10
+        initialDelaySeconds: 30
+        periodSeconds: 15
         httpGet:
           port: http
           path: "/healthcheck"
@@ -47,8 +47,8 @@ helmCharts:
             - name: Host
               value: backstage.devxp-tech.io
       livenessProbe:
-        initialDelaySeconds: 15
-        periodSeconds: 10
+        initialDelaySeconds: 30
+        periodSeconds: 15
         httpGet:
           port: http
           path: "/healthcheck"
