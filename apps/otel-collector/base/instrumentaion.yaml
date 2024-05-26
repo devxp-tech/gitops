@@ -1,14 +1,13 @@
 apiVersion: opentelemetry.io/v1alpha1
 kind: Instrumentation
 metadata:
-  name: my-instrumentation
+  name: default
 spec:
   exporter:
-    endpoint: http://otel-collector.observability.svc:4317
+    endpoint: http://otel-collector.observability.svc.cluster.local:4317 #4318
   propagators:
     - tracecontext
     - baggage
-    - b3
   sampler:
     type: parentbased_traceidratio
-    argument: "0.25"
+    argument: "1"
