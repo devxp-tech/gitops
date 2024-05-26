@@ -23,8 +23,8 @@ helmCharts:
         tag: 609ddcf6
       podAnnotations:
         instrumentation.opentelemetry.io/inject-nodejs: "true"
-        sidecar.istio.io/rewriteAppHTTPProbers: "false"
-        proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
+        # sidecar.istio.io/rewriteAppHTTPProbers: "false"
+        # proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
       serviceAccount:
         annotations:
           "eks.amazonaws.com/role-arn": "arn:aws:iam::239468932737:role/backstage-lgseksd1-sa"
