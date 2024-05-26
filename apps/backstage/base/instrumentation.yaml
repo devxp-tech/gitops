@@ -11,4 +11,7 @@ spec:
   sampler:
     type: parentbased_traceidratio
     argument: "1"
-
+  nodejs:
+    env:
+      - name: OTEL_SERVICE_NAME
+        value: backstage
