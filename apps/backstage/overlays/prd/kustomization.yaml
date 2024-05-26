@@ -11,7 +11,7 @@ resources:
 helmCharts:
   - name: devxp-app
     releaseName: devxp-app
-    version: 0.2.57
+    version: 0.2.58
     repo: https://devxp-tech.github.io/helm-charts
     valuesInline:
       name: "backstage"
@@ -20,7 +20,7 @@ helmCharts:
           domain: devxp-tech.io
       image:
         repository: ghcr.io/devxp-tech/backstage
-        tag: d0e654bc
+        tag: 609ddcf6
       serviceAccount:
         annotations:
           "eks.amazonaws.com/role-arn": "arn:aws:iam::239468932737:role/backstage-lgseksd1-sa"
