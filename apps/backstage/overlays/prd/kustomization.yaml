@@ -22,7 +22,7 @@ helmCharts:
         repository: ghcr.io/devxp-tech/backstage
         tag: 609ddcf6
       podAnnotations:
-        proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
+        # proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
         instrumentation.opentelemetry.io/inject-nodejs: "true"
       serviceAccount:
         annotations:
@@ -52,15 +52,15 @@ helmCharts:
         serviceMonitor:
           enabled: true
       readinessProbe:
-        initialDelaySeconds: 15
-        periodSeconds: 10
+        initialDelaySeconds: 30
+        periodSeconds: 15
         path: "/healthcheck"
         httpHeaders:
           - name: Host
             value: backstage.devxp-tech.io
       livenessProbe:
-        initialDelaySeconds: 15
-        periodSeconds: 10
+        initialDelaySeconds: 30
+        periodSeconds: 15
         port: http
         path: "/healthcheck"
         httpHeaders:
