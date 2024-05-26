@@ -51,19 +51,16 @@ helmCharts:
       monitoring:
         serviceMonitor:
           enabled: true
-      readinessProbe:
-        enabled: false
-        initialDelaySeconds: 30
+      livenessProbe:
+        initialDelaySeconds: 45
         periodSeconds: 15
         path: "/healthcheck"
         httpHeaders:
           - name: Host
             value: backstage.devxp-tech.io
-      livenessProbe:
-        enabled: false
-        initialDelaySeconds: 30
+      readinessProbe:
+        initialDelaySeconds: 45
         periodSeconds: 15
-        port: http
         path: "/healthcheck"
         httpHeaders:
           - name: Host
