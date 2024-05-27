@@ -6,7 +6,7 @@ resources:
 helmCharts:
   - name: devxp-app
     releaseName: devxp-app
-    version: 0.2.42
+    version: 0.2.61
     repo: https://devxp-tech.github.io/helm-charts
     valuesInline:
       name: demo-app
@@ -31,13 +31,6 @@ helmCharts:
         service:
           type: ClusterIP
           port: 80
-      envs:
-        - name: SERVICE_NAME
-          value: "demo-app"
-        - name: INSECURE_MODE
-          value: "true"
-        - name: OTEL_EXPORTER_OTLP_ENDPOINT
-          value: tempo.observability.svc.cluster.local:4317
       probe:
         enabled: true
         livenessProbe:
