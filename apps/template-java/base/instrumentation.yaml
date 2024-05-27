@@ -11,5 +11,8 @@ spec:
   sampler:
     type: parentbased_traceidratio
     argument: "1"
-  # java:
+  java:
+    env:
+      - name: OTEL_SERVICE_NAME
+        value: template-java
   #   image: ghcr.io/open-telemetry/opentelemetry-operator/autoinstrumentation-java:latest
