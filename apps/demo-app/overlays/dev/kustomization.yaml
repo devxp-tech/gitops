@@ -13,7 +13,7 @@ helmCharts:
       image:
         repository: ghcr.io/devxp-tech/demo-app
         tag: 3b49fd4a
-      instrumentation: go
+      # instrumentation: go
       autoscaling:
         enabled: true
         minReplicas: 1
