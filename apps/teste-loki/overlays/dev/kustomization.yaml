@@ -3,7 +3,6 @@ kind: Kustomization
 namespace: teste-loki
 resources:
   - ../../base
-  - instrumentation.yaml
   - role.yaml
   - postgres-secrets-sealed.yaml
 commonLabels:
@@ -11,16 +10,14 @@ commonLabels:
 helmCharts:
   - name: devxp-app
     releaseName: devxp-app
-    version: 0.2.52
+    version: 0.2.61
     repo: https://devxp-tech.github.io/helm-charts
     valuesInline:
       name: teste-loki
       image:
         repository: ghcr.io/devxp-tech/teste-loki
         tag: cd6fc9c0
-      podAnnotations:
-        sidecar.opentelemetry.io/inject: "true"
-        instrumentation.opentelemetry.io/inject-go: "teste-loki"
+      instrumentation: go
       envFrom:
         - secretRef:
             name: postgres-secrets
