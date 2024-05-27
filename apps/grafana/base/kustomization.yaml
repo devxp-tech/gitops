@@ -277,6 +277,14 @@ helmCharts:
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/golang
+            - name: "nodejs"
+              orgId: 1
+              folder: "NodeJS Dashboards"
+              type: file
+              disableDeletion: false
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/nodejs
       dashboards:
         default:
           # Kubernetes dashboards
@@ -434,5 +442,10 @@ helmCharts:
           golang-metrics2:
             datasource: Prometheus
             gnetId: 10826
+        nodejs:
+          # NodeJS dashboards
+          nodejs-applications:
+            datasource: Prometheus
+            gnetId: 19062
 
 
