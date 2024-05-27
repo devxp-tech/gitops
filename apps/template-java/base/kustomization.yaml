@@ -1,6 +1,6 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: template-java
-# resources:
+resources:
+  - instrumentation.yaml
   # - collector.yaml
-  # - instrumentation.yaml
