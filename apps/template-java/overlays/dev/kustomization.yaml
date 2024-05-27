@@ -16,7 +16,7 @@ helmCharts:
       actuator:
         enabled: true
       podAnnotations:
-        instrumentation.opentelemetry.io/inject-java: "observability/default"
+        instrumentation.opentelemetry.io/inject-java: "true"
         #   sidecar.istio.io/rewriteAppHTTPProbers: "false"
         # proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
         # sidecar.opentelemetry.io/inject: "true"
