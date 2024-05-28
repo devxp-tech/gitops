@@ -261,14 +261,14 @@ helmCharts:
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/opentelemetry
-            - name: "java"
+            - name: "springboot"
               orgId: 1
-              folder: "Java Dashboards"
+              folder: "SpringBoot Dashboards"
               type: file
               disableDeletion: false
               editable: true
               options:
-                path: /var/lib/grafana/dashboards/java
+                path: /var/lib/grafana/dashboards/springboot
             - name: "golang"
               orgId: 1
               folder: "Golang Dashboards"
@@ -420,7 +420,7 @@ helmCharts:
           opentelemetry-apm:
             datasource: Prometheus
             gnetId: 19419
-        java:
+        springboot:
           # Sprintboot dashboards
           springboot-observability:
             datasource: Prometheus
@@ -428,6 +428,9 @@ helmCharts:
           jvm-micrometer:
             datasource: Prometheus
             gnetId: 11955
+          springboot-apm:
+            datasource: Prometheus
+            gnetId: 12900
         golang:
           # GoLang dashboards
           go-processes:
