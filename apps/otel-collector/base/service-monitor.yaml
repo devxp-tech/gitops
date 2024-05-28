@@ -15,11 +15,11 @@ spec:
     matchLabels:
       app.kubernetes.io/name: otel-collector
   endpoints:
-    - port: prometheus #tcp-node
-      path: /metrics
-      scheme: http
-      interval: 30s
-      honorLabels: true
+  - port: prometheus #tcp-node
+    path: /metrics
+    scheme: http
+    interval: 30s
+    honorLabels: true
 
 ---
 apiVersion: monitoring.coreos.com/v1
@@ -39,17 +39,8 @@ spec:
     matchLabels:
       app.kubernetes.io/name: otel-collector-monitoring
   endpoints:
-    - port: monitoring
-      path: /metrics
-      scheme: http
-      interval: 60s
-      honorLabels: true
-
-      # - job_name: "otel-collector"
-      #   honor_labels: true
-      #   metrics_path: /metrics
-      #   scrape_interval: 30s
-      #   static_configs:
-      #     - targets:
-      #         - otel-collector.observability.svc.cluster.local:8889 # Traces
-      #         - otel-collector-monitoring.observability.svc.cluster.local:8888 # Service Monitor
+  - port: monitoring
+    path: /metrics
+    scheme: http
+    interval: 60s
+    honorLabels: true

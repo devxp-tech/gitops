@@ -54,34 +54,34 @@ patches:
 configMapGenerator:
   - behavior: merge
     literals:
-    - server.insecure="true"
-    - dexserver.disable.tls="true"
-    - server.dex.server="http://argocd-dex-server:5556"
-    - server.dex.server.strict.tls="false"
+      - server.insecure="true"
+      - dexserver.disable.tls="true"
+      - server.dex.server="http://argocd-dex-server:5556"
+      - server.dex.server.strict.tls="false"
     name: argocd-cmd-params-cm
   - behavior: merge
     files:
-    - files/dex.config
-    - files/repositories
-    - files/repository.credentials
-    - files/resource.customizations
+      - files/dex.config
+      - files/repositories
+      - files/repository.credentials
+      - files/resource.customizations
     literals:
-    - admin.enabled=true
-    - kustomize.buildOptions="--enable-alpha-plugins --enable-helm --load-restrictor
-      LoadRestrictionsNone"
-    - statusbadge.enabled=true
-    - url=https://argocd.devxp-tech.io
-    - dexserver.disable.tls=true
-    - accounts.backstage="apiKey, login"
+      - admin.enabled=true
+      - kustomize.buildOptions="--enable-alpha-plugins --enable-helm --load-restrictor
+        LoadRestrictionsNone"
+      - statusbadge.enabled=true
+      - url=https://argocd.devxp-tech.io
+      - dexserver.disable.tls=true
+      - accounts.backstage="apiKey, login"
     name: argocd-cm
     options:
       labels:
         app.kubernetes.io/part-of: argocd
   - behavior: merge
     files:
-    - files/policy.csv
+      - files/policy.csv
     literals:
-    - policy.default="role:readonly"
+      - policy.default="role:readonly"
     name: argocd-rbac-cm
     options:
       labels:

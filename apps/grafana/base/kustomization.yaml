@@ -450,5 +450,3 @@ helmCharts:
           nodejs-applications:
             datasource: Prometheus
             gnetId: 19062
-
-
