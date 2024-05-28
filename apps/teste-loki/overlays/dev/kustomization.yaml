@@ -3,14 +3,13 @@ kind: Kustomization
 namespace: teste-loki
 resources:
   - ../../base
-  - role.yaml
-  - postgres-secrets-sealed.yaml
+  - secrets.yaml
 commonLabels:
   app: teste-loki
 helmCharts:
   - name: devxp-app
     releaseName: devxp-app
-    version: 0.2.61
+    version: 0.2.62
     repo: https://devxp-tech.github.io/helm-charts
     valuesInline:
       name: teste-loki
