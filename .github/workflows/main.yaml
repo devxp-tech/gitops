@@ -116,7 +116,10 @@ jobs:
   #     - trivy-scan
 
   tools-version:
+    name: Update Tooling.md 🔒
     runs-on: ubuntu-latest
+    needs:
+      - env
 
     steps:
     - name: Checkout Repository
