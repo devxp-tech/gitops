@@ -116,7 +116,7 @@ jobs:
   #     - trivy-scan
 
   tools-version:
-    name: Update Tooling.md 🔒
+    name: Update TOOLING.md 🔒
     runs-on: ubuntu-latest
     needs:
       - env
@@ -163,9 +163,9 @@ jobs:
         # Sort the output content
         output_content=$(echo -e "$output_content" | sort -u -k 2)
 
-        # Replace the specific section in Tooling.md with the new content
-        sed -i '/| *Tools *| *Version *| *Repo *| *Status *|/,$d' Tooling.md
-        echo -e "$output_content" >> Tooling.md
+        # Replace the specific section in TOOLING.md with the new content
+        sed -i '/| *Tools *| *Version *| *Repo *| *Status *|/,$d' TOOLING.md
+        echo -e "$output_content" >> TOOLING.md
 
     - name: Commit and Push Changes 📝
       run: |
@@ -173,8 +173,8 @@ jobs:
         then
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add Tooling.md
-          git commit -m "[ci skip] :robot: [github actions actor] - update Tooling.md"
+          git add TOOLING.md
+          git commit -m "[ci skip] :robot: [github actions actor] - update TOOLING.md"
           git push
         else
           echo "nothing to do!!!"
