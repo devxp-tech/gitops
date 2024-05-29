@@ -137,7 +137,9 @@ jobs:
         files=$(find apps/ -name "kustomization.yaml")
 
         # Prepare output content
-        output_content="|      Tools       | Version | Repo | Status |\n"
+
+        output_content="# 🔩 Tooling \n"
+        output_content+="|      Tools       | Version | Repo | Status |\n"
         output_content+="| :--------------: | :-----: | :---: | :------: |\n"
 
         # Loop through each file
