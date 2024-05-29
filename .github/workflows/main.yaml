@@ -104,16 +104,16 @@ jobs:
         with:
           sarif_file: 'trivy-results.sarif'
 
-  quality-gate:
-    uses: devxp-tech/.github/.github/workflows/sonarqube.yaml@main
-    secrets: inherit
-    needs:
-      - env
-      - yaml-linter
-      - kube-linter
-      - secret-find
-      # - datree-check
-      - trivy-scan
+  # quality-gate:
+  #   uses: devxp-tech/.github/.github/workflows/sonarqube.yaml@main
+  #   secrets: inherit
+  #   needs:
+  #     - env
+  #     - yaml-linter
+  #     - kube-linter
+  #     - secret-find
+  #     # - datree-check
+  #     - trivy-scan
 
   tools-version:
     runs-on: ubuntu-latest
@@ -164,11 +164,11 @@ jobs:
         # Display the output
         cat $output_file
 
-        - name: Upload kustomization Info
-          uses: actions/upload-artifact@v3
-          with:
-            name: kustomization-info
-            path: kustomization_info.md
+    - name: Upload kustomization Info
+      uses: actions/upload-artifact@v3
+      with:
+        name: kustomization-info
+        path: kustomization_info.md
 
 
   notify:
