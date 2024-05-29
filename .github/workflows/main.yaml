@@ -134,7 +134,7 @@ jobs:
         files=$(find apps/ -name "kustomization.yaml")
 
         # Prepare output file
-        output_file="kustomization_info.md"
+        output_file="Tooling.md"
         echo "|      Tools       | Version | Repo | Status |" > $output_file
         echo "| :--------------: | :-----: | :---: | :------: |" >> $output_file
 
@@ -164,11 +164,16 @@ jobs:
         # Display the output
         cat $output_file
 
-    - name: Upload kustomization Info
-      uses: actions/upload-artifact@v3
-      with:
-        name: kustomization-info
-        path: kustomization_info.md
+    - name: Commit New index.yaml 📝
+      run: |
+        if [[ $(git diff) ]];
+        then
+          git add Tooling.md
+          git commit -m "[ci skip] :robot: [github actions actor] - update Tooling.md"
+          git push
+        else
+          echo "nothing to do!!!"
+        fi
 
 
   notify:
