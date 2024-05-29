@@ -115,6 +115,62 @@ jobs:
       # - datree-check
       - trivy-scan
 
+  tools-version:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: Install yq
+      run: |
+        sudo add-apt-repository -y ppa:rmescandon/yq
+        sudo apt-get update
+        sudo apt-get install -y yq
+
+    - name: Find and Process kustomization.yaml Files
+      run: |
+        # Find all kustomization.yaml files in the apps/ directory
+        files=$(find apps/ -name "kustomization.yaml")
+
+        # Prepare output file
+        output_file="kustomization_info.md"
+        echo "|      Tools       | Version | Repo | Status |" > $output_file
+        echo "| :--------------: | :-----: | :---: | :------: |" >> $output_file
+
+        # Loop through each file
+        for file in $files; do
+            # Get the name, version, and repo from the kustomization.yaml file using yq
+            name=$(yq eval '.helmCharts[0].name' $file)
+            version=$(yq eval '.helmCharts[0].version' $file)
+            repo=$(yq eval '.helmCharts[0].repo' $file)
+
+            # Check if both name and version are not null
+            if [ "$name" != "null" ] && [ "$version" != "null" ]; then
+                # Check if repo is null
+                if [ "$repo" != "null" ]; then
+                    # Print the name, version, repo, and deployed status
+                    echo "| $name | $version | $repo |   ✅     |" >> $output_file
+                else
+                    # Print the name, version, and deployed status without repo
+                    echo "| $name | $version |    -    |   ✅     |" >> $output_file
+                fi
+            fi
+        done
+
+        # Sort the output file
+        sort -u -k 2 $output_file -o $output_file
+
+        # Display the output
+        cat $output_file
+
+        - name: Upload kustomization Info
+          uses: actions/upload-artifact@v3
+          with:
+            name: kustomization-info
+            path: kustomization_info.md
+
+
   notify:
     uses: devxp-tech/.github/.github/workflows/notify.yaml@main
     if: always()
@@ -125,5 +181,6 @@ jobs:
       - kube-linter
       - secret-find
       # - datree-check
-      - quality-gate
+      # - quality-gate
+      - tools-version
       - trivy-scan
