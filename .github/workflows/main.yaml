@@ -134,7 +134,7 @@ jobs:
         files=$(find apps/ -name "kustomization.yaml")
 
         # Prepare output file
-        output_file="Tooling.md"
+        output_file="versions.md"
         echo "|      Tools       | Version | Repo | Status |" > $output_file
         echo "| :--------------: | :-----: | :---: | :------: |" >> $output_file
 
@@ -162,9 +162,9 @@ jobs:
         sort -u -k 2 $output_file -o $output_file
 
         # Display the output
-        cat $output_file
+        cat $output_file > Tooling.md
 
-    - name: Commit New index.yaml 📝
+    - name: Commit New Tooling.md 📝
       run: |
         if [[ $(git diff) ]];
         then
