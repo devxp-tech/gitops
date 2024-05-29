@@ -1,5 +1,6 @@
 
 
+
 |      Tools       | Version | Repo | Status |
 | :--------------: | :-----: | :---: | :------: |
 | argo-rollouts | 2.35.3 | https://argoproj.github.io/argo-helm |   ✅     |
@@ -31,3 +32,4 @@
 | sonarqube | 10.5.0+2748 | https://SonarSource.github.io/helm-chart-sonarqube |   ✅     |
 | tempo | 1.7.3 | https://grafana.github.io/helm-charts |   ✅     |
 | wordpress | 22.2.11 | https://charts.bitnami.com/bitnami |   ✅     |
+# 🔩 Tooling 
