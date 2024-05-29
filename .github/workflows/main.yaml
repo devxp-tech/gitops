@@ -133,10 +133,9 @@ jobs:
         # Find all kustomization.yaml files in the apps/ directory
         files=$(find apps/ -name "kustomization.yaml")
 
-        # Prepare output file
-        output_file="versions.md"
-        echo "|      Tools       | Version | Repo | Status |" > $output_file
-        echo "| :--------------: | :-----: | :---: | :------: |" >> $output_file
+        # Prepare output content
+        output_content="|      Tools       | Version | Repo | Status |\n"
+        output_content+="| :--------------: | :-----: | :---: | :------: |\n"
 
         # Loop through each file
         for file in $files; do
@@ -149,32 +148,34 @@ jobs:
             if [ "$name" != "null" ] && [ "$version" != "null" ]; then
                 # Check if repo is null
                 if [ "$repo" != "null" ]; then
-                    # Print the name, version, repo, and deployed status
-                    echo "| $name | $version | $repo |   ✅     |" >> $output_file
+                    # Append the name, version, repo, and deployed status to output_content
+                    output_content+="| $name | $version | $repo |   ✅     |\n"
                 else
-                    # Print the name, version, and deployed status without repo
-                    echo "| $name | $version |    -    |   ✅     |" >> $output_file
+                    # Append the name, version, and deployed status without repo to output_content
+                    output_content+="| $name | $version |    -    |   ✅     |\n"
                 fi
             fi
         done
 
-        # Sort the output file
-        sort -u -k 2 $output_file -o $output_file
+        # Sort the output content
+        output_content=$(echo -e "$output_content" | sort -u -k 2)
 
-        # Display the output
-        cat $output_file > Tooling.md
+        # Replace the specific section in Tooling.md with the new content
+        sed -i '/| *Tools *| *Version *| *Repo *| *Status *|/,$d' Tooling.md
+        echo -e "$output_content" >> Tooling.md
 
-    - name: Commit New Tooling.md 📝
+    - name: Commit and Push Changes 📝
       run: |
         if [[ $(git diff) ]];
         then
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git add Tooling.md
           git commit -m "[ci skip] :robot: [github actions actor] - update Tooling.md"
           git push
         else
           echo "nothing to do!!!"
         fi
-
 
   notify:
     uses: devxp-tech/.github/.github/workflows/notify.yaml@main
