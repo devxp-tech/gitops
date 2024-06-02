@@ -8,7 +8,6 @@ resources:
   - https://raw.githubusercontent.com/argoproj-labs/rollout-extension/v0.3.3/manifests/install.yaml
   - argocd-notifications-secret-sealed.yaml
   - secrets.yaml
-  - service-monitor.yaml
   - virtual-service.yaml
 patches:
   - target:
