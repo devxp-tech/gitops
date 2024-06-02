@@ -14,10 +14,6 @@ helmCharts:
       image:
         repository: ghcr.io/devxp-tech/homepage
         tag: 508486de
-      # argoRollouts:
-      #   enabled: false
-      # deployment:
-      #   enabled: true
       container:
         port: 80
       network:

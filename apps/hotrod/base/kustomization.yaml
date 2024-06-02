@@ -16,11 +16,8 @@ helmCharts:
           version: 0.2.22
       image:
         repository: jaegertracing/example-hotrod #kong/httpbin
-        # tag: latest
       network:
         domain: devxp-tech.io
-      # container:
-      #   port: 80
       envs:
         # - name: OTEL_EXPORTER_OTLP_ENDPOINT
         #   value: http://otel-collector.observability.svc.cluster.local:4318
@@ -33,19 +30,8 @@ helmCharts:
       quota:
         enabled: false
       autoscaling:
-        enabled: true
-        minReplicas: 1
-        maxReplicas: 1
-        targetCPUUtilizationPercentage: 80
+        enabled: false
       livenessProbe:
-        httpGet:
-          path: /health-check/liveness
-          port: 8080
-        initialDelaySeconds: 15
-        periodSeconds: 10
+        enabled: false
       readinessProbe:
-        httpGet:
-          path: /health-check/readiness
-          port: 8080
-        initialDelaySeconds: 15
-        periodSeconds: 10
+        enabled: false
