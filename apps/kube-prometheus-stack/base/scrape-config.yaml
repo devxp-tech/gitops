@@ -1,0 +1,8 @@
+apiVersion: monitoring.coreos.com/v1alpha1
+kind: ScrapeConfig
+metadata:
+  name: kube-state-metrics
+spec:
+  staticConfigs:
+    - targets: ["prometheus-community-kube-state-metrics.monitoring.svc:8080"]
+  metricsPath: /metrics
