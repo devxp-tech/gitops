@@ -14,14 +14,18 @@ helmCharts:
       image:
         repository: ghcr.io/devxp-tech/homepage
         tag: 508486de
-      argoRollouts:
-        enabled: false
-      deployment:
-        enabled: true
+      # argoRollouts:
+      #   enabled: false
+      # deployment:
+      #   enabled: true
       container:
         port: 80
       network:
         domain: devxp-tech.io
+      livenessProbe:
+        enabled: false
+      readinessProbe:
+        enabled: false
       virtualServices:
         custom:
           hosts:
