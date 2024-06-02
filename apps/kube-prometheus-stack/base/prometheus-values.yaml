@@ -19,18 +19,18 @@ prometheus:
       verbs:
         - get
   thanosService:
-    enabled: true # Enable Mimir
+    enabled: false # Enable Mimir
   thanosServiceMonitor:
-    enabled: true # Enable Mimir
+    enabled: false # Enable Mimir
   prometheusSpec:
     externalLabels:
       cluster: lgseksd1
-    # remoteWrite:
-    #   - url: http://mimir-nginx.monitoring.svc:80/api/v1/push
-    #     queueConfig:
-    #       capacity: 500
-    #       maxShards: 100
-    #       maxSamplesPerSend: 100
+    remoteWrite:
+      - url: http://mimir-nginx.monitoring.svc:80/api/v1/push
+        queueConfig:
+          capacity: 500
+          maxShards: 100
+          maxSamplesPerSend: 100
     alertingEndpoints:
       - name: prometheus-community-kube-alertmanager
         namespace: monitoring
@@ -44,7 +44,7 @@ prometheus:
       limits:
         cpu: 2000m
         memory: 4000Mi
-    replicas: 2 # 3 to 1 enabled Mimir
+    replicas: 1 # 3 to 1 enabled Mimir
     replicaExternalLabelName: "__replica__"
     podAntiAffinity: hard
     ruleSelectorNilUsesHelmValues: false
@@ -54,19 +54,13 @@ prometheus:
     retention: 2d
     walCompression: true
     enableAdminAPI: true
-    thanos:
-      image: quay.io/thanos/thanos:v0.32.0
-      version: "v0.31.0"
-      objectStorageConfig:
-        name: thanos-objstore-secret
-        key: objstore.yml
+    # thanos:
+    #   image: quay.io/thanos/thanos:v0.32.0
+    #   version: "v0.31.0"
+    #   objectStorageConfig:
+    #     name: thanos-objstore-secret
+    #     key: objstore.yml
     additionalScrapeConfigs:
-      # - job_name: node
-      #   static_configs:
-      #     - targets: ["node-exporter:9100"]
-      #   scrape_interval: 1m
-      #   scrape_timeout: 10s
-
       - job_name: serviceMonitor/argocd/argocd-metrics/0
         honor_timestamps: true
         scrape_interval: 120s
@@ -371,11 +365,11 @@ prometheus:
         static_configs:
           - targets: ["prometheus-community-kube-prometheus:9090"]
 
-      - job_name: "grafana"
-        scrape_interval: 60s
-        honor_labels: true
-        static_configs:
-          - targets: ["grafana:80"]
+      # - job_name: "grafana"
+      #   scrape_interval: 60s
+      #   honor_labels: true
+      #   static_configs:
+      #     - targets: ["grafana:80"]
 
       - job_name: "node-exporter"
         kubernetes_sd_configs:
@@ -512,26 +506,17 @@ prometheus:
             action: replace
             target_label: kubernetes_namespace
 
-      # - job_name: "otel-collector"
+      # - job_name: kubecost
       #   honor_labels: true
+      #   scrape_interval: 2m
+      #   scrape_timeout: 10s
       #   metrics_path: /metrics
-      #   scrape_interval: 30s
-      #   static_configs:
-      #     - targets:
-      #         - otel-collector.observability.svc.cluster.local:8889 # Traces
-      #         - otel-collector-monitoring.observability.svc.cluster.local:8888 # Service Monitor
-
-      - job_name: kubecost
-        honor_labels: true
-        scrape_interval: 2m
-        scrape_timeout: 10s
-        metrics_path: /metrics
-        scheme: http
-        dns_sd_configs:
-          - names:
-              - kubecost-cost-analyzer.kubecost
-            type: "A"
-            port: 9003
+      #   scheme: http
+      #   dns_sd_configs:
+      #     - names:
+      #         - kubecost-cost-analyzer.kubecost
+      #       type: "A"
+      #       port: 9003
 
       - job_name: kiali
         metrics_path: /metrics
@@ -539,48 +524,6 @@ prometheus:
         static_configs:
           - targets:
               - kiali.kiali-operator.svc.cluster.local:9090
-
-
-      # - job_name: "jaeger"
-      #   metrics_path: /metrics
-      #   scrape_interval: 15s
-      #   static_configs:
-      #     - targets:
-      #         - jaeger-agent.observability.svc.cluster.local:14271
-      #         - jaeger-collector.observability.svc.cluster.local:14269
-      #         - jaeger-query.observability.svc.cluster.local:16687
-
-      # Using ServiceMonitor
-      # - job_name: "alertmanager"
-      #   scrape_interval: 30s
-      #   honor_labels: true
-      #   static_configs:
-      #     - targets: ["prometheus-community-kube-alertmanager:9093"]
-
-      # Using ServiceMonitor
-      # - job_name: "sonarqube"
-      #   scrape_interval: 60s
-      #   static_configs:
-      #     - targets:
-      #         - sonarqube-jmx-metrics.sonarqube.svc.cluster.local:10443
-      #       labels:
-      #         application: "sonarqube"
-
-      # Using ServiceMonitor
-      # - job_name: "karpenter"
-      #   scrape_interval: 600s
-      #   scrape_timeout: 300s
-      #   honor_labels: true
-      #   static_configs:
-      #     - targets:
-      #         - karpenter.karpenter.svc.cluster.local:8000
-
-      # - job_name: "cert-manager"
-      #   metrics_path: /metrics
-      #   scrape_interval: 60s
-      #   static_configs:
-      #     - targets:
-      #         - cert-manager.cert-manager.svc.cluster.local:9402
 
 prometheus-node-exporter:
   affinity:
