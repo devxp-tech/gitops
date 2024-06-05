@@ -24,7 +24,7 @@ spec:
           values:
             - "94.62.74.120" # Diego
             - "104.28.88.106" # Diego
-            - "176.78.53.14" # Office
+            # - "176.78.53.14" # Office
     - to:
         - operation:
             hosts:
