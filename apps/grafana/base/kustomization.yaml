@@ -12,7 +12,7 @@ helmCharts:
       useStatefulSet: true
       persistence:
         enabled: true
-        # existingClaim: storage-grafana-0
+        existingClaim: grafana
       nodeSelector:
         topology.kubernetes.io/zone: "us-east-1c"
       serviceMonitor:
