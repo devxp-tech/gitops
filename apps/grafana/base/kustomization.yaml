@@ -5,11 +5,13 @@ helmCharts:
   - name: grafana
     includeCRDs: true
     releaseName: grafana
-    version: 7.3.11
+    version: 8.0.0
     repo: https://grafana.github.io/helm-charts
     valuesInline:
       fullnameOverride: grafana
       useStatefulSet: true
+      persistence:
+        enabled: true
       nodeSelector:
         topology.kubernetes.io/zone: "us-east-1c"
       serviceMonitor:
