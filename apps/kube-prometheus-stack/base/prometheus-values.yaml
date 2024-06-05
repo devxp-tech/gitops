@@ -18,19 +18,19 @@ prometheus:
         - "/metrics"
       verbs:
         - get
-  thanosService:
-    enabled: true # Enable Mimir
-  thanosServiceMonitor:
-    enabled: true # Enable Mimir
+  # thanosService:
+  #   enabled: true # Enable Mimir
+  # thanosServiceMonitor:
+  #   enabled: true # Enable Mimir
   prometheusSpec:
     externalLabels:
       cluster: lgseksd1
-    # remoteWrite: # Enable Mimir
-    #   - url: http://mimir-nginx.monitoring.svc:80/api/v1/push
-    #     queueConfig:
-    #       capacity: 500
-    #       maxShards: 100
-    #       maxSamplesPerSend: 100
+    remoteWrite: # Enable Mimir
+      - url: http://mimir-nginx.monitoring.svc:80/api/v1/push
+        queueConfig:
+          capacity: 500
+          maxShards: 100
+          maxSamplesPerSend: 100
     alertingEndpoints:
       - name: prometheus-community-kube-alertmanager
         namespace: monitoring
@@ -44,7 +44,7 @@ prometheus:
       limits:
         cpu: 2000m
         memory: 4000Mi
-    replicas: 2 # 3 to 1 enabled Mimir
+    replicas: 1 # 3 to 1 enabled Mimir
     replicaExternalLabelName: "__replica__"
     podAntiAffinity: hard
     ruleSelectorNilUsesHelmValues: false
@@ -54,12 +54,12 @@ prometheus:
     retention: 2d
     walCompression: true
     enableAdminAPI: true
-    thanos:
-      image: quay.io/thanos/thanos:v0.32.0
-      version: "v0.31.0"
-      objectStorageConfig:
-        name: thanos-objstore-secret
-        key: objstore.yml
+    # thanos: # Enable Mimir
+    #   image: quay.io/thanos/thanos:v0.32.0
+    #   version: "v0.31.0"
+    #   objectStorageConfig:
+    #     name: thanos-objstore-secret
+    #     key: objstore.yml
     additionalScrapeConfigs:
       - job_name: serviceMonitor/argocd/argocd-metrics/0
         honor_timestamps: true
