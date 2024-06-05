@@ -9,7 +9,7 @@ commonLabels:
 helmCharts:
   - name: devxp-app
     releaseName: devxp-app
-    version: 0.2.69
+    version: 0.2.71
     repo: https://devxp-tech.github.io/helm-charts
     valuesInline:
       name: teste-loki
@@ -19,6 +19,9 @@ helmCharts:
       instrumentation: go
       podAnnotations:
         sidecar.opentelemetry.io/inject: "true"
+      monitoring:
+        serviceMonitor:
+          enabled: true
       envFrom:
         - secretRef:
             name: postgres-secrets

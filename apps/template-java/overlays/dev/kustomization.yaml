@@ -44,7 +44,7 @@ helmCharts:
       readinessProbe:
         enabled: false
       quota:
-        enabled: false
+        enabled: true
         requests:
           memory: 1Gi
           cpu: 1
