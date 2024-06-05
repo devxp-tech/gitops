@@ -9,10 +9,10 @@ helmCharts:
     repo: https://grafana.github.io/helm-charts
     valuesInline:
       fullname: grafana
-      # useStatefulSet: true
+      useStatefulSet: true
       persistence:
         enabled: true
-        # existingClaim: grafana
+        existingClaim: grafana
       nodeSelector:
         topology.kubernetes.io/zone: "us-east-1c"
       serviceMonitor:
