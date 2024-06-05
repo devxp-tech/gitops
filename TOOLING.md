@@ -20,6 +20,7 @@
 
 
 
+
 |      Tools       | Version | Repo | Status |
 | :--------------: | :-----: | :---: | :------: |
 | argo-rollouts | 2.35.3 | https://argoproj.github.io/argo-helm |   ✅     |
@@ -33,7 +34,7 @@
 | dex | 0.17.1 | https://charts.dexidp.io |   ✅     |
 | external-dns | 7.3.0 | https://charts.bitnami.com/bitnami |   ✅     |
 | gateway | 1.22.0 | https://istio-release.storage.googleapis.com/charts |   ✅     |
-| grafana | 7.3.11 | https://grafana.github.io/helm-charts |   ✅     |
+| grafana | 8.0.0 | https://grafana.github.io/helm-charts |   ✅     |
 | jaeger | 2.1.0 | https://jaegertracing.github.io/helm-charts |   ✅     |
 | karpenter | v0.33.4 | oci://public.ecr.aws/karpenter |   ✅     |
 | keycloak | 18.4.4 | https://codecentric.github.io/helm-charts |   ✅     |
