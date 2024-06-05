@@ -8,8 +8,8 @@ helmCharts:
     version: 8.0.0
     repo: https://grafana.github.io/helm-charts
     valuesInline:
-      # fullnameOverride: grafana
-      useStatefulSet: true
+      fullname: grafana
+      # useStatefulSet: true
       persistence:
         enabled: true
         # existingClaim: grafana
