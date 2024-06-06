@@ -3,6 +3,7 @@ alertmanager:
     forceEnableClusterMode: true
     secrets:
       - alertmanager-secret
+  baseURL: "https://alertmanager.devxp-tech.io"
   extraArgs:
     web.external-url: "https://alertmanager.devxp-tech.io"
     web.route-prefix: "/"
