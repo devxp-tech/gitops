@@ -365,12 +365,6 @@ prometheus:
         static_configs:
           - targets: ["prometheus-community-kube-prometheus:9090"]
 
-      # - job_name: "grafana"
-      #   scrape_interval: 60s
-      #   honor_labels: true
-      #   static_configs:
-      #     - targets: ["grafana:80"]
-
       - job_name: "node-exporter"
         kubernetes_sd_configs:
           - role: endpoints
