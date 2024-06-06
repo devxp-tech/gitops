@@ -15,6 +15,13 @@ helmCharts:
         name: mimir
         annotations:
           eks.amazonaws.com/role-arn: "arn:aws:iam::239468932737:role/mimir-lgseksd1-sa"
+      metaMonitoring:
+        dashboards:
+          enabled: true
+        serviceMonitor:
+          enabled: true
+      nginx:
+        replicas: 2
       mimir:
         structuredConfig:
           common:
