@@ -18,10 +18,10 @@ prometheus:
         - "/metrics"
       verbs:
         - get
-  # thanosService:
-  #   enabled: true # Enable Mimir
-  # thanosServiceMonitor:
-  #   enabled: true # Enable Mimir
+  thanosService:
+    enabled: true # Enable Mimir
+  thanosServiceMonitor:
+    enabled: true # Enable Mimir
   prometheusSpec:
     externalLabels:
       cluster: lgseksd1
@@ -54,12 +54,12 @@ prometheus:
     retention: 2d
     walCompression: true
     enableAdminAPI: true
-    # thanos: # Enable Mimir
-    #   image: quay.io/thanos/thanos:v0.32.0
-    #   version: "v0.31.0"
-    #   objectStorageConfig:
-    #     name: thanos-objstore-secret
-    #     key: objstore.yml
+    thanos: # Enable Mimir
+      image: quay.io/thanos/thanos:v0.32.0
+      version: "v0.31.0"
+      objectStorageConfig:
+        name: thanos-objstore-secret
+        key: objstore.yml
     additionalScrapeConfigs:
       - job_name: serviceMonitor/argocd/argocd-metrics/0
         honor_timestamps: true
