@@ -16,7 +16,7 @@ helmCharts:
       name: homepage
       image:
         repository: ghcr.io/devxp-tech/homepage
-        tag: 8e12b664
+        tag: 54d01b29
       envFrom:
         - secretRef:
             name: postgres-secrets
