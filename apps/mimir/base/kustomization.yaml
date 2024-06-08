@@ -97,12 +97,8 @@ helmCharts:
           enabled: false
         persistentVolume:
           enabled: false
-          # annotations: {}
-          # accessModes:
-          #   - ReadWriteOnce
-          # size: 5Gi
-      store_gateway:
-        zoneAwareReplication:
-          enabled: false
-        nodeSelector:
-          topology.kubernetes.io/zone: "us-east-1b"
+      # store_gateway:
+      #   zoneAwareReplication:
+      #     enabled: false
+      #   nodeSelector:
+      #     topology.kubernetes.io/zone: "us-east-1b"
