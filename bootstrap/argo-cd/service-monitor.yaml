@@ -68,4 +68,3 @@ spec:
     matchLabels:
       app.kubernetes.io/name: argocd-notifications-controller-metrics
       app.kubernetes.io/component: notifications-controller
-
