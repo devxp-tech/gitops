@@ -11,7 +11,7 @@ metadata:
     app.kubernetes.io/part-of: argocd
 spec:
   endpoints:
-    - port: http-metrics
+    - port: metrics
       interval: 30s
       path: /metrics
   namespaceSelector:
@@ -35,7 +35,7 @@ metadata:
     app.kubernetes.io/part-of: argocd
 spec:
   endpoints:
-    - port: http-metrics
+    - port: metrics
       interval: 30s
       path: /metrics
   namespaceSelector:
@@ -59,7 +59,7 @@ metadata:
     app.kubernetes.io/part-of: argocd
 spec:
   endpoints:
-    - port: http-metrics
+    - port: metrics
       path: /metrics
   namespaceSelector:
     matchNames:
@@ -82,7 +82,7 @@ metadata:
     app.kubernetes.io/part-of: argocd
 spec:
   endpoints:
-    - port: http-metrics
+    - port: metrics
       interval: 30s
       path: /metrics
   namespaceSelector:
@@ -106,7 +106,7 @@ metadata:
     app.kubernetes.io/part-of: argocd
 spec:
   endpoints:
-    - port: http-metrics
+    - port: metrics
       interval: 30s
       path: /metrics
   namespaceSelector:
