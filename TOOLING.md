@@ -46,13 +46,14 @@
 
 
 
+
 |      Tools       | Version | Repo | Status |
 | :--------------: | :-----: | :---: | :------: |
 | argo-rollouts | 2.35.3 | https://argoproj.github.io/argo-helm |   ✅     |
 | argo-workflows | 0.41.4 | https://argoproj.github.io/argo-helm |   ✅     |
 | base | 1.22.0 | https://istio-release.storage.googleapis.com/charts |   ✅     |
 | cert-manager | v1.14.5 | https://charts.jetstack.io |   ✅     |
-| cilium | 1.15.4 | https://helm.cilium.io |   ✅     |
+| cilium | 1.15.5 | https://helm.cilium.io |   ✅     |
 | cost-analyzer | 2.2.5 | https://kubecost.github.io/cost-analyzer |   ✅     |
 | devxp-app | 0.2.69 | https://devxp-tech.github.io/helm-charts |   ✅     |
 | devxp-app | 0.2.71 | https://devxp-tech.github.io/helm-charts |   ✅     |
