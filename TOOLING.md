@@ -45,6 +45,7 @@
 
 
 
+
 |      Tools       | Version | Repo | Status |
 | :--------------: | :-----: | :---: | :------: |
 | argo-rollouts | 2.35.3 | https://argoproj.github.io/argo-helm |   ✅     |
@@ -57,7 +58,7 @@
 | devxp-app | 0.2.71 | https://devxp-tech.github.io/helm-charts |   ✅     |
 | devxp-app | 0.2.72 | https://devxp-tech.github.io/helm-charts |   ✅     |
 | dex | 0.17.1 | https://charts.dexidp.io |   ✅     |
-| external-dns | 7.3.0 | https://charts.bitnami.com/bitnami |   ✅     |
+| external-dns | 7.5.5 | https://charts.bitnami.com/bitnami |   ✅     |
 | gateway | 1.22.0 | https://istio-release.storage.googleapis.com/charts |   ✅     |
 | grafana | 8.0.0 | https://grafana.github.io/helm-charts |   ✅     |
 | jaeger | 2.1.0 | https://jaegertracing.github.io/helm-charts |   ✅     |
@@ -67,7 +68,7 @@
 | kube-downscaler | 0.7.4 | https://charts.deliveryhero.io/ |   ✅     |
 | kube-prometheus-stack | 58.1.1 | https://prometheus-community.github.io/helm-charts |   ✅     |
 | kubeclarity | v2.23.1 | https://openclarity.github.io/kubeclarity |   ✅     |
-| kyverno | 3.1.4 | https://kyverno.github.io/kyverno |   ✅     |
+| kyverno | 3.2.4 | https://kyverno.github.io/kyverno |   ✅     |
 | loki | 6.5.2 | https://grafana.github.io/helm-charts |   ✅     |
 | metrics-server | 3.12.1 | https://kubernetes-sigs.github.io/metrics-server/ |   ✅     |
 | mimir-distributed | 5.3.0 | https://grafana.github.io/helm-charts |   ✅     |
