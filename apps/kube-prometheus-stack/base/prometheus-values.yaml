@@ -39,11 +39,11 @@ prometheus:
     serviceMonitorSelectorNilUsesHelmValues: false
     resources:
       requests:
-        cpu: 500m
-        memory: 2500Mi #2800Mi
+        cpu: "250m"
+        memory: "2500Mi" #2800Mi
       limits:
-        cpu: 1000m
-        memory: 3500Mi #4000Mi
+        cpu: "500m"
+        memory: "3500Mi" #4000Mi
     replicas: 1 # 3 to 1 enabled Mimir
     replicaExternalLabelName: "__replica__"
     podAntiAffinity: hard
