@@ -11,7 +11,7 @@ resources:
 helmCharts:
   - name: devxp-app
     releaseName: devxp-app
-    version: 0.2.69
+    version: 0.2.72
     repo: https://devxp-tech.github.io/helm-charts
     valuesInline:
       name: "backstage"
@@ -21,12 +21,9 @@ helmCharts:
       image:
         repository: ghcr.io/devxp-tech/backstage
         tag: 609ddcf6
-      instrumentation: nodejs
       serviceAccount:
         annotations:
           "eks.amazonaws.com/role-arn": "arn:aws:iam::239468932737:role/backstage-lgseksd1-sa"
-      quota:
-        enabled: false
       container:
         port: 7007
       env:
@@ -46,6 +43,7 @@ helmCharts:
         limits:
           memory: 1024Mi
           cpu: 200m
+      instrumentation: nodejs
       monitoring:
         serviceMonitor:
           enabled: true
@@ -68,15 +66,6 @@ helmCharts:
         minReplicas: 1
         maxReplicas: 1
         targetCPUUtilizationPercentage: 80
-
-  # - name: devxp-infra
-  #   releaseName: devxp-infra
-  #   version: 0.0.3
-  #   repo: https://devxp-tech.github.io/helm-charts
-  #   valuesInline:
-  #     name: "backstage"
-  #     Bucket:
-  #       enabled: true
 
   - name: postgresql
     releaseName: postgresql
@@ -104,3 +93,12 @@ helmCharts:
           requests:
             cpu: 50m
             memory: 128Mi
+
+  # - name: devxp-infra
+  #   releaseName: devxp-infra
+  #   version: 0.0.3
+  #   repo: https://devxp-tech.github.io/helm-charts
+  #   valuesInline:
+  #     name: "backstage"
+  #     Bucket:
+  #       enabled: true
