@@ -19,10 +19,10 @@ helmCharts:
       network:
         domain: devxp-tech.io
       instrumentation: nginx
-      # livenessProbe:
-      #   enabled: false
-      # readinessProbe:
-      #   enabled: false
+      livenessProbe:
+        enabled: false
+      readinessProbe:
+        enabled: false
       virtualServices:
         custom:
           hosts:
