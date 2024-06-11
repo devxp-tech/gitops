@@ -1,20 +1,20 @@
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  name: demo-app
-  namespace: demo-app
+  name: kiali
+  namespace: kiali-operator
   labels:
-    app: demo-app
-    application: demo-app
+    app: kiali
+    application: kiali
 spec:
   namespaceSelector:
     matchNames:
-      - demo-app
+      - kiali-operator
   selector:
     matchLabels:
-      app: demo-app
+      app.kubernetes.io/name: kiali
   endpoints:
-    - port: tcp-node
+    - port: http-metrics
       path: /metrics
       scheme: http
       interval: 60s

@@ -236,12 +236,12 @@ prometheus:
             action: replace
             target_label: kubernetes_namespace
 
-      - job_name: kiali
-        metrics_path: /metrics
-        scrape_interval: 60s
-        static_configs:
-          - targets:
-              - kiali.kiali-operator.svc.cluster.local:9090
+      # - job_name: kiali
+      #   metrics_path: /metrics
+      #   scrape_interval: 60s
+      #   static_configs:
+      #     - targets:
+      #         - kiali.kiali-operator.svc.cluster.local:9090
 
       # - job_name: kubecost
       #   honor_labels: true

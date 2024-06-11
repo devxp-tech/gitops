@@ -3,6 +3,7 @@ kind: Kustomization
 namespace: kiali-operator
 resources:
   - ns.yaml
+  - service-monitor.yaml
   # - auth-policy.yaml
 helmCharts:
   - name: kiali-operator
