@@ -96,16 +96,6 @@ prometheus:
     #     name: thanos-objstore-secret
     #     key: objstore.yml
     additionalScrapeConfigs:
-      # - job_name: kube-state-metrics
-      #   honor_timestamps: true
-      #   scrape_interval: 1m
-      #   scrape_timeout: 1m
-      #   metrics_path: /metrics
-      #   scheme: http
-      #   static_configs:
-      #     - targets:
-      #         - prometheus-community-kube-state-metrics.monitoring.svc:8080
-
       - job_name: "prometheus"
         scrape_interval: 30s
         static_configs:
@@ -235,6 +225,16 @@ prometheus:
           - source_labels: [__meta_kubernetes_service_name]
             action: replace
             target_label: kubernetes_namespace
+
+      # - job_name: kube-state-metrics
+      #   honor_timestamps: true
+      #   scrape_interval: 1m
+      #   scrape_timeout: 1m
+      #   metrics_path: /metrics
+      #   scheme: http
+      #   static_configs:
+      #     - targets:
+      #         - prometheus-community-kube-state-metrics.monitoring.svc:8080
 
       # - job_name: kiali
       #   metrics_path: /metrics
