@@ -7,7 +7,7 @@ resources:
 helmCharts:
   - name: devxp-app
     releaseName: devxp-app
-    version: 0.2.74
+    version: 0.2.75
     repo: https://devxp-tech.github.io/helm-charts
     valuesInline:
       name: homepage
