@@ -3,7 +3,6 @@ kind: Kustomization
 namespace: monitoring
 resources:
   - prometheus-rules.yaml
-  - scrape-config.yaml
 helmCharts:
   - name: kube-prometheus-stack
     releaseName: prometheus-community
@@ -19,6 +18,8 @@ helmCharts:
       kubeControllerManager:
         enabled: true
       kubeScheduler:
+        enabled: true
+      kubeStateMetrics:
         enabled: true
       kubeProxy:
         enabled: false
