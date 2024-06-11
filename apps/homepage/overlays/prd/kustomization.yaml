@@ -7,7 +7,7 @@ resources:
 helmCharts:
   - name: devxp-app
     releaseName: devxp-app
-    version: 0.2.73
+    version: 0.2.74
     repo: https://devxp-tech.github.io/helm-charts
     valuesInline:
       name: homepage
@@ -18,7 +18,6 @@ helmCharts:
         port: 80
       network:
         domain: devxp-tech.io
-      instrumentation: nginx
       livenessProbe:
         enabled: false
       readinessProbe:
@@ -34,6 +33,12 @@ helmCharts:
         limits:
           cpu: "50m"
           memory: "128Mi"
+      instrumentation: nginx
+      monitoring:
+        serviceMonitor:
+          enabled: true
+          extraPort:
+            enabled: true
       autoscaling:
         enabled: true
         minReplicas: 1
