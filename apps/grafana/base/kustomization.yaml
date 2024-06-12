@@ -5,7 +5,7 @@ helmCharts:
   - name: grafana
     includeCRDs: true
     releaseName: grafana
-    version: 8.0.0
+    version: 8.0.2
     repo: https://grafana.github.io/helm-charts
     valuesInline:
       fullname: grafana
