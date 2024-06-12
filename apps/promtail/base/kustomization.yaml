@@ -45,14 +45,6 @@ helmCharts:
                       traceID: traceID
                   - labels:
                       traceID:
-            - match:
-                selector: '{app="template-java"}'
-                stages:
-                  - regex:
-                      expression: ".*(?P<trace>trace_id\"\\S)\\s\"(?P<traceID>[a-zA-Z\\d]+).*"
-                      traceID: traceID
-                  - labels:
-                      traceID:
             - logfmt:
                 mapping:
                   time:
@@ -67,11 +59,29 @@ helmCharts:
                   service: service
                   type: type
                   plugin: plugin
+                  grpcKind: details.grpc.kind  # Test
+                  grpcService: details.grpc.service  # Test
+                  grpcMethod: details.grpc.method  # Test
+                  startTime: details.startTime  # Test
+                  EndTime: details.endTime  # Test
+                  latency: details.latency  # Test
+                  traceID: details.traceID  # Test
             - labels:
                 level: level
                 service: service
                 type: type
                 plugin: plugin
+                grpcKind: "" # Test
+                grpcMethod: "" # Test
+                grpcService: "" # Test
+                traceID: "" # Test
+            - metrics:
+                grpc_latency:
+                  type: Histogram
+                  description: "gRPC latency (ns)"
+                  source: latency
+                  config:
+                    buckets: [0,10000000,20000000,30000000,50000000,80000000,100000000,500000000,1000000000,10000000000,100000000000,1000000000000]
             - timestamp:
                 format: RFC3339
                 source: "time"
