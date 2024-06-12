@@ -40,6 +40,10 @@ spec:
           insecure: true
       prometheus:
         endpoint: "0.0.0.0:8889"
+        enable_open_metrics: true
+        add_metric_suffixes: false
+        resource_to_telemetry_conversion:
+          enabled: true
 
     connectors:
       servicegraph:

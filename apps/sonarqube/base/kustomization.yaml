@@ -17,6 +17,7 @@ helmCharts:
       prometheusMonitoring:
         podMonitor:
           enabled: true
+          interval: 60s
 
 
     # version: 3.3.3
