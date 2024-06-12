@@ -43,6 +43,14 @@ helmCharts:
                       traceID: traceID
                   - labels:
                       traceID:
+            - match:
+                selector: '{app="template-java"}'
+                stages:
+                  - regex:
+                      expression: ".*(?P<trace>trace_id\"\\S)\\s\"(?P<traceID>[a-zA-Z\\d]+).*"
+                      traceID: traceID
+                  - labels:
+                      traceID:
             - logfmt:
                 mapping:
                   time:
