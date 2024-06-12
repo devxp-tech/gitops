@@ -47,7 +47,7 @@ helmCharts:
       instrumentation: nodejs
       monitoring:
         serviceMonitor:
-          enabled: false
+          enabled: true
       livenessProbe:
         initialDelaySeconds: 60
         periodSeconds: 15
@@ -73,9 +73,6 @@ helmCharts:
     version: 12.12.10
     repo: https://charts.bitnami.com/bitnami
     valuesInline:
-      commonLabels:
-        app: backstage
-        version: 15.1.0
       auth:
         username: backstage
         database: backstage
