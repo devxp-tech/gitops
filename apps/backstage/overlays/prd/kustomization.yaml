@@ -8,7 +8,6 @@ resources:
   - postgres-config.yaml
   - sa-token.yaml
   - secrets.yaml
-  - servicemonitors.yaml
 helmCharts:
   - name: devxp-app
     releaseName: devxp-app
