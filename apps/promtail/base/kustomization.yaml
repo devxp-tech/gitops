@@ -26,6 +26,8 @@ helmCharts:
         enableTracing: true
         clients:
           - url: http://loki-gateway.monitoring/loki/api/v1/push
+            external_labels:
+              cluster: lgseksd1
         snippets:
           pipelineStages:
             - cri: {}
