@@ -9,8 +9,6 @@ helmCharts:
     repo: https://grafana.github.io/helm-charts
     valuesInline:
       fullnameOverride: promtail
-      config:
-        enableTracing: true
       serviceMonitor:
         enabled: true
       prometheusRule:
@@ -25,9 +23,9 @@ helmCharts:
                     values:
                       - fargate
       config:
+        enableTracing: true
         clients:
           - url: http://loki-gateway.monitoring/loki/api/v1/push
-
         snippets:
           pipelineStages:
             - cri: {}
