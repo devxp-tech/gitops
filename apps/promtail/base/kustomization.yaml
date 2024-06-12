@@ -9,6 +9,8 @@ helmCharts:
     repo: https://grafana.github.io/helm-charts
     valuesInline:
       fullnameOverride: promtail
+      config:
+        enableTracing: true
       serviceMonitor:
         enabled: true
       prometheusRule:
