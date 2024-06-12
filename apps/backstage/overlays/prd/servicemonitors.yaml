@@ -1,0 +1,15 @@
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: backstage-teste
+spec:
+  endpoints:
+  - interval: 60s
+    path: "/metrics"
+    port: tcp-node
+    scheme: http
+    scrapeTimeout: 15s
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: backstage

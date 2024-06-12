@@ -8,6 +8,7 @@ resources:
   - postgres-config.yaml
   - sa-token.yaml
   - secrets.yaml
+  - servicemonitors.yaml
 helmCharts:
   - name: devxp-app
     releaseName: devxp-app
@@ -46,7 +47,7 @@ helmCharts:
       instrumentation: nodejs
       monitoring:
         serviceMonitor:
-          enabled: true
+          enabled: false
       livenessProbe:
         initialDelaySeconds: 60
         periodSeconds: 15
