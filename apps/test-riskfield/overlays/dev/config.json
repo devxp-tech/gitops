@@ -1,0 +1,11 @@
+{
+  "appName": "test-riskfield",
+  "userGivenName": "test-riskfield",
+  "destNamespace": "test-riskfield",
+  "destServer": "https://kubernetes.default.svc",
+  "srcPath": "apps/test-riskfield/overlays/dev",
+  "srcRepoURL": "https://github.com/devxp-tech/gitops.git",
+  "srcTargetRevision": "",
+  "CreateNamespace": true,
+  "labels": null
+}
