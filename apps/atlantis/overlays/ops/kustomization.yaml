@@ -15,13 +15,15 @@ helmCharts:
       orgAllowlist: github.com/devxp-tech/*
       ingress:
         enabled: false
-      image:
-        repository: ghcr.io/devxp-tech/tf-env/atlantis
-        tag: v0.27.2
-      imagePullSecrets:
-        - ghcr-secret
+      # image:
+      #   repository: ghcr.io/devxp-tech/tf-env/atlantis
+      #   tag: v0.27.2
+      # imagePullSecrets:
+      #   - ghcr-secret
+      github:
+        user: diegoluisi
       basicAuthSecretName: basic-auth
-      vcsSecretName: 
+      vcsSecretName:
       github:
         secret: github-secrets
       # ref: https://www.runatlantis.io/docs/server-side-repo-config.html
