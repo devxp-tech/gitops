@@ -1,0 +1,106 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ../../base
+  - virtual-service.yaml
+helmCharts:
+  - name: atlantis
+    includeCRDs: true
+    releaseName: atlantis
+    version: 5.1.3
+    repo: https://runatlantis.github.io/helm-charts
+    valuesInline:
+      atlantisUrl: https://atlantis.devxp-tech.io
+      orgAllowlist: github.com/devxp-tech/*
+      image:
+        repository: ghcr.io/devxp-tech/tf-env/atlantis
+        tag: v0.27.2
+      # basicAuthSecretName:
+      # github:
+      #   secret:
+      imagePullSecrets:
+        - ghcr-secret
+      # ref: https://www.runatlantis.io/docs/server-side-repo-config.html
+      # Example default configuration
+      repoConfig: |
+        ---
+        repos:
+        - id: "/.*/"
+          apply_requirements: [mergeable]
+          allow_custom_workflows: true
+          workflow: terragrunt
+          delete_source_branch_on_merge: true
+          allowed_overrides: [apply_requirements, workflow, delete_source_branch_on_merge]
+        workflows:
+          terragrunt:
+            plan:
+              steps:
+              - env:
+                  # Reduce Terraform suggestion output
+                  name: TF_IN_AUTOMATION
+                  value: 'true'
+              - run:
+                  # Allow for targetted plans/applies as not supported for Terraform wrappers by default
+                  command: terragrunt run-all plan -input=false $(printf '%s' $COMMENT_ARGS | sed 's/,/ /g' | tr -d '\\') -no-color -out $PLANFILE
+                  output: hide
+              - run: |
+                  terragrunt show $PLANFILE
+            apply:
+              steps:
+              - env:
+                  # Reduce Terraform suggestion output
+                  name: TF_IN_AUTOMATION
+                  value: 'true'
+              - run: terragrunt run-all apply -input=false $PLANFILE
+        metrics:
+          prometheus:
+            endpoint: /metrics
+
+      # Use Diff Markdown Format for color coding diffs
+      enableDiffMarkdownFormat: true
+
+      commonLabels:
+        app.kubernetes.io/name: atlantis
+        app.kubernetes.io/instance: atlantis
+
+      service:
+        type: ClusterIP
+        # port: 80
+        targetPort: 4141
+        # loadBalancerIP: null
+
+      resources:
+        requests:
+          memory: 500Mi
+          cpu: 100m
+        limits:
+          memory: 900Mi
+          cpu: 500m
+
+      volumeClaim:
+        enabled: true
+        dataStorage: 10Gi
+
+      environment:
+        ATLANTIS_DEFAULT_TF_VERSION: v1.3.8
+        ATLANTIS_WRITE_GIT_CREDS: "true"
+        TF_IN_AUTOMATION: "true"
+        # ATLANTIS_GH_APP_KEY_FILE: /config/github.pem
+
+      containerSecurityContext:
+        allowPrivilegeEscalation: false
+        readOnlyRootFilesystem: true
+
+      servicemonitor:
+        enabled: true
+
+      readinessProbe:
+        periodSeconds: 5
+        initialDelaySeconds: 10
+
+      serviceAccount:
+        create: true
+        mount: true
+        name: atlantis
+        annotations:
+          eks.amazonaws.com/role-arn: arn:aws:iam::239468932737:role/atlantis-lgseksd1-sa

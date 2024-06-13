@@ -1,0 +1,19 @@
+---
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: atlantis
+spec:
+  gateways:
+    - istio-system/istio-ingressgateway
+  hosts:
+    - atlantis.devxp-tech.io
+  http:
+    - match:
+        - uri:
+            prefix: "/"
+      route:
+        - destination:
+            host: atlantis.atlantis.svc.cluster.local
+            port:
+              number: 80
