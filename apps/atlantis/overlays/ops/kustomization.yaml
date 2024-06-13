@@ -12,6 +12,8 @@ helmCharts:
     valuesInline:
       atlantisUrl: https://atlantis.devxp-tech.io
       orgAllowlist: github.com/devxp-tech/*
+      ingress:
+        enabled: false
       image:
         repository: ghcr.io/devxp-tech/tf-env/atlantis
         tag: v0.27.2
