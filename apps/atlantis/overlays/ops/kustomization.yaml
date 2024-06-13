@@ -21,6 +21,7 @@ helmCharts:
       imagePullSecrets:
         - ghcr-secret
       basicAuthSecretName: basic-auth
+      vcsSecretName: 
       github:
         secret: github-secrets
       # ref: https://www.runatlantis.io/docs/server-side-repo-config.html
