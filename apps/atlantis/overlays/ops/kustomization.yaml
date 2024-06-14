@@ -14,6 +14,11 @@ helmCharts:
       nameOverride: atlantis
       atlantisUrl: https://atlantis.devxp-tech.io
       orgAllowlist: github.com/devxp-tech/*
+      github:
+        secret: github-secrets
+        # user: diegoluisi
+      basicAuthSecretName: basic-auth
+      vcsSecretName: github-secrets
       ingress:
         enabled: false
       # image:
@@ -21,11 +26,6 @@ helmCharts:
       #   tag: v0.27.2
       # imagePullSecrets:
       #   - ghcr-secret
-      github:
-        secret: github-secrets
-        user: diegoluisi
-      basicAuthSecretName: basic-auth
-      vcsSecretName: github-secrets
       # ref: https://www.runatlantis.io/docs/server-side-repo-config.html
       # Example default configuration
       repoConfig: |
