@@ -5,7 +5,7 @@ metadata:
   name: atlantis
 spec:
   gateways:
-    - istio-system/istio-ingressgateway
+    - istio-ingress/istio-ingressgateway
   hosts:
     - atlantis.devxp-tech.io
   http:
