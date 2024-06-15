@@ -3,9 +3,9 @@ kind: Kustomization
 namespace: sonarqube
 resources:
   - ns.yaml
-commonLabels:
-  app: sonarqube
-  version: 10.0.0
+# commonLabels:
+#   app: sonarqube
+#   version: 10.0.0
 helmCharts:
   - name: sonarqube
     releaseName: sonarqube
