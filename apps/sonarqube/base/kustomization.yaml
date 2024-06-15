@@ -12,8 +12,8 @@ helmCharts:
     version: "10.5.1+2816"
     repo: https://SonarSource.github.io/helm-chart-sonarqube
     valuesInline:
-      prometheusExporter:
-        enabled: true
+      # prometheusExporter:
+      #   enabled: true
       prometheusMonitoring:
         podMonitor:
           enabled: true
