@@ -42,6 +42,11 @@ helmCharts:
         replicas: 2
       loki:
         auth_enabled: false
+        loki:
+          structuredConfig:
+            memberlist:
+              join_members:
+                - loki-memberlist
         storage:
           type: s3
           s3ForcePathStyle: true
