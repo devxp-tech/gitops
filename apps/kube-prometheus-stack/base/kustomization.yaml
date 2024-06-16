@@ -29,6 +29,9 @@ helmCharts:
         rules:
           time: false
           kubelet: false
+          kubeControllerManager: false
+          kubeSchedulerAlerting: false
+          kubeSchedulerRecording: false
     additionalValuesFiles:
       - alertmanager-values.yaml
       - kube-state-metrics-values.yaml
