@@ -16,6 +16,15 @@ helmCharts:
         annotations:
           "eks.amazonaws.com/role-arn": "arn:aws:iam::239468932737:role/loki-lgseksd1-sa"
         automountServiceAccountToken: true
+      singleBinary: # or read/write/backend etc
+        replicas: 3
+        extraArgs:
+          - -config.expand-env=true
+        extraEnv:
+          - name: MY_POD_IP
+            valueFrom:
+              fieldRef:
+                fieldPath: status.podIP
       lokiCanary:
         enabled: false
       extraArgs:
@@ -44,11 +53,14 @@ helmCharts:
         replicas: 2
       loki:
         auth_enabled: false
-        loki:
-          structuredConfig:
-            memberlist:
-              join_members:
-                - loki-memberlist.monitoring.svc.cluster.local:7946
+        extraMemberlistConfig:
+          bind_addr:
+            - ${MY_POD_IP}
+        # loki:
+          # structuredConfig:
+          #   memberlist:
+          #     join_members:
+          #       - loki-memberlist.monitoring.svc.cluster.local:7946
         storage:
           type: s3
           s3ForcePathStyle: true
