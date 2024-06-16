@@ -1,8 +1,10 @@
+
 alertmanager:
   serviceMonitor:
     selfMonitor: true
   alertmanagerSpec:
     forceEnableClusterMode: true
+    externalUrl: https://alertmanager.devxp-tech.io
     secrets:
       - alertmanager-secret
   baseURL: "https://alertmanager.devxp-tech.io"
