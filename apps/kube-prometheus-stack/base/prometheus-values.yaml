@@ -34,6 +34,11 @@ prometheus-node-exporter:
           targetLabel: instance
 
 prometheus:
+  defaultRules:
+    rules:
+      kubeControllerManager: false
+      kubeSchedulerAlerting: false
+      kubeSchedulerRecording: false
   additionalRulesForClusterRole:
     - apiGroups: [""]
       resources:
@@ -97,11 +102,6 @@ prometheus:
     #   objectStorageConfig:
     #     name: thanos-objstore-secret
     #     key: objstore.yml
-    defaultRules:
-      rules:
-        kubeControllerManager: false
-        kubeSchedulerAlerting: false
-        kubeSchedulerRecording: false
     additionalScrapeConfigs:
       # New scrape config for Alertmanager
       - job_name: 'alertmanager'
