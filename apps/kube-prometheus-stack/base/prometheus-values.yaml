@@ -102,8 +102,13 @@ prometheus:
         kubeControllerManager: false
         kubeSchedulerAlerting: false
     additionalScrapeConfigs:
+      # New scrape config for Alertmanager
+      - job_name: 'alertmanager'
+        static_configs:
+          - targets: ['prometheus-community-kube-alertmanager:9093']
+
       - job_name: "prometheus"
-        scrape_interval: 30s
+        scrape_interval: 60s
         static_configs:
           - targets: ["prometheus-community-kube-prometheus:9090"]
 

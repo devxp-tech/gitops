@@ -8,10 +8,6 @@ alertmanager:
     externalUrl: https://alertmanager.devxp-tech.io
     secrets:
       - alertmanager-secret
-  # extraArgs:
-  #   web:
-  #     external-url: "https://alertmanager.devxp-tech.io"
-  #     route-prefix: "/"
   config:
     global:
       resolve_timeout: 5m
