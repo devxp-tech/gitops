@@ -23,7 +23,7 @@ helmCharts:
                     values:
                       - fargate
       config:
-        enableTracing: true
+        # enableTracing: true
         clients:
           - url: http://loki-gateway.monitoring/loki/api/v1/push
             external_labels:
