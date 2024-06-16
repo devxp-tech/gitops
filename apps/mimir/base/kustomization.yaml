@@ -87,12 +87,13 @@ helmCharts:
         nodeSelector:
           topology.kubernetes.io/zone: "us-east-1b"
       distributor:
+        replicas: 2
         extraArgs:
           distributor.ingestion-rate-limit: "1000000"
           distributor.ingestion-burst-size: "10000000"
           validation.max-label-names-per-series: "50"
       ingester:
-        # replicas: 1
+        replicas: 2
         zoneAwareReplication:
           enabled: false
         persistentVolume:
