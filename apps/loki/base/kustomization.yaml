@@ -29,8 +29,8 @@ helmCharts:
             installOperator: false
       test:
         enabled: false
-      tracing:
-        enabled: true
+      # tracing:
+      #   enabled: true
         # jaegerAgentHost: tempo.observability.svc.cluster.local:6831
       persistence:
         enabled: true
