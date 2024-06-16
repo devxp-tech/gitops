@@ -101,6 +101,7 @@ prometheus:
       rules:
         kubeControllerManager: false
         kubeSchedulerAlerting: false
+        kubeSchedulerRecording: false
     additionalScrapeConfigs:
       # New scrape config for Alertmanager
       - job_name: 'alertmanager'
