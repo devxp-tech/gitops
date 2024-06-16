@@ -9,8 +9,8 @@ helmCharts:
     version: 6.6.3 #2.9.11
     repo: https://grafana.github.io/helm-charts
     valuesInline:
-      labels:
-        app: loki
+      # labels:
+      #   app: loki
       serviceAccount:
         name: loki
         annotations:
@@ -18,6 +18,8 @@ helmCharts:
         automountServiceAccountToken: true
       lokiCanary:
         enabled: false
+      extraArgs:
+        config.expand-env: true
       monitoring:
         serviceMonitor:
           enabled: true
@@ -47,8 +49,6 @@ helmCharts:
             memberlist:
               join_members:
                 - loki-memberlist.monitoring.svc.cluster.local:7946
-              cluster_label: loki-memberlist
-              cluster_label_verification_disabled: false
         storage:
           type: s3
           s3ForcePathStyle: true
