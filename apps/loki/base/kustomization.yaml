@@ -46,7 +46,9 @@ helmCharts:
           structuredConfig:
             memberlist:
               join_members:
-                - loki-memberlist
+                - loki-memberlist.monitoring.svc.cluster.local:7946
+              cluster_label: loki-memberlist
+              cluster_label_verification_disabled: false
         storage:
           type: s3
           s3ForcePathStyle: true
