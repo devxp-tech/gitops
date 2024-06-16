@@ -97,6 +97,10 @@ prometheus:
     #   objectStorageConfig:
     #     name: thanos-objstore-secret
     #     key: objstore.yml
+    defaultRules:
+      rules:
+        kubeControllerManager: false
+        kubeSchedulerAlerting: false
     additionalScrapeConfigs:
       - job_name: "prometheus"
         scrape_interval: 30s
