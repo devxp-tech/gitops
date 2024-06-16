@@ -1,12 +1,15 @@
 alertmanager:
+  serviceMonitor:
+    selfMonitor: true
   alertmanagerSpec:
     forceEnableClusterMode: true
     secrets:
       - alertmanager-secret
   baseURL: "https://alertmanager.devxp-tech.io"
   extraArgs:
-    web.external-url: "https://alertmanager.devxp-tech.io"
-    web.route-prefix: "/"
+    web:
+      external-url: "https://alertmanager.devxp-tech.io"
+      route-prefix: "/"
   config:
     global:
       resolve_timeout: 5m
