@@ -79,10 +79,8 @@ helmCharts:
           memberlist:
             abort_if_cluster_join_fails: false
             compression_enabled: false
-            bind_addr:
-            - ${MY_POD_IP}
             join_members:
-            - mimir-gossip-ring.monitoring.svc:7946
+            - dns+mimir-gossip-ring.monitoring.svc.cluster.local:7946
           runtime_config:
             file: /var/mimir/runtime.yaml
       minio:
