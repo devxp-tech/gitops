@@ -8,8 +8,6 @@ helmCharts:
     version: 1.9.0
     repo: https://grafana.github.io/helm-charts
     valuesInline:
-      labels:
-        app: tempo
       replicas: 1
       serviceAccount:
         name: tempo
@@ -20,6 +18,11 @@ helmCharts:
         enabled: true
       gateway:
         enabled: true
+      tempo:
+        structuredConfig:
+          memberlist:
+            cluster_label: thanos.tempo
+            cluster_label_verification_disabled: false
       tempoQuery:
         enabled: true
         service:

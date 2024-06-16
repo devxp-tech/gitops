@@ -9,22 +9,11 @@ helmCharts:
     version: 6.6.3 #2.9.11
     repo: https://grafana.github.io/helm-charts
     valuesInline:
-      # labels:
-      #   app: loki
       serviceAccount:
         name: loki
         annotations:
           "eks.amazonaws.com/role-arn": "arn:aws:iam::239468932737:role/loki-lgseksd1-sa"
         automountServiceAccountToken: true
-      # singleBinary: # or read/write/backend etc
-      #   replicas: 3
-      #   extraArgs:
-      #     - -config.expand-env=true
-      #   extraEnv:
-      #     - name: MY_POD_IP
-      #       valueFrom:
-      #         fieldRef:
-      #           fieldPath: status.podIP
       lokiCanary:
         enabled: false
       extraArgs:
@@ -131,14 +120,3 @@ helmCharts:
           max_outstanding_requests_per_tenant: 2048
         querier:
           max_concurrent: 20
-      # tableManager:
-      #   enabled: true
-      #   retention_deletes_enabled: true
-      #   retention_period: 720h
-      #   resources: {}
-      #   extraVolumes:
-      #     - name: data
-      #       emptyDir: {}
-      #   extraVolumeMounts:
-      #     - name: data
-      #       mountPath: /var/loki
