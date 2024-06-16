@@ -58,8 +58,10 @@ prometheus:
   # thanosServiceMonitor:
   #   enabled: true # Enable Mimir
   prometheusSpec:
+    externalUrl: https://prometheus.devxp-tech.io/
     externalLabels:
       cluster: lgseksd1
+      environment: development
     remoteWrite: # Enable Mimir
       - url: http://mimir-nginx.monitoring.svc:80/api/v1/push
         queueConfig:
@@ -71,7 +73,6 @@ prometheus:
         namespace: monitoring
         port: http-web
         pathPrefix: /
-    serviceMonitorSelectorNilUsesHelmValues: false
     resources:
       requests:
         cpu: "500m"
@@ -82,9 +83,10 @@ prometheus:
     replicas: 1 # 3 to 1 enabled Mimir
     replicaExternalLabelName: "__replica__"
     podAntiAffinity: hard
-    ruleSelectorNilUsesHelmValues: false
     podMonitorSelectorNilUsesHelmValues: false
     probeSelectorNilUsesHelmValues: false
+    ruleSelectorNilUsesHelmValues: false
+    serviceMonitorSelectorNilUsesHelmValues: false
     retentionSize: "6GB"
     retention: 2d
     walCompression: true
