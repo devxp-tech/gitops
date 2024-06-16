@@ -10,6 +10,12 @@ helmCharts:
     repo: https://grafana.github.io/helm-charts
     valuesInline:
       fullnameOverride: mimir
+      global:
+        extraEnv:
+          - name: MY_POD_IP
+            valueFrom:
+              fieldRef:
+                fieldPath: status.podIP
       serviceAccount:
         create: true
         name: mimir
@@ -73,6 +79,10 @@ helmCharts:
           memberlist:
             abort_if_cluster_join_fails: false
             compression_enabled: false
+            bind_addr:
+            - ${MY_POD_IP}
+            join_members:
+            - mimir-gossip-ring.monitoring.svc:7946
           runtime_config:
             file: /var/mimir/runtime.yaml
       minio:
