@@ -9,10 +9,10 @@ helmCharts:
     repo: https://grafana.github.io/helm-charts
     valuesInline:
       fullnameOverride: promtail
-      serviceMonitor:
-        enabled: true
-      prometheusRule:
-        enabled: true
+      # serviceMonitor:
+      #   enabled: true
+      # prometheusRule:
+      #   enabled: true
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
@@ -28,6 +28,7 @@ helmCharts:
           - url: http://loki-gateway.monitoring/loki/api/v1/push
             external_labels:
               cluster: lgseksd1
+              environment: development
         snippets:
           pipelineStages:
             - cri: {}
