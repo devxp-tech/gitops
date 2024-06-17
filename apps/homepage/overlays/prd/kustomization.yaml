@@ -22,11 +22,12 @@ helmCharts:
         enabled: false
       readinessProbe:
         enabled: false
-      virtualServices:
-        custom:
-          hosts:
-            - devxp-tech.io
-            - www.devxp-tech.io
+      istio:
+        virtualServices:
+          custom:
+            hosts:
+              - devxp-tech.io
+              - www.devxp-tech.io
       resources:
         requests:
           cpu: "10m"
