@@ -87,7 +87,7 @@ helmCharts:
       persistence:
         enabled: true
       backend:
-        replicas: 1
+        replicas: 2
         extraArgs:
           - -config.expand-env=true
         extraEnv:
@@ -98,7 +98,7 @@ helmCharts:
               fieldRef:
                 fieldPath: status.podIP
       read:
-        replicas: 1
+        replicas: 2
         extraArgs:
           - -config.expand-env=true
         extraEnv:
@@ -109,7 +109,7 @@ helmCharts:
               fieldRef:
                 fieldPath: status.podIP
       write:
-        replicas: 1
+        replicas: 2
         extraArgs:
           - -config.expand-env=true
         extraEnv:

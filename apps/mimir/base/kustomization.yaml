@@ -76,11 +76,6 @@ helmCharts:
             max_global_series_per_metric: 0
             max_global_series_per_user: 0
             max_label_names_per_series: 40
-          memberlist:
-            abort_if_cluster_join_fails: false
-            compression_enabled: false
-            join_members:
-            - dns+mimir-gossip-ring.monitoring.svc.cluster.local:7946
           runtime_config:
             file: /var/mimir/runtime.yaml
       minio:
