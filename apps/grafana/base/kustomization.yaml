@@ -76,7 +76,7 @@ helmCharts:
               type: loki
               access: proxy
               orgId: 1
-              url: http://loki-read:3100
+              url: http://loki-read.logging.svc:3100
               version: 1
               jsonData:
                 alertmanagerUid: alertmanager

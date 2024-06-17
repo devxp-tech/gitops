@@ -25,7 +25,7 @@ helmCharts:
       config:
         # enableTracing: true
         clients:
-          - url: http://loki-gateway.monitoring/loki/api/v1/push
+          - url: http://loki-gateway.logging.svc/loki/api/v1/push
             external_labels:
               cluster: lgseksd1
               environment: development
