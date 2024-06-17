@@ -57,11 +57,12 @@ helmCharts:
             align_queries_with_step: true
             log_queries_longer_than: 10s
           ingester:
-            instance_limits:
-              max_ingestion_rate: 0
-            ring:
-              final_sleep: 0s
-              num_tokens: 512
+            replicas: 2
+            # instance_limits:
+            #   max_ingestion_rate: 0
+            # ring:
+            #   final_sleep: 0s
+            #   num_tokens: 512
           ingester_client:
             grpc_client_config:
               max_recv_msg_size: 104857600
