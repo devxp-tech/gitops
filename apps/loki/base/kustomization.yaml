@@ -6,7 +6,7 @@ helmCharts:
     includeCRDs: true
     releaseName: loki
     namespace: monitoring
-    version: 6.6.3 #2.9.11
+    version: 6.5.2 #2.9.11
     repo: https://grafana.github.io/helm-charts
     valuesInline:
       serviceAccount:
@@ -21,56 +21,8 @@ helmCharts:
         extraMemberlistConfig:
           bind_addr:
             - ${MY_POD_IP}
-        tracing:
-          enabled: true
-      monitoring:
-        serviceMonitor:
-          enabled: true
-        dashboards:
-          enabled: true
-        selfMonitoring:
-          enabled: false
-          grafanaAgent:
-            installOperator: false
-      test:
-        enabled: false
-      # tracing:
-      #   enabled: true
-        # jaegerAgentHost: tempo.observability.svc.cluster.local:6831
-      persistence:
-        enabled: true
-      backend:
-        replicas: 2
-        extraArgs:
-          - -config.expand-env=true
-        extraEnv:
-          - name: MY_POD_IP
-            valueFrom:
-              fieldRef:
-                fieldPath: status.podIP
-      read:
-        replicas: 2
-        extraArgs:
-          - -config.expand-env=true
-        extraEnv:
-          - name: MY_POD_IP
-            valueFrom:
-              fieldRef:
-                fieldPath: status.podIP
-      write:
-        replicas: 2
-        extraArgs:
-          - -config.expand-env=true
-        extraEnv:
-          - name: MY_POD_IP
-            valueFrom:
-              fieldRef:
-                fieldPath: status.podIP
-
-        # structuredConfig:
-        #   memberlist:
-        #     join_members:
-        #       - loki-memberlist.monitoring.svc.cluster.local:7946
+        commonConfig:
+          replication_factor: 1
         storage:
           type: s3
           s3ForcePathStyle: true
@@ -98,7 +50,6 @@ helmCharts:
                   # send immediately as soon as a sample is generated
                   capacity: 1
                   batch_send_deadline: 0s
-
         schemaConfig:
           configs:
             - from: "2024-04-01"
@@ -120,3 +71,51 @@ helmCharts:
           max_outstanding_requests_per_tenant: 2048
         querier:
           max_concurrent: 20
+        tracing:
+          enabled: true
+      monitoring:
+        serviceMonitor:
+          enabled: true
+        dashboards:
+          enabled: true
+        selfMonitoring:
+          enabled: false
+          grafanaAgent:
+            installOperator: false
+      test:
+        enabled: false
+      persistence:
+        enabled: true
+      backend:
+        replicas: 1
+        extraArgs:
+          - -config.expand-env=true
+        extraEnv:
+          - name: GOMEMLIMIT
+            value: 3750MiB
+          - name: MY_POD_IP
+            valueFrom:
+              fieldRef:
+                fieldPath: status.podIP
+      read:
+        replicas: 1
+        extraArgs:
+          - -config.expand-env=true
+        extraEnv:
+          - name: GOMEMLIMIT
+            value: 3750MiB
+          - name: MY_POD_IP
+            valueFrom:
+              fieldRef:
+                fieldPath: status.podIP
+      write:
+        replicas: 1
+        extraArgs:
+          - -config.expand-env=true
+        extraEnv:
+          - name: GOMEMLIMIT
+            value: 3750MiB
+          - name: MY_POD_IP
+            valueFrom:
+              fieldRef:
+                fieldPath: status.podIP
