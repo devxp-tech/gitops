@@ -71,24 +71,24 @@ helmCharts:
               access: proxy
               jsonData:
                 implementation: prometheus
-            - name: Loki
-              uid: loki
-              type: loki
-              access: proxy
-              orgId: 1
-              url: http://loki-read.logging.svc:3100
-              version: 1
-              jsonData:
-                alertmanagerUid: alertmanager
-                maxLines: 5000
-                timeout: "60"
-                derivedFields:
-                  - name: Tempo
-                    datasourceUid: tempo
-                    datasourceName: Tempo
-                    matcherRegex: '"trace[^"]*": "([^"]+)"' # Works
-                    # matcherRegex: '"(?:[Tt]race[_IidD]{2,})":\s*"([^"]+)"' # Test
-                    url: "$${__value.raw}"
+            # - name: Loki
+            #   uid: loki
+            #   type: loki
+            #   access: proxy
+            #   orgId: 1
+            #   url: http://loki-read.logging.svc:3100
+            #   version: 1
+            #   jsonData:
+            #     alertmanagerUid: alertmanager
+            #     maxLines: 5000
+            #     timeout: "60"
+            #     derivedFields:
+            #       - name: Tempo
+            #         datasourceUid: tempo
+            #         datasourceName: Tempo
+            #         matcherRegex: '"trace[^"]*": "([^"]+)"' # Works
+            #         # matcherRegex: '"(?:[Tt]race[_IidD]{2,})":\s*"([^"]+)"' # Test
+            #         url: "$${__value.raw}"
 
                   # Not using Jager
                   # - name: Jaeger
