@@ -57,7 +57,6 @@ helmCharts:
             align_queries_with_step: true
             log_queries_longer_than: 10s
           ingester:
-            replicas: 2
             # instance_limits:
             #   max_ingestion_rate: 0
             # ring:
@@ -97,13 +96,8 @@ helmCharts:
           distributor.ingestion-burst-size: "10000000"
           validation.max-label-names-per-series: "50"
       ingester:
-        # replicas: 2
+        replicas: 2
         zoneAwareReplication:
           enabled: false
         persistentVolume:
           enabled: false
-      # store_gateway:
-      #   zoneAwareReplication:
-      #     enabled: false
-      #   nodeSelector:
-      #     topology.kubernetes.io/zone: "us-east-1b"
