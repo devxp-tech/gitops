@@ -1,7 +1,7 @@
 {
   "appName": "loki",
   "userGivenName": "loki",
-  "destNamespace": "monitoring",
+  "destNamespace": "logging",
   "destServer": "https://kubernetes.default.svc",
   "srcPath": "apps/loki/overlays/ops",
   "srcRepoURL": "https://github.com/devxp-tech/gitops.git",
