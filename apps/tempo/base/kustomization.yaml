@@ -18,11 +18,6 @@ helmCharts:
         enabled: true
       gateway:
         enabled: true
-      tempo:
-        structuredConfig:
-          memberlist:
-            cluster_label: thanos.tempo
-            cluster_label_verification_disabled: false
       tempoQuery:
         enabled: true
         service:
@@ -53,14 +48,3 @@ helmCharts:
               http:
                 endpoint: "0.0.0.0:4318"
           zipkin:
-      # metrics_generator:
-      #   # enabled: true
-      #   config:
-      #     service_graphs_max_items: 15000
-      #     storage_remote_write:
-      #       - url: http://prometheus-community-kube-prometheus.monitoring.svc:9090/prometheus/api/v1/write
-
-      # global_overrides:
-      #   metrics_generator_processors:
-      #     - service-graphs
-      #     - span-metrics

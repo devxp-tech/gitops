@@ -16,8 +16,13 @@ helmCharts:
         automountServiceAccountToken: true
       lokiCanary:
         enabled: false
-      extraArgs:
-        config.expand-env: true
+      loki:
+        auth_enabled: false
+        extraMemberlistConfig:
+          bind_addr:
+            - ${MY_POD_IP}
+        tracing:
+          enabled: true
       monitoring:
         serviceMonitor:
           enabled: true
@@ -61,11 +66,6 @@ helmCharts:
             valueFrom:
               fieldRef:
                 fieldPath: status.podIP
-      loki:
-        auth_enabled: false
-        extraMemberlistConfig:
-          bind_addr:
-            - ${MY_POD_IP}
 
         # structuredConfig:
         #   memberlist:
