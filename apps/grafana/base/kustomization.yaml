@@ -71,7 +71,7 @@ helmCharts:
               access: proxy
               jsonData:
                 implementation: prometheus
-            - name: Loki
+            - name: Loki-logging
               uid: loki
               type: loki
               access: proxy
