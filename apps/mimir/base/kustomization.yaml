@@ -10,12 +10,12 @@ helmCharts:
     repo: https://grafana.github.io/helm-charts
     valuesInline:
       fullnameOverride: mimir
-      global:
-        extraEnv:
-          - name: MY_POD_IP
-            valueFrom:
-              fieldRef:
-                fieldPath: status.podIP
+      # global:
+      #   extraEnv:
+      #     - name: MY_POD_IP
+      #       valueFrom:
+      #         fieldRef:
+      #           fieldPath: status.podIP
       serviceAccount:
         create: true
         name: mimir
