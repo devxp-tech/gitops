@@ -3,7 +3,7 @@ kind: Kustomization
 namespace: homepage
 resources:
   - ../../base
-  - virtual-service.yaml
+  # - virtual-service.yaml
 helmCharts:
   - name: devxp-app
     releaseName: devxp-app
@@ -25,6 +25,7 @@ helmCharts:
       virtualServices:
         custom:
           hosts:
+            - devxp-tech.io
             - www.devxp-tech.io
       resources:
         requests:
