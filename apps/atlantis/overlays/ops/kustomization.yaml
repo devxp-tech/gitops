@@ -83,6 +83,8 @@ helmCharts:
                   # Reduce Terraform suggestion output
                   name: TF_IN_AUTOMATION
                   value: 'true'
+              - run: |
+                  terragrunt init -upgrade
               - run:
                   # Allow for targetted plans/applies as not supported for Terraform wrappers by default
                   command: terragrunt run-all plan -input=false $(printf '%s' $COMMENT_ARGS | sed 's/,/ /g' | tr -d '\\') -no-color -out $PLANFILE
@@ -95,7 +97,10 @@ helmCharts:
                   # Reduce Terraform suggestion output
                   name: TF_IN_AUTOMATION
                   value: 'true'
-              - run: terragrunt run-all apply --terragrunt-non-interactive -input=false $PLANFILE
+              - run: |
+                  terragrunt init -upgrade
+              - run: |
+                  terragrunt run-all apply --terragrunt-non-interactive -input=false $PLANFILE
         metrics:
           prometheus:
             endpoint: /metrics
