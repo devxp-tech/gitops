@@ -98,8 +98,8 @@ helmCharts:
           distributor.ingestion-burst-size: "10000000"
           validation.max-label-names-per-series: "50"
       ingester:
-        replicas: 2
-        zoneAwareReplication:
-          enabled: false
-        persistentVolume:
-          enabled: false
+        replicas: 3
+        # zoneAwareReplication:
+        #   enabled: false
+        # persistentVolume:
+        #   enabled: false
