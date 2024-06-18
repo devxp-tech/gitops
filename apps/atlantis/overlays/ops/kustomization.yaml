@@ -95,7 +95,7 @@ helmCharts:
                   # Reduce Terraform suggestion output
                   name: TF_IN_AUTOMATION
                   value: 'true'
-              - run: terragrunt run-all apply -input=false $PLANFILE
+              - run: terragrunt run-all apply --terragrunt-non-interactive -input=false $PLANFILE
         metrics:
           prometheus:
             endpoint: /metrics
