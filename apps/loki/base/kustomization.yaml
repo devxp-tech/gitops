@@ -18,13 +18,6 @@ helmCharts:
         enabled: false
       loki:
         auth_enabled: false
-        extraMemberlistConfig:
-          bind_addr:
-            - ${MY_POD_IP}
-        # memberlistConfig:
-        #   cluster_label: loki
-          # cluster_label_verification_disabled: true
-          # abort_if_cluster_join_fails: true
         commonConfig:
           replication_factor: 1
         storage:
@@ -92,34 +85,8 @@ helmCharts:
         enabled: true
       backend:
         replicas: 2
-        extraArgs:
-          - -config.expand-env=true
-        extraEnv:
-          - name: GOMEMLIMIT
-            value: 3750MiB
-          - name: MY_POD_IP
-            valueFrom:
-              fieldRef:
-                fieldPath: status.podIP
       read:
         replicas: 2
-        extraArgs:
-          - -config.expand-env=true
-        extraEnv:
-          - name: GOMEMLIMIT
-            value: 3750MiB
-          - name: MY_POD_IP
-            valueFrom:
-              fieldRef:
-                fieldPath: status.podIP
       write:
         replicas: 2
-        extraArgs:
-          - -config.expand-env=true
-        extraEnv:
-          - name: GOMEMLIMIT
-            value: 3750MiB
-          - name: MY_POD_IP
-            valueFrom:
-              fieldRef:
-                fieldPath: status.podIP
+
