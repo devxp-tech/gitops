@@ -47,7 +47,7 @@ spec:
         operator: In
         values:
         - on-demand
-        # - spot
+        - spot
       - key: kubernetes.io/arch
         operator: In
         values:
