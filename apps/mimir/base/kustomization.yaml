@@ -80,6 +80,8 @@ helmCharts:
             file: /var/mimir/runtime.yaml
       minio:
         enabled: false
+      nginx:
+        replicas: 2
       querier:
         replicas: 2
       alertmanager:
