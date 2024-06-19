@@ -4,7 +4,7 @@ kind: PersistentVolumeClaim
 metadata:
   finalizers:
   - kubernetes.io/pvc-protection
-  name: grafana
+  name: storage-grafana-0
 spec:
   accessModes:
   - ReadWriteOnce
