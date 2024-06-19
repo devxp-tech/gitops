@@ -26,17 +26,19 @@ spec:
       nodeClassRef:
         name: default
       requirements:
-      - key: karpenter.k8s.aws/instance-category
+      - key: karpenter.k8s.aws/instance-size
         operator: In
-        values:
-        - c
-        - m
-        - r
-        - t
-      - key: karpenter.k8s.aws/instance-cpu
+        values: ["medium","large","xlarge","2xlarge","4xlarge"]
+      - key: karpenter.k8s.aws/instance-generation
         operator: Gt
-        values:
-        - "1"
+        values: ["2"]
+      # - key: karpenter.k8s.aws/instance-category
+      #   operator: In
+      #   values:
+      #   - c
+      #   - m
+      #   - r
+      #   - t
       - key: topology.kubernetes.io/zone
         operator: In
         values:
@@ -50,33 +52,8 @@ spec:
         - spot
       - key: kubernetes.io/arch
         operator: In
-        values:
-        - amd64
+        values: ["amd64"]
       - key: kubernetes.io/os
         operator: In
-        values:
-        - linux
-# ---
-# apiVersion: karpenter.k8s.aws/v1beta1
-# kind: EC2NodeClass
-# metadata:
-#   name: default
-# spec:
-#   amiFamily: AL2
-#   blockDeviceMappings:
-#   - deviceName: /dev/xvda
-#     ebs:
-#       volumeSize: 40Gi
-#       volumeType: gp3
-#   role: Karpenter-lgseksd1-20230809131800238100000002 #$KARPENTER_NODE_ROLE
-#   securityGroupSelectorTerms:
-#   - tags:
-#       karpenter.sh/discovery: lgseksd1
-#   subnetSelectorTerms:
-#   - tags:
-#       karpenter.sh/discovery: lgseksd1
-#   tags:
-#     Name: karpenter.sh/default
-#     aws-node-termination-handler/managed: "true"
-#     karpenter.sh/nodegroup: default
-#     node-role.kubernetes.io/worker: worker
+        values: ["linux"]
+
