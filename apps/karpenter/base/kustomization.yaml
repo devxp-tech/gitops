@@ -8,7 +8,7 @@ helmCharts:
     includeCRDs: true
     releaseName: karpenter
     namespace: karpenter
-    version: v0.34.6 #v0.33.4
+    version: v0.33.4
     repo: oci://public.ecr.aws/karpenter
     valuesInline:
       nameOverride: karpenter
