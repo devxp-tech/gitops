@@ -32,6 +32,9 @@ spec:
       - key: karpenter.k8s.aws/instance-generation
         operator: Gt
         values: ["2"]
+      - key: karpenter.k8s.aws/instance-cpu
+        operator: Gt
+        values: ["1"]
       - key: karpenter.k8s.aws/instance-category
         operator: In
         values: ["c", "m", "r", "t"]
