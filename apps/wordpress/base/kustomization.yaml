@@ -56,5 +56,5 @@ helmCharts:
       mariadb:
         auth:
           existingSecret: wordpress-secrets #mariadb-password
-        nodeSelector:
-          topology.kubernetes.io/zone: "us-east-1c"
+        # nodeSelector:
+        #   topology.kubernetes.io/zone: "us-east-1c"
