@@ -13,8 +13,8 @@ helmCharts:
       persistence:
         enabled: true
         existingClaim: grafana
-      nodeSelector:
-        topology.kubernetes.io/zone: "us-east-1c"
+      # nodeSelector:
+      #   topology.kubernetes.io/zone: "us-east-1c"
       serviceMonitor:
         enabled: true
       resources:

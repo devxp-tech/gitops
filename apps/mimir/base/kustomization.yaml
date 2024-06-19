@@ -82,10 +82,10 @@ helmCharts:
         enabled: false
       nginx:
         replicas: 1
-      store_gateway:
-        replicas: 2
-        zoneAwareReplication:
-          enabled: false
+      # store_gateway:
+      #   replicas: 2
+      #   zoneAwareReplication:
+      #     enabled: false
       querier:
         replicas: 2
       alertmanager:
