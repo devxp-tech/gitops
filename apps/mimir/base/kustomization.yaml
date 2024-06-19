@@ -81,7 +81,7 @@ helmCharts:
       minio:
         enabled: false
       nginx:
-        replicas: 2
+        replicas: 1
       querier:
         replicas: 2
       alertmanager:
