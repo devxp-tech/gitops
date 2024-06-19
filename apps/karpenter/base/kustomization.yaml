@@ -12,9 +12,9 @@ helmCharts:
     repo: oci://public.ecr.aws/karpenter
     valuesInline:
       nameOverride: karpenter
-      webhook:
-        enabled: true
-        port: 8443
+      # webhook:
+      #   enabled: true
+      #   port: 8443
       serviceAccount:
         annotations:
           eks.amazonaws.com/role-arn: arn:aws:iam::239468932737:role/KarpenterIRSA-lgseksd1-20230809132301233100000001
@@ -52,8 +52,3 @@ helmCharts:
         clusterName: lgseksd1
         clusterEndpoint: https://7947638F25F34C5F3CAFEF8286994CB3.gr7.us-east-1.eks.amazonaws.com
         defaultInstanceProfile: KarpenterNodeInstanceProfile-lgseksd1
-      # settings:
-      #   aws:
-      #     clusterName: lgseksd1
-      #     clusterEndpoint: https://7947638F25F34C5F3CAFEF8286994CB3.gr7.us-east-1.eks.amazonaws.com
-      #     defaultInstanceProfile: KarpenterNodeInstanceProfile-lgseksd1
