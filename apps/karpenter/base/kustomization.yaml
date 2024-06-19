@@ -13,10 +13,9 @@ helmCharts:
     valuesInline:
       nameOverride: karpenter
       dnsPolicy: Default
-      webhook:
-        enabled: true
-        port: 8443
-      hostNetwork: true
+      # webhook:
+      #   enabled: true
+      #   port: 8443
       serviceAccount:
         annotations:
           eks.amazonaws.com/role-arn: arn:aws:iam::239468932737:role/KarpenterIRSA-lgseksd1-20230809132301233100000001
