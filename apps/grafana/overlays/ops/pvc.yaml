@@ -12,5 +12,5 @@ spec:
     requests:
       storage: 10Gi
   storageClassName: gp3
-  volumeMode: Filesystem
-  volumeName: pvc-1b304757-22ba-4622-b4fc-98f6718ad254
+  # volumeMode: Filesystem
+  # volumeName: pvc-1b304757-22ba-4622-b4fc-98f6718ad254
