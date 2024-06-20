@@ -4,7 +4,7 @@ kind: PersistentVolumeClaim
 metadata:
   finalizers:
   - kubernetes.io/pvc-protection
-  name: storage-grafana-0
+  name: grafana
 spec:
   accessModes:
   - ReadWriteOnce
@@ -13,4 +13,4 @@ spec:
       storage: 10Gi
   storageClassName: gp3
   volumeMode: Filesystem
-  volumeName: pvc-78e09713-85b2-4b72-b296-37e1b634b2ad
+  volumeName: pvc-1b304757-22ba-4622-b4fc-98f6718ad254
