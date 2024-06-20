@@ -5,14 +5,14 @@ helmCharts:
   - name: grafana
     includeCRDs: true
     releaseName: grafana
-    version: 8.0.0
+    version: 8.0.2
     repo: https://grafana.github.io/helm-charts
     valuesInline:
       fullname: grafana
       useStatefulSet: true
       persistence:
         enabled: true
-        existingClaim: storage-grafana-0
+        # existingClaim: storage-grafana-0
       # nodeSelector:
       #   topology.kubernetes.io/zone: "us-east-1c"
       serviceMonitor:
