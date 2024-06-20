@@ -79,6 +79,25 @@ helmCharts:
           enabled: false
           grafanaAgent:
             installOperator: false
+      ruler:
+        directories:
+          tenant_foo:
+              rules.txt: |
+                groups:
+                  - name: backstage
+                    rules:
+                      - alert: BackstageNotFoundError
+                        expr: |
+                          sum(rate({app="backstage"} |= `NotFoundError` [5m])) by (job) > 0.05
+                        for: 10m
+                        labels:
+                          severity: warning
+                          team: devops
+                          category: logs
+                        annotations:
+                          title: "Backstage NotFoundError"
+                          description: "something is logging a lot"
+                          summary: High error rate
       test:
         enabled: false
       persistence:
