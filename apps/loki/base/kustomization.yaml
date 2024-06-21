@@ -47,16 +47,8 @@ helmCharts:
           datasource_uid: "loki"
           remote_write:
             enabled: true
-            clients:
-              mimir:
-                url:  http://mimir-nginx.monitoring.svc:80/api/v1/push
-                send_exemplars: true
-                queue_config:
-                  # send immediately as soon as a sample is generated
-                  capacity: 1
-                  min_backoff: 1m
-                  max_backoff: 5m
-                  batch_send_deadline: 5m
+            client:
+              url: http://mimir-nginx.monitoring.svc.cluster.local:80/api/v1/push
         schemaConfig:
           configs:
             - from: "2024-04-01"
