@@ -140,13 +140,16 @@ helmCharts:
           data:
             loki-alerting-rules.yaml: |-
               groups:
-                - name: high_error_rate
+                - name: should_fire
                   rules:
-                    - alert: LokiHighErrorRate
-                      expr: sum(rate({app="loki"} | logfmt | level="info"[1m])) by (container) > 0
-                      for: 1m
+                    - alert: HighPercentageError
+                      expr: |
+                        sum(rate({app="foo", env="production"} |= "error" [5m])) by (job)
+                          /
+                        sum(rate({app="foo", env="production"}[5m])) by (job)
+                          > 0.05
+                      for: 10m
                       labels:
-                          severity: warning
+                          severity: page
                       annotations:
-                          summary: Loki error per minute rate > 100
-                          message: 'Loki warning per minute rate > 0 container:"{{ $labels.container }}"
+                          summary: High request latency
