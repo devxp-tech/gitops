@@ -13,6 +13,15 @@ helmCharts:
       #   enabled: true
       # prometheusRule:
       #   enabled: true
+      extraEnv:
+        - name: JAEGER_AGENT_HOST
+          value: otel-collector.observability.svc.cluster.local
+        - name: JAEGER_AGENT_PORT
+          value: "6831"
+        - name: JAEGER_SAMPLER_TYPE
+          value: const
+        - name: JAEGER_SAMPLER_PARAM
+          value: "1"
       resources:
         requests:
           cpu: 100m

@@ -31,6 +31,15 @@ helmCharts:
             admin: "vex-dev-loki-logs"
         ingester:
           autoforget_unhealthy: true
+          extraEnv:
+            - name: JAEGER_AGENT_HOST
+              value: otel-collector.observability.svc.cluster.local
+            - name: JAEGER_AGENT_PORT
+              value: "6831"
+            - name: JAEGER_SAMPLER_TYPE
+              value: const
+            - name: JAEGER_SAMPLER_PARAM
+              value: "1"
         rulerConfig:
           enable_api: true
           enable_sharding: true
@@ -90,16 +99,43 @@ helmCharts:
           enabled: false
           grafanaAgent:
             installOperator: false
-      ruler:
-        enabled: true
       test:
         enabled: false
       persistence:
         enabled: true
+      ruler:
+        enabled: true
+        extraEnv:
+          - name: JAEGER_AGENT_HOST
+            value: otel-collector.observability.svc.cluster.local
+          - name: JAEGER_AGENT_PORT
+            value: "6831"
+          - name: JAEGER_SAMPLER_TYPE
+            value: const
+          - name: JAEGER_SAMPLER_PARAM
+            value: "1"
       backend:
         replicas: 2
+        extraEnv:
+          - name: JAEGER_AGENT_HOST
+            value: otel-collector.observability.svc.cluster.local
+          - name: JAEGER_AGENT_PORT
+            value: "6831"
+          - name: JAEGER_SAMPLER_TYPE
+            value: const
+          - name: JAEGER_SAMPLER_PARAM
+            value: "1"
       read:
         replicas: 2
+        extraEnv:
+          - name: JAEGER_AGENT_HOST
+            value: otel-collector.observability.svc.cluster.local
+          - name: JAEGER_AGENT_PORT
+            value: "6831"
+          - name: JAEGER_SAMPLER_TYPE
+            value: const
+          - name: JAEGER_SAMPLER_PARAM
+            value: "1"
         extraVolumeMounts:
           - name: rules
             mountPath: "/var/loki/rulestorage/fake"
@@ -109,6 +145,15 @@ helmCharts:
               name: loki-alerting-rules
       write:
         replicas: 2
+        extraEnv:
+          - name: JAEGER_AGENT_HOST
+            value: otel-collector.observability.svc.cluster.local
+          - name: JAEGER_AGENT_PORT
+            value: "6831"
+          - name: JAEGER_SAMPLER_TYPE
+            value: const
+          - name: JAEGER_SAMPLER_PARAM
+            value: "1"
       extraObjects:
         - apiVersion: v1
           kind: ConfigMap
