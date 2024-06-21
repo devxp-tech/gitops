@@ -82,6 +82,7 @@
 
 
 
+
 |      Tools       | Version | Repo | Status |
 | :--------------: | :-----: | :---: | :------: |
 | argo-rollouts | 2.35.3 | https://argoproj.github.io/argo-helm |   ✅     |
@@ -94,12 +95,13 @@
 | devxp-app | 0.2.69 | https://devxp-tech.github.io/helm-charts |   ✅     |
 | devxp-app | 0.2.72 | https://devxp-tech.github.io/helm-charts |   ✅     |
 | devxp-app | 0.2.76 | https://devxp-tech.github.io/helm-charts |   ✅     |
+| devxp-app | 0.2.78 | https://devxp-tech.github.io/helm-charts |   ✅     |
 | dex | 0.17.1 | https://charts.dexidp.io |   ✅     |
 | external-dns | 7.5.5 | https://charts.bitnami.com/bitnami |   ✅     |
 | gateway | 1.22.0 | https://istio-release.storage.googleapis.com/charts |   ✅     |
-| grafana | 8.0.0 | https://grafana.github.io/helm-charts |   ✅     |
+| grafana | 8.0.2 | https://grafana.github.io/helm-charts |   ✅     |
 | jaeger | 2.1.0 | https://jaegertracing.github.io/helm-charts |   ✅     |
-| karpenter | v0.33.4 | oci://public.ecr.aws/karpenter |   ✅     |
+| karpenter | 0.35.5 | oci://public.ecr.aws/karpenter |   ✅     |
 | keycloak | 18.4.4 | https://codecentric.github.io/helm-charts |   ✅     |
 | kiali-operator | 1.84.0 | https://kiali.org/helm-charts |   ✅     |
 | kube-downscaler | 0.7.4 | https://charts.deliveryhero.io/ |   ✅     |
