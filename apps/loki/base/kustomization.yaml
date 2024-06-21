@@ -150,6 +150,16 @@ helmCharts:
                           > 0.05
                       for: 10m
                       labels:
-                          severity: page
+                          severity: warning
+                      annotations:
+                          summary: High request latency
+                - name: backstage
+                  rules:
+                    - alert: HighPercentageWarn
+                      expr: |
+                        sum(rate({app="backstage", level="warn"}[5m])) by (job)
+                      for: 10m
+                      labels:
+                          severity: warning
                       annotations:
                           summary: High request latency
