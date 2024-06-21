@@ -159,7 +159,7 @@ helmCharts:
                   rules:
                     - alert: HighPercentageWarn
                       expr: |
-                        sum(rate({app="backstage", level="warn"}[5m])) by (job)
+                        sum(rate({app="backstage"} | logfmt | level="info"[1m])) by (container) > 0
                       for: 10m
                       labels:
                           severity: warning
