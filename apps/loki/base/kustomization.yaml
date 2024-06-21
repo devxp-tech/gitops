@@ -107,6 +107,13 @@ helmCharts:
             value: const
           - name: JAEGER_SAMPLER_PARAM
             value: "1"
+      sidecar:
+        rules:
+          label: loki_rule
+          labelValue: 'true'
+          folder: /rules/fake
+          searchNamespace: ALL
+          resource: configmap
       loki:
         auth_enabled: false
         commonConfig:
@@ -126,10 +133,10 @@ helmCharts:
           storage:
             type: local
             local:
-              directory: /etc/loki/rules
-          rule_path: /tmp/loki/rules
+              directory: /rules
+          rule_path: /rules/fake
           wal:
-            dir: /tmp/loki/ruler-wal
+            dir: /loki/ruler-wal
         alertmanager_url: http://prometheus-community-kube-alertmanager.monitoring.svc.cluster.local:9093
         external_url: "https://alertmanager.devxp-tech.io"
         enable_alertmanager_discovery: true
