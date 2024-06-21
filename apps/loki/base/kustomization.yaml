@@ -31,20 +31,20 @@ helmCharts:
             admin: "vex-dev-loki-logs"
         ingester:
           autoforget_unhealthy: true
-          rulerConfig:
-            storage:
-              local:
-                directory: /var/loki/rulestorage
-              type: local
-            rule_path: /var/loki/rules-temp
-          enable_alertmanager_v2: true
-          alertmanager_url: http://prometheus-community-kube-alertmanager.monitoring.svc.cluster.local:9093
-          external_url: "https://grafana.devxp-tech.io"
-          datasource_uid: "loki"
-          remote_write:
-            enabled: true
-            client:
-              url: http://mimir-nginx.monitoring.svc.cluster.local:80/api/v1/push
+        rulerConfig:
+          storage:
+            local:
+              directory: /var/loki/rulestorage
+            type: local
+          rule_path: /var/loki/rules-temp
+        enable_alertmanager_v2: true
+        alertmanager_url: http://prometheus-community-kube-alertmanager.monitoring.svc.cluster.local:9093
+        external_url: "https://grafana.devxp-tech.io"
+        datasource_uid: "loki"
+        remote_write:
+          enabled: true
+          client:
+            url: http://mimir-nginx.monitoring.svc.cluster.local:80/api/v1/push
         schemaConfig:
           configs:
             - from: "2024-04-01"
