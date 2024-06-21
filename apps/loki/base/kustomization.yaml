@@ -31,16 +31,12 @@ helmCharts:
             admin: "vex-dev-loki-logs"
         ingester:
           autoforget_unhealthy: true
-        rulerConfig:
-          enable_api: true
-          enable_sharding: true
-          storage:
-            type: local
-            local:
-              directory: /etc/loki/rules
-          rule_path: /tmp/loki/rules
-          wal:
-            dir:  /tmp/loki/ruler-wal
+          rulerConfig:
+            storage:
+              local:
+                directory: /var/loki/rulestorage
+              type: local
+            rule_path: /var/loki/rules-temp
           enable_alertmanager_v2: true
           alertmanager_url: http://prometheus-community-kube-alertmanager.monitoring.svc.cluster.local:9093
           external_url: "https://grafana.devxp-tech.io"
@@ -144,13 +140,13 @@ helmCharts:
           data:
             loki-alerting-rules.yaml: |-
               groups:
-                - name: test_alert
+                - name: high_error_rate
                   rules:
-                    - alert: TestAlert
+                    - alert: LokiHighErrorRate
                       expr: sum(rate({app="loki"} | logfmt | level="info"[1m])) by (container) > 0
                       for: 1m
                       labels:
                           severity: warning
                       annotations:
-                          summary: Loki info warning per minute rate > 0
-                          message: 'Loki warning per minute rate > 0 container:"{{`{{`}} $labels.container {{`}}`}}"'
+                          summary: Loki error per minute rate > 100
+                          message: 'Loki warning per minute rate > 0 container:"{{ $labels.container }}"
