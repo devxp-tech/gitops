@@ -37,10 +37,10 @@ helmCharts:
           storage:
             type: local
             local:
-              directory: /var/loki/rulestorage
-          rule_path: "/var/loki/rules-temp"
+              directory: /etc/loki/rules
+          rule_path: /tmp/loki/rules
           wal:
-            dir: /loki/ruler-wal
+            dir:  /tmp/loki/ruler-wal
           enable_alertmanager_v2: true
           alertmanager_url: http://prometheus-community-kube-alertmanager.monitoring.svc.cluster.local:9093
           external_url: "https://grafana.devxp-tech.io"
@@ -119,13 +119,12 @@ helmCharts:
             value: const
           - name: JAEGER_SAMPLER_PARAM
             value: "1"
-        extraVolumeMounts:
-          - name: rules
-            mountPath: "/var/loki/rulestorage/fake"
         extraVolumes:
-          - name: rules
-            configMap:
-              name: loki-alerting-rules
+        - name: loki-rules-generated
+          emptyDir: {}
+        extraVolumeMounts:
+        - name: loki-rules-generated
+          mountPath: /rules
       write:
         replicas: 2
         extraEnv:
