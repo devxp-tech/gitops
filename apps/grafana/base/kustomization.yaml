@@ -83,6 +83,7 @@ helmCharts:
               version: 1
               jsonData:
                 alertmanagerUid: alertmanager
+                manageAlerts: true
                 maxLines: 5000
                 timeout: "60"
                 derivedFields:
