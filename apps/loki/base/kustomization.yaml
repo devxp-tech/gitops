@@ -34,19 +34,29 @@ helmCharts:
         rulerConfig:
           enable_api: true
           enable_sharding: true
+          # storage:
+          #   type: local
+          #   local:
+          #     directory: "/var/loki/rules"
+          # rule_path: "/var/loki/rules"
           wal:
             dir: /loki/ruler-wal
-          alertmanager_url: http://kube-prometheus-stack-alertmanager.monitoring.svc:9093
           enable_alertmanager_v2: true
+          alertmanager_url: http://prometheus-community-kube-alertmanager.monitoring.svc.cluster.local:9093
+          external_url: "https://grafana.devxp-tech.io"
+          datasource_uid: "loki"
           remote_write:
             enabled: true
             clients:
-              local:
-                url: http://prometheus-community-kube-prometheus.monitoring.svc:9090/api/v1/write
+              mimir:
+                url:  http://mimir-nginx.monitoring.svc:80/api/v1/push
+                send_exemplars: true
                 queue_config:
                   # send immediately as soon as a sample is generated
                   capacity: 1
-                  batch_send_deadline: 0s
+                  min_backoff: 1m
+                  max_backoff: 5m
+                  batch_send_deadline: 5m
         schemaConfig:
           configs:
             - from: "2024-04-01"
@@ -75,11 +85,13 @@ helmCharts:
           enabled: true
         dashboards:
           enabled: true
+          namespace: monitoring
         selfMonitoring:
           enabled: false
           grafanaAgent:
             installOperator: false
       ruler:
+        enabled: true
         directories:
           tenant_foo:
               rules.txt: |
