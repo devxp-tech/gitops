@@ -33,11 +33,12 @@ helmCharts:
           autoforget_unhealthy: true
         rulerConfig:
           storage:
+            type: local
             local:
               directory: /var/loki/rulestorage
-            type: local
           rule_path: /var/loki/rules-temp
         enable_alertmanager_v2: true
+        enable_api: true
         alertmanager_url: http://prometheus-community-kube-alertmanager.monitoring.svc.cluster.local:9093
         external_url: "https://grafana.devxp-tech.io"
         datasource_uid: "loki"
