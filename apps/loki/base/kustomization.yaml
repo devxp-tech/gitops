@@ -31,15 +31,6 @@ helmCharts:
             admin: "vex-dev-loki-logs"
         ingester:
           autoforget_unhealthy: true
-          extraEnv:
-            - name: JAEGER_AGENT_HOST
-              value: otel-collector.observability.svc.cluster.local
-            - name: JAEGER_AGENT_PORT
-              value: "6831"
-            - name: JAEGER_SAMPLER_TYPE
-              value: const
-            - name: JAEGER_SAMPLER_PARAM
-              value: "1"
         rulerConfig:
           enable_api: true
           enable_sharding: true
