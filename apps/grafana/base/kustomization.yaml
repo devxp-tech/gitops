@@ -63,8 +63,8 @@ helmCharts:
       datasources:
         datasources.yaml:
           apiVersion: 1
-          deleteDatasources:
-            - name: Loki
+          # deleteDatasources:
+          #   - name: Loki
           #   - name: Loki-logging
           datasources:
             - name: Alertmanager
@@ -74,26 +74,27 @@ helmCharts:
               access: proxy
               jsonData:
                 implementation: prometheus
-            # - name: Loki
-            #   uid: loki
-            #   type: loki
-            #   access: proxy
-            #   orgId: 1
-            #   url: http://loki-read.logging.svc:3100
-            #   version: 1
-            #   jsonData:
-            #     alertmanagerUid: alertmanager
-            #     manageAlerts: true
-            #     maxLines: 5000
-            #     timeout: "60"
-            #     derivedFields:
-            #       - name: Tempo
-            #         datasourceUid: tempo
-            #         datasourceName: Tempo
-            #         matcherRegex: trace_id
-            #         matcherType: label
-            #         # matcherRegex: '"trace_id":"([^"]+)"' # Works
-            #         url: "$${__value.raw}"
+            - name: Loki
+              uid: loki
+              type: loki
+              access: proxy
+              orgId: 1
+              url: http://loki-read.logging.svc:3100
+              editable: true
+              version: 1
+              jsonData:
+                alertmanagerUid: alertmanager
+                manageAlerts: true
+                maxLines: 5000
+                timeout: "60"
+                derivedFields:
+                  - name: Tempo
+                    datasourceUid: tempo
+                    datasourceName: Tempo
+                    # matcherRegex: trace_id
+                    matcherType: label
+                    matcherRegex: '"trace_id":"([^"]+)"' # Works
+                    url: "$${__value.raw}"
 
                   # Not using Jager
                   # - name: Jaeger
