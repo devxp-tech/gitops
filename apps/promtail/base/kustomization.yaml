@@ -63,7 +63,7 @@ helmCharts:
                 span_id:
                 trace_id:
             - match:
-                selector: '{app=".*"}'
+                selector: '{app="hotrod"}'
                 stages:
                   - regex:
                       expression: ".*(?P<trace>trace_id\"\\S)\\s\"(?P<traceID>[a-zA-Z\\d]+).*"
