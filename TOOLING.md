@@ -113,6 +113,7 @@
 
 
 
+
 |      Tools       | Version | Repo | Status |
 | :--------------: | :-----: | :---: | :------: |
 | argo-rollouts | 2.35.3 | https://argoproj.github.io/argo-helm |   ✅     |
@@ -144,7 +145,7 @@
 | mimir-distributed | 5.3.0 | https://grafana.github.io/helm-charts |   ✅     |
 | nexus-repository-manager | 64.2.0 | https://sonatype.github.io/helm3-charts |   ✅     |
 | opentelemetry-operator | 0.60.0 | https://open-telemetry.github.io/opentelemetry-helm-charts |   ✅     |
-| promtail | 6.15.5 | https://grafana.github.io/helm-charts |   ✅     |
+| promtail | 6.16.0 | https://grafana.github.io/helm-charts |   ✅     |
 | sealed-secrets | 2.15.3 | https://bitnami-labs.github.io/sealed-secrets |   ✅     |
 | sonarqube | 10.5.1+2816 | https://SonarSource.github.io/helm-chart-sonarqube |   ✅     |
 | tempo | 1.9.0 | https://grafana.github.io/helm-charts |   ✅     |
