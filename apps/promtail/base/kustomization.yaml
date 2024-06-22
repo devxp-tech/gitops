@@ -70,16 +70,18 @@ helmCharts:
                 source: message
             - json:
                 expressions:
-                  timestamp: '@timestamp'
+                  time: '"@timestamp"'
                   message: message
                   level: level
+                  service: service
                   logger_name: logger_name
                   thread_name: thread_name
                   trace_id: trace_id
                   span_id: span_id
             - labels:
-                timestamp:
-                level:
+                level: level
+                service: service
+                type: type
                 logger_name:
                 thread_name:
                 trace_id:
