@@ -53,12 +53,6 @@ helmCharts:
                       traceID: traceID
                   - labels:
                       traceID:
-            - logfmt:
-                mapping:
-                  time:
-                  level:
-                  particle_id:
-                source: message
             - json:
                 expressions:
                   timestamp: '"@timestamp"'
@@ -69,6 +63,12 @@ helmCharts:
                   type: type
                   trace_id: trace_id
                   span_id: span_id
+            - logfmt:
+                mapping:
+                  time:
+                  level:
+                  particle_id:
+                source: message
             - labels:
                 timestamp: timestamp
                 version: version
