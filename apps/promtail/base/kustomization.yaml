@@ -62,6 +62,7 @@ helmCharts:
             - json:
                 expressions:
                   timestamp: '"@timestamp"'
+                  version: '"@version"'
                   message: message
                   level: level
                   service: service
