@@ -53,16 +53,17 @@ helmCharts:
             #           trace_id: traceID
             #       - labels:
             #           trace_id:
-            - match:
-                selector: '{app=".*"}'
-                stages:
-                  - json:
-                      expressions:
-                        level: level
-                        message: message
-                        service: service
-                        span_id: span_id
-                        trace_id: trace_id
+            - json:
+                expressions:
+                  timestamp: "'@timestamp'"
+                  version: "'@version'"
+                  message: message
+                  logger_name: logger_name
+                  thread_name: thread_name
+                  level: level
+                  level_value: level_value
+                  trace_id: trace_id
+                  span_id: span_id
             - labels:
                 level:
                 message:
