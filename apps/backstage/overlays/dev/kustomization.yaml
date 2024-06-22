@@ -9,7 +9,7 @@ resources:
 helmCharts:
   - name: devxp-app
     releaseName: devxp-app
-    version: 0.2.72
+    version: 0.2.79
     repo: https://devxp-tech.github.io/helm-charts
     valuesInline:
       name: "backstage"
