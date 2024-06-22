@@ -79,10 +79,7 @@ helmCharts:
                 timestamp:
                 version:
                 message:
-                logger_name:
-                thread_name:
                 level:
-                level_value:
                 trace_id:
                 span_id:
                 service:
