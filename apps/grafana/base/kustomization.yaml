@@ -90,7 +90,7 @@ helmCharts:
                   - name: Tempo
                     datasourceUid: tempo
                     datasourceName: Tempo
-                    matcherRegex: '"trace[^"]*": "([^"]+)"' # Works
+                    matcherRegex: '"trace_id":"([^"]+)"' # Works
                     # matcherRegex: '"(?:[Tt]race[_IidD]{2,})":\s*"([^"]+)"' # Test
                     url: "$${__value.raw}"
 

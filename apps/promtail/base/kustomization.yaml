@@ -54,6 +54,11 @@ helmCharts:
             - drop:
                 source: "container"
                 expression: "istio-init"
+            - regex:
+                expression: '"trace_id":"([^"]+)"'
+                traceID: trace_id
+            - labels:
+                traceID:
             # - match:
             #     selector: '{app=".*"}'
             #     stages:
@@ -76,16 +81,12 @@ helmCharts:
                   service: service
                   logger_name: logger_name
                   thread_name: thread_name
-                  trace_id: trace_id
-                  span_id: span_id
             - labels:
                 level: level
                 service: service
                 type: type
-                logger_name:
-                thread_name:
-                trace_id:
-                span_id:
+                logger_name: logger_name
+                thread_name: thread_name
             - metrics:
                 grpc_latency:
                   type: Histogram
