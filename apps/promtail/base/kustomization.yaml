@@ -75,14 +75,14 @@ helmCharts:
                   span_id: span_id
             - regex:
                 expression: '"trace_id":"(?P<trace_id>[a-zA-Z0-9]+)"'
-            - regex:
-                expression: 'trace_id":"(?P<trace_id>[a-zA-Z0-9]+)"'
-            - regex:
-                expression: '"span_id":"(?P<span_id>[a-zA-Z0-9]+)"'
-            - regex:
-                expression: 'span_id":"(?P<span_id>[a-zA-Z0-9]+)"'
-            - regex:
-                expression: '(?P<timestamp>\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{3}Z)\s+(?P<level>[A-Z]+)\s+\w+\/\w+.\w+:\d+\s+(?P<message>[^"]+)"service":\s+"(?P<service>\w+)".+"trace_id":\s+"(?P<trace_id>[a-zA-Z0-9]+)".+"span_id":\s+"(?P<span_id>[a-zA-Z0-9]+)"'
+            # - regex:
+            #     expression: 'trace_id":"(?P<trace_id>[a-zA-Z0-9]+)"'
+            # - regex:
+            #     expression: '"span_id":"(?P<span_id>[a-zA-Z0-9]+)"'
+            # - regex:
+            #     expression: 'span_id":"(?P<span_id>[a-zA-Z0-9]+)"'
+            # - regex:
+            #     expression: '(?P<timestamp>\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{3}Z)\s+(?P<level>[A-Z]+)\s+\w+\/\w+.\w+:\d+\s+(?P<message>[^"]+)"service":\s+"(?P<service>\w+)".+"trace_id":\s+"(?P<trace_id>[a-zA-Z0-9]+)".+"span_id":\s+"(?P<span_id>[a-zA-Z0-9]+)"'
             - labels:
                 timestamp: timestamp
                 version: version
