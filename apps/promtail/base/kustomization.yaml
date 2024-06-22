@@ -61,13 +61,11 @@ helmCharts:
                 source: message
             - json:
                 expressions:
-                  timestamp: '@timestamp'
-                  version: '@version'
+                  timestamp: '"@timestamp"'
                   message: message
-                  logger_name: logger_name
-                  thread_name: thread_name
                   level: level
-                  level_value: level_value
+                  service: service
+                  type: type
                   trace_id: trace_id
                   span_id: span_id
             - regex:
