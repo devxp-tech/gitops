@@ -55,7 +55,7 @@ helmCharts:
                 source: "container"
                 expression: "istio-init"
             - match:
-                selector: '{app="hotrod"}'
+                selector: '{app=".*"}'
                 stages:
                   - regex:
                       expression: ".*(?P<trace>trace_id\"\\S)\\s\"(?P<traceID>[a-zA-Z\\d]+).*"
