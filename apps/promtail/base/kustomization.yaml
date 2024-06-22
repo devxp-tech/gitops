@@ -35,7 +35,7 @@ helmCharts:
           - url: http://loki-gateway.logging.svc/loki/api/v1/push
             external_labels:
               cluster: lgseksd1
-              environment: development
+              # environment: development
         snippets:
           pipelineStages:
             - cri: {}
@@ -45,44 +45,30 @@ helmCharts:
             - drop:
                 source: "container"
                 expression: "istio-init"
+            # - match:
+            #     selector: '{app=".*"}'
+            #     stages:
+            #       - regex:
+            #           expression: ".*(?P<trace>trace_id\"\\S)\\s\"(?P<traceID>[a-zA-Z\\d]+).*"
+            #           trace_id: traceID
+            #       - labels:
+            #           trace_id:
             - match:
                 selector: '{app=".*"}'
                 stages:
-                  - regex:
-                      expression: ".*(?P<trace>trace_id\"\\S)\\s\"(?P<traceID>[a-zA-Z\\d]+).*"
-                      trace_id: traceID
-                  - labels:
-                      trace_id:
-            - json:
-                expressions:
-                  timestamp: '"@timestamp"'
-                  version: '"@version"'
-                  message: message
-                  level: level
-                  service: service
-                  type: type
-                  trace_id: trace_id
-                  span_id: span_id
-            - regex:
-                expression: '"trace_id":"(?P<trace_id>[a-zA-Z0-9]+)"'
-            - regex:
-                expression: '"span_id":"(?P<span_id>[a-zA-Z0-9]+)"'
-            - regex:
-                expression: '(?P<timestamp>\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{3}Z)\s+(?P<level>[A-Z]+)\s+\w+\/\w+.\w+:\d+\s+(?P<message>[^"]+)"service":\s+"(?P<service>\w+)".+"trace_id":\s+"(?P<trace_id>[a-zA-Z0-9]+)".+"span_id":\s+"(?P<span_id>[a-zA-Z0-9]+)"'
-            # - logfmt:
-            #     mapping:
-            #       time:
-            #       level:
-            #       particle_id:
-            #     source: message
+                  - json:
+                      expressions:
+                        level: level
+                        message: message
+                        service: service
+                        span_id: span_id
+                        trace_id: trace_id
             - labels:
-                timestamp:
-                version:
-                message:
                 level:
-                trace_id:
-                span_id:
+                message:
                 service:
+                span_id:
+                trace_id:
             - metrics:
                 grpc_latency:
                   type: Histogram
