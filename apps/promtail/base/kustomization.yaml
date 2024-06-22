@@ -62,33 +62,38 @@ helmCharts:
             #           traceID: traceID
             #       - labels:
             #           traceID:
-            - logfmt:
-                mapping:
-                  time:
-                  level:
-                  particle_id:
-                source: message
             - json:
                 expressions:
-                  time: '"@timestamp"'
+                  timestamp: '@timestamp'
+                  version: '@version'
                   message: message
-                  level: level
-                  service: service
                   logger_name: logger_name
                   thread_name: thread_name
+                  level: level
+                  level_value: level_value
                   trace_id: trace_id
                   span_id: span_id
             - regex:
-                expression: '"trace_id":"([^"]+)"'
-                traceID: trace_id
+                expression: '"trace_id":"(?P<trace_id>\w+)"'
+            - regex:
+                expression: 'trace_id":"(?P<trace_id>\w+)"'
+            - regex:
+                expression: '"span_id":"(?P<span_id>\w+)"'
+            - regex:
+                expression: 'span_id":"(?P<span_id>\w+)"'
+            - regex:
+                expression: '(\w{4}-\w{2}-\w{2}T\w{2}:\w{2}:\w{2}.\w{3}Z)\s+(?P<level>[A-Z]+)\s+\w+\/\w+.\w+:\d+\s+(?P<message>[^"]+)"service":\s+"(?P<service>\w+)".+"trace_id":\s+"(?P<trace_id>\w+)".+"span_id":\s+"(?P<span_id>\w+)"'
             - labels:
-                level:
-                service:
-                type:
-                logger_name:
-                thread_name:
-                trace_id:
-                span_id:
+                timestamp: timestamp
+                version: version
+                message: message
+                logger_name: logger_name
+                thread_name: thread_name
+                level: level
+                level_value: level_value
+                traceID: trace_id
+                spanID: span_id
+                service: service
             - metrics:
                 grpc_latency:
                   type: Histogram
