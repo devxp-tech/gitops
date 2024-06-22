@@ -45,14 +45,6 @@ helmCharts:
             - drop:
                 source: "container"
                 expression: "istio-init"
-            # - match:
-            #     selector: '{app=".*"}'
-            #     stages:
-            #       - regex:
-            #           expression: ".*(?P<trace>trace_id\"\\S)\\s\"(?P<traceID>[a-zA-Z\\d]+).*"
-            #           trace_id: traceID
-            #       - labels:
-            #           trace_id:
             - json:
                 expressions:
                   timestamp: "'@timestamp'"
@@ -74,15 +66,10 @@ helmCharts:
                 selector: '{app=".*"}'
                 stages:
                   - regex:
-                      expression: '(?P<timestamp>\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{3}Z)\t(?P<level>[A-Z]+)\t(?P<logger_name>[^:]+):(?P<line>\d+)\t(?P<message>.+)\t{"service": "(?P<service>[^"]+)", "trace_id": "(?P<trace_id>[a-zA-Z0-9]+)", "span_id": "(?P<span_id>[a-zA-Z0-9]+)", "driverID": "(?P<driverID>[^"]+)"}'
+                      expression: ".*(?P<trace>trace_id\"\\S)\\s\"(?P<traceID>[a-zA-Z\\d]+).*"
+                      trace_id: traceID
                   - labels:
-                      timestamp:
-                      level:
-                      logger_name:
                       trace_id:
-                      span_id:
-                      service:
-                      driverID:
             - metrics:
                 grpc_latency:
                   type: Histogram

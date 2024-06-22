@@ -91,9 +91,9 @@ helmCharts:
                   - name: Tempo
                     datasourceUid: tempo
                     datasourceName: Tempo
-                    # matcherRegex: trace_id
+                    matcherRegex: trace_id
                     matcherType: label
-                    matcherRegex: '"trace_id":"([^"]+)"' # Works
+                    # matcherRegex: '"trace_id":"([^"]+)"' # Works Old
                     url: "$${__value.raw}"
 
                   # Not using Jager
