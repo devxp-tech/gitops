@@ -73,8 +73,8 @@ helmCharts:
                   level_value: level_value
                   trace_id: trace_id
                   span_id: span_id
-            - regex:
-                expression: '"trace_id":"(?P<trace_id>[a-zA-Z0-9]+)"'
+            # - regex:
+            #     expression: '"trace_id":"(?P<trace_id>[a-zA-Z0-9]+)"'
             # - regex:
             #     expression: 'trace_id":"(?P<trace_id>[a-zA-Z0-9]+)"'
             # - regex:
