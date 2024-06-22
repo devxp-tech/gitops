@@ -48,20 +48,24 @@ helmCharts:
         snippets:
           pipelineStages:
             - cri: {}
+
             - drop:
                 source: "container"
                 expression: "istio-proxy"
+
             - drop:
                 source: "container"
                 expression: "istio-init"
-            # - match:
-            #     selector: '{app=".*"}'
-            #     stages:
-            #       - regex:
-            #           expression: ".*(?P<trace>trace_id\"\\S)\\s\"(?P<traceID>[a-zA-Z\\d]+).*"
-            #           traceID: traceID
-            #       - labels:
-            #           traceID:
+
+            - match:
+                selector: '{app=".*"}'
+                stages:
+                  - regex:
+                      expression: '.*(?P<trace>trace_id\"\\S)\\s\"(?P<traceID>[a-zA-Z\\d]+).*'
+                      traceID: traceID
+                  - labels:
+                      traceID: traceID
+
             - json:
                 expressions:
                   timestamp: '@timestamp'
@@ -73,16 +77,22 @@ helmCharts:
                   level_value: level_value
                   trace_id: trace_id
                   span_id: span_id
-            # - regex:
-            #     expression: '"trace_id":"(?P<trace_id>[a-zA-Z0-9]+)"'
-            # - regex:
-            #     expression: 'trace_id":"(?P<trace_id>[a-zA-Z0-9]+)"'
-            # - regex:
-            #     expression: '"span_id":"(?P<span_id>[a-zA-Z0-9]+)"'
-            # - regex:
-            #     expression: 'span_id":"(?P<span_id>[a-zA-Z0-9]+)"'
-            # - regex:
-            #     expression: '(?P<timestamp>\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{3}Z)\s+(?P<level>[A-Z]+)\s+\w+\/\w+.\w+:\d+\s+(?P<message>[^"]+)"service":\s+"(?P<service>\w+)".+"trace_id":\s+"(?P<trace_id>[a-zA-Z0-9]+)".+"span_id":\s+"(?P<span_id>[a-zA-Z0-9]+)"'
+
+            - regex:
+                expression: '"trace_id":"(?P<trace_id>[a-zA-Z0-9]+)"'
+
+            - regex:
+                expression: 'trace_id":"(?P<trace_id>[a-zA-Z0-9]+)"'
+
+            - regex:
+                expression: '"span_id":"(?P<span_id>[a-zA-Z0-9]+)"'
+
+            - regex:
+                expression: 'span_id":"(?P<span_id>[a-zA-Z0-9]+)"'
+
+            - regex:
+                expression: '(?P<timestamp>\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{3}Z)\s+(?P<level>[A-Z]+)\s+\w+\/\w+.\w+:\d+\s+(?P<message>[^"]+)"service":\s+"(?P<service>\w+)".+"trace_id":\s+"(?P<trace_id>[a-zA-Z0-9]+)".+"span_id":\s+"(?P<span_id>[a-zA-Z0-9]+)"'
+
             - labels:
                 timestamp: timestamp
                 version: version
@@ -94,16 +104,3 @@ helmCharts:
                 traceID: trace_id
                 spanID: span_id
                 service: service
-
-            - metrics:
-                grpc_latency:
-                  type: Histogram
-                  description: "gRPC latency (ns)"
-                  source: latency
-                  config:
-                    buckets: [0,10000000,20000000,30000000,50000000,80000000,100000000,500000000,1000000000,10000000000,100000000000,1000000000000]
-            - timestamp:
-                format: RFC3339
-                source: "time"
-            - output:
-                source: message
