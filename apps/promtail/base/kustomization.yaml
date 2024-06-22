@@ -94,6 +94,7 @@ helmCharts:
                 traceID: trace_id
                 spanID: span_id
                 service: service
+
             - metrics:
                 grpc_latency:
                   type: Histogram
