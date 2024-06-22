@@ -70,28 +70,20 @@ helmCharts:
                 source: message
             - json:
                 expressions:
-                  time: '"@timestamp"'
+                  timestamp: '@timestamp'
                   message: message
                   level: level
-                  service: service
-                  type: type
-                  plugin: plugin
-                  grpcKind: details.grpc.kind  # Test
-                  grpcService: details.grpc.service  # Test
-                  grpcMethod: details.grpc.method  # Test
-                  startTime: details.startTime  # Test
-                  EndTime: details.endTime  # Test
-                  latency: details.latency  # Test
-                  traceID: details.traceID  # Test
+                  logger_name: logger_name
+                  thread_name: thread_name
+                  trace_id: trace_id
+                  span_id: span_id
             - labels:
-                level: level
-                service: service
-                type: type
-                plugin: plugin
-                grpcKind: "" # Test
-                grpcMethod: "" # Test
-                grpcService: "" # Test
-                traceID: "" # Test
+                timestamp:
+                level:
+                logger_name:
+                thread_name:
+                trace_id:
+                span_id:
             - metrics:
                 grpc_latency:
                   type: Histogram
