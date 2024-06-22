@@ -46,13 +46,13 @@ helmCharts:
                 source: "container"
                 expression: "istio-init"
             - match:
-                selector: '{app="hotrod"}'
+                selector: '{app=".*"}'
                 stages:
                   - regex:
                       expression: ".*(?P<trace>trace_id\"\\S)\\s\"(?P<traceID>[a-zA-Z\\d]+).*"
-                      traceID: traceID
+                      trace_id: traceID
                   - labels:
-                      traceID:
+                      trace_id:
             - json:
                 expressions:
                   timestamp: '"@timestamp"'
@@ -63,23 +63,29 @@ helmCharts:
                   type: type
                   trace_id: trace_id
                   span_id: span_id
-            - logfmt:
-                mapping:
-                  time:
-                  level:
-                  particle_id:
-                source: message
+            - regex:
+                expression: '"trace_id":"(?P<trace_id>[a-zA-Z0-9]+)"'
+            - regex:
+                expression: '"span_id":"(?P<span_id>[a-zA-Z0-9]+)"'
+            - regex:
+                expression: '(?P<timestamp>\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{3}Z)\s+(?P<level>[A-Z]+)\s+\w+\/\w+.\w+:\d+\s+(?P<message>[^"]+)"service":\s+"(?P<service>\w+)".+"trace_id":\s+"(?P<trace_id>[a-zA-Z0-9]+)".+"span_id":\s+"(?P<span_id>[a-zA-Z0-9]+)"'
+            # - logfmt:
+            #     mapping:
+            #       time:
+            #       level:
+            #       particle_id:
+            #     source: message
             - labels:
-                timestamp: timestamp
-                version: version
-                message: message
-                logger_name: logger_name
-                thread_name: thread_name
-                level: level
-                level_value: level_value
-                traceID: trace_id
-                spanID: span_id
-                service: service
+                timestamp:
+                version:
+                message:
+                logger_name:
+                thread_name:
+                level:
+                level_value:
+                trace_id:
+                span_id:
+                service:
             - metrics:
                 grpc_latency:
                   type: Histogram
