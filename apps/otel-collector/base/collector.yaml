@@ -20,10 +20,25 @@ spec:
             endpoint: 0.0.0.0:4317
           http:
             endpoint: 0.0.0.0:4318
+      prometheus:
+        config:
+          scrape_configs:
+            - job_name: 'otel-collector'
+              scrape_interval: 15s
+              honor_labels: false
+              static_configs:
+                - targets: ['127.0.0.1:8888']
       zipkin:
         endpoint: 0.0.0.0:9411
 
     processors:
+      # fix duplicated with receiver prometheus
+      attributes/metrics:
+        actions:
+          - action: delete
+            key: service.namespace
+          - action: delete
+            key: deployment.environment
       memory_limiter:
         check_interval: 1s
         limit_percentage: 75
@@ -109,7 +124,7 @@ spec:
       extensions: [health_check, pprof, zpages]
       pipelines:
         metrics:
-          receivers: [otlp, servicegraph, spanmetrics]
+          receivers: [prometheus, otlp, servicegraph, spanmetrics]
           processors: [memory_limiter, batch]
           exporters: [debug, prometheusremotewrite]
         traces:
