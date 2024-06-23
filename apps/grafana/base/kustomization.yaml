@@ -108,6 +108,7 @@ helmCharts:
               type: prometheus
               url: http://mimir-nginx.monitoring.svc:80/prometheus
               # http://prometheus-community-kube-prometheus.monitoring.svc.cluster.local:9090
+              editable: true
               isDefault: true
               jsonData:
                 # manageAlerts: true
