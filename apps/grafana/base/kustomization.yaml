@@ -108,7 +108,6 @@ helmCharts:
             - name: Mimir
               uid: mimir
               type: prometheus
-              access: proxy
               url: http://mimir-nginx.monitoring.svc:80/prometheus
               editable: true
               isDefault: true
@@ -119,8 +118,8 @@ helmCharts:
                 mimirVersion: "2.9.x"
                 httpMethod: GET
                 exemplarTraceIdDestinations:
-                - name: traceID
-                  datasourceUid: tempo
+                  - name: traceID
+                    datasourceUid: tempo
 
             - name: kube-prometheus-stack
               uid: kube-prometheus-stack
