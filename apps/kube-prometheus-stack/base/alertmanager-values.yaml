@@ -28,7 +28,6 @@ alertmanager:
           continue: true
           matchers:
             - severity = critical
-
     receivers:
       - name: 'null'
       - name: "slack-notifications"
@@ -51,7 +50,6 @@ alertmanager:
               - type: button
                 text: "Silence :no_bell:"
                 url: '{{ template "__alert_silence_link" . }}'
-
   templateFiles:
     alertmanager.tmpl: |-
       {{/* Alertmanager Silence link */}}
@@ -90,7 +88,6 @@ alertmanager:
         {{ if eq .Status "firing" }}:{{ .Alerts.Firing | len }}{{- end -}}
         ] {{ .CommonLabels.alertname }}
       {{- end }}
-
 
       {{/* Color of Slack attachment (appears as line next to alert )*/}}
       {{ define "slack.color" -}}

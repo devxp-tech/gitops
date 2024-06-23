@@ -28,7 +28,7 @@ spec:
       requirements:
       - key: karpenter.k8s.aws/instance-size
         operator: In
-        values: ["medium","large","xlarge","2xlarge"]
+        values: ["medium", "large", "xlarge", "2xlarge"]
       - key: karpenter.k8s.aws/instance-generation
         operator: Gt
         values: ["2"]
@@ -50,4 +50,3 @@ spec:
       - key: kubernetes.io/os
         operator: In
         values: ["linux"]
-
