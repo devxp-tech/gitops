@@ -63,8 +63,8 @@ helmCharts:
       datasources:
         datasources.yaml:
           apiVersion: 1
-          # deleteDatasources:
-          #   - name: Loki
+          deleteDatasources:
+            - name: Prometheus-Operator
           #   - name: Loki-logging
           datasources:
             - name: Alertmanager
@@ -74,6 +74,7 @@ helmCharts:
               access: proxy
               jsonData:
                 implementation: prometheus
+
             - name: Loki
               uid: loki
               type: loki
@@ -108,14 +109,13 @@ helmCharts:
               type: prometheus
               access: proxy
               url: http://mimir-nginx.monitoring.svc:80/prometheus
-              # http://prometheus-community-kube-prometheus.monitoring.svc.cluster.local:9090
               editable: true
               isDefault: true
               jsonData:
                 manageAlerts: false
                 # alertmanagerUid: alertmanager
                 prometheusType: Mimir
-                prometheusVersion: "2.9.x"
+                mimirVersion: "2.9.x"
                 httpMethod: GET
                 exemplarTraceIdDestinations:
                 - name: traceID
@@ -137,10 +137,16 @@ helmCharts:
               editable: true
               jsonData:
                 httpMethod: GET
-                serviceMap:
-                  datasourceUid: 'prometheus'
+                lokiSearch:
+                  datasourceUid: loki
+                tracesToLogs:
+                  datasourceUid: loki
                 tracesToLogsV2:
                   datasourceUid: loki
+                tracesToMetrics:
+                  datasourceUid: prometheus
+                serviceMap:
+                  datasourceUid: prometheus
                 nodeGraph:
                   enabled: true
               version: 1
