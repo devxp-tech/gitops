@@ -115,13 +115,14 @@ helmCharts:
                 manageAlerts: false
                 # alertmanagerUid: alertmanager
                 prometheusType: Mimir
+                prometheusVersion: "2.9.x"
                 httpMethod: GET
                 exemplarTraceIdDestinations:
                 - name: traceID
                   datasourceUid: tempo
 
-            - name: Prometheus-Operator
-              uid: prometheus-operator
+            - name: kube-prometheus-stack
+              uid: kube-prometheus-stack
               type: prometheus
               url: http://prometheus-community-kube-prometheus.monitoring.svc.cluster.local:9090
               jsonData:
