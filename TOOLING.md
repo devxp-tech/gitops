@@ -136,6 +136,7 @@
 
 
 
+
 |      Tools       | Version | Repo | Status |
 | :--------------: | :-----: | :---: | :------: |
 | argo-rollouts | 2.35.3 | https://argoproj.github.io/argo-helm |   ✅     |
@@ -167,6 +168,6 @@
 | promtail | 6.16.0 | https://grafana.github.io/helm-charts |   ✅     |
 | sealed-secrets | 2.15.3 | https://bitnami-labs.github.io/sealed-secrets |   ✅     |
 | sonarqube | 10.5.1+2816 | https://SonarSource.github.io/helm-chart-sonarqube |   ✅     |
-| tempo | 1.9.0 | https://grafana.github.io/helm-charts |   ✅     |
+| tempo | 1.10.0 | https://grafana.github.io/helm-charts |   ✅     |
 | wordpress | 22.2.11 | https://charts.bitnami.com/bitnami |   ✅     |
 # 🔩 Tooling 
