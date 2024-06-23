@@ -151,9 +151,9 @@ helmCharts:
                   rules:
                     - alert: HighPercentageError
                       expr: |
-                        sum(rate({app="foo", env="production"} |= "error" [5m])) by (job)
+                        sum(rate({app=".*"} |= "error" [5m])) by (job)
                           /
-                        sum(rate({app="foo", env="production"}[5m])) by (job)
+                        sum(rate({app=".*"}[5m])) by (job)
                           > 0.05
                       for: 10m
                       labels:
@@ -164,7 +164,10 @@ helmCharts:
                   rules:
                     - alert: HighPercentageWarn
                       expr: |
-                        sum(rate({app="backstage"} | logfmt | level="info"[1m])) by (container) > 0
+                        sum(rate({app="backstage"} |= "info" [5m])) by (job)
+                          /
+                        sum(rate({app="backstage"}[5m])) by (job)
+                          > 0.05
                       for: 10m
                       labels:
                           severity: warning
