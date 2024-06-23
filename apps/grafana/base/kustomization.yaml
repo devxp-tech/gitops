@@ -430,9 +430,12 @@ helmCharts:
             gnetId: 20398
         opentelemetry:
           # OpenTelemetry dashboards
-          opentelemetry-apm:
+          # opentelemetry-apm:
+          #   datasource: Prometheus
+          #   gnetId: 19419
+          opentelemetry-collector:
             datasource: Prometheus
-            gnetId: 19419
+            url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/otel/otel.json"
         springboot:
           # Sprintboot dashboards
           springboot-observability:
