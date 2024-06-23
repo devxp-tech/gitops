@@ -127,7 +127,6 @@ helmCharts:
           ingestion_rate_mb: 8
           ingestion_burst_size_mb: 16
           max_cache_freshness_per_query: 10m
-          max_label_names_per_stream: 20
           retention_period: 7d
           reject_old_samples: true
           reject_old_samples_max_age: 168h
