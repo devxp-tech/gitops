@@ -38,10 +38,19 @@ spec:
         endpoint: "tempo.observability.svc:4317"
         tls:
           insecure: true
-      prometheus:
-        endpoint: "0.0.0.0:8889"
-        enable_open_metrics: true
-        add_metric_suffixes: false
+      # prometheus:
+      #   endpoint: "0.0.0.0:8889"
+      #   enable_open_metrics: true
+      #   add_metric_suffixes: false
+      #   resource_to_telemetry_conversion:
+      #     enabled: true
+      prometheusremotewrite:
+        endpoint: http://mimir-nginx.monitoring.svc:80/api/v1/push
+        remote_write_queue:
+          enabled: true
+          num_consumers: 30
+        retry_on_failure:
+          enabled: false
         resource_to_telemetry_conversion:
           enabled: true
 
@@ -102,7 +111,7 @@ spec:
         metrics:
           receivers: [otlp, servicegraph, spanmetrics]
           processors: [memory_limiter, batch]
-          exporters: [debug, prometheus]
+          exporters: [debug, prometheusremotewrite]
         traces:
           receivers: [jaeger, otlp, zipkin]
           processors: [memory_limiter, batch]
