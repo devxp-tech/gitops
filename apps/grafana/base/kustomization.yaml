@@ -83,8 +83,8 @@ helmCharts:
               editable: true
               version: 1
               jsonData:
-                alertmanagerUid: alertmanager
-                manageAlerts: true
+                # alertmanagerUid: alertmanager
+                # manageAlerts: true
                 maxLines: 5000
                 timeout: "60"
                 derivedFields:
@@ -110,8 +110,8 @@ helmCharts:
               # http://prometheus-community-kube-prometheus.monitoring.svc.cluster.local:9090
               isDefault: true
               jsonData:
-                manageAlerts: true
-                alertmanagerUid: alertmanager
+                # manageAlerts: true
+                # alertmanagerUid: alertmanager
                 httpMethod: GET
 
             - name: Prometheus-Operator
