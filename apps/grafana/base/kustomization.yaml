@@ -96,12 +96,13 @@ helmCharts:
                     # matcherRegex: '"trace_id":"([^"]+)"' # Works Old
                     url: "$${__value.raw}"
 
-                  # Not using Jager
-                  # - name: Jaeger
-                  #   datasourceUid: jaeger
-                  #   datasourceName: Jaeger
-                  #   matcherRegex: ((\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+))
-                  #   url: "$${__value.raw}"
+                # Not using Jager
+                # - name: Jaeger
+                #   datasourceUid: jaeger
+                #   datasourceName: Jaeger
+                #   matcherRegex: ((\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+))
+                #   url: "$${__value.raw}"
+
             - name: Prometheus
               uid: prometheus
               type: prometheus
@@ -112,6 +113,16 @@ helmCharts:
                 manageAlerts: true
                 alertmanagerUid: alertmanager
                 httpMethod: GET
+
+            - name: Prometheus-Operator
+              uid: prometheus-operator
+              type: prometheus
+              url: http://prometheus-community-kube-prometheus.monitoring.svc.cluster.local:9090
+              jsonData:
+                manageAlerts: true
+                alertmanagerUid: alertmanager
+                httpMethod: GET
+
             - name: Tempo
               type: tempo
               uid: tempo
@@ -127,13 +138,13 @@ helmCharts:
                   enabled: true
               version: 1
 
+          # - name: Jaeger
+          #   uid: jaeger
+          #   type: jaeger
+          #   access: proxy
+          #   url: http://jaeger-query.observability:80
+          #   version: 1
 
-            # - name: Jaeger
-            #   uid: jaeger
-            #   type: jaeger
-            #   access: proxy
-            #   url: http://jaeger-query.observability:80
-            #   version: 1
       notifiers:
         notifiers.yaml:
           notifiers:
@@ -143,7 +154,7 @@ helmCharts:
               org_id: 1
               is_default: true
               settings:
-                url: http://prometheus-community-kube-alertmanager:9093
+                url: http://prometheus-community-kube-alertmanager.monitoring.svc.cluster.local:9093
           delete_notifiers: []
 
       sidecar:
