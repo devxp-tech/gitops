@@ -155,6 +155,7 @@
 
 
 
+
 |      Tools       | Version | Repo | Status |
 | :--------------: | :-----: | :---: | :------: |
 | argo-rollouts | 2.35.3 | https://argoproj.github.io/argo-helm |   ✅     |
@@ -166,6 +167,7 @@
 | cost-analyzer | 2.2.5 | https://kubecost.github.io/cost-analyzer |   ✅     |
 | devxp-app | 0.2.79 | https://devxp-tech.github.io/helm-charts |   ✅     |
 | devxp-app | 0.2.80 | https://devxp-tech.github.io/helm-charts |   ✅     |
+| devxp-app | 0.2.81 | https://devxp-tech.github.io/helm-charts |   ✅     |
 | dex | 0.17.1 | https://charts.dexidp.io |   ✅     |
 | external-dns | 7.5.5 | https://charts.bitnami.com/bitnami |   ✅     |
 | gateway | 1.22.0 | https://istio-release.storage.googleapis.com/charts |   ✅     |
