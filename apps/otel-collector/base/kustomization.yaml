@@ -4,4 +4,4 @@ namespace: observability
 resources:
   - collector.yaml
   - instrumentaion.yaml
-  - service-monitor.yaml
+  # - service-monitor.yaml #enabled remote write
