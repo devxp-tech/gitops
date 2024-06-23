@@ -106,14 +106,19 @@ helmCharts:
             - name: Prometheus
               uid: prometheus
               type: prometheus
+              access: proxy
               url: http://mimir-nginx.monitoring.svc:80/prometheus
               # http://prometheus-community-kube-prometheus.monitoring.svc.cluster.local:9090
               editable: true
               isDefault: true
               jsonData:
-                # manageAlerts: true
+                manageAlerts: false
                 # alertmanagerUid: alertmanager
+                prometheusType: Mimir
                 httpMethod: GET
+                exemplarTraceIdDestinations:
+                - name: traceID
+                  datasourceUid: tempo
 
             - name: Prometheus-Operator
               uid: prometheus-operator
