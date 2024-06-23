@@ -8,6 +8,7 @@ spec:
   propagators:
     - tracecontext
     - baggage
+    - b3
   sampler:
     type: parentbased_traceidratio
     argument: "1"

@@ -5,7 +5,7 @@ helmCharts:
   - name: tempo
     includeCRDs: true
     releaseName: tempo
-    version: 1.9.0
+    version: 1.10.0
     repo: https://grafana.github.io/helm-charts
     valuesInline:
       replicas: 1
@@ -16,6 +16,10 @@ helmCharts:
         automountServiceAccountToken: true
       serviceMonitor:
         enabled: true
+      tempo:
+        enabled: true
+        metricsGenerator:
+          remoteWriteUrl: http://mimir-nginx.monitoring.svc:80/api/v1/push
       gateway:
         enabled: true
       tempoQuery:
