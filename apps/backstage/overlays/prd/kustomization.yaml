@@ -36,6 +36,8 @@ helmCharts:
             name: postgres-secrets
         - secretRef:
             name: backstage-secrets
+      quota:
+        enabled: false
       resources:
         requests:
           memory: 400Mi
