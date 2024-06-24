@@ -352,7 +352,8 @@ helmCharts:
             url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/k8s_views_global-kubernetes-views-global.json"
           k8s_views_nodes-kubernetes-views-nodes:
             datasource: Mimir
-            url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/k8s_views_nodes-kubernetes-views-nodes.json"
+            gnetId: 15759
+            #url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/k8s_views_nodes-kubernetes-views-nodes.json"
           k8s_views_ns-kubernetes-views-namespaces:
             datasource: Mimir
             url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/k8s_views_ns-kubernetes-views-namespaces.json"
