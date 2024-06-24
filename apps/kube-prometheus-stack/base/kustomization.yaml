@@ -22,9 +22,9 @@ helmCharts:
       kubeStateMetrics:
         enabled: true
       kubeProxy:
-        enabled: true #false
+        enabled: false
       kubelet:
-        enabled: true #false
+        enabled: false
       defaultRules:
         rules:
           time: false
