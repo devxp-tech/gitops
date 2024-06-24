@@ -34,18 +34,6 @@ helmCharts:
         minReplicas: 1
         maxReplicas: 2
         targetCPUUtilizationPercentage: 80
-      # livenessProbe:
-      #   httpGet:
-      #     path: /health-check/liveness
-      #     port: 8080
-      #   initialDelaySeconds: 15
-      #   periodSeconds: 10
-      # readinessProbe:
-      #   httpGet:
-      #     path: /health-check/readiness
-      #     port: 8080
-      #   initialDelaySeconds: 15
-      #   periodSeconds: 10
 
 # - name: postgresql
 #   releaseName: postgresql
