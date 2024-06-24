@@ -41,9 +41,9 @@ helmCharts:
       resources:
         requests:
           memory: 400Mi
-          cpu: 10m
+          cpu: 50m
         limits:
-          memory: 1024Mi
+          memory: 600Mi
           cpu: 200m
       instrumentation: nodejs
       monitoring:
