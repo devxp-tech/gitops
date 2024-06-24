@@ -364,6 +364,9 @@ helmCharts:
           kube-state-metrics-v2:
             datasource: Mimir
             gnetId: 13332
+          kubernetes-cluster-monitoring:
+            datasource: Mimir
+            gnetId: 3119
         alertmanager:
           # Alertmanager dashboards
           alertmanager-grafana-dashboard:
