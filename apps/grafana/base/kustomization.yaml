@@ -332,9 +332,6 @@ helmCharts:
           k8s-system-api-server:
             datasource: Mimir
             url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/k8s-system-api-server.json"
-          k8s-system-coredns:
-            datasource: Mimir
-            url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/k8s-system-coredns.json"
           k8s-views-global:
             datasource: Mimir
             url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/k8s-views-global.json"
@@ -360,13 +357,6 @@ helmCharts:
           k8s_views_pods-kubernetes-views-pods:
             datasource: Mimir
             url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/k8s_views_pods-kubernetes-views-pods.json"
-          node-exporter-full:
-            datasource: Mimir
-            gnetId: 1860
-            #url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/node-exporter-full.json"
-          kube-state-metrics-v2:
-            datasource: Mimir
-            gnetId: 13332
           kubernetes-cluster-monitoring:
             datasource: Mimir
             gnetId: 3119
@@ -379,6 +369,16 @@ helmCharts:
           kubernetes-cluster-overview:
             datasource: Mimir
             gnetId: 12202
+          # k8s-system-coredns:
+          #   datasource: Mimir
+          #   url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/k8s-system-coredns.json"
+          # node-exporter-full:
+          #   datasource: Mimir
+          #   gnetId: 1860
+          #   #url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/node-exporter-full.json"
+          # kube-state-metrics-v2:
+          #   datasource: Mimir
+          #   gnetId: 13332
         alertmanager:
           # Alertmanager dashboards
           alertmanager-grafana-dashboard:
