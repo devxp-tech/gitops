@@ -369,9 +369,9 @@ helmCharts:
           kubernetes-cluster-overview:
             datasource: Mimir
             gnetId: 12202
-          # k8s-system-coredns:
-          #   datasource: Mimir
-          #   url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/k8s-system-coredns.json"
+          k8s-system-coredns:
+            datasource: Mimir
+            url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/k8s-system-coredns.json"
           # node-exporter-full:
           #   datasource: Mimir
           #   gnetId: 1860
