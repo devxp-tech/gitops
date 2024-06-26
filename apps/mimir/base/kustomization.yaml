@@ -96,6 +96,8 @@ helmCharts:
       compactor:
         nodeSelector:
           topology.kubernetes.io/zone: "us-east-1b"
+        persistentVolume:
+          size: 5Gi
       distributor:
         replicas: 2
         extraArgs:
