@@ -11,10 +11,8 @@ spec:
     memory: 150Gi
   template:
     metadata:
-      annotations:
-        node-role.kubernetes.io/worker: worker
       labels:
-        Role: default
+        role: default
         environment: dev
         intent: default
         node-role.kubernetes.io/worker: worker
