@@ -179,6 +179,7 @@
 
 
 
+
 |      Tools       | Version | Repo | Status |
 | :--------------: | :-----: | :---: | :------: |
 | argo-rollouts | 2.35.3 | https://argoproj.github.io/argo-helm |   ✅     |
@@ -196,7 +197,7 @@
 | gateway | 1.22.0 | https://istio-release.storage.googleapis.com/charts |   ✅     |
 | grafana | 8.0.2 | https://grafana.github.io/helm-charts |   ✅     |
 | jaeger | 2.1.0 | https://jaegertracing.github.io/helm-charts |   ✅     |
-| karpenter | 0.35.5 | oci://public.ecr.aws/karpenter |   ✅     |
+| karpenter | 0.36.2 | oci://public.ecr.aws/karpenter |   ✅     |
 | keycloak | 18.4.4 | https://codecentric.github.io/helm-charts |   ✅     |
 | kiali-operator | 1.84.0 | https://kiali.org/helm-charts |   ✅     |
 | kube-downscaler | 0.7.4 | https://charts.deliveryhero.io/ |   ✅     |
