@@ -37,8 +37,8 @@ helmCharts:
       controller:
         resources:
           requests:
-            cpu: 200m
-            memory: 512Mi
+            cpu: 400m
+            memory: 1024Mi
           limits:
             cpu: 1
             memory: 2Gi
