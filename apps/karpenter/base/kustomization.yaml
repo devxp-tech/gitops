@@ -26,7 +26,7 @@ helmCharts:
           verbs: ["*"]
       serviceMonitor:
         enabled: true
-      replicas: 2
+      replicas: 1
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
@@ -34,14 +34,14 @@ helmCharts:
               - matchExpressions:
                   - key: karpenter.sh/provisioner-name
                     operator: DoesNotExist
-      # controller:
-      #   resources:
-      #     requests:
-      #       cpu: 100m
-      #       memory: 256Mi
-      #     limits:
-      #       cpu: 1
-      #       memory: 1Gi
+      controller:
+        resources:
+          requests:
+            cpu: 200m
+            memory: 512Mi
+          limits:
+            cpu: 1
+            memory: 2Gi
       settings:
         clusterName: lgseksd1
         clusterEndpoint: https://7947638F25F34C5F3CAFEF8286994CB3.gr7.us-east-1.eks.amazonaws.com
