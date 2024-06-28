@@ -15,7 +15,7 @@ spec:
         role: default
         environment: dev
         intent: default
-        node-role.kubernetes.io/worker: worker
+        # node-role.kubernetes.io/worker: worker # dont work
     spec:
       kubelet:
         evictionHard:

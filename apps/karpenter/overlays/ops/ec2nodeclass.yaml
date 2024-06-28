@@ -25,7 +25,7 @@ spec:
       karpenter.sh/discovery: lgseksd1
   tags:
     KarpenerProvisionerName: default
-    Role: default
+    role: default
     karpenter.sh/cluster_name: lgseksd1
     karpenter.sh/discovery: lgseksd1
     managed-by: karpenter
