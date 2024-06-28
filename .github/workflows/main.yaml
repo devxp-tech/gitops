@@ -21,7 +21,7 @@ jobs:
       - env
     steps:
       - name: Checkout 🛎️
-        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
       - name: Yaml Lint
         uses: ibiqlik/action-yamllint@2576378a8e339169678f9939646ee3ee325e845c # v3
         with:
@@ -34,7 +34,7 @@ jobs:
       - env
     steps:
       - name: Checkout 🛎️
-        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
 
       - name: Scan repo
         id: kube-lint-repo
@@ -52,7 +52,7 @@ jobs:
       - env
     steps:
       - name: Checkout 🛎️
-        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
       - name: Find Secrets 🔍
         shell: bash
         run: |
@@ -85,7 +85,7 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout code 🛎️
-        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
 
       - name: Run Trivy vulnerability scanner in IaC mode 🔎
         uses: aquasecurity/trivy-action@master
