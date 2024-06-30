@@ -7,8 +7,8 @@ spec:
     consolidationPolicy: WhenUnderutilized
     expireAfter: 360h0m0s
   limits:
-    cpu: 50
-    memory: 150Gi
+    cpu: 25
+    memory: 80Gi
   template:
     metadata:
       labels:
