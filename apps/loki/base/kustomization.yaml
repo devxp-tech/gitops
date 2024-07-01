@@ -26,6 +26,14 @@ helmCharts:
           enabled: false
           grafanaAgent:
             installOperator: false
+      chunksCache:
+        resources:
+          requests:
+            memory: 77Mi
+            cpu: 10m
+          limits:
+            memory: 512Mi
+            cpu: 200m
       test:
         enabled: false
       persistence:
