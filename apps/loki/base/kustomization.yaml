@@ -80,7 +80,6 @@ helmCharts:
                       for: 10m
                       labels:
                         severity: critical
-
         extraEnv:
           - name: JAEGER_AGENT_HOST
             value: otel-collector.observability.svc.cluster.local
@@ -123,13 +122,13 @@ helmCharts:
             value: const
           - name: JAEGER_SAMPLER_PARAM
             value: "1"
-      sidecar:
-        rules:
-          label: loki_rule
-          labelValue: 'true'
-          folder: /rules/fake
-          searchNamespace: ALL
-          resource: configmap
+      # sidecar:
+      #   rules:
+      #     label: loki_rule
+      #     labelValue: 'true'
+      #     folder: /rules/fake
+      #     searchNamespace: ALL
+      #     resource: configmap
       loki:
         auth_enabled: false
         commonConfig:
