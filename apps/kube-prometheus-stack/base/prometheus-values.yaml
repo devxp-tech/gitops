@@ -1,4 +1,5 @@
 prometheus-node-exporter:
+  fullnameOverride: node-exporter
   affinity:
     nodeAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
@@ -10,12 +11,11 @@ prometheus-node-exporter:
                   - fargate
   resources:
     requests:
-      cpu: 200m
-      memory: 105M
+      cpu: 20m
+      memory: 25Mi
     limits:
       cpu: 400m
-      memory: 279M
-  fullnameOverride: node-exporter
+      memory: 250Mi
   prometheus:
     monitor:
       enabled: true
