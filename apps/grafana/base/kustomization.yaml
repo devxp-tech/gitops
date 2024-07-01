@@ -112,8 +112,8 @@ helmCharts:
               editable: true
               isDefault: true
               jsonData:
-                manageAlerts: false
-                # alertmanagerUid: alertmanager
+                manageAlerts: true # test
+                alertmanagerUid: alertmanager # test
                 prometheusType: Mimir
                 mimirVersion: "2.9.x"
                 httpMethod: GET
