@@ -61,6 +61,7 @@ prometheus:
     externalUrl: https://prometheus.devxp-tech.io/
     externalLabels:
       cluster: lgseksd1
+      cluster_id: lgseksd1
       environment: development
     remoteWrite: # Enable Mimir
       - url: http://mimir-nginx.monitoring.svc:80/api/v1/push
