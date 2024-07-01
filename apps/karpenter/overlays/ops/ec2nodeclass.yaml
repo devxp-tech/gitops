@@ -8,12 +8,12 @@ spec:
   - deviceName: /dev/xvda
     ebs:
       deleteOnTermination: true
-      volumeSize: 10Gi #4Gi
+      volumeSize: 15Gi #4Gi
       volumeType: gp3
   - deviceName: /dev/xvdb
     ebs:
       deleteOnTermination: true
-      volumeSize: 20Gi #30Gi
+      volumeSize: 30Gi
       volumeType: gp3
   detailedMonitoring: true
   role: Karpenter-lgseksd1-20230809131800238100000002 #KarpenterNodeRole-lgseksd1
