@@ -27,7 +27,7 @@ helmCharts:
         mimirProxy:
           enabled: true
           mimirEndpoint: http://mimir-nginx.monitoring.svc:80/prometheus
-          # orgIdentifier: vex
+          orgIdentifier: devxp-tech
       networkCosts:
         enabled: true
       serviceMonitor:
