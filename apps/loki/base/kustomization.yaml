@@ -32,8 +32,16 @@ helmCharts:
             memory: 77Mi
             cpu: 10m
           limits:
-            memory: 512Mi
+            memory: 256Mi
             cpu: 200m
+      resultsCache:
+        resources:
+          requests:
+            memory: 20Mi
+            cpu: 10m
+          limits:
+            memory: 256Mi
+            cpu: 100m
       test:
         enabled: false
       persistence:
