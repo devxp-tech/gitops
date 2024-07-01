@@ -42,7 +42,7 @@ spec:
         values: ["us-east-1a", "us-east-1b", "us-east-1c"]
       - key: karpenter.sh/capacity-type
         operator: In
-        values: ["on-demand", "spot"]
+        values: ["on-demand"] #spot
       - key: kubernetes.io/arch
         operator: In
         values: ["amd64"]
