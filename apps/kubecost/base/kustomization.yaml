@@ -53,7 +53,7 @@ helmCharts:
       prometheusRule:
         enabled: true
       oidc:
-        enabled: true
+        enabled: false
         useIDToken: true #test
         clientID: kubecost-client
         authURL: "https://dex.devxp-tech.io/auth" # endpoint for login to auth server
