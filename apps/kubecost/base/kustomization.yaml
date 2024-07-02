@@ -29,11 +29,11 @@ helmCharts:
           mimirEndpoint: http://mimir-nginx.monitoring.svc:80/prometheus
           orgIdentifier: devxp-tech
       networkCosts:
-        enabled: true
+        enabled: false
       serviceMonitor:
         enabled: true
         networkCosts:
-          enabled: true
+          enabled: false
         # config:
         #   services:
         #     amazon-web-services: true
@@ -65,7 +65,7 @@ helmCharts:
 
       # Kubecost Cluster Controller for Right Sizing and Cluster Turndown
       clusterController:
-        enabled: true
+        enabled: false
         actionConfigs:
           # this configures the Kubecost Namespace Turndown action
           # for more details, see documentation at https://docs.kubecost.com/using-kubecost/navigating-the-kubecost-ui/savings/savings-actions#namespace-turndown
