@@ -150,14 +150,16 @@ helmCharts:
             rules.yml: |
               groups:
                 - name: high_error_rate
-                    - alert: HighErrorRate
-                      expr: 'sum(count_over_time({app=~"hotrod|backstage"} |~ "error" [5m])) by (cluster, namespace, pod) > 10'
-                      for: 1m
-                      labels:
-                          severity: critical
-                      annotations:
-                          summary: Error rate per minute > 10
-                          message: 'Error rate per minute  > 10 on pod: "{{ $labels.pod }}"'
+                  rules:
+                  - alert: HighErrorRate
+                    expr: 'sum(count_over_time({app=~"hotrod|backstage"} |~ "error" [5m])) by (cluster, namespace, pod) > 10'
+                    for: 1m
+                    labels:
+                        severity: critical
+                    annotations:
+                        summary: Error rate per minute > 10
+                        message: 'Error rate per minute  > 10 on pod: "{{ $labels.pod }}"'
+
                 - name: test_alert
                   rules:
                     - alert: TestAlert
