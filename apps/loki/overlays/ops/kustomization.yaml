@@ -114,6 +114,7 @@ helmCharts:
                       annotations:
                           summary: Loki info warning per minute rate > 0
                           message: 'Loki warning per minute rate > 0 container:"{{ $labels.container }}"'
+
                 - name: high_error_rate
                   rules:
                     - alert: BackstageHighErrorRate
@@ -124,6 +125,15 @@ helmCharts:
                       annotations:
                           summary: Backstage error per minute rate > 100
                           message: 'Backstage warning per minute rate > 0 container:"{{ $labels.container }}"'
+
+                    - alert: HotrodHighErrorRate
+                      expr: sum(rate({app="hotrod"} | logfmt | level="error"[1m])) by (container) > 0
+                      for: 1m
+                      labels:
+                          severity: critical
+                      annotations:
+                          summary: Hotrod error per minute rate > 100
+                          message: 'Hotrod warning per minute rate > 0 container:"{{ $labels.container }}"'
 
       loki:
         # Disable multi-tenant support
