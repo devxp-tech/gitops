@@ -6,7 +6,7 @@ helmCharts:
     includeCRDs: true
     releaseName: loki
     namespace: logging
-    version: 6.6.3 #2.9.11
+    version: 6.6.4 #2.9.11
     repo: https://grafana.github.io/helm-charts
     valuesInline:
       serviceAccount:
@@ -26,69 +26,31 @@ helmCharts:
           enabled: false
           grafanaAgent:
             installOperator: false
-      chunksCache:
-        resources:
-          requests:
-            memory: 77Mi
-            cpu: 10m
-          limits:
-            memory: 256Mi
-            cpu: 200m
-      resultsCache:
-        resources:
-          requests:
-            memory: 20Mi
-            cpu: 10m
-          limits:
-            memory: 256Mi
-            cpu: 100m
+      deploymentMode: SimpleScalable
+      singleBinary:
+        replicas: 0
+      ingester:
+        replicas: 0
+      querier:
+        replicas: 0
+      queryFrontend:
+        replicas: 0
+      queryScheduler:
+        replicas: 0
+      distributor:
+        replicas: 0
+      compactor:
+        replicas: 0
+      indexGateway:
+        replicas: 0
+      bloomCompactor:
+        replicas: 0
+      bloomGateway:
+        replicas: 0
       test:
         enabled: false
       persistence:
         enabled: true
-      ruler:
-        enabled: true
-        extraVolumes:
-        - name: loki-rules-generated
-          emptyDir: {}
-        extraVolumeMounts:
-        - name: loki-rules-generated
-          mountPath: /rules
-        directories:
-          fake:
-            rules.yaml: |
-              groups:
-                - name: should_fire
-                  rules:
-                    - alert: HighPercentageError
-                      expr: |
-                        sum(rate({app="foo", env="production"} |= "error" [5m])) by (job)
-                          /
-                        sum(rate({app="foo", env="production"}[5m])) by (job)
-                          > 0.05
-                      for: 10m
-                      labels:
-                          severity: page
-                      annotations:
-                          summary: High request latency
-                - name: credentials_leak
-                  rules:
-                    - alert: http-credentials-leaked
-                      annotations:
-                        message: "{{ $labels.job }} is leaking http basic auth credentials."
-                      expr: 'sum by (cluster, job, pod) (count_over_time({namespace="prod"} |~ "http(s?)://(\\w+):(\\w+)@" [5m]) > 0)'
-                      for: 10m
-                      labels:
-                        severity: critical
-        extraEnv:
-          - name: JAEGER_AGENT_HOST
-            value: otel-collector.observability.svc.cluster.local
-          - name: JAEGER_AGENT_PORT
-            value: "6831"
-          - name: JAEGER_SAMPLER_TYPE
-            value: const
-          - name: JAEGER_SAMPLER_PARAM
-            value: "1"
       backend:
         replicas: 2
         extraEnv:
@@ -122,13 +84,6 @@ helmCharts:
             value: const
           - name: JAEGER_SAMPLER_PARAM
             value: "1"
-      # sidecar:
-      #   rules:
-      #     label: loki_rule
-      #     labelValue: 'true'
-      #     folder: /rules/fake
-      #     searchNamespace: ALL
-      #     resource: configmap
       loki:
         auth_enabled: false
         commonConfig:
@@ -142,21 +97,6 @@ helmCharts:
             chunks: "vex-dev-loki-logs"
             ruler: "vex-dev-loki-logs"
             admin: "vex-dev-loki-logs"
-        structuredConfig:
-          ruler:
-            wal:
-              dir: /tmp/loki/ruler-wal
-            storage:
-              type: local
-              local:
-                directory: /etc/loki/rules
-            rule_path: /tmp/loki/rules
-            remote_write:
-              enabled: true
-              client:
-                url: http://mimir-nginx.monitoring.svc.cluster.local/api/v1/push
-        ingester:
-          autoforget_unhealthy: true
         alertmanager_url: http://prometheus-community-kube-alertmanager.monitoring.svc.cluster.local:9093
         external_url: "https://alertmanager.devxp-tech.io"
         enable_alertmanager_discovery: true
@@ -172,6 +112,8 @@ helmCharts:
               object_store: s3
               schema: v13
               store: tsdb
+        ingester:
+          chunk_encoding: snappy
         limits_config:
           ingestion_rate_mb: 8
           ingestion_burst_size_mb: 16
