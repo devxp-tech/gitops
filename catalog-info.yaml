@@ -1,0 +1,43 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+spec:
+  system: "system:default/lab"
+  type: "service"
+  lifecycle: "experimental"
+  owner: "group:default/devxp-tech"
+metadata:
+  name: "gitops"
+  description: "gitops"
+  annotations:
+    github.com/project-slug: devxp-tech/gitops
+    backstage.io/techdocs-ref: dir:.
+    argocd/app-name: gitops-dev
+    backstage.io/kubernetes-id: "gitops"
+    sonarqube.org/project-key: "gitops"
+    grafana/tag-selector: "Kubernetes"
+    prometheus.io/rule: container_cpu_usage_seconds_total{namespace="argocd"}
+    prometheus.io/alert: all
+  tags:
+    - golang
+    # - system:default/lab
+    - "service"
+    - "experimental"
+  links:
+    - url: https://gitops.devxp-tech.io
+      title: Website
+      icon: Website
+    - url: https://grafana.devxp-tech.io/
+      title: Dashboard
+      icon: dashboard
+    - url: https://alerts.devxp-tech.io/
+      title: Alerts
+      icon: alert
+    - url: https://argocd.devxp-tech.io/applications/argo-cd?resource=
+      title: ArgoCD
+      icon: cloud
+    - url: https://grafana.devxp-tech.io/d/k8s_views_ns/kubernetes-views-namespaces?orgId=1&refresh=30s&var-datasource=Prometheus&var-namespace=gitops&var-resolution=30s
+      title: Logs
+      icon: cloud
+    - url: https://kiali.devxp-tech.io/kiali/console/graph/namespaces/?traffic=grpc%2CgrpcRequest%2Chttp%2ChttpRequest%2Ctcp%2CtcpSent&graphType=versionedApp&namespaces=gitops&duration=120&refresh=60000&idleNodes=true&layout=kiali-breadthfirst&namespaceLayout=kiali-dagre
+      title: Kiali
+      icon: cloud
