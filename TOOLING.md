@@ -15,6 +15,7 @@
 
 
 
+
 |      Tools       | Version | Repo | Status |
 | :--------------: | :-----: | :---: | :------: |
 | argo-rollouts | 2.35.3 | https://argoproj.github.io/argo-helm |   ✅     |
@@ -39,7 +40,7 @@
 | kube-prometheus-stack | 58.1.1 | https://prometheus-community.github.io/helm-charts |   ✅     |
 | kubeclarity | v2.23.1 | https://openclarity.github.io/kubeclarity |   ✅     |
 | kyverno | 3.2.4 | https://kyverno.github.io/kyverno |   ✅     |
-| loki | 6.6.3 | https://grafana.github.io/helm-charts |   ✅     |
+| loki | 6.6.4 | https://grafana.github.io/helm-charts |   ✅     |
 | metrics-server | 3.12.1 | https://kubernetes-sigs.github.io/metrics-server/ |   ✅     |
 | mimir-distributed | 5.3.0 | https://grafana.github.io/helm-charts |   ✅     |
 | nexus-repository-manager | 64.2.0 | https://sonatype.github.io/helm3-charts |   ✅     |
