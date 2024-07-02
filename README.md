@@ -51,7 +51,7 @@ Argo Workflows is an open source container-native workflow engine for orchestrat
 
 ### 🔩 Tooling
 
-[Versions](TOOLING.md)
+See [Versions](docs/tooling/versions.md).
 
 ### 🔨 To Do
 
@@ -97,11 +97,11 @@ Argo Workflows is an open source container-native workflow engine for orchestrat
 
 ### 🖊️ Code of Conduct
 
-See [CODE-OF-CONDUCT.md](.github/CODE-OF-CONDUCT.md).
+See [CODE-OF-CONDUCT.md](docs/CODE-OF-CONDUCT.md).
 
 ### 🔒 Security
 
-See [SECURITY.md](.github/SECURITY.md).
+See [SECURITY.md](docs/SECURITY.md).
 
 ## ✨ Contributions
 
