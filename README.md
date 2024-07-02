@@ -61,15 +61,6 @@ Argo Workflows is an open source container-native workflow engine for orchestrat
 | argo-worflows |    Fix Build    |   ❌    |
 | yaml-validate | Fix CI Workflow |   ❌    |
 
-### 🛠️ Required Tools
-
-|      Tools       | Version  |
-| :--------------: | :------: |
-|      argocd      |  v2.8.4  |
-| argocd-autopilot | v0.4.17  |
-|       helm       | v3.13.3  |
-|     kubectl      | v1.29.0  |
-|    kustomize     | v5.0.4-0 |
 
 ### 🌳 Project Structure
 

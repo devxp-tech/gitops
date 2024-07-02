@@ -15,4 +15,5 @@ nav:
   - Security:
       - Versions: SECURITY.md
   - Tooling:
+      - Required Tools: toolings/required-tools.md
       - Versions: toolings/versions.md
