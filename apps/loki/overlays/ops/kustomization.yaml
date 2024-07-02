@@ -151,7 +151,7 @@ helmCharts:
               groups:
                 - name: high_error_rate
                     - alert: HighErrorRate
-                      expr: sum(count_over_time({app=~"hotrod|backstage"} |~ "error" [5m])) by (cluster, namespace, pod) > 10
+                      expr: 'sum(count_over_time({app=~"hotrod|backstage"} |~ "error" [5m])) by (cluster, namespace, pod) > 10'
                       for: 1m
                       labels:
                           severity: critical
@@ -161,7 +161,7 @@ helmCharts:
                 - name: test_alert
                   rules:
                     - alert: TestAlert
-                      expr: sum(rate({app="loki"} | logfmt | level="info"[1m])) by (cluster, namespace, pod) > 0
+                      expr: 'sum(rate({app="loki"} | logfmt | level="info"[1m])) by (cluster, namespace, pod) > 0'
                       for: 1m
                       labels:
                           severity: warning
