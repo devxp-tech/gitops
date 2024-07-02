@@ -41,25 +41,19 @@ helmCharts:
           grafanaAgent:
             installOperator: false
       ingester:
-        replicas: 2
-        zoneAwareReplication:
-          enabled: false
+        replicas: 1
       querier:
-        replicas: 2
-        maxUnavailable: 2
+        replicas: 1
       queryFrontend:
-        replicas: 2
-        maxUnavailable: 1
+        replicas: 1
       queryScheduler:
         replicas: 1
       distributor:
-        replicas: 2
-        maxUnavailable: 1
+        replicas: 1
       compactor:
         replicas: 1
       indexGateway:
-        replicas: 2
-        maxUnavailable: 1
+        replicas: 1
 
       bloomCompactor:
         replicas: 0
