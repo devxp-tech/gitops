@@ -13,6 +13,7 @@ nav:
       - Code of Conduct: CODE-OF-CONDUCT.md
       - Generate Secrets: secrets/index.md
       - Project Structure: project-structure.md
+      - To Do: to-do.md
   - Security:
       - Security: SECURITY.md
   - Tooling:

@@ -55,11 +55,7 @@ See [Versions](docs/tooling/versions.md).
 
 ### 🔨 To Do
 
-|     Issue     |   Description   | Status |
-| :-----------: | :-------------: | :----: |
-|   wordpress   |  Fix kustomize  |   ✅    |
-| argo-worflows |    Fix Build    |   ❌    |
-| yaml-validate | Fix CI Workflow |   ❌    |
+See [To Do](docs/to-do.md).
 
 ### 🌳 Project Structure
 
@@ -67,11 +63,11 @@ See [Project Structure](docs/project-structure.md).
 
 ### 🖊️ Code of Conduct
 
-See [CODE-OF-CONDUCT.md](docs/CODE-OF-CONDUCT.md).
+See [Code of Conduct](docs/CODE-OF-CONDUCT.md).
 
 ### 🔒 Security
 
-See [SECURITY.md](docs/SECURITY.md).
+See [Security](docs/SECURITY.md).
 
 ## ✨ Contributions
 
