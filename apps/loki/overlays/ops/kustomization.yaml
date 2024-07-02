@@ -194,18 +194,19 @@ helmCharts:
 
         # limits config
         limits_config:
+          ingestion_burst_size_mb: 30
+          ingestion_rate_mb: 20
           max_cache_freshness_per_query: 10m
+          max_entries_limit_per_query: 100000
+          max_line_size: 10000
           max_query_parallelism: 8
-          reject_old_samples: true
-          reject_old_samples_max_age: 168h
-          split_queries_by_interval: 15m
           per_stream_rate_limit: 5MB
           per_stream_rate_limit_burst: 20MB
-          ingestion_rate_mb: 20
-          ingestion_burst_size_mb: 30
-          max_entries_limit_per_query: 100000
           query_timeout: 300s
+          reject_old_samples: true
+          reject_old_samples_max_age: 168h
           retention_period: 7d
+          split_queries_by_interval: 15m
 
         # querier config
         querier:
