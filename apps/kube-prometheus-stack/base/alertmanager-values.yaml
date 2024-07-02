@@ -1,4 +1,3 @@
-
 alertmanager:
   serviceMonitor:
     selfMonitor: true
