@@ -62,10 +62,7 @@ helmCharts:
       backend:
         replicas: 2
         persistence:
-          # -- Size of persistent disk
           size: 10Gi
-          # -- Storage class to be used.
-          # storageClass: longhorn
         extraVolumeMounts:
           - name: rules-volume
             mountPath: /etc/loki/rules/fake/loki-rules.yaml
@@ -111,6 +108,28 @@ helmCharts:
             value: const
           - name: JAEGER_SAMPLER_PARAM
             value: "1"
+
+      # Ruler config
+      ruler:
+        enabled: true
+        directories:
+          fake:
+            rules.yml: |
+              groups:
+                - name: should_fire
+                  rules:
+                    - alert: HighPercentageError
+                    expr: sum(rate({namespace="backstage"} |= "INFO 1" [5m])) by (job)
+                          /
+                        sum(rate({namespace="backstage"}[5m])) by (job)
+                          > 0.05
+                    for: 10m
+                    labels:
+                      severity: critical
+                    annotations:
+                      summary: loki customer app error rate
+                      description: high request latency
+
       loki:
         # Disable multi-tenant support
         auth_enabled: false
@@ -162,6 +181,8 @@ helmCharts:
             dir: /var/loki/loki-wal
           external_url: "https://alertmanager.devxp-tech.io"
           enable_alertmanager_v2: true
+          enable_alertmanager_discovery: true
+          enable_api: true
           remote_write:
             enabled: true
             clients:
