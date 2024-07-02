@@ -6,15 +6,15 @@ spec:
   lifecycle: "experimental"
   owner: "group:default/devxp-tech"
 metadata:
-  name: "gitops"
-  description: "gitops"
+  name: gitops
+  description: gitops
   annotations:
     github.com/project-slug: devxp-tech/gitops
     backstage.io/techdocs-ref: dir:.
     argocd/app-name: argo-cd
-    backstage.io/kubernetes-id: "argocd"
-    sonarqube.org/project-key: "gitops"
-    grafana/tag-selector: "Kubernetes"
+    backstage.io/kubernetes-namespace: argocd
+    sonarqube.org/project-key: gitops
+    grafana/tag-selector: Kubernetes
     prometheus.io/rule: container_cpu_usage_seconds_total{namespace="argocd"}
     prometheus.io/alert: all
   tags:
