@@ -9,9 +9,10 @@ plugins:
 
 nav:
   - Home: index.md
-  - How-tos:
+  - How To:
       - Code of Conduct: CODE-OF-CONDUCT.md
       - Generate Secrets: secrets/index.md
+      - Project Structure: project-structure.md
   - Security:
       - Security: SECURITY.md
   - Tooling:
