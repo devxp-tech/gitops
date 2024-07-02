@@ -13,7 +13,7 @@ nav:
       - Code of Conduct: CODE-OF-CONDUCT.md
       - Generate Secrets: secrets/index.md
   - Security:
-      - Versions: SECURITY.md
+      - Security: SECURITY.md
   - Tooling:
-      - Required Tools: toolings/required-tools.md
-      - Versions: toolings/versions.md
+      - Required Tools: tooling/required-tools.md
+      - Versions: tooling/versions.md
