@@ -149,17 +149,6 @@ helmCharts:
           fake:
             rules.yml: |
               groups:
-                - name: test_alert
-                  rules:
-                    - alert: TestAlert
-                      expr: sum(rate({app="loki"} | logfmt | level="info"[1m])) by (container) > 0
-                      for: 1m
-                      labels:
-                          severity: warning
-                      annotations:
-                          summary: Loki info warning per minute rate > 0
-                          message: 'Loki warning per minute rate > 0 container:"{{ $labels.container }}"'
-
                 - name: high_error_rate
                     - alert: HighErrorRate
                       expr: sum(count_over_time({app=~"hotrod|backstage"} |~ "error" [5m])) by (cluster, namespace, pod) > 10
@@ -168,7 +157,18 @@ helmCharts:
                           severity: critical
                       annotations:
                           summary: Error rate per minute > 10
-                          message: 'Error rate per minute  > 10 on "pod:"{{ $labels.pod }}"'
+                          message: 'Error rate per minute  > 10 on pod: "{{ $labels.pod }}"'
+                - name: test_alert
+                  rules:
+                    - alert: TestAlert
+                      expr: sum(rate({app="loki"} | logfmt | level="info"[1m])) by (cluster, namespace, pod) > 0
+                      for: 1m
+                      labels:
+                          severity: warning
+                      annotations:
+                          summary: Loki info warning per minute rate > 0
+                          message: 'Loki warning per minute rate > 0 pod: "{{ $labels.pod }}"'
+
 
       loki:
         # Disable multi-tenant support
