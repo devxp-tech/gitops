@@ -11,17 +11,17 @@ metadata:
   annotations:
     github.com/project-slug: devxp-tech/gitops
     backstage.io/techdocs-ref: dir:.
-    argocd/app-name: gitops-dev
+    argocd/app-name: argo-cd
     backstage.io/kubernetes-id: "gitops"
     sonarqube.org/project-key: "gitops"
     grafana/tag-selector: "Kubernetes"
     prometheus.io/rule: container_cpu_usage_seconds_total{namespace="argocd"}
     prometheus.io/alert: all
   tags:
-    - golang
-    # - system:default/lab
-    - "service"
-    - "experimental"
+    - argocd
+    - gitops
+    - service
+    - experimental
   links:
     - url: https://gitops.devxp-tech.io
       title: Website
