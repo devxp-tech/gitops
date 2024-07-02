@@ -140,8 +140,8 @@ jobs:
         then
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add TOOLING.md
-          git commit -m "[ci skip] :robot: [github actions actor] - update TOOLING.md"
+          git add docs/tooling/versions.md
+          git commit -m "[ci skip] :robot: [github actions actor] - update versions.md"
           git push
         else
           echo "nothing to do!!!"
