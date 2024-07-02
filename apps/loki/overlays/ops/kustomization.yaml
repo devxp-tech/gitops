@@ -151,18 +151,17 @@ helmCharts:
               groups:
                 - name: high_error_rate
                   rules:
-                  - alert: HighErrorRate
-                    expr: sum(count_over_time({app=~"hotrod|backstage"} |~ "error" [5m])) by (cluster, namespace, pod) > 10
-                    for: 1m
-                    labels:
+                    - alert: HighErrorRate
+                      expr: sum(count_over_time({app=~"hotrod|backstage"} |~ "error" [5m])) by (cluster, namespace, pod) > 10
+                      for: 1m
+                      labels:
                         severity: critical
                         team: sre-team
-                        cluster:  "{{ $labels.cluster }}"
-                        namespace: "{{ $labels.namespace }}"
-                        pod: "{{ $labels.pod }}"
-                    annotations:
+                        category: logs
+                      annotations:
                         summary: Error rate per minute > 10
                         message: 'Error rate per minute  > 10 on pod: "{{ $labels.pod }}"'
+                        logurl: "https://grafana.devxp-tech.io/explore"
 
                 - name: HighWarningRate
                   rules:
@@ -170,15 +169,13 @@ helmCharts:
                       expr: sum(rate({app=~"hotrod|backstage"} | logfmt | level="warn"[5m])) by (cluster, namespace, pod) > 10
                       for: 1m
                       labels:
-                          severity: warning
-                          team: sre-team
-                          cluster:  "{{ $labels.cluster }}"
-                          namespace: "{{ $labels.namespace }}"
-                          pod: "{{ $labels.pod }}"
+                        severity: warning
+                        team: sre-team
+                        category: logs
                       annotations:
-                          summary: Warning rate per minute > 10
-                          message: 'Warning rate per minute  > 10 on pod: "{{ $labels.pod }}"'
-
+                        summary: Warning rate per minute > 10
+                        message: 'Warning rate per minute  > 10 on pod: "{{ $labels.pod }}"'
+                        logurl: "https://grafana.devxp-tech.io/explore"
 
       loki:
         # Disable multi-tenant support
