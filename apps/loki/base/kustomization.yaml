@@ -102,6 +102,7 @@ helmCharts:
       # Ruler config
       ruler:
         enabled: true
+        replicas: 1
         directories:
           fake:
             rules.yml: |
