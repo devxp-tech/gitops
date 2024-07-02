@@ -113,7 +113,7 @@ helmCharts:
                           severity: warning
                       annotations:
                           summary: Loki info warning per minute rate > 0
-                          message: 'Loki warning per minute rate > 0 container:"{{`{{`}} $labels.container {{`}}`}}'
+                          message: 'Loki warning per minute rate > 0 container:"{{ $labels.container }}"'
                 - name: high_error_rate
                   rules:
                     - alert: BackstageHighErrorRate
@@ -176,7 +176,6 @@ helmCharts:
             dir: /var/loki/loki-wal
           external_url: "https://alertmanager.devxp-tech.io"
           enable_alertmanager_v2: true
-          # enable_alertmanager_discovery: true
           enable_api: true
           remote_write:
             enabled: true
