@@ -42,18 +42,81 @@ helmCharts:
             installOperator: false
       ingester:
         replicas: 1
+        extraEnv:
+          - name: JAEGER_AGENT_HOST
+            value: otel-collector.observability.svc.cluster.local
+          - name: JAEGER_AGENT_PORT
+            value: "6831"
+          - name: JAEGER_SAMPLER_TYPE
+            value: const
+          - name: JAEGER_SAMPLER_PARAM
+            value: "1"
       querier:
         replicas: 1
+        extraEnv:
+          - name: JAEGER_AGENT_HOST
+            value: otel-collector.observability.svc.cluster.local
+          - name: JAEGER_AGENT_PORT
+            value: "6831"
+          - name: JAEGER_SAMPLER_TYPE
+            value: const
+          - name: JAEGER_SAMPLER_PARAM
+            value: "1"
       queryFrontend:
         replicas: 1
+        extraEnv:
+          - name: JAEGER_AGENT_HOST
+            value: otel-collector.observability.svc.cluster.local
+          - name: JAEGER_AGENT_PORT
+            value: "6831"
+          - name: JAEGER_SAMPLER_TYPE
+            value: const
+          - name: JAEGER_SAMPLER_PARAM
+            value: "1"
       queryScheduler:
         replicas: 1
+        extraEnv:
+          - name: JAEGER_AGENT_HOST
+            value: otel-collector.observability.svc.cluster.local
+          - name: JAEGER_AGENT_PORT
+            value: "6831"
+          - name: JAEGER_SAMPLER_TYPE
+            value: const
+          - name: JAEGER_SAMPLER_PARAM
+            value: "1"
       distributor:
         replicas: 1
+        extraEnv:
+          - name: JAEGER_AGENT_HOST
+            value: otel-collector.observability.svc.cluster.local
+          - name: JAEGER_AGENT_PORT
+            value: "6831"
+          - name: JAEGER_SAMPLER_TYPE
+            value: const
+          - name: JAEGER_SAMPLER_PARAM
+            value: "1"
       compactor:
         replicas: 1
+        extraEnv:
+          - name: JAEGER_AGENT_HOST
+            value: otel-collector.observability.svc.cluster.local
+          - name: JAEGER_AGENT_PORT
+            value: "6831"
+          - name: JAEGER_SAMPLER_TYPE
+            value: const
+          - name: JAEGER_SAMPLER_PARAM
+            value: "1"
       indexGateway:
         replicas: 1
+        extraEnv:
+          - name: JAEGER_AGENT_HOST
+            value: otel-collector.observability.svc.cluster.local
+          - name: JAEGER_AGENT_PORT
+            value: "6831"
+          - name: JAEGER_SAMPLER_TYPE
+            value: const
+          - name: JAEGER_SAMPLER_PARAM
+            value: "1"
 
       bloomCompactor:
         replicas: 0
@@ -62,37 +125,10 @@ helmCharts:
 
       backend:
         replicas: 0
-        extraEnv:
-          - name: JAEGER_AGENT_HOST
-            value: otel-collector.observability.svc.cluster.local
-          - name: JAEGER_AGENT_PORT
-            value: "6831"
-          - name: JAEGER_SAMPLER_TYPE
-            value: const
-          - name: JAEGER_SAMPLER_PARAM
-            value: "1"
       read:
         replicas: 0
-        extraEnv:
-          - name: JAEGER_AGENT_HOST
-            value: otel-collector.observability.svc.cluster.local
-          - name: JAEGER_AGENT_PORT
-            value: "6831"
-          - name: JAEGER_SAMPLER_TYPE
-            value: const
-          - name: JAEGER_SAMPLER_PARAM
-            value: "1"
       write:
         replicas: 0
-        extraEnv:
-          - name: JAEGER_AGENT_HOST
-            value: otel-collector.observability.svc.cluster.local
-          - name: JAEGER_AGENT_PORT
-            value: "6831"
-          - name: JAEGER_SAMPLER_TYPE
-            value: const
-          - name: JAEGER_SAMPLER_PARAM
-            value: "1"
       singleBinary:
         replicas: 0
 
@@ -100,6 +136,15 @@ helmCharts:
       ruler:
         enabled: true
         replicas: 1
+        extraEnv:
+          - name: JAEGER_AGENT_HOST
+            value: otel-collector.observability.svc.cluster.local
+          - name: JAEGER_AGENT_PORT
+            value: "6831"
+          - name: JAEGER_SAMPLER_TYPE
+            value: const
+          - name: JAEGER_SAMPLER_PARAM
+            value: "1"
         directories:
           fake:
             rules.yml: |
