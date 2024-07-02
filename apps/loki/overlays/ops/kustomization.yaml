@@ -186,8 +186,8 @@ helmCharts:
             region: us-east-1
           bucketNames:
             chunks: "vex-dev-loki-logs"
-            ruler: "vex-dev-loki-logs"
-            admin: "vex-dev-loki-logs"
+            # ruler: "vex-dev-loki-logs"
+            # admin: "vex-dev-loki-logs"
 
         # Storage Schema
         schemaConfig:
