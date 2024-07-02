@@ -113,7 +113,7 @@ helmCharts:
                           severity: warning
                       annotations:
                           summary: Loki info warning per minute rate > 0
-                          message: 'Loki warning per minute rate > 0 container:"{{`{{`}} $labels.container {{`}}`}}"'
+                          message: 'Loki warning per minute rate > 0 container:"{{`{{`}} $labels.container {{`}}`}}'
                 - name: high_error_rate
                   rules:
                     - alert: BackstageHighErrorRate
@@ -123,7 +123,7 @@ helmCharts:
                           severity: critical
                       annotations:
                           summary: Backstage error per minute rate > 100
-                          message: 'Backstage warning per minute rate > 0 container:"{{ $labels.container }}"
+                          message: 'Backstage warning per minute rate > 0 container:"{{ $labels.container }}"'
 
       loki:
         # Disable multi-tenant support
