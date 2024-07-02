@@ -8,14 +8,17 @@ header="# 🔩 Tooling\n\n"
 header+="|      Tool        | Version | Repo | base | ops | dev | prd |\n"
 header+="| :--------------: | :-----: | :---:| :--: | :-: | :-: | :-: |"
 
-# Loop through each file
+# Initialize output_content as an empty string
+output_content=""
+
+# Loop through each file and construct the output content
 for file in $files; do
     # Get the name, version, and repo from the kustomization.yaml file using yq
     name=$(yq eval '.helmCharts[0].name' "$file")
     version=$(yq eval '.helmCharts[0].version' "$file")
     repo=$(yq eval '.helmCharts[0].repo' "$file")
 
-    # Initialize variables ops, dev, and prd without ✅
+    # Initialize variables base, ops, dev, and prd without ✅
     base=""
     ops=""
     dev=""
@@ -49,6 +52,8 @@ for file in $files; do
     fi
 done
 
-# Write the sorted output content to TOOLING.md, ensuring the header is at the top
+output_content=$(echo -e "$output_content" | sort -u -k 2 | awk NF)
+
+# Sort the output content (excluding the header) and write to TOOLING.md
 echo -e "$header" > TOOLING.md
 echo -e "$output_content" >> TOOLING.md
