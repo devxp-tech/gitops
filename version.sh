@@ -5,7 +5,7 @@ files=$(find apps/ -name "kustomization.yaml")
 
 # Prepare header
 header="# 🔩 Tooling\n\n"
-header+="|      Tools       | Version | Repo | Status |\n"
+header+="|      Tool        | Version | Repo | Status |\n"
 header+="| :--------------: | :-----: | :---: | :------: |"
 
 # Initialize output_content as an empty string
@@ -32,7 +32,7 @@ for file in $files; do
 done
 
 # Sort the output content and remove duplicates
-output_content=$(echo -e "$output_content" | sort -u -k 2)
+# output_content=$(echo -e "$output_content" | sort -u -k 2)
 
 # Write the sorted output content to TOOLING.md, ensuring the header is at the top
 echo -e "$header" > TOOLING.md
