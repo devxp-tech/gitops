@@ -1,0 +1,13 @@
+site_name: "gitops"
+site_description: "Main documentation for ArgoCD - GitOps features and platform APIs"
+repo_url: https://github.com/devxp-tech/gitops
+edit_uri: edit/main/docs
+
+plugins:
+  - techdocs-core
+
+nav:
+  - Introduction: README.md
+  - Getting Started:
+      - Getting Started: "docs/index.md"
+      - Tooling: "docs/TOOLING.md"
