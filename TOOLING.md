@@ -1,7 +1,8 @@
-
+# 🔩 Tooling
 
 |      Tools       | Version | Repo | Status |
 | :--------------: | :-----: | :---: | :------: |
+
 | argo-rollouts | 2.35.3 | https://argoproj.github.io/argo-helm |   ✅     |
 | argo-workflows | 0.41.4 | https://argoproj.github.io/argo-helm |   ✅     |
 | atlantis | 5.1.3 | https://runatlantis.github.io/helm-charts |   ✅     |

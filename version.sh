@@ -3,9 +3,13 @@
 # Find all kustomization.yaml files in the apps/ directory
 files=$(find apps/ -name "kustomization.yaml")
 
-# Prepare output content
-output_content="|      Tools       | Version | Repo | Status |\n"
-output_content+="| :--------------: | :-----: | :---: | :------: |\n"
+# Prepare header
+header="# 🔩 Tooling\n\n"
+header+="|      Tools       | Version | Repo | Status |\n"
+header+="| :--------------: | :-----: | :---: | :------: |"
+
+# Initialize output_content as an empty string
+output_content=""
 
 # Loop through each file
 for file in $files; do
@@ -30,15 +34,6 @@ done
 # Sort the output content and remove duplicates
 output_content=$(echo -e "$output_content" | sort -u -k 2)
 
-# Create a temporary file to store the new content
-tmp_file=$(mktemp)
-
-# Write the sorted output content to the temporary file
-echo -e "$output_content" > "$tmp_file"
-
-# Replace the specific section in Tooling.md with the new content
-sed -i '/| *Tools *| *Version *| *Repo *| *Status *|/,$d' Tooling.md
-cat "$tmp_file" > Tooling.md
-
-# Remove the temporary file
-rm "$tmp_file"
+# Write the sorted output content to TOOLING.md, ensuring the header is at the top
+echo -e "$header" > TOOLING.md
+echo -e "$output_content" >> TOOLING.md
