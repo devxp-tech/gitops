@@ -109,19 +109,16 @@ helmCharts:
           fake:
             rules.yml: |
               groups:
-                - name: should_fire
+                - name: test_alert
                   rules:
-                    - alert: HighPercentageError
-                    expr: sum(rate({namespace="backstage"} |= "INFO 1" [5m])) by (job)
-                          /
-                        sum(rate({namespace="backstage"}[5m])) by (job)
-                          > 0.05
-                    for: 10m
-                    labels:
-                      severity: critical
-                    annotations:
-                      summary: loki customer app error rate
-                      description: high request latency
+                    - alert: TestAlert
+                      expr: sum(rate({app="loki"} | logfmt | level="info"[1m])) by (container) > 0
+                      for: 1m
+                      labels:
+                          severity: warning
+                      annotations:
+                          summary: Loki info warning per minute rate > 0
+                          message: 'Loki warning per minute rate > 0 container:"{{`{{`}} $labels.container {{`}}`}}"'
 
       loki:
         # Disable multi-tenant support
