@@ -8,7 +8,7 @@
 | backstage | devxp-app | 0.2.79 | https://devxp-tech.github.io/helm-charts |  |  | [![App Status](https://argocd.devxp-tech.io/api/badge?name=backstage-dev&revision=true&showAppName=true)](https://argocd.devxp-tech.io/applications/backstage-dev) |  |
 | backstage | devxp-app | 0.2.80 | https://devxp-tech.github.io/helm-charts |  |  |  | [![App Status](https://argocd.devxp-tech.io/api/badge?name=backstage-prd&revision=true&showAppName=true)](https://argocd.devxp-tech.io/applications/backstage-prd) |
 | cert-manager | cert-manager | v1.14.5 | https://charts.jetstack.io | ✅ |  |  |  |
-| cilium | cilium | 1.15.5 | https://helm.cilium.io | ✅ |  |  |  |
+| cilium | cilium | 1.15.6 | https://helm.cilium.io | ✅ |  |  |  |
 | demo-app | devxp-app | 0.2.79 | https://devxp-tech.github.io/helm-charts |  |  |  | [![App Status](https://argocd.devxp-tech.io/api/badge?name=demo-app-prd&revision=true&showAppName=true)](https://argocd.devxp-tech.io/applications/demo-app-prd) |
 | demo-app | devxp-app | 0.2.81 | https://devxp-tech.github.io/helm-charts |  |  | [![App Status](https://argocd.devxp-tech.io/api/badge?name=demo-app-dev&revision=true&showAppName=true)](https://argocd.devxp-tech.io/applications/demo-app-dev) |  |
 | dex | dex | 0.17.1 | https://charts.dexidp.io | ✅ |  |  |  |
@@ -28,7 +28,7 @@
 | kubeclarity | kubeclarity | v2.23.1 | https://openclarity.github.io/kubeclarity | ✅ |  |  |  |
 | kubecost | cost-analyzer | 2.3.1 | https://kubecost.github.io/cost-analyzer | ✅ |  |  |  |
 | kyverno | kyverno | 3.2.4 | https://kyverno.github.io/kyverno | ✅ |  |  |  |
-| loki | loki | 6.6.4 | https://grafana.github.io/helm-charts | ✅ |  |  |  |
+| loki | loki | 6.6.4 | https://grafana.github.io/helm-charts |  | [![App Status](https://argocd.devxp-tech.io/api/badge?name=loki-ops&revision=true&showAppName=true)](https://argocd.devxp-tech.io/applications/loki-ops) |  |  |
 | metrics-server | metrics-server | 3.12.1 | https://kubernetes-sigs.github.io/metrics-server/ | ✅ |  |  |  |
 | mimir | mimir-distributed | 5.3.0 | https://grafana.github.io/helm-charts | ✅ |  |  |  |
 | nexus | nexus-repository-manager | 64.2.0 | https://sonatype.github.io/helm3-charts | ✅ |  |  |  |
