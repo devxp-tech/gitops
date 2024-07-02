@@ -5,11 +5,8 @@ files=$(find apps/ -name "kustomization.yaml")
 
 # Prepare header
 header="# 🔩 Tooling\n\n"
-header+="|      Tool        | Version | Repo | Status |\n"
-header+="| :--------------: | :-----: | :---: | :------: |"
-
-# Initialize output_content as an empty string
-output_content=""
+header+="|      Tool        | Version | Repo | base | ops | dev | prd |\n"
+header+="| :--------------: | :-----: | :---:| :--: | :-: | :-: | :-: |"
 
 # Loop through each file
 for file in $files; do
@@ -18,21 +15,39 @@ for file in $files; do
     version=$(yq eval '.helmCharts[0].version' "$file")
     repo=$(yq eval '.helmCharts[0].repo' "$file")
 
+    # Initialize variables ops, dev, and prd without ✅
+    base=""
+    ops=""
+    dev=""
+    prd=""
+
+    # Determine if ✅ should be added based on folder name
+    folder_name=$(dirname "$file")
+    if [[ "$folder_name" == *"base"* ]]; then
+        base="✅"
+    fi    
+    if [[ "$folder_name" == *"ops"* ]]; then
+        ops="✅"
+    fi
+    if [[ "$folder_name" == *"dev"* ]]; then
+        dev="✅"
+    fi
+    if [[ "$folder_name" == *"prd"* ]]; then
+        prd="✅"
+    fi
+
     # Check if both name and version are not null
     if [ "$name" != "null" ] && [ "$version" != "null" ]; then
         # Check if repo is null
         if [ "$repo" != "null" ]; then
             # Append the name, version, repo, and deployed status to output_content
-            output_content+="| $name | $version | $repo |   ✅     |\n"
+            output_content+="| $name | $version | $repo | $base | $ops | $dev | $prd |\n"
         else
             # Append the name, version, and deployed status without repo to output_content
-            output_content+="| $name | $version |    -    |   ✅     |\n"
+            output_content+="| $name | $version |    -    | $base | $ops | $dev | $prd |\n"
         fi
     fi
 done
-
-# Sort the output content and remove duplicates
-# output_content=$(echo -e "$output_content" | sort -u -k 2)
 
 # Write the sorted output content to TOOLING.md, ensuring the header is at the top
 echo -e "$header" > TOOLING.md
