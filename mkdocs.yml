@@ -7,7 +7,8 @@ plugins:
   - techdocs-core
 
 nav:
-  - Introduction: README.md
+  - Introduction:
   - Getting Started:
+      - Read Me: README.md
       - Getting Started: "docs/index.md"
       - Tooling: "docs/TOOLING.md"
