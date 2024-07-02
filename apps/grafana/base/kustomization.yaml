@@ -81,7 +81,7 @@ helmCharts:
               type: loki
               access: proxy
               orgId: 1
-              url: http://loki-read.logging.svc:3100
+              url: http://loki-gateway.logging.svc
               editable: true
               version: 1
               jsonData:

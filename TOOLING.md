@@ -1,23 +1,3 @@
-# 🔩 Tooling 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 |      Tools       | Version | Repo | Status |
@@ -54,4 +34,3 @@
 | sonarqube | 10.5.1+2816 | https://SonarSource.github.io/helm-chart-sonarqube |   ✅     |
 | tempo | 1.10.0 | https://grafana.github.io/helm-charts |   ✅     |
 | wordpress | 22.2.11 | https://charts.bitnami.com/bitnami |   ✅     |
-# 🔩 Tooling 

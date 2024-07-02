@@ -10,9 +10,9 @@ output_content+="| :--------------: | :-----: | :---: | :------: |\n"
 # Loop through each file
 for file in $files; do
     # Get the name, version, and repo from the kustomization.yaml file using yq
-    name=$(yq eval '.helmCharts[0].name' $file)
-    version=$(yq eval '.helmCharts[0].version' $file)
-    repo=$(yq eval '.helmCharts[0].repo' $file)
+    name=$(yq eval '.helmCharts[0].name' "$file")
+    version=$(yq eval '.helmCharts[0].version' "$file")
+    repo=$(yq eval '.helmCharts[0].repo' "$file")
 
     # Check if both name and version are not null
     if [ "$name" != "null" ] && [ "$version" != "null" ]; then
@@ -27,9 +27,18 @@ for file in $files; do
     fi
 done
 
-# Sort the output content
+# Sort the output content and remove duplicates
 output_content=$(echo -e "$output_content" | sort -u -k 2)
+
+# Create a temporary file to store the new content
+tmp_file=$(mktemp)
+
+# Write the sorted output content to the temporary file
+echo -e "$output_content" > "$tmp_file"
 
 # Replace the specific section in Tooling.md with the new content
 sed -i '/| *Tools *| *Version *| *Repo *| *Status *|/,$d' Tooling.md
-echo -e "$output_content" >> Tooling.md
+cat "$tmp_file" > Tooling.md
+
+# Remove the temporary file
+rm "$tmp_file"
