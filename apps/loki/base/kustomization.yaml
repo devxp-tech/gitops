@@ -97,10 +97,25 @@ helmCharts:
             chunks: "vex-dev-loki-logs"
             ruler: "vex-dev-loki-logs"
             admin: "vex-dev-loki-logs"
-        alertmanager_url: http://prometheus-community-kube-alertmanager.monitoring.svc.cluster.local:9093
-        external_url: "https://alertmanager.devxp-tech.io"
-        enable_alertmanager_discovery: true
-        enable_alertmanager_v2: true
+        rulerConfig:
+          storage:
+            type: local
+            local:
+              directory: /etc/loki/rules
+          wal:
+            dir: /var/loki/loki-wal
+          alertmanager_url: http://prometheus-community-kube-alertmanager.monitoring.svc.cluster.local:9093
+          external_url: "https://alertmanager.devxp-tech.io"
+          enable_alertmanager_v2: true
+          remote_write:
+            enabled: true
+            clients:
+              local:
+                url: http://mimir-nginx.monitoring.svc.cluster.local/api/v1/push
+                queue_config:
+                  # send immediately as soon as a sample is generated
+                  capacity: 1
+                  batch_send_deadline: 0s
         enable_api: true
         datasource_uid: "loki"
         schemaConfig:
