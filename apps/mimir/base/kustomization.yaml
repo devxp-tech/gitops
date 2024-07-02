@@ -72,7 +72,7 @@ helmCharts:
             grpc_server_max_recv_msg_size: 104857600
             grpc_server_max_send_msg_size: 104857600
           limits:
-            compactor_blocks_retention_period: 30d
+            compactor_blocks_retention_period: 15d
             ingestion_rate: 80000
             max_global_series_per_metric: 0
             max_global_series_per_user: 0
