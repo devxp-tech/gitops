@@ -9,4 +9,10 @@ plugins:
 
 nav:
   - Home: index.md
-  - Tooling: "TOOLING.md"
+  - How-tos:
+      - Code of Conduct: CODE-OF-CONDUCT.md
+      - Generate Secrets: secrets/index.md
+  - Security:
+      - Versions: SECURITY.md
+  - Tooling:
+      - Versions: toolings/versions.md

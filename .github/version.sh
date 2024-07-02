@@ -58,5 +58,5 @@ done
 output_content=$(echo -e "$output_content" | sort -u -k 2 | awk NF)
 
 # Sort the output content (excluding the header) and write to TOOLING.md
-echo -e "$header" > docs/TOOLING.md
-echo -e "$output_content" >> docs/TOOLING.md
+echo -e "$header" > docs/tooling/versions.md
+echo -e "$output_content" >> docs/tooling/versions.md
