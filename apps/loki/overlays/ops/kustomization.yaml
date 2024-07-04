@@ -205,7 +205,7 @@ helmCharts:
           query_timeout: 300s
           reject_old_samples: true
           reject_old_samples_max_age: 168h
-          retention_period: 7d
+          retention_period: 15d
           split_queries_by_interval: 15m
 
         # querier config
