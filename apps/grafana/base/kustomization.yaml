@@ -11,10 +11,10 @@ helmCharts:
       fullname: grafana
       useStatefulSet: true
       serviceAccount:
-        name: loki
+        name: grafana
         annotations:
           "eks.amazonaws.com/role-arn": "arn:aws:iam::239468932737:role/lgseksd1-grafana-cloudwatch-role"
-        automountServiceAccountToken: true
+        # automountServiceAccountToken: true
       persistence:
         enabled: true
         existingClaim: grafana
