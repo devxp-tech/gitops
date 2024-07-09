@@ -10,16 +10,14 @@ helmCharts:
     valuesInline:
       fullname: grafana
       useStatefulSet: true
-      serviceAccount:
-        name: grafana
-        annotations:
-          "eks.amazonaws.com/role-arn": "arn:aws:iam::239468932737:role/monitoring-eks-grafana-role"
-        automountServiceAccountToken: true
+      # serviceAccount:
+      #   name: grafana
+      #   annotations:
+      #     "eks.amazonaws.com/role-arn": "arn:aws:iam::xxxx:role/monitoring-eks-grafana-role"
+      #   automountServiceAccountToken: true
       persistence:
         enabled: true
         existingClaim: grafana
-      # nodeSelector:
-      #   topology.kubernetes.io/zone: "us-east-1c"
       serviceMonitor:
         enabled: true
       resources:
