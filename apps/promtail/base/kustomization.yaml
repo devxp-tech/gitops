@@ -37,10 +37,10 @@ helmCharts:
               cluster: lgseksd1
               environment: development
         snippets:
-          extraRelabelConfigs:
-            - actions: replace
-              replacement: "lgseksd1"
-              target_label: cluster
+          # extraRelabelConfigs:
+          #   - actions: replace
+          #     replacement: "lgseksd1"
+          #     target_label: cluster
           pipelineStages:
             - cri: {}
             - drop:
