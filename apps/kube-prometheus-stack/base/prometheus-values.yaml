@@ -34,6 +34,7 @@ prometheus-node-exporter:
           targetLabel: instance
 
 prometheus:
+  agentMode: true
   additionalRulesForClusterRole:
     - apiGroups: [""]
       resources:

@@ -39,8 +39,8 @@ helmCharts:
         snippets:
           # extraRelabelConfigs:
           #   - actions: replace
-          #     replacement: "lgseksd1"
           #     target_label: cluster
+          #     replacement: "lgseksd1"
           pipelineStages:
             - cri: {}
             - drop:
