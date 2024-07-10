@@ -129,8 +129,8 @@ helmCharts:
               type: prometheus
               url: http://prometheus-community-kube-prometheus.monitoring.svc.cluster.local:9090
               jsonData:
-                manageAlerts: true
-                alertmanagerUid: alertmanager
+                manageAlerts: false #true
+                #alertmanagerUid: alertmanager
                 httpMethod: GET
 
             - name: Tempo
