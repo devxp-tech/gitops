@@ -26,6 +26,8 @@ helmCharts:
           enabled: true
         serviceMonitor:
           enabled: true
+        prometheusRule:
+          enabled: true
       mimir:
         structuredConfig:
           common:
