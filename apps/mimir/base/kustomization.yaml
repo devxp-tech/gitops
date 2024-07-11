@@ -72,13 +72,19 @@ helmCharts:
       minio:
         enabled: false
       nginx:
-        replicas: 1
-      store_gateway:   # Test Cost
-        replicas: 2   # Test Cost
-        zoneAwareReplication:   # Test Cost
-          enabled: false   # Test Cost
+        replicas: 2
+        podDisruptionBudget:
+          maxUnavailable: 2
+      store_gateway:
+        replicas: 2
+        podDisruptionBudget:
+          maxUnavailable: 2
+        zoneAwareReplication:
+          enabled: false
       querier:
         replicas: 2
+        podDisruptionBudget:
+          maxUnavailable: 2
       alertmanager:
         enabled: false
       ruler:
@@ -90,12 +96,16 @@ helmCharts:
           size: 5Gi
       distributor:
         replicas: 2
+        podDisruptionBudget:
+          maxUnavailable: 2
         extraArgs:
           distributor.ingestion-rate-limit: "1000000"
           distributor.ingestion-burst-size: "10000000"
           validation.max-label-names-per-series: "50"
       ingester:
         replicas: 2
+        podDisruptionBudget:
+          maxUnavailable: 2
         zoneAwareReplication:
           enabled: false
         persistentVolume:
