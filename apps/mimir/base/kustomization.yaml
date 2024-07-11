@@ -73,12 +73,12 @@ helmCharts:
             max_label_names_per_series: 40
           ruler:
             alertmanager_url: http://prometheus-community-kube-alertmanager.monitoring.svc.cluster.local:9093
-          ruler_storage:
-            backend: filesystem
+          # ruler_storage:
+          #   backend: filesystem
             # local:
             #   directory: /tmp/mimir/rules
-            filesystem:
-              dir: /tmp/mimir/rules
+            # filesystem:
+            #   dir: /tmp/mimir/rules
           runtime_config:
             file: /var/mimir/runtime.yaml
       minio:
