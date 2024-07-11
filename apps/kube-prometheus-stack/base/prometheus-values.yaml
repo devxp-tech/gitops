@@ -77,11 +77,11 @@ prometheus:
         pathPrefix: /
     resources:
       requests:
-        cpu: "200m"
+        cpu: "50m"
         memory: "1024Mi" #2800Mi
       limits:
-        cpu: "400m"
-        memory: "2048Mi" #4000Mi
+        cpu: "100m"
+        memory: "1536Mi" #4000Mi
     replicas: 1 # 3 to 1 enabled Mimir
     replicaExternalLabelName: "__replica__"
     podAntiAffinity: hard
