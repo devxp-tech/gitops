@@ -1,0 +1,22 @@
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: mimir
+  namespace: monitoring
+  annotations:
+    link.argocd.argoproj.io/external-link: https://mimir.devxp-tech.io
+spec:
+  hosts:
+    - "mimir.devxp-tech.io"
+  gateways:
+    - istio-ingress/istio-ingressgateway
+  http:
+    - match:
+        - uri:
+            prefix: /
+      route:
+        - destination:
+            port:
+              number: 80
+            host: mimir-nginx.monitoring.svc.cluster.local
