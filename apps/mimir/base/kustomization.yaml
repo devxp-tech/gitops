@@ -34,11 +34,6 @@ helmCharts:
             s3:
               bucket_name: vex-dev-mimir-metrics
               insecure: true
-          # ruler_storage:
-          #   storage_prefix: ruler
-          #   s3:
-          #     bucket_name: vex-dev-mimir-metrics
-          #     insecure: true
           usage_stats:
             enabled: false
             installation_mode: helm
@@ -50,12 +45,6 @@ helmCharts:
           frontend:
             align_queries_with_step: true
             log_queries_longer_than: 10s
-          ingester:
-            # instance_limits:
-            #   max_ingestion_rate: 0
-            # ring:
-            #   final_sleep: 0s
-            #   num_tokens: 512
           ingester_client:
             grpc_client_config:
               max_recv_msg_size: 104857600
@@ -71,14 +60,9 @@ helmCharts:
             max_global_series_per_metric: 0
             max_global_series_per_user: 0
             max_label_names_per_series: 40
+            ruler_max_rules_per_rule_group: 80
           ruler:
             alertmanager_url: http://prometheus-community-kube-alertmanager.monitoring.svc.cluster.local:9093
-          # ruler_storage:
-          #   backend: filesystem
-            # local:
-            #   directory: /tmp/mimir/rules
-            # filesystem:
-            #   dir: /tmp/mimir/rules
           runtime_config:
             file: /var/mimir/runtime.yaml
       minio:
