@@ -325,54 +325,86 @@ helmCharts:
         default:
           # Kubernetes dashboards
           core-dns:
-            datasource: Mimir
+            datasource:
+              - name: DS_PROMETHEUS
+                value: Mimir
             gnetId: 15762
             #url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/core-dns.json"
           k8s-addons-starboard-operator:
-            datasource: Mimir
+            datasource:
+              - name: DS_PROMETHEUS
+                value: Mimir
             url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/k8s-addons-starboard-operator.json"
           k8s-system-api-server:
-            datasource: Mimir
+            datasource:
+              - name: DS_PROMETHEUS
+                value: Mimir
             url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/k8s-system-api-server.json"
           k8s-views-global:
-            datasource: Mimir
+            datasource:
+              - name: DS_PROMETHEUS
+                value: Mimir
             url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/k8s-views-global.json"
           k8s-views-namespaces:
-            datasource: Mimir
+            datasource:
+              - name: DS_PROMETHEUS
+                value: Mimir
             url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/k8s-views-namespaces.json"
           k8s-views-nodes:
-            datasource: Mimir
+            datasource:
+              - name: DS_PROMETHEUS
+                value: Mimir
             url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/k8s-views-nodes.json"
           k8s-views-pods:
-            datasource: Mimir
+            datasource:
+              - name: DS_PROMETHEUS
+                value: Mimir
             url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/k8s-views-pods.json"
           k8s_views_global-kubernetes-views-global:
-            datasource: Mimir
+            datasource:
+              - name: DS_PROMETHEUS
+                value: Mimir
             url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/k8s_views_global-kubernetes-views-global.json"
           k8s_views_nodes-kubernetes-views-nodes:
-            datasource: Mimir
+            datasource:
+              - name: DS_PROMETHEUS
+                value: Mimir
             gnetId: 15759
             #url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/k8s_views_nodes-kubernetes-views-nodes.json"
           k8s_views_ns-kubernetes-views-namespaces:
-            datasource: Mimir
+            datasource:
+              - name: DS_PROMETHEUS
+                value: Mimir
             url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/k8s_views_ns-kubernetes-views-namespaces.json"
           k8s_views_pods-kubernetes-views-pods:
-            datasource: Mimir
+            datasource:
+              - name: DS_PROMETHEUS
+                value: Mimir
             url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/k8s_views_pods-kubernetes-views-pods.json"
           kubernetes-cluster-monitoring:
-            datasource: Mimir
+            datasource:
+              - name: DS_PROMETHEUS
+                value: Mimir
             gnetId: 3119
           kubernetes-capacity:
-            datasource: Mimir
+            datasource:
+              - name: DS_PROMETHEUS
+                value: Mimir
             gnetId: 5228
           kubernetes-monitoring:
-            datasource: Mimir
+            datasource:
+              - name: DS_PROMETHEUS
+                value: Mimir
             gnetId: 14623
           kubernetes-cluster-overview:
-            datasource: Mimir
+            datasource:
+              - name: DS_PROMETHEUS
+                value: Mimir
             gnetId: 12202
           k8s-system-coredns:
-            datasource: Mimir
+            datasource:
+              - name: DS_PROMETHEUS
+                value: Mimir
             url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/k8s-system-coredns.json"
           # node-exporter-full:
           #   datasource: Mimir
@@ -384,24 +416,34 @@ helmCharts:
         alertmanager:
           # Alertmanager dashboards
           alertmanager-grafana-dashboard:
-            datasource: Mimir
+            datasource:
+              - name: DS_PROMETHEUS
+                value: Mimir
             gnetId: 9578
         argocd:
           # ArgoCD dashboards
           argocd-cd:
-            datasource: Mimir
+            datasource:
+              - name: DS_PROMETHEUS
+                value: Mimir
             gnetId: 14584
             # url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/argocd/dashboard.json"
           argo-applications:
-            datasource: Mimir
+            datasource:
+              - name: DS_PROMETHEUS
+                value: Mimir
             gnetId: 19974
           # ArgoCD Notifications
           argo-notifications:
-            datasource: Mimir
+            datasource:
+              - name: DS_PROMETHEUS
+                value: Mimir
             gnetId: 19975
           # ArgoRollouts dashboards
           argo-rollouts:
-            datasource: Mimir
+            datasource:
+              - name: DS_PROMETHEUS
+                value: Mimir
             gnetId: 15386
         github:
           # GitHub dashboards
@@ -414,26 +456,38 @@ helmCharts:
         istio:
           # Istio dashboards
           istio-control-plane-dashboard:
-            datasource: Mimir
+            datasource:
+              - name: DS_PROMETHEUS
+                value: Mimir
             gnetId: 7645
             # url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/istio/istio-control-plane-dashboard.json"
           istio-mesh-dashboard:
-            datasource: Mimir
+            datasource:
+              - name: DS_PROMETHEUS
+                value: Mimir
             gnetId: 7639
             #url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/istio/istio-mesh-dashboard.json"
           istio-performance-dashboard:
-            datasource: Mimir
+            datasource:
+              - name: DS_PROMETHEUS
+                value: Mimir
             gnetId: 12153
           istio-service-dashboard:
-            datasource: Mimir
+            datasource:
+              - name: DS_PROMETHEUS
+                value: Mimir
             gnetId: 7636
             #url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/istio/istio-service-dashboard.json"
           istio-wasm-extension-dashboard:
-            datasource: Mimir
+            datasource:
+              - name: DS_PROMETHEUS
+                value: Mimir
             gnetId: 13277
             #url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/istio/istio-wasm-extension-dashboard.json"
           istio-workload-dashboard:
-            datasource: Mimir
+            datasource:
+              - name: DS_PROMETHEUS
+                value: Mimir
             gnetId: 7630
             # url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/istio/istio-workload-dashboard.json"
           loki-istio-service:
@@ -455,20 +509,26 @@ helmCharts:
         # Jaeger dashboards
         jaeger:
           jaeger:
-            datasource: Mimir
+            datasource:
+              - name: DS_PROMETHEUS
+                value: Mimir
             gnetId: 10001
         cert-manager:
           cert-manager:
-            datasource: Mimir
+            datasource:
+              - name: DS_PROMETHEUS
+                value: Mimir
             gnetId: 11001
         # KubeCost dashboards
         kubecost:
           kubecost:
-            datasource: Mimir
+            datasource:
+              - name: DS_PROMETHEUS
+                value: Mimir
             gnetId: 11270
         # Karpenter dashboards
         karpenter:
-          karpenter-overview:
+          karpenter:
             gnetId: 20398
             datasource:
               - name: DS_PROMETHEUS
@@ -491,24 +551,36 @@ helmCharts:
         springboot:
           # Sprintboot dashboards
           springboot-observability:
-            datasource: Mimir
+            datasource:
+              - name: DS_PROMETHEUS
+                value: Mimir
             gnetId: 17175
           jvm-micrometer:
-            datasource: Mimir
+            datasource:
+              - name: DS_PROMETHEUS
+                value: Mimir
             gnetId: 11955
           springboot-apm:
-            datasource: Mimir
+            datasource:
+              - name: DS_PROMETHEUS
+                value: Mimir
             gnetId: 12900
         golang:
           # GoLang dashboards
           go-processes:
-            datasource: Mimir
+            datasource:
+              - name: DS_PROMETHEUS
+                value: Mimir
             gnetId: 6671
           golang-metrics:
-            datasource: Mimir
+            datasource:
+              - name: DS_PROMETHEUS
+                value: Mimir
             gnetId: 13240
           golang-metrics2:
-            datasource: Mimir
+            datasource:
+              - name: DS_PROMETHEUS
+                value: Mimir
             gnetId: 10826
         nodejs:
           # NodeJS dashboards
@@ -520,5 +592,7 @@ helmCharts:
         nginx:
           # NodeJS dashboards
           nginx-prometheus-exporter:
-            datasource: Mimir
+            datasource:
+              - name: DS_PROMETHEUS
+                value: Mimir
             gnetId: 12930
