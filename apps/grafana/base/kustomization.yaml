@@ -470,9 +470,9 @@ helmCharts:
           karpenter-overview:
             datasource: Mimir
             gnetId: 20398
-          karpenter-metrics:
-            datasource: Mimir
-            gnetId: 18862
+          # karpenter-metrics:
+          #   datasource: Mimir
+          #   gnetId: 18862
         opentelemetry:
           # OpenTelemetry dashboards
           # opentelemetry-apm:
