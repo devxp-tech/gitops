@@ -59,7 +59,6 @@ helmCharts:
             key: GF_AUTH_GITHUB_CLIENT_SECRET
       env:
         # GF_INSTALL_PLUGINS: grafana-simple-json-datasource,alexanderzobnin-zabbix-app
-        DS_PROMETHEUS: "mimir"
         GF_SERVER_DOMAIN: grafana.devxp-tech.io
         GF_SERVER_ROOT_URL: "https://grafana.devxp-tech.io"
         GF_FEATURE_TOGGLES_ENABLE: "tempoSearch,tempoServiceGraph,tempoApmTable,traceqlEditor"
@@ -468,8 +467,10 @@ helmCharts:
         # Karpenter dashboards
         karpenter:
           karpenter-overview:
-            datasource: Mimir
             gnetId: 20398
+            datasource:
+              - name: DS_PROMETHEUS
+                value: Mimir
           # karpenter-metrics:
           #   datasource: Mimir
           #   gnetId: 18862
