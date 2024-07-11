@@ -59,6 +59,7 @@ helmCharts:
             key: GF_AUTH_GITHUB_CLIENT_SECRET
       env:
         # GF_INSTALL_PLUGINS: grafana-simple-json-datasource,alexanderzobnin-zabbix-app
+        DS_PROMETHEUS: "mimir"
         GF_SERVER_DOMAIN: grafana.devxp-tech.io
         GF_SERVER_ROOT_URL: "https://grafana.devxp-tech.io"
         GF_FEATURE_TOGGLES_ENABLE: "tempoSearch,tempoServiceGraph,tempoApmTable,traceqlEditor"
@@ -70,7 +71,7 @@ helmCharts:
             - name: Prometheus
             - name: Prometheus-Operator
             - name: kube-prometheus-stack
-            - name: Mimir
+            - name: mimir
           datasources:
             - name: Alertmanager
               type: alertmanager
@@ -102,9 +103,10 @@ helmCharts:
                     # matcherRegex: '"trace_id":"([^"]+)"' # Works Old
                     url: "$${__value.raw}"
 
-            - name: mimir
+            - name: Mimir
               uid: mimir
               type: prometheus
+              orgId: 1
               url: http://mimir-nginx.monitoring.svc:80/prometheus
               editable: false
               isDefault: true
@@ -327,83 +329,83 @@ helmCharts:
         default:
           # Kubernetes dashboards
           core-dns:
-            datasource: mimir
+            datasource: Mimir
             gnetId: 15762
             #url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/core-dns.json"
           k8s-addons-starboard-operator:
-            datasource: mimir
+            datasource: Mimir
             url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/k8s-addons-starboard-operator.json"
           k8s-system-api-server:
-            datasource: mimir
+            datasource: Mimir
             url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/k8s-system-api-server.json"
           k8s-views-global:
-            datasource: mimir
+            datasource: Mimir
             url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/k8s-views-global.json"
           k8s-views-namespaces:
-            datasource: mimir
+            datasource: Mimir
             url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/k8s-views-namespaces.json"
           k8s-views-nodes:
-            datasource: mimir
+            datasource: Mimir
             url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/k8s-views-nodes.json"
           k8s-views-pods:
-            datasource: mimir
+            datasource: Mimir
             url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/k8s-views-pods.json"
           k8s_views_global-kubernetes-views-global:
-            datasource: mimir
+            datasource: Mimir
             url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/k8s_views_global-kubernetes-views-global.json"
           k8s_views_nodes-kubernetes-views-nodes:
-            datasource: mimir
+            datasource: Mimir
             gnetId: 15759
             #url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/k8s_views_nodes-kubernetes-views-nodes.json"
           k8s_views_ns-kubernetes-views-namespaces:
-            datasource: mimir
+            datasource: Mimir
             url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/k8s_views_ns-kubernetes-views-namespaces.json"
           k8s_views_pods-kubernetes-views-pods:
-            datasource: mimir
+            datasource: Mimir
             url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/k8s_views_pods-kubernetes-views-pods.json"
           kubernetes-cluster-monitoring:
-            datasource: mimir
+            datasource: Mimir
             gnetId: 3119
           kubernetes-capacity:
-            datasource: mimir
+            datasource: Mimir
             gnetId: 5228
           kubernetes-monitoring:
-            datasource: mimir
+            datasource: Mimir
             gnetId: 14623
           kubernetes-cluster-overview:
-            datasource: mimir
+            datasource: Mimir
             gnetId: 12202
           k8s-system-coredns:
-            datasource: mimir
+            datasource: Mimir
             url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/k8s-system-coredns.json"
           # node-exporter-full:
-          #   datasource: mimir
+          #   datasource: Mimir
           #   gnetId: 1860
           #   #url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/kubernetes/node-exporter-full.json"
           # kube-state-metrics-v2:
-          #   datasource: mimir
+          #   datasource: Mimir
           #   gnetId: 13332
         alertmanager:
           # Alertmanager dashboards
           alertmanager-grafana-dashboard:
-            datasource: mimir
+            datasource: Mimir
             gnetId: 9578
         argocd:
           # ArgoCD dashboards
           argocd-cd:
-            datasource: mimir
+            datasource: Mimir
             gnetId: 14584
             # url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/argocd/dashboard.json"
           argo-applications:
-            datasource: mimir
+            datasource: Mimir
             gnetId: 19974
           # ArgoCD Notifications
           argo-notifications:
-            datasource: mimir
+            datasource: Mimir
             gnetId: 19975
           # ArgoRollouts dashboards
           argo-rollouts:
-            datasource: mimir
+            datasource: Mimir
             gnetId: 15386
         github:
           # GitHub dashboards
@@ -416,26 +418,26 @@ helmCharts:
         istio:
           # Istio dashboards
           istio-control-plane-dashboard:
-            datasource: mimir
+            datasource: Mimir
             gnetId: 7645
             # url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/istio/istio-control-plane-dashboard.json"
           istio-mesh-dashboard:
-            datasource: mimir
+            datasource: Mimir
             gnetId: 7639
             #url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/istio/istio-mesh-dashboard.json"
           istio-performance-dashboard:
-            datasource: mimir
+            datasource: Mimir
             gnetId: 12153
           istio-service-dashboard:
-            datasource: mimir
+            datasource: Mimir
             gnetId: 7636
             #url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/istio/istio-service-dashboard.json"
           istio-wasm-extension-dashboard:
-            datasource: mimir
+            datasource: Mimir
             gnetId: 13277
             #url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/istio/istio-wasm-extension-dashboard.json"
           istio-workload-dashboard:
-            datasource: mimir
+            datasource: Mimir
             gnetId: 7630
             # url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/istio/istio-workload-dashboard.json"
           loki-istio-service:
@@ -455,62 +457,62 @@ helmCharts:
         # Jaeger dashboards
         jaeger:
           jaeger:
-            datasource: mimir
+            datasource: Mimir
             gnetId: 10001
         cert-manager:
           cert-manager:
-            datasource: mimir
+            datasource: Mimir
             gnetId: 11001
         # KubeCost dashboards
         kubecost:
           kubecost:
-            datasource: mimir
+            datasource: Mimir
             gnetId: 11270
         # Karpenter dashboards
         karpenter:
           karpenter-overview:
-            datasource: mimir
+            datasource: Mimir
             gnetId: 20398
           # karpenter-metrics:
-          #   datasource: mimir
+          #   datasource: Mimir
           #   gnetId: 18862
         opentelemetry:
           # OpenTelemetry dashboards
           # opentelemetry-apm:
-          #   datasource: mimir
+          #   datasource: Mimir
           #   gnetId: 19419
           opentelemetry-collector:
-            datasource: mimir
+            datasource: Mimir
             url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/otel/otel.json"
         springboot:
           # Sprintboot dashboards
           springboot-observability:
-            datasource: mimir
+            datasource: Mimir
             gnetId: 17175
           jvm-micrometer:
-            datasource: mimir
+            datasource: Mimir
             gnetId: 11955
           springboot-apm:
-            datasource: mimir
+            datasource: Mimir
             gnetId: 12900
         golang:
           # GoLang dashboards
           go-processes:
-            datasource: mimir
+            datasource: Mimir
             gnetId: 6671
           golang-metrics:
-            datasource: mimir
+            datasource: Mimir
             gnetId: 13240
           golang-metrics2:
-            datasource: mimir
+            datasource: Mimir
             gnetId: 10826
         nodejs:
           # NodeJS dashboards
           nodejs-applications:
-            datasource: mimir
+            datasource: Mimir
             gnetId: 19062
         nginx:
           # NodeJS dashboards
           nginx-prometheus-exporter:
-            datasource: mimir
+            datasource: Mimir
             gnetId: 12930
