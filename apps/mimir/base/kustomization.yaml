@@ -74,11 +74,11 @@ helmCharts:
           ruler:
             alertmanager_url: http://prometheus-community-kube-alertmanager.monitoring.svc.cluster.local:9093
           ruler_storage:
-            backend: local
+            backend: filesystem
+            # local:
+            #   directory: /tmp/mimir/rules
             filesystem:
-              dir: ''
-            local:
-              directory: /tmp/mimir/rules
+              dir: /tmp/mimir/rules
           runtime_config:
             file: /var/mimir/runtime.yaml
       minio:
