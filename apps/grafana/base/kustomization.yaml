@@ -69,7 +69,7 @@ helmCharts:
           deleteDatasources:
             - name: Prometheus
             - name: Prometheus-Operator
-          #   - name: Loki-logging
+            - name: kube-prometheus-stack
           datasources:
             - name: Alertmanager
               type: alertmanager
@@ -88,8 +88,8 @@ helmCharts:
               editable: true
               version: 1
               jsonData:
-                # alertmanagerUid: alertmanager
-                # manageAlerts: true
+                alertmanagerUid: alertmanager
+                manageAlerts: true
                 maxLines: 5000
                 timeout: "60"
                 derivedFields:
@@ -100,13 +100,6 @@ helmCharts:
                     matcherType: label
                     # matcherRegex: '"trace_id":"([^"]+)"' # Works Old
                     url: "$${__value.raw}"
-
-                # Not using Jager
-                # - name: Jaeger
-                #   datasourceUid: jaeger
-                #   datasourceName: Jaeger
-                #   matcherRegex: ((\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+))
-                #   url: "$${__value.raw}"
 
             - name: Mimir
               uid: mimir
@@ -123,15 +116,6 @@ helmCharts:
                 exemplarTraceIdDestinations:
                   - name: traceID
                     datasourceUid: tempo
-
-            - name: kube-prometheus-stack
-              uid: kube-prometheus-stack
-              type: prometheus
-              url: http://prometheus-community-kube-prometheus.monitoring.svc.cluster.local:9090
-              jsonData:
-                manageAlerts: false #true
-                #alertmanagerUid: alertmanager
-                httpMethod: GET
 
             - name: Tempo
               type: tempo
@@ -154,12 +138,28 @@ helmCharts:
                   enabled: true
               version: 1
 
-          # - name: Jaeger
-          #   uid: jaeger
-          #   type: jaeger
-          #   access: proxy
-          #   url: http://jaeger-query.observability:80
-          #   version: 1
+            # - name: kube-prometheus-stack
+            #   uid: kube-prometheus-stack
+            #   type: prometheus
+            #   url: http://prometheus-community-kube-prometheus.monitoring.svc.cluster.local:9090
+            #   jsonData:
+            #     manageAlerts: true
+            #     alertmanagerUid: alertmanager
+            #     httpMethod: GET
+
+            # - name: Jaeger
+            #   uid: jaeger
+            #   type: jaeger
+            #   access: proxy
+            #   url: http://jaeger-query.observability:80
+            #   version: 1
+
+            # #Not using Jager
+            # - name: Jaeger2
+            #   datasourceUid: jaeger
+            #   datasourceName: Jaeger
+            #   matcherRegex: ((\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+))
+            #   url: "$${__value.raw}"
 
       notifiers:
         notifiers.yaml:
