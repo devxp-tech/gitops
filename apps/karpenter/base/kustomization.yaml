@@ -11,7 +11,7 @@ helmCharts:
     version: 0.36.2 #v0.34.6
     repo: oci://public.ecr.aws/karpenter
     valuesInline:
-      nameOverride: karpenter
+      fullnameOverride: karpenter
       dnsPolicy: Default
       # webhook:
       #   enabled: true
