@@ -448,8 +448,10 @@ helmCharts:
             datasource: Loki
             gnetId: 16966
           kubernetes-events-exporter:
-            datasource: Loki
             gnetId: 17882
+            datasource:
+              - name: DS_LOKI
+                value: Loki
         # Jaeger dashboards
         jaeger:
           jaeger:
@@ -476,12 +478,16 @@ helmCharts:
           #   gnetId: 18862
         opentelemetry:
           # OpenTelemetry dashboards
-          # opentelemetry-apm:
-          #   datasource: Mimir
-          #   gnetId: 19419
+          opentelemetry-apm:
+            gnetId: 19419
+            datasource:
+              - name: DS_PROMETHEUS
+                value: Mimir
           opentelemetry-collector:
-            datasource: Mimir
             url: "https://raw.githubusercontent.com/devxp-tech/grafana-dashboards/main/dashboards/otel/otel.json"
+            datasource:
+              - name: DS_PROMETHEUS
+                value: Mimir
         springboot:
           # Sprintboot dashboards
           springboot-observability:
@@ -507,8 +513,10 @@ helmCharts:
         nodejs:
           # NodeJS dashboards
           nodejs-applications:
-            datasource: Mimir
             gnetId: 19062
+            datasource:
+              - name: DS_PROMETHEUS
+                value: Mimir
         nginx:
           # NodeJS dashboards
           nginx-prometheus-exporter:
