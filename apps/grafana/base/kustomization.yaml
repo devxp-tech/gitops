@@ -68,9 +68,6 @@ helmCharts:
         datasources.yaml:
           apiVersion: 1
           deleteDatasources:
-            - name: Prometheus
-            - name: Prometheus-Operator
-            - name: kube-prometheus-stack
             - name: mimir
           datasources:
             - name: Alertmanager
