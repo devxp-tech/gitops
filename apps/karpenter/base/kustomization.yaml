@@ -32,7 +32,7 @@ helmCharts:
           requiredDuringSchedulingIgnoredDuringExecution:
             nodeSelectorTerms:
               - matchExpressions:
-                  - key: karpenter.sh/provisioner-name
+                  - key: karpenter.sh/nodepool
                     operator: DoesNotExist
       controller:
         resources:
