@@ -209,6 +209,14 @@ helmCharts:
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/default
+            - name: "kubernetes"
+              orgId: 1
+              folder: "Kubernetes"
+              type: file
+              disableDeletion: false
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/kubernetes
             - name: "alertmanager"
               orgId: 1
               folder: "Alertmanager"
