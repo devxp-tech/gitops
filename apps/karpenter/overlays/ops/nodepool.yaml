@@ -7,8 +7,8 @@ spec:
     consolidationPolicy: WhenUnderutilized
     expireAfter: 360h0m0s
   limits:
-    cpu: 15
-    memory: 50Gi
+    cpu: 10
+    memory: 30Gi
   template:
     metadata:
       labels:
@@ -63,8 +63,8 @@ spec:
     consolidationPolicy: WhenUnderutilized
     expireAfter: 360h0m0s
   limits:
-    cpu: 10
-    memory: 30Gi
+    cpu: 15
+    memory: 50Gi
   template:
     metadata:
       labels:
