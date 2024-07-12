@@ -69,24 +69,24 @@ helmCharts:
             alertmanager_url: http://prometheus-community-kube-alertmanager.monitoring.svc.cluster.local:9093
           runtime_config:
             file: /var/mimir/runtime.yaml
+      alertmanager:
+        enabled: false
       minio:
         enabled: false
       nginx:
         replicas: 2
         podDisruptionBudget:
-          maxUnavailable: 2
+          maxUnavailable: 1
       store_gateway:
         replicas: 2
         podDisruptionBudget:
-          maxUnavailable: 2
+          maxUnavailable: 1
         zoneAwareReplication:
           enabled: false
       querier:
         replicas: 2
         podDisruptionBudget:
           maxUnavailable: 2
-      alertmanager:
-        enabled: false
       ruler:
         enabled: true
       compactor:
@@ -97,15 +97,15 @@ helmCharts:
       distributor:
         replicas: 2
         podDisruptionBudget:
-          maxUnavailable: 2
+          maxUnavailable: 1
         extraArgs:
           distributor.ingestion-rate-limit: "1000000"
           distributor.ingestion-burst-size: "10000000"
           validation.max-label-names-per-series: "50"
       ingester:
-        replicas: 2
+        replicas: 3
         podDisruptionBudget:
-          maxUnavailable: 2
+          maxUnavailable: 1
         zoneAwareReplication:
           enabled: false
         persistentVolume:
@@ -113,6 +113,8 @@ helmCharts:
       metaMonitoring:
         dashboards:
           enabled: true
+          annotations:
+            k8s-sidecar-target-directory: "/var/lib/grafana/dashboards/mimir"
         serviceMonitor:
           enabled: true
         prometheusRule:
