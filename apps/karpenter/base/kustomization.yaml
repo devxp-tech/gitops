@@ -26,7 +26,7 @@ helmCharts:
           verbs: ["*"]
       serviceMonitor:
         enabled: true
-      replicas: 2
+      replicas: 1
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
