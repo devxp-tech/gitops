@@ -74,7 +74,7 @@ helmCharts:
       minio:
         enabled: false
       nginx:
-        replicas: 2
+        replicas: 1
         podDisruptionBudget:
           maxUnavailable: 1
       store_gateway:
@@ -84,7 +84,7 @@ helmCharts:
         zoneAwareReplication:
           enabled: false
       querier:
-        replicas: 2
+        replicas: 1
         podDisruptionBudget:
           maxUnavailable: 2
       ruler:
@@ -93,10 +93,8 @@ helmCharts:
         podDisruptionBudget:
           maxUnavailable: 1
       compactor:
-        nodeSelector:
-          topology.kubernetes.io/zone: "us-east-1b"
         persistentVolume:
-          size: 5Gi
+          size: 20Gi
       distributor:
         replicas: 2
         podDisruptionBudget:
@@ -112,7 +110,7 @@ helmCharts:
         zoneAwareReplication:
           enabled: false
         persistentVolume:
-          enabled: false
+          enabled: true
       metaMonitoring:
         dashboards:
           enabled: true
