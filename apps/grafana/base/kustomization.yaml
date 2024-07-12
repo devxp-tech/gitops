@@ -203,7 +203,7 @@ helmCharts:
           providers:
             - name: "default"
               orgId: 1
-              folder: "Kubernetes Dashboards"
+              folder: "Kubernetes"
               type: file
               disableDeletion: false
               editable: true
@@ -211,7 +211,7 @@ helmCharts:
                 path: /var/lib/grafana/dashboards/default
             - name: "alertmanager"
               orgId: 1
-              folder: "Alertmanager Dashboards"
+              folder: "Alertmanager"
               type: file
               disableDeletion: false
               editable: true
@@ -219,95 +219,95 @@ helmCharts:
                 path: /var/lib/grafana/dashboards/alertmanager
             - name: "argocd"
               orgId: 1
-              folder: "ArgoCD Dashboards"
+              folder: "ArgoCD"
               type: file
               disableDeletion: false
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/argocd
-            - name: "github"
+            - name: "aws"
               orgId: 1
-              folder: "GitHub Dashboards"
+              folder: "AWS"
               type: file
               disableDeletion: false
               editable: true
               options:
-                path: /var/lib/grafana/dashboards/github
-            - name: "istio"
-              orgId: 1
-              folder: "Istio Dashboards"
-              type: file
-              disableDeletion: false
-              editable: true
-              options:
-                path: /var/lib/grafana/dashboards/istio
-            - name: "loki"
-              orgId: 1
-              folder: "Loki Dashboards"
-              type: file
-              disableDeletion: false
-              editable: true
-              options:
-                path: /var/lib/grafana/dashboards/loki
-            - name: "jaeger"
-              orgId: 1
-              folder: "Jaeger Dashboards"
-              type: file
-              disableDeletion: false
-              editable: true
-              options:
-                path: /var/lib/grafana/dashboards/jaeger
+                path: /var/lib/grafana/dashboards/aws
             - name: "cert-manager"
               orgId: 1
-              folder: "Cert-Manager Dashboards"
+              folder: "Cert-Manager"
               type: file
               disableDeletion: false
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/cert-manager
-            - name: "kubecost"
+            - name: "github"
               orgId: 1
-              folder: "KubeCost Dashboards"
+              folder: "GitHub"
               type: file
               disableDeletion: false
               editable: true
               options:
-                path: /var/lib/grafana/dashboards/kubecost
-            - name: "karpenter"
-              orgId: 1
-              folder: "Karpenter Dashboards"
-              type: file
-              disableDeletion: false
-              editable: true
-              options:
-                path: /var/lib/grafana/dashboards/karpenter
-            - name: "opentelemetry"
-              orgId: 1
-              folder: "OpenTelemetry Dashboards"
-              type: file
-              disableDeletion: false
-              editable: true
-              options:
-                path: /var/lib/grafana/dashboards/opentelemetry
-            - name: "springboot"
-              orgId: 1
-              folder: "SpringBoot Dashboards"
-              type: file
-              disableDeletion: false
-              editable: true
-              options:
-                path: /var/lib/grafana/dashboards/springboot
+                path: /var/lib/grafana/dashboards/github
             - name: "golang"
               orgId: 1
-              folder: "Golang Dashboards"
+              folder: "Golang"
               type: file
               disableDeletion: false
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/golang
+            - name: "istio"
+              orgId: 1
+              folder: "Istio"
+              type: file
+              disableDeletion: false
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/istio
+            - name: "jaeger"
+              orgId: 1
+              folder: "Jaeger"
+              type: file
+              disableDeletion: false
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/jaeger
+            - name: "karpenter"
+              orgId: 1
+              folder: "Karpenter"
+              type: file
+              disableDeletion: false
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/karpenter
+            - name: "kubecost"
+              orgId: 1
+              folder: "KubeCost"
+              type: file
+              disableDeletion: false
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/kubecost
+            - name: "loki"
+              orgId: 1
+              folder: "Loki"
+              type: file
+              disableDeletion: false
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/loki
+            - name: "mimir"
+              orgId: 1
+              folder: "Mimir"
+              type: file
+              disableDeletion: false
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/mimir
             - name: "nodejs"
               orgId: 1
-              folder: "NodeJS Dashboards"
+              folder: "NodeJS"
               type: file
               disableDeletion: false
               editable: true
@@ -315,20 +315,28 @@ helmCharts:
                 path: /var/lib/grafana/dashboards/nodejs
             - name: "nginx"
               orgId: 1
-              folder: "NGINX Dashboards"
+              folder: "NGINX"
               type: file
               disableDeletion: false
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/nginx
-            - name: "mimir"
+            - name: "opentelemetry"
               orgId: 1
-              folder: "Mimir Dashboards"
+              folder: "OpenTelemetry"
               type: file
               disableDeletion: false
               editable: true
               options:
-                path: /var/lib/grafana/dashboards/mimir
+                path: /var/lib/grafana/dashboards/opentelemetry
+            - name: "springboot"
+              orgId: 1
+              folder: "SpringBoot"
+              type: file
+              disableDeletion: false
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/springboot
       dashboards:
         default:
           # Kubernetes dashboards
