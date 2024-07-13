@@ -92,7 +92,7 @@ helmCharts:
         replicas: 1
         podDisruptionBudget:
           maxUnavailable: 1
-      ruler_query_scheduler:
+      query_scheduler:
         replicas: 1
         podDisruptionBudget:
           maxUnavailable: 1
