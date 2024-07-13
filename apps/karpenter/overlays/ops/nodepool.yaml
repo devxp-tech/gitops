@@ -82,7 +82,7 @@ spec:
       requirements:
       - key: karpenter.k8s.aws/instance-size
         operator: In
-        values: ["medium"]
+        values: ["small", "medium", "large"]
       - key: karpenter.k8s.aws/instance-generation
         operator: Gt
         values: ["2"]
