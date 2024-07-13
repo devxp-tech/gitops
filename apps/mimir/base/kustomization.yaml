@@ -76,7 +76,7 @@ helmCharts:
       nginx:
         replicas: 1
         podDisruptionBudget:
-          maxUnavailable: 1
+          maxUnavailable: 0
       store_gateway:
         replicas: 2
         podDisruptionBudget:
@@ -95,14 +95,14 @@ helmCharts:
       query_scheduler:
         replicas: 1
         podDisruptionBudget:
-          maxUnavailable: 1
+          maxUnavailable: 0
       compactor:
         persistentVolume:
           size: 20Gi
       distributor:
         replicas: 2
         podDisruptionBudget:
-          maxUnavailable: 1
+          maxUnavailable: 0
         extraArgs:
           distributor.ingestion-rate-limit: "1000000"
           distributor.ingestion-burst-size: "10000000"
@@ -110,7 +110,7 @@ helmCharts:
       ingester:
         replicas: 3
         podDisruptionBudget:
-          maxUnavailable: 2
+          maxUnavailable: 0 #test
         zoneAwareReplication:
           enabled: false
         persistentVolume:
