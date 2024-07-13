@@ -80,7 +80,7 @@ helmCharts:
       store_gateway:
         replicas: 2
         podDisruptionBudget:
-          maxUnavailable: 1
+          maxUnavailable: 2
         zoneAwareReplication:
           enabled: false
       querier:
