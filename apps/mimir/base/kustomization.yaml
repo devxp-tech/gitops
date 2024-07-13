@@ -92,6 +92,10 @@ helmCharts:
         replicas: 1
         podDisruptionBudget:
           maxUnavailable: 1
+      ruler_query_scheduler:
+        replicas: 1
+        podDisruptionBudget:
+          maxUnavailable: 1
       compactor:
         persistentVolume:
           size: 20Gi
@@ -104,7 +108,7 @@ helmCharts:
           distributor.ingestion-burst-size: "10000000"
           validation.max-label-names-per-series: "50"
       ingester:
-        replicas: 3
+        replicas: 2
         podDisruptionBudget:
           maxUnavailable: 1
         zoneAwareReplication:
