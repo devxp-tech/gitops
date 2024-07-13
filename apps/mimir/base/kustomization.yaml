@@ -110,7 +110,7 @@ helmCharts:
       ingester:
         replicas: 3
         podDisruptionBudget:
-          maxUnavailable: 1
+          maxUnavailable: 2
         zoneAwareReplication:
           enabled: false
         persistentVolume:
