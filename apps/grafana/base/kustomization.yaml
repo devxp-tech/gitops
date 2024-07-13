@@ -525,6 +525,13 @@ helmCharts:
             datasource:
               - name: DS_LOKI
                 value: Loki
+          loki-dashboard:
+            gnetId: 13186
+            datasource:
+            - name: DS_PROMETHEUS
+              value: Prometheus
+            - name: DS_LOKI
+              value: Loki
           kubernetes-events-exporter:
             gnetId: 17882
             datasource:
