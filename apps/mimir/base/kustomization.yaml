@@ -109,8 +109,7 @@ helmCharts:
           validation.max-label-names-per-series: "50"
       ingester:
         replicas: 3
-        podDisruptionBudget:
-          maxUnavailable: 0 #test
+        podDisruptionBudget: {}
         zoneAwareReplication:
           enabled: false
         persistentVolume:
