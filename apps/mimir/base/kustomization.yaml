@@ -1,0 +1,124 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: monitoring
+helmCharts:
+  - name: mimir-distributed
+    includeCRDs: true
+    releaseName: mimir-distributed
+    namespace: monitoring
+    version: "5.3.0"
+    repo: https://grafana.github.io/helm-charts
+    valuesInline:
+      fullnameOverride: mimir
+      global:
+        extraEnv:
+          - name: JAEGER_AGENT_HOST
+            value: otel-collector.observability.svc.cluster.local
+          - name: JAEGER_AGENT_PORT
+            value: "6831"
+          - name: JAEGER_SAMPLER_TYPE
+            value: const
+          - name: JAEGER_SAMPLER_PARAM
+            value: "1"
+      serviceAccount:
+        create: true
+        name: mimir
+        annotations:
+          eks.amazonaws.com/role-arn: "arn:aws:iam::239468932737:role/mimir-lgseksd1-sa"
+      mimir:
+        structuredConfig:
+          common:
+            storage:
+              backend: s3
+              s3:
+                bucket_name: vex-dev-mimir-metrics
+                endpoint: s3.us-east-1.amazonaws.com
+          blocks_storage:
+            storage_prefix: blocks
+            s3:
+              bucket_name: vex-dev-mimir-metrics
+              insecure: true
+          usage_stats:
+            enabled: false
+            installation_mode: helm
+          distributor:
+            remote_timeout: 4s
+          compactor:
+            data_dir: /data
+          multitenancy_enabled: false
+          frontend:
+            align_queries_with_step: true
+            log_queries_longer_than: 10s
+          ingester_client:
+            grpc_client_config:
+              max_recv_msg_size: 104857600
+              max_send_msg_size: 104857600
+          server:
+            log_level: info
+            grpc_server_max_concurrent_streams: 1000
+            grpc_server_max_recv_msg_size: 104857600
+            grpc_server_max_send_msg_size: 104857600
+          limits:
+            compactor_blocks_retention_period: 15d
+            ingestion_rate: 80000
+            max_global_series_per_metric: 0
+            max_global_series_per_user: 0
+            max_label_names_per_series: 40
+            ruler_max_rules_per_rule_group: 80
+          ruler:
+            alertmanager_url: http://prometheus-community-kube-alertmanager.monitoring.svc.cluster.local:9093
+          runtime_config:
+            file: /var/mimir/runtime.yaml
+      alertmanager:
+        enabled: false
+      minio:
+        enabled: false
+      nginx:
+        replicas: 1
+        podDisruptionBudget: {}
+      store_gateway:
+        replicas: 2
+        podDisruptionBudget:
+          maxUnavailable: 2
+        zoneAwareReplication:
+          enabled: false
+      querier:
+        replicas: 1
+        podDisruptionBudget:
+          maxUnavailable: 2
+      ruler:
+        enabled: true
+        replicas: 1
+        podDisruptionBudget:
+          maxUnavailable: 2 #test
+      query_scheduler:
+        replicas: 1
+        podDisruptionBudget: {}
+      compactor:
+        persistentVolume:
+          size: 20Gi
+      distributor:
+        replicas: 2
+        podDisruptionBudget: {}
+        extraArgs:
+          distributor.ingestion-rate-limit: "1000000"
+          distributor.ingestion-burst-size: "10000000"
+          validation.max-label-names-per-series: "50"
+      ingester:
+        replicas: 3
+        podDisruptionBudget: {}
+        zoneAwareReplication:
+          enabled: false
+        persistentVolume:
+          enabled: true
+      metaMonitoring:
+        dashboards:
+          enabled: true
+          annotations:
+            k8s-sidecar-target-directory: "/var/lib/grafana/dashboards/mimir"
+        serviceMonitor:
+          enabled: true
+        prometheusRule:
+          enabled: true
+          mimirAlerts: true
+          mimirRules: true
