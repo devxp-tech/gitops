@@ -23,10 +23,10 @@ spec:
           nodefs.inodesFree: 10%
       nodeClassRef:
         name: default
-      taints:
-        - key: karpenter.sh/capacity-type
-          value: "on-demand"
-          effect: NoSchedule
+      # taints:
+      #   - key: karpenter.sh/capacity-type
+      #     value: "on-demand"
+      #     effect: NoSchedule
       requirements:
       - key: karpenter.k8s.aws/instance-size
         operator: In
