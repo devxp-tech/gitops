@@ -148,6 +148,8 @@ helmCharts:
             operator: "Equal"
             value: "on-demand"
             effect: "NoExecute"
+        persistentVolume:
+          size: 8Gi
         nodeSelector:
           karpenter.sh/capacity-type: "on-demand"
         zoneAwareReplication:
