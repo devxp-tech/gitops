@@ -75,9 +75,12 @@ helmCharts:
         enabled: false
       nginx:
         replicas: 1
-        podDisruptionBudget: {}
+        podDisruptionBudget:
+          maxUnavailable: 1
       store_gateway:
         replicas: 2
+        podDisruptionBudget:
+          maxUnavailable: 2
         tolerations:
           - key: karpenter.sh/capacity-type
             operator: "Equal"
@@ -85,18 +88,21 @@ helmCharts:
             effect: "NoExecute"
         nodeSelector:
           karpenter.sh/capacity-type: "on-demand"
-        podDisruptionBudget: {}
         zoneAwareReplication:
           enabled: false
       querier:
         replicas: 1
-        podDisruptionBudget: {}
+        podDisruptionBudget:
+          maxUnavailable: 1
       ruler:
         enabled: true
         replicas: 1
-        podDisruptionBudget: {} #test
+        podDisruptionBudget:
+          maxUnavailable: 1
       query_frontend:
         replicas: 1
+        podDisruptionBudget:
+          maxUnavailable: 1
         tolerations:
           - key: karpenter.sh/capacity-type
             operator: "Equal"
@@ -106,6 +112,8 @@ helmCharts:
           karpenter.sh/capacity-type: "on-demand"
       query_scheduler:
         replicas: 1
+        podDisruptionBudget:
+          maxUnavailable: 1
         tolerations:
           - key: karpenter.sh/capacity-type
             operator: "Equal"
@@ -113,12 +121,13 @@ helmCharts:
             effect: "NoExecute"
         nodeSelector:
           karpenter.sh/capacity-type: "on-demand"
-        podDisruptionBudget: {}
       compactor:
         persistentVolume:
           size: 20Gi
       distributor:
         replicas: 2
+        podDisruptionBudget:
+          maxUnavailable: 2
         tolerations:
           - key: karpenter.sh/capacity-type
             operator: "Equal"
@@ -126,13 +135,14 @@ helmCharts:
             effect: "NoExecute"
         nodeSelector:
           karpenter.sh/capacity-type: "on-demand"
-        podDisruptionBudget: {}
         extraArgs:
           distributor.ingestion-rate-limit: "1000000"
           distributor.ingestion-burst-size: "10000000"
           validation.max-label-names-per-series: "50"
       ingester:
         replicas: 3
+        podDisruptionBudget:
+          maxUnavailable: 2
         tolerations:
           - key: karpenter.sh/capacity-type
             operator: "Equal"
@@ -140,7 +150,6 @@ helmCharts:
             effect: "NoExecute"
         nodeSelector:
           karpenter.sh/capacity-type: "on-demand"
-        podDisruptionBudget: {}
         zoneAwareReplication:
           enabled: false
       metaMonitoring:
