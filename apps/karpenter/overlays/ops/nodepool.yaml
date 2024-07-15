@@ -1,21 +1,20 @@
 apiVersion: karpenter.sh/v1beta1
 kind: NodePool
 metadata:
-  name: default
+  name: on-demand
 spec:
   disruption:
     consolidationPolicy: WhenUnderutilized
     expireAfter: 360h0m0s
   limits:
     cpu: 10
-    memory: 30Gi
+    memory: 25Gi
   template:
     metadata:
       labels:
         role: default
         environment: dev
         intent: default
-        # node-role.kubernetes.io/worker: worker # dont work
     spec:
       kubelet:
         evictionHard:
@@ -24,6 +23,10 @@ spec:
           nodefs.inodesFree: 10%
       nodeClassRef:
         name: default
+      taints:
+        - key: karpenter.sh/capacity-type
+          value: "on-demand"
+          effect: NoSchedule
       requirements:
       - key: karpenter.k8s.aws/instance-size
         operator: In
