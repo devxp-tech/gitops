@@ -130,8 +130,6 @@ helmCharts:
         podDisruptionBudget: {}
         zoneAwareReplication:
           enabled: false
-        persistentVolume:
-          enabled: true
       metaMonitoring:
         dashboards:
           enabled: true
