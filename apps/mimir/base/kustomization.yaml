@@ -119,7 +119,7 @@ helmCharts:
           distributor.ingestion-burst-size: "10000000"
           validation.max-label-names-per-series: "50"
       ingester:
-        replicas: 3
+        replicas: 2
         tolerations:
           - key: karpenter.sh/capacity-type
             operator: "Equal"
