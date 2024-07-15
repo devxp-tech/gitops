@@ -142,7 +142,7 @@ helmCharts:
       ingester:
         replicas: 3
         podDisruptionBudget:
-          maxUnavailable: 2
+          maxUnavailable: 3
         tolerations:
           - key: karpenter.sh/capacity-type
             operator: "Equal"
