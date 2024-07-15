@@ -100,9 +100,9 @@ helmCharts:
         podDisruptionBudget:
           maxUnavailable: 1
       query_frontend:
-        replicas: 1
+        replicas: 2
         podDisruptionBudget:
-          maxUnavailable: 1
+          maxUnavailable: 2
         tolerations:
           - key: karpenter.sh/capacity-type
             operator: "Equal"
