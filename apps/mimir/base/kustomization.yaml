@@ -85,19 +85,25 @@ helmCharts:
             effect: "NoExecute"
         nodeSelector:
           karpenter.sh/capacity-type: "on-demand"
-        podDisruptionBudget:
-          maxUnavailable: 2
+        podDisruptionBudget: {}
         zoneAwareReplication:
           enabled: false
       querier:
         replicas: 1
-        podDisruptionBudget:
-          maxUnavailable: 2
+        podDisruptionBudget: {}
       ruler:
         enabled: true
         replicas: 1
-        podDisruptionBudget:
-          maxUnavailable: 2 #test
+        podDisruptionBudget: {} #test
+      query_frontend:
+        replicas: 2
+        tolerations:
+          - key: karpenter.sh/capacity-type
+            operator: "Equal"
+            value: "on-demand"
+            effect: "NoExecute"
+        nodeSelector:
+          karpenter.sh/capacity-type: "on-demand"
       query_scheduler:
         replicas: 1
         tolerations:
