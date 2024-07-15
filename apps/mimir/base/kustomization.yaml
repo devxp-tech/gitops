@@ -100,6 +100,13 @@ helmCharts:
           maxUnavailable: 2 #test
       query_scheduler:
         replicas: 1
+        tolerations:
+          - key: karpenter.sh/capacity-type
+            operator: "Equal"
+            value: "on-demand"
+            effect: "NoExecute"
+        nodeSelector:
+          karpenter.sh/capacity-type: "on-demand"
         podDisruptionBudget: {}
       compactor:
         persistentVolume:
