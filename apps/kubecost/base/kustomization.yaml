@@ -94,11 +94,10 @@ helmCharts:
                 turndown: ignore
               params:
                 minNamespaceAge: 4h
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-              - matchExpressions:
-                  - key: role
-                    operator: In
-                    values: ["on-demand"]
+      tolerations:
+        - key: "role"
+          operator: "Equal"
+          value: "on-demand"
+          effect: "NoSchedule"
+      nodeSelector:
+        role: "on-demand"
