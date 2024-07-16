@@ -100,9 +100,9 @@ helmCharts:
         podDisruptionBudget:
           maxUnavailable: 1
       query_frontend:
-        replicas: 2
+        replicas: 1
         podDisruptionBudget:
-          maxUnavailable: 2
+          maxUnavailable: 1
         tolerations:
           - key: karpenter.sh/capacity-type
             operator: "Equal"
@@ -125,9 +125,9 @@ helmCharts:
         persistentVolume:
           size: 20Gi
       distributor:
-        replicas: 2
+        replicas: 1
         podDisruptionBudget:
-          maxUnavailable: 2
+          maxUnavailable: 1
         tolerations:
           - key: karpenter.sh/capacity-type
             operator: "Equal"
@@ -140,13 +140,13 @@ helmCharts:
           distributor.ingestion-burst-size: "10000000"
           validation.max-label-names-per-series: "50"
       ingester:
-        replicas: 3
+        replicas: 2
         podDisruptionBudget:
-          maxUnavailable: 3
+          maxUnavailable: 2
         tolerations:
-          - key: karpenter.sh/capacity-type
+          - key: eks.amazonaws.com/capacityType
             operator: "Equal"
-            value: "on-demand"
+            value: "ON_DEMAND"
             effect: "NoExecute"
         persistentVolume:
           size: 8Gi
