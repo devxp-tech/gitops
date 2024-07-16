@@ -56,5 +56,12 @@ helmCharts:
       mariadb:
         auth:
           existingSecret: wordpress-secrets #mariadb-password
+        tolerations:
+          - key: "role"
+            operator: "Equal"
+            value: "on-demand"
+            effect: "NoSchedule"
+        nodeSelector:
+          role: "on-demand"
         # nodeSelector:
         #   topology.kubernetes.io/zone: "us-east-1c"

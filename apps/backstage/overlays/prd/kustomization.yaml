@@ -92,6 +92,13 @@ helmCharts:
           requests:
             cpu: 50m
             memory: 128Mi
+      tolerations:
+        - key: "role"
+          operator: "Equal"
+          value: "on-demand"
+          effect: "NoSchedule"
+      nodeSelector:
+        role: "on-demand"
 
   # - name: devxp-infra
   #   releaseName: devxp-infra

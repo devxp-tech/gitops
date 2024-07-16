@@ -12,15 +12,17 @@ spec:
   template:
     metadata:
       labels:
-        role: default
-        environment: dev
-        intent: default
+        role: on-demand
     spec:
       kubelet:
         evictionHard:
           memory.available: 5%
           nodefs.available: 10%
           nodefs.inodesFree: 10%
+      taints:
+        - key: role
+          value: on-demand
+          effect: NoSchedule
       nodeClassRef:
         name: default
       requirements:
@@ -68,8 +70,6 @@ spec:
     metadata:
       labels:
         role: spot
-        environment: dev
-        intent: spot
     spec:
       kubelet:
         evictionHard:
