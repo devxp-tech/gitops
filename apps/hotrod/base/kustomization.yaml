@@ -14,6 +14,15 @@ helmCharts:
         commonLabels:
           app: hotrod
           version: 0.2.22
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                - key: role
+                  operator: In
+                  values:
+                  - stop
       image:
         repository: jaegertracing/example-hotrod #kong/httpbin
       network:
