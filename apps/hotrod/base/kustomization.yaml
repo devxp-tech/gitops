@@ -22,7 +22,7 @@ helmCharts:
                 - key: role
                   operator: In
                   values:
-                  - stop
+                  - spot
       image:
         repository: jaegertracing/example-hotrod #kong/httpbin
       network:
