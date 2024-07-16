@@ -116,9 +116,9 @@ spec:
   disruption:
     consolidationPolicy: WhenUnderutilized
     expireAfter: 360h
-  limits:
-    cpu: 5
-    memory: 15Gi
+  # limits:
+  #   cpu: 5
+  #   memory: 15Gi
   template:
     metadata:
       labels:
