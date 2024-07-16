@@ -96,14 +96,14 @@ helmCharts:
         podDisruptionBudget:
           maxUnavailable: 2
         tolerations:
-          - key: eks.amazonaws.com/capacityType
+          - key: "role"
             operator: "Equal"
-            value: "ON_DEMAND"
-            effect: "NoExecute"
+            value: "011y"
+            effect: "NoSchedule"
+        nodeSelector:
+          role: "011y"
         persistentVolume:
           size: 8Gi
-        nodeSelector:
-          karpenter.sh/capacity-type: "on-demand"
         zoneAwareReplication:
           enabled: false
       nginx:

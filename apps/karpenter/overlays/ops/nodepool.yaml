@@ -106,3 +106,45 @@ spec:
       - key: kubernetes.io/os
         operator: In
         values: ["linux"]
+
+---
+apiVersion: karpenter.sh/v1beta1
+kind: NodePool
+metadata:
+  name: 011y
+spec:
+  disruption:
+    consolidationPolicy: WhenEmpty
+    consolidateAfter: 30s
+    expireAfter: 720h
+  template:
+    metadata:
+      labels:
+        role: 011y
+    spec:
+      nodeClassRef:
+        name: 011y
+      taints:
+        - key: role
+          value: 011y
+          effect: NoSchedule
+      requirements:
+        - key: "karpenter.k8s.aws/instance-category"
+          operator: In
+          values: ["r"]
+        - key: "karpenter.k8s.aws/instance-cpu"
+          operator: In
+          values: ["4"]
+        - key: "karpenter.k8s.aws/instance-generation"
+          operator: Gt
+          values: ["4"]
+        - key: "topology.kubernetes.io/zone"
+          operator: In
+          values: ["us-east-1a", "us-east-1b", "us-east-1c"]
+        - key: "kubernetes.io/arch"
+          operator: In
+          values: ["arm64", "amd64"]
+        - key: "karpenter.sh/capacity-type"
+          operator: In
+          values: ["on-demand"]
+
