@@ -9,7 +9,7 @@ resources:
 helmCharts:
   - name: sonarqube
     releaseName: sonarqube
-    version: "10.5.1+2816"
+    version: "10.6.0+3033"
     repo: https://SonarSource.github.io/helm-chart-sonarqube
     valuesInline:
       tolerations:
