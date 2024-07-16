@@ -35,7 +35,7 @@
 | opentelemetry-operator | opentelemetry-operator | 0.60.0 | https://open-telemetry.github.io/opentelemetry-helm-charts | ✅ |  |  |  |
 | promtail | promtail | 6.16.0 | https://grafana.github.io/helm-charts | ✅ |  |  |  |
 | sealed-secrets | sealed-secrets | 2.15.3 | https://bitnami-labs.github.io/sealed-secrets | ✅ |  |  |  |
-| sonarqube | sonarqube | 10.5.1+2816 | https://SonarSource.github.io/helm-chart-sonarqube | ✅ |  |  |  |
+| sonarqube | sonarqube | 10.6.0+3033 | https://SonarSource.github.io/helm-chart-sonarqube | ✅ |  |  |  |
 | template-java | devxp-app | 0.2.79 | https://devxp-tech.github.io/helm-charts |  |  |  | [![App Status](https://argocd.devxp-tech.io/api/badge?name=template-java-prd&revision=true&showAppName=true)](https://argocd.devxp-tech.io/applications/template-java-prd) |
 | template-java | devxp-app | 0.2.79 | https://devxp-tech.github.io/helm-charts |  |  | [![App Status](https://argocd.devxp-tech.io/api/badge?name=template-java-dev&revision=true&showAppName=true)](https://argocd.devxp-tech.io/applications/template-java-dev) |  |
 | tempo | tempo | 1.10.1 | https://grafana.github.io/helm-charts | ✅ |  |  |  |
