@@ -114,8 +114,11 @@ metadata:
   name: 011y
 spec:
   disruption:
-    consolidationPolicy: WhenEmpty
+    consolidationPolicy: WhenUnderutilized
     expireAfter: 720h
+  limits:
+    cpu: 5
+    memory: 15Gi
   template:
     metadata:
       labels:
