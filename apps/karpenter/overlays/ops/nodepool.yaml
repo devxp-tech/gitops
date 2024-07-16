@@ -123,7 +123,7 @@ spec:
         role: 011y
     spec:
       nodeClassRef:
-        name: 011y
+        name: default
       taints:
         - key: role
           value: 011y
