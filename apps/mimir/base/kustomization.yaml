@@ -105,9 +105,16 @@ helmCharts:
         zoneAwareReplication:
           enabled: false
       nginx:
-        replicas: 1
+        replicas: 2
+        tolerations:
+          - key: "role"
+            operator: "Equal"
+            value: "spot"
+            effect: "NoSchedule"
+        nodeSelector:
+          role: "spot"
         podDisruptionBudget:
-          maxUnavailable: 1
+          maxUnavailable: 2
       querier:
         replicas: 1
         tolerations:
@@ -122,12 +129,17 @@ helmCharts:
       ruler:
         enabled: true
         replicas: 1
+        tolerations:
+          - key: "role"
+            operator: "Equal"
+            value: "on-demand"
+            effect: "NoSchedule"
+        nodeSelector:
+          role: "on-demand"
         podDisruptionBudget:
           maxUnavailable: 1
       query_frontend:
         replicas: 1
-        podDisruptionBudget:
-          maxUnavailable: 1
         tolerations:
           - key: "role"
             operator: "Equal"
@@ -135,6 +147,8 @@ helmCharts:
             effect: "NoSchedule"
         nodeSelector:
           role: "o11y"
+        podDisruptionBudget:
+          maxUnavailable: 1
       query_scheduler:
         replicas: 1
         podDisruptionBudget:
