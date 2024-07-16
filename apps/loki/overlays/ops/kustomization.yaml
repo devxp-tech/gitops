@@ -7,7 +7,7 @@ helmCharts:
     includeCRDs: true
     releaseName: loki
     namespace: logging
-    version: 6.6.4 #2.9.11
+    version: 6.6.6 #2.9.11
     repo: https://grafana.github.io/helm-charts
     valuesInline:
       deploymentMode: Distributed
@@ -42,6 +42,15 @@ helmCharts:
             installOperator: false
       ingester:
         replicas: 1
+        zoneAwareReplication:
+          enabled: false
+        tolerations:
+          - key: "role"
+            operator: "Equal"
+            value: "011y"
+            effect: "NoSchedule"
+        nodeSelector:
+          role: "011y"
         extraEnv:
           - name: JAEGER_AGENT_HOST
             value: otel-collector.observability.svc.cluster.local
