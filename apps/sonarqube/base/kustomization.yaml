@@ -12,6 +12,14 @@ helmCharts:
     version: "10.5.1+2816"
     repo: https://SonarSource.github.io/helm-chart-sonarqube
     valuesInline:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: role
+                    operator: In
+                    values: ["on-demand"]
       # prometheusExporter:
       #   enabled: true
       prometheusMonitoring:
