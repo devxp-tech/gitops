@@ -66,8 +66,7 @@ prometheus:
             - matchExpressions:
                 - key: role
                   operator: In
-                  values:
-                    - on-demand
+                  values: ["on-demand"]
     externalUrl: https://prometheus.devxp-tech.io/
     externalLabels:
       cluster: lgseksd1
