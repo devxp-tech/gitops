@@ -5,7 +5,7 @@ metadata:
 spec:
   disruption:
     consolidationPolicy: WhenUnderutilized
-    expireAfter: 360h0m0s
+    expireAfter: 360h
   limits:
     cpu: 10
     memory: 25Gi
@@ -60,7 +60,7 @@ metadata:
 spec:
   disruption:
     consolidationPolicy: WhenUnderutilized
-    expireAfter: 360h0m0s
+    expireAfter: 360h
   limits:
     cpu: 15
     memory: 50Gi
@@ -115,7 +115,7 @@ metadata:
 spec:
   disruption:
     consolidationPolicy: WhenUnderutilized
-    expireAfter: 720h
+    expireAfter: 360h
   limits:
     cpu: 5
     memory: 15Gi
