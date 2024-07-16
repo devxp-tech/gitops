@@ -41,7 +41,7 @@ helmCharts:
           grafanaAgent:
             installOperator: false
       ingester:
-        replicas: 1
+        replicas: 2
         zoneAwareReplication:
           enabled: false
         tolerations:
