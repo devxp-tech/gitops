@@ -13,6 +13,15 @@ helmCharts:
     repo: https://devxp-tech.github.io/helm-charts
     valuesInline:
       name: teste-loki
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                - key: role
+                  operator: In
+                  values:
+                  - spot
       image:
         repository: ghcr.io/devxp-tech/teste-loki
         tag: cd6fc9c0

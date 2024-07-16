@@ -11,3 +11,12 @@ helmCharts:
       fullnameOverride: argo-rollouts
       dashboard:
         enabled: true
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                - key: role
+                  operator: In
+                  values:
+                  - spot

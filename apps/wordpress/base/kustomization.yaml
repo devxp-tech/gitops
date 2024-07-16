@@ -9,6 +9,15 @@ helmCharts:
     version: 22.2.11
     repo: https://charts.bitnami.com/bitnami
     valuesInline:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                - key: role
+                  operator: In
+                  values:
+                  - spot
       existingSecret: wordpress-secrets
       metrics:
         enabled: true

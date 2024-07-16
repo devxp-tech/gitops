@@ -13,6 +13,15 @@ helmCharts:
       global:
         network:
           domain: devxp-tech.io
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                - key: role
+                  operator: In
+                  values:
+                  - spot
       actuator:
         enabled: true
       instrumentation: java
