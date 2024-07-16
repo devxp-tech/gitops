@@ -19,10 +19,10 @@ helmCharts:
           requiredDuringSchedulingIgnoredDuringExecution:
             nodeSelectorTerms:
               - matchExpressions:
-                - key: role
-                  operator: In
-                  values:
-                  - spot
+                  - key: role
+                    operator: In
+                    values:
+                      - spot
       image:
         repository: jaegertracing/example-hotrod #kong/httpbin
       network:
