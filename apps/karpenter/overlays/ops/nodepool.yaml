@@ -138,7 +138,7 @@ spec:
       requirements:
         - key: "karpenter.k8s.aws/instance-category"
           operator: In
-          values: ["r"]
+          values: ["c", "m", "t"]
         - key: "karpenter.k8s.aws/instance-cpu"
           operator: In
           values: ["2"]
