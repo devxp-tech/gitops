@@ -18,10 +18,10 @@ helmCharts:
       tolerations:
         - key: "role"
           operator: "Equal"
-          value: "011y"
+          value: "o11y"
           effect: "NoSchedule"
       nodeSelector:
-        role: "011y"
+        role: "o11y"
       persistence:
         enabled: true
         existingClaim: grafana
