@@ -73,14 +73,13 @@ helmCharts:
         enabled: false
       minio:
         enabled: false
-      nginx:
+      compactor:
+        persistentVolume:
+          size: 20Gi
+      distributor:
         replicas: 1
         podDisruptionBudget:
           maxUnavailable: 1
-      store_gateway:
-        replicas: 2
-        podDisruptionBudget:
-          maxUnavailable: 2
         tolerations:
           - key: karpenter.sh/capacity-type
             operator: "Equal"
@@ -88,8 +87,29 @@ helmCharts:
             effect: "NoExecute"
         nodeSelector:
           karpenter.sh/capacity-type: "on-demand"
+        extraArgs:
+          distributor.ingestion-rate-limit: "1000000"
+          distributor.ingestion-burst-size: "10000000"
+          validation.max-label-names-per-series: "50"
+      ingester:
+        replicas: 2
+        podDisruptionBudget:
+          maxUnavailable: 2
+        tolerations:
+          - key: eks.amazonaws.com/capacityType
+            operator: "Equal"
+            value: "ON_DEMAND"
+            effect: "NoExecute"
+        persistentVolume:
+          size: 8Gi
+        nodeSelector:
+          karpenter.sh/capacity-type: "on-demand"
         zoneAwareReplication:
           enabled: false
+      nginx:
+        replicas: 1
+        podDisruptionBudget:
+          maxUnavailable: 1
       querier:
         replicas: 1
         podDisruptionBudget:
@@ -121,35 +141,15 @@ helmCharts:
             effect: "NoExecute"
         nodeSelector:
           karpenter.sh/capacity-type: "on-demand"
-      compactor:
-        persistentVolume:
-          size: 20Gi
-      distributor:
-        replicas: 1
+      store_gateway:
+        replicas: 2
         podDisruptionBudget:
-          maxUnavailable: 1
+          maxUnavailable: 2
         tolerations:
           - key: karpenter.sh/capacity-type
             operator: "Equal"
             value: "on-demand"
             effect: "NoExecute"
-        nodeSelector:
-          karpenter.sh/capacity-type: "on-demand"
-        extraArgs:
-          distributor.ingestion-rate-limit: "1000000"
-          distributor.ingestion-burst-size: "10000000"
-          validation.max-label-names-per-series: "50"
-      ingester:
-        replicas: 2
-        podDisruptionBudget:
-          maxUnavailable: 2
-        tolerations:
-          - key: eks.amazonaws.com/capacityType
-            operator: "Equal"
-            value: "ON_DEMAND"
-            effect: "NoExecute"
-        persistentVolume:
-          size: 8Gi
         nodeSelector:
           karpenter.sh/capacity-type: "on-demand"
         zoneAwareReplication:
