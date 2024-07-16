@@ -41,4 +41,4 @@
 | tempo | tempo | 1.10.1 | https://grafana.github.io/helm-charts | ✅ |  |  |  |
 | teste-loki | devxp-app | 0.2.79 | https://devxp-tech.github.io/helm-charts |  |  |  | [![App Status](https://argocd.devxp-tech.io/api/badge?name=teste-loki-prd&revision=true&showAppName=true)](https://argocd.devxp-tech.io/applications/teste-loki-prd) |
 | teste-loki | devxp-app | 0.2.81 | https://devxp-tech.github.io/helm-charts |  |  | [![App Status](https://argocd.devxp-tech.io/api/badge?name=teste-loki-dev&revision=true&showAppName=true)](https://argocd.devxp-tech.io/applications/teste-loki-dev) |  |
-| wordpress | wordpress | 22.2.11 | https://charts.bitnami.com/bitnami | ✅ |  |  |  |
+| wordpress | wordpress | 23.0.1 | https://charts.bitnami.com/bitnami | ✅ |  |  |  |
