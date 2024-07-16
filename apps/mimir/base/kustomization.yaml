@@ -78,15 +78,13 @@ helmCharts:
           size: 20Gi
       distributor:
         replicas: 1
-        podDisruptionBudget:
-          maxUnavailable: 1
         tolerations:
-          - key: karpenter.sh/capacity-type
+          - key: "role"
             operator: "Equal"
-            value: "on-demand"
-            effect: "NoExecute"
+            value: "o11y"
+            effect: "NoSchedule"
         nodeSelector:
-          karpenter.sh/capacity-type: "on-demand"
+          role: "o11y"
         extraArgs:
           distributor.ingestion-rate-limit: "1000000"
           distributor.ingestion-burst-size: "10000000"
@@ -112,6 +110,13 @@ helmCharts:
           maxUnavailable: 1
       querier:
         replicas: 1
+        tolerations:
+          - key: "role"
+            operator: "Equal"
+            value: "o11y"
+            effect: "NoSchedule"
+        nodeSelector:
+          role: "o11y"
         podDisruptionBudget:
           maxUnavailable: 1
       ruler:
@@ -124,34 +129,34 @@ helmCharts:
         podDisruptionBudget:
           maxUnavailable: 1
         tolerations:
-          - key: karpenter.sh/capacity-type
+          - key: "role"
             operator: "Equal"
-            value: "on-demand"
-            effect: "NoExecute"
+            value: "o11y"
+            effect: "NoSchedule"
         nodeSelector:
-          karpenter.sh/capacity-type: "on-demand"
+          role: "o11y"
       query_scheduler:
         replicas: 1
         podDisruptionBudget:
           maxUnavailable: 1
         tolerations:
-          - key: karpenter.sh/capacity-type
+          - key: "role"
             operator: "Equal"
-            value: "on-demand"
-            effect: "NoExecute"
+            value: "o11y"
+            effect: "NoSchedule"
         nodeSelector:
-          karpenter.sh/capacity-type: "on-demand"
+          role: "o11y"
       store_gateway:
         replicas: 2
         podDisruptionBudget:
           maxUnavailable: 2
         tolerations:
-          - key: karpenter.sh/capacity-type
+          - key: "role"
             operator: "Equal"
-            value: "on-demand"
-            effect: "NoExecute"
+            value: "o11y"
+            effect: "NoSchedule"
         nodeSelector:
-          karpenter.sh/capacity-type: "on-demand"
+          role: "o11y"
         zoneAwareReplication:
           enabled: false
       metaMonitoring:
