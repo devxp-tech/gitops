@@ -15,10 +15,10 @@ helmCharts:
           requiredDuringSchedulingIgnoredDuringExecution:
             nodeSelectorTerms:
               - matchExpressions:
-                - key: role
-                  operator: In
-                  values:
-                  - spot
+                  - key: role
+                    operator: In
+                    values:
+                      - spot
       image:
         repository: ghcr.io/devxp-tech/demo-app
         tag: 7df51a75

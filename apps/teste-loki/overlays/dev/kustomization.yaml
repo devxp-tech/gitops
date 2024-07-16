@@ -18,10 +18,10 @@ helmCharts:
           requiredDuringSchedulingIgnoredDuringExecution:
             nodeSelectorTerms:
               - matchExpressions:
-                - key: role
-                  operator: In
-                  values:
-                  - spot
+                  - key: role
+                    operator: In
+                    values:
+                      - spot
       image:
         repository: ghcr.io/devxp-tech/teste-loki
         tag: cd6fc9c0
