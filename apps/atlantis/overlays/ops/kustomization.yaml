@@ -12,6 +12,13 @@ helmCharts:
     repo: https://runatlantis.github.io/helm-charts
     valuesInline:
       nameOverride: atlantis
+      tolerations:
+        - key: "role"
+          operator: "Equal"
+          value: "on-demand"
+          effect: "NoSchedule"
+      nodeSelector:
+        role: "on-demand"
       atlantisUrl: https://atlantis.devxp-tech.io
       orgAllowlist: github.com/devxp-tech/*
       github:
