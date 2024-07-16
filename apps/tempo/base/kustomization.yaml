@@ -5,7 +5,7 @@ helmCharts:
   - name: tempo
     includeCRDs: true
     releaseName: tempo
-    version: 1.10.0
+    version: 1.10.1
     repo: https://grafana.github.io/helm-charts
     valuesInline:
       replicas: 1
@@ -14,6 +14,13 @@ helmCharts:
         annotations:
           "eks.amazonaws.com/role-arn": "arn:aws:iam::239468932737:role/tempo-lgseksd1-sa"
         automountServiceAccountToken: true
+      tolerations:
+        - key: "role"
+          operator: "Equal"
+          value: "011y"
+          effect: "NoSchedule"
+      nodeSelector:
+        role: "011y"
       serviceMonitor:
         enabled: true
       tempo:
