@@ -101,5 +101,4 @@ helmCharts:
               - matchExpressions:
                   - key: role
                     operator: In
-                    values:
-                      - spot
+                    values: ["on-demand"]
