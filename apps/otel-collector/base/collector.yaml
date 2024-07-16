@@ -7,6 +7,13 @@ spec:
   mode: statefulset #test
   # image: otel/opentelemetry-collector-contrib:0.90.1
   replicas: 2
+  tolerations:
+    - key: "role"
+      operator: "Equal"
+      value: "011y"
+      effect: "NoSchedule"
+  nodeSelector:
+    role: "011y"
   config:
     receivers:
       jaeger:
