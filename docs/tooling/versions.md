@@ -28,7 +28,7 @@
 | kubeclarity | kubeclarity | v2.23.1 | https://openclarity.github.io/kubeclarity | ✅ |  |  |  |
 | kubecost | cost-analyzer | 2.3.1 | https://kubecost.github.io/cost-analyzer | ✅ |  |  |  |
 | kyverno | kyverno | 3.2.4 | https://kyverno.github.io/kyverno | ✅ |  |  |  |
-| loki | loki | 6.6.4 | https://grafana.github.io/helm-charts |  | [![App Status](https://argocd.devxp-tech.io/api/badge?name=loki-ops&revision=true&showAppName=true)](https://argocd.devxp-tech.io/applications/loki-ops) |  |  |
+| loki | loki | 6.6.6 | https://grafana.github.io/helm-charts |  | [![App Status](https://argocd.devxp-tech.io/api/badge?name=loki-ops&revision=true&showAppName=true)](https://argocd.devxp-tech.io/applications/loki-ops) |  |  |
 | metrics-server | metrics-server | 3.12.1 | https://kubernetes-sigs.github.io/metrics-server/ | ✅ |  |  |  |
 | mimir | mimir-distributed | 5.3.0 | https://grafana.github.io/helm-charts | ✅ |  |  |  |
 | nexus | nexus-repository-manager | 64.2.0 | https://sonatype.github.io/helm3-charts | ✅ |  |  |  |
