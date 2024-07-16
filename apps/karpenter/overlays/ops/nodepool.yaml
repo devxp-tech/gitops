@@ -4,7 +4,6 @@ metadata:
   name: on-demand
 spec:
   disruption:
-    consolidateAfter: 30s
     consolidationPolicy: WhenUnderutilized
     expireAfter: 360h0m0s
   limits:
@@ -60,7 +59,6 @@ metadata:
   name: spot
 spec:
   disruption:
-    consolidateAfter: 30s
     consolidationPolicy: WhenUnderutilized
     expireAfter: 360h0m0s
   limits:
@@ -116,7 +114,6 @@ metadata:
   name: 011y
 spec:
   disruption:
-    consolidateAfter: 30s
     consolidationPolicy: WhenEmpty
     expireAfter: 720h
   template:
