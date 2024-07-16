@@ -42,6 +42,8 @@ helmCharts:
             installOperator: false
       ingester:
         replicas: 2
+        podDisruptionBudget:
+          maxUnavailable: 2
         zoneAwareReplication:
           enabled: false
         tolerations:
