@@ -111,7 +111,7 @@ spec:
 apiVersion: karpenter.sh/v1beta1
 kind: NodePool
 metadata:
-  name: 011y
+  name: o11y
 spec:
   disruption:
     consolidationPolicy: WhenUnderutilized
@@ -122,7 +122,7 @@ spec:
   template:
     metadata:
       labels:
-        role: 011y
+        role: o11y
     spec:
       nodeClassRef:
         name: default
@@ -133,7 +133,7 @@ spec:
           nodefs.inodesFree: 10%
       taints:
         - key: role
-          value: 011y
+          value: o11y
           effect: NoSchedule
       requirements:
       - key: karpenter.k8s.aws/instance-size
