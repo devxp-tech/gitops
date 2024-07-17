@@ -30,7 +30,7 @@
 | kyverno | kyverno | 3.2.4 | https://kyverno.github.io/kyverno | ✅ |  |  |  |
 | loki | loki | 6.6.6 | https://grafana.github.io/helm-charts |  | [![App Status](https://argocd.devxp-tech.io/api/badge?name=loki-ops&revision=true&showAppName=true)](https://argocd.devxp-tech.io/applications/loki-ops) |  |  |
 | metrics-server | metrics-server | 3.12.1 | https://kubernetes-sigs.github.io/metrics-server/ | ✅ |  |  |  |
-| mimir | mimir-distributed | 5.3.0 | https://grafana.github.io/helm-charts | ✅ |  |  |  |
+| mimir | mimir-distributed | 5.4.0 | https://grafana.github.io/helm-charts | ✅ |  |  |  |
 | nexus | nexus-repository-manager | 64.2.0 | https://sonatype.github.io/helm3-charts | ✅ |  |  |  |
 | opentelemetry-operator | opentelemetry-operator | 0.60.0 | https://open-telemetry.github.io/opentelemetry-helm-charts | ✅ |  |  |  |
 | promtail | promtail | 6.16.0 | https://grafana.github.io/helm-charts | ✅ |  |  |  |
