@@ -8,7 +8,7 @@ spec:
     expireAfter: 360h
   limits:
     cpu: 10
-    memory: 20Gi
+    memory: 16Gi
   template:
     metadata:
       labels:
@@ -34,7 +34,7 @@ spec:
           values: ["1"]
         - key: karpenter.k8s.aws/instance-memory
           operator: Gt
-          values: ['4095'] # 4G
+          values: ['4095'] # 4 * 1024 -1
         - key: karpenter.k8s.aws/instance-category
           operator: In
           values: ["c", "m", "t", "r"]
@@ -61,8 +61,8 @@ spec:
     consolidationPolicy: WhenUnderutilized
     expireAfter: 360h
   limits:
-    cpu: 6
-    memory: 10Gi
+    cpu: 10
+    memory: 16Gi
   template:
     metadata:
       labels:
@@ -88,7 +88,7 @@ spec:
           values: ["1"]
         - key: karpenter.k8s.aws/instance-memory
           operator: Gt
-          values: ['4095'] # 4G
+          values: ['4095'] # 4 * 1024 -1
         - key: "karpenter.k8s.aws/instance-generation"
           operator: Gt
           values: ["2"]
@@ -112,8 +112,8 @@ spec:
     consolidationPolicy: WhenUnderutilized
     expireAfter: 360h
   limits:
-    cpu: 15
-    memory: 20Gi
+    cpu: 10
+    memory: 24Gi
   template:
     metadata:
       labels:
@@ -135,7 +135,7 @@ spec:
           values: ["1"]
         - key: karpenter.k8s.aws/instance-memory
           operator: Gt
-          values: ['4095'] # 4G
+          values: ['4095'] # 4 * 1024 -1
         - key: karpenter.k8s.aws/instance-category
           operator: In
           values: ["c", "m", "t", "r"]
