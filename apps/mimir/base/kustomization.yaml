@@ -71,108 +71,280 @@ helmCharts:
             file: /var/mimir/runtime.yaml
       alertmanager:
         enabled: false
-      minio:
-        enabled: false
+      # minio:
+      #   enabled: false
+      # compactor:
+      #   persistentVolume:
+      #     size: 20Gi
+      # distributor:
+      #   replicas: 1
+      #   tolerations:
+      #     - key: "role"
+      #       operator: "Equal"
+      #       value: "o11y"
+      #       effect: "NoSchedule"
+      #   nodeSelector:
+      #     role: "o11y"
+      #   extraArgs:
+      #     distributor.ingestion-rate-limit: "1000000"
+      #     distributor.ingestion-burst-size: "10000000"
+      #     validation.max-label-names-per-series: "50"
+      # ingester:
+      #   replicas: 3
+      #   podDisruptionBudget:
+      #     maxUnavailable: 2
+      #   tolerations:
+      #     - key: "role"
+      #       operator: "Equal"
+      #       value: "o11y"
+      #       effect: "NoSchedule"
+      #   nodeSelector:
+      #     role: "o11y"
+      #   persistentVolume:
+      #     size: 8Gi
+      #   zoneAwareReplication:
+      #     enabled: false
+      # nginx:
+      #   replicas: 2
+      #   tolerations:
+      #     - key: "role"
+      #       operator: "Equal"
+      #       value: "spot"
+      #       effect: "NoSchedule"
+      #   nodeSelector:
+      #     role: "spot"
+      #   podDisruptionBudget:
+      #     maxUnavailable: 2
+      # querier:
+      #   replicas: 1
+      #   tolerations:
+      #     - key: "role"
+      #       operator: "Equal"
+      #       value: "o11y"
+      #       effect: "NoSchedule"
+      #   nodeSelector:
+      #     role: "o11y"
+      #   podDisruptionBudget:
+      #     maxUnavailable: 1
+      # ruler:
+      #   enabled: true
+      #   replicas: 1
+      #   tolerations:
+      #     - key: "role"
+      #       operator: "Equal"
+      #       value: "on-demand"
+      #       effect: "NoSchedule"
+      #   nodeSelector:
+      #     role: "on-demand"
+      #   podDisruptionBudget:
+      #     maxUnavailable: 1
+      # query_frontend:
+      #   replicas: 1
+      #   tolerations:
+      #     - key: "role"
+      #       operator: "Equal"
+      #       value: "o11y"
+      #       effect: "NoSchedule"
+      #   nodeSelector:
+      #     role: "o11y"
+      #   podDisruptionBudget:
+      #     maxUnavailable: 1
+      # query_scheduler:
+      #   replicas: 1
+      #   podDisruptionBudget:
+      #     maxUnavailable: 1
+      #   tolerations:
+      #     - key: "role"
+      #       operator: "Equal"
+      #       value: "o11y"
+      #       effect: "NoSchedule"
+      #   nodeSelector:
+      #     role: "o11y"
+      # store_gateway:
+      #   replicas: 2
+      #   podDisruptionBudget:
+      #     maxUnavailable: 2
+      #   tolerations:
+      #     - key: "role"
+      #       operator: "Equal"
+      #       value: "o11y"
+      #       effect: "NoSchedule"
+      #   nodeSelector:
+      #     role: "o11y"
+      #   zoneAwareReplication:
+      #     enabled: false
+
+
       compactor:
         persistentVolume:
           size: 20Gi
+        resources:
+          limits:
+            memory: 2.1Gi
+          requests:
+            cpu: 1
+            memory: 1.5Gi
+
       distributor:
-        replicas: 1
-        tolerations:
-          - key: "role"
-            operator: "Equal"
-            value: "o11y"
-            effect: "NoSchedule"
-        nodeSelector:
-          role: "o11y"
-        extraArgs:
-          distributor.ingestion-rate-limit: "1000000"
-          distributor.ingestion-burst-size: "10000000"
-          validation.max-label-names-per-series: "50"
-      ingester:
-        replicas: 3
-        podDisruptionBudget:
-          maxUnavailable: 2
-        tolerations:
-          - key: "role"
-            operator: "Equal"
-            value: "o11y"
-            effect: "NoSchedule"
-        nodeSelector:
-          role: "o11y"
-        persistentVolume:
-          size: 8Gi
-        zoneAwareReplication:
-          enabled: false
-      nginx:
         replicas: 2
-        tolerations:
-          - key: "role"
-            operator: "Equal"
-            value: "spot"
-            effect: "NoSchedule"
-        nodeSelector:
-          role: "spot"
-        podDisruptionBudget:
-          maxUnavailable: 2
+        resources:
+          limits:
+            memory: 5.7Gi
+          requests:
+            cpu: 2
+            memory: 4Gi
+
+      ingester:
+        persistentVolume:
+          size: 50Gi
+        replicas: 3
+        resources:
+          limits:
+            memory: 12Gi
+          requests:
+            cpu: 3.5
+            memory: 8Gi
+        topologySpreadConstraints: {}
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+              - labelSelector:
+                  matchExpressions:
+                    - key: target # support for enterprise.legacyLabels
+                      operator: In
+                      values:
+                        - ingester
+                topologyKey: 'kubernetes.io/hostname'
+
+              - labelSelector:
+                  matchExpressions:
+                    - key: app.kubernetes.io/component
+                      operator: In
+                      values:
+                        - ingester
+                topologyKey: 'kubernetes.io/hostname'
+
+        zoneAwareReplication:
+          topologyKey: 'kubernetes.io/hostname'
+
+      admin-cache:
+        enabled: true
+        replicas: 2
+
+      chunks-cache:
+        enabled: true
+        replicas: 2
+
+      index-cache:
+        enabled: true
+        replicas: 3
+
+      metadata-cache:
+        enabled: true
+
+      results-cache:
+        enabled: true
+        replicas: 2
+
+      minio:
+        enabled: false
+
+      overrides_exporter:
+        replicas: 1
+        resources:
+          limits:
+            memory: 128Mi
+          requests:
+            cpu: 100m
+            memory: 128Mi
+
       querier:
         replicas: 1
-        tolerations:
-          - key: "role"
-            operator: "Equal"
-            value: "o11y"
-            effect: "NoSchedule"
-        nodeSelector:
-          role: "o11y"
-        podDisruptionBudget:
-          maxUnavailable: 1
-      ruler:
-        enabled: true
-        replicas: 1
-        tolerations:
-          - key: "role"
-            operator: "Equal"
-            value: "on-demand"
-            effect: "NoSchedule"
-        nodeSelector:
-          role: "on-demand"
-        podDisruptionBudget:
-          maxUnavailable: 1
+        resources:
+          limits:
+            memory: 5.6Gi
+          requests:
+            cpu: 2
+            memory: 4Gi
+
       query_frontend:
         replicas: 1
-        tolerations:
-          - key: "role"
-            operator: "Equal"
-            value: "o11y"
-            effect: "NoSchedule"
-        nodeSelector:
-          role: "o11y"
-        podDisruptionBudget:
-          maxUnavailable: 1
-      query_scheduler:
+        resources:
+          limits:
+            memory: 2.8Gi
+          requests:
+            cpu: 2
+            memory: 2Gi
+
+      ruler:
         replicas: 1
-        podDisruptionBudget:
-          maxUnavailable: 1
-        tolerations:
-          - key: "role"
-            operator: "Equal"
-            value: "o11y"
-            effect: "NoSchedule"
-        nodeSelector:
-          role: "o11y"
+        resources:
+          limits:
+            memory: 2.8Gi
+          requests:
+            cpu: 1
+            memory: 2Gi
+
       store_gateway:
-        replicas: 2
-        podDisruptionBudget:
-          maxUnavailable: 2
-        tolerations:
-          - key: "role"
-            operator: "Equal"
-            value: "o11y"
-            effect: "NoSchedule"
-        nodeSelector:
-          role: "o11y"
+        persistentVolume:
+          size: 10Gi
+        replicas: 3
+        resources:
+          limits:
+            memory: 2.1Gi
+          requests:
+            cpu: 1
+            memory: 1.5Gi
+        topologySpreadConstraints: {}
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+              - labelSelector:
+                  matchExpressions:
+                    - key: target # support for enterprise.legacyLabels
+                      operator: In
+                      values:
+                        - store-gateway
+                topologyKey: 'kubernetes.io/hostname'
+
+              - labelSelector:
+                  matchExpressions:
+                    - key: app.kubernetes.io/component
+                      operator: In
+                      values:
+                        - store-gateway
+                topologyKey: 'kubernetes.io/hostname'
         zoneAwareReplication:
-          enabled: false
+          topologyKey: 'kubernetes.io/hostname'
+
+      nginx:
+        replicas: 1
+        resources:
+          limits:
+            memory: 731Mi
+          requests:
+            cpu: 1
+            memory: 512Mi
+
+      # Grafana Enterprise Metrics feature related
+      admin_api:
+        replicas: 1
+        resources:
+          limits:
+            memory: 128Mi
+          requests:
+            cpu: 100m
+            memory: 64Mi
+
+      gateway:
+        replicas: 1
+        resources:
+          limits:
+            memory: 731Mi
+          requests:
+            cpu: 1
+            memory: 512Mi
+
       metaMonitoring:
         dashboards:
           enabled: true
