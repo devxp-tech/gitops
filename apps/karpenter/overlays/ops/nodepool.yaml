@@ -32,6 +32,9 @@ spec:
         - key: karpenter.k8s.aws/instance-cpu
           operator: Gt
           values: ["1"]
+        - key: karpenter.k8s.aws/instance-memory
+          operator: Gt
+          values: ['4095'] # 4G
         - key: karpenter.k8s.aws/instance-category
           operator: In
           values: ["c", "m", "t", "r"]
@@ -83,6 +86,9 @@ spec:
         - key: karpenter.k8s.aws/instance-cpu
           operator: Gt
           values: ["1"]
+        - key: karpenter.k8s.aws/instance-memory
+          operator: Gt
+          values: ['4095'] # 4G
         - key: "karpenter.k8s.aws/instance-generation"
           operator: Gt
           values: ["2"]
@@ -127,6 +133,9 @@ spec:
         - key: karpenter.k8s.aws/instance-cpu
           operator: Gt
           values: ["1"]
+        - key: karpenter.k8s.aws/instance-memory
+          operator: Gt
+          values: ['4095'] # 4G
         - key: karpenter.k8s.aws/instance-category
           operator: In
           values: ["c", "m", "t", "r"]
