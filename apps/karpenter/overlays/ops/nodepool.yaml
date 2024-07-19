@@ -26,9 +26,6 @@ spec:
       nodeClassRef:
         name: default
       requirements:
-        - key: karpenter.k8s.aws/instance-size
-          operator: In
-          values: ["medium", "large", "xlarge"]
         - key: karpenter.k8s.aws/instance-generation
           operator: Gt
           values: ["2"]
@@ -38,9 +35,6 @@ spec:
         - key: karpenter.k8s.aws/instance-category
           operator: In
           values: ["c", "m", "t", "r"]
-        - key: karpenter.k8s.aws/instance-family
-          operator: In
-          values: ["c5", "m5", "t3a", "t4g", "r5", "r6"]
         - key: topology.kubernetes.io/zone
           operator: In
           values: ["us-east-1a", "us-east-1b", "us-east-1c"]
@@ -92,18 +86,12 @@ spec:
         - key: karpenter.k8s.aws/instance-category
           operator: In
           values: ["c", "m", "t", "r"]
-        - key: karpenter.k8s.aws/instance-family
-          operator: In
-          values: ["c5", "m5", "t3a", "t4g", "r5", "r6"]
-        - key: "karpenter.k8s.aws/instance-cpu"
-          operator: In
-          values: ["2"]
+        - key: karpenter.k8s.aws/instance-cpu
+          operator: Gt
+          values: ["1"]
         - key: "karpenter.k8s.aws/instance-generation"
           operator: Gt
           values: ["2"]
-        - key: karpenter.k8s.aws/instance-size
-          operator: In
-          values: ["medium", "large", "xlarge"]
         - key: "topology.kubernetes.io/zone"
           operator: In
           values: ["us-east-1a", "us-east-1b", "us-east-1c"]
@@ -145,9 +133,6 @@ spec:
       nodeClassRef:
         name: default
       requirements:
-        - key: karpenter.k8s.aws/instance-size
-          operator: In
-          values: ["medium", "large"]
         - key: karpenter.k8s.aws/instance-generation
           operator: Gt
           values: ["2"]
@@ -157,9 +142,6 @@ spec:
         - key: karpenter.k8s.aws/instance-category
           operator: In
           values: ["c", "m", "t", "r"]
-        - key: karpenter.k8s.aws/instance-family
-          operator: In
-          values: ["c5", "m5", "t3a", "t4g", "r5", "r6"]
         - key: topology.kubernetes.io/zone
           operator: In
           values: ["us-east-1a", "us-east-1b", "us-east-1c"]
