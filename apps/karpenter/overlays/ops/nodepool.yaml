@@ -8,7 +8,7 @@ spec:
     expireAfter: 360h
   limits:
     cpu: 10
-    memory: 25Gi
+    memory: 20Gi
   template:
     metadata:
       labels:
@@ -37,75 +37,16 @@ spec:
           values: ["1"]
         - key: karpenter.k8s.aws/instance-category
           operator: In
-          values: ["c", "m", "t"]
+          values: ["c", "m", "t", "r"]
         - key: karpenter.k8s.aws/instance-family
           operator: In
-          values: ["c5", "m5", "t3", "t3a", "t4g"]
+          values: ["c5", "m5", "t3a", "t4g", "r5", "r6"]
         - key: topology.kubernetes.io/zone
           operator: In
           values: ["us-east-1a", "us-east-1b", "us-east-1c"]
         - key: karpenter.sh/capacity-type
           operator: In
           values: ["on-demand"]
-        - key: kubernetes.io/arch
-          operator: In
-          values: ["amd64"]
-        - key: kubernetes.io/os
-          operator: In
-          values: ["linux"]
-
----
-apiVersion: karpenter.sh/v1beta1
-kind: NodePool
-metadata:
-  name: spot
-spec:
-  disruption:
-    consolidationPolicy: WhenUnderutilized
-    expireAfter: 360h
-    disruption:
-      budgets:
-      - duration: 45m
-        nodes: "0"
-        schedule: '@hourly'
-      - nodes: "1"
-  limits:
-    cpu: 15
-    memory: 50Gi
-  template:
-    metadata:
-      labels:
-        role: spot
-    spec:
-      kubelet:
-        evictionHard:
-          memory.available: 5%
-          nodefs.available: 10%
-          nodefs.inodesFree: 10%
-      nodeClassRef:
-        name: default
-      requirements:
-        - key: karpenter.k8s.aws/instance-size
-          operator: In
-          values: ["medium", "large"]
-        - key: karpenter.k8s.aws/instance-generation
-          operator: Gt
-          values: ["2"]
-        - key: karpenter.k8s.aws/instance-cpu
-          operator: Gt
-          values: ["1"]
-        - key: karpenter.k8s.aws/instance-category
-          operator: In
-          values: ["c", "m", "t"]
-        - key: karpenter.k8s.aws/instance-family
-          operator: In
-          values: ["c5", "m5", "t3", "t3a", "t4g"]
-        - key: topology.kubernetes.io/zone
-          operator: In
-          values: ["us-east-1a", "us-east-1b", "us-east-1c"]
-        - key: karpenter.sh/capacity-type
-          operator: In
-          values: ["spot"]
         - key: kubernetes.io/arch
           operator: In
           values: ["amd64"]
@@ -130,7 +71,7 @@ spec:
       - nodes: "1"
   limits:
     cpu: 6
-    memory: 16Gi
+    memory: 10Gi
   template:
     metadata:
       labels:
@@ -148,9 +89,12 @@ spec:
           value: o11y
           effect: NoSchedule
       requirements:
-        - key: "karpenter.k8s.aws/instance-category"
+        - key: karpenter.k8s.aws/instance-category
           operator: In
           values: ["c", "m", "t", "r"]
+        - key: karpenter.k8s.aws/instance-family
+          operator: In
+          values: ["c5", "m5", "t3a", "t4g", "r5", "r6"]
         - key: "karpenter.k8s.aws/instance-cpu"
           operator: In
           values: ["2"]
@@ -169,3 +113,63 @@ spec:
         - key: "karpenter.sh/capacity-type"
           operator: In
           values: ["on-demand"]
+
+---
+apiVersion: karpenter.sh/v1beta1
+kind: NodePool
+metadata:
+  name: spot
+spec:
+  disruption:
+    consolidationPolicy: WhenUnderutilized
+    expireAfter: 360h
+    disruption:
+      budgets:
+      - duration: 45m
+        nodes: "0"
+        schedule: '@hourly'
+      - nodes: "1"
+  limits:
+    cpu: 15
+    memory: 20Gi
+  template:
+    metadata:
+      labels:
+        role: spot
+    spec:
+      kubelet:
+        evictionHard:
+          memory.available: 5%
+          nodefs.available: 10%
+          nodefs.inodesFree: 10%
+      nodeClassRef:
+        name: default
+      requirements:
+        - key: karpenter.k8s.aws/instance-size
+          operator: In
+          values: ["medium", "large"]
+        - key: karpenter.k8s.aws/instance-generation
+          operator: Gt
+          values: ["2"]
+        - key: karpenter.k8s.aws/instance-cpu
+          operator: Gt
+          values: ["1"]
+        - key: karpenter.k8s.aws/instance-category
+          operator: In
+          values: ["c", "m", "t", "r"]
+        - key: karpenter.k8s.aws/instance-family
+          operator: In
+          values: ["c5", "m5", "t3a", "t4g", "r5", "r6"]
+        - key: topology.kubernetes.io/zone
+          operator: In
+          values: ["us-east-1a", "us-east-1b", "us-east-1c"]
+        - key: karpenter.sh/capacity-type
+          operator: In
+          values: ["spot"]
+        - key: kubernetes.io/arch
+          operator: In
+          values: ["amd64"]
+        - key: kubernetes.io/os
+          operator: In
+          values: ["linux"]
+
