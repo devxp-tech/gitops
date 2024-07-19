@@ -69,7 +69,6 @@ prometheus:
     externalUrl: https://prometheus.devxp-tech.io/
     externalLabels:
       cluster: lgseksd1
-      cluster_id: lgseksd1
       environment: development
     remoteWrite: # Enable Mimir
       - url: http://mimir-nginx.monitoring.svc:80/api/v1/push
@@ -96,9 +95,9 @@ prometheus:
     probeSelectorNilUsesHelmValues: false
     ruleSelectorNilUsesHelmValues: false
     serviceMonitorSelectorNilUsesHelmValues: false
-    retentionSize: "6GB"
-    retention: 2d
-    walCompression: true
+    # retentionSize: "6GB"   # Removed to test agent
+    # retention: 2d   # Removed to test agent
+    # walCompression: true   # Removed to test agent
     enableAdminAPI: true
     # thanos: # Enable Mimir
     #   image: quay.io/thanos/thanos:v0.32.0
