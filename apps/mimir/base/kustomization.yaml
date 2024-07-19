@@ -184,6 +184,13 @@ helmCharts:
           requests:
             cpu: 1
             memory: 1.5Gi
+        tolerations:
+          - key: "role"
+            operator: "Equal"
+            value: "o11y"
+            effect: "NoSchedule"
+        nodeSelector:
+          role: "o11y"
 
       distributor:
         replicas: 2
@@ -193,6 +200,13 @@ helmCharts:
           requests:
             cpu: 2
             memory: 4Gi
+        tolerations:
+          - key: "role"
+            operator: "Equal"
+            value: "o11y"
+            effect: "NoSchedule"
+        nodeSelector:
+          role: "o11y"
 
       ingester:
         persistentVolume:
@@ -226,6 +240,13 @@ helmCharts:
 
         zoneAwareReplication:
           topologyKey: 'kubernetes.io/hostname'
+        tolerations:
+          - key: "role"
+            operator: "Equal"
+            value: "o11y"
+            effect: "NoSchedule"
+        nodeSelector:
+          role: "o11y"
 
       admin-cache:
         enabled: true
@@ -266,6 +287,13 @@ helmCharts:
           requests:
             cpu: 2
             memory: 4Gi
+        tolerations:
+          - key: "role"
+            operator: "Equal"
+            value: "o11y"
+            effect: "NoSchedule"
+        nodeSelector:
+          role: "o11y"
 
       query_frontend:
         replicas: 1
@@ -275,6 +303,13 @@ helmCharts:
           requests:
             cpu: 2
             memory: 2Gi
+        tolerations:
+          - key: "role"
+            operator: "Equal"
+            value: "o11y"
+            effect: "NoSchedule"
+        nodeSelector:
+          role: "o11y"
 
       ruler:
         replicas: 1
@@ -284,6 +319,13 @@ helmCharts:
           requests:
             cpu: 1
             memory: 2Gi
+        tolerations:
+          - key: "role"
+            operator: "Equal"
+            value: "o11y"
+            effect: "NoSchedule"
+        nodeSelector:
+          role: "o11y"
 
       store_gateway:
         persistentVolume:
@@ -316,6 +358,13 @@ helmCharts:
                 topologyKey: 'kubernetes.io/hostname'
         zoneAwareReplication:
           topologyKey: 'kubernetes.io/hostname'
+        tolerations:
+          - key: "role"
+            operator: "Equal"
+            value: "o11y"
+            effect: "NoSchedule"
+        nodeSelector:
+          role: "o11y"
 
       nginx:
         replicas: 1
@@ -325,16 +374,6 @@ helmCharts:
           requests:
             cpu: 1
             memory: 512Mi
-
-      # Grafana Enterprise Metrics feature related
-      admin_api:
-        replicas: 1
-        resources:
-          limits:
-            memory: 128Mi
-          requests:
-            cpu: 100m
-            memory: 64Mi
 
       gateway:
         replicas: 1
