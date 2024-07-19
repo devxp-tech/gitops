@@ -63,6 +63,12 @@ spec:
   disruption:
     consolidationPolicy: WhenUnderutilized
     expireAfter: 360h
+    disruption:
+      budgets:
+      - duration: 45m
+        nodes: "0"
+        schedule: '@hourly'
+      - nodes: "1"
   limits:
     cpu: 15
     memory: 50Gi
@@ -116,6 +122,12 @@ spec:
   disruption:
     consolidationPolicy: WhenUnderutilized
     expireAfter: 360h
+    disruption:
+      budgets:
+      - duration: 45m
+        nodes: "0"
+        schedule: '@hourly'
+      - nodes: "1"
   limits:
     cpu: 6
     memory: 16Gi
