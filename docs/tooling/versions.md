@@ -3,12 +3,12 @@
 |  App |  Chart | Version | Repo | base | ops | dev | prd |
 | :--: | :-----:| :-----: | :---:| :--: | :-: | :-: | :-: |
 | argo-rollouts | argo-rollouts | 2.35.3 | https://argoproj.github.io/argo-helm | ✅ |  |  |  |
-| argo-workflows | argo-workflows | 0.41.4 | https://argoproj.github.io/argo-helm | ✅ |  |  |  |
+| argo-workflows | argo-workflows | 0.41.11 | https://argoproj.github.io/argo-helm | ✅ |  |  |  |
 | atlantis | atlantis | 5.1.3 | https://runatlantis.github.io/helm-charts |  | [![App Status](https://argocd.devxp-tech.io/api/badge?name=atlantis-ops&revision=true&showAppName=true)](https://argocd.devxp-tech.io/applications/atlantis-ops) |  |  |
 | backstage | devxp-app | 0.2.79 | https://devxp-tech.github.io/helm-charts |  |  | [![App Status](https://argocd.devxp-tech.io/api/badge?name=backstage-dev&revision=true&showAppName=true)](https://argocd.devxp-tech.io/applications/backstage-dev) |  |
 | backstage | devxp-app | 0.2.80 | https://devxp-tech.github.io/helm-charts |  |  |  | [![App Status](https://argocd.devxp-tech.io/api/badge?name=backstage-prd&revision=true&showAppName=true)](https://argocd.devxp-tech.io/applications/backstage-prd) |
 | cert-manager | cert-manager | v1.14.5 | https://charts.jetstack.io | ✅ |  |  |  |
-| cilium | cilium | 1.15.6 | https://helm.cilium.io | ✅ |  |  |  |
+| cilium | cilium | 1.15.7 | https://helm.cilium.io | ✅ |  |  |  |
 | demo-app | devxp-app | 0.2.79 | https://devxp-tech.github.io/helm-charts |  |  |  | [![App Status](https://argocd.devxp-tech.io/api/badge?name=demo-app-prd&revision=true&showAppName=true)](https://argocd.devxp-tech.io/applications/demo-app-prd) |
 | demo-app | devxp-app | 0.2.81 | https://devxp-tech.github.io/helm-charts |  |  | [![App Status](https://argocd.devxp-tech.io/api/badge?name=demo-app-dev&revision=true&showAppName=true)](https://argocd.devxp-tech.io/applications/demo-app-dev) |  |
 | dex | dex | 0.17.1 | https://charts.dexidp.io | ✅ |  |  |  |
