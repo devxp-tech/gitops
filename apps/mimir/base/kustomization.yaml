@@ -69,111 +69,9 @@ helmCharts:
             alertmanager_url: http://prometheus-community-kube-alertmanager.monitoring.svc.cluster.local:9093
           runtime_config:
             file: /var/mimir/runtime.yaml
+
       alertmanager:
         enabled: false
-      # minio:
-      #   enabled: false
-      # compactor:
-      #   persistentVolume:
-      #     size: 20Gi
-      # distributor:
-      #   replicas: 1
-      #   tolerations:
-      #     - key: "role"
-      #       operator: "Equal"
-      #       value: "o11y"
-      #       effect: "NoSchedule"
-      #   nodeSelector:
-      #     role: "o11y"
-      #   extraArgs:
-      #     distributor.ingestion-rate-limit: "1000000"
-      #     distributor.ingestion-burst-size: "10000000"
-      #     validation.max-label-names-per-series: "50"
-      # ingester:
-      #   replicas: 3
-      #   podDisruptionBudget:
-      #     maxUnavailable: 2
-      #   tolerations:
-      #     - key: "role"
-      #       operator: "Equal"
-      #       value: "o11y"
-      #       effect: "NoSchedule"
-      #   nodeSelector:
-      #     role: "o11y"
-      #   persistentVolume:
-      #     size: 8Gi
-      #   zoneAwareReplication:
-      #     enabled: false
-      # nginx:
-      #   replicas: 2
-      #   tolerations:
-      #     - key: "role"
-      #       operator: "Equal"
-      #       value: "spot"
-      #       effect: "NoSchedule"
-      #   nodeSelector:
-      #     role: "spot"
-      #   podDisruptionBudget:
-      #     maxUnavailable: 2
-      # querier:
-      #   replicas: 1
-      #   tolerations:
-      #     - key: "role"
-      #       operator: "Equal"
-      #       value: "o11y"
-      #       effect: "NoSchedule"
-      #   nodeSelector:
-      #     role: "o11y"
-      #   podDisruptionBudget:
-      #     maxUnavailable: 1
-      # ruler:
-      #   enabled: true
-      #   replicas: 1
-      #   tolerations:
-      #     - key: "role"
-      #       operator: "Equal"
-      #       value: "on-demand"
-      #       effect: "NoSchedule"
-      #   nodeSelector:
-      #     role: "on-demand"
-      #   podDisruptionBudget:
-      #     maxUnavailable: 1
-      # query_frontend:
-      #   replicas: 1
-      #   tolerations:
-      #     - key: "role"
-      #       operator: "Equal"
-      #       value: "o11y"
-      #       effect: "NoSchedule"
-      #   nodeSelector:
-      #     role: "o11y"
-      #   podDisruptionBudget:
-      #     maxUnavailable: 1
-      # query_scheduler:
-      #   replicas: 1
-      #   podDisruptionBudget:
-      #     maxUnavailable: 1
-      #   tolerations:
-      #     - key: "role"
-      #       operator: "Equal"
-      #       value: "o11y"
-      #       effect: "NoSchedule"
-      #   nodeSelector:
-      #     role: "o11y"
-      # store_gateway:
-      #   replicas: 2
-      #   podDisruptionBudget:
-      #     maxUnavailable: 2
-      #   tolerations:
-      #     - key: "role"
-      #       operator: "Equal"
-      #       value: "o11y"
-      #       effect: "NoSchedule"
-      #   nodeSelector:
-      #     role: "o11y"
-      #   zoneAwareReplication:
-      #     enabled: false
-
 
       compactor:
         persistentVolume:
@@ -217,7 +115,7 @@ helmCharts:
             memory: 6Gi #12Gi
           requests:
             cpu: 3.5
-            memory: 4Gi #8Gi
+            memory: 3Gi #8Gi
         topologySpreadConstraints: {}
         affinity:
           podAntiAffinity:
@@ -370,19 +268,19 @@ helmCharts:
         replicas: 1
         resources:
           limits:
-            memory: 731Mi
+            memory: 350Mi #731Mi
           requests:
             cpu: 1
-            memory: 512Mi
+            memory: 256Mi #512Mi
 
       gateway:
         replicas: 1
         resources:
           limits:
-            memory: 731Mi
+            memory: 350Mi #731Mi
           requests:
             cpu: 1
-            memory: 512Mi
+            memory: 256Mi #512Mi
 
       metaMonitoring:
         dashboards:
@@ -395,3 +293,107 @@ helmCharts:
           enabled: true
           mimirAlerts: true
           mimirRules: true
+
+
+      # minio:
+      #   enabled: false
+      # compactor:
+      #   persistentVolume:
+      #     size: 20Gi
+      # distributor:
+      #   replicas: 1
+      #   tolerations:
+      #     - key: "role"
+      #       operator: "Equal"
+      #       value: "o11y"
+      #       effect: "NoSchedule"
+      #   nodeSelector:
+      #     role: "o11y"
+      #   extraArgs:
+      #     distributor.ingestion-rate-limit: "1000000"
+      #     distributor.ingestion-burst-size: "10000000"
+      #     validation.max-label-names-per-series: "50"
+      # ingester:
+      #   replicas: 3
+      #   podDisruptionBudget:
+      #     maxUnavailable: 2
+      #   tolerations:
+      #     - key: "role"
+      #       operator: "Equal"
+      #       value: "o11y"
+      #       effect: "NoSchedule"
+      #   nodeSelector:
+      #     role: "o11y"
+      #   persistentVolume:
+      #     size: 8Gi
+      #   zoneAwareReplication:
+      #     enabled: false
+      # nginx:
+      #   replicas: 2
+      #   tolerations:
+      #     - key: "role"
+      #       operator: "Equal"
+      #       value: "spot"
+      #       effect: "NoSchedule"
+      #   nodeSelector:
+      #     role: "spot"
+      #   podDisruptionBudget:
+      #     maxUnavailable: 2
+      # querier:
+      #   replicas: 1
+      #   tolerations:
+      #     - key: "role"
+      #       operator: "Equal"
+      #       value: "o11y"
+      #       effect: "NoSchedule"
+      #   nodeSelector:
+      #     role: "o11y"
+      #   podDisruptionBudget:
+      #     maxUnavailable: 1
+      # ruler:
+      #   enabled: true
+      #   replicas: 1
+      #   tolerations:
+      #     - key: "role"
+      #       operator: "Equal"
+      #       value: "on-demand"
+      #       effect: "NoSchedule"
+      #   nodeSelector:
+      #     role: "on-demand"
+      #   podDisruptionBudget:
+      #     maxUnavailable: 1
+      # query_frontend:
+      #   replicas: 1
+      #   tolerations:
+      #     - key: "role"
+      #       operator: "Equal"
+      #       value: "o11y"
+      #       effect: "NoSchedule"
+      #   nodeSelector:
+      #     role: "o11y"
+      #   podDisruptionBudget:
+      #     maxUnavailable: 1
+      # query_scheduler:
+      #   replicas: 1
+      #   podDisruptionBudget:
+      #     maxUnavailable: 1
+      #   tolerations:
+      #     - key: "role"
+      #       operator: "Equal"
+      #       value: "o11y"
+      #       effect: "NoSchedule"
+      #   nodeSelector:
+      #     role: "o11y"
+      # store_gateway:
+      #   replicas: 2
+      #   podDisruptionBudget:
+      #     maxUnavailable: 2
+      #   tolerations:
+      #     - key: "role"
+      #       operator: "Equal"
+      #       value: "o11y"
+      #       effect: "NoSchedule"
+      #   nodeSelector:
+      #     role: "o11y"
+      #   zoneAwareReplication:
+      #     enabled: false
