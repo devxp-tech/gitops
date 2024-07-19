@@ -1,0 +1,53 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: test-anton
+resources:
+- ../../base
+helmCharts:
+- name: devxp-app
+  releaseName: devxp-app
+  version: 0.1.81
+  repo: https://devxp-tech.github.io/helm-charts
+  valuesInline:
+    name: test-anton
+    image:
+      repository: ghcr.io/devxp-tech/test-anton
+      tag: latest
+    autoscaling:
+      enabled: true
+      minReplicas: 1
+      maxReplicas: 2
+      targetCPUUtilizationPercentage: 80
+    resources:
+      requests:
+        memory: 64Mi
+        cpu: 50m
+      limits:
+        memory: 128Mi
+        cpu: 100m
+    network:
+      enabled: true
+      domain: devxp-tech.io
+      service:
+        type: ClusterIP
+        port: 80
+    probe:
+      enabled: true
+      livenessProbe:
+        path: /health-check/liveness
+        port: 8080
+      readinessProbe:
+        path: /health-check/readiness
+        port: 8080
+    deploy:
+      enabled: true
+    sa:
+      enabled: true
+    quota:
+      enabled: true
+      requests:
+        memory: 1Gi
+        cpu: 1
+      limits:
+        memory: 2Gi
+        cpu: 2
