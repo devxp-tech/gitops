@@ -196,10 +196,10 @@ helmCharts:
         replicas: 2
         resources:
           limits:
-            memory: 5.7Gi
+            memory: 3Gi #5.7Gi
           requests:
             cpu: 2
-            memory: 4Gi
+            memory: 2Gi #4Gi
         tolerations:
           - key: "role"
             operator: "Equal"
@@ -214,10 +214,10 @@ helmCharts:
         replicas: 3
         resources:
           limits:
-            memory: 12Gi
+            memory: 6Gi #12Gi
           requests:
             cpu: 3.5
-            memory: 8Gi
+            memory: 4Gi #8Gi
         topologySpreadConstraints: {}
         affinity:
           podAntiAffinity:
@@ -250,11 +250,11 @@ helmCharts:
 
       admin-cache:
         enabled: true
-        replicas: 2
+        replicas: 1 #2
 
       chunks-cache:
         enabled: true
-        replicas: 2
+        replicas: 1 #2
 
       index-cache:
         enabled: true
@@ -265,7 +265,7 @@ helmCharts:
 
       results-cache:
         enabled: true
-        replicas: 2
+        replicas: 1 #2
 
       minio:
         enabled: false
@@ -283,10 +283,10 @@ helmCharts:
         replicas: 1
         resources:
           limits:
-            memory: 5.6Gi
+            memory: 2Gi #5.6Gi
           requests:
             cpu: 2
-            memory: 4Gi
+            memory: 2Gi #4Gi
         tolerations:
           - key: "role"
             operator: "Equal"
@@ -299,10 +299,10 @@ helmCharts:
         replicas: 1
         resources:
           limits:
-            memory: 2.8Gi
+            memory: 1.4Gi #2.8Gi
           requests:
             cpu: 2
-            memory: 2Gi
+            memory: 1Gi #2Gi
         tolerations:
           - key: "role"
             operator: "Equal"
@@ -315,10 +315,10 @@ helmCharts:
         replicas: 1
         resources:
           limits:
-            memory: 2.8Gi
+            memory: 1.4Gi #2.8Gi
           requests:
             cpu: 1
-            memory: 2Gi
+            memory: 1Gi #2Gi
         tolerations:
           - key: "role"
             operator: "Equal"
@@ -333,10 +333,10 @@ helmCharts:
         replicas: 3
         resources:
           limits:
-            memory: 2.1Gi
+            memory: 1Gi #2.1Gi
           requests:
             cpu: 1
-            memory: 1.5Gi
+            memory: 760Mi #1.5Gi
         topologySpreadConstraints: {}
         affinity:
           podAntiAffinity:
