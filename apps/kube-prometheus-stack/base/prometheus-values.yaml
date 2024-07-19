@@ -83,11 +83,11 @@ prometheus:
         pathPrefix: /
     resources:
       requests:
-        cpu: "50m"
-        memory: "1024Mi" #2800Mi
+        cpu: "200m"
+        memory: "1536Mi" #2800Mi
       limits:
-        cpu: "100m"
-        memory: "1536Mi" #4000Mi
+        cpu: "400m"
+        memory: "2048Mi" #4000Mi
     replicas: 1 # 3 to 1 enabled Mimir
     replicaExternalLabelName: "__replica__"
     podAntiAffinity: hard
@@ -95,10 +95,10 @@ prometheus:
     probeSelectorNilUsesHelmValues: false
     ruleSelectorNilUsesHelmValues: false
     serviceMonitorSelectorNilUsesHelmValues: false
+    enableAdminAPI: true
     # retentionSize: "6GB"   # Removed to test agent
     # retention: 2d   # Removed to test agent
     # walCompression: true   # Removed to test agent
-    enableAdminAPI: true
     # thanos: # Enable Mimir
     #   image: quay.io/thanos/thanos:v0.32.0
     #   version: "v0.31.0"
