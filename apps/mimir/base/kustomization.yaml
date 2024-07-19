@@ -117,8 +117,6 @@ helmCharts:
             cpu: 3.5
             memory: 3Gi #8Gi
         topologySpreadConstraints: {}
-        zoneAwareReplication:
-          enabled: false
         affinity:
           podAntiAffinity:
             requiredDuringSchedulingIgnoredDuringExecution:
@@ -137,9 +135,10 @@ helmCharts:
                       values:
                         - ingester
                 topologyKey: 'kubernetes.io/hostname'
-
         zoneAwareReplication:
-          topologyKey: 'kubernetes.io/hostname'
+          enabled: false
+        # zoneAwareReplication:
+        #   topologyKey: 'kubernetes.io/hostname'
         tolerations:
           - key: "role"
             operator: "Equal"
@@ -238,8 +237,6 @@ helmCharts:
             cpu: 1
             memory: 760Mi #1.5Gi
         topologySpreadConstraints: {}
-        zoneAwareReplication:
-          enabled: false
         affinity:
           podAntiAffinity:
             requiredDuringSchedulingIgnoredDuringExecution:
@@ -259,7 +256,9 @@ helmCharts:
                         - store-gateway
                 topologyKey: 'kubernetes.io/hostname'
         zoneAwareReplication:
-          topologyKey: 'kubernetes.io/hostname'
+          enabled: false
+        # zoneAwareReplication:
+        #   topologyKey: 'kubernetes.io/hostname'
         tolerations:
           - key: "role"
             operator: "Equal"
