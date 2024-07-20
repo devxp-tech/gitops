@@ -29,7 +29,6 @@ helmCharts:
       mimir:
         structuredConfig:
           memberlist:
-            cluster_label_verification_disabled: true
             cluster_label: "mimir-monitoring"
           common:
             storage:
