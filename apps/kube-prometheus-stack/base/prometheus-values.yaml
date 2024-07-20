@@ -75,9 +75,9 @@ prometheus:
         headers:
           X-Scope-OrgID: lgsleksd1
         queueConfig:
-          capacity: 1000
-          maxShards: 200
-          maxSamplesPerSend: 200
+          capacity: 500
+          maxShards: 100
+          maxSamplesPerSend: 100
     alertingEndpoints:
       - name: prometheus-community-kube-alertmanager
         namespace: monitoring
