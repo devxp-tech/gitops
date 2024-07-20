@@ -72,8 +72,8 @@ prometheus:
       environment: development
     remoteWrite: # Enable Mimir
       - url: http://mimir-nginx.monitoring.svc:80/api/v1/push
-        headers:
-          X-Scope-OrgID: lgsleksd1
+        # headers:
+        #   X-Scope-OrgID: lgsleksd1
         queueConfig:
           capacity: 5000
           minShards: 1
