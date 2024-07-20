@@ -30,6 +30,7 @@ helmCharts:
         structuredConfig:
           memberlist:
             cluster_label: "mimir-monitoring"
+          max-label-names-per-series: 50
           common:
             storage:
               backend: s3
