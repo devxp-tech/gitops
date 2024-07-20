@@ -66,7 +66,7 @@ helmCharts:
             ingestion_rate: 80000
             max_global_series_per_metric: 0
             max_global_series_per_user: 0
-            max_label_names_per_series: 40
+            max_label_names_per_series: 50
             ruler_max_rules_per_rule_group: 80
           ruler:
             alertmanager_url: http://prometheus-community-kube-alertmanager.monitoring.svc.cluster.local:9093
