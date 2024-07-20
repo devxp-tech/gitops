@@ -109,7 +109,7 @@ helmCharts:
       ingester:
         persistentVolume:
           size: 50Gi
-        replicas: 3
+        replicas: 2
         resources:
           limits:
             memory: 6Gi #12Gi
