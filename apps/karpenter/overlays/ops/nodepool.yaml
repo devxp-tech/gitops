@@ -8,7 +8,7 @@ spec:
     expireAfter: 360h
   limits:
     cpu: 16
-    memory: 40Gi
+    memory: 36Gi
   template:
     metadata:
       labels:
