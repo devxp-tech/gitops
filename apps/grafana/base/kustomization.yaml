@@ -21,7 +21,7 @@ helmCharts:
           value: "on-demand"
           effect: "NoSchedule"
       nodeSelector:
-        role: "o11y"
+        role: "on-demand"
       persistence:
         enabled: true
         existingClaim: grafana

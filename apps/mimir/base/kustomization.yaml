@@ -91,7 +91,7 @@ helmCharts:
             value: "on-demand"
             effect: "NoSchedule"
         nodeSelector:
-          role: "o11y"
+          role: "on-demand"
 
       distributor:
         replicas: 2
@@ -107,7 +107,7 @@ helmCharts:
             value: "on-demand"
             effect: "NoSchedule"
         nodeSelector:
-          role: "o11y"
+          role: "on-demand"
 
       ingester:
         persistentVolume:
@@ -128,7 +128,7 @@ helmCharts:
             value: "on-demand"
             effect: "NoSchedule"
         nodeSelector:
-          role: "o11y"
+          role: "on-demand"
 
       admin-cache:
         enabled: true
@@ -175,7 +175,7 @@ helmCharts:
             value: "on-demand"
             effect: "NoSchedule"
         nodeSelector:
-          role: "o11y"
+          role: "on-demand"
 
       query_frontend:
         replicas: 1
@@ -191,7 +191,7 @@ helmCharts:
             value: "on-demand"
             effect: "NoSchedule"
         nodeSelector:
-          role: "o11y"
+          role: "on-demand"
 
       ruler:
         replicas: 1
@@ -207,7 +207,7 @@ helmCharts:
             value: "on-demand"
             effect: "NoSchedule"
         nodeSelector:
-          role: "o11y"
+          role: "on-demand"
 
       store_gateway:
         persistentVolume:
@@ -228,7 +228,7 @@ helmCharts:
             value: "on-demand"
             effect: "NoSchedule"
         nodeSelector:
-          role: "o11y"
+          role: "on-demand"
 
       nginx:
         replicas: 1
