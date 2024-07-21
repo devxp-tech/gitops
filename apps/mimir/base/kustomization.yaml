@@ -88,7 +88,7 @@ helmCharts:
         tolerations:
           - key: "role"
             operator: "Equal"
-            value: "o11y"
+            value: "on-demand"
             effect: "NoSchedule"
         nodeSelector:
           role: "o11y"
@@ -104,7 +104,7 @@ helmCharts:
         tolerations:
           - key: "role"
             operator: "Equal"
-            value: "o11y"
+            value: "on-demand"
             effect: "NoSchedule"
         nodeSelector:
           role: "o11y"
@@ -125,7 +125,7 @@ helmCharts:
         tolerations:
           - key: "role"
             operator: "Equal"
-            value: "o11y"
+            value: "on-demand"
             effect: "NoSchedule"
         nodeSelector:
           role: "o11y"
@@ -172,7 +172,7 @@ helmCharts:
         tolerations:
           - key: "role"
             operator: "Equal"
-            value: "o11y"
+            value: "on-demand"
             effect: "NoSchedule"
         nodeSelector:
           role: "o11y"
@@ -188,7 +188,7 @@ helmCharts:
         tolerations:
           - key: "role"
             operator: "Equal"
-            value: "o11y"
+            value: "on-demand"
             effect: "NoSchedule"
         nodeSelector:
           role: "o11y"
@@ -204,7 +204,7 @@ helmCharts:
         tolerations:
           - key: "role"
             operator: "Equal"
-            value: "o11y"
+            value: "on-demand"
             effect: "NoSchedule"
         nodeSelector:
           role: "o11y"
@@ -225,7 +225,7 @@ helmCharts:
         tolerations:
           - key: "role"
             operator: "Equal"
-            value: "o11y"
+            value: "on-demand"
             effect: "NoSchedule"
         nodeSelector:
           role: "o11y"

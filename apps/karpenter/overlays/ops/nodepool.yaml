@@ -55,57 +55,6 @@ spec:
 apiVersion: karpenter.sh/v1beta1
 kind: NodePool
 metadata:
-  name: o11y
-spec:
-  disruption:
-    consolidationPolicy: WhenUnderutilized
-    expireAfter: 360h
-  # limits:
-  #   cpu: 10
-  #   memory: 16Gi
-  template:
-    metadata:
-      labels:
-        role: o11y
-    spec:
-      nodeClassRef:
-        name: default
-      kubelet:
-        evictionHard:
-          memory.available: 5%
-          nodefs.available: 10%
-          nodefs.inodesFree: 10%
-      taints:
-        - key: role
-          value: o11y
-          effect: NoSchedule
-      requirements:
-        - key: karpenter.k8s.aws/instance-category
-          operator: In
-          values: ["c", "m", "t", "r"]
-        - key: karpenter.k8s.aws/instance-cpu
-          operator: Gt
-          values: ["1"]
-        - key: karpenter.k8s.aws/instance-memory
-          operator: Gt
-          values: ['4095'] # 4 * 1024 -1
-        - key: "karpenter.k8s.aws/instance-generation"
-          operator: Gt
-          values: ["2"]
-        - key: "topology.kubernetes.io/zone"
-          operator: In
-          values: ["us-east-1a", "us-east-1b", "us-east-1c"]
-        - key: "kubernetes.io/arch"
-          operator: In
-          values: ["arm64", "amd64"]
-        - key: "karpenter.sh/capacity-type"
-          operator: In
-          values: ["on-demand"]
-
----
-apiVersion: karpenter.sh/v1beta1
-kind: NodePool
-metadata:
   name: spot
 spec:
   disruption:
