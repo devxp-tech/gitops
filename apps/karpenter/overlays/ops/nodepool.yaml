@@ -6,9 +6,9 @@ spec:
   disruption:
     consolidationPolicy: WhenUnderutilized
     expireAfter: 360h
-  # limits:
-  #   cpu: 10
-  #   memory: 16Gi
+  limits:
+    cpu: 16
+    memory: 40Gi
   template:
     metadata:
       labels:
@@ -60,9 +60,9 @@ spec:
   disruption:
     consolidationPolicy: WhenUnderutilized
     expireAfter: 360h
-  # limits:
-  #   cpu: 10
-  #   memory: 24Gi
+  limits:
+    cpu: 12
+    memory: 32Gi
   template:
     metadata:
       labels:
