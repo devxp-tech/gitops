@@ -13,7 +13,7 @@ helmCharts:
       global:
         prometheus:
           enabled: false
-          fqdn: http://kubecost-cost-analyzer-mimir-proxy.kubecost.svc:8085/prometheus' #http://prometheus-community-kube-prometheus.monitoring.svc.cluster.local:9090
+          fqdn: http://kubecost-cost-analyzer-mimir-proxy.kubecost.svc:8085/prometheus #http://prometheus-community-kube-prometheus.monitoring.svc.cluster.local:9090
         alertmanager: # Supply an alertmanager FQDN to receive notifications from the app.
           enabled: false
           fqdn: http://prometheus-community-kube-alertmanager.monitoring.svc.cluster.local:9093
