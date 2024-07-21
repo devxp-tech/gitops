@@ -14,6 +14,9 @@ helmCharts:
         prometheus:
           enabled: false
           fqdn: http://mimir-nginx.monitoring.svc:80/prometheus #http://prometheus-community-kube-prometheus.monitoring.svc.cluster.local:9090
+        alertmanager: # Supply an alertmanager FQDN to receive notifications from the app.
+          enabled: false
+          fqdn: http://prometheus-community-kube-alertmanager.monitoring.svc.cluster.local:9093
         grafana:
           enabled: false
           domainName: "grafana.monitoring.svc.cluster.local"
@@ -65,12 +68,12 @@ helmCharts:
 
       # Kubecost Cluster Controller for Right Sizing and Cluster Turndown
       clusterController:
-        enabled: false
+        enabled: true
         actionConfigs:
           # this configures the Kubecost Namespace Turndown action
           # for more details, see documentation at https://docs.kubecost.com/using-kubecost/navigating-the-kubecost-ui/savings/savings-actions#namespace-turndown
           namespaceTurndown:
-            - name: my-ns-turndown-action
+            - name: ns-turndown-action
               dryRun: true
               schedule: "0 20 * * *"
               type: Scheduled
@@ -94,10 +97,10 @@ helmCharts:
                 turndown: ignore
               params:
                 minNamespaceAge: 4h
-      tolerations:
-        - key: "role"
-          operator: "Equal"
-          value: "on-demand"
-          effect: "NoSchedule"
-      nodeSelector:
-        role: "on-demand"
+      # tolerations:
+      #   - key: "role"
+      #     operator: "Equal"
+      #     value: "on-demand"
+      #     effect: "NoSchedule"
+      # nodeSelector:
+      #   role: "on-demand"

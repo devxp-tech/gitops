@@ -97,14 +97,14 @@ spec:
             summary: Prometheus AlertManager E2E dead man switch (instance {{ $labels.instance }})
             description: "Prometheus DeadManSwitch is an always-firing alert. It's used as an end-to-end test of Prometheus through the Alertmanager.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 
-        - alert: PrometheusNotConnectedToAlertmanager
-          expr: "prometheus_notifications_alertmanagers_discovered < 1"
-          for: 0m
-          labels:
-            severity: critical
-          annotations:
-            summary: Prometheus not connected to alertmanager (instance {{ $labels.instance }})
-            description: "Prometheus cannot connect the alertmanager\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+        # - alert: PrometheusNotConnectedToAlertmanager
+        #   expr: "prometheus_notifications_alertmanagers_discovered < 1"
+        #   for: 0m
+        #   labels:
+        #     severity: critical
+        #   annotations:
+        #     summary: Prometheus not connected to alertmanager (instance {{ $labels.instance }})
+        #     description: "Prometheus cannot connect the alertmanager\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 
         - alert: PrometheusRuleEvaluationFailures
           expr: "increase(prometheus_rule_evaluation_failures_total[3m]) > 0"
