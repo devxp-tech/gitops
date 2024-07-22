@@ -142,6 +142,7 @@ helmCharts:
       index-cache:
         enabled: true
         replicas: 1 #3
+        allocatedMemory: 256
 
       metadata-cache:
         enabled: true
@@ -198,10 +199,10 @@ helmCharts:
         replicas: 1
         resources:
           limits:
-            memory: 1.4Gi # 50% of 2.8Gi
+            memory: 2Gi # 50% of 2.8Gi
           requests:
-            cpu: 300m   # 30% of 1
-            memory: 1Gi # 30% of 2Gi
+            cpu: 500m   # 50% of 1
+            memory: 1Gi # 50% of 2Gi
         tolerations:
           - key: "role"
             operator: "Equal"
