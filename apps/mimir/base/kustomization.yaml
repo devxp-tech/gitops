@@ -151,7 +151,7 @@ helmCharts:
       results-cache:
         enabled: true
         replicas: 1 #2
-        allocatedMemory: 128
+        allocatedMemory: 64
 
       minio:
         enabled: false

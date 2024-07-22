@@ -86,10 +86,10 @@ prometheus:
     resources:
       requests:
         cpu: "200m"
-        memory: "1536Mi" #2800Mi
+        memory: "2048Mi" #2800Mi
       limits:
         cpu: "400m"
-        memory: "2048Mi" #4000Mi
+        memory: "3096Mi" #4000Mi
     replicas: 1 # 3 to 1 enabled Mimir
     replicaExternalLabelName: "__replica__"
     podAntiAffinity: hard
