@@ -137,7 +137,12 @@ helmCharts:
       chunks-cache:
         enabled: true
         replicas: 1 #2
-        allocatedMemory: 512
+        allocatedMemory: 256
+        resources:
+          requests:
+            cpu: 60m
+
+
 
       index-cache:
         enabled: true
