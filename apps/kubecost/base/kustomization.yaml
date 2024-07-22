@@ -13,7 +13,7 @@ helmCharts:
       global:
         prometheus:
           enabled: false
-          fqdn: http://kubecost-cost-analyzer-mimir-proxy.kubecost.svc.cluster.local:8085/ #http://prometheus-community-kube-prometheus.monitoring.svc.cluster.local:9090
+          fqdn: "http://kubecost-cost-analyzer-mimir-proxy.kubecost.svc.cluster.local:8085/prometheus" #http://prometheus-community-kube-prometheus.monitoring.svc.cluster.local:9090
         alertmanager: # Supply an alertmanager FQDN to receive notifications from the app.
           enabled: false
           fqdn: http://prometheus-community-kube-alertmanager.monitoring.svc.cluster.local:9093
@@ -32,7 +32,7 @@ helmCharts:
           name: mimir-proxy
           image: nginxinc/nginx-unprivileged
           port: 8085
-          mimirEndpoint: http://mimir-nginx.monitoring.svc:80/api/v1/push
+          mimirEndpoint: http://mimir-nginx.monitoring.svc.cluster.local
           orgIdentifier: devxp-tech
       networkCosts:
         enabled: false
