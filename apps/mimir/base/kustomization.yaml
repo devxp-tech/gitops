@@ -146,6 +146,7 @@ helmCharts:
 
       metadata-cache:
         enabled: true
+        allocatedMemory: 128
 
       results-cache:
         enabled: true
