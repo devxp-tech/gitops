@@ -1,0 +1,11 @@
+{
+  "appName": "test-volody",
+  "userGivenName": "test-volody",
+  "destNamespace": "test-volody",
+  "destServer": "https://kubernetes.default.svc",
+  "srcPath": "apps/test-volody/overlays/dev",
+  "srcRepoURL": "https://github.com/devxp-tech/gitops.git",
+  "srcTargetRevision": "",
+  "CreateNamespace": true,
+  "labels": null
+}
