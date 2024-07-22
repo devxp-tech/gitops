@@ -140,23 +140,30 @@ helmCharts:
         allocatedMemory: 256
         resources:
           requests:
-            cpu: 60m
-
-
+            cpu: 30m
 
       index-cache:
         enabled: true
         replicas: 1 #3
         allocatedMemory: 64
+        resources:
+          requests:
+            cpu: 30m
 
       metadata-cache:
         enabled: true
         allocatedMemory: 64
+        resources:
+          requests:
+            cpu: 30m
 
       results-cache:
         enabled: true
         replicas: 1 #2
         allocatedMemory: 64
+        resources:
+          requests:
+            cpu: 30m
 
       minio:
         enabled: false
