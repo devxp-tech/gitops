@@ -137,6 +137,7 @@ helmCharts:
       chunks-cache:
         enabled: true
         replicas: 1 #2
+        allocatedMemory: 1024
 
       index-cache:
         enabled: true
