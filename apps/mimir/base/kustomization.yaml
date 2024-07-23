@@ -183,7 +183,7 @@ helmCharts:
           limits:
             memory: 1.68Gi # 30% of 5.6Gi
           requests:
-            cpu: 600m   # 30% of 2
+            cpu: 300m   # 30% of 2
             memory: 1.2Gi # 30% of 4Gi
         tolerations:
           - key: "role"
