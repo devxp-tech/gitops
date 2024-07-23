@@ -46,23 +46,23 @@ helmCharts:
           type: ClusterIP
           port: 80
 
-      probe:
-        enabled: true
-        livenessProbe:
-          path: /health-check/liveness
-          port: 8080
-        readinessProbe:
-          path: /health-check/readiness
-          port: 8080
+      # probe:
+      #   enabled: true
+      #   livenessProbe:
+      #     path: /health-check/liveness
+      #     port: 8080
+      #   readinessProbe:
+      #     path: /health-check/readiness
+      #     port: 8080
 
-      sa:
-        enabled: true
+      # sa:
+      #   enabled: true
 
-      quota:
-        enabled: true
-        requests:
-          memory: 1Gi
-          cpu: 1
-        limits:
-          memory: 2Gi
-          cpu: 2
+      # quota:
+      #   enabled: true
+      #   requests:
+      #     memory: 1Gi
+      #     cpu: 1
+      #   limits:
+      #     memory: 2Gi
+      #     cpu: 2
