@@ -63,20 +63,11 @@ helmCharts:
       mariadb:
         auth:
           existingSecret: wordpress-secrets #mariadb-password
-        tolerations:
-          - key: "role"
-            operator: "Equal"
-            value: "on-demand"
-            effect: "NoSchedule"
-        nodeSelector:
-          role: "on-demand"
         primary:
           resources:
             limits:
-              cpu: 150m
+              cpu: 120m
               memory: 256Mi
             requests:
-              cpu: 50m
-              memory: 159Mi
-        # nodeSelector:
-        #   topology.kubernetes.io/zone: "us-east-1c"
+              cpu: 60m
+              memory: 192Mi
