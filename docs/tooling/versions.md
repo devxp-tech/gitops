@@ -32,7 +32,7 @@
 | metrics-server | metrics-server | 3.12.1 | https://kubernetes-sigs.github.io/metrics-server/ | ✅ |  |  |  |
 | mimir | mimir-distributed | 5.4.0 | https://grafana.github.io/helm-charts | ✅ |  |  |  |
 | nexus | nexus-repository-manager | 64.2.0 | https://sonatype.github.io/helm3-charts | ✅ |  |  |  |
-| opentelemetry-operator | opentelemetry-operator | 0.60.0 | https://open-telemetry.github.io/opentelemetry-helm-charts | ✅ |  |  |  |
+| opentelemetry-operator | opentelemetry-operator | 0.64.4 | https://open-telemetry.github.io/opentelemetry-helm-charts | ✅ |  |  |  |
 | promtail | promtail | 6.16.0 | https://grafana.github.io/helm-charts | ✅ |  |  |  |
 | sealed-secrets | sealed-secrets | 2.15.3 | https://bitnami-labs.github.io/sealed-secrets | ✅ |  |  |  |
 | sonarqube | sonarqube | 10.6.0+3033 | https://SonarSource.github.io/helm-chart-sonarqube | ✅ |  |  |  |
