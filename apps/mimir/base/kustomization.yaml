@@ -249,11 +249,12 @@ helmCharts:
       nginx:
         replicas: 1
         resources:
-          limits:
-            memory: 219Mi # 30% of 731Mi
           requests:
-            cpu: 300m   # 30% of 1
-            memory: 154Mi # 30% of 512Mi
+            cpu: 100m   # 30% of 1
+            memory: 64Mi # 30% of 512Mi
+          limits:
+            memory: 128Mi # 30% of 731Mi
+            cpu: 100m   # 30% of 1
 
       gateway:
         replicas: 1
