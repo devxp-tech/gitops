@@ -14,19 +14,13 @@ helmCharts:
         commonLabels:
           app: hotrod
           version: 0.2.22
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-              - matchExpressions:
-                  - key: role
-                    operator: In
-                    values:
-                      - spot
+
       image:
         repository: jaegertracing/example-hotrod #kong/httpbin
+
       network:
         domain: devxp-tech.io
+
       envs:
         # - name: OTEL_EXPORTER_OTLP_ENDPOINT
         #   value: http://otel-collector.observability.svc.cluster.local:4318
@@ -36,10 +30,21 @@ helmCharts:
           value: http://otel-collector.observability.svc.cluster.local:4318
         - name: OTEL_EXPORTER_JAEGER_ENDPOINT
           value: http://otel-collector.observability.svc.cluster.local:14268/api/traces
-      quota:
-        enabled: false
+
       autoscaling:
         enabled: false
+
+      quota:
+        enabled: false
+
+      resources:
+        requests:
+          cpu: 10m
+          memory: 32Mi
+        limits:
+          cpu: 30m
+          memory: 64Mi
+
       livenessProbe:
         enabled: false
       readinessProbe:
