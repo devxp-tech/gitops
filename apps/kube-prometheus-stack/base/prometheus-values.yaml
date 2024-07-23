@@ -12,10 +12,10 @@ prometheus-node-exporter:
   resources:
     requests:
       cpu: 20m
-      memory: 25Mi
+      memory: 24Mi
     limits:
-      cpu: 400m
-      memory: 250Mi
+      cpu: 75m
+      memory: 64Mi
   prometheus:
     monitor:
       enabled: true
