@@ -15,7 +15,7 @@ helmCharts:
           memory: 128Mi
         limits:
           cpu: 90m
-          memory: 198Mi
+          memory: 256Mi
       existingSecret: wordpress-secrets
       metrics:
         enabled: true
@@ -70,5 +70,13 @@ helmCharts:
             effect: "NoSchedule"
         nodeSelector:
           role: "on-demand"
+        primary:
+          resources:
+            limits:
+              cpu: 150m
+              memory: 256Mi
+            requests:
+              cpu: 50m
+              memory: 159Mi
         # nodeSelector:
         #   topology.kubernetes.io/zone: "us-east-1c"
