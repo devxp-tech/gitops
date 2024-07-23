@@ -10,16 +10,16 @@ prometheusOperator:
   createCustomResource: false
   resources:
     requests:
-      cpu: 50m
-      memory: 143M
+      cpu: 30m
+      memory: 64M
     limits:
-      cpu: 150m
-      memory: 1192M
+      cpu: 80m
+      memory: 128M
   prometheusConfigReloader:
     resources:
       requests:
-        cpu: 200m
+        cpu: 50m
         memory: 50Mi
       limits:
-        cpu: 400m
+        cpu: 100m
         memory: 50Mi
