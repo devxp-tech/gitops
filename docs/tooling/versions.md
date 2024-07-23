@@ -10,7 +10,7 @@
 | cert-manager | cert-manager | v1.14.5 | https://charts.jetstack.io | ✅ |  |  |  |
 | cilium | cilium | 1.15.7 | https://helm.cilium.io | ✅ |  |  |  |
 | demo-app | devxp-app | 0.2.81 | https://devxp-tech.github.io/helm-charts |  |  |  | [![App Status](https://argocd.devxp-tech.io/api/badge?name=demo-app-prd&revision=true&showAppName=true)](https://argocd.devxp-tech.io/applications/demo-app-prd) |
-| demo-app | devxp-app | 0.2.81 | https://devxp-tech.github.io/helm-charts |  |  | [![App Status](https://argocd.devxp-tech.io/api/badge?name=demo-app-dev&revision=true&showAppName=true)](https://argocd.devxp-tech.io/applications/demo-app-dev) |  |
+| demo-app | devxp-app | 0.2.82 | https://devxp-tech.github.io/helm-charts |  |  | [![App Status](https://argocd.devxp-tech.io/api/badge?name=demo-app-dev&revision=true&showAppName=true)](https://argocd.devxp-tech.io/applications/demo-app-dev) |  |
 | dex | dex | 0.17.1 | https://charts.dexidp.io | ✅ |  |  |  |
 | external-dns | external-dns | 7.5.5 | https://charts.bitnami.com/bitnami | ✅ |  |  |  |
 | grafana | grafana | 8.0.2 | https://grafana.github.io/helm-charts | ✅ |  |  |  |
