@@ -6,7 +6,7 @@ resources:
 helmCharts:
   - name: devxp-app
     releaseName: devxp-app
-    version: 0.2.81
+    version: 0.2.82
     repo: https://devxp-tech.github.io/helm-charts
     valuesInline:
       name: demo-app
@@ -45,24 +45,3 @@ helmCharts:
         service:
           type: ClusterIP
           port: 80
-
-      # probe:
-      #   enabled: true
-      #   livenessProbe:
-      #     path: /health-check/liveness
-      #     port: 8080
-      #   readinessProbe:
-      #     path: /health-check/readiness
-      #     port: 8080
-
-      # sa:
-      #   enabled: true
-
-      # quota:
-      #   enabled: true
-      #   requests:
-      #     memory: 1Gi
-      #     cpu: 1
-      #   limits:
-      #     memory: 2Gi
-      #     cpu: 2
