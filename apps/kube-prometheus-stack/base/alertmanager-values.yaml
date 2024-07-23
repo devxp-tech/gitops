@@ -5,6 +5,13 @@ alertmanager:
     forceEnableClusterMode: true
     baseURL: "https://alertmanager.devxp-tech.io"
     externalUrl: https://alertmanager.devxp-tech.io
+    resources:
+      requests:
+        cpu: "10m"
+        memory: "64Mi"
+      limits:
+        cpu: "40m"
+        memory: "128Mi"
     secrets:
       - alertmanager-secret
   config:

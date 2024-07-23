@@ -85,10 +85,10 @@ prometheus:
         pathPrefix: /
     resources:
       requests:
-        cpu: "200m"
+        cpu: "100m"
         memory: "2048Mi" #2800Mi
       limits:
-        cpu: "400m"
+        cpu: "200m"
         memory: "3096Mi" #4000Mi
     replicas: 1 # 3 to 1 enabled Mimir
     replicaExternalLabelName: "__replica__"
