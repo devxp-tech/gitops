@@ -96,11 +96,11 @@ helmCharts:
       primary:
         resources:
           limits:
-            cpu: 100m
-            memory: 256Mi
-          requests:
-            cpu: 50m
+            cpu: 90m
             memory: 128Mi
+          requests:
+            cpu: 10m
+            memory: 84Mi
       tolerations:
         - key: "role"
           operator: "Equal"
