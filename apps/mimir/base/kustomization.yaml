@@ -155,7 +155,7 @@ helmCharts:
         allocatedMemory: 64
         resources:
           requests:
-            cpu: 30m
+            cpu: 10m
 
       results-cache:
         enabled: true

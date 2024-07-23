@@ -127,11 +127,11 @@ helmCharts:
 
       resources:
         requests:
-          memory: 500Mi
-          cpu: 100m
+          memory: 256Mi
+          cpu: 50m
         limits:
-          memory: 900Mi
-          cpu: 500m
+          memory: 512Mi
+          cpu: 200m
 
       volumeClaim:
         enabled: true
