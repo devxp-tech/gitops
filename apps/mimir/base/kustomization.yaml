@@ -213,10 +213,10 @@ helmCharts:
         replicas: 1
         resources:
           limits:
-            memory: 2Gi # 50% of 2.8Gi
+            memory: 1024Mi # 50% of 2.8Gi
           requests:
-            cpu: 500m   # 50% of 1
-            memory: 1Gi # 50% of 2Gi
+            cpu: 200m   # 50% of 1
+            memory: 512Mi # 50% of 2Gi
         tolerations:
           - key: "role"
             operator: "Equal"
@@ -233,8 +233,8 @@ helmCharts:
           limits:
             memory: 640Mi # 30% of 2.1Gi
           requests:
-            cpu: 300m   # 30% of 1
-            memory: 460Mi # 30% of 1.5Gi
+            cpu: 100m   # 30% of 1
+            memory: 256Mi # 30% of 1.5Gi
         topologySpreadConstraints: {}
         zoneAwareReplication:
           enabled: false
@@ -262,7 +262,7 @@ helmCharts:
           limits:
             memory: 219Mi # 30% of 731Mi
           requests:
-            cpu: 300m   # 30% of 1
+            cpu: 100m   # 30% of 1
             memory: 154Mi # 30% of 512Mi
 
       metaMonitoring:
