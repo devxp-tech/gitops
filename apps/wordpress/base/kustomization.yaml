@@ -9,15 +9,13 @@ helmCharts:
     version: 23.0.1
     repo: https://charts.bitnami.com/bitnami
     valuesInline:
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-              - matchExpressions:
-                  - key: role
-                    operator: In
-                    values:
-                      - spot
+      resources:
+        requests:
+          cpu: 30m
+          memory: 128Mi
+        limits:
+          cpu: 90m
+          memory: 198Mi
       existingSecret: wordpress-secrets
       metrics:
         enabled: true
