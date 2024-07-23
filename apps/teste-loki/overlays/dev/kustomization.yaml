@@ -13,65 +13,39 @@ helmCharts:
     repo: https://devxp-tech.github.io/helm-charts
     valuesInline:
       name: teste-loki
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-              - matchExpressions:
-                  - key: role
-                    operator: In
-                    values:
-                      - spot
+
       image:
         repository: ghcr.io/devxp-tech/teste-loki
         tag: cd6fc9c0
+
       instrumentation: go
       # podAnnotations:
       #   instrumentation.opentelemetry.io/otel-go-auto-target-exe: '/app'
+
       monitoring:
         serviceMonitor:
           enabled: true
+
       envFrom:
         - secretRef:
             name: postgres-secrets
+
       network:
         domain: devxp-tech.io
+
       quota:
         enabled: true
+
+      resources:
+        requests:
+          cpu: "10m"
+          memory: "32Mi"
+        limits:
+          cpu: "30m"
+          memory: "64Mi"
+
       autoscaling:
         enabled: true
         minReplicas: 1
         maxReplicas: 2
         targetCPUUtilizationPercentage: 80
-
-# - name: postgresql
-#   releaseName: postgresql
-#   version: 12.1.5
-#   repo: https://charts.bitnami.com/bitnami
-#   valuesInline:
-#     commonAnnotations:
-#       sidecar.istio.io/inject: "false"
-#     commonLabels:
-#       app: teste-loki
-#       version: 15.1.0
-#     global:
-#       postgresql:
-#         auth:
-#           database: teste-loki
-#           username: teste-loki
-#           existingSecret: postgres-secrets
-#           secretKeys:
-#             adminPasswordKey: POSTGRES_PASSWORD
-#             userPasswordKey: POSTGRES_PASSWORD
-#     image:
-#       debug: true
-#     primary:
-#       podAnnotations:
-#         sidecar.istio.io/inject: "false"
-#       resources:
-#         limits:
-#           cpu: 250m
-#           memory: 2048Mi
-#         requests:
-#           cpu: 50m
-#           memory: 512Mi
