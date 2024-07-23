@@ -37,10 +37,10 @@ helmCharts:
       controller:
         resources:
           requests:
-            cpu: 50m
+            cpu: 80m
             memory: 384Mi
           limits:
-            cpu: 100m
+            cpu: 120m
             memory: 512Mi
       settings:
         clusterName: lgseksd1
