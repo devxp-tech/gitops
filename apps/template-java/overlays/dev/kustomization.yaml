@@ -13,15 +13,6 @@ helmCharts:
       global:
         network:
           domain: devxp-tech.io
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-              - matchExpressions:
-                  - key: role
-                    operator: In
-                    values:
-                      - spot
       actuator:
         enabled: true
       instrumentation: java
@@ -35,10 +26,10 @@ helmCharts:
         targetCPUUtilizationPercentage: 80
       resources:
         requests:
-          memory: 128Mi
+          memory: 192Mi
           cpu: 20m
         limits:
-          memory: 256Mi
+          memory: 350Mi
           cpu: 80m
       monitoring:
         serviceMonitor:
