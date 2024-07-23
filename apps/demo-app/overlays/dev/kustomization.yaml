@@ -10,40 +10,36 @@ helmCharts:
     repo: https://devxp-tech.github.io/helm-charts
     valuesInline:
       name: demo-app
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-              - matchExpressions:
-                  - key: role
-                    operator: In
-                    values:
-                      - spot
       image:
         repository: ghcr.io/devxp-tech/demo-app
         tag: 7df51a75
       instrumentation: go
+
       monitoring:
         serviceMonitor:
           enabled: true
+
       autoscaling:
         enabled: true
         minReplicas: 1
         maxReplicas: 2
         targetCPUUtilizationPercentage: 80
+
       resources:
         requests:
-          memory: 64Mi
-          cpu: 50m
+          cpu: 10m
+          memory: 32Mi
         limits:
-          memory: 128Mi
-          cpu: 100m
+          cpu: 30m
+          memory: 64Mi
+
       network:
         enabled: true
         domain: devxp-tech.io
         service:
           type: ClusterIP
           port: 80
+
       probe:
         enabled: true
         livenessProbe:
@@ -52,10 +48,13 @@ helmCharts:
         readinessProbe:
           path: /health-check/readiness
           port: 8080
+
       deploy:
         enabled: true
+
       sa:
         enabled: true
+
       quota:
         enabled: true
         requests:

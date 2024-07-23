@@ -38,11 +38,11 @@ helmCharts:
 
       resources:
         requests:
-          cpu: "10m"
-          memory: "32Mi"
+          cpu: 10m
+          memory: 32Mi
         limits:
-          cpu: "30m"
-          memory: "64Mi"
+          cpu: 30m
+          memory: 64Mi
 
       autoscaling:
         enabled: true
