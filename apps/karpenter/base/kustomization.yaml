@@ -38,10 +38,10 @@ helmCharts:
         resources:
           requests:
             cpu: 50m
-            memory: 512Mi
+            memory: 384Mi
           limits:
             cpu: 100m
-            memory: 768Mi
+            memory: 512Mi
       settings:
         clusterName: lgseksd1
         clusterEndpoint: https://7947638F25F34C5F3CAFEF8286994CB3.gr7.us-east-1.eks.amazonaws.com
