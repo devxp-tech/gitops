@@ -213,7 +213,7 @@ helmCharts:
         replicas: 1
         resources:
           limits:
-            memory: 1200Mi # 50% of 2.8Gi
+            memory: 1400Mi # 50% of 2.8Gi
           requests:
             cpu: 300m   # 50% of 1
             memory: 1024Mi # 50% of 2Gi
