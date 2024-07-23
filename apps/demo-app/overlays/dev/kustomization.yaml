@@ -10,9 +10,15 @@ helmCharts:
     repo: https://devxp-tech.github.io/helm-charts
     valuesInline:
       name: demo-app
+
+      global:
+        prometheus:
+          server: http://mimir-nginx.monitoring.svc:80/prometheus
+
       image:
         repository: ghcr.io/devxp-tech/demo-app
         tag: 7df51a75
+
       instrumentation: go
 
       monitoring:
@@ -48,9 +54,6 @@ helmCharts:
         readinessProbe:
           path: /health-check/readiness
           port: 8080
-
-      deploy:
-        enabled: true
 
       sa:
         enabled: true
