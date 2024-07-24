@@ -63,11 +63,11 @@ helmCharts:
       mariadb:
         auth:
           existingSecret: wordpress-secrets #mariadb-password
-        primary:
-          resources:
-            limits:
-              cpu: 120m
-              memory: 256Mi
-            requests:
-              cpu: 60m
-              memory: 192Mi
+        # primary:
+        #   resources:
+        #     limits:
+        #       cpu: 120m
+        #       memory: 256Mi
+        #     requests:
+        #       cpu: 60m
+        #       memory: 192Mi
