@@ -116,9 +116,9 @@ helmCharts:
         replicas: 3
         resources:
           limits:
-            memory: 2Gi # 30% of 12Gi
+            memory: 2.4Gi # 30% of 12Gi
           requests:
-            cpu: 400m   # 30% of 3.5
+            cpu: 500m   # 30% of 3.5
             memory: 1.6Gi # 30% of 8Gi
         topologySpreadConstraints: {}
         zoneAwareReplication:
