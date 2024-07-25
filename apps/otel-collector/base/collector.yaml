@@ -4,7 +4,7 @@ metadata:
   name: otel
   namespace: observability
 spec:
-  mode: statefulset #test
+  # mode: statefulset
   # image: otel/opentelemetry-collector-contrib:0.90.1
   replicas: 2
   podDisruptionBudget: {}
