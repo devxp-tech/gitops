@@ -8,13 +8,20 @@ spec:
   # image: otel/opentelemetry-collector-contrib:0.90.1
   replicas: 2
   podDisruptionBudget: {}
-  tolerations:
-    - key: "role"
-      operator: "Equal"
-      value: "on-demand"
-      effect: "NoSchedule"
-  nodeSelector:
-    role: "on-demand"
+  resources:
+    requests:
+      cpu: 10m
+      memory: 128Mi
+    limits:
+      cpu: 30m
+      memory: 256Mi
+  # tolerations:
+  #   - key: "role"
+  #     operator: "Equal"
+  #     value: "on-demand"
+  #     effect: "NoSchedule"
+  # nodeSelector:
+  #   role: "on-demand"
   config:
     receivers:
       jaeger:
