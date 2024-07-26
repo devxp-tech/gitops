@@ -18,8 +18,8 @@ helmCharts:
           cpu: 80m
           memory: 2600M
         limits:
-          cpu: 200m
-          memory: 3200M
+          cpu: 250m
+          memory: 3600M
       # prometheusExporter:
       #   enabled: true
       prometheusMonitoring:
