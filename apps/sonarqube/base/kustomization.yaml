@@ -9,16 +9,17 @@ resources:
 helmCharts:
   - name: sonarqube
     releaseName: sonarqube
+    namespace: sonarqube
     version: "10.6.0+3033"
     repo: https://SonarSource.github.io/helm-chart-sonarqube
     valuesInline:
-      tolerations:
-        - key: "role"
-          operator: "Equal"
-          value: "on-demand"
-          effect: "NoSchedule"
-      nodeSelector:
-        role: "on-demand"
+      resources:
+        requests:
+          cpu: 40m
+          memory: 2048M
+        limits:
+          cpu: 80m
+          memory: 2600M
       # prometheusExporter:
       #   enabled: true
       prometheusMonitoring:
