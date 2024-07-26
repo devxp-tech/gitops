@@ -15,14 +15,22 @@ helmCharts:
     valuesInline:
       resources:
         requests:
-          cpu: 40m
-          memory: 2048M
-        limits:
           cpu: 80m
           memory: 2600M
+        limits:
+          cpu: 200m
+          memory: 3200M
       # prometheusExporter:
       #   enabled: true
       prometheusMonitoring:
         podMonitor:
-          enabled: false
+          enabled: true
           interval: 60s
+      postgresql:
+        resources:
+          limits:
+            cpu: 90m
+            memory: 128Mi
+          requests:
+            cpu: 10m
+            memory: 84Mi

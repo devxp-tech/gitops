@@ -18,15 +18,6 @@ helmCharts:
       global:
         network:
           domain: devxp-tech.io
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-              - matchExpressions:
-                  - key: role
-                    operator: In
-                    values:
-                      - spot
       image:
         repository: ghcr.io/devxp-tech/backstage
         tag: e355c408 #609ddcf6
