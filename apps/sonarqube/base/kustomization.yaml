@@ -15,11 +15,11 @@ helmCharts:
     valuesInline:
       resources:
         requests:
-          cpu: 80m
+          cpu: 120m
           memory: 2048M
         limits:
-          cpu: 250m
-          memory: 5120M
+          cpu: 360m
+          memory: 6144M
       # prometheusExporter:
       #   enabled: true
       prometheusMonitoring:
