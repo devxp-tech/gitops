@@ -96,6 +96,8 @@ helmCharts:
 
       distributor:
         replicas: 2
+        podDisruptionBudget:
+          maxUnavailable: 2
         resources:
           limits:
             memory: 1536Mi # 30% of 5.7Gi
@@ -113,16 +115,14 @@ helmCharts:
       ingester:
         persistentVolume:
           size: 10Gi
-        replicas: 3
         resources:
           limits:
             memory: 2.8Gi # 30% of 12Gi
           requests:
             cpu: 500m   # 30% of 3.5
             memory: 1.8Gi # 30% of 8Gi
-        # topologySpreadConstraints: {}
+        replicas: 3
         podDisruptionBudget:
-          # minAvailable: 1
           maxUnavailable: 2
         zoneAwareReplication:
           enabled: false
@@ -232,16 +232,18 @@ helmCharts:
       store_gateway:
         persistentVolume:
           size: 10Gi
-        replicas: 3
         resources:
           limits:
             memory: 640Mi # 30% of 2.1Gi
           requests:
             cpu: 100m   # 30% of 1
             memory: 256Mi # 30% of 1.5Gi
-        topologySpreadConstraints: {}
+        replicas: 3
+        podDisruptionBudget:
+          maxUnavailable: 2
         zoneAwareReplication:
           enabled: false
+
         tolerations:
           - key: "role"
             operator: "Equal"
