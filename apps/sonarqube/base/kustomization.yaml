@@ -16,10 +16,10 @@ helmCharts:
       resources:
         requests:
           cpu: 80m
-          memory: 2600M
+          memory: 2048M
         limits:
           cpu: 250m
-          memory: 3600M
+          memory: 4096M
       # prometheusExporter:
       #   enabled: true
       prometheusMonitoring:
