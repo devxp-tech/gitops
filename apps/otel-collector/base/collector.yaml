@@ -10,11 +10,11 @@ spec:
   podDisruptionBudget: {}
   resources:
     requests:
-      cpu: 10m
-      memory: 128Mi
-    limits:
       cpu: 30m
       memory: 256Mi
+    limits:
+      cpu: 50m
+      memory: 384Mi
   # tolerations:
   #   - key: "role"
   #     operator: "Equal"
