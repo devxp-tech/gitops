@@ -19,10 +19,10 @@ spec:
           memory.available: 5%
           nodefs.available: 10%
           nodefs.inodesFree: 10%
-      taints:
-        - key: role
-          value: on-demand
-          effect: NoSchedule
+      # taints:
+      #   - key: role
+      #     value: on-demand
+      #     effect: NoSchedule
       nodeClassRef:
         name: default
       requirements:

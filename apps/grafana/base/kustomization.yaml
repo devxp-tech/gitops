@@ -15,13 +15,13 @@ helmCharts:
       #   annotations:
       #     "eks.amazonaws.com/role-arn": "arn:aws:iam::xxxx:role/monitoring-eks-grafana-role"
       #   automountServiceAccountToken: true
-      tolerations:
-        - key: "role"
-          operator: "Equal"
-          value: "on-demand"
-          effect: "NoSchedule"
-      nodeSelector:
-        role: "on-demand"
+      # tolerations:
+      #   - key: "role"
+      #     operator: "Equal"
+      #     value: "on-demand"
+      #     effect: "NoSchedule"
+      # nodeSelector:
+      #   role: "on-demand"
       persistence:
         enabled: true
         existingClaim: grafana

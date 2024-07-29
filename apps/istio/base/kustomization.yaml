@@ -71,13 +71,13 @@ helmCharts:
           limits:
             cpu: 500m
             memory: 2Gi
-          tolerations:
-            - key: "role"
-              operator: "Equal"
-              value: "on-demand"
-              effect: "NoSchedule"
-          nodeSelector:
-            role: "on-demand"
+          # tolerations:
+          #   - key: "role"
+          #     operator: "Equal"
+          #     value: "on-demand"
+          #     effect: "NoSchedule"
+          # nodeSelector:
+          #   role: "on-demand"
       meshConfig:
         trustDomain: "cluster.local"
         accessLogFile: "/dev/stdout"
