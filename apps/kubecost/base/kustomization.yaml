@@ -72,6 +72,13 @@ helmCharts:
       # Kubecost Cluster Controller for Right Sizing and Cluster Turndown
       clusterController:
         enabled: true
+        tolerations:
+          - key: "role"
+            operator: "Equal"
+            value: "on-demand"
+            effect: "NoSchedule"
+        nodeSelector:
+          role: "on-demand"
         actionConfigs:
           # this configures the Kubecost Namespace Turndown action
           # for more details, see documentation at https://docs.kubecost.com/using-kubecost/navigating-the-kubecost-ui/savings/savings-actions#namespace-turndown
@@ -101,3 +108,18 @@ helmCharts:
               params:
                 minNamespaceAge: 4h
 
+      forecasting:
+        resources:
+          requests:
+            cpu: 10m
+            memory: 225Mi
+          limits:
+            cpu: 500m
+            memory: 1Gi
+        tolerations:
+          - key: "role"
+            operator: "Equal"
+            value: "on-demand"
+            effect: "NoSchedule"
+        nodeSelector:
+          role: "on-demand"
