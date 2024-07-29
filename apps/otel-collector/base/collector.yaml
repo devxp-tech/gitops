@@ -6,8 +6,9 @@ metadata:
 spec:
   # mode: statefulset
   # image: otel/opentelemetry-collector-contrib:0.90.1
-  replicas: 2
-  podDisruptionBudget: {}
+  replicas: 1
+  podDisruptionBudget:
+    enabled: false
   resources:
     requests:
       cpu: 30m
