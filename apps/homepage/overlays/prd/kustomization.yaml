@@ -11,15 +11,6 @@ helmCharts:
     repo: https://devxp-tech.github.io/helm-charts
     valuesInline:
       name: homepage
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-              - matchExpressions:
-                  - key: role
-                    operator: In
-                    values:
-                      - spot
       image:
         repository: ghcr.io/devxp-tech/homepage
         tag: 14ea875c
@@ -53,5 +44,5 @@ helmCharts:
       autoscaling:
         enabled: true
         minReplicas: 1
-        maxReplicas: 2
+        maxReplicas: 1
         targetCPUUtilizationPercentage: 80
