@@ -59,13 +59,13 @@ prometheus:
   # thanosServiceMonitor:
   #   enabled: true # Enable Mimir
   prometheusSpec:
-    tolerations:
-      - key: "role"
-        operator: "Equal"
-        value: "on-demand"
-        effect: "NoSchedule"
-    nodeSelector:
-      role: "on-demand"
+    # tolerations:
+    #   - key: "role"
+    #     operator: "Equal"
+    #     value: "on-demand"
+    #     effect: "NoSchedule"
+    # nodeSelector:
+    #   role: "on-demand"
     externalUrl: https://prometheus.devxp-tech.io/
     externalLabels:
       cluster: lgseksd1

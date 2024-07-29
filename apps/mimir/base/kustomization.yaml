@@ -86,13 +86,13 @@ helmCharts:
           requests:
             cpu: 50m   # 30% of 1
             memory: 128Mi # 30% of 1.5Gi
-        tolerations:
-          - key: "role"
-            operator: "Equal"
-            value: "on-demand"
-            effect: "NoSchedule"
-        nodeSelector:
-          role: "on-demand"
+        # tolerations:
+        #   - key: "role"
+        #     operator: "Equal"
+        #     value: "on-demand"
+        #     effect: "NoSchedule"
+        # nodeSelector:
+        #   role: "on-demand"
 
       distributor:
         replicas: 2
@@ -104,13 +104,13 @@ helmCharts:
           requests:
             cpu: 400m   # 30% of 2
             memory: 1024Mi # 30% of 4Gi
-        tolerations:
-          - key: "role"
-            operator: "Equal"
-            value: "on-demand"
-            effect: "NoSchedule"
-        nodeSelector:
-          role: "on-demand"
+        # tolerations:
+        #   - key: "role"
+        #     operator: "Equal"
+        #     value: "on-demand"
+        #     effect: "NoSchedule"
+        # nodeSelector:
+        #   role: "on-demand"
 
       ingester:
         persistentVolume:
@@ -126,13 +126,13 @@ helmCharts:
           maxUnavailable: 2
         zoneAwareReplication:
           enabled: false
-        tolerations:
-          - key: "role"
-            operator: "Equal"
-            value: "on-demand"
-            effect: "NoSchedule"
-        nodeSelector:
-          role: "on-demand"
+        # tolerations:
+        #   - key: "role"
+        #     operator: "Equal"
+        #     value: "on-demand"
+        #     effect: "NoSchedule"
+        # nodeSelector:
+        #   role: "on-demand"
 
       admin-cache:
         enabled: true
@@ -189,13 +189,13 @@ helmCharts:
           requests:
             cpu: 100m   # 30% of 2
             memory: 128Mi # 30% of 4Gi
-        tolerations:
-          - key: "role"
-            operator: "Equal"
-            value: "on-demand"
-            effect: "NoSchedule"
-        nodeSelector:
-          role: "on-demand"
+        # tolerations:
+        #   - key: "role"
+        #     operator: "Equal"
+        #     value: "on-demand"
+        #     effect: "NoSchedule"
+        # nodeSelector:
+        #   role: "on-demand"
 
       query_frontend:
         replicas: 1
@@ -205,13 +205,13 @@ helmCharts:
           requests:
             cpu: 100m   # 30% of 2
             memory: 256Mi # 30% of 2Gi
-        tolerations:
-          - key: "role"
-            operator: "Equal"
-            value: "on-demand"
-            effect: "NoSchedule"
-        nodeSelector:
-          role: "on-demand"
+        # tolerations:
+        #   - key: "role"
+        #     operator: "Equal"
+        #     value: "on-demand"
+        #     effect: "NoSchedule"
+        # nodeSelector:
+        #   role: "on-demand"
 
       ruler:
         replicas: 1
@@ -243,13 +243,13 @@ helmCharts:
           maxUnavailable: 2
         zoneAwareReplication:
           enabled: false
-        tolerations:
-          - key: "role"
-            operator: "Equal"
-            value: "on-demand"
-            effect: "NoSchedule"
-        nodeSelector:
-          role: "on-demand"
+        # tolerations:
+        #   - key: "role"
+        #     operator: "Equal"
+        #     value: "on-demand"
+        #     effect: "NoSchedule"
+        # nodeSelector:
+        #   role: "on-demand"
 
       nginx:
         replicas: 1
