@@ -8,7 +8,7 @@ spec:
   # image: otel/opentelemetry-collector-contrib:0.90.1
   replicas: 1
   podDisruptionBudget:
-    enabled: false
+    maxUnavailable: 1
   resources:
     requests:
       cpu: 30m
