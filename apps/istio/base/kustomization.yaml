@@ -27,6 +27,8 @@ helmCharts:
       defaults:
         global:
           imagePullPolicy: IfNotPresent
+          defaultPodDisruptionBudget:
+            enabled: false
       trustDomain: "cluster.local"
       global:
         imagePullPolicy: IfNotPresent
