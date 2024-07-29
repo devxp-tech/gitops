@@ -18,6 +18,7 @@ helmCharts:
       global:
         istiod:
           enableAnalysis: true
+
   - name: istiod
     releaseName: istiod
     version: 1.22.0
@@ -70,6 +71,13 @@ helmCharts:
           limits:
             cpu: 500m
             memory: 2048Mi
+          tolerations:
+            - key: "role"
+              operator: "Equal"
+              value: "on-demand"
+              effect: "NoSchedule"
+          nodeSelector:
+            role: "on-demand"
       meshConfig:
         trustDomain: "cluster.local"
         accessLogFile: "/dev/stdout"
