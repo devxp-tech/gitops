@@ -8,10 +8,10 @@ resources:
   - https://raw.githubusercontent.com/argoproj-labs/rollout-extension/v0.3.3/manifests/install.yaml # Comment on Disaster Recovery
   - argocd-notifications-secret-sealed.yaml # Comment on Disaster Recovery
   - secrets.yaml # Comment on Disaster Recovery
-  #- service-monitor.yaml # Comment on Disaster Recovery
-  #- virtual-service.yaml # Comment on Disaster Recovery
+  - service-monitor.yaml # Comment on Disaster Recovery
+  - virtual-service.yaml # Comment on Disaster Recovery
 patches:
-# - path: argocd-server.yaml # Comment on Disaster Recovery
+  - path: argocd-server.yaml # Comment on Disaster Recovery
   - target:
       kind: Deployment
       name: argocd-applicationset-controller
@@ -43,30 +43,30 @@ patches:
       - op: replace
         path: /spec/template/spec/initContainers/0/imagePullPolicy
         value: IfNotPresent
-  # - patch: |- # Comment on Disaster Recovery
-  #     apiVersion: v1 # Comment on Disaster Recovery
-  #     kind: Secret # Comment on Disaster Recovery
-  #     type: Opaque # Comment on Disaster Recovery
-  #     metadata: # Comment on Disaster Recovery
-  #       name: argocd-notifications-secret # Comment on Disaster Recovery
-  #       annotations: # Comment on Disaster Recovery
-  #         sealedsecrets.bitnami.com/managed: "true" # Comment on Disaster Recovery
-  # - path: argocd-notifications-cm.yaml # Comment on Disaster Recovery
+  - patch: |- # Comment on Disaster Recovery
+      apiVersion: v1 # Comment on Disaster Recovery
+      kind: Secret # Comment on Disaster Recovery
+      type: Opaque # Comment on Disaster Recovery
+      metadata: # Comment on Disaster Recovery
+        name: argocd-notifications-secret # Comment on Disaster Recovery
+        annotations: # Comment on Disaster Recovery
+          sealedsecrets.bitnami.com/managed: "true" # Comment on Disaster Recovery
+  - path: argocd-notifications-cm.yaml # Comment on Disaster Recovery
 configMapGenerator:
-  #- name: argocd-cmd-params-cm # Comment on Disaster Recovery
-  #  behavior: merge # Comment on Disaster Recovery
-  #  literals: # Comment on Disaster Recovery
-  #    - server.insecure="true" # Comment on Disaster Recovery
-  #    - dexserver.disable.tls="true" # Comment on Disaster Recovery
-  #    - server.dex.server="http://argocd-dex-server:5556" # Comment on Disaster Recovery
-  #    - server.dex.server.strict.tls="false" # Comment on Disaster Recovery
+  - name: argocd-cmd-params-cm # Comment on Disaster Recovery
+    behavior: merge # Comment on Disaster Recovery
+    literals: # Comment on Disaster Recovery
+      - server.insecure="true" # Comment on Disaster Recovery
+      - dexserver.disable.tls="true" # Comment on Disaster Recovery
+      - server.dex.server="http://argocd-dex-server:5556" # Comment on Disaster Recovery
+      - server.dex.server.strict.tls="false" # Comment on Disaster Recovery
   - name: argocd-cm
     options:
       labels:
         app.kubernetes.io/part-of: argocd
     behavior: merge
     files:
-      # - files/dex.config # Comment on Disaster Recovery
+      - files/dex.config # Comment on Disaster Recovery
       - files/repositories
       - files/repository.credentials
       - files/resource.customizations
@@ -74,10 +74,10 @@ configMapGenerator:
       - admin.enabled=true
       - kustomize.buildOptions="--enable-alpha-plugins --enable-helm --load-restrictor
         LoadRestrictionsNone"
-      # - statusbadge.enabled=true # Comment on Disaster Recovery
-      # - url=https://argocd.devxp-tech.io # Comment on Disaster Recovery
-      # - dexserver.disable.tls=true # Comment on Disaster Recovery
-      # - accounts.backstage="apiKey, login" # Comment on Disaster Recovery
+      - statusbadge.enabled=true # Comment on Disaster Recovery
+      - url=https://argocd.devxp-tech.io # Comment on Disaster Recovery
+      - dexserver.disable.tls=true # Comment on Disaster Recovery
+      - accounts.backstage="apiKey, login" # Comment on Disaster Recovery
   - name: argocd-rbac-cm
     options:
       labels:
