@@ -43,15 +43,15 @@ patches:
       - op: replace
         path: /spec/template/spec/initContainers/0/imagePullPolicy
         value: IfNotPresent
-  - patch: |-
-      apiVersion: v1
-      kind: Secret
-      type: Opaque
-      metadata:
-        name: argocd-notifications-secret
-        annotations:
-          sealedsecrets.bitnami.com/managed: "true"
-  - path: argocd-notifications-cm.yaml
+  # - patch: |- # Comment on Disaster Recovery
+  #     apiVersion: v1 # Comment on Disaster Recovery
+  #     kind: Secret # Comment on Disaster Recovery
+  #     type: Opaque # Comment on Disaster Recovery
+  #     metadata: # Comment on Disaster Recovery
+  #       name: argocd-notifications-secret # Comment on Disaster Recovery
+  #       annotations: # Comment on Disaster Recovery
+  #         sealedsecrets.bitnami.com/managed: "true" # Comment on Disaster Recovery
+  # - path: argocd-notifications-cm.yaml # Comment on Disaster Recovery
 configMapGenerator:
   - name: argocd-cmd-params-cm
     behavior: merge
