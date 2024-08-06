@@ -5,9 +5,9 @@ namespace: argocd
 #   - https://github.com/argoproj-labs/argocd-extensions/manifests # Comment on Disaster Recovery
 resources:
   - github.com/argoproj-labs/argocd-autopilot/manifests/base?ref=v0.4.17
-  # - https://raw.githubusercontent.com/argoproj-labs/rollout-extension/v0.3.3/manifests/install.yaml # Comment on Disaster Recovery
-  #- argocd-notifications-secret-sealed.yaml # Comment on Disaster Recovery
-  #- secrets.yaml # Comment on Disaster Recovery
+  - https://raw.githubusercontent.com/argoproj-labs/rollout-extension/v0.3.3/manifests/install.yaml # Comment on Disaster Recovery
+  - argocd-notifications-secret-sealed.yaml # Comment on Disaster Recovery
+  - secrets.yaml # Comment on Disaster Recovery
   #- service-monitor.yaml # Comment on Disaster Recovery
   #- virtual-service.yaml # Comment on Disaster Recovery
 patches:
