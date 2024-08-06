@@ -24,7 +24,7 @@ helmCharts:
         create: true
         name: mimir
         annotations:
-          eks.amazonaws.com/role-arn: "arn:aws:iam::239468932737:role/mimir-lgseksd1-sa"
+          eks.amazonaws.com/role-arn: "arn:aws:iam::239468932737:role/mimir-vex-dev-usea1-eks-sa"
 
       mimir:
         structuredConfig:

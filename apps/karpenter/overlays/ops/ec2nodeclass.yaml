@@ -16,18 +16,18 @@ spec:
       volumeSize: 50Gi
       volumeType: gp3
   detailedMonitoring: true
-  role: Karpenter-lgseksd1-20230809131800238100000002 #KarpenterNodeRole-lgseksd1
+  role: Karpenter-vex-dev-usea1-eks-20240806113626522400000005 #KarpenterNodeRole-vex-dev-usea1-eks
   securityGroupSelectorTerms:
   - tags:
-      karpenter.sh/discovery: lgseksd1
+      karpenter.sh/discovery: vex-dev-usea1-eks
   subnetSelectorTerms:
   - tags:
-      karpenter.sh/discovery: lgseksd1
+      karpenter.sh/discovery: vex-dev-usea1-eks
   tags:
     KarpenerProvisionerName: default
     role: default
-    karpenter.sh/cluster_name: lgseksd1
-    karpenter.sh/discovery: lgseksd1
+    karpenter.sh/cluster_name: vex-dev-usea1-eks
+    karpenter.sh/discovery: vex-dev-usea1-eks
     managed-by: karpenter
     node-role.kubernetes.io/worker: worker
   userData: |

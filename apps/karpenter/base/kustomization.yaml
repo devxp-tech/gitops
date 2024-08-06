@@ -1,8 +1,8 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: karpenter
-resources:
-  - prometheus-rules.yaml
+# resources:
+#   - prometheus-rules.yaml
 helmCharts:
   - name: karpenter
     includeCRDs: true
@@ -13,19 +13,19 @@ helmCharts:
     valuesInline:
       fullnameOverride: karpenter
       dnsPolicy: Default
+      serviceAccount:
+        annotations:
+          eks.amazonaws.com/role-arn: arn:aws:iam::239468932737:role/KarpenterController-20240806113626522400000006
       # webhook:
       #   enabled: true
       #   port: 8443
-      serviceAccount:
-        annotations:
-          eks.amazonaws.com/role-arn: arn:aws:iam::239468932737:role/KarpenterIRSA-lgseksd1-20230809132301233100000001
       # Failed to watch *v1.Lease: failed to list *v1.Lease: leases.coordination.k8s.io is forbidden: User "system:serviceaccount:karpenter:karpenter" cannot list resource "leases" in API group "coordination.k8s.io" in the namespace "kube-node-lease"
       additionalClusterRoleRules:
         - apiGroups: ["coordination.k8s.io"]
           resources: ["leases"]
           verbs: ["*"]
-      serviceMonitor:
-        enabled: true
+      # serviceMonitor:
+      #   enabled: true
       replicas: 1
       affinity:
         nodeAffinity:
@@ -43,8 +43,8 @@ helmCharts:
             cpu: 120m
             memory: 512Mi
       settings:
-        clusterName: lgseksd1
-        clusterEndpoint: https://7947638F25F34C5F3CAFEF8286994CB3.gr7.us-east-1.eks.amazonaws.com
-        defaultInstanceProfile: KarpenterNodeInstanceProfile-lgseksd1
+        clusterName: vex-dev-usea1-eks
+        clusterEndpoint: https://DDC166ECE3AF805DA19B0CC5502AF3C0.gr7.us-east-1.eks.amazonaws.com
+        defaultInstanceProfile: Karpenter-vex-dev-usea1-eks-20240806114336084400000001
         featureGates:
           spotToSpotConsolidation: true

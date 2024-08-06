@@ -122,10 +122,10 @@ helmCharts:
         web_path_prefix: /
         debug: true
         clusters:
-          - name: lgseksd1
-            short_description: "AWS EKS Cluster - lgseksd1"
-            description: "AWS EKS Cluster - lgseksd1"
-            client_id: lgseksd1
+          - name: vex-dev-usea1-eks
+            short_description: "AWS EKS Cluster - vex-dev-usea1-eks"
+            description: "AWS EKS Cluster - vex-dev-usea1-eks"
+            client_id: vex-dev-usea1-eks
             client_secret: ${DEX_K8S_AUTH_SECRET}
             issuer: https://dex.devxp-tech.io
             k8s_master_uri: https://8673475BD214DFD1169339A996680AE1.gr7.us-east-1.eks.amazonaws.com

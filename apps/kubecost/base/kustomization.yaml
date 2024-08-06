@@ -40,12 +40,12 @@ helmCharts:
         server:
           global:
             external_labels:
-              cluster_id: lgseksd1
+              cluster_id: vex-dev-usea1-eks
       serviceAccount:
         annotations:
           eks.amazonaws.com/role-arn: "arn:aws:iam::239468932737:role/kubecost"
       kubecostProductConfigs:
-        clusterName: "lgseksd1"
+        clusterName: "vex-dev-usea1-eks"
       kubecostToken: "MzEyMTg5Mzk3QHFxLmNvbQ==xm343yadf98" #aGVsbUBrdWJlY29zdC5jb20=xm343yadf98
       persistentVolume:
         storageClass: gp2

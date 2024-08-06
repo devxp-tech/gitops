@@ -4,5 +4,4 @@ resources:
   - ../../base
   - ec2nodeclass.yaml
   - nodepool.yaml
-  # - provisioner.yaml # OLD
-  # - node-template.yaml # OLD
+

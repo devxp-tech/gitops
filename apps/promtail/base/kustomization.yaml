@@ -34,13 +34,13 @@ helmCharts:
         clients:
           - url: http://loki-gateway.logging.svc/loki/api/v1/push
             external_labels:
-              cluster: lgseksd1
+              cluster: vex-dev-usea1-eks
               environment: development
         snippets:
           # extraRelabelConfigs:
           #   - actions: replace
           #     target_label: cluster
-          #     replacement: "lgseksd1"
+          #     replacement: "vex-dev-usea1-eks"
           pipelineStages:
             - cri: {}
             - drop:
