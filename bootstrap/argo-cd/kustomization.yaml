@@ -1,16 +1,17 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: argocd
-# components: # Disaster Recovery
-#   - https://github.com/argoproj-labs/argocd-extensions/manifests # Disaster Recovery
+# components: # Comment on Disaster Recovery
+#   - https://github.com/argoproj-labs/argocd-extensions/manifests # Comment on Disaster Recovery
 resources:
   - github.com/argoproj-labs/argocd-autopilot/manifests/base?ref=v0.4.17
-  # - https://raw.githubusercontent.com/argoproj-labs/rollout-extension/v0.3.3/manifests/install.yaml # Disaster Recovery
-  #- argocd-notifications-secret-sealed.yaml # Disaster Recovery
-  #- secrets.yaml # Disaster Recovery
-  #- service-monitor.yaml # Disaster Recovery
-  #- virtual-service.yaml # Disaster Recovery
+  # - https://raw.githubusercontent.com/argoproj-labs/rollout-extension/v0.3.3/manifests/install.yaml # Comment on Disaster Recovery
+  #- argocd-notifications-secret-sealed.yaml # Comment on Disaster Recovery
+  #- secrets.yaml # Comment on Disaster Recovery
+  #- service-monitor.yaml # Comment on Disaster Recovery
+  #- virtual-service.yaml # Comment on Disaster Recovery
 patches:
+# - path: argocd-server.yaml # Comment on Disaster Recovery
   - target:
       kind: Deployment
       name: argocd-applicationset-controller
@@ -50,7 +51,6 @@ patches:
         name: argocd-notifications-secret
         annotations:
           sealedsecrets.bitnami.com/managed: "true"
-  # - path: argocd-server.yaml
   - path: argocd-notifications-cm.yaml
 configMapGenerator:
   - name: argocd-cmd-params-cm
@@ -66,7 +66,7 @@ configMapGenerator:
         app.kubernetes.io/part-of: argocd
     behavior: merge
     files:
-      - files/dex.config
+      # - files/dex.config # Comment on Disaster Recovery
       - files/repositories
       - files/repository.credentials
       - files/resource.customizations
