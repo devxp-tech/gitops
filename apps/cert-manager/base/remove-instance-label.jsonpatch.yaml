@@ -1,0 +1,3 @@
+---
+- op: remove
+  path: /metadata/labels/app.kubernetes.io~1instance
