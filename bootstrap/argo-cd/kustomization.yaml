@@ -53,13 +53,13 @@ patches:
   #         sealedsecrets.bitnami.com/managed: "true" # Comment on Disaster Recovery
   # - path: argocd-notifications-cm.yaml # Comment on Disaster Recovery
 configMapGenerator:
-  - name: argocd-cmd-params-cm
-    behavior: merge
-    literals:
-      - server.insecure="true"
-      - dexserver.disable.tls="true"
-      - server.dex.server="http://argocd-dex-server:5556"
-      - server.dex.server.strict.tls="false"
+  #- name: argocd-cmd-params-cm # Comment on Disaster Recovery
+  #  behavior: merge # Comment on Disaster Recovery
+  #  literals: # Comment on Disaster Recovery
+  #    - server.insecure="true" # Comment on Disaster Recovery
+  #    - dexserver.disable.tls="true" # Comment on Disaster Recovery
+  #    - server.dex.server="http://argocd-dex-server:5556" # Comment on Disaster Recovery
+  #    - server.dex.server.strict.tls="false" # Comment on Disaster Recovery
   - name: argocd-cm
     options:
       labels:
