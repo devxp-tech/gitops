@@ -14,6 +14,8 @@ helmCharts:
       name: istio-ingressgateway
       defaults:
         imagePullPolicy: IfNotPresent
+        service:
+          loadBalancerSourceRanges: "0.0.0.0/0"
       labels:
         app_label: istio-ingressgateway
       podAnnotations:
