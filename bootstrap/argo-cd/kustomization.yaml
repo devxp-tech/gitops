@@ -1,11 +1,11 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: argocd
-components:
-  - https://github.com/argoproj-labs/argocd-extensions/manifests
+# components: # Disaster Recovery
+#   - https://github.com/argoproj-labs/argocd-extensions/manifests # Disaster Recovery
 resources:
   - github.com/argoproj-labs/argocd-autopilot/manifests/base?ref=v0.4.17
-  - https://raw.githubusercontent.com/argoproj-labs/rollout-extension/v0.3.3/manifests/install.yaml
+  # - https://raw.githubusercontent.com/argoproj-labs/rollout-extension/v0.3.3/manifests/install.yaml # Disaster Recovery
   #- argocd-notifications-secret-sealed.yaml # Disaster Recovery
   #- secrets.yaml # Disaster Recovery
   #- service-monitor.yaml # Disaster Recovery
