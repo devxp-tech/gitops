@@ -50,17 +50,21 @@ patches:
         name: argocd-notifications-secret
         annotations:
           sealedsecrets.bitnami.com/managed: "true"
-  - path: argocd-server.yaml
+  # - path: argocd-server.yaml
   - path: argocd-notifications-cm.yaml
 configMapGenerator:
-  - behavior: merge
+  - name: argocd-cmd-params-cm
+    behavior: merge
     literals:
       - server.insecure="true"
       - dexserver.disable.tls="true"
       - server.dex.server="http://argocd-dex-server:5556"
       - server.dex.server.strict.tls="false"
-    name: argocd-cmd-params-cm
-  - behavior: merge
+  - name: argocd-cm
+    options:
+      labels:
+        app.kubernetes.io/part-of: argocd
+    behavior: merge
     files:
       - files/dex.config
       - files/repositories
@@ -74,16 +78,13 @@ configMapGenerator:
       - url=https://argocd.devxp-tech.io
       - dexserver.disable.tls=true
       - accounts.backstage="apiKey, login"
-    name: argocd-cm
+  - name: argocd-rbac-cm
     options:
       labels:
         app.kubernetes.io/part-of: argocd
-  - behavior: merge
+    behavior: merge
     files:
       - files/policy.csv
     literals:
       - policy.default="role:readonly"
-    name: argocd-rbac-cm
-    options:
-      labels:
-        app.kubernetes.io/part-of: argocd
+
