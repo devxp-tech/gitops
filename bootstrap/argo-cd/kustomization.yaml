@@ -6,10 +6,10 @@ components:
 resources:
   - github.com/argoproj-labs/argocd-autopilot/manifests/base?ref=v0.4.17
   - https://raw.githubusercontent.com/argoproj-labs/rollout-extension/v0.3.3/manifests/install.yaml
-  - argocd-notifications-secret-sealed.yaml
-  - secrets.yaml
-  - service-monitor.yaml
-  - virtual-service.yaml
+  #- argocd-notifications-secret-sealed.yaml # Disaster Recovery
+  #- secrets.yaml # Disaster Recovery
+  #- service-monitor.yaml # Disaster Recovery
+  #- virtual-service.yaml # Disaster Recovery
 patches:
   - target:
       kind: Deployment
