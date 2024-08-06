@@ -14,8 +14,8 @@ helmCharts:
       name: istio-ingressgateway
       defaults:
         imagePullPolicy: IfNotPresent
-        service:
-          loadBalancerSourceRanges: "0.0.0.0/0"
+        # service:
+        #   loadBalancerSourceRanges: "0.0.0.0/0"
       labels:
         app_label: istio-ingressgateway
       podAnnotations:
@@ -25,6 +25,6 @@ helmCharts:
       service:
         annotations:
           service.beta.kubernetes.io/aws-load-balancer-type: nlb
-          # alb.ingress.kubernetes.io/inbound-cidrs: '0.0.0.0/0'
+          alb.ingress.kubernetes.io/inbound-cidrs: '0.0.0.0/0'
           numTrustedProxies: 2
         externalTrafficPolicy: Local
