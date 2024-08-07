@@ -24,7 +24,7 @@ helmCharts:
         create: true
         name: mimir
         annotations:
-          eks.amazonaws.com/role-arn: "arn:aws:iam::239468932737:role/mimir-vex-dev-usea1-eks-sa"
+          eks.amazonaws.com/role-arn: arn:aws:iam::239468932737:role/vex-dev-usea1-eks-mimir-sa
 
       mimir:
         structuredConfig:
@@ -34,12 +34,12 @@ helmCharts:
             storage:
               backend: s3
               s3:
-                bucket_name: vex-dev-mimir-metrics
+                bucket_name: vex-dev-usea1-eks-s3-metrics
                 endpoint: s3.us-east-1.amazonaws.com
           blocks_storage:
             storage_prefix: blocks
             s3:
-              bucket_name: vex-dev-mimir-metrics
+              bucket_name: vex-dev-usea1-eks-s3-metrics
               insecure: true
           usage_stats:
             enabled: false

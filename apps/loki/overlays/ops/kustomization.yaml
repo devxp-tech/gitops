@@ -258,9 +258,9 @@ helmCharts:
           s3:
             region: us-east-1
           bucketNames:
-            chunks: "vex-dev-usea1-logs"
-            # ruler: "vex-dev-usea1-logs"
-            # admin: "vex-dev-usea1-logs"
+            chunks: "vex-dev-usea1-eks-s3-logs"
+            # ruler: "vex-dev-usea1-eks-s3-logs"
+            # admin: "vex-dev-usea1-eks-s3-logs"
 
         # Storage Schema
         schemaConfig:
