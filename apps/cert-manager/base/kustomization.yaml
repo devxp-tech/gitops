@@ -3,13 +3,13 @@ kind: Kustomization
 namespace: cert-manager
 resources:
   - https://github.com/cert-manager/cert-manager/releases/download/v1.15.2/cert-manager.crds.yaml
-# patches:
-#   - target:
-#       kind: CustomResourceDefinition
-#       labelSelector: app.kubernetes.io/instance=cert-manager
-#     patch: |
-#       - op: remove
-#         path: /metadata/labels/app.kubernetes.io~1instance
+patches:
+  - target:
+      kind: CustomResourceDefinition
+      labelSelector: app.kubernetes.io/instance=cert-manager
+    patch: |-
+      - op: remove
+        path: /metadata/labels/app.kubernetes.io~1instance
 helmCharts:
   - name: cert-manager
     releaseName: cert-manager
