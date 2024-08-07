@@ -4,10 +4,12 @@ namespace: istio-ingress
 helmCharts:
   - name: gateway
     releaseName: gateway
-    version: 1.18.1
+    version: 1.22.0
     repo: https://istio-release.storage.googleapis.com/charts
     valuesInline:
       name: istio-ingressgateway
+      defaults:
+        imagePullPolicy: IfNotPresent
       labels:
         app_label: istio-ingressgateway
       podAnnotations:
@@ -15,6 +17,7 @@ helmCharts:
       autoscaling:
         enabled: true
       service:
-        externalTrafficPolicy: Local
         annotations:
           service.beta.kubernetes.io/aws-load-balancer-type: nlb
+          numTrustedProxies: 2
+        externalTrafficPolicy: Local
