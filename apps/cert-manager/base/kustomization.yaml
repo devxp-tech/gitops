@@ -32,9 +32,9 @@ helmCharts:
         limits:
           cpu: 20m
           memory: 64Mi
-      webhook:
-        networkPolicy:
-          enabled: true
+      # webhook:
+      #   networkPolicy:
+      #     enabled: true
       prometheus:
         enabled: true
         servicemonitor:
