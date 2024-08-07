@@ -9,4 +9,7 @@ helmCharts:
     repo: https://aws.github.io/eks-charts
     valuesInline:
       clusterName: vex-dev-usea1-eks
-
+      serviceAccount:
+        create: true
+        annotations:
+          eks.amazonaws.com/role-arn: arn:aws:iam::239468932737:role/AmazonEKSLoadBalancerControllerRole
