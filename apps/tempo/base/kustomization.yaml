@@ -12,7 +12,7 @@ helmCharts:
       serviceAccount:
         name: tempo
         annotations:
-          "eks.amazonaws.com/role-arn": "arn:aws:iam::239468932737:role/tempo-vex-dev-usea1-eks-sa"
+          eks.amazonaws.com/role-arn: arn:aws:iam::239468932737:role/vex-dev-usea1-eks-tempo-sa
         automountServiceAccountToken: true
       # tolerations:
       #   - key: "role"
@@ -38,7 +38,7 @@ helmCharts:
           trace:
             backend: s3 # we're using minio anyway!
             s3:
-              bucket: vex-dev-tempo-traces
+              bucket: vex-dev-usea1-eks-s3-traces
               endpoint: s3.us-east-1.amazonaws.com
               region: us-east-1
         receivers:
