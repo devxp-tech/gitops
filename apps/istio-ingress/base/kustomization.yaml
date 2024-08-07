@@ -1,10 +1,6 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: istio-ingress
-# patches:
-#   - path: patch.yaml
-#     target:
-#       kind: Deployment
 helmCharts:
   - name: gateway
     releaseName: gateway
@@ -22,7 +18,7 @@ helmCharts:
         enabled: true
       service:
         annotations:
-          service.beta.kubernetes.io/aws-load-balancer-type: nlb
+          # service.beta.kubernetes.io/aws-load-balancer-type: nlb  # Test
           # alb.ingress.kubernetes.io/inbound-cidrs: '0.0.0.0/0'
           numTrustedProxies: 2
         externalTrafficPolicy: Local
