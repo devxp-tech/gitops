@@ -7,7 +7,7 @@
 | atlantis | atlantis | 5.1.3 | https://runatlantis.github.io/helm-charts |  | [![App Status](https://argocd.devxp-tech.io/api/badge?name=atlantis-ops&revision=true&showAppName=true)](https://argocd.devxp-tech.io/applications/atlantis-ops) |  |  |
 | backstage | devxp-app | 0.2.81 | https://devxp-tech.github.io/helm-charts |  |  |  | [![App Status](https://argocd.devxp-tech.io/api/badge?name=backstage-prd&revision=true&showAppName=true)](https://argocd.devxp-tech.io/applications/backstage-prd) |
 | backstage | devxp-app | 0.2.81 | https://devxp-tech.github.io/helm-charts |  |  | [![App Status](https://argocd.devxp-tech.io/api/badge?name=backstage-dev&revision=true&showAppName=true)](https://argocd.devxp-tech.io/applications/backstage-dev) |  |
-| cert-manager | cert-manager | v1.14.5 | https://charts.jetstack.io | ✅ |  |  |  |
+| cert-manager | cert-manager | v1.15.2 | https://charts.jetstack.io | ✅ |  |  |  |
 | cilium | cilium | 1.15.7 | https://helm.cilium.io | ✅ |  |  |  |
 | demo-app | devxp-app | 0.2.81 | https://devxp-tech.github.io/helm-charts |  |  |  | [![App Status](https://argocd.devxp-tech.io/api/badge?name=demo-app-prd&revision=true&showAppName=true)](https://argocd.devxp-tech.io/applications/demo-app-prd) |
 | demo-app | devxp-app | 0.2.82 | https://devxp-tech.github.io/helm-charts |  |  | [![App Status](https://argocd.devxp-tech.io/api/badge?name=demo-app-dev&revision=true&showAppName=true)](https://argocd.devxp-tech.io/applications/demo-app-dev) |  |
