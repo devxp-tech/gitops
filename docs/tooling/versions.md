@@ -5,6 +5,7 @@
 | argo-rollouts | argo-rollouts | 2.35.3 | https://argoproj.github.io/argo-helm | ✅ |  |  |  |
 | argo-workflows | argo-workflows | 0.41.11 | https://argoproj.github.io/argo-helm | ✅ |  |  |  |
 | atlantis | atlantis | 5.1.3 | https://runatlantis.github.io/helm-charts |  | [![App Status](https://argocd.devxp-tech.io/api/badge?name=atlantis-ops&revision=true&showAppName=true)](https://argocd.devxp-tech.io/applications/atlantis-ops) |  |  |
+| aws-load-balancer-controller | aws-load-balancer-controller | 1.8.1 | https://aws.github.io/eks-charts | ✅ |  |  |  |
 | backstage | devxp-app | 0.2.81 | https://devxp-tech.github.io/helm-charts |  |  |  | [![App Status](https://argocd.devxp-tech.io/api/badge?name=backstage-prd&revision=true&showAppName=true)](https://argocd.devxp-tech.io/applications/backstage-prd) |
 | backstage | devxp-app | 0.2.81 | https://devxp-tech.github.io/helm-charts |  |  | [![App Status](https://argocd.devxp-tech.io/api/badge?name=backstage-dev&revision=true&showAppName=true)](https://argocd.devxp-tech.io/applications/backstage-dev) |  |
 | cert-manager | cert-manager | v1.15.2 | https://charts.jetstack.io | ✅ |  |  |  |
