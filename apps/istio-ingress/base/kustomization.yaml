@@ -4,7 +4,7 @@ namespace: istio-ingress
 helmCharts:
   - name: gateway
     releaseName: gateway
-    version: 1.21.5
+    version: 1.18.1
     repo: https://istio-release.storage.googleapis.com/charts
     valuesInline:
       name: istio-ingressgateway
@@ -16,7 +16,6 @@ helmCharts:
         enabled: true
       service:
         externalTrafficPolicy: Local
-        type: LoadBalancer
         annotations:
           service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
           service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing"
