@@ -11,7 +11,7 @@ resources:
 helmCharts:
   - name: base
     releaseName: base
-    version: 1.21.5
+    version: 1.19.10
     repo: https://istio-release.storage.googleapis.com/charts
     includeCRDs: true
     valuesInline:
@@ -21,7 +21,7 @@ helmCharts:
 
   - name: istiod
     releaseName: istiod
-    version: 1.21.5
+    version: 1.19.10
     repo: https://istio-release.storage.googleapis.com/charts
     valuesInline:
       fullnameOverride: istiod

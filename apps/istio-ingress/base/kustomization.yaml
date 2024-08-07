@@ -4,7 +4,7 @@ namespace: istio-ingress
 helmCharts:
   - name: gateway
     releaseName: gateway
-    version: 1.21.5
+    version: 1.19.10
     repo: https://istio-release.storage.googleapis.com/charts
     valuesInline:
       name: istio-ingressgateway
@@ -23,19 +23,6 @@ helmCharts:
           service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
           service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing"
           service.beta.kubernetes.io/aws-load-balancer-attributes: "load_balancing.cross_zone.enabled=true"
-        ports:
-          - name: http
-            port: 80
-            targetPort: 80
-          - name: https
-            port: 443
-            targetPort: 443
-          - name: status-port
-            port: 15021
-            targetPort: 15021
-          - name: grpc
-            port: 5000
-            targetPort: 5000
       selector:
         app: "istio-ingress"
         istio: "ingressgateway"  # Make sure this matches the labels you are using.
