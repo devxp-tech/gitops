@@ -124,7 +124,7 @@ spec:
           nodefs.available: 10%
           nodefs.inodesFree: 10%
       nodeClassRef:
-        name: default
+        name: public
       requirements:
         - key: karpenter.k8s.aws/instance-generation
           operator: Gt
