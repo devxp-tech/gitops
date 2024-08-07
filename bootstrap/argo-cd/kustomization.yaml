@@ -74,10 +74,10 @@ configMapGenerator:
       - admin.enabled=true
       - kustomize.buildOptions="--enable-alpha-plugins --enable-helm --load-restrictor
         LoadRestrictionsNone"
-      # - statusbadge.enabled=true # Comment on Disaster Recovery
-      # - url=https://argocd.devxp-tech.io # Comment on Disaster Recovery
-      # - dexserver.disable.tls=true # Comment on Disaster Recovery
-      # - accounts.backstage="apiKey, login" # Comment on Disaster Recovery
+      - statusbadge.enabled=true # Comment on Disaster Recovery
+      - url=https://argocd.devxp-tech.io # Comment on Disaster Recovery
+      - dexserver.disable.tls=true # Comment on Disaster Recovery
+      - accounts.backstage="apiKey, login" # Comment on Disaster Recovery
   - name: argocd-rbac-cm
     options:
       labels:
