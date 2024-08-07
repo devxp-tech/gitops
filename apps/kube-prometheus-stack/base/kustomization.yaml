@@ -6,7 +6,7 @@ resources:
 helmCharts:
   - name: kube-prometheus-stack
     releaseName: prometheus-community
-    version: 61.6.0
+    version: 61.7.1
     repo: https://prometheus-community.github.io/helm-charts
     includeCRDs: true
     valuesInline:
