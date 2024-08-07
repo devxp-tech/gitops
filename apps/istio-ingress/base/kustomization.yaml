@@ -4,12 +4,10 @@ namespace: istio-ingress
 helmCharts:
   - name: gateway
     releaseName: gateway
-    version: 1.19.10
+    version: 1.21.5
     repo: https://istio-release.storage.googleapis.com/charts
     valuesInline:
       name: istio-ingressgateway
-      defaults:
-        imagePullPolicy: IfNotPresent
       labels:
         app_label: istio-ingressgateway
       podAnnotations:
@@ -23,6 +21,3 @@ helmCharts:
           service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
           service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing"
           service.beta.kubernetes.io/aws-load-balancer-attributes: "load_balancing.cross_zone.enabled=true"
-      selector:
-        app: "istio-ingress"
-        istio: "ingressgateway"  # Make sure this matches the labels you are using.
