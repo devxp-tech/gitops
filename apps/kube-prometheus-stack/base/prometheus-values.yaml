@@ -50,6 +50,7 @@ prometheus:
     - nonResourceURLs:
         - "/metrics"
       verbs: ["get", "list", "watch"]
+
   # thanosService:
   #   enabled: true # Enable Mimir
   # thanosServiceMonitor:
