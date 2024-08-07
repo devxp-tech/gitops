@@ -1,18 +1,20 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: cert-manager
+resources:
+  - https://github.com/cert-manager/cert-manager/releases/download/v1.15.2/cert-manager.crds.yaml
 # patches:
 #   - target:
 #       kind: CustomResourceDefinition
 #       labelSelector: app.kubernetes.io/instance=cert-manager
-#     path: |-
+#     patch: |
 #       - op: remove
 #         path: /metadata/labels/app.kubernetes.io~1instance
 helmCharts:
   - name: cert-manager
     releaseName: cert-manager
     namespace: cert-manager
-    version: v1.14.5
+    version: v1.15.2
     repo: https://charts.jetstack.io
     valuesInline:
       # installCRDs: true
@@ -20,6 +22,12 @@ helmCharts:
         leaderElection:
           namespace: "cert-manager"
       namespace: "cert-manager"
+      securityContext:
+        enabled: "true"
+        fsGroup: 1001
+      serviceAccount:
+        annotations:
+          eks.amazonaws.com/role-arn: arn:aws:iam::239468932737:role/vex-dev-usea1-eks-cert-manager-sa
       resources:
         requests:
           cpu: 10m
