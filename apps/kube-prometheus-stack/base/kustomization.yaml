@@ -11,6 +11,8 @@ helmCharts:
     includeCRDs: true
     valuesInline:
       # fullnameOverride: prometheus
+      crds:
+        enabled: true
       grafana:
         enabled: false
       kubeEtcd:
