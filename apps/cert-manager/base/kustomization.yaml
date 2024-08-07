@@ -23,7 +23,6 @@ helmCharts:
           namespace: "cert-manager"
       namespace: "cert-manager"
       securityContext:
-        enabled: true
         fsGroup: 1001
       serviceAccount:
         annotations:
