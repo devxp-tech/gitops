@@ -17,8 +17,8 @@
 | homepage | devxp-app | 0.2.81 | https://devxp-tech.github.io/helm-charts |  |  |  | [![App Status](https://argocd.devxp-tech.io/api/badge?name=homepage-prd&revision=true&showAppName=true)](https://argocd.devxp-tech.io/applications/homepage-prd) |
 | homepage | devxp-app | 0.2.81 | https://devxp-tech.github.io/helm-charts |  |  | [![App Status](https://argocd.devxp-tech.io/api/badge?name=homepage-dev&revision=true&showAppName=true)](https://argocd.devxp-tech.io/applications/homepage-dev) |  |
 | hotrod | devxp-app | 0.2.82 | https://devxp-tech.github.io/helm-charts | ✅ |  |  |  |
-| istio | base | 1.21.5 | https://istio-release.storage.googleapis.com/charts | ✅ |  |  |  |
-| istio-ingress | gateway | 1.21.5 | https://istio-release.storage.googleapis.com/charts | ✅ |  |  |  |
+| istio | base | 1.19.10 | https://istio-release.storage.googleapis.com/charts | ✅ |  |  |  |
+| istio-ingress | gateway | 1.19.10 | https://istio-release.storage.googleapis.com/charts | ✅ |  |  |  |
 | jaeger | jaeger | 2.1.0 | https://jaegertracing.github.io/helm-charts | ✅ |  |  |  |
 | karpenter | karpenter | 0.36.2 | oci://public.ecr.aws/karpenter | ✅ |  |  |  |
 | keycloak | keycloak | 18.4.4 | https://codecentric.github.io/helm-charts | ✅ |  |  |  |
