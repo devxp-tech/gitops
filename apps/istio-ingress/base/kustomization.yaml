@@ -14,13 +14,13 @@ helmCharts:
       name: istio-ingressgateway
       defaults:
         imagePullPolicy: IfNotPresent
-        tolerations:
-          - key: "role"
-            operator: "Equal"
-            value: "public"
-            effect: "NoSchedule"
-        nodeSelector:
-          role: "public"
+        # tolerations:
+        #   - key: "role"
+        #     operator: "Equal"
+        #     value: "public"
+        #     effect: "NoSchedule"
+        # nodeSelector:
+        #   role: "public"
         # service:
         #   loadBalancerSourceRanges: "0.0.0.0/0"
       labels:
