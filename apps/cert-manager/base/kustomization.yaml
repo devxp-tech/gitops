@@ -14,11 +14,10 @@ helmCharts:
   - name: cert-manager
     releaseName: cert-manager
     namespace: cert-manager
-    includeCRDs: true
     version: v1.15.2
     repo: https://charts.jetstack.io
     valuesInline:
-      # installCRDs: true
+      installCRDs: true
       global:
         leaderElection:
           namespace: "cert-manager"
