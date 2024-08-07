@@ -24,7 +24,7 @@
 | keycloak | keycloak | 18.4.4 | https://codecentric.github.io/helm-charts | ✅ |  |  |  |
 | kiali-operator | kiali-operator | 1.84.0 | https://kiali.org/helm-charts | ✅ |  |  |  |
 | kube-downscaler | kube-downscaler | 0.7.4 | https://charts.deliveryhero.io/ | ✅ |  |  |  |
-| kube-prometheus-stack | kube-prometheus-stack | 61.6.0 | https://prometheus-community.github.io/helm-charts | ✅ |  |  |  |
+| kube-prometheus-stack | kube-prometheus-stack | 61.7.1 | https://prometheus-community.github.io/helm-charts | ✅ |  |  |  |
 | kubeclarity | kubeclarity | v2.23.1 | https://openclarity.github.io/kubeclarity | ✅ |  |  |  |
 | kubecost | cost-analyzer | 2.3.3 | https://kubecost.github.io/cost-analyzer | ✅ |  |  |  |
 | kyverno | kyverno | 3.2.4 | https://kyverno.github.io/kyverno | ✅ |  |  |  |
