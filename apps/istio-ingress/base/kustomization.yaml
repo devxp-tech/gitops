@@ -18,6 +18,6 @@ helmCharts:
         enabled: true
       service:
         annotations:
-          service.beta.kubernetes.io/aws-load-balancer-type: nlb
+          # service.beta.kubernetes.io/aws-load-balancer-type: nlb
           numTrustedProxies: 2
         externalTrafficPolicy: Local
