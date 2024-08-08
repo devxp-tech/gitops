@@ -35,7 +35,7 @@ helmCharts:
         limits:
           cpu: "50m"
           memory: "128Mi"
-      instrumentation: nginx
+      # instrumentation: nginx
       monitoring:
         serviceMonitor:
           enabled: true
