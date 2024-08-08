@@ -29,6 +29,8 @@ helmCharts:
         - apiGroups: ["coordination.k8s.io"]
           resources: ["leases"]
           verbs: ["*"]
+      webhook:
+        enabled: false
       serviceMonitor:
         enabled: true
       replicas: 1
