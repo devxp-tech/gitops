@@ -10,8 +10,8 @@ helmCharts:
     repo: https://aws.github.io/eks-charts
     valuesInline:
       clusterName: vex-dev-usea1-eks
-      # region: us-east-1
-      # vpcId: vpc-01dc9f4be86534b42
+      region: us-east-1
+      vpcId: vpc-01dc9f4be86534b42
       # enableCertManager: true
       serviceAccount:
         create: true
