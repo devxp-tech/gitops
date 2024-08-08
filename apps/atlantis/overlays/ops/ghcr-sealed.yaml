@@ -1,0 +1,16 @@
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: ghcr-secret
+  namespace: atlantis
+spec:
+  encryptedData:
+    .dockerconfigjson: AgAergTwWJe0xXiSdEQ3abbeP+aCsP0u9aBB55hpRBzxQkh6i72v6dfZYcCEFsykp2GgNL8gQWWVV60VBhIYvt5ntKETKEHOt6m+Dmz+7UWSpHUS7D9LhO4+Ie04RBuJV+x25XyVL5zUOSvfrdZ0aTp4WKp2rhILdJhvkcnPpR8swP4+5+/I4dQdrPB4mqGFNTK3cOSuaE1McEhrhQ+8rZFfDs7sWWJHPffMzYrgYvq/og9qevBuOa4jaUePk6ZyHBWRNEzuPwiZGDkMYdD/wM0Kqmg3gvLLfOu7KoOX1Ub4tppnX5cScJm+dZfbXQpwyBXm1QixM4sTAIo3YUusYc5ksF7Z013dToojq9d1FAsD2/gQ9HSAQI+SX76xIXtArUSYSFievD1YqTfoyw/4n4u1C4EZbXCEruXmrC4MjUWWwSiu38VtUMY+LE+D3NCrZdr02ZqYOMIrIoFA+wP/oFAHQZ9Q6zYNGo4xNnQfw2p/BnzH0dGlOW/VmzXHVOFZt3R5xkwo1QXS0IlUauld3/wK7nTmXth8l4JmR0sVJoeEswfgZTI7R/+M3Ug+JHM0oydgUvDV2t1hY3knlpsM1tImySDmxTEEeWARzv5pc9Sxqr/4uSrLZifnzwFNmhfQ3O2N5k/rcc69Pj0Q08B1oDDKeiIr7wqf8U0pOL0/5vlwJh3mW15kulk51J+0ErNEtnZ7LKS+4GYqLw+E6XSIwzYLz8XsFShalnGJQu9tnAvEDH9/AhmXM2TuIgS5WzA1FxWEbd5CwP9t742MDdShvJGrHjAeCLAbcU+hQY0g8EKTT7BVHXixYUBc9o3gZvgq0IDJbUmMTyArM4XX3WpCWrvDRd9SXWX7fbphF+nL3Wh9JT8ou2s3xzABBXWXtGqMAOGSBD8n5jQVXjrst0Vb8f9dU87nO6YdOqTjxNAzZKt7Fb1z6Q==
+  template:
+    metadata:
+      creationTimestamp: null
+      name: ghcr-secret
+      namespace: atlantis
+    type: kubernetes.io/dockerconfigjson
