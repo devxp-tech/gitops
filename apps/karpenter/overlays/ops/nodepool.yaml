@@ -37,7 +37,7 @@ spec:
           values: ['4095'] # 4 * 1024 -1
         - key: karpenter.k8s.aws/instance-category
           operator: In
-          values: ["c", "m", "t", "r"]
+          values: ["c", "t", "r"]
         - key: topology.kubernetes.io/zone
           operator: In
           values: ["us-east-1a", "us-east-1b", "us-east-1c"]
@@ -87,7 +87,7 @@ spec:
           values: ['4095'] # 4 * 1024 -1
         - key: karpenter.k8s.aws/instance-category
           operator: In
-          values: ["c", "m", "t", "r"]
+          values: ["c", "t", "r"]
         - key: topology.kubernetes.io/zone
           operator: In
           values: ["us-east-1a", "us-east-1b", "us-east-1c"]
