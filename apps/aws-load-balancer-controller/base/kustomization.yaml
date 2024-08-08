@@ -3,6 +3,7 @@ kind: Kustomization
 namespace: kube-system
 helmCharts:
   - name: aws-load-balancer-controller
+    namespace: kube-system
     includeCRDs: true
     releaseName: aws-load-balancer-controller
     version: 1.8.1
