@@ -60,7 +60,11 @@ configMapGenerator:
       - server.dex.server="http://argocd-dex-server:5556"
       - server.dex.server.strict.tls="false"
     name: argocd-cmd-params-cm
-  - behavior: merge
+  - name: argocd-cm
+    options:
+      labels:
+        app.kubernetes.io/part-of: argocd
+    behavior: merge
     files:
       - files/dex.config
       - files/repositories
@@ -74,10 +78,7 @@ configMapGenerator:
       - url=https://argocd.devxp-tech.io
       - dexserver.disable.tls=true
       - accounts.backstage="apiKey, login"
-    name: argocd-cm
-    options:
-      labels:
-        app.kubernetes.io/part-of: argocd
+      - application.instanceLabelKey="argocd.argoproj.io/instance"
   - behavior: merge
     files:
       - files/policy.csv
