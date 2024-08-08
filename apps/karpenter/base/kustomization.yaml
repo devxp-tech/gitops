@@ -16,16 +16,16 @@ helmCharts:
       serviceAccount:
         annotations:
           eks.amazonaws.com/role-arn: arn:aws:iam::239468932737:role/KarpenterController-20240806113626522400000006
-      # webhook:
-      #   enabled: true
-      #   port: 8443
+      webhook:
+        enabled: true
+        port: 8443
       # Failed to watch *v1.Lease: failed to list *v1.Lease: leases.coordination.k8s.io is forbidden: User "system:serviceaccount:karpenter:karpenter" cannot list resource "leases" in API group "coordination.k8s.io" in the namespace "kube-node-lease"
       additionalClusterRoleRules:
         - apiGroups: ["coordination.k8s.io"]
           resources: ["leases"]
           verbs: ["*"]
-      # serviceMonitor:
-      #   enabled: true
+      serviceMonitor:
+        enabled: true
       replicas: 1
       affinity:
         nodeAffinity:
