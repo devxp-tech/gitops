@@ -3,6 +3,14 @@ kind: Kustomization
 namespace: karpenter
 # resources:
 #   - prometheus-rules.yaml
+patches:
+  - target:
+      kind: Deployment
+      name: karpenter
+    patch: |-
+      - op: replace
+        path: /metadata/labels/app.kubernetes.io~1instance
+        value: karpenter
 helmCharts:
   - name: karpenter
     includeCRDs: true
