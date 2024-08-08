@@ -18,6 +18,9 @@ helmCharts:
         enabled: true
       service:
         annotations:
+          service.beta.kubernetes.io/aws-load-balancer-attributes: load_balancing.cross_zone.enabled=true
+          service.beta.kubernetes.io/aws-load-balancer-backend-protocol: tcp
           service.beta.kubernetes.io/aws-load-balancer-type: nlb
-          numTrustedProxies: 2
-        externalTrafficPolicy: Local
+          alb.ingress.kubernetes.io/target-type: ip
+          # numTrustedProxies: 2
+        externalTrafficPolicy: "Local"
