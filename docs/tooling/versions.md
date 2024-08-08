@@ -11,7 +11,7 @@
 | cert-manager | cert-manager | v1.15.2 | https://charts.jetstack.io | ✅ |  |  |  |
 | cilium | cilium | 1.15.7 | https://helm.cilium.io | ✅ |  |  |  |
 | demo-app | devxp-app | 0.2.81 | https://devxp-tech.github.io/helm-charts |  |  |  | [![App Status](https://argocd.devxp-tech.io/api/badge?name=demo-app-prd&revision=true&showAppName=true)](https://argocd.devxp-tech.io/applications/demo-app-prd) |
-| demo-app | devxp-app | 0.2.82 | https://devxp-tech.github.io/helm-charts |  |  | [![App Status](https://argocd.devxp-tech.io/api/badge?name=demo-app-dev&revision=true&showAppName=true)](https://argocd.devxp-tech.io/applications/demo-app-dev) |  |
+| demo-app | devxp-app | 0.2.83 | https://devxp-tech.github.io/helm-charts |  |  | [![App Status](https://argocd.devxp-tech.io/api/badge?name=demo-app-dev&revision=true&showAppName=true)](https://argocd.devxp-tech.io/applications/demo-app-dev) |  |
 | dex | dex | 0.17.1 | https://charts.dexidp.io | ✅ |  |  |  |
 | external-dns | external-dns | 7.5.5 | https://charts.bitnami.com/bitnami | ✅ |  |  |  |
 | grafana | grafana | 8.0.2 | https://grafana.github.io/helm-charts | ✅ |  |  |  |
@@ -38,7 +38,7 @@
 | sealed-secrets | sealed-secrets | 2.15.3 | https://bitnami-labs.github.io/sealed-secrets | ✅ |  |  |  |
 | sonarqube | sonarqube | 10.6.0+3033 | https://SonarSource.github.io/helm-chart-sonarqube | ✅ |  |  |  |
 | template-java | devxp-app | 0.2.81 | https://devxp-tech.github.io/helm-charts |  |  |  | [![App Status](https://argocd.devxp-tech.io/api/badge?name=template-java-prd&revision=true&showAppName=true)](https://argocd.devxp-tech.io/applications/template-java-prd) |
-| template-java | devxp-app | 0.2.82 | https://devxp-tech.github.io/helm-charts |  |  | [![App Status](https://argocd.devxp-tech.io/api/badge?name=template-java-dev&revision=true&showAppName=true)](https://argocd.devxp-tech.io/applications/template-java-dev) |  |
+| template-java | devxp-app | 0.2.83 | https://devxp-tech.github.io/helm-charts |  |  | [![App Status](https://argocd.devxp-tech.io/api/badge?name=template-java-dev&revision=true&showAppName=true)](https://argocd.devxp-tech.io/applications/template-java-dev) |  |
 | tempo | tempo | 1.10.1 | https://grafana.github.io/helm-charts | ✅ |  |  |  |
 | teste-loki | devxp-app | 0.2.81 | https://devxp-tech.github.io/helm-charts |  |  |  | [![App Status](https://argocd.devxp-tech.io/api/badge?name=teste-loki-prd&revision=true&showAppName=true)](https://argocd.devxp-tech.io/applications/teste-loki-prd) |
 | teste-loki | devxp-app | 0.2.82 | https://devxp-tech.github.io/helm-charts |  |  | [![App Status](https://argocd.devxp-tech.io/api/badge?name=teste-loki-dev&revision=true&showAppName=true)](https://argocd.devxp-tech.io/applications/teste-loki-dev) |  |
