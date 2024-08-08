@@ -4,8 +4,6 @@ namespace: teste-loki
 resources:
   - ../../base
   - secrets.yaml
-commonLabels:
-  app: teste-loki
 helmCharts:
   - name: devxp-app
     releaseName: devxp-app
@@ -18,7 +16,7 @@ helmCharts:
         repository: ghcr.io/devxp-tech/teste-loki
         tag: cd6fc9c0
 
-      instrumentation: go
+      # instrumentation: go
       # podAnnotations:
       #   instrumentation.opentelemetry.io/otel-go-auto-target-exe: '/app'
 
