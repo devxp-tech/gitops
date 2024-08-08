@@ -352,7 +352,7 @@ prometheus:
             action: keep
             regex: istio-citadel;http-monitoring
 
-      - job_name: 'lgs-prd-wordpress-web01'
+      - job_name: 'linux-servers'
         scrape_interval: 60s
         metrics_path: /metrics
         static_configs:
