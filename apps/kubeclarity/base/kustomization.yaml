@@ -6,7 +6,7 @@ helmCharts:
     releaseName: kubeclarity
     namespace: kubeclarity
     repo: https://openclarity.github.io/kubeclarity
-    version: v2.23.1
+    version: v2.23.3
     valuesInline:
       labels:
         app: kubeclarity
