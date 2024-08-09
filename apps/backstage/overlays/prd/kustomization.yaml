@@ -71,7 +71,7 @@ helmCharts:
 
   - name: postgresql
     releaseName: postgresql
-    version: 12.12.10
+    version: 15.5.21
     repo: https://charts.bitnami.com/bitnami
     valuesInline:
       auth:
