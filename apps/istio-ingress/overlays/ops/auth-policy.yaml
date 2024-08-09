@@ -23,7 +23,7 @@ spec:
         - key: request.headers[x-envoy-external-address]
           values:
             - "94.62.74.120" # Diego
-            # - "176.78.53.14" # Office
+            - "3.220.46.13" # Test
     - to:
         - operation:
             hosts:
