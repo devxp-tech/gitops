@@ -41,5 +41,5 @@
 | template-java | devxp-app | 0.2.83 | https://devxp-tech.github.io/helm-charts |  |  | [![App Status](https://argocd.devxp-tech.io/api/badge?name=template-java-dev&revision=true&showAppName=true)](https://argocd.devxp-tech.io/applications/template-java-dev) |  |
 | tempo | tempo | 1.10.2 | https://grafana.github.io/helm-charts | ✅ |  |  |  |
 | teste-loki | devxp-app | 0.2.81 | https://devxp-tech.github.io/helm-charts |  |  |  | [![App Status](https://argocd.devxp-tech.io/api/badge?name=teste-loki-prd&revision=true&showAppName=true)](https://argocd.devxp-tech.io/applications/teste-loki-prd) |
-| teste-loki | devxp-app | 0.2.84 | https://devxp-tech.github.io/helm-charts |  |  | [![App Status](https://argocd.devxp-tech.io/api/badge?name=teste-loki-dev&revision=true&showAppName=true)](https://argocd.devxp-tech.io/applications/teste-loki-dev) |  |
+| teste-loki | devxp-app | 0.2.85 | https://devxp-tech.github.io/helm-charts |  |  | [![App Status](https://argocd.devxp-tech.io/api/badge?name=teste-loki-dev&revision=true&showAppName=true)](https://argocd.devxp-tech.io/applications/teste-loki-dev) |  |
 | wordpress | wordpress | 23.0.1 | https://charts.bitnami.com/bitnami | ✅ |  |  |  |
