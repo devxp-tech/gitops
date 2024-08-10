@@ -45,7 +45,7 @@ helmCharts:
         limits:
           memory: 600Mi
           cpu: 200m
-      instrumentation: nodejs
+      # instrumentation: nodejs
       monitoring:
         serviceMonitor:
           enabled: true
@@ -92,13 +92,7 @@ helmCharts:
           requests:
             cpu: 10m
             memory: 84Mi
-      # tolerations:
-      #   - key: "role"
-      #     operator: "Equal"
-      #     value: "on-demand"
-      #     effect: "NoSchedule"
-      # nodeSelector:
-      #   role: "on-demand"
+
 
   # - name: devxp-infra
   #   releaseName: devxp-infra
