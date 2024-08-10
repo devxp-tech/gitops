@@ -25,7 +25,7 @@ spec:
     - "dev.devxp-tech.io"
     - "*.dev.devxp-tech.io"
     - "priv.dev.devxp-tech.io"
-    - "*priv..dev.devxp-tech.io"
+    - "*.priv.dev.devxp-tech.io"
   issuerRef:
     kind: ClusterIssuer
     name: devxp-tech.io
