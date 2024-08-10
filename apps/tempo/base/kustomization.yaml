@@ -5,7 +5,7 @@ helmCharts:
   - name: tempo
     includeCRDs: true
     releaseName: tempo
-    version: 1.10.1
+    version: 1.10.2
     repo: https://grafana.github.io/helm-charts
     valuesInline:
       replicas: 1
@@ -27,6 +27,13 @@ helmCharts:
         enabled: true
         metricsGenerator:
           remoteWriteUrl: http://mimir-nginx.monitoring.svc:80/api/v1/push
+        storage:
+          trace:
+            backend: s3 # we're using minio anyway!
+            s3:
+              bucket: vex-dev-usea1-eks-s3-traces
+              endpoint: s3.us-east-1.amazonaws.com
+              region: us-east-1
       gateway:
         enabled: true
       tempoQuery:
