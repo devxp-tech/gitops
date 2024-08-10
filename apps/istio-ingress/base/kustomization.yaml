@@ -24,8 +24,8 @@ helmCharts:
           service.beta.kubernetes.io/aws-load-balancer-type: nlb
           # numTrustedProxies: 2
         externalTrafficPolicy: Local
-  - name: gateway-private
-    releaseName: gateway
+  - name: gateway
+    releaseName: gateway-private
     version: 1.22.0
     repo: https://istio-release.storage.googleapis.com/charts
     valuesInline:
