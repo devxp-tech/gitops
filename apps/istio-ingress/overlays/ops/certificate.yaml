@@ -22,22 +22,12 @@ spec:
   dnsNames:
     - devxp-tech.io
     - "*.devxp-tech.io"
+    - "dev.devxp-tech.io"
+    - "*.dev.devxp-tech.io"
+    - "priv.dev.devxp-tech.io"
+    - "*priv..dev.devxp-tech.io"
   issuerRef:
     kind: ClusterIssuer
     name: devxp-tech.io
   secretName: devxp-tech.io
 
----
-apiVersion: cert-manager.io/v1
-kind: Certificate
-metadata:
-  name: priv.dev.devxp-tech.io
-spec:
-  commonName: priv.dev.devxp-tech.io
-  dnsNames:
-    - priv.dev.devxp-tech.io
-    - "*.priv.dev.devxp-tech.io"
-  issuerRef:
-    kind: ClusterIssuer
-    name: priv.dev.devxp-tech.io
-  secretName: priv.dev.devxp-tech.io
