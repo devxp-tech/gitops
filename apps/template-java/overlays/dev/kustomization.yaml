@@ -6,7 +6,7 @@ resources:
 helmCharts:
   - name: devxp-app
     releaseName: devxp-app
-    version: 0.2.83
+    version: 0.2.85
     repo: https://devxp-tech.github.io/helm-charts
     valuesInline:
       name: template-java
@@ -15,7 +15,9 @@ helmCharts:
           domain: devxp-tech.io
       actuator:
         enabled: true
-      # instrumentation: java
+      instrumentation:
+        enabled: true
+        language: java
       image:
         repository: ghcr.io/devxp-tech/template-java
         tag: 16fcee54

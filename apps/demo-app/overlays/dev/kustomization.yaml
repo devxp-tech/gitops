@@ -6,7 +6,7 @@ resources:
 helmCharts:
   - name: devxp-app
     releaseName: devxp-app
-    version: 0.2.83
+    version: 0.2.85
     repo: https://devxp-tech.github.io/helm-charts
     valuesInline:
       name: demo-app
@@ -19,7 +19,9 @@ helmCharts:
         repository: ghcr.io/devxp-tech/demo-app
         tag: 7df51a75
 
-      # instrumentation: go
+      instrumentation:
+        enabled: true
+        language: go
 
       monitoring:
         serviceMonitor:
