@@ -78,3 +78,6 @@ spec:
         credentialName: devxp-tech.io # This should match the Certificate secretName
       hosts:
         - "*.devxp-tech.io" # This should match a DNS name in the Certificate
+        - "*.devxp-tech.io"
+        - "*.dev.devxp-tech.io"
+        - "*.priv.dev.devxp-tech.io"
