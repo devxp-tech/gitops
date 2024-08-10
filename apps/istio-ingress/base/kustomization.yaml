@@ -24,3 +24,26 @@ helmCharts:
           service.beta.kubernetes.io/aws-load-balancer-type: nlb
           # numTrustedProxies: 2
         externalTrafficPolicy: Local
+  - name: gateway-private
+    releaseName: gateway
+    version: 1.22.0
+    repo: https://istio-release.storage.googleapis.com/charts
+    valuesInline:
+      name: istio-ingressgateway-private
+      defaults:
+        imagePullPolicy: IfNotPresent
+      labels:
+        app_label: istio-ingressgateway-private
+      podAnnotations:
+        proxy.istio.io/config: '{"discoveryAddress" : "istiod.istio-system.svc:15012" }'
+      autoscaling:
+        enabled: true
+      service:
+        annotations:
+          service.beta.kubernetes.io/aws-load-balancer-backend-protocol: tcp
+          service.beta.kubernetes.io/aws-load-balancer-cross-zone-load-balancing-enabled: "true"
+          service.beta.kubernetes.io/aws-load-balancer-scheme: internal
+          service.beta.kubernetes.io/aws-load-balancer-internal: "true"
+          service.beta.kubernetes.io/aws-load-balancer-type: nlb
+          # numTrustedProxies: 2
+        externalTrafficPolicy: Local
