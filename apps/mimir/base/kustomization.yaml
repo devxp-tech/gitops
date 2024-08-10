@@ -239,11 +239,12 @@ helmCharts:
           requests:
             cpu: 100m   # 30% of 1
             memory: 256Mi # 30% of 1.5Gi
-        replicas: 3
+        replicas: 1
         podDisruptionBudget:
           maxUnavailable: 2
-        zoneAwareReplication:
-          enabled: false
+        # zoneAwareReplication: # test billing
+        #   enabled: false
+
         # tolerations:
         #   - key: "role"
         #     operator: "Equal"
