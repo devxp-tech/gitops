@@ -16,7 +16,9 @@ helmCharts:
         repository: ghcr.io/devxp-tech/teste-loki
         tag: cd6fc9c0
 
-      # instrumentation: go
+      instrumentation:
+        enabled: true
+        language: go
 
       # podAnnotations:
       #   instrumentation.opentelemetry.io/otel-go-auto-target-exe: '/app'

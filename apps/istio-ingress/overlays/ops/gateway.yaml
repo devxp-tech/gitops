@@ -52,8 +52,7 @@ spec:
     istio: istio-ingressgateway-private
   servers:
     - hosts:
-        - "*.diegoluisi.eti.br"
-        - "*.devxp-tech.io"
+        - "*.priv.dev.devxp-tech.io"
       port:
         name: http
         number: 80
@@ -61,20 +60,11 @@ spec:
       tls:
         httpsRedirect: true
     - port:
-        name: https-diegoluisi
-        number: 443
-        protocol: HTTPS
-      tls:
-        mode: SIMPLE
-        credentialName: diegoluisi.eti.br # This should match the Certificate secretName
-      hosts:
-        - "*.diegoluisi.eti.br" # This should match a DNS name in the Certificate
-    - port:
         name: https-devxp
         number: 443
         protocol: HTTPS
       tls:
         mode: SIMPLE
-        credentialName: devxp-tech.io # This should match the Certificate secretName
+        credentialName: priv.dev.devxp-tech.io # This should match the Certificate secretName
       hosts:
-        - "*.devxp-tech.io" # This should match a DNS name in the Certificate
+        - "*.priv.dev.devxp-tech.io" # This should match a DNS name in the Certificate

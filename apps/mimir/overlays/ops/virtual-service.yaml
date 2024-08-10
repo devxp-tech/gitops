@@ -9,8 +9,10 @@ metadata:
 spec:
   hosts:
     - "mimir.devxp-tech.io"
+    - "mimir.priv.dev.devxp-tech.io"
   gateways:
     - istio-ingress/istio-ingressgateway
+    - istio-ingress/istio-ingressgateway-private
   http:
     - match:
         - uri:
