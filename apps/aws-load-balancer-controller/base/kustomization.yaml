@@ -15,4 +15,4 @@ helmCharts:
       serviceAccount:
         create: true
         annotations:
-          eks.amazonaws.com/role-arn: arn:aws:iam::239468932737:role/AmazonEKSLoadBalancerControllerRole
+          eks.amazonaws.com/role-arn: arn:aws:iam::458845629758:role/tha-mng-che-eks-20240811172119525800000002
