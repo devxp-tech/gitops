@@ -4,7 +4,6 @@ namespace: kiali-operator
 resources:
   - ns.yaml
   - service-monitor.yaml
-  # - auth-policy.yaml
 helmCharts:
   - name: kiali-operator
     includeCRDs: true
@@ -35,8 +34,8 @@ helmCharts:
                   - app_label: istio-ingressgateway
                     is_core: true
                     is_proxy: true
-                    # default: namespace is undefined
                     namespace: istio-ingress
+                    # default: namespace is undefined
                 enabled: true
               config_map_name: "istio"
               envoy_admin_local_port: 15000
