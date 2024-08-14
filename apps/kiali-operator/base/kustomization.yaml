@@ -99,7 +99,7 @@ helmCharts:
                 - name: "Istio Wasm Extension Dashboard"
             tracing:
               enabled: true
-              provider: "tempo"
+              # provider: "tempo"
               in_cluster_url: "http://tempo.observability.svc.cluster.local:16685" #working without provider
 
               # in_cluster_url: "http://tempo.observability.svc:3100"
