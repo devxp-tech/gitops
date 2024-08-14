@@ -108,7 +108,7 @@ helmCharts:
                 org_id: "1"
                 datasource_uid: "tempo"
               use_grpc: true
-              grpc_port: 4317
+              grpc_port: 14250
 
           auth:
             strategy: openid
