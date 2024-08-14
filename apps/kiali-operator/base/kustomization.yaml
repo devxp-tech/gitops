@@ -108,6 +108,7 @@ helmCharts:
                 org_id: "1"
                 datasource_uid: "tempo"
               use_grpc: false
+              namespace_selector: false
 
           auth:
             strategy: openid

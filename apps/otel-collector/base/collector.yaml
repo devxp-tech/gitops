@@ -47,13 +47,6 @@ spec:
         endpoint: 0.0.0.0:9411
 
     processors:
-      # fix duplicated with receiver prometheus
-      attributes/metrics:
-        actions:
-          - action: delete
-            key: service.namespace
-          - action: delete
-            key: deployment.environment
       memory_limiter:
         check_interval: 1s
         limit_percentage: 75
@@ -63,7 +56,6 @@ spec:
         timeout: 10s
 
     exporters:
-      debug:
       otlp/tempo:
         endpoint: "tempo.observability.svc:4317"
         tls:
