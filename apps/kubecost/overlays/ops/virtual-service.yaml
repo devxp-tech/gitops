@@ -8,9 +8,9 @@ metadata:
     link.argocd.argoproj.io/external-link: https://kubecost.devxp-tech.io
 spec:
   hosts:
-    - "kubecost.devxp-tech.io"
+    - "kubecost.dev.devxp-tech.io"
   gateways:
-    - istio-ingress/istio-ingressgateway
+    - istio-ingress/istio-ingressgateway-private
   http:
     - match:
         - uri:

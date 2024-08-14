@@ -9,12 +9,12 @@ spec:
       app: istio-ingressgateway
   action: ALLOW
   rules:
-    - from:
-        - source:
-            principals: ["cluster.local/*"]
-      to:
-        - operation:
-            methods: ["GET", "POST", "OPTIONS", "DELETE", "PATCH"]
+    # - from:
+    #     - source:
+    #         principals: ["cluster.local/*"]
+    #   to:
+    #     - operation:
+    #         methods: ["GET", "POST", "OPTIONS", "DELETE", "PATCH"]
     - to:
         - operation:
             hosts:

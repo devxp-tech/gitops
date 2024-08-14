@@ -70,7 +70,6 @@ helmCharts:
                     app_label: istio-ingressgateway-private
                     is_core: true
                     is_proxy: true
-                    # default: namespace is undefined
             prometheus:
               url: http://mimir-nginx.monitoring.svc/prometheus
               health_check_url: http://mimir-nginx.monitoring.svc
@@ -78,7 +77,6 @@ helmCharts:
                 enabled: true
                 retention_period: "7d"
                 scrape_interval: "60s"
-              #http://prometheus-community-kube-prometheus.monitoring.svc.cluster.local:9090
             grafana:
               auth:
                 type: bearer

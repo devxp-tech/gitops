@@ -8,9 +8,9 @@ metadata:
     link.argocd.argoproj.io/external-link: https://prometheus.devxp-tech.io
 spec:
   hosts:
-    - "prometheus.devxp-tech.io"
+    - "prometheus.dev.devxp-tech.io"
   gateways:
-    - istio-ingress/istio-ingressgateway
+    - istio-ingress/istio-ingressgateway-private
   http:
     - match:
         - uri:
@@ -31,9 +31,9 @@ metadata:
     link.argocd.argoproj.io/external-link: https://alertmanager.devxp-tech.io
 spec:
   hosts:
-    - "alertmanager.devxp-tech.io"
+    - "alertmanager.dev.devxp-tech.io"
   gateways:
-    - istio-ingress/istio-ingressgateway
+    - istio-ingress/istio-ingressgateway-private
   http:
     - match:
         - uri:
