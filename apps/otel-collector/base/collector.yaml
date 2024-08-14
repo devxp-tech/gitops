@@ -70,15 +70,15 @@ spec:
         tls:
           insecure: true
 
-      # prometheusremotewrite:
-      #   endpoint: http://mimir-nginx.monitoring.svc:80/api/v1/push
-      #   remote_write_queue:
-      #     enabled: true
-      #     num_consumers: 30
-      #   retry_on_failure:
-      #     enabled: false
-      #   resource_to_telemetry_conversion:
-      #     enabled: true
+      prometheusremotewrite:
+        endpoint: http://mimir-nginx.monitoring.svc:80/api/v1/push
+        remote_write_queue:
+          enabled: true
+          num_consumers: 30
+        retry_on_failure:
+          enabled: false
+        resource_to_telemetry_conversion:
+          enabled: true
 
     connectors:
       servicegraph:
@@ -137,7 +137,7 @@ spec:
         metrics:
           receivers: [prometheus, otlp, servicegraph, spanmetrics]
           processors: [memory_limiter, batch]
-          exporters: [debug] #prometheusremotewrite
+          exporters: [debug, prometheusremotewrite]
         traces:
           receivers: [jaeger, otlp, zipkin]
           processors: [memory_limiter, batch]
