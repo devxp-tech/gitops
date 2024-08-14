@@ -19,6 +19,11 @@ spec:
           memory.available: 5%
           nodefs.available: 10%
           nodefs.inodesFree: 10%
+        systemReserved:
+          cpu: 200m
+          memory: 100Mi
+          ephemeral-storage: 1Gi
+        maxPods: 110
       # taints:
       #   - key: role
       #     value: on-demand
@@ -73,6 +78,11 @@ spec:
           memory.available: 5%
           nodefs.available: 10%
           nodefs.inodesFree: 10%
+        systemReserved:
+          cpu: 200m
+          memory: 100Mi
+          ephemeral-storage: 1Gi
+        maxPods: 110
       nodeClassRef:
         name: default
       requirements:

@@ -3,7 +3,7 @@ kind: EC2NodeClass
 metadata:
   name: default
 spec:
-  amiFamily: AL2
+  amiFamily: AL2023
   blockDeviceMappings:
   - deviceName: /dev/xvda
     ebs:

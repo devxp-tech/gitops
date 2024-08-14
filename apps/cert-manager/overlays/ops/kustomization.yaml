@@ -18,7 +18,7 @@ helmCharts:
         fsGroup: 1001
       serviceAccount:
         annotations:
-          eks.amazonaws.com/role-arn: arn:aws:iam::239468932737:role/lgseksd1-20240812150851927900000001
+          eks.amazonaws.com/role-arn: arn:aws:iam::239468932737:role/AmazonEKS_Cert_Manager_Role
       resources:
         requests:
           cpu: 10m
