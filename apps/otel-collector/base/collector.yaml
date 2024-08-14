@@ -16,20 +16,19 @@ spec:
     limits:
       cpu: 50m
       memory: 384Mi
-  # tolerations:
-  #   - key: "role"
-  #     operator: "Equal"
-  #     value: "on-demand"
-  #     effect: "NoSchedule"
-  # nodeSelector:
-  #   role: "on-demand"
   config:
     receivers:
       jaeger:
         protocols:
           grpc:
-          thrift_http:
+            endpoint: 0.0.0.0:14250
           thrift_compact:
+            endpoint: 0.0.0.0:6831
+          thrift_http:
+            endpoint: 0.0.0.0:14268
+          # grpc:
+          # thrift_http:
+          # thrift_compact:
       otlp:
         protocols:
           grpc:
@@ -84,12 +83,7 @@ spec:
       servicegraph:
         dimensions:
           - http.method
-        latency_histogram_buckets:
-          - 1
-          - 2
-          - 3
-          - 4
-          - 5
+        latency_histogram_buckets: ["1", "2", "3", "4", "5"]
         store:
           max_items: 10
           ttl: 1s
