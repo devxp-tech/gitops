@@ -19,6 +19,10 @@ helmCharts:
         namespace: istio-system
         istio_labels:
           app_label_name: "app.kubernetes.io/name"
+          egress_gateway_label: "istio=egress"
+          ingress_gateway_label: "istio=ingress"
+          injection_label_name: "istio-injection"
+          injection_label_rev: "istio.io/rev"
           version_label_name: "app.kubernetes.io/version"
         spec:
           istio_namespace: "istio-system"
@@ -38,7 +42,22 @@ helmCharts:
             custom_dashboards:
               discovery_enabled: "false"
             istio:
+              config_map_name: "istio"
+              egress_gateway_namespace: ""
+              envoy_admin_local_port: 15000
+              gateway_api_classes: []
+              ingress_gateway_namespace: "istio-ingress"
+              istio_api_enabled: true
+              istio_identity_domain: "svc.cluster.local"
+              istio_injection_annotation: "sidecar.istio.io/inject"
+              istio_sidecar_annotation: "sidecar.istio.io/status"
+              istio_sidecar_injector_config_map_name: "istio-sidecar-injector"
+              istiod_deployment_name: "istiod"
+              istiod_pod_monitoring_port: 15014
+              root_namespace: ""
+              url_service_version: ""
               component_status:
+                enabled: true
                 components:
                   - app_label: "istiod"
                     is_core: true
@@ -52,10 +71,6 @@ helmCharts:
                     is_core: true
                     is_proxy: true
                     # default: namespace is undefined
-                enabled: true
-              config_map_name: "istio"
-              envoy_admin_local_port: 15000
-              gateway_api_class_name: ""
             prometheus:
               url: http://mimir-nginx.monitoring.svc:80/prometheus
               health_check_url: http://mimir-nginx.monitoring.svc:80/ready
