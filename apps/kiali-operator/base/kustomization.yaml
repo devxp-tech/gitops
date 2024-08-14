@@ -117,3 +117,13 @@ helmCharts:
                 - "openid"
                 - "profile"
                 - "email"
+
+          kiali_feature_flags:
+            certificates_information_indicators:
+              enabled: true
+              secrets:
+              - cacerts
+              - istio-ca-secret
+            disabled_features: []
+            validations:
+              ignore: ["KIA0104"]
