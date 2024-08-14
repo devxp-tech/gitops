@@ -72,8 +72,8 @@ helmCharts:
                     is_proxy: true
                     # default: namespace is undefined
             prometheus:
-              url: http://mimir-nginx.monitoring.svc:80/prometheus
-              health_check_url: http://mimir-nginx.monitoring.svc:80/ready
+              url: http://mimir-nginx.monitoring.svc/prometheus
+              health_check_url: http://mimir-nginx.monitoring.svc
               thanos_proxy:
                 enabled: true
                 retention_period: "7d"
