@@ -7,11 +7,10 @@ metadata:
   labels:
     app_label: istio-ingressgateway-private
     app.kubernetes.io/version: 1.20.0
-    istio: ingressgateway-private
+    istio: ingressgateway
 spec:
   selector:
     app: istio-ingressgateway-private
-    istio: ingressgateway
   servers:
     - hosts:
         - "*.dev.devxp-tech.io"
