@@ -238,7 +238,7 @@ helmCharts:
           alertmanager_url: http://prometheus-community-kube-alertmanager.monitoring.svc.cluster.local:9093
           wal:
             dir: /var/loki/loki-wal
-          external_url: "https://alertmanager.devxp-tech.io"
+          external_url: "https://alertmanager.dev.devxp-tech.io"
           enable_alertmanager_v2: true
           enable_api: true
           remote_write:

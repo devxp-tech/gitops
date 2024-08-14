@@ -5,7 +5,7 @@ metadata:
   name: kubecost
   namespace: monitoring
   annotations:
-    link.argocd.argoproj.io/external-link: https://kubecost.devxp-tech.io
+    link.argocd.argoproj.io/external-link: https://kubecost.dev.devxp-tech.io
 spec:
   hosts:
     - "kubecost.dev.devxp-tech.io"

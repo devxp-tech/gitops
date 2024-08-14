@@ -3,8 +3,8 @@ alertmanager:
     selfMonitor: true
   alertmanagerSpec:
     forceEnableClusterMode: true
-    baseURL: "https://alertmanager.devxp-tech.io"
-    externalUrl: https://alertmanager.devxp-tech.io
+    baseURL: "https://alertmanager.dev.devxp-tech.io"
+    externalUrl: https://alertmanager.dev.devxp-tech.io
     resources:
       requests:
         cpu: "10m"

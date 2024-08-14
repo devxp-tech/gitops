@@ -5,7 +5,7 @@ metadata:
   name: prometheus
   namespace: monitoring
   annotations:
-    link.argocd.argoproj.io/external-link: https://prometheus.devxp-tech.io
+    link.argocd.argoproj.io/external-link: https://prometheus.dev.devxp-tech.io
 spec:
   hosts:
     - "prometheus.dev.devxp-tech.io"
@@ -28,7 +28,7 @@ metadata:
   name: alertmanager
   namespace: monitoring
   annotations:
-    link.argocd.argoproj.io/external-link: https://alertmanager.devxp-tech.io
+    link.argocd.argoproj.io/external-link: https://alertmanager.dev.devxp-tech.io
 spec:
   hosts:
     - "alertmanager.dev.devxp-tech.io"

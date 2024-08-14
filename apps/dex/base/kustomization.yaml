@@ -89,7 +89,7 @@ helmCharts:
           - id: kubecost-client
             name: "KubeCost"
             redirectURIs:
-              - "https://kubecost.devxp-tech.io/model/oidc/authorize"
+              - "https://kubecost.dev.devxp-tech.io/model/oidc/authorize"
             SecretEnv: KUBECOST_CLIENT_SECRET
 
           - id: jaeger-query

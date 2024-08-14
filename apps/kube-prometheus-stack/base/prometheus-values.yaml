@@ -56,14 +56,7 @@ prometheus:
   # thanosServiceMonitor:
   #   enabled: true # Enable Mimir
   prometheusSpec:
-    # tolerations:
-    #   - key: "role"
-    #     operator: "Equal"
-    #     value: "on-demand"
-    #     effect: "NoSchedule"
-    # nodeSelector:
-    #   role: "on-demand"
-    externalUrl: https://prometheus.devxp-tech.io/
+    externalUrl: https://prometheus.dev.devxp-tech.io/
     externalLabels:
       cluster: vex-dev-usea1-eks
       environment: development
@@ -71,6 +64,12 @@ prometheus:
       - url: http://mimir-nginx.monitoring.svc:80/api/v1/push
         headers:
           X-Scope-OrgID: devxp-tech
+        # writeRelabelConfigs:
+        #   - action: replace
+        #     replacement: vex-dev-usea1-eks
+        #     sourceLabels:
+        #       - __address__
+        #     targetLabel: cluster
         queueConfig:
           capacity: 500
           maxShards: 100
