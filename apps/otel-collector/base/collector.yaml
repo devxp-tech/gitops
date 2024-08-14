@@ -120,13 +120,13 @@ spec:
         metrics_flush_interval: 15s
 
 
-    extensions:
-      health_check:
-      pprof:
-      zpages:
+    # extensions:
+    #   health_check:
+    #   pprof:
+    #   zpages:
 
     service:
-      extensions: [health_check, pprof, zpages]
+      # extensions: [health_check, pprof, zpages]
       pipelines:
         metrics:
           receivers: [prometheus, otlp, servicegraph, spanmetrics]
