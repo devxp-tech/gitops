@@ -1,0 +1,32 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- ../../base
+helmCharts:
+  - name: external-dns
+    includeCRDs: true
+    releaseName: external-dns
+    version: 8.3.5
+    repo: https://charts.bitnami.com/bitnami
+    valuesInline:
+      # clusterDomain: "cluster.local"
+      podSecurityContext:
+        fsGroup: 65534
+        runAsUser: 0
+      serviceAccount:
+        create: true
+        annotations:
+          eks.amazonaws.com/role-arn: arn:aws:iam::239468932737:role/AmazonEKS_ExternalDNS_Role
+      sources:
+        - istio-virtualservice
+      domainFilters:
+        # - diegoluisi.eti.br
+        # - devxp-tech.io
+        - dev.devxp-tech.io
+      provider: aws
+      policy: upsert-only
+      aws-zone-type: public # only look at public hosted zones (valid values are public, private or no value for both)
+      registry: txt
+      txt-owner-id: external-dns
+      aws:
+        region: us-east-1
