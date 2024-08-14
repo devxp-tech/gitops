@@ -17,15 +17,15 @@ helmCharts:
       cr:
         create: true
         namespace: istio-system
-        istio_labels:
-          app_label_name: "app.kubernetes.io/name"
-          version_label_name: "app.kubernetes.io/version"
-          # egress_gateway_label: "istio=egress"
-          ingress_gateway_label: "istio=ingressgateway"
-          injection_label_name: "istio-injection"
-          injection_label_rev: "istio.io/rev"
         spec:
           istio_namespace: "istio-system"
+          istio_labels:
+            app_label_name: "app.kubernetes.io/name"
+            version_label_name: "app.kubernetes.io/version"
+            # egress_gateway_label: "istio=egress"
+            ingress_gateway_label: "istio=ingressgateway"
+            injection_label_name: "istio-injection"
+            injection_label_rev: "istio.io/rev"
           deployment:
             pod_labels:
               sidecar.istio.io/inject: "true"
@@ -99,7 +99,7 @@ helmCharts:
                 - name: "Istio Wasm Extension Dashboard"
             tracing:
               enabled: true
-              # provider: "tempo"
+              provider: "tempo"
               in_cluster_url: "http://tempo.observability.svc.cluster.local:16685" #working without provider
               # in_cluster_url: "http://tempo.observability.svc:3100"
               url: "https://grafana.devxp-tech.io/goto/NGVi4JSSR?orgId=1"
