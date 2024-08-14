@@ -8,10 +8,8 @@ metadata:
     link.argocd.argoproj.io/external-link: https://mimir.devxp-tech.io
 spec:
   hosts:
-    - "mimir.devxp-tech.io"
     - "mimir.dev.devxp-tech.io"
   gateways:
-    - istio-ingress/istio-ingressgateway
     - istio-ingress/istio-ingressgateway-private
   http:
     - match:
