@@ -42,8 +42,10 @@ helmCharts:
               gateway_api_class_name: ""
             prometheus:
               url: http://mimir-nginx.monitoring.svc:80/prometheus
-              custom_headers:
-                X-Scope-OrgID: vex-dev-usea1-eks
+              thanos_proxy:
+                enabled: true
+                retention_period: "7d"
+                scrape_interval: "60s"
               #http://prometheus-community-kube-prometheus.monitoring.svc.cluster.local:9090
             grafana:
               auth:
