@@ -23,8 +23,15 @@ helmCharts:
         spec:
           istio_namespace: "istio-system"
           deployment:
+            pod_labels:
+              sidecar.istio.io/inject: "true"
+            pod_annotations:
+              proxy.istio.io/config: |
+                holdApplicationUntilProxyStarts: true
             accessible_namespaces:
               - "**"
+            logger:
+              log_format: "json"
             view_only_mode: true
             # disable_rbac: true
           external_services:
@@ -36,10 +43,10 @@ helmCharts:
                   - app_label: "istiod"
                     is_core: true
                     is_proxy: false
-                  - app_label: istio-ingressgateway
+                  - namespace: istio-ingress
+                    app_label: istio-ingressgateway
                     is_core: true
                     is_proxy: true
-                    namespace: istio-ingress
                     # default: namespace is undefined
                 enabled: true
               config_map_name: "istio"
