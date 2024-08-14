@@ -40,4 +40,3 @@ spec:
         credentialName: devxp-tech.io # This should match the Certificate secretName
       hosts:
         - "*.dev.devxp-tech.io"
-

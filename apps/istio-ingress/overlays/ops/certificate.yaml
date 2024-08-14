@@ -27,4 +27,3 @@ spec:
     kind: ClusterIssuer
     name: devxp-tech.io
   secretName: devxp-tech.io
-

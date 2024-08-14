@@ -101,9 +101,7 @@ helmCharts:
               enabled: true
               # provider: "tempo"
               in_cluster_url: "http://tempo.observability.svc.cluster.local:16685" #working without provider
-
               # in_cluster_url: "http://tempo.observability.svc:3100"
-
               url: "https://grafana.devxp-tech.io/goto/NGVi4JSSR?orgId=1"
               # Private facing URL of Jaeger
               # in_cluster_url: "http://jaeger-query.observability.svc.cluster.local:80"
