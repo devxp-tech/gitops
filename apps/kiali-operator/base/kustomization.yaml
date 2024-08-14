@@ -41,7 +41,9 @@ helmCharts:
               envoy_admin_local_port: 15000
               gateway_api_class_name: ""
             prometheus:
-              url: http://mimir-nginx.monitoring.svc.cluster.local/prometheus
+              url: http://mimir-nginx.monitoring.svc/prometheus
+              custom_headers:
+                X-Scope-OrgID: vex-dev-usea1-eks
               #http://prometheus-community-kube-prometheus.monitoring.svc.cluster.local:9090
             grafana:
               auth:
