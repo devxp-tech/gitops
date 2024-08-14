@@ -100,8 +100,7 @@ helmCharts:
             tracing:
               enabled: true
               provider: "tempo"
-              in_cluster_url: "http://tempo.observability.svc.cluster.local:3100"
-              # in_cluster_url: "http://tempo.observability.svc.cluster.local:16685" #working without provider
+              in_cluster_url: "http://tempo.observability.svc.cluster.local:16685" #working without provider
               # use_grpc: false
               url: "https://grafana.devxp-tech.io/goto/NGVi4JSSR?orgId=1"
               tempo_config:

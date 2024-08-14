@@ -14,13 +14,6 @@ helmCharts:
         annotations:
           eks.amazonaws.com/role-arn: arn:aws:iam::239468932737:role/vex-dev-usea1-eks-tempo-sa
         automountServiceAccountToken: true
-      # tolerations:
-      #   - key: "role"
-      #     operator: "Equal"
-      #     value: "on-demand"
-      #     effect: "NoSchedule"
-      # nodeSelector:
-      #   role: "on-demand"
       serviceMonitor:
         enabled: true
       tempo:
