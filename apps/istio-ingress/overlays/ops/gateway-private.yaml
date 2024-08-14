@@ -10,7 +10,8 @@ metadata:
     istio: ingressgateway-private
 spec:
   selector:
-    istio: istio-ingressgateway-private
+    app: istio-ingressgateway-private
+    istio: ingressgateway-private
   servers:
     - hosts:
         - "*.dev.devxp-tech.io"
