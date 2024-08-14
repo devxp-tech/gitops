@@ -136,6 +136,6 @@ spec:
           receivers: [jaeger, otlp, zipkin]
           processors: [memory_limiter, batch]
           exporters: [otlp/tempo, servicegraph, spanmetrics]
-        logs:
-          receivers: [otlp]
-          processors: [memory_limiter, batch]
+        # logs:
+        #   receivers: [otlp]
+        #   processors: [memory_limiter, batch]
