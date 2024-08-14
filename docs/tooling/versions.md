@@ -5,10 +5,10 @@
 | argo-rollouts | argo-rollouts | 2.35.3 | https://argoproj.github.io/argo-helm | ✅ |  |  |  |
 | argo-workflows | argo-workflows | 0.41.11 | https://argoproj.github.io/argo-helm | ✅ |  |  |  |
 | atlantis | atlantis | 5.1.3 | https://runatlantis.github.io/helm-charts |  | [![App Status](https://argocd.devxp-tech.io/api/badge?name=atlantis-ops&revision=true&showAppName=true)](https://argocd.devxp-tech.io/applications/atlantis-ops) |  |  |
-| aws-load-balancer-controller | aws-load-balancer-controller | 1.8.1 | https://aws.github.io/eks-charts | ✅ |  |  |  |
+| aws-load-balancer-controller | aws-load-balancer-controller | 1.8.1 | https://aws.github.io/eks-charts |  | [![App Status](https://argocd.devxp-tech.io/api/badge?name=aws-load-balancer-controller-ops&revision=true&showAppName=true)](https://argocd.devxp-tech.io/applications/aws-load-balancer-controller-ops) |  |  |
 | backstage | devxp-app | 0.2.81 | https://devxp-tech.github.io/helm-charts |  |  | [![App Status](https://argocd.devxp-tech.io/api/badge?name=backstage-dev&revision=true&showAppName=true)](https://argocd.devxp-tech.io/applications/backstage-dev) |  |
 | backstage | devxp-app | 0.2.85 | https://devxp-tech.github.io/helm-charts |  |  |  | [![App Status](https://argocd.devxp-tech.io/api/badge?name=backstage-prd&revision=true&showAppName=true)](https://argocd.devxp-tech.io/applications/backstage-prd) |
-| cert-manager | cert-manager | v1.15.2 | https://charts.jetstack.io | ✅ |  |  |  |
+| cert-manager | cert-manager | v1.15.2 | https://charts.jetstack.io |  | [![App Status](https://argocd.devxp-tech.io/api/badge?name=cert-manager-ops&revision=true&showAppName=true)](https://argocd.devxp-tech.io/applications/cert-manager-ops) |  |  |
 | cilium | cilium | 1.15.7 | https://helm.cilium.io | ✅ |  |  |  |
 | demo-app | devxp-app | 0.2.81 | https://devxp-tech.github.io/helm-charts |  |  |  | [![App Status](https://argocd.devxp-tech.io/api/badge?name=demo-app-prd&revision=true&showAppName=true)](https://argocd.devxp-tech.io/applications/demo-app-prd) |
 | demo-app | devxp-app | 0.2.85 | https://devxp-tech.github.io/helm-charts |  |  | [![App Status](https://argocd.devxp-tech.io/api/badge?name=demo-app-dev&revision=true&showAppName=true)](https://argocd.devxp-tech.io/applications/demo-app-dev) |  |
