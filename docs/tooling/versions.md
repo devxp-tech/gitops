@@ -23,7 +23,7 @@
 | jaeger | jaeger | 2.1.0 | https://jaegertracing.github.io/helm-charts | ✅ |  |  |  |
 | karpenter | karpenter | 0.36.2 | oci://public.ecr.aws/karpenter | ✅ |  |  |  |
 | keycloak | keycloak | 18.4.4 | https://codecentric.github.io/helm-charts | ✅ |  |  |  |
-| kiali-operator | kiali-operator | 1.84.0 | https://kiali.org/helm-charts | ✅ |  |  |  |
+| kiali-operator | kiali-operator | 1.88.0 | https://kiali.org/helm-charts | ✅ |  |  |  |
 | kube-downscaler | kube-downscaler | 0.7.4 | https://charts.deliveryhero.io/ | ✅ |  |  |  |
 | kube-prometheus-stack | kube-prometheus-stack | 61.7.1 | https://prometheus-community.github.io/helm-charts | ✅ |  |  |  |
 | kubeclarity | kubeclarity | v2.23.1 | https://openclarity.github.io/kubeclarity | ✅ |  |  |  |
