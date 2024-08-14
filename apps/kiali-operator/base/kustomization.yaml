@@ -8,7 +8,7 @@ helmCharts:
   - name: kiali-operator
     includeCRDs: true
     releaseName: kiali-operator
-    version: 1.84.0
+    version: 1.88.0
     repo: https://kiali.org/helm-charts
     valuesInline:
       clusterRoleCreator: true
@@ -28,6 +28,8 @@ helmCharts:
             view_only_mode: true
             # disable_rbac: true
           external_services:
+            custom_dashboards:
+              discovery_enabled: "false"
             istio:
               component_status:
                 components:
@@ -58,6 +60,19 @@ helmCharts:
               enabled: true
               in_cluster_url: http://grafana.monitoring.svc.cluster.local
               url: https://grafana.devxp-tech.io
+              dashboards:
+                - name: "Istio Service Dashboard"
+                  variables:
+                    namespace: "var-namespace"
+                    service: "var-service"
+                - name: "Istio Workload Dashboard"
+                  variables:
+                    namespace: "var-namespace"
+                    workload: "var-workload"
+                - name: "Istio Mesh Dashboard"
+                - name: "Istio Control Plane Dashboard"
+                - name: "Istio Performance Dashboard"
+                - name: "Istio Wasm Extension Dashboard"
             tracing:
               enabled: true
               # provider: "tempo"
