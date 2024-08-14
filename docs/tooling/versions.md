@@ -13,7 +13,7 @@
 | demo-app | devxp-app | 0.2.81 | https://devxp-tech.github.io/helm-charts |  |  |  | [![App Status](https://argocd.devxp-tech.io/api/badge?name=demo-app-prd&revision=true&showAppName=true)](https://argocd.devxp-tech.io/applications/demo-app-prd) |
 | demo-app | devxp-app | 0.2.85 | https://devxp-tech.github.io/helm-charts |  |  | [![App Status](https://argocd.devxp-tech.io/api/badge?name=demo-app-dev&revision=true&showAppName=true)](https://argocd.devxp-tech.io/applications/demo-app-dev) |  |
 | dex | dex | 0.17.1 | https://charts.dexidp.io | ✅ |  |  |  |
-| external-dns | external-dns | 7.5.5 | https://charts.bitnami.com/bitnami | ✅ |  |  |  |
+| external-dns | external-dns | 8.3.5 | https://charts.bitnami.com/bitnami |  | [![App Status](https://argocd.devxp-tech.io/api/badge?name=external-dns-ops&revision=true&showAppName=true)](https://argocd.devxp-tech.io/applications/external-dns-ops) |  |  |
 | grafana | grafana | 8.0.2 | https://grafana.github.io/helm-charts | ✅ |  |  |  |
 | homepage | devxp-app | 0.2.81 | https://devxp-tech.github.io/helm-charts |  |  | [![App Status](https://argocd.devxp-tech.io/api/badge?name=homepage-dev&revision=true&showAppName=true)](https://argocd.devxp-tech.io/applications/homepage-dev) |  |
 | homepage | devxp-app | 0.2.85 | https://devxp-tech.github.io/helm-charts |  |  |  | [![App Status](https://argocd.devxp-tech.io/api/badge?name=homepage-prd&revision=true&showAppName=true)](https://argocd.devxp-tech.io/applications/homepage-prd) |
