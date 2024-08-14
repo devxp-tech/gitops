@@ -47,6 +47,10 @@ helmCharts:
                     app_label: istio-ingressgateway
                     is_core: true
                     is_proxy: true
+                  - namespace: istio-ingress
+                    app_label: istio-ingressgateway-private
+                    is_core: true
+                    is_proxy: true
                     # default: namespace is undefined
                 enabled: true
               config_map_name: "istio"
