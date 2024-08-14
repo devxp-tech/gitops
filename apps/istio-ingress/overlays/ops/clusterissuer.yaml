@@ -27,7 +27,7 @@ metadata:
   name: devxp-tech.io
 spec:
   acme:
-    email: contato@diegoluisi.eti.br
+    email: diego.luisi@devxp-tech.io
     privateKeySecretRef:
       name: issuer-key
     server: https://acme-v02.api.letsencrypt.org/directory
@@ -35,6 +35,8 @@ spec:
       - selector:
           dnsZones:
             - devxp-tech.io
+            - dev.devxp-tech.io
+            - diegoluisi.eti.br
         dns01:
           route53:
             region: us-east-1

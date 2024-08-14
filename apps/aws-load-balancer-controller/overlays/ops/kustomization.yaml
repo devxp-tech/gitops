@@ -2,3 +2,18 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - ../../base
+helmCharts:
+  - name: aws-load-balancer-controller
+    namespace: kube-system
+    includeCRDs: true
+    releaseName: aws-load-balancer-controller
+    version: 1.8.1
+    repo: https://aws.github.io/eks-charts
+    valuesInline:
+      clusterName: vex-dev-usea1-eks
+      region: us-east-1
+      vpcId: vpc-01dc9f4be86534b42
+      serviceAccount:
+        create: true
+        annotations:
+          eks.amazonaws.com/role-arn: arn:aws:iam::239468932737:role/AmazonEKSLoadBalancerControllerRole

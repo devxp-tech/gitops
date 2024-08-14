@@ -23,7 +23,7 @@ helmCharts:
         tag: e355c408 #609ddcf6
       serviceAccount:
         annotations:
-          "eks.amazonaws.com/role-arn": "arn:aws:iam::239468932737:role/backstage-vex-dev-usea1-eks-sa"
+          "eks.amazonaws.com/role-arn": "arn:aws:iam::239468932737:role/vex-dev-usea1-eks-backstage-sa"
       container:
         port: 7007
       env:
