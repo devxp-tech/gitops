@@ -102,11 +102,11 @@ helmCharts:
               provider: "tempo"
               in_cluster_url: "http://tempo.observability.svc.cluster.local:3100"
               # in_cluster_url: "http://tempo.observability.svc.cluster.local:16685" #working without provider
+              # Use grpc to speed up the download of metrics
+              use_grpc: true
+              grpc_port: 14250
               url: "https://grafana.devxp-tech.io/goto/NGVi4JSSR?orgId=1"
-              # Private facing URL of Jaeger
-              # in_cluster_url: "http://jaeger-query.observability.svc.cluster.local:80"
-              # Public facing URL
-              # url: "https://jaeger.devxp-tech.io/jaeger"
+
           auth:
             strategy: openid
             openid:
