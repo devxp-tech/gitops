@@ -44,7 +44,7 @@ helmCharts:
             istio:
               config_map_name: "istio"
               egress_gateway_namespace: ""
-              envoy_admin_local_port: 15000
+              # envoy_admin_local_port: 15000
               gateway_api_classes: []
               ingress_gateway_namespace: "istio-ingress"
               istio_api_enabled: true
