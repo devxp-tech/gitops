@@ -31,8 +31,8 @@ spec:
               - "atlantis.devxp-tech.io" # Need for GitHub Webhook
               - "dex.devxp-tech.io" # Need for kube-login
               - "grafana.devxp-tech.io" # Need for Backstage
-              - "sonar.devxp-tech.io" # Need for GitHub pipelines
+              # - "sonar.devxp-tech.io" # Need for GitHub pipelines # Disabled
               - "homepage.devxp-tech.io" # Need for Homepage
               - "devxp-tech.io" # Need for Homepage
               - "www.devxp-tech.io" # Need for Homepage
-              - "*.diegoluisi.eti.br" # Allow wordpress for everyone
+              - "www.diegoluisi.eti.br" # Allow wordpress for everyone
