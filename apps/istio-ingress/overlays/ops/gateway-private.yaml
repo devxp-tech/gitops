@@ -1,19 +1,20 @@
+---
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
-  name: istio-ingressgateway
+  name: istio-ingressgateway-private
   namespace: istio-ingress
   labels:
-    app_label: istio-ingressgateway
+    app_label: istio-ingressgateway-private
     app.kubernetes.io/version: 1.20.0
-    istio: ingressgateway
+    istio: ingressgateway-private
 spec:
   selector:
-    istio: ingressgateway
+    istio: istio-ingressgateway-private
   servers:
     - hosts:
-        - "*.devxp-tech.io"
-        - "*.diegoluisi.eti.br"
+        - "*.dev.devxp-tech.io"
+        - "*.dev.diegoluisi.eti.br"
       port:
         name: http
         number: 80
@@ -28,7 +29,7 @@ spec:
         mode: SIMPLE
         credentialName: diegoluisi.eti.br # This should match the Certificate secretName
       hosts:
-        - "*.diegoluisi.eti.br" # This should match a DNS name in the Certificate
+        - "*.dev.diegoluisi.eti.br" # This should match a DNS name in the Certificate
     - port:
         name: https-devxp
         number: 443
@@ -37,4 +38,5 @@ spec:
         mode: SIMPLE
         credentialName: devxp-tech.io # This should match the Certificate secretName
       hosts:
-        - "*.devxp-tech.io" # This should match a DNS name in the Certificate
+        - "*.dev.devxp-tech.io"
+
