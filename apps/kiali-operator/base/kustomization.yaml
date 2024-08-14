@@ -19,11 +19,11 @@ helmCharts:
         namespace: istio-system
         istio_labels:
           app_label_name: "app.kubernetes.io/name"
-          egress_gateway_label: "istio=egress"
-          ingress_gateway_label: "istio=ingress"
+          version_label_name: "app.kubernetes.io/version"
+          # egress_gateway_label: "istio=egress"
+          ingress_gateway_label: "istio=ingressgateway"
           injection_label_name: "istio-injection"
           injection_label_rev: "istio.io/rev"
-          version_label_name: "app.kubernetes.io/version"
         spec:
           istio_namespace: "istio-system"
           deployment:
