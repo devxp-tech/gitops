@@ -107,7 +107,8 @@ helmCharts:
               tempo_config:
                 org_id: "1"
                 datasource_uid: "tempo"
-              use_grpc: false
+              use_grpc: true
+              grpc_port: 9095
               namespace_selector: false
 
           auth:
