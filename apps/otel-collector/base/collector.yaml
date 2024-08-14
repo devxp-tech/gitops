@@ -83,7 +83,7 @@ spec:
       servicegraph:
         dimensions:
           - http.method
-        latency_histogram_buckets: ["1", "2", "3", "4", "5"]
+        latency_histogram_buckets: [1, 2, 3, 4, 5]
         store:
           max_items: 10
           ttl: 1s
