@@ -6,3 +6,4 @@ resources:
   - certificate.yaml
   - clusterissuer.yaml
   - gateway.yaml
+  - gateway-private.yaml
