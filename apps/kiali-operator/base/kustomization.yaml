@@ -101,7 +101,7 @@ helmCharts:
               enabled: true
               provider: "tempo"
               in_cluster_url: "http://tempo.observability.svc:3100" #working without provider 16685
-              use_grpc: true
+              use_grpc: false
               grpc_port: 14250
               url: "https://grafana.devxp-tech.io/goto/NGVi4JSSR?orgId=1"
               tempo_config:
