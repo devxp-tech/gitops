@@ -99,14 +99,13 @@ helmCharts:
                 - name: "Istio Wasm Extension Dashboard"
             tracing:
               enabled: true
-              provider: "tempo"
+              # provider: "tempo"
               in_cluster_url: "http://tempo.observability.svc.cluster.local:16685" #working without provider
-              # use_grpc: false
+              use_grpc: false
               url: "https://grafana.devxp-tech.io/goto/NGVi4JSSR?orgId=1"
               tempo_config:
                 org_id: "1"
                 datasource_uid: "tempo"
-              use_grpc: false
               namespace_selector: false
 
           auth:
