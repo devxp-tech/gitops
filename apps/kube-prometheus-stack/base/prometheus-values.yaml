@@ -60,6 +60,8 @@ prometheus:
     externalLabels:
       cluster: vex-dev-usea1-eks
       environment: development
+    nodeSelector:
+      topology.kubernetes.io/zone: us-east-1a
     remoteWrite: # Enable Mimir
       - url: http://mimir-nginx.monitoring.svc:80/api/v1/push
         headers:
