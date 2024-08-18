@@ -56,7 +56,6 @@ prometheus:
   # thanosServiceMonitor:
   #   enabled: true # Enable Mimir
   prometheusSpec:
-    replicas: 0
     externalUrl: https://prometheus.dev.devxp-tech.io/
     externalLabels:
       cluster: vex-dev-usea1-eks
