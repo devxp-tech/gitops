@@ -122,7 +122,7 @@ helmCharts:
           requests:
             cpu: 500m   # 30% of 3.5
             memory: 1.8Gi # 30% of 8Gi
-        replicas: 1
+        replicas: 2
         podDisruptionBudget:
           maxUnavailable: 2
         zoneAwareReplication: # test billing
@@ -242,7 +242,7 @@ helmCharts:
           requests:
             cpu: 100m   # 30% of 1
             memory: 256Mi # 30% of 1.5Gi
-        replicas: 1
+        replicas: 2
         podDisruptionBudget:
           maxUnavailable: 2
         zoneAwareReplication: # test billing
