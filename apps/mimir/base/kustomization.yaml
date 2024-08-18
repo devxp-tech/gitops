@@ -125,8 +125,10 @@ helmCharts:
         replicas: 1
         podDisruptionBudget:
           maxUnavailable: 2
-        # zoneAwareReplication: # test billing
-        #   enabled: false
+        zoneAwareReplication: # test billing
+          enabled: false
+        nodeSelector:
+          topology.kubernetes.io/zone: us-east-1a
 
         # tolerations:
         #   - key: "role"
@@ -243,8 +245,10 @@ helmCharts:
         replicas: 1
         podDisruptionBudget:
           maxUnavailable: 2
-        # zoneAwareReplication: # test billing
-        #   enabled: false
+        zoneAwareReplication: # test billing
+          enabled: false
+        nodeSelector:
+          topology.kubernetes.io/zone: us-east-1a
 
         # tolerations:
         #   - key: "role"
