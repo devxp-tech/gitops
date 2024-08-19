@@ -6,7 +6,7 @@ helmCharts:
     includeCRDs: true
     releaseName: mimir-distributed
     namespace: monitoring
-    version: "5.4.0"
+    version: "5.4.1"
     repo: https://grafana.github.io/helm-charts
     valuesInline:
       fullnameOverride: mimir

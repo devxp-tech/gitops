@@ -5,7 +5,7 @@ helmCharts:
   - name: tempo
     includeCRDs: true
     releaseName: tempo
-    version: 1.10.2
+    version: 1.10.3
     repo: https://grafana.github.io/helm-charts
     valuesInline:
       replicas: 1
@@ -14,6 +14,8 @@ helmCharts:
         annotations:
           eks.amazonaws.com/role-arn: arn:aws:iam::239468932737:role/vex-dev-usea1-eks-tempo-sa
         automountServiceAccountToken: true
+      nodeSelector:
+        topology.kubernetes.io/zone: us-east-1a
       serviceMonitor:
         enabled: true
       tempo:
