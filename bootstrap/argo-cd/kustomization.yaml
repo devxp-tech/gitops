@@ -72,8 +72,7 @@ configMapGenerator:
       - files/resource.customizations
     literals:
       - admin.enabled=true
-      - kustomize.buildOptions="--enable-alpha-plugins --enable-helm --load-restrictor
-        LoadRestrictionsNone"
+      - kustomize.buildOptions="--enable-alpha-plugins --enable-helm --load-restrictor LoadRestrictionsNone"
       - statusbadge.enabled=true
       - url=https://argocd.devxp-tech.io
       - dexserver.disable.tls=true
