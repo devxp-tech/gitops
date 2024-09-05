@@ -22,7 +22,7 @@ spec:
       when:
         - key: request.headers[x-envoy-external-address]
           values:
-            - "94.62.74.120" # Diego
+            - "85.240.135.56" # Diego
             - "3.220.46.13" # Test
     - to:
         - operation:
