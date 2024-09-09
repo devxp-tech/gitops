@@ -4,7 +4,7 @@ namespace: kube-system
 helmCharts:
   - name: sealed-secrets
     releaseName: sealed-secrets
-    version: 2.15.3
+    version: 2.16.1
     includeCRDs: true
     repo: https://bitnami-labs.github.io/sealed-secrets
     valuesInline:
