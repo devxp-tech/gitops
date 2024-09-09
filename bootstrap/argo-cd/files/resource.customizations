@@ -10,3 +10,24 @@ admissionregistration.k8s.io/ValidatingWebhookConfiguration:
     - /webhooks/0/clientConfig/caBundle
     - /webhooks/0/failurePolicy
     - /webhooks/0/rules
+PersistentVolume:
+    ignoreDifferences: |
+        jsonPointers:
+        - /spec/claimRef/resourceVersion
+        - /spec/claimRef/uid
+        - /status/lastPhaseTransitionTime
+StatefulSet:
+    ignoreDifferences: |
+        jsonPointers:
+        - /spec/volumeClaimTemplates/0/apiVersion
+        - /spec/volumeClaimTemplates/0/kind
+ServiceMonitor:
+    ignoreDifferences: |
+        jsonPointers:
+        - /spec/endpoints/0/relabelings/0/action
+        - /spec/endpoints/0/relabelings/0/replacement
+        - /spec/endpoints/0/relabelings/1/replacement
+        - /spec/endpoints/1/relabelings/0/replacement
+        - /spec/endpoints/1/relabelings/1/replacement
+
+
