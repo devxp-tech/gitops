@@ -13,7 +13,7 @@ helmCharts:
       dnsPolicy: Default
       serviceAccount:
         annotations:
-          eks.amazonaws.com/role-arn: arn:aws:iam::239468932737:role/KarpenterController-20240806113626522400000006
+          eks.amazonaws.com/role-arn: arn:aws:iam::239468932737:role/vex-dev-usea1-eks-karpenter-controller
       # Failed to watch *v1.Lease: failed to list *v1.Lease: leases.coordination.k8s.io is forbidden: User "system:serviceaccount:karpenter:karpenter" cannot list resource "leases" in API group "coordination.k8s.io" in the namespace "kube-node-lease"
       additionalClusterRoleRules:
         - apiGroups: ["coordination.k8s.io"]
@@ -43,6 +43,7 @@ helmCharts:
       settings:
         clusterName: vex-dev-usea1-eks
         clusterEndpoint: https://DDC166ECE3AF805DA19B0CC5502AF3C0.gr7.us-east-1.eks.amazonaws.com
-        defaultInstanceProfile: Karpenter-vex-dev-usea1-eks-20240806114336084400000001
+        defaultInstanceProfile: vex-dev-usea1-eks-karpenter-node-role
+        interruptionQueue: vex-dev-usea1-eks-karpenter
         featureGates:
           spotToSpotConsolidation: true
