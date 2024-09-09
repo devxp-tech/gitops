@@ -24,13 +24,14 @@ helmCharts:
       serviceMonitor:
         enabled: true
       replicas: 1
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-              - matchExpressions:
-                  - key: karpenter.sh/nodepool
-                    operator: DoesNotExist
+      # nodeSelector:
+      #   karpenter.sh/controller: 'true'
+      tolerations:
+        - key: CriticalAddonsOnly
+          operator: Exists
+        - key: karpenter.sh/controller
+          operator: Exists
+          effect: NoSchedule
       controller:
         resources:
           requests:
