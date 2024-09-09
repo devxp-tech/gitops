@@ -55,7 +55,7 @@ helmCharts:
         #   role: "on-demand"
         extraEnv:
           - name: JAEGER_AGENT_HOST
-            value: otel-collector.observability.svc.cluster.local
+            value: tempo.observability.svc.cluster.local
           - name: JAEGER_AGENT_PORT
             value: "6831"
           - name: JAEGER_SAMPLER_TYPE
@@ -66,7 +66,7 @@ helmCharts:
         replicas: 1
         extraEnv:
           - name: JAEGER_AGENT_HOST
-            value: otel-collector.observability.svc.cluster.local
+            value: tempo.observability.svc.cluster.local
           - name: JAEGER_AGENT_PORT
             value: "6831"
           - name: JAEGER_SAMPLER_TYPE
@@ -77,7 +77,7 @@ helmCharts:
         replicas: 1
         extraEnv:
           - name: JAEGER_AGENT_HOST
-            value: otel-collector.observability.svc.cluster.local
+            value: tempo.observability.svc.cluster.local
           - name: JAEGER_AGENT_PORT
             value: "6831"
           - name: JAEGER_SAMPLER_TYPE
@@ -88,7 +88,7 @@ helmCharts:
         replicas: 1
         extraEnv:
           - name: JAEGER_AGENT_HOST
-            value: otel-collector.observability.svc.cluster.local
+            value: tempo.observability.svc.cluster.local
           - name: JAEGER_AGENT_PORT
             value: "6831"
           - name: JAEGER_SAMPLER_TYPE
@@ -99,7 +99,7 @@ helmCharts:
         replicas: 1
         extraEnv:
           - name: JAEGER_AGENT_HOST
-            value: otel-collector.observability.svc.cluster.local
+            value: tempo.observability.svc.cluster.local
           - name: JAEGER_AGENT_PORT
             value: "6831"
           - name: JAEGER_SAMPLER_TYPE
@@ -110,7 +110,7 @@ helmCharts:
         replicas: 1
         extraEnv:
           - name: JAEGER_AGENT_HOST
-            value: otel-collector.observability.svc.cluster.local
+            value: tempo.observability.svc.cluster.local
           - name: JAEGER_AGENT_PORT
             value: "6831"
           - name: JAEGER_SAMPLER_TYPE
@@ -121,7 +121,7 @@ helmCharts:
         replicas: 1
         extraEnv:
           - name: JAEGER_AGENT_HOST
-            value: otel-collector.observability.svc.cluster.local
+            value: tempo.observability.svc.cluster.local
           - name: JAEGER_AGENT_PORT
             value: "6831"
           - name: JAEGER_SAMPLER_TYPE
@@ -149,7 +149,7 @@ helmCharts:
         replicas: 1
         extraEnv:
           - name: JAEGER_AGENT_HOST
-            value: otel-collector.observability.svc.cluster.local
+            value: tempo.observability.svc.cluster.local
           - name: JAEGER_AGENT_PORT
             value: "6831"
           - name: JAEGER_SAMPLER_TYPE
