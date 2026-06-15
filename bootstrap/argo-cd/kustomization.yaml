@@ -4,7 +4,7 @@ namespace: argocd
 components:
   - https://github.com/argoproj-labs/argocd-extensions/manifests
 resources:
-  - github.com/argoproj-labs/argocd-autopilot/manifests/base?ref=v0.4.17
+  - github.com/argoproj-labs/argocd-autopilot/manifests/base?ref=v0.4.20
   - https://raw.githubusercontent.com/argoproj-labs/rollout-extension/v0.3.3/manifests/install.yaml
   - argocd-notifications-secret-sealed.yaml
   - secrets.yaml
